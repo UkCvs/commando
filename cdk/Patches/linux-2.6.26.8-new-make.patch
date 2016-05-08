@@ -1,0 +1,112 @@
+commit 31110ebbec8688c6e9597b641101afc94e1c762a
+Author: Sam Ravnborg <sam@ravnborg.org>
+Date:   Sat Dec 13 23:00:45 2008 +0100
+
+    kbuild: fix make incompatibility
+    
+    "Paul Smith" <psmith@gnu.org> reported that we would fail
+    to build with a new check that may be enabled in an
+    upcoming version of make.
+    
+    The error was:
+    
+          Makefile:442: *** mixed implicit and normal rules.  Stop.
+    
+    The problem is that we did stuff like this:
+    
+    config %config: ...
+    
+    The solution was simple - the above was split into two with identical
+    prerequisites and commands.
+    With only three lines it was not worth to try to avoid the duplication.
+    
+    Cc: "Paul Smith" <psmith@gnu.org>
+    Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+
+diff --git a/Makefile b/Makefile
+index be462cf..95160e5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -439,7 +439,11 @@ ifeq ($(config-targets),1)
+ include $(srctree)/arch/$(SRCARCH)/Makefile
+ export KBUILD_DEFCONFIG KBUILD_KCONFIG
+ 
+-config %config: scripts_basic outputmakefile FORCE
++config: scripts_basic outputmakefile FORCE
++	$(Q)mkdir -p include/linux include/config
++	$(Q)$(MAKE) $(build)=scripts/kconfig $@
++
++%config: scripts_basic outputmakefile FORCE
+ 	$(Q)mkdir -p include/linux include/config
+ 	$(Q)$(MAKE) $(build)=scripts/kconfig $@
+ 
+@@ -1493,7 +1497,11 @@ endif
+ 	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+ 
+ # Modules
+-/ %/: prepare scripts FORCE
++/: prepare scripts FORCE
++	$(cmd_crmodverdir)
++	$(Q)$(MAKE) KBUILD_MODULES=$(if $(CONFIG_MODULES),1) \
++	$(build)=$(build-dir)
++%/: prepare scripts FORCE
+ 	$(cmd_crmodverdir)
+ 	$(Q)$(MAKE) KBUILD_MODULES=$(if $(CONFIG_MODULES),1) \
+ 	$(build)=$(build-dir)
+commit e32e78c5ee8aadef020fbaecbe6fb741ed9029fd
+Author: Sam Ravnborg <sam@ravnborg.org>
+Date:   Mon Aug 2 20:47:48 2010 +0000
+
+    powerpc: fix build with make 3.82
+    
+    Thomas Backlund reported that the powerpc build broke with make 3.82.
+    It failed with the following message:
+    
+        arch/powerpc/Makefile:183: *** mixed implicit and normal rules.  Stop.
+    
+    The fix is to avoid mixing non-wildcard and wildcard targets.
+    
+    Reported-by: Thomas Backlund <tmb@mandriva.org>
+    Tested-by: Thomas Backlund <tmb@mandriva.org>
+    Cc: Michal Marek <mmarek@suse.cz>
+    Cc: stable <stable@kernel.org>
+    Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+    Signed-off-by: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+
+diff --git a/arch/powerpc/Makefile b/arch/powerpc/Makefile
+index 5d42f5e..e3ea151 100644
+--- a/arch/powerpc/Makefile
++++ b/arch/powerpc/Makefile
+@@ -163,9 +163,11 @@ drivers-$(CONFIG_OPROFILE)	+= arch/powerpc/oprofile/
+ # Default to zImage, override when needed
+ all: zImage
+ 
+-BOOT_TARGETS = zImage zImage.initrd uImage zImage% dtbImage% treeImage.% cuImage.% simpleImage.%
++# With make 3.82 we cannot mix normal and wildcard targets
++BOOT_TARGETS1 := zImage zImage.initrd uImaged
++BOOT_TARGETS2 := zImage% dtbImage% treeImage.% cuImage.% simpleImage.%
+ 
+-PHONY += $(BOOT_TARGETS)
++PHONY += $(BOOT_TARGETS1) $(BOOT_TARGETS2)
+ 
+ boot := arch/$(ARCH)/boot
+ 
+@@ -180,10 +182,16 @@ relocs_check: arch/powerpc/relocs_check.pl vmlinux
+ zImage: relocs_check
+ endif
+ 
+-$(BOOT_TARGETS): vmlinux
++$(BOOT_TARGETS1): vmlinux
++	$(Q)$(MAKE) ARCH=ppc64 $(build)=$(boot) $(patsubst %,$(boot)/%,$@)
++$(BOOT_TARGETS2): vmlinux
++	$(Q)$(MAKE) ARCH=ppc64 $(build)=$(boot) $(patsubst %,$(boot)/%,$@)
++
++
++bootwrapper_install:
+ 	$(Q)$(MAKE) ARCH=ppc64 $(build)=$(boot) $(patsubst %,$(boot)/%,$@)
+ 
+-bootwrapper_install %.dtb:
++%.dtb:
+ 	$(Q)$(MAKE) ARCH=ppc64 $(build)=$(boot) $(patsubst %,$(boot)/%,$@)
+ 
+ define archhelp

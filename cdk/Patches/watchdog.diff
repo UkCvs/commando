@@ -1,0 +1,33 @@
+diff -Naur watchdog-5.2.4.orig/include/sundries.h watchdog-5.2.4.orig.orig/include/sundries.h
+--- watchdog-5.2.4.orig/include/sundries.h	2003-07-08 14:34:19.000000000 +0200
++++ watchdog-5.2.4.orig.orig/include/sundries.h	2003-10-11 22:20:56.000000000 +0200
+@@ -48,7 +48,7 @@
+ 
+ /* Here is some serious cruft.  */
+ #ifdef __GNUC__
+-#if defined(__GNUC_MINOR__) && __GNUC__ == 2 && __GNUC_MINOR__ >= 5
++#if (defined(__GNUC_MINOR__) && __GNUC__ == 2 && __GNUC_MINOR__ >= 5) || __GNUC__ >= 3
+ void die (int errcode, const char *fmt, ...) __attribute__ ((noreturn));
+ #else /* GNUC < 2.5 */
+ void die (int errcode, const char *fmt, ...);
+diff -Naur watchdog-5.2.4.orig/watchdog.conf watchdog-5.2.4.orig.orig/watchdog.conf
+--- watchdog-5.2.4.orig/watchdog.conf	2003-01-28 07:53:55.000000000 +0100
++++ watchdog-5.2.4.orig.orig/watchdog.conf	2003-10-11 22:22:01.000000000 +0200
+@@ -15,7 +15,7 @@
+ # To get the real size, check how large the pagesize is on your machine.
+ #min-memory		= 1
+ 
+-#repair-binary		= /usr/sbin/repair
++#repair-binary		= /usr/local/sbin/repair
+ #test-binary		= 
+ #test-timeout		= 
+ 
+@@ -27,7 +27,7 @@
+ 
+ # Defaults compiled into the binary
+ #admin			= root
+-#interval		= 10
++interval		= 1
+ #logtick                = 1
+ 
+ # This greatly decreases the chance that watchdog won't be scheduled before

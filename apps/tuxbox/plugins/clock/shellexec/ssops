@@ -1,0 +1,79 @@
+#!/bin/sh
+####################################################################################
+####                     Konfiguration für Screensaver
+####                wandernde Uhrzeitanzeige am Bildschirm
+####                    Bugreport und Anregungen im Board:
+####       http://www.dbox2-tuning.net/forum/viewforum.php?f=27&start=0
+####              Das New-Tuxwetter-Team: SnowHead und Worschter
+####################################################################################
+
+SSAVERCFG="/var/tuxbox/config/ssaver.conf"
+
+  pth="/bin/input"
+    if [ ! -e $pth ]; then
+      pth="/var/bin/input"
+      if [ ! -e $pth ]; then
+      /bin/wget -Y off -O /dev/null http://localhost/control/message?nmsg=Eingabeprogramm%20input%20ist%20nicht%20installiert.%0APlugin%20kann%20nicht%20ausgef%C3%BChrt%20werden.
+      exit 1
+    fi
+  fi
+
+  case "$1" in
+  DATE)
+    if grep -q "^DATE=.*" $SSAVERCFG; then
+      sed -e "s/^DATE=.*/DATE=$2/g" $SSAVERCFG > /tmp/ssaver.conf
+    fi
+  ;;
+
+  BIG)
+    if grep -q "^BIG=.*" $SSAVERCFG; then
+      sed -e "s/^BIG=.*/BIG=$2/g" $SSAVERCFG > /tmp/ssaver.conf
+    fi
+  ;;
+
+  SEC)
+    if grep -q "^SEC=.*" $SSAVERCFG; then
+      sed -e "s/^SEC=.*/SEC=$2/g" $SSAVERCFG > /tmp/ssaver.conf
+    fi
+  ;;
+
+  BLINK)
+    if grep -q "^BLINK=.*" $SSAVERCFG; then
+      sed -e "s/^BLINK=.*/BLINK=$2/g" $SSAVERCFG > /tmp/ssaver.conf
+    fi
+  ;;
+
+  FCOL)
+    if grep -q "^FCOL=.*" $SSAVERCFG; then
+      sed -e "s/^FCOL=.*/FCOL=$2/g" $SSAVERCFG > /tmp/ssaver.conf
+    fi
+  ;;
+
+  BCOL)
+    if grep -q "^BCOL=.*" $SSAVERCFG; then
+      sed -e "s/^BCOL=.*/BCOL=$2/g" $SSAVERCFG > /tmp/ssaver.conf
+    fi
+  ;;
+  
+  SLOW)
+  	def=`grep ^SLOW= /var/tuxbox/config/ssaver.conf`
+  	if [ `expr length $def` -gt 0 ]; then
+  	  def=`expr substr $def 6 2`
+  	else
+  	  def=0
+  	fi
+    res=`$pth t="Verz~ogerung" l="##" d=$def`
+    if [ -z $res ]; then
+      exit 1
+    fi
+    sed -e "s/^SLOW=.*/SLOW=$res/g" $SSAVERCFG > /tmp/ssaver.conf
+  ;;  
+
+  *)
+    exit 1
+  esac
+  
+  rm $SSAVERCFG
+  sleep 1
+  mv /tmp/ssaver.conf $SSAVERCFG
+  

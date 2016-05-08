@@ -1,0 +1,13 @@
+# SplashScreen=1/0			Startbildschirm anzeigen / nicht anzeigen
+SplashScreen=0
+# ShowIcons=1/0				Wetter-Icons für Textanzeige downloaden / nicht downloaden
+ShowIcons=1
+# Metric=1/0				Einheiten metrisch anzeigen
+Metric=1
+# InetConnection=ISDN/ANALOG		fuer langsamere Verbindungen zur Konfiguration von Timeoutzeiten
+InetConnection=DSL
+ConnectTimeout=5
+# Account bei weather.com		Bei worldweatheronline.com wird der LicenseKey als API-Key verwendet
+#PartnerID=
+API-Key=32z7znf5z7bwm2nednkyevb7
+

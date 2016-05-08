@@ -1,0 +1,33 @@
+diff -uNr libxml2-2.4.30.org/configure libxml2-2.4.30/configure
+--- libxml2-2.4.30.org/configure	2002-12-12 12:06:28.000000000 +0100
++++ libxml2-2.4.30/configure	2008-10-09 22:45:02.000000000 +0200
+@@ -3689,7 +3689,7 @@
+   ;;
+ 
+ # This must be Linux ELF.
+-linux-gnu*)
++linux*)
+   case $host_cpu in
+   alpha* | hppa* | i*86 | powerpc* | sparc* | ia64* | s390* )
+     lt_cv_deplibs_check_method=pass_all ;;
+@@ -6080,7 +6080,7 @@
+   ;;
+ 
+ # This must be Linux ELF.
+-linux-gnu*)
++linux*)
+   version_type=linux
+   need_lib_prefix=no
+   need_version=no
+diff -uNr libxml2-2.4.30.org/Makefile.in libxml2-2.4.30/Makefile.in
+--- libxml2-2.4.30.org/Makefile.in	2002-12-12 12:07:06.000000000 +0100
++++ libxml2-2.4.30/Makefile.in	2008-10-31 11:53:53.000000000 +0100
+@@ -302,7 +302,7 @@
+ testHTML$(EXEEXT) testXPath$(EXEEXT) testURI$(EXEEXT) \
+ testDocbook$(EXEEXT) testThreads$(EXEEXT) testC14N$(EXEEXT) \
+ testAutomata$(EXEEXT) testRegexp$(EXEEXT) testReader$(EXEEXT)
+-PROGRAMS =  $(bin_PROGRAMS) $(noinst_PROGRAMS)
++PROGRAMS =  $(bin_PROGRAMS)
+ 
+ xmllint_OBJECTS =  xmllint.$(OBJEXT)
+ xmlcatalog_OBJECTS =  xmlcatalog.$(OBJEXT)

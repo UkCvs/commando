@@ -1,0 +1,719 @@
+diff -u -pr busybox-1.17.1.org/init/init.c busybox-1.17.1/init/init.c
+--- busybox-1.17.1.org/init/init.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/init/init.c	2013-04-16 20:19:23.000000000 +0200
+@@ -306,8 +306,10 @@ static void console_init(void)
+ 		/* Not a linux terminal, probably serial console.
+ 		 * Force the TERM setting to vt102
+ 		 * if TERM is set to linux (the default) */
++/*
+ 		if (!s || strcmp(s, "linux") == 0)
+ 			putenv((char*)"TERM=vt102");
++*/
+ 		if (!ENABLE_FEATURE_INIT_SYSLOG)
+ 			log_console = NULL;
+	} else
+diff -u -pr busybox-1.17.1.org/libbb/procps.c busybox-1.17.1/libbb/procps.c
+--- busybox-1.17.1.org/libbb/procps.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/libbb/procps.c	2013-04-16 20:19:23.000000000 +0200
+@@ -483,6 +483,20 @@ procps_status_t* FAST_FUNC procps_scan(p
+ 				sp->state[2] = ' ';
+ 		}
+ 
++		{
++			char *cp;
++			strcpy(filename_tail, "/status");
++			n = read_to_buf(filename, buf);
++			if (n < 0)
++				break;
++			cp = strstr(buf, "VmRSS:");
++			if (cp) {
++				n = sscanf(cp, "VmRSS: %u kB", &sp->vsz);
++				if (n < 1)
++					break;
++			}
++		}
++
+ #if ENABLE_FEATURE_TOPMEM
+		if (flags & PSSCAN_SMAPS)
+			procps_read_smaps(pid, &sp->smaps, NULL, NULL);
+diff -u -pr busybox-1.17.1.org/loginutils/passwd.c busybox-1.17.1/loginutils/passwd.c
+--- busybox-1.17.1.org/loginutils/passwd.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/loginutils/passwd.c	2013-04-16 20:19:23.000000000 +0200
+@@ -15,6 +15,7 @@
+
+ #include "libbb.h"
+ #include <syslog.h>
++#include <sys/resource.h>
+
+ static void nuke_str(char *str)
+ {
+diff -u -pr busybox-1.17.1.org/miscutils/hdparm.c busybox-1.17.1/miscutils/hdparm.c
+--- busybox-1.17.1.org/miscutils/hdparm.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/miscutils/hdparm.c	2013-04-16 20:19:23.000000000 +0200
+@@ -339,6 +339,7 @@ struct globals {
+ 	smallint set_sleepnow;
+ 	smallint get_powermode;
+ 	smallint getset_apmmode;
++	smallint getset_acoustic;
+ 	int xfermode_requested;
+ 	unsigned long dkeep;
+ 	unsigned long standby_requested; /* 0..255 */
+@@ -348,6 +349,7 @@ struct globals {
+ 	unsigned long wcache;
+ 	unsigned long doorlock;
+ 	unsigned long apmmode;
++	unsigned long acoustic;
+ #endif
+ 	IF_FEATURE_HDPARM_GET_IDENTITY(        smallint get_IDentity;)
+ 	IF_FEATURE_HDPARM_HDIO_TRISTATE_HWIF(  smallint getset_busstate;)
+@@ -412,6 +414,8 @@ struct BUG_G_too_big {
+ #define set_sleepnow       (G.set_sleepnow           )
+ #define get_powermode      (G.get_powermode          )
+ #define getset_apmmode     (G.getset_apmmode         )
++#define getset_acoustic    (G.getset_acoustic        )
++#define acoustic           (G.acoustic               )
+ #define xfermode_requested (G.xfermode_requested     )
+ #define dkeep              (G.dkeep                  )
+ #define standby_requested  (G.standby_requested      )
+@@ -1732,6 +1736,10 @@ static void process_dev(char *devname)
+ 		ioctl_or_warn(fd, HDIO_DRIVE_CMD, &args);
+ 		args[1] = 0;
+ 	}
++	if (getset_acoustic == IS_SET) {
++		printf(" setting AAM level to 0x%02lX (%ld)\n", acoustic, acoustic);
++		ioctl(fd, HDIO_SET_ACOUSTIC, acoustic);
++	}
+ 	if (getset_wcache == IS_SET) {
+ #ifdef DO_FLUSHCACHE
+ #ifndef WIN_FLUSHCACHE
+@@ -2038,7 +2046,7 @@ static const char hdparm_options[] ALIGN
+ 	IF_FEATURE_HDPARM_GET_IDENTITY("iI")
+ 	IF_FEATURE_HDPARM_HDIO_GETSET_DMA("d::")
+ #ifdef HDIO_DRIVE_CMD
+-	"S:D:P:X:K:A:L:W:CyYzZ"
++	"M:S:D:P:X:K:A:L:W:CyYzZ"
+ #endif
+ 	IF_FEATURE_HDPARM_HDIO_UNREGISTER_HWIF("U:")
+ #ifdef HDIO_GET_QDMA
+@@ -2080,6 +2088,7 @@ int hdparm_main(int argc, char **argv)
+ 		if (c == 'k') getset_keep      = parse_opts_0_1(&keep);
+ 		if (c == 'a') getset_readahead = parse_opts_0_INTMAX(&Xreadahead);
+ 		if (c == 'B') getset_apmmode   = parse_opts(&apmmode, 1, 255);
++		if (c == 'M') getset_acoustic  = parse_opts(&acoustic, 0, 254);
+ 		do_flush |= do_timings |= (c == 't');
+ 		do_flush |= do_ctimings |= (c == 'T');
+ #ifdef HDIO_DRIVE_CMD
+diff -u -pr busybox-1.17.1.org/miscutils/time.c busybox-1.17.1/miscutils/time.c
+--- busybox-1.17.1.org/miscutils/time.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/miscutils/time.c	2013-04-16 20:19:23.000000000 +0200
+@@ -16,6 +16,7 @@
+ //usage:     "\n	-v	Verbose"
+
+ #include "libbb.h"
++#include <sys/resource.h>
+
+ /* Information on the resources used by a child process.  */
+ typedef struct {
+diff -u -pr busybox-1.17.1.org/modutils/Config.src busybox-1.17.1/modutils/Config.src
+--- busybox-1.17.1.org/modutils/Config.src	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/modutils/Config.src	2013-04-16 20:19:23.000000000 +0200
+@@ -150,6 +150,13 @@ config FEATURE_INSMOD_TRY_MMAP
+ 
+ 	  Choosing N saves about 250 bytes of code (on 32-bit x86).
+ 
++config FEATURE_2_6_MODULES
++	bool "Support version 2.6 Linux kernels"
++	default n
++	depends on INSMOD || RMMOD || LSMOD
++	help
++	  Support module loading for 2.6.x Linux kernels.
++
+ config FEATURE_INSMOD_VERSION_CHECKING
+ 	bool "Enable module version checking"
+ 	default n
+@@ -247,7 +254,7 @@ config FEATURE_MODUTILS_SYMBOLS
+ config DEFAULT_MODULES_DIR
+ 	string "Default directory containing modules"
+ 	default "/lib/modules"
+-	depends on DEPMOD || MODPROBE || MODPROBE_SMALL || MODINFO
++	depends on DEPMOD || MODPROBE || MODPROBE_SMALL || MODINFO || INSMOD
+ 	help
+ 	  Directory that contains kernel modules.
+ 	  Defaults to "/lib/modules"
+diff -u -pr busybox-1.17.1.org/modutils/insmod.c busybox-1.17.1/modutils/insmod.c
+--- busybox-1.17.1.org/modutils/insmod.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/modutils/insmod.c	2013-04-16 21:58:24.000000000 +0200
+@@ -35,11 +35,42 @@
+ //usage:	)
+ //usage:#endif
+ 
++#include <sys/utsname.h>
++static char *m_filename;
++static char *m_fullName;
++
++static int FAST_FUNC check_module_name_match(const char *filename,
++		struct stat *statbuf UNUSED_PARAM,
++		void *userdata, int depth UNUSED_PARAM)
++{
++	char *fullname = (char *) userdata;
++	char *tmp;
++
++	if (fullname[0] == '\0')
++		return FALSE;
++
++	tmp = bb_get_last_path_component_nostrip(filename);
++	if (strcmp(tmp, fullname) == 0) {
++		/* Stop searching if we find a match */
++		m_filename = xstrdup(filename);
++		return FALSE;
++	}
++	return TRUE;
++}
++
+ int insmod_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
+ int insmod_main(int argc UNUSED_PARAM, char **argv)
+ {
+ 	char *filename;
+ 	int rc;
++int len;
++char *tmp;
++char *tmp2;
++int k_version = 0;
++struct stat st;
++struct utsname uts;
++char *m_name;
++FILE *fp;
+ 
+ 	/* Compat note:
+ 	 * 2.6 style insmod has no options and required filename
+@@ -58,9 +89,107 @@ int insmod_main(int argc UNUSED_PARAM, c
+ 	if (!filename)
+ 		bb_show_usage();
+ 
+-	rc = bb_init_module(filename, parse_cmdline_module_options(argv, /*quote_spaces:*/ 0));
++	/* Grab the module name */
++	tmp = xstrdup(filename);
++	len = strlen(filename);
++
++	if (uname(&uts) == 0) {
++		if (uts.release[0] == '2') {
++			k_version = uts.release[2] - '0';
++		}
++	}
++
++#if ENABLE_FEATURE_2_6_MODULES
++	if (k_version > 4 && len > 3 && tmp[len - 3] == '.'
++	 && tmp[len - 2] == 'k' && tmp[len - 1] == 'o'
++	) {
++		len -= 3;
++		tmp[len] = '\0';
++	} else
++#endif
++		if (len > 2 && tmp[len - 2] == '.' && tmp[len - 1] == 'o') {
++			len -= 2;
++			tmp[len] = '\0';
++		}
++
++
++#if ENABLE_FEATURE_2_6_MODULES
++	if (k_version > 4)
++		m_fullName = xasprintf("%s.ko", tmp);
++	else
++#endif
++		m_fullName = xasprintf("%s.o", tmp);
++
++	if (!m_name) {
++		m_name = tmp;
++	}
++	free(tmp);
++
++	/* first look in /var/lib/modules */
++	tmp2 = alloca(strlen(m_fullName) + sizeof("/var/lib/modules/"));
++	strcpy(tmp2, "/var/lib/modules/");
++	strcat(tmp2, m_fullName);
++	if (stat(tmp2, &st) >= 0 && S_ISREG(st.st_mode) && (fp = fopen(tmp2, "r")) != NULL) {
++		m_filename = xstrdup(tmp2);
++		printf("insmod: preferring module %s\n", m_filename);
++	} else
++	/* Get a filedesc for the module.  Check that we have a complete path */
++	if (stat(filename, &st) < 0 || !S_ISREG(st.st_mode)
++	 || (fp = fopen_for_read(filename)) == NULL
++	) {
++		/* Hmm.  Could not open it.  First search under /lib/modules/`uname -r`,
++		 * but do not error out yet if we fail to find it... */
++		if (k_version) {	/* uname succeedd */
++			char *module_dir;
++			char *tmdn;
++
++			tmdn = concat_path_file(CONFIG_DEFAULT_MODULES_DIR, uts.release);
++			/* Jump through hoops in case /lib/modules/`uname -r`
++			 * is a symlink.  We do not want recursive_action to
++			 * follow symlinks, but we do want to follow the
++			 * /lib/modules/`uname -r` dir, So resolve it ourselves
++			 * if it is a link... */
++			module_dir = xmalloc_readlink(tmdn);
++			if (!module_dir)
++				module_dir = xstrdup(tmdn);
++			recursive_action(module_dir, ACTION_RECURSE,
++					check_module_name_match, NULL, m_fullName, 0);
++			free(module_dir);
++			free(tmdn);
++		}
++
++		/* Check if we have found anything yet */
++		if (!m_filename || ((fp = fopen_for_read(m_filename)) == NULL)) {
++			int r;
++			char *module_dir;
++
++			free(m_filename);
++			m_filename = NULL;
++			module_dir = xmalloc_readlink(CONFIG_DEFAULT_MODULES_DIR);
++			if (!module_dir)
++				module_dir = xstrdup(CONFIG_DEFAULT_MODULES_DIR);
++			/* No module found under /lib/modules/`uname -r`, this
++			 * time cast the net a bit wider.  Search /lib/modules/ */
++			r = recursive_action(module_dir, ACTION_RECURSE,
++					check_module_name_match, NULL, m_fullName, 0);
++			if (r)
++				bb_error_msg_and_die("%s: module not found", m_fullName);
++			free(module_dir);
++			if (m_filename == NULL
++			 || ((fp = fopen_for_read(m_filename)) == NULL)
++			) {
++				bb_error_msg_and_die("%s: module not found", m_fullName);
++			}
++		}
++	} else 
++		m_filename = xstrdup(filename);
++
++
++
++
++	rc = bb_init_module(m_filename, parse_cmdline_module_options(argv, /*quote_spaces:*/ 0));
+ 	if (rc)
+-		bb_error_msg("can't insert '%s': %s", filename, moderror(rc));
++		bb_error_msg("can't insert '%s': %s", m_filename, moderror(rc));
+ 
+ 	return rc;
+ }
+diff -u -pr busybox-1.17.1.org/networking/ifupdown.c busybox-1.17.1/networking/ifupdown.c
+--- busybox-1.17.1.org/networking/ifupdown.c	2012-07-02 16:19:22.000000000 +0200
++++ busybox-1.17.1/networking/ifupdown.c	2013-04-16 20:19:23.000000000 +0200
+@@ -1025,7 +1025,7 @@ static int doit(char *str)
+ 
+ static int execute_all(struct interface_defn_t *ifd, const char *opt)
+ {
+-	int i;
++	int i, fd;
+ 	char *buf;
+ 	for (i = 0; i < ifd->n_options; i++) {
+ 		if (strcmp(ifd->option[i].name, opt) == 0) {
+@@ -1035,9 +1035,15 @@ static int execute_all(struct interface_
+ 		}
+ 	}
+ 
+-	buf = xasprintf("run-parts /etc/network/if-%s.d", opt);
+-	/* heh, we don't bother free'ing it */
+-	return doit(buf);
++	buf = xasprintf("/etc/network/if-%s.d", opt);
++	if ((fd = open(buf, O_RDONLY)) >= 0) {
++		close(fd);
++		buf = xasprintf("run-parts /etc/network/if-%s.d", opt);
++		if (doit(buf) != 1) {
++			return 0;
++		}
++	}
++	return 1;
+ }
+ 
+ static int check(char *str)
+diff -u -pr busybox-1.17.1.org/networking/inetd.c busybox-1.17.1/networking/inetd.c
+--- busybox-1.17.1.org/networking/inetd.c	2012-07-02 16:08:25.000000000 +0200
++++ busybox-1.17.1/networking/inetd.c	2013-04-16 20:19:23.000000000 +0200
+@@ -166,6 +166,7 @@
+
+ #include <syslog.h>
+ #include <sys/un.h>
++#include <sys/resource.h>
+
+ #include "libbb.h"
+
+diff -u -pr busybox-1.17.1.org/networking/libiproute/ipaddress.c busybox-1.17.1/networking/libiproute/ipaddress.c
+--- busybox-1.17.1.org/networking/libiproute/ipaddress.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/networking/libiproute/ipaddress.c	2013-04-16 20:19:23.000000000 +0200
+@@ -162,6 +162,7 @@ static NOINLINE int print_linkinfo(const
+ 		printf("master %s ", ll_idx_n2a(*(int*)RTA_DATA(tb[IFLA_MASTER]), b1));
+ 	}
+ #endif
++#if 0
+ /* IFLA_OPERSTATE was added to kernel with the same commit as IFF_DORMANT */
+ #ifdef IFF_DORMANT
+ 	if (tb[IFLA_OPERSTATE]) {
+@@ -172,6 +173,7 @@ static NOINLINE int print_linkinfo(const
+ 					*(uint8_t *)RTA_DATA(tb[IFLA_OPERSTATE])));
+ 	}
+ #endif
++#endif
+ 	if (G_filter.showqueue)
+ 		print_queuelen((char*)RTA_DATA(tb[IFLA_IFNAME]));
+ 
+diff -u -pr busybox-1.17.1.org/networking/libiproute/iplink.c busybox-1.17.1/networking/libiproute/iplink.c
+--- busybox-1.17.1.org/networking/libiproute/iplink.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/networking/libiproute/iplink.c	2013-04-16 20:19:23.000000000 +0200
+@@ -277,6 +277,7 @@ static int ipaddr_list_link(char **argv)
+ 	return ipaddr_list_or_flush(argv, 0);
+ }
+ 
++#if 0
+ #ifndef NLMSG_TAIL
+ #define NLMSG_TAIL(nmsg) \
+ 	((struct rtattr *) (((void *) (nmsg)) + NLMSG_ALIGN((nmsg)->nlmsg_len)))
+@@ -363,20 +364,22 @@ static int do_change(char **argv, const
+ 		return 2;
+ 	return 0;
+ }
++#endif
+ 
+ /* Return value becomes exitcode. It's okay to not return at all */
+ int FAST_FUNC do_iplink(char **argv)
+ {
+ 	static const char keywords[] ALIGN1 =
+-		"add\0""delete\0""set\0""show\0""lst\0""list\0";
++		"set\0""show\0""lst\0""list\0";
+ 	if (*argv) {
+ 		smalluint key = index_in_substrings(keywords, *argv);
+ 		if (key > 5) /* invalid argument */
+ 			bb_error_msg_and_die(bb_msg_invalid_arg, *argv, applet_name);
+ 		argv++;
+-		if (key <= 1) /* add/delete */
+-			return do_change(argv, key ? RTM_DELLINK : RTM_NEWLINK);
+-		else if (key == 2) /* set */
++//		if (key <= 1) /* add/delete */
++//			return do_change(argv, key ? RTM_DELLINK : RTM_NEWLINK);
++//		else if (key == 2) /* set */
++		if (key == 0) /* set */
+ 			return do_set(argv);
+ 	}
+ 	/* show, lst, list */
+diff -u -pr busybox-1.17.1.org/networking/udhcp/dhcpc.c busybox-1.17.1/networking/udhcp/dhcpc.c
+--- busybox-1.17.1.org/networking/udhcp/dhcpc.c	2012-07-02 16:08:25.000000000 +0200
++++ busybox-1.17.1/networking/udhcp/dhcpc.c	2013-04-16 20:26:27.000000000 +0200
+@@ -25,6 +25,7 @@
+ #include "dhcpd.h"
+ #include "dhcpc.h"
+
++#include <asm/types.h>
+ #include <netinet/if_ether.h>
+ #include <netpacket/packet.h>
+ #include <linux/filter.h>
+diff -u -pr busybox-1.17.1.org/shell/shell_common.c busybox-1.17.1/shell/shell_common.c
+--- busybox-1.17.1.org/shell/shell_common.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/shell/shell_common.c	2013-04-16 20:19:23.000000000 +0200
+@@ -18,6 +18,7 @@
+  */
+ #include "libbb.h"
+ #include "shell_common.h"
++#include <sys/resource.h>
+
+ const char defifsvar[] ALIGN1 = "IFS= \t\n";
+
+diff -u -pr busybox-1.17.1.org/util-linux/mount.c busybox-1.17.1/util-linux/mount.c
+--- busybox-1.17.1.org/util-linux/mount.c	2012-07-02 16:08:25.000000000 +0200
++++ busybox-1.17.1/util-linux/mount.c	2013-04-16 22:05:02.000000000 +0200
+@@ -546,6 +546,24 @@ static void delete_block_backed_filesyst
+ void delete_block_backed_filesystems(void);
+ #endif
+ 
++// for using with tuxbox it's usefully to have an alternate path in /var/etc, because /etc/ is not writable
++static const char *get_fstab(void)
++{
++const char *var_fstabname = "/var/etc/fstab";
++const char *res;
++FILE * f= fopen (var_fstabname,"r");
++	if (!f) {
++	printf("mount: using /etc/fstab\n");
++	res = "/etc/fstab";
++	}
++	else {
++	printf("mount: using %s\n", var_fstabname);
++	res =   var_fstabname;
++	fclose(f);
++	}
++	return res;
++}
++
+ // Perform actual mount of specific filesystem at specific location.
+ // NB: mp->xxx fields may be trashed on exit
+ static int mount_it_now(struct mntent *mp, long vfsflags, char *filteropts)
+@@ -981,7 +999,11 @@ find_kernel_nfs_mount_version(void)
+ 
+ 	kernel_version = get_linux_version_code();
+ 	if (kernel_version) {
+-		if (kernel_version < KERNEL_VERSION(2,2,18))
++		if (kernel_version < KERNEL_VERSION(2,1,32))
++			nfs_mount_version = 1;
++		else if (kernel_version < KERNEL_VERSION(2,2,18) ||
++				(kernel_version >= KERNEL_VERSION(2,3,0) &&
++				 kernel_version < KERNEL_VERSION(2,3,99)))
+ 			nfs_mount_version = 3;
+ 		/* else v4 since 2.3.99pre4 */
+ 	}
+@@ -1758,8 +1780,6 @@ static int singlemount(struct mntent *mp
+ 	llist_t *fl = NULL;
+ 	struct stat st;
+ 
+-	errno = 0;
+-
+ 	vfsflags = parse_mount_options(mp->mnt_opts, &filteropts);
+ 
+ 	// Treat fstype "auto" as unspecified
+@@ -1801,40 +1821,51 @@ static int singlemount(struct mntent *mp
+ 	 && (mp->mnt_fsname[0] == '/' || mp->mnt_fsname[0] == '\\')
+ 	 && mp->mnt_fsname[0] == mp->mnt_fsname[1]
+ 	) {
+-		int len;
+-		char c;
++#if 0 /* reported to break things */
+ 		len_and_sockaddr *lsa;
+-		char *hostname, *dotted, *ip;
++		char *ip, *dotted;
++		char *s;
+ 
+-		hostname = mp->mnt_fsname + 2;
+-		len = strcspn(hostname, "/\\");
+-		if (len == 0 || hostname[len] == '\0')
++		// Replace '/' with '\' and verify that unc points to "//server/share".
++		for (s = mp->mnt_fsname; *s; ++s)
++			if (*s == '/') *s = '\\';
++
++		// Get server IP
++		s = strrchr(mp->mnt_fsname, '\\');
++		if (s <= mp->mnt_fsname+1)
+ 			goto report_error;
+-		c = hostname[len];
+-		hostname[len] = '\0';
+-		lsa = host2sockaddr(hostname, 0);
+-		hostname[len] = c;
++		*s = '\0';
++		lsa = host2sockaddr(mp->mnt_fsname+2, 0);
++		*s = '\\';
+ 		if (!lsa)
+ 			goto report_error;
+ 
+-		// Insert "ip=..." option into options
++		// Insert ip=... option into string flags.
+ 		dotted = xmalloc_sockaddr2dotted_noport(&lsa->u.sa);
+-		if (ENABLE_FEATURE_CLEAN_UP) free(lsa);
+ 		ip = xasprintf("ip=%s", dotted);
+-		if (ENABLE_FEATURE_CLEAN_UP) free(dotted);
+ 		parse_mount_options(ip, &filteropts);
+-		if (ENABLE_FEATURE_CLEAN_UP) free(ip);
+ 
+-		// "-o mand" is required [why?]
++		// Compose new unc '\\server-ip\share'
++		// (s => slash after hostname)
++		mp->mnt_fsname = xasprintf("\\\\%s%s", dotted, s);
++#endif
++		// Lock is required [why?]
+ 		vfsflags |= MS_MANDLOCK;
+ 		mp->mnt_type = (char*)"cifs";
+ 		rc = mount_it_now(mp, vfsflags, filteropts);
+-
++#if 0
++		if (ENABLE_FEATURE_CLEAN_UP) {
++			free(mp->mnt_fsname);
++			free(ip);
++			free(dotted);
++			free(lsa);
++		}
++#endif
+ 		goto report_error;
+ 	}
+ 
+ 	// Might this be an NFS filesystem?
+-	if ((!mp->mnt_type || strncmp(mp->mnt_type, "nfs", 3) == 0)
++	if ((!mp->mnt_type || !strcmp(mp->mnt_type, "nfs"))
+ 	 && strchr(mp->mnt_fsname, ':') != NULL
+ 	) {
+		if (!mp->mnt_type)
+@@ -1854,7 +1885,7 @@ static int singlemount(struct mntent *mp
+ 		if (ENABLE_FEATURE_MOUNT_LOOP && S_ISREG(st.st_mode)) {
+ 			loopFile = bb_simplify_path(mp->mnt_fsname);
+ 			mp->mnt_fsname = NULL; // will receive malloced loop dev name
+-			if (set_loop(&mp->mnt_fsname, loopFile, 0, /*ro:*/ 0) < 0) {
++			if (set_loop(&(mp->mnt_fsname), loopFile, 0, /*ro:*/ 0) < 0) {
+ 				if (errno == EPERM || errno == EACCES)
+ 					bb_error_msg(bb_msg_perm_denied_are_you_root);
+ 				else
+@@ -1990,8 +2021,7 @@ int mount_main(int argc UNUSED_PARAM, ch
+ 	llist_t *lst_o = NULL;
+ 	const char *fstabname;
+ 	FILE *fstab;
+-	int i, j;
+-	int rc = EXIT_SUCCESS;
++	int i, j, rc = 0;
+ 	unsigned opt;
+ 	struct mntent mtpair[2], *mtcur = mtpair;
+ 	IF_NOT_DESKTOP(const int nonroot = 0;)
+@@ -2033,9 +2063,9 @@ int mount_main(int argc UNUSED_PARAM, ch
+ 			{
+ 				// Don't show rootfs. FIXME: why??
+ 				// util-linux 2.12a happily shows rootfs...
+-				//if (strcmp(mtpair->mnt_fsname, "rootfs") == 0) continue;
++				//if (!strcmp(mtpair->mnt_fsname, "rootfs")) continue;
+ 
+-				if (!fstype || strcmp(mtpair->mnt_type, fstype) == 0)
++				if (!fstype || !strcmp(mtpair->mnt_type, fstype))
+ 					printf("%s on %s type %s (%s)\n", mtpair->mnt_fsname,
+ 							mtpair->mnt_dir, mtpair->mnt_type,
+ 							mtpair->mnt_opts);
+@@ -2081,14 +2111,14 @@ int mount_main(int argc UNUSED_PARAM, ch
+ 		return rc;
+ 	}
+ 
+-	// Open either fstab or mtab
+-	fstabname = "/etc/fstab";
+-	if (i & MS_REMOUNT) {
++  	// Open either fstab or mtab
++ 	fstabname = get_fstab();
++  	if (i & MS_REMOUNT) {
+ 		// WARNING. I am not sure this matches util-linux's
+ 		// behavior. It's possible util-linux does not
+ 		// take -o opts from mtab (takes only mount source).
+-		fstabname = bb_path_mtab_file;
+-	}
++  		fstabname = bb_path_mtab_file;
++  	}
+ 	fstab = setmntent(fstabname, "r");
+ 	if (!fstab)
+ 		bb_perror_msg_and_die("can't read '%s'", fstabname);
+@@ -2113,13 +2143,10 @@ int mount_main(int argc UNUSED_PARAM, ch
+ 		if (argv[0]) {
+ 
+ 			// Is this what we're looking for?
+-			if (strcmp(argv[0], mtcur->mnt_fsname) != 0
+-			 && strcmp(storage_path, mtcur->mnt_fsname) != 0
+-			 && strcmp(argv[0], mtcur->mnt_dir) != 0
+-			 && strcmp(storage_path, mtcur->mnt_dir) != 0
+-			) {
+-				continue; // no
+-			}
++			if (strcmp(argv[0], mtcur->mnt_fsname) &&
++			   strcmp(storage_path, mtcur->mnt_fsname) &&
++			   strcmp(argv[0], mtcur->mnt_dir) &&
++			   strcmp(storage_path, mtcur->mnt_dir)) continue;
+ 
+ 			// Remember this entry.  Something later may have
+ 			// overmounted it, and we want the _last_ match.
+@@ -2127,7 +2154,6 @@ int mount_main(int argc UNUSED_PARAM, ch
+ 
+ 		// If we're mounting all
+ 		} else {
+-			struct mntent *mp;
+ 			// No, mount -a won't mount anything,
+ 			// even user mounts, for mere humans
+ 			if (nonroot)
+@@ -2155,25 +2181,10 @@ int mount_main(int argc UNUSED_PARAM, ch
+ 			// NFS mounts want this to be xrealloc-able
+ 			mtcur->mnt_opts = xstrdup(mtcur->mnt_opts);
+ 
+-			// If nothing is mounted on this directory...
+-			// (otherwise repeated "mount -a" mounts everything again)
+-			mp = find_mount_point(mtcur->mnt_dir, /*subdir_too:*/ 0);
+-			// We do not check fsname match of found mount point -
+-			// "/" may have fsname of "/dev/root" while fstab
+-			// says "/dev/something_else".
+-			if (mp) {
+-				if (verbose) {
+-					bb_error_msg("according to %s, "
+-						"%s is already mounted on %s",
+-						bb_path_mtab_file,
+-						mp->mnt_fsname, mp->mnt_dir);
+-				}
+-			} else {
+-				// ...mount this thing
+-				if (singlemount(mtcur, /*ignore_busy:*/ 1)) {
+-					// Count number of failed mounts
+-					rc++;
+-				}
++			// Mount this thing
++			if (singlemount(mtcur, 1)) {
++				// Count number of failed mounts
++				rc++;
+ 			}
+ 			free(mtcur->mnt_opts);
+ 		}
+@@ -2214,24 +2225,13 @@ int mount_main(int argc UNUSED_PARAM, ch
+ 				bb_error_msg_and_die(bb_msg_you_must_be_root);
+ 		}
+ 
+-		//util-linux-2.12 does not do this check.
+-		//// If nothing is mounted on this directory...
+-		//// (otherwise repeated "mount FOO" mounts FOO again)
+-		//mp = find_mount_point(mtcur->mnt_dir, /*subdir_too:*/ 0);
+-		//if (mp) {
+-		//	bb_error_msg("according to %s, "
+-		//		"%s is already mounted on %s",
+-		//		bb_path_mtab_file,
+-		//		mp->mnt_fsname, mp->mnt_dir);
+-		//} else {
+-			// ...mount the last thing we found
+-			mtcur->mnt_opts = xstrdup(mtcur->mnt_opts);
+-			append_mount_options(&(mtcur->mnt_opts), cmdopts);
+-			resolve_mount_spec(&mtpair->mnt_fsname);
+-			rc = singlemount(mtcur, /*ignore_busy:*/ 0);
+-			if (ENABLE_FEATURE_CLEAN_UP)
+-				free(mtcur->mnt_opts);
+-		//}
++		// Mount the last thing we found
++		mtcur->mnt_opts = xstrdup(mtcur->mnt_opts);
++		append_mount_options(&(mtcur->mnt_opts), cmdopts);
++		resolve_mount_spec(&mtpair->mnt_fsname);
++		rc = singlemount(mtcur, 0);
++		if (ENABLE_FEATURE_CLEAN_UP)
++			free(mtcur->mnt_opts);
+ 	}
+ 
+  //ret:
+diff -u -pr busybox-1.17.1.org/util-linux/swaponoff.c busybox-1.17.1/util-linux/swaponoff.c
+--- busybox-1.17.1.org/util-linux/swaponoff.c	2012-06-26 15:35:45.000000000 +0200
++++ busybox-1.17.1/util-linux/swaponoff.c	2013-04-16 20:19:23.000000000 +0200
+@@ -77,15 +77,36 @@ static int swap_enable_disable(char *dev
+ 	return 0;
+ }
+ 
++// for using with tuxbox it's usefully to have an alternate path in /var/etc, because /etc/ is not writable
++static const char *getFstab(void)
++{
++	const char *var_fstabname = "/var/etc/fstab";
++	const char *res;
++	FILE * f= fopen (var_fstabname,"r");
++	if (!f) {
++		printf("swapon: using /etc/fstab\n");
++		res = "/etc/fstab";
++	}
++	else {
++		printf("swapon: using %s\n", var_fstabname);
++		res =   var_fstabname;
++		fclose(f);
++	}
++	return res;
++}
++
+ static int do_em_all(void)
+ {
+ 	struct mntent *m;
++	const char *fstabname;
+ 	FILE *f;
+ 	int err;
+ 
+-	f = setmntent("/etc/fstab", "r");
++	fstabname = getFstab();
++
++	f = setmntent(fstabname, "r");
+ 	if (f == NULL)
+-		bb_perror_msg_and_die("/etc/fstab");
++		bb_perror_msg_and_die(fstabname);
+ 
+ 	err = 0;
+ 	while ((m = getmntent(f)) != NULL) {

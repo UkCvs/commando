@@ -1,0 +1,104 @@
+#
+#  $(CONFIGDIR)/lcdmenu.conf
+#
+# 1.) do not change this file while lcdmenu is running!
+# 2.) a number can be any combination of 0-9.
+# 3.) a boolean can be true or false.
+#
+
+#
+# option: font_size (number)
+# default: 12
+#
+font_size=12
+
+#
+# option: line_spacing (number)
+# default: 3
+#
+# sets the spacing between two menu entries.
+#
+line_spacing=3
+
+#
+# option: default_entry (number)
+# default: 0
+#
+# sets the default selection when lcdmenu starts by its index.
+# the first index is 0.
+#
+default_entry=0
+
+#
+# option: text_align (number)
+# default: 0
+#
+# sets text align style for main menu.
+# 0 = left
+# 1 = centered
+#
+text_align=0
+
+#
+# option: show_numbers (boolean)
+# default: false
+#
+# enables display of remote control number key before each menu item.
+#
+show_numbers=true
+
+#
+# option: pin (string)
+# default: __lUISdFwUYjg (0000)
+#
+pin=__lUISdFwUYjg
+
+#
+# option: menu_items (string, ...)
+#
+# This contains the names of the entries on the display
+
+menu_items=Neutrino,Enigma,Radiobox,Lcars,None,Halt 
+
+#
+# option: item_files (string, ...)
+#
+# This is a list of files to check for existence, corresponding to menu_item.
+# For the i-th entry in menu_items, the entry will be displayed if and only
+# if the i-th entry in this list denotes an existing file.
+item_files=/bin/neutrino,/bin/enigma,/bin/radiobox,/bin/lcars,/bin/true,/sbin/halt
+
+#
+# option: item_execfiles (string, ...)
+#
+# This list contains files to be exec-ed when the corresponding entry is
+# selected.
+item_execfiles=/etc/init.d/start_neutrino,/etc/init.d/start_enigma,/etc/init.d/start_radiobox,/etc/init.d/start_lcars,/bin/true,/sbin/halt
+
+#
+# option: item_isGUI (true|false, ...)
+#
+# If only one GUI is found, the menu is not invoked; instead the (single)
+# GUI is started. This list defines which entries are to be considered GUIs.
+item_isGUI=true,true,true,true,false,false
+
+#
+# option: pin_protect (number, ...)
+# default: none
+#
+pin_protect=
+
+#
+# option: timeout (number)
+# default: 10 seconds
+#
+timeout=10
+
+#
+# option: visible_entries (number)
+# default: 4
+#
+# number of visible entries at once
+#
+visible_entries=4
+

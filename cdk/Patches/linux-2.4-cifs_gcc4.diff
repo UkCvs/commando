@@ -1,0 +1,12 @@
+diff -uNr linux.org//fs/cifs/cifsfs.c linux/fs/cifs/cifsfs.c
+--- linux.org//fs/cifs/cifsfs.c	2004-07-14 00:25:04.000000000 +0200
++++ linux/fs/cifs/cifsfs.c	2011-05-02 21:54:50.000000000 +0200
+@@ -469,7 +469,7 @@
+ };
+ #endif
+ 
+-static DECLARE_FSTYPE(cifs_fs_type, "cifs", cifs_read_super,0);
++DECLARE_FSTYPE(cifs_fs_type, "cifs", cifs_read_super,0);
+ 
+ 
+ struct inode_operations cifs_dir_inode_ops = {

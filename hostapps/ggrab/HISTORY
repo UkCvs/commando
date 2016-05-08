@@ -1,0 +1,23 @@
+ggrab---------------------------------------------
+
+03.11.2002	Version	0.01	First try 
+03.11.2002	Version 0.02	Fixed integer overflow at 2 G
+04.11.2002	Version 0.03	Fixed some compiler errors with g++ 2.95, 
+				fixed coredump at start with wrong
+				dbox address, added cygwin support (not tested), 
+				added large file support
+04.11.2002	Version 0.04	Fixed Segmentation fault
+04.11.2002	Version 0.05	Adaptions for cygwin, only signal handling doesnt work
+08.11.2002	Version 0.06	adapted to Mac OS X, cancel program with q<cr> now possible
+09.11.2002	Version 0.07  	Audio Part rewritten. Some more FTAs are working now
+				Added Options vlog und alog für logging stream directly
+10.11.2002	Version 0.08	Correction Audiostream (slow playback, streamingserver added, 
+				stopping of sectionsd during recording
+17.11.2002	Version 0.09	Mpeg stream improved (no warning in xine any more).
+				Several other improvements. 
+17.11.2002	Version 0.09a	Bug mit kaputten Bildern beseitigt, sserver jetzt im Pfad startbar
+07.12.2002	Version 0.10	Verschiedene Korrekturen, Experiment udp support
+20.12.2002	Version 0.20	Versionssprung: alle Innereien neu, Viele neue Funktionen, siehe Readme
+06.01.2003	Version 0.21	Bug beseitigt Filesize > 2G, UDP Bug beseitigt, Streamudp auf 2 Prozesse geändert.
+19.01.2003	Version 0.22	Möglichkeit variable UDP-Länge, sserver Sonderzeichenfilter erweitert. einige andere kleinere Änderungen.
+				Bug, der zu video gap... führt beseitigt, Parameter -s 0 erweitert, daß kein File-Split durchgeführt wird.

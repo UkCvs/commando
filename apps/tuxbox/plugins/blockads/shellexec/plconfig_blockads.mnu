@@ -1,0 +1,48 @@
+    MENUDON=Werbezapper-Einstellungen,/bin/wzops
+        MENU=Default Rezap-Listeneintrag
+            SHELLRESOFF=&-Eintrag 1,/bin/wzops reztime 01,grep -q "^RezapTime=01" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 2,/bin/wzops reztime 02,grep -q "^RezapTime=02" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 3,/bin/wzops reztime 03,grep -q "^RezapTime=03" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 4,/bin/wzops reztime 04,grep -q "^RezapTime=04" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 5,/bin/wzops reztime 05,grep -q "^RezapTime=05" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 6,/bin/wzops reztime 06,grep -q "^RezapTime=06" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 7,/bin/wzops reztime 07,grep -q "^RezapTime=07" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 8,/bin/wzops reztime 08,grep -q "^RezapTime=08" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 9,/bin/wzops reztime 09,grep -q "^RezapTime=09" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Eintrag 10,/bin/wzops reztime 10,grep -q "^RezapTime=10" /var/tuxbox/config/blockads.conf
+            COMMENT=*
+            COMMENT=Nummer des Eintrags aus der Zeitliste
+            COMMENT=welcher defaultmäßig in der Zeitauswahl
+            COMMENT=bei Rückschaltung auf Kanälen, die nicht
+            COMMENT=auf dem Werbeserver unterstützt werden,
+            COMMENT=bzw. ohne Internet angeboten wird.
+        ENDMENU
+        
+        MENUSON=Zeitwerte für die Rezap-Liste,grep -q "^Time.=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 1,/bin/wzops rezentry 1,grep -q "^Time1=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 2,/bin/wzops rezentry 2,grep -q "^Time2=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 3,/bin/wzops rezentry 3,grep -q "^Time3=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 4,/bin/wzops rezentry 4,grep -q "^Time4=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 5,/bin/wzops rezentry 5,grep -q "^Time5=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 6,/bin/wzops rezentry 6,grep -q "^Time6=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 7,/bin/wzops rezentry 7,grep -q "^Time7=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 8,/bin/wzops rezentry 8,grep -q "^Time8=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 9,/bin/wzops rezentry 9,grep -q "^Time9=" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Eintrag 10,/bin/wzops rezentry 0,grep -q "^Time0=" /var/tuxbox/config/blockads.conf
+        ENDMENU
+        
+        MENU=Internetverbindung
+            SHELLRESOFF=&-Keine,/bin/wzops iconnect,grep -q "^Internet=$" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-DSL,/bin/wzops iconnect DSL,grep -q "^Internet=DSL" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-ISDN,/bin/wzops iconnect ISDN,grep -q "^Internet=ISDN" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-ANALOG,/bin/wzops iconnect ANALOG,grep -q "^Internet=ANALOG" /var/tuxbox/config/blockads.conf
+        ENDMENU
+     
+        MENU=Diverse Einstellungen
+        	ACTION=&Entprellzeit f~ur Server,/bin/wzops debounce
+            SHELLRESON=&-Nur bei Werbung umschalten,/bin/wzops zap 0,grep -q "^ZapAlways=1" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Immer umschalten,/bin/wzops zap 1,grep -q "^ZapAlways=1" /var/tuxbox/config/blockads.conf
+            SHELLRESON=&-Lautst~arke nicht wiederherstellen,/bin/wzops vol 0,grep -q "^KeepVolume=1" /var/tuxbox/config/blockads.conf
+            SHELLRESOFF=&-Lautst~arke wiederherstellen,/bin/wzops vol 1,grep -q "^KeepVolume=1" /var/tuxbox/config/blockads.conf
+        ENDMENU
+    ENDMENU

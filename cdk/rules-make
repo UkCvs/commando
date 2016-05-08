@@ -1,0 +1,261 @@
+# make rules for cdk
+#
+# fields (separated by ';')
+#   name
+#   version
+#   directory
+#   source files and patches (separated by ':')
+#   rules ('extract', 'dirextract', 'patch' or 'patch-X' for 'patch -pX', 'apatch' to patch with files in $archivedir/, 'move', 'remove', 'link') and arguments
+#   ...
+#
+
+#
+# core
+#
+uboot;2012.04;u-boot-2012.04;u-boot-2012.04.tar.bz2:u-boot-2011.06.diff;extract:u-boot-2012.04.tar.bz2
+linux24;2.4.37.11-dbox2;linux-2.4.37.11;linux-2.4.37.11.tar.bz2:linux-2.4-dbox2.diff:linux-2.4.34-dbox2-mtd0305.diff.bz2:linux-2.4-jffs2_lzma.diff:linux-2.4.git.diff;remove:linux;extract:linux-2.4.37.11.tar.bz2;patch:linux-2.4-dbox2.diff;patch:squashfs3.0-patch;patch:squashfs3.0_lzma-patch;patch:linux-2.4.git.diff;link:linux-2.4.37.11:linux
+linux;2.6.26.8-dbox2;linux-2.6.26.8;linux-2.6.26.8.tar.bz2:squashfs3.0.tar.gz:linux-2.6.26.4-dbox2.diff:linux-2.6.25-create-console.diff:linux-2.6.25-squashfs3.0.diff:linux-2.6.25.6-squashfs3.0.diff:linux-2.6.25.6-squashfs3.0_lzma.diff:linux-2.6-jffs2_lzma.diff;remove:linux;extract:linux-2.6.26.8.tar.bz2;extract:squashfs3.0.tar.gz;move:squashfs3.0/linux-2.6.15/squashfs3.0-patch:Patches/squashfs3.0_2.6-patch;remove:squashfs3.0;patch:linux-2.6.26.4-dbox2.diff;patch:linux-2.6.25-create-console.diff;patch:linux-2.6.25-squashfs3.0.diff;patch:squashfs3.0_2.6-patch;patch:linux-2.6.25.6-squashfs3.0.diff;patch:linux-2.6.25.6-squashfs3.0_lzma.diff;patch:linux-2.6.26.8-new-make.patch;link:linux-2.6.26.8:linux
+binutils;2.24.51.0.3;binutils-2.24.51.0.3;binutils-2.24.51.0.3.tar.gz:binutils.diff;extract:binutils-2.24.51.0.3.tar.gz;patch:binutils.diff;apatch:300-001_ld_makefile_patch.patch;apatch:300-012_check_ldrunpath_length.patch
+bootstrap_gcc;3.4.6;gcc-3.4.6;gcc-core-3.4.6.tar.bz2:gcc-core.diff;extract:gcc-core-3.4.6.tar.bz2;patch:gcc-core.diff
+bootstrap_gcc41;4.1.2;gcc-4.1.2;gcc-core-4.1.2.tar.bz2:gcc-4.1.2-patches-1.5.tar.bz2;extract:gcc-core-4.1.2.tar.bz2
+gcc;3.4.6;gcc-3.4.6;gcc-core-3.4.6.tar.bz2:gcc-g++-3.4.6.tar.bz2:gcc-core.diff:gcc-binutils.diff;extract:gcc-core-3.4.6.tar.bz2;extract:gcc-g++-3.4.6.tar.bz2;patch:gcc-core.diff;patch:gcc-binutils.diff
+gcc41;4.1.2;gcc-4.1.2;gcc-core-4.1.2.tar.bz2:gcc-g++-4.1.2.tar.bz2:gcc-4.1.2-patches-1.5.tar.bz2;extract:gcc-core-4.1.2.tar.bz2;extract:gcc-g++-4.1.2.tar.bz2
+glibc;2.3.6;glibc-2.3.6;glibc-2.3.6.tar.bz2:glibc-linuxthreads-2.3.6.tar.bz2:glibc.diff;extract:glibc-2.3.6.tar.bz2;dirextract:glibc-linuxthreads-2.3.6.tar.bz2;patch:glibc.diff;patch:glibc-2.3.2-new-make.diff
+uclibc;0.9.30.3;uClibc-0.9.30.3;uClibc-0.9.30.3.tar.bz2:uclibc.diff;extract:uClibc-0.9.30.3.tar.bz2;patch:uclibc.diff
+watchdog;5.2.4;watchdog-5.2.4.orig;watchdog_5.2.4.orig.tar.gz:watchdog.diff;extract:watchdog_5.2.4.orig.tar.gz;patch:watchdog.diff
+
+#
+# dbox2 gcc 4.7
+#
+libgmp_host;5.0.4;gmp-5.0.4;gmp-5.0.4.tar.bz2;extract:gmp-5.0.4.tar.bz2
+libmpfr_host;3.1.0;mpfr-3.1.0;mpfr-3.1.0.tar.bz2;extract:mpfr-3.1.0.tar.bz2
+libmpc_host;0.9;mpc-0.9;mpc-0.9.tar.gz;extract:mpc-0.9.tar.gz
+libppl_host;0.11.2;ppl-0.11.2;ppl-0.11.2.tar.bz2;extract:ppl-0.11.2.tar.bz2
+libcloog_host;0.16.3;cloog-0.16.3;cloog-0.16.3.tar.gz;extract:cloog-0.16.3.tar.gz
+bootstrap_gcc47_static;4.7.2;gcc-4.7.2;gcc-4.7.2.tar.bz2;extract:gcc-4.7.2.tar.bz2;apatch:410-libgcc_eh.a.patch;patch:gcc47-870-ppc_no_crtsavres.patch
+bootstrap_gcc47_shared;4.7.2;gcc-4.7.2;gcc-4.7.2.tar.bz2;extract:gcc-4.7.2.tar.bz2;apatch:410-libgcc_eh.a.patch;patch:gcc47-870-ppc_no_crtsavres.patch
+eglibc;2.15;eglibc-svn;eglibc.tar.bz2:eglibc.diff;extract:eglibc.tar.bz2;apatch:100-powerpc-8xx-CPU15-errata.patch;patch:eglibc.diff
+gcc47;4.7.2;gcc-4.7.2;gcc-4.7.2.tar.bz2;extract:gcc-4.7.2.tar.bz2;apatch:410-libgcc_eh.a.patch;patch:gcc47-870-ppc_no_crtsavres.patch
+
+#
+# root
+#
+busybox;1.20.2;busybox-1.20.2;busybox-1.20.2.tar.bz2:busybox-1.17.1.diff;extract:busybox-1.20.2.tar.bz2;patch:busybox-1.17.1.diff
+automount;4.1.4;autofs-4.1.4;autofs-4.1.4.tar.gz;extract:autofs-4.1.4.tar.gz;patch:autofs.diff
+nfs_utils;1.1.1;nfs-utils-1.1.1;nfs-utils-1.1.1.tar.gz;extract:nfs-utils-1.1.1.tar.gz;patch:nfs-utils.diff
+fusekernel;2.5.3;fuse-2.5.3;fuse-2.5.3.tar.gz;extract:fuse-2.5.3.tar.gz;patch:fuse.diff
+fuse;2.6.2;fuse-2.6.2;fuse-2.6.2.tar.gz;extract:fuse-2.6.2.tar.gz
+djmount;0.71;djmount-0.71;djmount-0.71.tar.gz;extract:djmount-0.71.tar.gz
+ftpd;2.2.2;vsftpd-2.2.2;vsftpd-2.2.2.tar.gz:ftpd.diff;extract:vsftpd-2.2.2.tar.gz;patch:ftpd.diff
+module_init_tools;3.2.1;module-init-tools-3.2.1;module-init-tools-3.2.1.tar.bz2:module-init-tools.diff;extract:module-init-tools-3.2.1.tar.bz2;patch:module-init-tools.diff
+modutils;2.4.27;modutils-2.4.27;modutils-2.4.27.tar.bz2:modutils.diff;extract:modutils-2.4.27.tar.bz2;patch:modutils.diff
+portmap;5;portmap_5beta;portmap_5beta.tar.gz:portmap-5.diff;extract:portmap_5beta.tar.gz;patch:portmap-5.diff
+procps;3.2.8;procps-3.2.8;procps-3.2.8.tar.gz:procps.diff;extract:procps-3.2.8.tar.gz;patch:procps.diff
+udev;030;udev-030;udev-030.tar.gz:udev.diff;extract:udev-030.tar.gz;patch:udev.diff
+mrouted;3.9-beta3;mrouted-3.9-beta3.orig;mrouted_3.9-beta3.orig.tar.gz:mrouted_3.9-beta3-3.diff;extract:mrouted_3.9-beta3.orig.tar.gz;patch:mrouted_3.9-beta3-3.diff
+
+cramfs;1.1;cramfs-1.1;cramfs-1.1.tar.gz;extract:cramfs-1.1.tar.gz
+squashfs;3.0;mksquashfs;squashfs3.0.tar.gz:mksquashfs_lzma.diff:lzma442.tar.bz2:lzma_zlib-stream.diff;dircreate:mksquashfs;extract:lzma442.tar.bz2;patch:lzma_zlib-stream.diff;extract:squashfs3.0.tar.gz;patch:mksquashfs_lzma.diff
+
+#
+# contrib libs
+#
+libboost;boost-1.57.0;boost_1_57_0;boost_1_57_0.tar.bz2;extract:boost_1_57_0.tar.bz2
+libcommoncplusplus;1.0.13;commoncpp2-1.0.13;commoncpp2-1.0.13.tar.gz:libcommoncplusplus.diff;extract:commoncpp2-1.0.13.tar.gz;patch:libcommoncplusplus.diff
+libcrypto;0.9.8zb;openssl-0.9.8zb;openssl-0.9.8zb.tar.gz:libcrypto.diff;extract:openssl-0.9.8zb.tar.gz;patch:libcrypto.diff
+libcurl;7.10.1;curl-7.10.1;curl-7.10.1.tar.gz:libcurl.diff;extract:curl-7.10.1.tar.gz;patch:libcurl.diff
+libcurl_current;7.20.0;curl-7.20.0;curl-7.20.0.tar.bz2;extract:curl-7.20.0.tar.bz2
+libdirectfb;1.0.0;DirectFB-1.0.0;DirectFB-1.0.0.tar.gz:libdirectfb.diff;extract:DirectFB-1.0.0.tar.gz;patch:libdirectfb.diff
+libdirectfbpp;1.0.0;DFB++-1.0.0;DFB++-1.0.0.tar.gz;extract:DFB++-1.0.0.tar.gz
+libppdirectfb;1.0.0;++DFB-1.0.0;++DFB-1.0.0.tar.gz:libppdirectfb.diff;extract:++DFB-1.0.0.tar.gz;patch:libppdirectfb.diff
+libdvb;0.5.5.1;libdvb-0.5.5.1;libdvb-0.5.5.1.tar.gz:libdvb.diff;extract:libdvb-0.5.5.1.tar.gz;patch:libdvb.diff
+libdvbpsi;0.1.3;libdvbpsi-0.1.3;libdvbpsi-0.1.3.tar.bz2:libdvbpsi.diff;extract:libdvbpsi-0.1.3.tar.bz2;patch:libdvbpsi.diff
+libexpat;1.95.6;expat-1.95.6;expat-1.95.6.tar.gz:libexpat.diff;extract:expat-1.95.6.tar.gz;patch:libexpat.diff
+libffi;1.20;libffi-1.20;libffi-1.20.tar.gz:libffi.diff;extract:libffi-1.20.tar.gz;patch:libffi.diff
+libfreetype;2.3.12;freetype-2.3.12;freetype-2.3.12.tar.bz2:libfreetype_current.diff;extract:freetype-2.3.12.tar.bz2;patch:libfreetype_current.diff
+libfribidi;0.10.4;fribidi-0.10.4;fribidi-0.10.4.tar.gz:libfribidi.diff;extract:fribidi-0.10.4.tar.gz;patch:libfribidi.diff
+libgmp;4.1.2;gmp-4.1.2;gmp-4.1.2.tar.bz2;extract:gmp-4.1.2.tar.bz2
+libjpeg;6b;jpeg-6b;jpegsrc.v6b.tar.gz:jpeg.diff;extract:jpegsrc.v6b.tar.gz;patch:jpeg.diff
+libmad;0.15.1b;libmad-0.15.1b;libmad-0.15.1b.tar.gz:libmad.diff;extract:libmad-0.15.1b.tar.gz;patch:libmad.diff
+libid3tag;0.15.1b;libid3tag-0.15.1b;libid3tag-0.15.1b.tar.gz:libid3tag.diff;extract:libid3tag-0.15.1b.tar.gz;patch:libid3tag.diff
+libncurses;5.3;ncurses-5.3;ncurses-5.3.tar.gz;extract:ncurses-5.3.tar.gz
+libpcap;0.9.4;libpcap-0.9.4;libpcap-0.9.4.tar.gz:libpcap.diff;extract:libpcap-0.9.4.tar.gz;patch:libpcap.diff
+libpng;1.2.51;libpng-1.2.51;libpng-1.2.51.tar.bz2;extract:libpng-1.2.51.tar.bz2
+libreadline;4.3;readline-4.3;readline-4.3.tar.gz:readline.diff;extract:readline-4.3.tar.gz;patch:readline.diff
+libsdl;1.2.6;SDL-1.2.6;SDL-1.2.6.tar.gz:sdl.diff;extract:SDL-1.2.6.tar.gz;patch:sdl.diff
+libsigc;2.3.1;libsigc++-2.3.1;libsigc++-2.3.1.tar.xz;extract:libsigc++-2.3.1.tar.xz
+libvorbisidec;1.0.2+svn15687;libvorbisidec-1.0.2+svn15687;libvorbisidec_1.0.2+svn15687.orig.tar.gz:tremor.diff;extract:libvorbisidec_1.0.2+svn15687.orig.tar.gz;patch:tremor.diff
+libxml2;2.4.30;libxml2-2.4.30;libxml2-2.4.30.tar.gz:libxml2.diff;extract:libxml2-2.4.30.tar.gz;patch:libxml2.diff
+libz;1.2.8;zlib-1.2.8;zlib-1.2.8.tar.gz;extract:zlib-1.2.8.tar.gz
+libglib;2.8.3;glib-2.8.3;glib-2.8.3.tar.gz;extract:glib-2.8.3.tar.gz
+giflib;5.1.1;giflib-5.1.1;giflib-5.1.1.tar.bz2;extract:giflib-5.1.1.tar.bz2
+libiconv;1.9.1;libiconv-1.9.1;libiconv-1.9.1.tar.gz;extract:libiconv-1.9.1.tar.gz
+libFLAC;1.2.0;flac-1.2.0;flac-1.2.0.tar.gz;extract:flac-1.2.0.tar.gz;patch:flac.diff
+libgettext;0.17;gettext-0.17;gettext-0.17.tar.gz:gettext.diff;extract:gettext-0.17.tar.gz;patch:gettext.diff
+liblzma465;465;liblzma465;lzma465.tar.bz2;dirextract:lzma465.tar.bz2
+libfaad2;2.7;faad2-2.7;faad2-2.7.tar.bz2;extract:faad2-2.7.tar.bz2
+
+#
+# contrib apps
+#
+bzip2;1.0.6;bzip2-1.0.6;bzip2-1.0.6.tar.gz:bzip2.diff;extract:bzip2-1.0.6.tar.gz;patch:bzip2.diff
+console_data;1999.08.29;console-data-1999.08.29;console-data_1999.08.29.orig.tar.gz;extract:console-data_1999.08.29.orig.tar.gz
+console_tools;0.2.3;console-tools-0.2.3;console-tools-0.2.3.tar.gz:console-tools.diff;extract:console-tools-0.2.3.tar.gz;patch:console-tools.diff
+kbd;1.15.3;kbd-1.15.3;kbd-1.15.3.tar.gz:kbd.diff;extract:kbd-1.15.3.tar.gz;patch:kbd.diff
+directfb_examples;1.0.0;DirectFB-examples-1.0.0;DirectFB-examples-1.0.0.tar.gz;extract:DirectFB-examples-1.0.0.tar.gz
+fbset;2.1;fbset-2.1;fbset-2.1.tar.gz:fbset.diff;extract:fbset-2.1.tar.gz;patch:fbset.diff
+lirc;0.8.5;lirc-0.8.5;lirc-0.8.5.tar.bz2;extract:lirc-0.8.5.tar.bz2
+lsof;4.80;lsof_4.80;lsof_4.80.tar.gz:lsof.diff;extract:lsof_4.80.tar.gz
+dosfstools;3.0.11;dosfstools-3.0.11;dosfstools-3.0.11.tar.bz2:dosfstools.diff;extract:dosfstools-3.0.11.tar.bz2;patch:dosfstools.diff
+ssh;3.8p1;openssh-3.8p1;openssh-3.8p1.tar.gz:ssh.diff;extract:openssh-3.8p1.tar.gz;patch:ssh.diff
+tcpdump;3.9.4;tcpdump-3.9.4;tcpdump-3.9.4.tar.gz:tcpdump.diff;extract:tcpdump-3.9.4.tar.gz;patch:tcpdump.diff
+bonnie;1.03a;bonnie++-1.03a;bonnie++-1.03a.tgz;extract:bonnie++-1.03a.tgz
+vdr;1.2.6;vdr-1.2.6;vdr-1.2.6.tar.bz2:vdr.diff;extract:vdr-1.2.6.tar.bz2;patch:vdr.diff
+lufs;0.9.7;lufs-0.9.7;lufs-0.9.7.tar.gz:lufs.diff;extract:lufs-0.9.7.tar.gz;patch:lufs.diff
+dropbear;0.52;dropbear-0.52;dropbear-0.52.tar.bz2:dropbear-nopass.diff:dropbear-options.diff;extract:dropbear-0.52.tar.bz2;patch:dropbear-nopass.diff;patch:dropbear-options.diff
+kermit;8.0;c-kermit-8.0;cku211.tar.gz;dirextract:cku211.tar.gz;patch:kermit.diff
+libtool;1.5.22;libtool-1.5.22;libtool-1.5.22.tar.gz;extract:libtool-1.5.22.tar.gz
+samba;2.0.10;samba-2.0.10;samba-2.0.10.tar.gz:samba_ppc.diff;extract:samba-2.0.10.tar.gz;patch:samba_ppc.diff
+wget;1.13.4;wget-1.13.4;wget-1.13.4.tar.bz2;extract:wget-1.13.4.tar.bz2
+ncftp;3.2.2;ncftp-3.2.2;ncftp-3.2.2-src.tar.bz2;extract:ncftp-3.2.2-src.tar.bz2
+screen;4.0.3;screen-4.0.3;screen-4.0.3.tar.gz:screen.diff;extract:screen-4.0.3.tar.gz;patch:screen.diff
+links;1.0;links-1.00;links-1.00.tar.gz;extract:links-1.00.tar.gz
+links_g;2.7;links-2.7;links-2.7.tar.bz2;extract:links-2.7.tar.bz2
+ntpd;4.2.6p5;ntp-4.2.6p5;ntp-4.2.6p5.tar.gz:ntp.diff;extract:ntp-4.2.6p5.tar.gz;patch:ntp.diff
+ntpclient;2000_339;ntpclient;ntpclient_2000_339.tar.gz:ntpclient.diff;extract:ntpclient_2000_339.tar.gz;patch:ntpclient.diff
+openntpd;3.9p1;openntpd-3.9p1;openntpd-3.9p1.tar.gz:openntpd-always-use-latest-offset.diff;extract:openntpd-3.9p1.tar.gz;patch:openntpd-always-use-latest-offset.diff
+esound;0.2.41;esound-0.2.41;esound-0.2.41.tar.bz2:esound.diff;extract:esound-0.2.41.tar.bz2;patch:esound.diff
+python;2.5.4;Python-2.5.4;Python-2.5.4.tar.bz2:python.diff;extract:Python-2.5.4.tar.bz2;patch:python.diff
+ser2net;2.5;ser2net-2.5;ser2net-2.5.tar.gz:ser2net.diff;extract:ser2net-2.5.tar.gz;patch:ser2net.diff
+ucl;1.03;ucl-1.03;ucl-1.03.tar.gz;extract:ucl-1.03.tar.gz
+lzma443;443;lzma443
+upx_host;3.03;upx-3.03-src;upx-3.03-src.tar.bz2:lzma443.tar.bz2:upx.diff;extract:upx-3.03-src.tar.bz2;patch:upx.diff
+lzma;4.65;lzma-4.65;lzma465.tar.bz2:lzma.diff;dirextract:lzma465.tar.bz2;patch:lzma.diff
+lzma_host;4.65;lzma-4.65;lzma465.tar.bz2:lzma.diff;dirextract:lzma465.tar.bz2;patch:lzma.diff
+openvpn;2.1.4;openvpn-2.1.4;openvpn-2.1.4.tar.gz;extract:openvpn-2.1.4.tar.gz
+ipkg;0.99.163;ipkg-0.99.163;ipkg-0.99.163.tar.gz;extract:ipkg-0.99.163.tar.gz;patch:ipkg.diff
+htop;0.9;htop-0.9;htop-0.9.tar.gz;extract:htop-0.9.tar.gz
+netio;1.3.1;netio-1.3.1;netio131.zip;extract:netio131.zip:netio-1.3.1
+netio_host;1.3.1;netio-1.3.1;netio131.zip;extract:netio131.zip:netio-1.3.1
+inadyn_mt;02.24.44;inadyn-mt.v.02.24.44;inadyn-mt.v.02.24.44.tar.gz;extract:inadyn-mt.v.02.24.44.tar.gz
+
+#
+# ide/hdd apps
+#
+e2fsprogs;1.41.14;e2fsprogs-1.41.14;e2fsprogs-1.41.14.tar.gz:e2fsprogs_gcc4_build_fix.diff;extract:e2fsprogs-1.41.14.tar.gz;patch:e2fsprogs_gcc4_build_fix.diff
+hddtemp;0.3-beta15;hddtemp-0.3-beta15;hddtemp-0.3-beta15.tar.bz2;extract:hddtemp-0.3-beta15.tar.bz2
+hdparm;9.37;hdparm-9.37;hdparm-9.37.tar.gz;extract:hdparm-9.37.tar.gz
+parted;1.7.1;parted-1.7.1;parted-1.7.1.tar.gz;extract:parted-1.7.1.tar.gz
+smartmontools;5.38;smartmontools-5.38;smartmontools-5.38.tar.gz;extract:smartmontools-5.38.tar.gz;patch:smartmontools.diff
+utillinux;2.12r;util-linux-2.12r;util-linux-2.12r.tar.bz2;extract:util-linux-2.12r.tar.bz2;patch:util-linux.diff
+xfsprogs;2.9.4;xfsprogs-2.9.4;xfsprogs_2.9.4-1.tar.gz:xfsprogs.diff;extract:xfsprogs_2.9.4-1.tar.gz;patch:xfsprogs.diff
+reiserfsprogs;3.6.21;reiserfsprogs-3.6.21;reiserfsprogs-3.6.21.tar.bz2;extract:reiserfsprogs-3.6.21.tar.bz2
+
+#
+# msttf
+#
+cabextract;0.5;cabextract-0.5;cabextract-0.5.tar.gz;extract:cabextract-0.5.tar.gz
+msttf;0.0;msttf;arial32.exe:arialb32.exe;dircreate;dirextract:arial32.exe;dirextract:arialb32.exe
+
+#
+# development tools
+#
+gdb;7.4;gdb-7.4;gdb-7.4.tar.bz2;extract:gdb-7.4.tar.bz2
+valgrind;3.6.1;valgrind-3.6.1;valgrind-3.6.1.tar.bz2;extract:valgrind-3.6.1.tar.bz2
+insight;6.8-1;insight-6.8-1;insight-6.8-1.tar.bz2;extract:insight-6.8-1.tar.bz2
+ltrace;0.3.26;ltrace-0.3.26;ltrace_0.3.26.tar.gz:ltrace.diff;extract:ltrace_0.3.26.tar.gz;patch:ltrace.diff
+strace;4.5.20;strace-4.5.20;strace-4.5.20.tar.bz2:strace.diff;extract:strace-4.5.20.tar.bz2;patch:strace.diff
+nano;1.2.4;nano-1.2.4;nano-1.2.4.tar.gz:nano.diff;extract:nano-1.2.4.tar.gz;patch:nano.diff
+mc;4.6.2;mc-4.6.2;mc-4.6.2.tar.gz:mc-4.6.2.diff;extract:mc-4.6.2.tar.gz;patch:mc-4.6.2.diff
+joe;3.7;joe-3.7;joe-3.7.tar.gz;extract:joe-3.7.tar.gz
+bash;4.0;bash-4.0;bash-4.0.tar.gz;extract:bash-4.0.tar.gz
+ccache;3.1.9;ccache-3.1.9;ccache-3.1.9.tar.gz;extract:ccache-3.1.9.tar.gz
+
+#
+# java
+#
+# for ppc
+kaffe;1.0.6;kaffe-1.0.6;kaffe-1.0.6.tar.gz:kaffe.diff;extract:kaffe-1.0.6.tar.gz;patch:kaffe.diff
+# we need kaffeh on x86 to build for ppc
+kaffeh;1.0.6;kaffe-1.0.6;kaffe-1.0.6.tar.gz:kaffeh.diff;extract:kaffe-1.0.6.tar.gz;patch:kaffeh.diff
+
+#
+# fun stuff
+#
+gnuboy;1.0.3;gnuboy-1.0.3;gnuboy-1.0.3.tar.gz:gnuboy.diff;extract:gnuboy-1.0.3.tar.gz;patch:gnuboy.diff
+scummvm;0.5.1;scummvm-0.5.1;scummvm-0.5.1.tar.bz2:scummvm-0.5.1.diff;extract:scummvm-0.5.1.tar.bz2;patch:scummvm-0.5.1.diff
+sdldoom;1.10;sdldoom-1.10;sdldoom-1.10.tar.gz:sdldoom.diff;extract:sdldoom-1.10.tar.gz;patch:sdldoom.diff
+tinygl;0.4;TinyGL;TinyGL-0.4.tar.gz:TinyGL.diff;extract:TinyGL-0.4.tar.gz;patch:TinyGL.diff
+tuxfrodo;beta8;tuxfrodo-beta8;tuxfrodo_beta8.tar.bz2;dirextract:tuxfrodo_beta8.tar.bz2
+
+#
+# dvb apps
+#
+dvbdate;0.1;dvbdate-0.1;dvbdate-0.1.tar.gz:dvbdate.diff;extract:dvbdate-0.1.tar.gz;patch:dvbdate.diff
+dvbstream;0.5;dvbstream-0.5;dvbstream-0.5.tar.gz;extract:dvbstream-0.5.tar.gz
+dvbtext;0.1;dvbtext-0.1;dvbtext-0.1.tar.gz:dvbtext.diff;extract:dvbtext-0.1.tar.gz;patch:dvbtext.diff
+dvbtune;0.5;dvbtune-0.5;dvbtune-0.5.tar.gz;extract:dvbtune-0.5.tar.gz
+vls;0.4.0;vls-0.4.0;vls-0.4.0.tar.bz2:vls.diff;extract:vls-0.4.0.tar.bz2;patch:vls.diff
+
+#
+# bluetooth
+#
+bluez_hcidump;1.5;bluez-hcidump-1.5;bluez-hcidump-1.5.tar.gz:bluez-hcidump.diff;extract:bluez-hcidump-1.5.tar.gz;patch:bluez-hcidump.diff
+bluez_libs;2.5;bluez-libs-2.5;bluez-libs-2.5.tar.gz;extract:bluez-libs-2.5.tar.gz
+bluez_pan;1.1;bluez-pan-1.1;bluez-pan-1.1.tar.gz;extract:bluez-pan-1.1.tar.gz
+bluez_sdp;1.5;bluez-sdp-1.5;bluez-sdp-1.5.tar.gz;extract:bluez-sdp-1.5.tar.gz
+bluez_utils;2.4;bluez-utils-2.4;bluez-utils-2.4.tar.gz;extract:bluez-utils-2.4.tar.gz
+
+#
+# database
+#
+sqlite;3.7.8;sqlite-autoconf-3070800;sqlite-autoconf-3070800.tar.gz;extract:sqlite-autoconf-3070800.tar.gz
+
+#
+# dreambox
+#
+linux_dream;2.6.9;linux-2.6.9;linux-2.6.9.tar.bz2:linuxppc-2.6.9-r1.diff.bz2:linuxppc-2.6.9-dream-s7.diff.bz2:squashfs2.2r2.diff.bz2:squashfs_lzma.diff.bz2:linux-2.6.9-dream.diff;remove:linux;extract:linux-2.6.9.tar.bz2;patch:linuxppc-2.6.9-r1.diff.bz2;patch:linuxppc-2.6.9-dream-s7.diff.bz2;patch:squashfs2.2r2.diff.bz2;patch:squashfs_lzma.diff.bz2;patch:linux-2.6.9-dream.diff;link:linux-2.6.9:linux
+linux_dream_kernel_headers;2.6.9.1;linux-libc-headers-2.6.9.1;linux-libc-headers-2.6.9.1.tar.bz2:linux-libc-headers.diff;remove:linux-libc-headers;extract:linux-libc-headers-2.6.9.1.tar.bz2;patch:linux-libc-headers.diff
+binutils_dream;2.15.91.0.2;binutils-2.15.91.0.2;binutils-2.15.91.0.2.tar.gz;extract:binutils-2.15.91.0.2.tar.gz
+bootstrap_gcc_dream;3.4.4;gcc-3.4.4;gcc-core-3.4.4.tar.bz2;extract:gcc-core-3.4.4.tar.bz2;
+glibc_dream;2.3.2;glibc-2.3.2;glibc-2.3.2.tar.bz2:nptl-0.60.tar.bz2:glibc-2.3.2-r0.diff.bz2;extract:glibc-2.3.2.tar.bz2;dirextract:nptl-0.60.tar.bz2;patch:glibc-2.3.2-r0.diff.bz2;patch:glibc_ppc4xx_ibmstropt.diff;patch:glibc-ibmppc4xx_fp_perflib.diff;patch:glibc-makefile-printf.diff;patch:glibc-2.3.2-new-make.diff
+gcc_dream;3.4.4;gcc-3.4.4;gcc-core-3.4.4.tar.bz2:gcc-g++-3.4.4.tar.bz2:gcc-g++-ppc4xx.diff;extract:gcc-core-3.4.4.tar.bz2;extract:gcc-g++-3.4.4.tar.bz2;patch:gcc-g++-ppc4xx.diff;patch:gcc-ibmppc4xx_fp_perflib.diff
+dreamfiles;20061230;dreamfiles_20061230;dreamfiles_20061230.tar.bz2;dirextract:dreamfiles_20061230.tar.bz2
+dreamdriver_dm7000;20071022;dreamdriver_dm7000_20071022;dreamdriver_dm7000_20071022.tar.bz2;dirextract:dreamdriver_dm7000_20071022.tar.bz2
+dreamdriver_dm56x0;20071022;dreamdriver_dm56x0_20071022;dreamdriver_dm56x0_20071022.tar.bz2;dirextract:dreamdriver_dm56x0_20071022.tar.bz2
+dreamdriver_dm500;20071022;dreamdriver_dm500_20071022;dreamdriver_dm500_20071022.tar.bz2;dirextract:dreamdriver_dm500_20071022.tar.bz2
+
+#
+# ipbox
+#
+uboot_ipbox;1.2.0;u-boot-1.2.0;u-boot-1.2.0.tar.bz2:u-boot-1.2.0-ipbox.diff;extract:u-boot-1.2.0.tar.bz2
+linux_ipbox;2.6.17;linux-2.6.17;linux-2.6.17.tar.bz2:linux-2.6.17.diff:linux-2.6.17-sumversion.diff:linux-2.6.17-mmc.diff:linux-2.6.17-sd.diff;remove:linux;extract:linux-2.6.17.tar.bz2;patch:linux-2.6.17.diff;patch:linux-2.6.17-sumversion.diff;patch:linux-2.6.17-mmc.diff;patch:linux-2.6.17-sd.diff;link:linux-2.6.17:linux
+linux_ipbox_kernel_headers;2.6.17;linux-kernel-headers-2.6.17;linux-kernel-headers_2.6.17.orig.tar.gz;extract:linux-kernel-headers_2.6.17.orig.tar.gz
+dgstationdriver_cubecafe;1;dgstationdriver_cubecafe;dgstationdriver_cubecafe.tar.bz2;extract:dgstationdriver_cubecafe.tar.bz2
+dgstationdriver_mutant200s;1;dgstationdriver_mutant200s;dgstationdriver_mutant200s.tar.bz2;extract:dgstationdriver_mutant200s.tar.bz2
+dgstationdriver_prime;1;dgstationdriver_prime;dgstationdriver_prime.tar.bz2;extract:dgstationdriver_prime.tar.bz2
+dgstationdriver_relook400s;1;dgstationdriver_relook400s;dgstationdriver_relook400s.tar.bz2;extract:dgstationdriver_relook400s.tar.bz2
+
+#
+# coolstream
+#
+linux_cool;2.6.26.1;linux-2.6.26.1;linux-2.6.26.1.tar.bz2:linux-2.6-coolstream.diff;remove:linux;extract:linux-2.6.26.1.tar.bz2;patch:linux-2.6-coolstream.diff;link:linux-2.6.26.1:linux
+bootstrap_gcc_static_cool;4.32.2;gcc-4.3.2;gcc-4.3.2.tar.bz2:gcc-4.3.2.diff;extract:gcc-4.3.2.tar.bz2;patch:gcc-4.3.2.diff
+bootstrap_gcc_shared_cool;4.32.2;gcc-4.3.2;gcc-4.3.2.tar.bz2:gcc-4.3.2.diff;extract:gcc-4.3.2.tar.bz2;patch:gcc-4.3.2.diff
+bootstrap_eglibc_cool;2_8;eglibc-2_8;eglibc-2_8.tar.bz2:eglibc-ports-2_8.tar.bz2;extract:eglibc-2_8.tar.bz2;dirextract:eglibc-ports-2_8.tar.bz2
+eglibc_cool;2_8;eglibc-2_8;eglibc-2_8.tar.bz2:eglibc-ports-2_8.tar.bz2;extract:eglibc-2_8.tar.bz2;dirextract:eglibc-ports-2_8.tar.bz2
+gcc_cool;4.32.2;gcc-4.3.2;gcc-4.3.2.tar.bz2:gcc-4.3.2.diff;extract:gcc-4.3.2.tar.bz2;patch:gcc-4.3.2.diff
+
+#
+# spark
+#
+linux_spark;2.6.32.46;linux-2.6.32;stlinux24-host-kernel-source-sh4-2.6.32.46_stm24_0209-209.src.rpm;dirextract:stlinux24-host-kernel-source-sh4-2.6.32.46_stm24_0209-209.src.rpm
+linux_spark_kernel_headers;2.6.32.46-45;linux_spark-2.6.32.46-45;stlinux24-sh4-linux-kernel-headers-2.6.32.46-45.noarch.rpm;dirextract:stlinux24-sh4-linux-kernel-headers-2.6.32.46-45.noarch.rpm
+binutils_spark;2.20.51.0.7-48;binutils-2.20.51.0.7-48;stlinux24-cross-sh4-binutils-2.20.51.0.7-48.i386.rpm:stlinux24-cross-sh4-binutils-dev-2.20.51.0.7-48.i386.rpm;dirextract:stlinux24-cross-sh4-binutils-2.20.51.0.7-48.i386.rpm;dirextract:stlinux24-cross-sh4-binutils-dev-2.20.51.0.7-48.i386.rpm
+gcc_spark;4.5.3-97;gcc-4.5.3-97;stlinux24-cross-sh4-cpp-4.5.3-97.i386.rpm:stlinux24-cross-sh4-gcc-4.5.3-97.i386.rpm:stlinux24-cross-sh4-g++-4.5.3-97.i386.rpm;dirextract:stlinux24-cross-sh4-cpp-4.5.3-97.i386.rpm;dirextract:stlinux24-cross-sh4-gcc-4.5.3-97.i386.rpm;dirextract:stlinux24-cross-sh4-g++-4.5.3-97.i386.rpm
+glibc_spark;2.10.2-34;glibc-2.10.2-34;stlinux24-sh4-glibc-2.10.2-34.sh4.rpm:stlinux24-sh4-glibc-dev-2.10.2-34.sh4.rpm:stlinux24-sh4-libstdc++-4.5.3-100.sh4.rpm:stlinux24-sh4-libstdc++-dev-4.5.3-100.sh4.rpm:stlinux24-sh4-libgcc-4.5.3-100.sh4.rpm;dirextract:stlinux24-sh4-glibc-2.10.2-34.sh4.rpm;dirextract:stlinux24-sh4-glibc-dev-2.10.2-34.sh4.rpm;dirextract:stlinux24-sh4-libstdc++-4.5.3-100.sh4.rpm;dirextract:stlinux24-sh4-libstdc++-dev-4.5.3-100.sh4.rpm;dirextract:stlinux24-sh4-libgcc-4.5.3-100.sh4.rpm
+ffmpeg;0.10;ffmpeg-0.10;ffmpeg-0.10.tar.bz2;extract:ffmpeg-0.10.tar.bz2;apatch:ffmpeg-0.6-avoid-UINT64_C.diff;apatch:ffmpeg-0.10-remove-buildtime.diff
+opkg;0.1.8;opkg-0.1.8;opkg-0.1.8.tar.gz:opkg-0.1.8-dont-segfault.diff;extract:opkg-0.1.8.tar.gz;patch:opkg-0.1.8-dont-segfault.diff
+opkg_host;0.1.8;opkg-0.1.8;opkg-0.1.8.tar.gz:opkg-0.1.8-dont-segfault.diff;extract:opkg-0.1.8.tar.gz;apatch:opkg-0.1.8-dont-segfault.diff
+
+>>?;rules-make-local

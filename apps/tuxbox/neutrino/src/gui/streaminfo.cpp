@@ -1,0 +1,250 @@
+/*
+	Neutrino-GUI  -   DBoxII-Project
+
+
+	License: GPL
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+*/
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <gui/streaminfo.h>
+
+#include <global.h>
+#include <neutrino.h>
+
+#include <driver/fontrenderer.h>
+#include <driver/rcinput.h>
+
+#include <daemonc/remotecontrol.h>
+extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
+
+CStreamInfo::CStreamInfo()
+{
+	frameBuffer = CFrameBuffer::getInstance();
+	hheight     = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
+	mheight     = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
+	width       = w_max (400, 50);
+	height      = h_max (hheight + 14 * mheight + 10, 0);
+
+	x = getScreenStartX (width);
+	y = getScreenStartY (height);
+}
+
+
+int CStreamInfo::exec(CMenuTarget* parent, const std::string &)
+{
+	if (parent)
+	{
+		parent->hide();
+	}
+	paint();
+
+	int res = g_RCInput->messageLoop();
+
+	hide();
+
+        res = menu_return::RETURN_EXIT_ALL;
+	return res;
+}
+
+void CStreamInfo::hide()
+{
+	frameBuffer->paintBackgroundBoxRel(x,y, width,height);
+}
+
+void CStreamInfo::paint()
+{
+	const char * head_string;
+	int ypos;
+
+	head_string = g_Locale->getText(LOCALE_STREAMINFO_HEAD);
+
+	CLCD::getInstance()->setMode(CLCD::MODE_MENU_UTF8, head_string);
+	
+	ypos = y;
+	frameBuffer->paintBoxRel(x, ypos, width, hheight, COL_MENUHEAD_PLUS_0);
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x + 10, ypos + hheight + 2, width, head_string, COL_MENUHEAD, 0, true); // UTF-8
+
+	ypos+= hheight;
+	frameBuffer->paintBoxRel(x, ypos, width, height - hheight, COL_MENUCONTENT_PLUS_0);
+
+	ypos+= (mheight >>1);
+
+
+	FILE* fd = fopen("/proc/bus/bitstream", "rt");
+	if (fd==NULL)
+	{
+		printf("error while opening proc-bitstream\n" );
+		return;
+	}
+
+	long bitInfo[10];
+
+	char *key,*tmpptr,buf[100], buf2[100];
+	long value;
+	int pos=0;
+	fgets(buf,35,fd);//dummy
+	while(!feof(fd))
+	{
+		if(fgets(buf,35,fd)!=NULL)
+		{
+			buf[strlen(buf)-1]=0;
+			tmpptr=buf;
+			key=strsep(&tmpptr,":");
+			value=strtoul(tmpptr,NULL,0);
+			bitInfo[pos]= value;
+			pos++;
+		}
+	}
+	fclose(fd);
+
+
+	//paint msg...
+	ypos+= mheight;
+	sprintf((char*) buf, "%s: %dx%d", g_Locale->getText(LOCALE_STREAMINFO_RESOLUTION), (int)bitInfo[0], (int)bitInfo[1] );
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+
+	ypos += mheight;
+	sprintf((char*) buf, "%s: %d bits/sec", g_Locale->getText(LOCALE_STREAMINFO_BITRATE), (int)bitInfo[4]*50);
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+
+	ypos += mheight;
+	switch (bitInfo[2])
+	{
+	case 2:
+		sprintf((char*) buf, "%s: 4:3", g_Locale->getText(LOCALE_STREAMINFO_ARATIO));
+		break;
+	case 3:
+		sprintf((char*) buf, "%s: 16:9", g_Locale->getText(LOCALE_STREAMINFO_ARATIO));
+		break;
+	case 4:
+		sprintf((char*) buf, "%s: 2.21:1", g_Locale->getText(LOCALE_STREAMINFO_ARATIO));
+		break;
+	default:
+		strncpy(buf, g_Locale->getText(LOCALE_STREAMINFO_ARATIO_UNKNOWN), sizeof(buf));
+	}
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+
+
+	ypos+= mheight;
+	switch ( bitInfo[3] )
+	{
+			case 3:
+			sprintf((char*) buf, "%s: 25fps", g_Locale->getText(LOCALE_STREAMINFO_FRAMERATE));
+			break;
+			case 6:
+			sprintf((char*) buf, "%s: 50fps", g_Locale->getText(LOCALE_STREAMINFO_FRAMERATE));
+			break;
+			default:
+			strncpy(buf, g_Locale->getText(LOCALE_STREAMINFO_FRAMERATE_UNKNOWN), sizeof(buf));
+	}
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+
+
+	if (!bitInfo[7]) strncpy(buf, g_Locale->getText(LOCALE_STREAMINFO_AUDIOTYPE_UNKNOWN), sizeof(buf));
+	else {
+		const char* layernames[4]={"res","III","II","I"};
+		const char* sampfreqnames[4]={"44,1k","48k","32k","res"};
+		const char* modenames[4]={"stereo","joint_st","dual_ch","single_ch"};
+
+		long header = bitInfo[7];
+
+		unsigned char layer =	(header>>17)&3;
+		unsigned char sampfreq = (header>>10)&3;
+		unsigned char mode =	(header>> 6)&3;
+		unsigned char copy =	(header>> 3)&1;
+
+		sprintf((char*) buf, "%s: %s (%s/%s) %s", g_Locale->getText(LOCALE_STREAMINFO_AUDIOTYPE),
+								modenames[mode],
+								sampfreqnames[sampfreq],
+								layernames[layer],
+								copy?"c":"");
+	}
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos+ mheight, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+	ypos+= mheight+ 10;
+
+	CZapitClient::CCurrentServiceInfo si = g_Zapit->getCurrentServiceInfo();
+
+	//onid
+	ypos+= mheight;
+	sprintf((char*) buf, "%s: 0x%04x", "onid", si.onid);
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+	//sid
+	ypos+= mheight;
+	sprintf((char*) buf, "%s: 0x%04x", "sid", si.sid);
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+	//tsid
+	ypos+= mheight;
+	sprintf((char*) buf, "%s: 0x%04x", "tsid", si.tsid);
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+	//tsfrequenz
+	ypos+= mheight;
+	sprintf((char*) buf, "%s: %d.%d MHz (%c)", "tsf", si.tsfrequency/1000, si.tsfrequency%1000,
+			(si.polarisation == HORIZONTAL) ? 'h' : 'v');
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+	//vpid
+	ypos+= mheight;
+	if ( g_RemoteControl->current_PIDs.PIDs.vpid == 0 )
+		sprintf((char*) buf, "%s: %s", "vpid", g_Locale->getText(LOCALE_STREAMINFO_NOT_AVAILABLE));
+	else
+		sprintf((char*) buf, "%s: 0x%04x", "vpid", g_RemoteControl->current_PIDs.PIDs.vpid );
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+	//apid	
+	ypos+= mheight;
+	if (g_RemoteControl->current_PIDs.APIDs.empty())
+		sprintf((char*) buf, "%s: %s", "apid(s)", g_Locale->getText(LOCALE_STREAMINFO_NOT_AVAILABLE));
+	else
+	{
+		sprintf((char*) buf, "%s: ", "apid(s)" );
+		for (unsigned int i= 0; i< g_RemoteControl->current_PIDs.APIDs.size(); i++)
+		{
+			sprintf((char*) buf2, " 0x%04x",  g_RemoteControl->current_PIDs.APIDs[i].pid );
+
+			if (i > 0)
+			{
+				strcat((char*) buf, ",");
+				strcat((char*) buf, buf2+4);
+			}
+			else
+				strcat((char*) buf, buf2);
+		}
+	}
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+
+	//vtxtpid
+	if ( g_RemoteControl->current_PIDs.PIDs.vtxtpid == 0 )
+        	sprintf((char*) buf, "%s: %s", "vtxtpid", g_Locale->getText(LOCALE_STREAMINFO_NOT_AVAILABLE));
+	else
+        	sprintf((char*) buf, "%s: 0x%04x", "vtxtpid", g_RemoteControl->current_PIDs.PIDs.vtxtpid );
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos+ mheight, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+	ypos+= mheight+ 10;
+	
+	//satellite
+	sprintf((char*) buf, "Provider / Sat: %s",CNeutrinoApp::getInstance()->getScanSettings().satOfDiseqc(si.diseqc));
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+ 10, ypos+ mheight, width-10, buf, COL_MENUCONTENT, 0, true); // UTF-8
+}

@@ -1,0 +1,381 @@
+diff -Naur SDL-1.2.6.orig/src/joystick/linux/SDL_sysjoystick.c SDL-1.2.6/src/joystick/linux/SDL_sysjoystick.c
+--- SDL-1.2.6.orig/src/joystick/linux/SDL_sysjoystick.c	2006-02-25 20:19:27.000000000 +0100
++++ SDL-1.2.6/src/joystick/linux/SDL_sysjoystick.c	2006-02-25 20:19:45.000000000 +0100
+@@ -38,6 +38,11 @@
+ #ifdef __arm__
+ #include <linux/limits.h> /* Arm cross-compiler needs this */
+ #endif
++
++#ifndef BITS_PER_LONG
++#define BITS_PER_LONG 32	/* hack for 2.6.13 kernel header */
++#endif
++
+ #include <linux/joystick.h>
+ #ifdef USE_INPUT_EVENTS
+ #include <linux/input.h>
+diff -Naur SDL-1.2.6.orig/src/video/fbcon/SDL_fbevents.c SDL-1.2.6/src/video/fbcon/SDL_fbevents.c
+--- SDL-1.2.6.orig/src/video/fbcon/SDL_fbevents.c	2006-02-25 20:19:27.000000000 +0100
++++ SDL-1.2.6/src/video/fbcon/SDL_fbevents.c	2006-02-25 20:19:45.000000000 +0100
+@@ -69,6 +69,65 @@
+ static Uint16 keymap_temp[128]; /* only used at startup */
+ static SDL_keysym *TranslateKey(int scancode, SDL_keysym *keysym);
+ 
++static long keytimer;
++static int oldkey;
++
++#define	RC1_1		0x0001
++#define	RC1_2		0x0002
++#define	RC1_3		0x0003
++#define	RC1_4		0x0004
++#define	RC1_5		0x0005
++#define	RC1_6		0x0006
++#define	RC1_7		0x0007
++#define	RC1_8		0x0008
++#define	RC1_9		0x0009
++#define	RC1_0		0x0000
++#define	RC1_STANDBY	0x0010
++#define	RC1_HOME		0x001F
++#define	RC1_DBOX		0x0018
++#define	RC1_RED		0x0013
++#define	RC1_GREEN		0x0011
++#define	RC1_YELLOW	0x0012
++#define	RC1_BLUE		0x0014
++#define	RC1_OK		0x000E
++#define	RC1_VOLPLUS	0x0015
++#define	RC1_VOLMINUS	0x0016
++#define	RC1_MUTE		0x000F
++#define	RC1_HELP		0x0017
++#define	RC1_UP		0x000C
++#define	RC1_DOWN		0x000D
++#define	RC1_RIGHT		0x000A
++#define	RC1_LEFT		0x000B
++
++#define	RC2_1		0x5c01
++#define	RC2_2		0x5c02
++#define	RC2_3		0x5c03
++#define	RC2_4		0x5c04
++#define	RC2_5		0x5c05
++#define	RC2_6		0x5c06
++#define	RC2_7		0x5c07
++#define	RC2_8		0x5c08
++#define	RC2_9		0x5c09
++#define	RC2_0		0x5c00
++#define	RC2_STANDBY	0x5c0c
++#define	RC2_HOME		0x5c20
++#define	RC2_DBOX		0x5c27
++#define	RC2_RED		0x5c2d
++#define	RC2_GREEN		0x5c55
++#define	RC2_YELLOW	0x5c52
++#define	RC2_BLUE		0x5c3b
++#define	RC2_OK		0x5c30
++#define	RC2_VOLPLUS	0x5c16
++#define	RC2_VOLMINUS	0x5c17
++#define	RC2_MUTE		0x5c28
++#define	RC2_HELP		0x5c82
++#define	RC2_UP		0x5c0e
++#define	RC2_DOWN		0x5c0f
++#define	RC2_RIGHT		0x5c2e
++#define	RC2_LEFT		0x5c2f
++#define RC2_UPUP	0x5c54
++#define RC2_DOWNDOWN 0x5c53
++
+ /* Ugh, we have to duplicate the kernel's keysym mapping code...
+    Oh, it's not so bad. :-)
+ 
+@@ -240,11 +299,20 @@
+ 			close(keyboard_fd);
+ 		}
+ 	}
++	if (rc_fd >= 0)
++		close(rc_fd);
++	rc_fd = -1;
+ 	keyboard_fd = -1;
+ }
+ 
+ int FB_OpenKeyboard(_THIS)
+ {
++	struct timezone tz;
++	struct timeval tv;
++	rc_fd = open("/dev/dbox/rc0", O_RDONLY);
++	gettimeofday(&tv, &tz);
++	keytimer = (tv.tv_sec * 1000) + (int)(tv.tv_usec / 1000) + 3600000;
++	oldkey = -1;
+ 	/* Open only if not already opened */
+  	if ( keyboard_fd < 0 ) {
+ 		static const char * const tty0[] = { "/dev/tty0", "/dev/vc/0", NULL };
+@@ -883,14 +951,128 @@
+ 	SDL_mutexV(hw_lock);
+ }
+ 
+-static void handle_keyboard(_THIS)
++static void handle_keyboard(_THIS, int what)
+ {
+ 	unsigned char keybuf[BUFSIZ];
+ 	int i, nread;
+ 	int pressed;
+ 	int scancode;
+ 	SDL_keysym keysym;
++	unsigned short read_code = 0;
++	struct timezone tz;
++	struct timeval tv;
+ 
++	printf("--------------\nwhat: %d\nold_key: %d\nkeytimer: %ld\n", what, oldkey, keytimer);
++	if (what == 1)
++	{
++		read(rc_fd, &read_code, 2);
++		printf("read_code: %x\n", read_code);
++		if ((read_code & 0xff00) != 0x5c00) // we have a new remote control with cyclic codes
++		{
++			
++			read_code %= 0x40;
++			
++		}
++		keysym.sym = 27;
++		if (read_code == oldkey)
++		{
++			gettimeofday(&tv, &tz);
++			keytimer = (tv.tv_sec * 1000) + (int)(tv.tv_usec / 1000);
++			printf("tv_sec: %ld\ntv_usec: %ld\n", tv.tv_sec, tv.tv_usec);
++			return;
++		}
++	}
++	if (what == 2)
++	{
++		read_code = oldkey;
++		oldkey = -1;
++	}
++	if (what == 1 || what == 2)
++	{
++		if (read_code == RC1_DBOX || read_code == RC2_DBOX) // dbox
++			keysym.sym = 27; // escape
++		else if (read_code == RC1_OK || read_code == RC2_OK) // ok
++                        keysym.sym = 13; // enter
++		else if (read_code == RC1_UP || read_code == RC2_UP) // up
++                        keysym.sym = 273; //
++		else if (read_code == RC1_DOWN || read_code == RC2_DOWN) // down
++                        keysym.sym = 274; //
++		else if (read_code == RC1_LEFT || read_code == RC2_LEFT) // left
++                        keysym.sym = 276; //
++		else if (read_code == RC1_RIGHT || read_code == RC2_RIGHT) // right
++                        keysym.sym = 275; //
++		else if (read_code == RC1_RED || read_code == RC2_RED) // red
++                        keysym.sym = 306; // strg
++		else if (read_code == RC1_GREEN || read_code == RC2_GREEN) // green
++                        keysym.sym = 32; // space
++		else if (read_code == RC1_1 || read_code == RC2_1)
++                        keysym.sym = '1';
++		else if (read_code == RC1_2 || read_code == RC2_2)
++                        keysym.sym = '2';
++		else if (read_code == RC1_3 || read_code == RC2_3)
++                        keysym.sym = '3';
++		else if (read_code == RC1_4 || read_code == RC2_4)
++                        keysym.sym = '4';
++		else if (read_code == RC1_5 || read_code == RC2_5)
++                        keysym.sym = '5';
++		else if (read_code == RC1_6 || read_code == RC2_6)
++                        keysym.sym = '6';
++		else if (read_code == RC1_7 || read_code == RC2_7)
++                        keysym.sym = '7';
++		else if (read_code == RC1_8 || read_code == RC2_8)
++                        keysym.sym = '8';
++		else if (read_code == RC1_9 || read_code == RC2_9)
++                        keysym.sym = '9';
++		else if (read_code == RC1_0 || read_code == RC2_0)
++                        keysym.sym = '0';
++		else if (read_code == RC1_YELLOW || read_code == RC2_YELLOW)
++                        keysym.sym = 44; // comma
++		else if (read_code == RC1_BLUE || read_code == RC2_BLUE)
++                        keysym.sym = 46; // period
++		else if (read_code == RC1_MUTE || read_code == RC2_MUTE)
++                        keysym.sym = 9; // tab
++		else if (read_code == RC1_VOLPLUS || read_code == RC2_VOLPLUS)
++                        keysym.sym = 61;
++		else if (read_code == RC1_VOLMINUS || read_code == RC2_VOLMINUS)
++                        keysym.sym = 45;
++		else if (read_code == RC1_HOME || read_code == RC2_HOME)
++                        keysym.sym = 'y';
++		else
++		{
++			read_code = oldkey;
++			oldkey = -1;
++			what = 2;
++		}
++		keysym.scancode = K(KT_ASCII,13);
++	  
++	        keysym.mod = KMOD_NONE;
++	        keysym.unicode = 0;
++	}
++	if (what == 1)
++	{
++		if (oldkey != read_code)
++		{
++			pressed = SDL_RELEASED;
++	                posted += SDL_PrivateKeyboard(pressed, &keysym);
++		}
++		pressed = SDL_PRESSED;
++		posted += SDL_PrivateKeyboard(pressed, &keysym);
++		gettimeofday(&tv, &tz);
++		keytimer = (tv.tv_sec * 1000) + (int)(tv.tv_usec / 1000);
++		printf("tv_sec: %ld\ntv_usec: %ld\n", tv.tv_sec, tv.tv_usec);
++		oldkey = read_code;
++		//pressed = SDL_RELEASED;
++		//posted += SDL_PrivateKeyboard(pressed, &keysym);
++	}
++	if (what == 2)
++	{
++		pressed = SDL_RELEASED;
++                posted += SDL_PrivateKeyboard(pressed, &keysym);
++		oldkey = -1;
++	}
++	if (what == 0)
++	{
++	
+ 	nread = read(keyboard_fd, keybuf, BUFSIZ);
+ 	for ( i=0; i<nread; ++i ) {
+ 		scancode = keybuf[i] & 0x7F;
+@@ -920,12 +1102,14 @@
+ 				}
+ 				break;
+ 			}
+-			/* Fall through to normal processing */
++			// Fall through to normal processing
+ 		    default:
++			printf("Key: %d\n", keysym.sym);
+ 			posted += SDL_PrivateKeyboard(pressed, &keysym);
+ 			break;
+ 		}
+ 	}
++	}
+ }
+ 
+ void FB_PumpEvents(_THIS)
+@@ -933,8 +1117,18 @@
+ 	fd_set fdset;
+ 	int max_fd;
+ 	static struct timeval zero;
++	struct timezone tz;
++	struct timeval tv;
++	long currenttime;
+ 
+ 	do {
++		gettimeofday(&tv, &tz);
++                currenttime = (tv.tv_sec * 1000) + (int)(tv.tv_usec / 1000);
++		if (currenttime - keytimer > 220)
++		{
++			keytimer += 3600000;
++			handle_keyboard(this, 2);
++		}
+ 		posted = 0;
+ 
+ 		FD_ZERO(&fdset);
+@@ -945,6 +1139,12 @@
+ 				max_fd = keyboard_fd;
+ 			}
+ 		}
++		if ( rc_fd >= 0 ) {
++                        FD_SET(rc_fd, &fdset);
++                        if ( max_fd < rc_fd ) {
++                                max_fd = rc_fd;
++                        }
++                }
+ 		if ( mouse_fd >= 0 ) {
+ 			FD_SET(mouse_fd, &fdset);
+ 			if ( max_fd < mouse_fd ) {
+@@ -954,9 +1154,14 @@
+ 		if ( select(max_fd+1, &fdset, NULL, NULL, &zero) > 0 ) {
+ 			if ( keyboard_fd >= 0 ) {
+ 				if ( FD_ISSET(keyboard_fd, &fdset) ) {
+-					handle_keyboard(this);
++					handle_keyboard(this, 0);
+ 				}
+ 			}
++			if ( rc_fd >= 0 ) {
++                                if ( FD_ISSET(rc_fd, &fdset) ) {
++                                        handle_keyboard(this, 1);
++                                }
++                        }
+ 			if ( mouse_fd >= 0 ) {
+ 				if ( FD_ISSET(mouse_fd, &fdset) ) {
+ 					handle_mouse(this);
+diff -Naur SDL-1.2.6.orig/src/video/fbcon/SDL_fbvideo.c SDL-1.2.6/src/video/fbcon/SDL_fbvideo.c
+--- SDL-1.2.6.orig/src/video/fbcon/SDL_fbvideo.c	2006-02-25 20:19:27.000000000 +0100
++++ SDL-1.2.6/src/video/fbcon/SDL_fbvideo.c	2006-02-25 20:22:13.000000000 +0100
+@@ -35,7 +35,13 @@
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
++#include <linux/version.h>
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(2,5,0)
+ #include <asm/page.h>		/* For definition of PAGE_SIZE */
++#endif
++#if !defined(PAGE_SIZE)
++#define PAGE_SIZE sysconf(_SC_PAGESIZE)
++#endif
+ 
+ #include "SDL.h"
+ #include "SDL_error.h"
+@@ -161,7 +164,7 @@
+ 
+ 	SDL_fbdev = getenv("SDL_FBDEV");
+ 	if ( SDL_fbdev == NULL ) {
+-		SDL_fbdev = "/dev/fb0";
++		SDL_fbdev = "/dev/fb/0";
+ 	}
+ 	console = open(SDL_fbdev, O_RDWR, 0);
+ 	if ( console >= 0 ) {
+@@ -336,7 +339,7 @@
+ 	/* Initialize the library */
+ 	SDL_fbdev = getenv("SDL_FBDEV");
+ 	if ( SDL_fbdev == NULL ) {
+-		SDL_fbdev = "/dev/fb0";
++		SDL_fbdev = "/dev/fb/0";
+ 	}
+ 	console_fd = open(SDL_fbdev, O_RDWR, 0);
+ 	if ( console_fd < 0 ) {
+diff -Naur SDL-1.2.6.orig/src/video/fbcon/SDL_fbvideo.h SDL-1.2.6/src/video/fbcon/SDL_fbvideo.h
+--- SDL-1.2.6.orig/src/video/fbcon/SDL_fbvideo.h	2006-02-25 20:19:27.000000000 +0100
++++ SDL-1.2.6/src/video/fbcon/SDL_fbvideo.h	2006-02-25 20:19:45.000000000 +0100
+@@ -61,6 +61,7 @@
+ 	int current_vt;
+ 	int saved_vt;
+ 	int keyboard_fd;
++	int rc_fd;
+ 	int saved_kbd_mode;
+ 	struct termios saved_kbd_termios;
+ 
+@@ -92,6 +93,7 @@
+ #define current_vt		(this->hidden->current_vt)
+ #define saved_vt		(this->hidden->saved_vt)
+ #define keyboard_fd		(this->hidden->keyboard_fd)
++#define rc_fd             (this->hidden->rc_fd)
+ #define saved_kbd_mode		(this->hidden->saved_kbd_mode)
+ #define saved_kbd_termios	(this->hidden->saved_kbd_termios)
+ #define mouse_fd		(this->hidden->mouse_fd)
+diff -uNr SDL-1.2.6.org/ltconfig SDL-1.2.6/ltconfig
+--- SDL-1.2.6.org/ltconfig	2003-08-30 21:13:00.000000000 +0200
++++ SDL-1.2.6/ltconfig	2008-10-09 22:39:12.000000000 +0200
+@@ -2091,7 +2091,7 @@
+   ;;
+ 
+ # This must be Linux ELF.
+-linux-gnu*)
++linux*)
+   version_type=linux
+   need_lib_prefix=no
+   need_version=no
+@@ -2102,15 +2102,7 @@
+   shlibpath_overrides_runpath=no
+   deplibs_check_method=pass_all
+ 
+-  if test -f /lib/ld.so.1; then
+     dynamic_linker='GNU ld.so'
+-  else
+-    # Only the GNU ld.so supports shared libraries on MkLinux.
+-    case "$host_cpu" in
+-    powerpc*) dynamic_linker=no ;;
+-    *) dynamic_linker='Linux ld.so' ;;
+-    esac
+-  fi
+   ;;
+ 
+ netbsd*)

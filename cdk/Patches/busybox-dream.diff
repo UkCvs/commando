@@ -1,0 +1,14 @@
+diff -Naur busybox-1.13.0/scripts/trylink busybox-1.13.0/scripts/trylink
+--- busybox-1.13.0/scripts/trylink	2008-10-30 08:41:25.000000000 +0100
++++ busybox-1.13.0/scripts/trylink	2008-11-16 19:08:07.000000000 +0100
+@@ -93,9 +93,9 @@
+ GC_SECTIONS=`(
+ . ./.config
+ if test x"$CONFIG_STATIC" = x"y"; then
+-    check_libc_is_glibc "" "-Wl,--gc-sections"
++    check_libc_is_glibc ""
+ else
+-    echo "-Wl,--gc-sections"
++    echo ""
+ fi
+ )`

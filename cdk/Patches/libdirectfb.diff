@@ -1,0 +1,163 @@
+diff -uNr ../DirectFB-1.0.0.org/lib/direct/ppcasm_memcpy_cachable.S ./lib/direct/ppcasm_memcpy_cachable.S
+--- ../lib/direct/ppcasm_memcpy_cachable.S	2006-11-13 22:39:38.000000000 +0100
++++ ../lib/direct/ppcasm_memcpy_cachable.S	2008-09-30 11:09:56.000000000 +0200
+@@ -34,8 +34,6 @@
+ 
+ #define __ASSEMBLY__
+ 
+-#include <linux/config.h>
+-
+ #if defined(CONFIG_8xx) || defined(CONFIG_403GCX)
+ #define L1_CACHE_LINE_SIZE       16
+ #define LG_L1_CACHE_LINE_SIZE     4 
+diff -uNr DirectFB-1.0.0.org/lib/direct/system.c DirectFB-1.0.0/lib/direct/system.c
+--- DirectFB-1.0.0.org/lib/direct/system.c	2007-03-03 21:28:56.000000000 +0100
++++ DirectFB-1.0.0/lib/direct/system.c	2009-06-01 16:38:58.000000000 +0200
+@@ -62,6 +62,6 @@
+ long
+ direct_pagesize()
+ {
+-     return PAGE_SIZE;
++     return sysconf(_SC_PAGE_SIZE);
+ }
+ 
+diff -uNr DirectFB-1.0.0.org//interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c DirectFB-1.0.0/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c
+--- DirectFB-1.0.0.org//interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2007-03-03 21:31:30.000000000 +0100
++++ DirectFB-1.0.0/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2011-02-27 11:13:04.000000000 +0100
+@@ -331,6 +331,9 @@
+      if (ret)
+           return ret;
+ 
++#if (PNG_LIBPNG_VER >= 10500)
++     png_byte bit_depth = png_get_bit_depth( data->png_ptr, data->info_ptr );
++#endif
+      /* actual rendering */
+      if (dfb_rectangle_region_intersects( &rect, &clip )) {
+           void *dst;
+@@ -341,7 +344,11 @@
+                return ret;
+ 
+           if (data->color_type == PNG_COLOR_TYPE_PALETTE) {
++#if (PNG_LIBPNG_VER < 10500)
+                if (dst_surface->format == DSPF_LUT8 && data->info_ptr->bit_depth == 8) {
++#else
++               if (dst_surface->format == DSPF_LUT8 && bit_depth == 8) {
++#endif
+                     /*
+                      * Special indexed PNG to LUT8 loading.
+                      */
+@@ -382,7 +389,11 @@
+                          ret = DFB_NOSYSTEMMEMORY;
+                     }
+                     else {
++#if (PNG_LIBPNG_VER < 10500)
+                          switch (data->info_ptr->bit_depth) {
++#else
++                         switch (bit_depth) {
++#endif
+                               case 8:
+                                    for (y=0; y<data->height; y++) {
+                                         u8  *S = data->image + data->pitch * y;
+@@ -436,8 +447,13 @@
+                                    break;
+ 
+                               default:
++#if (PNG_LIBPNG_VER < 10500)
+                                    D_ERROR( "ImageProvider/PNG: Unsupported indexed bit depth %d!\n",
+                                             data->info_ptr->bit_depth );
++#else
++                                   D_ERROR( "ImageProvider/PNG: Unsupported indexed bit depth %d!\n",
++                                            bit_depth );
++#endif
+                          }
+ 
+                          dfb_scale_linear_32( image_argb, data->width, data->height,
+@@ -598,15 +614,33 @@
+ 
+      if (png_get_valid( data->png_ptr, data->info_ptr, PNG_INFO_tRNS )) {
+           data->color_keyed = true;
++#if (PNG_LIBPNG_VER >= 10500)
++          png_bytep  trans;
++          png_color_16p trans_color;
++          int           num_trans;
++#endif
+ 
+           /* generate color key based on palette... */
+           if (data->color_type == PNG_COLOR_TYPE_PALETTE) {
+                u32        key;
++#if (PNG_LIBPNG_VER < 10500)
+                png_colorp palette    = data->info_ptr->palette;
+                png_bytep  trans      = data->info_ptr->trans;
+                int        num_colors = MIN( MAXCOLORMAPSIZE,
+                                             data->info_ptr->num_palette );
+                u8         cmap[3][num_colors];
++#else
++               png_colorp palette;
++               int        num_colors;
++               u8         *cmap[3];
++
++               png_get_tRNS( data->png_ptr, data->info_ptr, &trans, &num_trans, &trans_color );
++               png_get_PLTE( data->png_ptr, data->info_ptr, &palette, &num_colors );
++               num_colors = MIN( MAXCOLORMAPSIZE, num_colors );
++               cmap[0] = alloca (num_colors);
++               cmap[1] = alloca (num_colors);
++               cmap[2] = alloca (num_colors);
++#endif
+ 
+                for (i=0; i<num_colors; i++) {
+                     cmap[0][i] = palette[i].red;
+@@ -616,7 +650,11 @@
+ 
+                key = FindColorKey( num_colors, &cmap[0][0] );
+ 
++#if (PNG_LIBPNG_VER < 10500)
+                for (i=0; i<data->info_ptr->num_trans; i++) {
++#else
++               for (i=0; i<num_trans; i++) {
++#endif
+                     if (!trans[i]) {
+                          palette[i].red   = (key & 0xff0000) >> 16;
+                          palette[i].green = (key & 0x00ff00) >>  8;
+@@ -628,22 +666,42 @@
+           }
+           else {
+                /* ...or based on trans rgb value */
++#if (PNG_LIBPNG_VER < 10500)
+                png_color_16p trans = &data->info_ptr->trans_values;
++#endif
+ 
+                D_WARN("color key from non-palette source is untested");
+ 
++#if (PNG_LIBPNG_VER < 10500)
+                data->color_key = (((trans->red & 0xff00) << 8) |
+                                   ((trans->green & 0xff00)) |
+                                   ((trans->blue & 0xff00) >> 8));
++#else
++               data->color_key = (((trans_color->red & 0xff00) << 8) |
++                                  ((trans_color->green & 0xff00)) |
++                                  ((trans_color->blue & 0xff00) >> 8));
++#endif
+           }
+      }
+ 
+      switch (data->color_type) {
+           case PNG_COLOR_TYPE_PALETTE: {
++#if (PNG_LIBPNG_VER < 10500)
+                png_colorp palette    = data->info_ptr->palette;
+                png_bytep  trans      = data->info_ptr->trans;
+                int        num_trans  = data->info_ptr->num_trans;
+                int        num_colors = MIN( MAXCOLORMAPSIZE, data->info_ptr->num_palette );
++#else
++               png_colorp    palette;
++               png_bytep     trans;
++               png_color_16p trans_color;
++               int           num_trans;
++               int           num_colors;
++
++               png_get_PLTE( data->png_ptr, data->info_ptr, &palette, &num_colors );
++               num_colors = MIN( MAXCOLORMAPSIZE, num_colors );
++               png_get_tRNS( data->png_ptr, data->info_ptr, &trans, &num_trans, &trans_color );
++#endif
+ 
+                for (i=0; i<num_colors; i++) {
+                     data->colors[i].a = (i < num_trans) ? trans[i] : 0xff;

@@ -1,0 +1,416 @@
+/*
+ * $Header: /cvs/tuxbox/apps/dvb/zapit/include/zapit/client/msgtypes.h,v 1.41 2011/08/01 19:31:02 rhabarber1848 Exp $
+ *
+ * types used for clientlib <-> zapit communication - d-box2 linux project
+ *
+ * (C) 2002 by thegoodguy <thegoodguy@berlios.de>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ */
+
+#ifndef __msgtypes_h__
+#define __msgtypes_h__
+
+
+#include "zapittypes.h"
+#include <connection/basicmessage.h>
+#include "zapitclient.h"
+
+
+#define ZAPIT_UDS_NAME "/tmp/zapit.sock"
+#define RESPONSE_GET_BOUQUETS_END_MARKER 0xFFFFFFFF
+#define SATNAMES_END_MARKER 0xFFFFFFFF
+
+
+class CZapitMessages
+{
+ public:
+	static const char ACTVERSION = 8;
+
+	enum commands
+		{
+			CMD_SHUTDOWN		           =  1,
+
+			CMD_REGISTEREVENTS                 =  2,
+			CMD_UNREGISTEREVENTS               =  3,
+
+			CMD_ZAPTO                          =  4,
+			CMD_ZAPTO_CHANNELNR                =  5,
+			CMD_ZAPTO_SERVICEID                =  6,
+			CMD_ZAPTO_SUBSERVICEID             =  7,
+#ifndef NO_DEPRECATED_ZAPTO_NOWAIT
+			CMD_ZAPTO_SERVICEID_NOWAIT         =  8,
+			CMD_ZAPTO_SUBSERVICEID_NOWAIT      =  9,
+#endif
+
+			CMD_STOP_VIDEO                     = 10,		// not supported yet
+			CMD_SET_MODE                       = 11,
+			CMD_GET_MODE                       = 12,
+			CMD_GET_LAST_CHANNEL               = 13,
+			CMD_GET_APID_VPID                  = 14,		// not supported yet
+			CMD_GET_VTXT_PID                   = 15,		// not supported yet
+			CMD_GET_NVOD_CHANNELS              = 16,		// not supported yet
+			CMD_REINIT_CHANNELS                = 17,
+			CMD_GET_CHANNELS                   = 18,
+			CMD_GET_BOUQUETS                   = 19,
+			CMD_GET_BOUQUET_CHANNELS           = 20,
+			CMD_GET_CA_INFO                    = 21,		// not supported yet
+			CMD_GET_CURRENT_SERVICEID          = 22,
+			CMD_GET_CURRENT_SERVICEINFO        = 23,
+			CMD_GET_DELIVERY_SYSTEM            = 24,
+			CMD_GET_CURRENT_SATELLITE_POSITION = 25,
+			CMD_GET_CURRENT_TP                 = 26,
+
+			CMD_SCANSTART                      = 27,
+			CMD_SCAN_TP                        = 28,
+			CMD_SCANREADY                      = 29,
+			CMD_SCANGETSATLIST                 = 30,
+			CMD_SCANSETSCANSATLIST             = 31,
+			CMD_SCANSETSCANMOTORPOSLIST        = 32,
+			CMD_SCANSETDISEQCTYPE              = 33,
+			CMD_SCANSETDISEQCREPEAT            = 34,
+			CMD_SCANSETBOUQUETMODE             = 35,
+
+			CMD_BQ_ADD_BOUQUET                 = 36,
+			CMD_BQ_MOVE_BOUQUET                = 37,
+			CMD_BQ_MOVE_CHANNEL                = 38,
+			CMD_BQ_DELETE_BOUQUET              = 39,
+			CMD_BQ_RENAME_BOUQUET              = 40,
+			CMD_BQ_EXISTS_BOUQUET              = 41,
+			CMD_BQ_SET_LOCKSTATE               = 42,
+			CMD_BQ_SET_HIDDENSTATE             = 43,
+			CMD_BQ_ADD_CHANNEL_TO_BOUQUET      = 44,
+			CMD_BQ_EXISTS_CHANNEL_IN_BOUQUET   = 45,
+			CMD_BQ_REMOVE_CHANNEL_FROM_BOUQUET = 46,
+			CMD_BQ_RENUM_CHANNELLIST           = 47,
+			CMD_BQ_RESTORE                     = 48,
+			/* unused:			CMD_BQ_COMMIT_CHANGE               = 49, */
+			CMD_BQ_SAVE_BOUQUETS               = 50,
+
+			CMD_SET_RECORD_MODE                = 51,
+			CMD_GET_RECORD_MODE                = 52,
+			CMD_SB_START_PLAYBACK              = 53,
+			CMD_SB_STOP_PLAYBACK               = 54,
+			CMD_SB_GET_PLAYBACK_ACTIVE         = 55,
+			CMD_SET_DISPLAY_FORMAT             = 56,
+			CMD_SET_AUDIO_MODE                 = 57,
+			CMD_READY                          = 58,
+			CMD_GETPIDS                        = 59,
+			CMD_SETSUBSERVICES                 = 60,
+			CMD_SET_AUDIOCHAN                  = 61,
+			CMD_MUTE                           = 62,
+			CMD_SET_VOLUME                     = 63,
+			CMD_SET_STANDBY                    = 64,
+			CMD_SET_PAL                        = 65,
+			CMD_SET_NTSC                       = 66,
+
+			CMD_NVOD_SUBSERVICE_NUM            = 67,
+			CMD_SEND_MOTOR_COMMAND             = 68,
+
+			CMD_GET_CHANNEL_NAME               = 69,
+			CMD_IS_TV_CHANNEL                  = 70,
+
+			CMD_GET_FE_SIGNAL                  = 71,
+			CMD_SCANSTOP                       = 72,
+
+#ifdef HAVE_DBOX_HARDWARE
+			CMD_SET_AE_IEC_ON                  = 73,
+			CMD_SET_AE_IEC_OFF                 = 74,
+			CMD_GET_AE_IEC_STATE               = 75,
+			CMD_SET_AE_PLAYBACK_SPTS           = 76,
+			CMD_SET_AE_PLAYBACK_PES            = 77,
+			CMD_GET_AE_PLAYBACK_STATE          = 78,
+#endif
+			CMD_SCANSETTYPE                    = 79,
+			CMD_RELOAD_CURRENTSERVICES	   = 80,
+			CMD_SET_SUBTITLE                   = 81,
+
+			CMD_SET_FASTZAP			   = 82,
+			CMD_REZAP			   = 83,
+
+			CMD_SET_STARTCHANNEL_RADIO	   = 84,
+			CMD_SET_STARTCHANNEL_TV		   = 85,
+			CMD_GET_STARTCHANNEL_RADIO	   = 86,
+			CMD_GET_STARTCHANNEL_TV		   = 87,
+			CMD_SET_SAVE_LAST_CHANNEL	   = 88,
+			CMD_GET_SAVE_LAST_CHANNEL	   = 89,
+			CMD_SET_SAVE_AUDIO_PIDS		   = 90,
+			CMD_GET_SAVE_AUDIO_PIDS		   = 91,
+			CMD_SET_REMAINING_CHANNELS_BOUQUET = 92,
+			CMD_GET_REMAINING_CHANNELS_BOUQUET = 93,
+
+			CMD_SAVECONFIG			   = 94,
+			CMD_GET_CHANNELNR_NAME             = 95,
+
+			CMD_SET_UNCOMMITTED_SWITCH_MODE    = 96,
+			CMD_GET_UNCOMMITTED_SWITCH_MODE    = 97,
+			CMD_LOADSCANSETTINGS               = 98,
+			CMD_SET_UNICABLE_OPTS		   = 99,
+			CMD_GET_UNICABLE_OPTS		   = 100,
+
+#ifdef HAVE_TRIPLEDRAGON
+			CMD_SET_ZOOMLEVEL		   = 120,
+			CMD_GET_ZOOMLEVEL		   = 121,
+			CMD_SET_PIG			   = 122,
+			CMD_VID_IOCTL			   = 123,
+			CMD_GET_AVINFO			   = 124,
+#endif
+		};
+
+	struct commandBoolean
+	{
+		bool truefalse;
+	};
+
+	struct commandInt
+	{
+		int val;
+	};
+
+	struct commandVolume
+	{
+		unsigned int left;
+		unsigned int right;
+	};
+
+	struct commandSetRecordMode
+	{
+		bool activate;
+	};
+
+	struct commandZapto
+	{
+		unsigned int bouquet;
+		unsigned int channel;
+	};
+
+	struct commandZaptoChannelNr
+	{
+		unsigned int channel;
+	};
+
+	struct commandZaptoServiceID
+	{
+		t_channel_id channel_id;
+		bool nowait;
+	};
+
+	struct commandSetAudioChannel
+	{
+		unsigned int channel;
+	};
+
+	struct commandSetSubtitle
+	{
+		unsigned int index;
+	};
+
+	struct commandGetBouquets
+	{
+		bool emptyBouquetsToo;
+		CZapitClient::channelsMode mode;
+	};
+
+	struct commandSetMode
+	{
+		CZapitClient::channelsMode mode;
+	};
+
+	struct commandGetBouquetChannels
+	{
+		unsigned int               bouquet;
+		CZapitClient::channelsMode mode;
+	};
+
+	struct commandGetChannels
+	{
+		CZapitClient::channelsMode  mode;
+		CZapitClient::channelsOrder order;
+	};
+
+	struct commandExistsChannelInBouquet
+	{
+		unsigned int bouquet;
+		t_channel_id channel_id;
+	};
+
+	struct commandGetChannelNrName
+	{
+		unsigned int channel;
+		CZapitClient::channelsMode mode;
+	};
+
+	struct commandAddChannelToBouquet
+	{
+		unsigned int bouquet;
+		t_channel_id channel_id;
+	};
+
+	struct commandRemoveChannelFromBouquet
+	{
+		unsigned int bouquet;
+		t_channel_id channel_id;
+	};
+
+	struct commandDeleteBouquet
+	{
+		unsigned int bouquet;
+	};
+
+	struct commandRenameBouquet
+	{
+		unsigned int bouquet;
+	};
+
+	struct commandMoveBouquet
+	{
+		unsigned int bouquet;
+		unsigned int newPos;
+	};
+
+	struct commandStartScan
+	{
+		unsigned int satelliteMask;
+	};
+
+	struct commandBouquetState
+	{
+		unsigned int bouquet;
+		bool	     state;
+	};
+
+	struct commandMoveChannel
+	{
+		unsigned int               bouquet;
+		unsigned int               oldPos;
+		unsigned int               newPos;
+		CZapitClient::channelsMode mode;
+	};
+
+
+
+
+	struct responseGeneralTrueFalse
+	{
+		bool status;
+	};
+
+	struct responseGeneralInteger
+	{
+		int number;
+	};
+
+	struct responseGetChannelName
+	{
+		char name[30];
+	};
+
+	struct responseGetRecordModeState
+	{
+		bool activated;
+	};
+
+	struct responseGetMode
+	{
+		CZapitClient::channelsMode  mode;
+	};
+
+	struct responseGetPlaybackState
+	{
+		bool activated;
+	};
+
+	struct responseGetCurrentServiceID
+	{
+		t_channel_id channel_id;
+	};
+
+	struct responseZapComplete
+	{
+		unsigned int zapStatus;
+	};
+
+	struct responseCmd
+	{
+		unsigned char cmd;
+	};
+
+	struct responseIsScanReady
+	{
+		bool scanReady;
+		unsigned int satellite;
+		unsigned int processed_transponder;
+		unsigned int transponder;
+		unsigned int services;
+	};
+
+	struct responseDeliverySystem
+	{
+		delivery_system_t system;
+	};
+
+	struct commandMotor
+	{
+		uint8_t cmdtype;
+		uint8_t cmd;
+		uint8_t address;
+		uint8_t num_parameters;
+		uint8_t param1;
+		uint8_t param2;
+	};
+
+	struct startScan
+	{
+		bool    scan_mode;
+		int8_t  diseqc;
+	};
+
+	struct startChannel
+	{
+		unsigned int channel;
+	};
+
+	struct unicableParam
+	{
+		int scr;
+		int qrg;
+	};
+
+#ifdef HAVE_TRIPLEDRAGON
+	struct commandPig
+	{
+		int x;
+		int y;
+		int w;
+		int h;
+		bool aspect;
+	};
+
+	struct commandIoctl
+	{
+		int request;
+		int arg;
+	};
+
+	struct responseAVInfo
+	{
+		AVInfo info;
+	};
+#endif
+};
+
+
+#endif /* __msgtypes_h__ */

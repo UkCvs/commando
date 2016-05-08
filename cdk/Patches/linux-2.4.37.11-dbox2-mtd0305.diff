@@ -1,0 +1,186 @@
+--- ./linux-2.4.34-dbox2-mtd0305.diff	2010-12-21 07:18:18.000000000 +0100
++++ ./linux-2.4.34-dbox2-mtd0305.diff	2010-12-21 07:45:42.000000000 +0100
+@@ -9135,16 +9135,16 @@
+  	memcpy(retcfi, &cfi, sizeof(cfi));
+ -	memcpy(&retcfi->chips[0], chip, sizeof(struct flchip) * cfi.numchips);
+ +	memset(&retcfi->chips[0], 0, sizeof(struct flchip) * cfi.numchips);
+-+
+-+	for (i = 0, j = 0; (j < cfi.numchips) && (i < max_chips); i++) {
+-+		if(test_bit(i, chip_map)) {
+-+			struct flchip *pchip = &retcfi->chips[j++];
+  
+ -	/* Fix up the stuff that breaks when you move it */
+ -	for (i=0; i< retcfi->numchips; i++) {
+ -		init_waitqueue_head(&retcfi->chips[i].wq);
+ -		spin_lock_init(&retcfi->chips[i]._spinlock);
+ -		retcfi->chips[i].mutex = &retcfi->chips[i]._spinlock;
+++	for (i = 0, j = 0; (j < cfi.numchips) && (i < max_chips); i++) {
+++		if(test_bit(i, chip_map)) {
+++			struct flchip *pchip = &retcfi->chips[j++];
+++
+ +			pchip->start = (i << cfi.chipshift);
+ +			pchip->state = FL_READY;
+ +			init_waitqueue_head(&pchip->wq);
+@@ -23017,8 +23017,7 @@
+ -		goto err_out_none;
+ +	else if ((byte & (1<<7)) == (1<<7)) {
+ +		window->phys = 0xffc00000; /* 4MiB */
+- 	}
+--#endif
+++	}
+ +	else {
+ +		window->phys = 0xffff0000; /* 64KiB */
+ +	}
+@@ -23042,7 +23041,8 @@
+ +			" 0x%.08lx-0x%.08lx - kernel bug?\n",
+ +			__func__,
+ +			window->rsrc.start, window->rsrc.end);
+-+	}
++ 	}
++-#endif
+ +
+ +#if 0
+  
+@@ -23096,9 +23096,7 @@
+ -		char **chip_type;
+ -		if (rom_size > window->size) {
+ -			continue;
+-+		if (!map) {
+-+			map = kmalloc(sizeof(*map), GFP_KERNEL);
+- 		}
++-		}
+ -		info->map.map_priv_1 = 
+ -			info->window_addr + window->size - rom_size;
+ -		info->map.size = rom_size;
+@@ -23106,11 +23104,14 @@
+ -		for(; !info->mtd && *chip_type; chip_type++) {
+ -			info->mtd = do_map_probe(*chip_type, &amd76xrom_map.map);
+ +		if (!map) {
+-+			printk(KERN_ERR MOD_NAME ": kmalloc failed");
+-+			goto out;
+++			map = kmalloc(sizeof(*map), GFP_KERNEL);
+  		}
+ -		if (info->mtd) {
+ -			break;
+++		if (!map) {
+++			printk(KERN_ERR MOD_NAME ": kmalloc failed");
+++			goto out;
+++		}
+ +		memset(map, 0, sizeof(*map));
+ +		INIT_LIST_HEAD(&map->list);
+ +		map->map.name = map->map_name;
+@@ -24739,7 +24740,7 @@
+  fi
+  
+  if [ "$CONFIG_SPARC" = "y" -o "$CONFIG_SPARC64" = "y" ]; then
+-@@ -21,41 +23,58 @@
++@@ -21,44 +23,59 @@
+     dep_tristate '  CFI Flash device mapped on Photron PNC-2000' CONFIG_MTD_PNC2000 $CONFIG_MTD_CFI $CONFIG_MTD_PARTITIONS
+     dep_tristate '  CFI Flash device mapped on AMD SC520 CDP' CONFIG_MTD_SC520CDP $CONFIG_MTD_CFI
+     dep_tristate '  CFI Flash device mapped on AMD NetSc520'  CONFIG_MTD_NETSC520 $CONFIG_MTD_CFI $CONFIG_MTD_PARTITIONS
+@@ -24783,6 +24784,9 @@
+ -      bool '  Pb[15]00 boot flash device' CONFIG_MTD_PB1500_BOOT 
+ -      bool '  Pb[15]00 user flash device (2nd 32MiB bank)' CONFIG_MTD_PB1500_USER
+ -   fi
++-   if [ "$CONFIG_MIPS_MIRAGE" = "y" ]; then
++-      tristate '  Mirage MTD support' CONFIG_MTD_MIRAGE
++-   fi
+ +if [ "$CONFIG_PPC32" = "y" ]; then
+ +  if [ "$CONFIG_6xx" = "y" -a "$CONFIG_8260" = "y" ]; then
+ +    dep_tristate '  Flash device on SBC8240' CONFIG_MTD_SBC8240 $CONFIG_MTD_JEDECPROBE
+@@ -24819,10 +24823,11 @@
+ +
+ +if [ "$CONFIG_MIPS" = "y" -o "$CONFIG_MIPS64" = "y" ]; then
+ +   dep_tristate '  AMD Alchemy Pb1xxx/Db1xxx/RDK MTD support' CONFIG_MTD_ALCHEMY $CONFIG_SOC_AU1X00
+++
+     dep_tristate '  Flash chip mapping on ITE QED-4N-S01B, Globespan IVR or custom board' CONFIG_MTD_CSTM_MIPS_IXX $CONFIG_MTD_CFI $CONFIG_MTD_JEDEC $CONFIG_MTD_PARTITIONS 
+     if [ "$CONFIG_MTD_CSTM_MIPS_IXX" = "y" -o "$CONFIG_MTD_CSTM_MIPS_IXX" = "m" ]; then
+        hex '    Physical start address of flash mapping' CONFIG_MTD_CSTM_MIPS_IXX_START 0x8000000
+-@@ -63,7 +82,7 @@
++@@ -66,7 +83,7 @@
+        int '    Bus width in octets' CONFIG_MTD_CSTM_MIPS_IXX_BUSWIDTH 2
+     fi
+     dep_tristate '  Momenco Ocelot boot flash device' CONFIG_MTD_OCELOT $CONFIG_MOMENCO_OCELOT
+@@ -30056,7 +30061,7 @@
+ diff -Naur linux-2.4.33.3/drivers/mtd/maps/Makefile linux-2.4.33.3-mtd/drivers/mtd/maps/Makefile
+ --- linux-2.4.33.3/drivers/mtd/maps/Makefile	2006-08-31 19:03:20.000000000 +0200
+ +++ linux-2.4.33.3-mtd/drivers/mtd/maps/Makefile	2006-09-12 00:35:30.000000000 +0200
+-@@ -1,65 +1,11 @@
++@@ -1,66 +1,11 @@
+  #
+ -# linux/drivers/maps/Makefile
+ +# linux/drivers/maps/Makefile.24
+@@ -30123,6 +30128,7 @@
+ -obj-$(CONFIG_MTD_UCLINUX)	+= uclinux.o
+ -obj-$(CONFIG_MTD_NETtel)	+= nettel.o
+ -obj-$(CONFIG_MTD_SCB2_FLASH)	+= scb2_flash.o
++-obj-$(CONFIG_MTD_MIRAGE)	+= mirage-flash.o
+ +export-objs	:= map_funcs.o
+  
+ +include Makefile.common
+@@ -54826,7 +54832,7 @@
+ -	part:		part_table,     /* hd struct */
+ -	sizes:		nftl_sizes,     /* block sizes */
+ -};
+--
++ 
+ -#if LINUX_VERSION_CODE < KERNEL_VERSION(2,4,14)
+ -#define BLK_INC_USE_COUNT MOD_INC_USE_COUNT
+ -#define BLK_DEC_USE_COUNT MOD_DEC_USE_COUNT
+@@ -54836,7 +54842,7 @@
+ -#endif
+ -
+ -struct NFTLrecord *NFTLs[MAX_NFTLS];
+- 
++-
+ -static void NFTL_setup(struct mtd_info *mtd)
+ +static void nftl_add_mtd(struct mtd_blktrans_ops *tr, struct mtd_info *mtd)
+  {
+@@ -55207,7 +55213,7 @@
+  				       block / (nftl->EraseSize / 512));
+  				return 1;
+  			}
+-@@ -782,265 +707,22 @@
++@@ -782,266 +707,22 @@
+  	} else {
+  		loff_t ptr = (lastgoodEUN * nftl->EraseSize) + blockofs;
+  		size_t retlen;
+@@ -55220,12 +55226,10 @@
+  }
+  
+ -static int nftl_ioctl(struct inode * inode, struct file * file, unsigned int cmd, unsigned long arg)
+-+static int nftl_getgeo(struct mtd_blktrans_dev *dev,  struct hd_geometry *geo)
+- {
++-{
+ -	struct NFTLrecord *nftl;
+ -	int p;
+-+	struct NFTLrecord *nftl = (void *)dev;
+- 
++-
+ -	nftl = NFTLs[MINOR(inode->i_rdev) >> NFTL_PARTN_BITS];
+ -
+ -	if (!nftl) return -EINVAL;
+@@ -55234,6 +55238,7 @@
+ -	case HDIO_GETGEO: {
+ -		struct hd_geometry g;
+ -
++-		memset(&g, 0, sizeof(g));
+ -		g.heads = nftl->heads;
+ -		g.sectors = nftl->sectors;
+ -		g.cylinders = nftl->cylinders;
+@@ -55435,11 +55440,13 @@
+ -}
+ -
+ -static int nftl_release(struct inode *inode, struct file *fp)
+--{
+++static int nftl_getgeo(struct mtd_blktrans_dev *dev,  struct hd_geometry *geo)
++ {
+ -	struct NFTLrecord *thisNFTL;
+ -
+ -	thisNFTL = NFTLs[MINOR(inode->i_rdev) / 16];
+--
+++	struct NFTLrecord *nftl = (void *)dev;
++ 
+ -	DEBUG(MTD_DEBUG_LEVEL2, "NFTL_release\n");
+ -
+ -	if (thisNFTL->mtd->sync)

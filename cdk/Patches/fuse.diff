@@ -1,0 +1,30 @@
+--- fuse-2.5.3.orig/kernel/Makefile.in	2006-02-02 18:04:52.000000000 +0100
++++ fuse-2.5.3/kernel/Makefile.in	2007-01-28 15:37:54.000000000 +0100
+@@ -31,11 +31,11 @@
+ install-y: all
+ 	$(mkdir_p) $(DESTDIR)$(fusemoduledir)
+ 	$(INSTALL) -m 644 $(fusemodule) $(DESTDIR)$(fusemoduledir)/$(fusemodule)
+-	-/sbin/depmod -a
++#	-/sbin/depmod -a
+ 
+ uninstall-y:
+ 	rm -f $(DESTDIR)$(fusemoduledir)/$(fusemodule)
+-	-/sbin/depmod -a
++#	-/sbin/depmod -a
+ 
+ clean:
+ 	-rm -f $(fusemodule) *.o .*.cmd *.mod.c *.ko *.s */*.o
+@@ -54,10 +54,10 @@
+ 
+ ifeq ($(majver), 2.4)
+ 
+-CC = gcc
+-LD = ld
++CC = @CC@
++LD = @host_alias@-ld
+ CFLAGS = -O2 -Wall -Wstrict-prototypes -fno-strict-aliasing -pipe @KERNELCFLAGS@
+-CPPFLAGS = -I@kernelsrc@/include -I. -D__KERNEL__ -DMODULE -D_LOOSE_KERNEL_NAMES -DFUSE_VERSION=\"$(VERSION)\" @KERNELCPPFLAGS@
++CPPFLAGS = -I@kernelsrc@/include -I. -I@kernelsrc@/arch/ppc -D__KERNEL__ -DMODULE -D_LOOSE_KERNEL_NAMES -DFUSE_VERSION=\"$(VERSION)\" @KERNELCPPFLAGS@
+ 
+ fuse_objs = dev.o dir.o file.o inode.o compat/parser.o
+ 

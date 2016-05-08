@@ -1,0 +1,122 @@
+#
+# $Revision: 1.31 $
+#
+# This document describes the steps needed to set up a cross compile
+# environment (CDK) for linux on embedded PowerPC using a GNU system.
+#
+# Copyright (c) 2002-2004 Andreas Oberritter <obi@tuxbox.org>
+#
+# Permission is granted to copy, distribute and/or modify this document
+# under the terms of the GNU Free Documentation License, Version 1.2
+# or any later version published by the Free Software Foundation;
+# with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+# A copy of the license is included in cdk/common-licenses/FDL-1.2
+#
+# This document is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+
+------------------------------------------------------------------------------
+I. Prerequistes:
+------------------------------------------------------------------------------
+
+ - cvs
+ - autoconf >= 2.57a
+ - automake >= 1.8
+ - libtool >= 1.4.2
+ - gettext >= 0.12.1
+ - make >= 3.79
+ - tar
+ - bunzip2 (bzip2)
+ - gunzip (gzip)
+ - patch
+ - infocmp (ncurses-bin / ncurses-devel)
+ - gcc 2.95 or >= 3.0
+ - g++ 2.95 or >= 3.0
+ - flex
+ - bison
+ - pkg-config
+ - wget
+ - libpng2 or libpng3 (DirectFB)
+ - zlib (development headers)
+
+ Ensure that you have these programs installed and accessible on your system.
+ Compare version numbers where applicable. Don't report any bugs before having
+ verified that you are using the correct versions.
+
+------------------------------------------------------------------------------
+II. Getting the sources:
+------------------------------------------------------------------------------
+
+ - It is recommended to add a new user to your system, to prevent data loss.
+   If you do not have sufficient rights to do so, remember that everything
+   you do happens at your own risk. Do never build as root. Don't even think
+   of it! It will make your system go nuts and eat your cat!
+
+ - Login as the desired user.
+
+ - Enter the following commands:
+
+   you@pc:~$ mkdir $HOME/tuxbox-cvs
+   you@pc:~$ cd $HOME/tuxbox-cvs
+   you@pc:~/tuxbox-cvs$ export CVS_RSH=ssh
+   you@pc:~/tuxbox-cvs$ cvs -danoncvs@cvs.tuxbox.org:/cvs/tuxbox -z3 co -P .
+   anoncvs@cvs.tuxbox.org's password: anoncvs
+
+   Note: There is a dot at the end of the cvs command line
+	 and, yes, it actually belongs to the command.
+
+ - Remember that you do not ever have to fetch the complete cvs tree again,
+   if you don't delete it. You can update the tree by typing:
+
+   you@pc:~/tuxbox-cvs$ export CVS_RSH=ssh
+   you@pc:~/tuxbox-cvs$ cvs -danoncvs@cvs.tuxbox.org:/cvs/tuxbox -z3 up -dP
+   anoncvs@cvs.tuxbox.org's password: anoncvs
+
+   Please do that, even if you have a broadband internet connection, to
+   reduce our traffic costs. Thank you!
+
+------------------------------------------------------------------------------
+III. Generating the Makefiles:
+------------------------------------------------------------------------------
+
+ - Enter the following commands:
+
+   you@pc:~/tuxbox-cvs$ cd cdk
+   you@pc:~/tuxbox-cvs/cdk$ ./autogen.sh
+   you@pc:~/tuxbox-cvs/cdk$ ./configure --enable-maintainer-mode \
+                                        --prefix=$HOME/dbox2 \
+                                        --with-cvsdir=$HOME/tuxbox-cvs
+
+------------------------------------------------------------------------------
+IV. Building the CDK:
+------------------------------------------------------------------------------
+
+ - Enter the following command (see Makefile.am for other make targets):
+
+   you@pc:~/tuxbox-cvs/cdk$ make all
+
+ - This step should always complete without errors. If it does not then please
+   report at https://tuxbox.org/forum/
+
+ - If you want to try building additional programs which are usually not
+   needed for using tuxbox applications, then enter
+
+   you@pc:~/tuxbox-cvs/cdk$ make extra
+
+ - These programs are hardly maintained, so they might sometimes fail to
+   build. If you encounter errors, then please report them to the address
+   mentioned above, but do not expect to get the problems fixed quickly if you
+   do not provide a solution to the problem.
+
+ - Note that you can skip single make targets by typing
+
+   you@pc:~/tuxbox-cvs/cdk$ touch .deps/package_name
+
+for more informations about options, packages and installation instructions, take a look at 
+tuxbox-wiki:
+	http://wiki.dbox2-tuning.net/Newmake
+	http://wiki.dbox2-tuning.net/Newmake-EN
+	http://wiki.dbox2-tuning.net/Development
+

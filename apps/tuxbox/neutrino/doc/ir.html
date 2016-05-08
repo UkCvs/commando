@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Neutrino LIRC Unterst&uuml;tzung</title>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-15">
+</head>
+<body>
+<div align="center">
+<h1><b>Neutrino LIRC Unterst&uuml;tzung</b></h1>
+</div>
+
+<br>
+<B>Setup</B><BR>
+<UL>
+<LI>Von <a href="http://www.lirc.org/remotes/" target="_blank">http://www.lirc.org/remotes/</a>
+eine zur Fernbedienung passende Datei ziehen und diese als 
+/var/tuxbox/config/lirc/lircd.conf in die Box packen.<br>
+Sollte keine zur Fernbedienung passende Datei dabei sein, kann man sie auch 
+selber erstellen, in dem man die Codes aufnimmt. Siehe
+<a href="http://www.lirc.org/" target="_blank">http://www.lirc.org/</a></LI>
+<LI>Die Dateien aus record.lirc, stop.lirc, sleep.lirc, sbon.lirc, sboff.lirc, 
+volplus.lirc, volminus.lirc, mute.lirc in /var/tuxbox/config/lirc anlegen 
+(bzw. nur die Dateien f&uuml;r die gew&uuml;schten Funktionalit&auml;ten).
+<a href="#syntax">Syntax</a> und <a href="#bedeutung">Bedeutung</a>
+siehe unten.</LI>
+<LI>Box neu starten</LI>
+</UL>
+Bei Fragen oder Problemen: <a HREF="https://tuxbox.org/forum/viewforum.php?f=2" target="_blank">Neutrino Forum</a> oder im #dbox2 Channel<br>
+<p>
+<B><a name="syntax"></a>Syntax der Lirc-Kommando Dateien:</B><BR>
+Es können in einer Kommando-Datei beliebig viele Befehle der Form<BR>
+<PRE>&lt;device&gt; &lt;command&gt; (&lt;duration&gt;)
+  oder
+wait &lt;duration&gt;</PRE>
+vorkommen.<p>
+<B>&lt;device&gt;</B> = Name der Fernbedienung in der lirc.conf Datei<BR>
+<B>&lt;command&gt;</B> = Name der Taste einer Fernbedienung in lirc.conf<BR>
+<B>&lt;duration&gt;</B> = Dauer, die das Signal gesendet werden soll, in ms (optional). 
+Wenn nicht angegeben wird das Signal genau ein mal gesendet. 
+Werte zwischen 50ms und 500ms sind ein guter Anfang<BR>
+Das <b>wait</b> Kommando erzeugt eine Pause der angegeben Zeit in ms.<BR>
+<P>
+<a name="bedeutung"></a>Folgende Neutrino-Aktionen k&ouml;nnen mit IR-Signalen
+versehen werden:<br>
+(ist die entsprechende Kommando-Datei vorhanden, werden die Kommandos gesendet,
+existiert die Datei nicht, passiert nichts.)
+<P>
+<B>VCR-Aufnahme</B><br>
+Beim Start einer VCR-Aufnahme werden die Codes aus der Datei record.lirc
+gesendet. Beim Stoppen der Aufnahme werden die Code aus der Datei stop.lirc
+gesendet.<br>
+Bsp. /var/tuxbox/config/lirc/record.lirc:
+<PRE>
+vcr power 500
+wait 500
+vcr av 500
+vcr record 500
+</PRE>
+Bsp. /var/tuxbox/config/lirc/stop.lirc:
+<PRE>
+vcr stop 500
+vcr power 500
+</PRE>
+<P>
+<B>Sleeptimer:</B><BR>
+Wenn der Sleeptimer die Box in den Standby bzw. Deep-Standby schickt,
+werden die Lirc-Kommandos in der Datei <B>sleep.lirc</B> ausgeführt.
+Dies dient zur Abschaltung des TVs / Verstärkers/...<br>
+Bsp. /var/tuxbox/config/lirc/sleep.lirc:
+<PRE>
+tv power 500
+amplifier power 500
+</PRE>
+<B>Standby on/off:</B><BR>
+Wir die Box in den standby geschickt (egal, ob per Fernbedienung, timer,
+web,...) so wird die Kommando-Datei <b>sbon.lirc</b> ausgeführt. Wacht sie
+aus dem Standby auf wird die Kommando-Datei <b>sboff.lirc</b> ausgeführt.<BR>
+Achtung , bei Deep-Standby funktioniert nur sbon.lirc !<BR>
+Bsp. /var/tuxbox/config/lirc/sbon.lirc:
+<PRE>
+tv power 500
+amplifier power 500
+</PRE>
+Bsp. /var/tuxbox/config/lirc/sboff.lirc:
+<PRE>
+tv 1 250
+tv av 250
+amplifier power 500
+</PRE>
+<B>Volume +/- (Mute):</B><BR>
+Bei erhöhen der Lautstärke wird die Kommando-Datei <b>volplus.lirc</b> bei
+erniedrigen der Lautstärke <b>volminus</b> ausgeführt. Dies ist für Leute
+interessant, die Audio nicht über den Fernseher, sondern digital über einen
+Verstärker abspielen. Hier kann jetzt auch über die DBox-Fernbedienung die
+Lautstärke verändert werden. <br>
+Dabei ist zu beachten, dass die Dauer, die die Kommados gesendet werden,
+relativ kurz sein sollte, da sonst der Neutrino-Programmablauf sehr
+unflüssig wirkt. Ich arbeite hier mit Werten zwischen 50 und 100 ms.<BR>
+
+Ergänzung: In den neueren Images muss die Volume-Steuerung in den Settings
+ auf lirc gestellt werden. Zusätzlich gibt es noch die Datei mute.lirc
+Die Lautstärke die über Scart an den TV geht, entspricht der zuletzt
+eingestellten, bevor in den Settings die Volume-Steuerung auf lirc
+geschaltet wurde.
+
+Bsp. /var/tuxbox/config/lirc/volplus.lirc:
+<PRE>
+amplifier vol_inc 60
+</PRE>
+Bsp. /var/tuxbox/config/lirc/volminus.lirc:
+<PRE>
+amplifier vol_dec 60
+</PRE>
+
+</body>
+</html>

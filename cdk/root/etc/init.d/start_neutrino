@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# $Id: start_neutrino,v 1.40 2012/03/04 08:38:43 rhabarber1848 Exp $
+
+NTPD_CONF=/var/etc/ntpd.conf
+if [ -x /sbin/ntpd -a -e $NTPD_CONF ] && grep -q ^server $NTPD_CONF; then
+	SECTIONSD="-tc"
+fi
+
+sectionsd $SECTIONSD
+timerd
+camd2
+ZAPIT=""
+if [ ! -e /var/etc/.no_pmt_update ] ; then
+	ZAPIT=-u
+fi
+zapit $ZAPIT
+
+# start nhttpd a bit later, for faster startup
+{ sleep 20; nhttpd; } &
+
+until neutrino -f -u ; do
+	echo "Neutrino exited with nonzero exit status, restarting..."
+	pidof sectionsd	>/dev/null && sectionsdcontrol --nopause || sectionsd $SECTIONSD
+	pidof timerd	>/dev/null || timerd
+	pidof camd2	>/dev/null || camd2
+	pidof zapit	>/dev/null && pzapit -lsb || zapit $ZAPIT
+	pidof nhttpd	>/dev/null || nhttpd
+done
+
+pzapit -kill
+killall nhttpd
+
+for i in 9 8 7 6 5 4 3 2 1; do
+	DONE=true
+	for prog in timerd zapit nhttpd; do
+		if pidof $prog > /dev/null; then
+			echo "Waiting for $prog (max. $i seconds)"
+			DONE=false
+			break;
+		fi
+	done
+	$DONE && break
+	sleep 1
+done
+
+if [ -e /tmp/.reboot ] ; then
+	reboot
+else
+	halt
+fi

@@ -1,0 +1,118 @@
+#!/bin/sh
+####################################################################################
+####  			Aktuelle Wetterinfos und Wettervorhersage
+####				  Konfigurations-Script	
+####                    Bugreport und Anregungen im Board:
+####       http://www.dbox2-tuning.net/forum/viewforum.php?f=27&start=0
+####      Das New-Tuxwetter-Team: SnowHead, Worschter, Seddi, Sanguiniker
+####################################################################################
+
+# DECLARE USER VARS ****************************************
+TUXWCFG="/var/tuxbox/config/tuxwetter/tuxwetter.mcfg"
+MENU="/var/tuxbox/config/flexinc/plconfig_tuxwetter.mnu"
+
+pth="/bin/input"
+if [ ! -e $pth ]; then
+  pth="/var/bin/input"
+  if [ ! -e $pth ]; then
+    /bin/wget -Y off -O /dev/null http://localhost/control/message?nmsg=Eingabeprogramm%20input%20ist%20nicht%20installiert.%0APlugin%20kann%20nicht%20ausgef%C3%BChrt%20werden.
+    exit 1
+  fi
+fi
+
+#***********************************************************
+# SELECT BY PARAM ******************************************
+case "$1" in
+# TUXWETTER ************************************************
+tuxwet)
+  case "$2" in
+  sscreen)
+    if grep -q "^SplashScreen=0" $TUXWCFG; then
+      echo "aktiviere den Splashscreen fuer Tuxwetter"
+      sed -e "s/^SplashScreen=0/SplashScreen=1/g" $TUXWCFG > /tmp/tuxwetter.conf
+    else
+      echo "deaktiviere den Splashscreen fuer Tuxwetter"
+      sed -e "s/^SplashScreen=1/SplashScreen=0/g" $TUXWCFG > /tmp/tuxwetter.conf
+    fi
+  ;;
+
+  sicons)
+    if grep -q "^ShowIcons=0" $TUXWCFG; then
+      echo "aktiviere Wettersymbole fuer Tuxwetter"
+      sed -e "s/^ShowIcons=0/ShowIcons=1/g" $TUXWCFG > /tmp/tuxwetter.conf
+    else
+      echo "deaktiviere Wettersymbole fuer Tuxwetter"
+      sed -e "s/^ShowIcons=1/ShowIcons=0/g" $TUXWCFG > /tmp/tuxwetter.conf
+    fi
+  ;;
+
+  metric)
+    if grep -q "^Metric=0" $TUXWCFG; then
+      echo "aktiviere metrische Anzeige fuer Tuxwetter"
+      sed -e "s/^Metric=0/Metric=1/g" $TUXWCFG > /tmp/tuxwetter.conf
+    else
+      echo "deaktiviere metrische Anzeige fuer Tuxwetter"
+      sed -e "s/^Metric=1/Metric=0/g" $TUXWCFG > /tmp/tuxwetter.conf
+    fi
+  ;;
+
+  iconnect)
+    echo "aendere Interneteinstellungen"
+    if grep -q "^InetConnection=.*" $TUXWCFG; then
+      sed -e "s/^InetConnection=.*/InetConnection=$3/g"  $TUXWCFG > /tmp/tuxwetter.conf
+    fi
+  ;;
+
+  timeout)
+    echo "aendere Timeout-Zeit"
+    def=`grep ^ConnectTimeout= $TUXWCFG`
+    if [ `expr length $def` -gt 0 ]; then
+      def=`expr substr $def 16 3`
+    else
+      def=5
+    fi
+    res=`$pth t="Timeout-Zeit in Sekunden(1-999)" l="###" d=$def`
+    if [  $res -lt 1 ]; then 
+      exit 1
+    fi
+  
+    if [ -z $res ]; then
+      exit 1
+    fi
+    sed -e "s/ConnectTimeout=.*/ConnectTimeout=$res/g" $TUXWCFG > /tmp/tuxwetter.conf
+    sed -i -e s/"Timeout-Zeit[^,]*"/"Timeout-Zeit~t~t~t~t$res s"/ $MENU
+  ;; 
+
+  apikey)
+    echo "aendere API-Key"
+    def=`grep ^API-Key= $TUXWCFG`
+    if [ `expr length $def` -gt 0 ]; then
+      def=`expr substr $def 9 22`
+    else
+      def="8fe33dfb41145603102808"
+    fi
+    res=`$pth t="API-Key bei worldweatheronline.com" l="^^^^^^^^^^^^^^^^^^^^^^" d=$def k=1`
+    if [  $res -lt 1 ]; then 
+      exit 1
+    fi
+  
+    if [ -z $res ]; then
+      exit 1
+    fi
+    sed -e "s/API-Key=.*/API-Key=$res/g" $TUXWCFG > /tmp/tuxwetter.conf
+    sed -i -e s/"API-Key[^,]*"/"API-Key~t$res"/ $MENU
+  ;; 
+
+  esac
+  if [ -e /tmp/tuxwetter.conf ]; then
+    mv /tmp/tuxwetter.conf $TUXWCFG
+    rm -f /tmp/tuxwetter.conf
+  fi
+;;
+
+# DEFAULT **************************************************
+*)
+  exit 1
+;;
+
+esac

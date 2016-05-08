@@ -1,0 +1,34 @@
+--- samba-2.0.10.orig/source/include/smb.h	2001-06-23 10:52:20.000000000 +0200
++++ samba-2.0.10/source/include/smb.h	2006-03-06 22:21:12.000000000 +0100
+@@ -115,6 +115,22 @@
+  *               Usage:
+  *                 DEBUGADD( 2, ("Some additional text.\n") );
+  */
++ 
++#if 1
++
++#define DEBUGLVL( level ) \
++  ( (-1 == (level)) \
++   && dbghdr( level, FILE_MACRO, FUNCTION_MACRO, (__LINE__) ) )
++
++#define DEBUG( level, body ) \
++  (void)( (-1 == (level)) \
++       && (dbghdr( level, FILE_MACRO, FUNCTION_MACRO, (__LINE__) )) \
++       && (dbgtext body) )
++
++#define DEBUGADD( level, body )	\
++  (void)( (-1 == (level)) && (dbgtext body) )
++
++#else
+ #define DEBUGLVL( level ) \
+   ( (DEBUGLEVEL >= (level)) \
+    && dbghdr( level, FILE_MACRO, FUNCTION_MACRO, (__LINE__) ) )
+@@ -140,7 +156,7 @@
+   (void)( (DEBUGLEVEL >= (level)) && (dbgtext body) )
+ 
+ #endif
+-
++#endif
+ /* End Debugging code section.
+  * -------------------------------------------------------------------------- **
+  */

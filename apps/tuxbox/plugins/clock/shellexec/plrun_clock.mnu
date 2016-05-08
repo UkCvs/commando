@@ -1,0 +1,2 @@
+SHELLRESOFF=Bildschirmuhr starten,/bin/sclock,pidof clock > /dev/null
+SHELLRESON=Bildschirmuhr beenden,/bin/sclock,pidof clock > /dev/null

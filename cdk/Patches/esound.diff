@@ -1,0 +1,658 @@
+diff -uNr esound-0.2.41.org/esd.h esound-0.2.41/esd.h
+--- esound-0.2.41.org/esd.h	2008-11-18 21:35:19.000000000 +0100
++++ esound-0.2.41/esd.h	2009-03-24 19:10:02.000000000 +0100
+@@ -1,6 +1,5 @@
+ #ifndef ESD_H
+ #define ESD_H
+-#include <audiofile.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -305,14 +304,6 @@
+ 
+ 
+ /*******************************************************************/
+-/* esdfile.c - audiofile wrappers for sane handling of files */
+-
+-int esd_send_file( int esd, AFfilehandle au_file, int frame_length );
+-int esd_play_file( const char *name_prefix, const char *filename, int fallback );
+-int esd_file_cache( int esd, const char *name_prefix, const char *filename );
+-
+-
+-/*******************************************************************/
+ /* audio.c - abstract the sound hardware for cross platform usage */
+ extern esd_format_t esd_audio_format;
+ extern int esd_audio_rate;
+diff -uNr esound-0.2.41.org/configure esound-0.2.41/configure
+--- esound-0.2.41.org/configure	2008-11-18 21:54:39.000000000 +0100
++++ esound-0.2.41/configure	2012-03-10 14:30:52.000000000 +0100
+@@ -23060,183 +23060,6 @@
+   enable_arts=no
+ fi
+ 
+-
+-dsp_ok=no DL_LIB=
+-
+-{ echo "$as_me:$LINENO: checking if your platform supports esddsp" >&5
+-echo $ECHO_N "checking if your platform supports esddsp... $ECHO_C" >&6; }
+-case "$host_os" in
+-  linux* | freebsd* | kfreebsd*-gnu | bsdi4* )
+-    dsp_ok=yes
+-    ;;
+-esac
+-{ echo "$as_me:$LINENO: result: $dsp_ok" >&5
+-echo "${ECHO_T}$dsp_ok" >&6; }
+-
+-if test "x$dsp_ok" = xyes; then
+-   { echo "$as_me:$LINENO: checking for dlopen" >&5
+-echo $ECHO_N "checking for dlopen... $ECHO_C" >&6; }
+-if test "${ac_cv_func_dlopen+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  cat >conftest.$ac_ext <<_ACEOF
+-/* confdefs.h.  */
+-_ACEOF
+-cat confdefs.h >>conftest.$ac_ext
+-cat >>conftest.$ac_ext <<_ACEOF
+-/* end confdefs.h.  */
+-/* Define dlopen to an innocuous variant, in case <limits.h> declares dlopen.
+-   For example, HP-UX 11i <limits.h> declares gettimeofday.  */
+-#define dlopen innocuous_dlopen
+-
+-/* System header to define __stub macros and hopefully few prototypes,
+-    which can conflict with char dlopen (); below.
+-    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+-    <limits.h> exists even on freestanding compilers.  */
+-
+-#ifdef __STDC__
+-# include <limits.h>
+-#else
+-# include <assert.h>
+-#endif
+-
+-#undef dlopen
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char dlopen ();
+-/* The GNU C library defines this for functions which it implements
+-    to always fail with ENOSYS.  Some functions are actually named
+-    something starting with __ and the normal name is an alias.  */
+-#if defined __stub_dlopen || defined __stub___dlopen
+-choke me
+-#endif
+-
+-int
+-main ()
+-{
+-return dlopen ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-rm -f conftest.$ac_objext conftest$ac_exeext
+-if { (ac_try="$ac_link"
+-case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+-  (eval "$ac_link") 2>conftest.er1
+-  ac_status=$?
+-  grep -v '^ *+' conftest.er1 >conftest.err
+-  rm -f conftest.er1
+-  cat conftest.err >&5
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); } && {
+-	 test -z "$ac_c_werror_flag" ||
+-	 test ! -s conftest.err
+-       } && test -s conftest$ac_exeext &&
+-       $as_test_x conftest$ac_exeext; then
+-  ac_cv_func_dlopen=yes
+-else
+-  echo "$as_me: failed program was:" >&5
+-sed 's/^/| /' conftest.$ac_ext >&5
+-
+-	ac_cv_func_dlopen=no
+-fi
+-
+-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+-      conftest$ac_exeext conftest.$ac_ext
+-fi
+-{ echo "$as_me:$LINENO: result: $ac_cv_func_dlopen" >&5
+-echo "${ECHO_T}$ac_cv_func_dlopen" >&6; }
+-if test $ac_cv_func_dlopen = yes; then
+-  DL_LIB=
+-else
+-  { echo "$as_me:$LINENO: checking for dlopen in -ldl" >&5
+-echo $ECHO_N "checking for dlopen in -ldl... $ECHO_C" >&6; }
+-if test "${ac_cv_lib_dl_dlopen+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ldl  $LIBS"
+-cat >conftest.$ac_ext <<_ACEOF
+-/* confdefs.h.  */
+-_ACEOF
+-cat confdefs.h >>conftest.$ac_ext
+-cat >>conftest.$ac_ext <<_ACEOF
+-/* end confdefs.h.  */
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char dlopen ();
+-int
+-main ()
+-{
+-return dlopen ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-rm -f conftest.$ac_objext conftest$ac_exeext
+-if { (ac_try="$ac_link"
+-case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+-  (eval "$ac_link") 2>conftest.er1
+-  ac_status=$?
+-  grep -v '^ *+' conftest.er1 >conftest.err
+-  rm -f conftest.er1
+-  cat conftest.err >&5
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); } && {
+-	 test -z "$ac_c_werror_flag" ||
+-	 test ! -s conftest.err
+-       } && test -s conftest$ac_exeext &&
+-       $as_test_x conftest$ac_exeext; then
+-  ac_cv_lib_dl_dlopen=yes
+-else
+-  echo "$as_me: failed program was:" >&5
+-sed 's/^/| /' conftest.$ac_ext >&5
+-
+-	ac_cv_lib_dl_dlopen=no
+-fi
+-
+-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+-      conftest$ac_exeext conftest.$ac_ext
+-LIBS=$ac_check_lib_save_LIBS
+-fi
+-{ echo "$as_me:$LINENO: result: $ac_cv_lib_dl_dlopen" >&5
+-echo "${ECHO_T}$ac_cv_lib_dl_dlopen" >&6; }
+-if test $ac_cv_lib_dl_dlopen = yes; then
+-  DL_LIB=-ldl
+-fi
+-
+-fi
+-
+-   ESDDSP=esddsp
+-   LIBESDDSP=libesddsp.la
+-fi
+- if test "x$dsp_ok" = xyes; then
+-  BUILD_ESDDSP_TRUE=
+-  BUILD_ESDDSP_FALSE='#'
+-else
+-  BUILD_ESDDSP_TRUE='#'
+-  BUILD_ESDDSP_FALSE=
+-fi
+-
+-
+ if test "x$enable_local_sound" = "xyes"; then
+    found_sound=no
+ 
+@@ -25296,253 +25119,6 @@
+   ESD_PC_DIR=$with_esd_dir
+ fi
+ 
+-
+-
+-
+-build_esdplay=false
+-
+-
+-
+-if test "x$ac_cv_env_PKG_CONFIG_set" != "xset"; then
+-	if test -n "$ac_tool_prefix"; then
+-  # Extract the first word of "${ac_tool_prefix}pkg-config", so it can be a program name with args.
+-set dummy ${ac_tool_prefix}pkg-config; ac_word=$2
+-{ echo "$as_me:$LINENO: checking for $ac_word" >&5
+-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6; }
+-if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  case $PKG_CONFIG in
+-  [\\/]* | ?:[\\/]*)
+-  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+-  ;;
+-  *)
+-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-  for ac_exec_ext in '' $ac_executable_extensions; do
+-  if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
+-    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-done
+-IFS=$as_save_IFS
+-
+-  ;;
+-esac
+-fi
+-PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+-if test -n "$PKG_CONFIG"; then
+-  { echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+-echo "${ECHO_T}$PKG_CONFIG" >&6; }
+-else
+-  { echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6; }
+-fi
+-
+-
+-fi
+-if test -z "$ac_cv_path_PKG_CONFIG"; then
+-  ac_pt_PKG_CONFIG=$PKG_CONFIG
+-  # Extract the first word of "pkg-config", so it can be a program name with args.
+-set dummy pkg-config; ac_word=$2
+-{ echo "$as_me:$LINENO: checking for $ac_word" >&5
+-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6; }
+-if test "${ac_cv_path_ac_pt_PKG_CONFIG+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  case $ac_pt_PKG_CONFIG in
+-  [\\/]* | ?:[\\/]*)
+-  ac_cv_path_ac_pt_PKG_CONFIG="$ac_pt_PKG_CONFIG" # Let the user override the test with a path.
+-  ;;
+-  *)
+-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-  for ac_exec_ext in '' $ac_executable_extensions; do
+-  if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
+-    ac_cv_path_ac_pt_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-done
+-IFS=$as_save_IFS
+-
+-  ;;
+-esac
+-fi
+-ac_pt_PKG_CONFIG=$ac_cv_path_ac_pt_PKG_CONFIG
+-if test -n "$ac_pt_PKG_CONFIG"; then
+-  { echo "$as_me:$LINENO: result: $ac_pt_PKG_CONFIG" >&5
+-echo "${ECHO_T}$ac_pt_PKG_CONFIG" >&6; }
+-else
+-  { echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6; }
+-fi
+-
+-  if test "x$ac_pt_PKG_CONFIG" = x; then
+-    PKG_CONFIG=""
+-  else
+-    case $cross_compiling:$ac_tool_warned in
+-yes:)
+-{ echo "$as_me:$LINENO: WARNING: In the future, Autoconf will not detect cross-tools
+-whose name does not start with the host triplet.  If you think this
+-configuration is useful to you, please write to autoconf@gnu.org." >&5
+-echo "$as_me: WARNING: In the future, Autoconf will not detect cross-tools
+-whose name does not start with the host triplet.  If you think this
+-configuration is useful to you, please write to autoconf@gnu.org." >&2;}
+-ac_tool_warned=yes ;;
+-esac
+-    PKG_CONFIG=$ac_pt_PKG_CONFIG
+-  fi
+-else
+-  PKG_CONFIG="$ac_cv_path_PKG_CONFIG"
+-fi
+-
+-fi
+-if test -n "$PKG_CONFIG"; then
+-	_pkg_min_version=0.9.0
+-	{ echo "$as_me:$LINENO: checking pkg-config is at least version $_pkg_min_version" >&5
+-echo $ECHO_N "checking pkg-config is at least version $_pkg_min_version... $ECHO_C" >&6; }
+-	if $PKG_CONFIG --atleast-pkgconfig-version $_pkg_min_version; then
+-		{ echo "$as_me:$LINENO: result: yes" >&5
+-echo "${ECHO_T}yes" >&6; }
+-	else
+-		{ echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6; }
+-		PKG_CONFIG=""
+-	fi
+-
+-fi
+-
+-pkg_failed=no
+-{ echo "$as_me:$LINENO: checking for AUDIOFILE" >&5
+-echo $ECHO_N "checking for AUDIOFILE... $ECHO_C" >&6; }
+-
+-if test -n "$AUDIOFILE_CFLAGS"; then
+-    pkg_cv_AUDIOFILE_CFLAGS="$AUDIOFILE_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"audiofile >= 0.2.3\"") >&5
+-  ($PKG_CONFIG --exists --print-errors "audiofile >= 0.2.3") 2>&5
+-  ac_status=$?
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); }; then
+-  pkg_cv_AUDIOFILE_CFLAGS=`$PKG_CONFIG --cflags "audiofile >= 0.2.3" 2>/dev/null`
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$AUDIOFILE_LIBS"; then
+-    pkg_cv_AUDIOFILE_LIBS="$AUDIOFILE_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"audiofile >= 0.2.3\"") >&5
+-  ($PKG_CONFIG --exists --print-errors "audiofile >= 0.2.3") 2>&5
+-  ac_status=$?
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); }; then
+-  pkg_cv_AUDIOFILE_LIBS=`$PKG_CONFIG --libs "audiofile >= 0.2.3" 2>/dev/null`
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        AUDIOFILE_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "audiofile >= 0.2.3" 2>&1`
+-        else
+-	        AUDIOFILE_PKG_ERRORS=`$PKG_CONFIG --print-errors "audiofile >= 0.2.3" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$AUDIOFILE_PKG_ERRORS" >&5
+-
+-	{ { echo "$as_me:$LINENO: error: Package requirements (audiofile >= 0.2.3) were not met:
+-
+-$AUDIOFILE_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+-
+-Alternatively, you may set the environment variables AUDIOFILE_CFLAGS
+-and AUDIOFILE_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-" >&5
+-echo "$as_me: error: Package requirements (audiofile >= 0.2.3) were not met:
+-
+-$AUDIOFILE_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+-
+-Alternatively, you may set the environment variables AUDIOFILE_CFLAGS
+-and AUDIOFILE_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-" >&2;}
+-   { (exit 1); exit 1; }; }
+-elif test $pkg_failed = untried; then
+-	{ { echo "$as_me:$LINENO: error: The pkg-config script could not be found or is too old.  Make sure it
+-is in your PATH or set the PKG_CONFIG environment variable to the full
+-path to pkg-config.
+-
+-Alternatively, you may set the environment variables AUDIOFILE_CFLAGS
+-and AUDIOFILE_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-
+-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+-See \`config.log' for more details." >&5
+-echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
+-is in your PATH or set the PKG_CONFIG environment variable to the full
+-path to pkg-config.
+-
+-Alternatively, you may set the environment variables AUDIOFILE_CFLAGS
+-and AUDIOFILE_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-
+-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+-See \`config.log' for more details." >&2;}
+-   { (exit 1); exit 1; }; }
+-else
+-	AUDIOFILE_CFLAGS=$pkg_cv_AUDIOFILE_CFLAGS
+-	AUDIOFILE_LIBS=$pkg_cv_AUDIOFILE_LIBS
+-        { echo "$as_me:$LINENO: result: yes" >&5
+-echo "${ECHO_T}yes" >&6; }
+-	:
+-fi
+-
+-CFLAGS="$CFLAGS $AUDIOFILE_CFLAGS"
+-LIBS="$LIBS $AUDIOFILE_LIBS"
+-
+-build_esdplay=true
+-
+- if $build_esdplay; then
+-  BUILD_ESDPLAY_TRUE=
+-  BUILD_ESDPLAY_FALSE='#'
+-else
+-  BUILD_ESDPLAY_TRUE='#'
+-  BUILD_ESDPLAY_FALSE=
+-fi
+-
+-
+ echo "---------------------------------------------------------------------"
+ echo "--- Checking for the documentation generation tools.  NOTE: These "
+ echo "--- are NOT required for proper compilation of the esound package."
+@@ -25796,7 +25372,7 @@
+ 
+ 
+ 
+-ac_config_files="$ac_config_files Makefile esd-config esound.spec esound.pc esddsp docs/Makefile docs/esd.1 docs/esdcat.1 docs/esd-config.1 docs/esdctl.1 docs/esddsp.1 docs/esdfilt.1 docs/esdloop.1 docs/esdmon.1 docs/esdplay.1 docs/esdrec.1 docs/esdsample.1"
++ac_config_files="$ac_config_files Makefile esd-config esound.spec esound.pc"
+ 
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure
+@@ -25929,20 +25505,6 @@
+ Usually this means the macro was only invoked conditionally." >&2;}
+    { (exit 1); exit 1; }; }
+ fi
+-if test -z "${BUILD_ESDDSP_TRUE}" && test -z "${BUILD_ESDDSP_FALSE}"; then
+-  { { echo "$as_me:$LINENO: error: conditional \"BUILD_ESDDSP\" was never defined.
+-Usually this means the macro was only invoked conditionally." >&5
+-echo "$as_me: error: conditional \"BUILD_ESDDSP\" was never defined.
+-Usually this means the macro was only invoked conditionally." >&2;}
+-   { (exit 1); exit 1; }; }
+-fi
+-if test -z "${BUILD_ESDPLAY_TRUE}" && test -z "${BUILD_ESDPLAY_FALSE}"; then
+-  { { echo "$as_me:$LINENO: error: conditional \"BUILD_ESDPLAY\" was never defined.
+-Usually this means the macro was only invoked conditionally." >&5
+-echo "$as_me: error: conditional \"BUILD_ESDPLAY\" was never defined.
+-Usually this means the macro was only invoked conditionally." >&2;}
+-   { (exit 1); exit 1; }; }
+-fi
+ if test -z "${HAVE_JW_TRUE}" && test -z "${HAVE_JW_FALSE}"; then
+   { { echo "$as_me:$LINENO: error: conditional \"HAVE_JW\" was never defined.
+ Usually this means the macro was only invoked conditionally." >&5
+@@ -26423,19 +25985,6 @@
+     "esd-config") CONFIG_FILES="$CONFIG_FILES esd-config" ;;
+     "esound.spec") CONFIG_FILES="$CONFIG_FILES esound.spec" ;;
+     "esound.pc") CONFIG_FILES="$CONFIG_FILES esound.pc" ;;
+-    "esddsp") CONFIG_FILES="$CONFIG_FILES esddsp" ;;
+-    "docs/Makefile") CONFIG_FILES="$CONFIG_FILES docs/Makefile" ;;
+-    "docs/esd.1") CONFIG_FILES="$CONFIG_FILES docs/esd.1" ;;
+-    "docs/esdcat.1") CONFIG_FILES="$CONFIG_FILES docs/esdcat.1" ;;
+-    "docs/esd-config.1") CONFIG_FILES="$CONFIG_FILES docs/esd-config.1" ;;
+-    "docs/esdctl.1") CONFIG_FILES="$CONFIG_FILES docs/esdctl.1" ;;
+-    "docs/esddsp.1") CONFIG_FILES="$CONFIG_FILES docs/esddsp.1" ;;
+-    "docs/esdfilt.1") CONFIG_FILES="$CONFIG_FILES docs/esdfilt.1" ;;
+-    "docs/esdloop.1") CONFIG_FILES="$CONFIG_FILES docs/esdloop.1" ;;
+-    "docs/esdmon.1") CONFIG_FILES="$CONFIG_FILES docs/esdmon.1" ;;
+-    "docs/esdplay.1") CONFIG_FILES="$CONFIG_FILES docs/esdplay.1" ;;
+-    "docs/esdrec.1") CONFIG_FILES="$CONFIG_FILES docs/esdrec.1" ;;
+-    "docs/esdsample.1") CONFIG_FILES="$CONFIG_FILES docs/esdsample.1" ;;
+ 
+   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
+ echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
+--- esound-0.2.41.org/Makefile.in	2008-11-18 21:54:41.000000000 +0100
++++ esound-0.2.41/Makefile.in	2012-03-10 14:41:21.000000000 +0100
+@@ -38,9 +38,6 @@
+ host_triplet = @host@
+ target_triplet = @target@
+ esd_PROGRAMS = esd$(EXEEXT)
+-bin_PROGRAMS = esdcat$(EXEEXT) esdctl$(EXEEXT) esdfilt$(EXEEXT) \
+-	esdmon$(EXEEXT) esdrec$(EXEEXT) esdsample$(EXEEXT) \
+-	esdloop$(EXEEXT) $(am__EXEEXT_1)
+ subdir = .
+ DIST_COMMON = README $(am__configure_deps) $(include_HEADERS) \
+ 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+@@ -75,7 +72,7 @@
+ am__DEPENDENCIES_1 =
+ libesd_la_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+ am_libesd_la_OBJECTS = libesd_la-esdlib.lo libesd_la-esdmgr.lo \
+-	libesd_la-esdfile.lo libesd_la-esd_config.lo \
++	libesd_la-esd_config.lo \
+ 	libesd_la-audio.lo libesd_la-genrand.lo libesd_la-util.lo
+ libesd_la_OBJECTS = $(am_libesd_la_OBJECTS)
+ libesd_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
+@@ -150,16 +147,9 @@
+ LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+ 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+ 	$(LDFLAGS) -o $@
+-SOURCES = $(libesd_la_SOURCES) $(libesddsp_la_SOURCES) $(esd_SOURCES) \
+-	$(esdcat_SOURCES) $(esdctl_SOURCES) $(esdfilt_SOURCES) \
+-	$(esdloop_SOURCES) $(esdmon_SOURCES) $(esdplay_SOURCES) \
+-	$(esdrec_SOURCES) $(esdsample_SOURCES)
++SOURCES = $(libesd_la_SOURCES) $(libesddsp_la_SOURCES) $(esd_SOURCES)
+ DIST_SOURCES = $(libesd_la_SOURCES) $(libesddsp_la_SOURCES) \
+-	$(am__esd_SOURCES_DIST) $(esdcat_SOURCES) \
+-	$(am__esdctl_SOURCES_DIST) $(esdfilt_SOURCES) \
+-	$(esdloop_SOURCES) $(esdmon_SOURCES) \
+-	$(am__esdplay_SOURCES_DIST) $(esdrec_SOURCES) \
+-	$(esdsample_SOURCES)
++	$(am__esd_SOURCES_DIST)
+ RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
+ 	html-recursive info-recursive install-data-recursive \
+ 	install-dvi-recursive install-exec-recursive \
+@@ -325,15 +315,12 @@
+ target_vendor = @target_vendor@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = docs
++SUBDIRS = 
+ ACLOCAL_AMFLAGS = -I m4
+ SPEC_FILE = esound.spec
+-INCLUDES = $(AUDIOFILE_CFLAGS) -DSYSCONFDIR=\"$(sysconfdir)\" \
++INCLUDES = -DSYSCONFDIR=\"$(sysconfdir)\" \
+     -DSERVERDIR=\"$(ESD_DIR)\"
+ 
+-@BUILD_ESDDSP_TRUE@ESDDSP = esddsp
+-@BUILD_ESDDSP_TRUE@libesddsp_la = libesddsp.la
+-@BUILD_ESDPLAY_TRUE@ESDPLAY = esdplay
+ getopt_extra = getopt.c getopt1.c
+ @NEED_GETOPT_TRUE@getopt_src = $(getopt_extra)
+ bin_SCRIPTS = \
+@@ -343,11 +330,10 @@
+ lib_LTLIBRARIES = libesd.la $(libesddsp_la)
+ libesd_la_CFLAGS = $(AM_CFLAGS)
+ libesd_la_LDFLAGS = -version-info $(ESD_VERSION_INFO) -no-undefined
+-libesd_la_LIBADD = $(AUDIOFILE_LIBS) $(SOUND_LIBS)
++libesd_la_LIBADD = $(SOUND_LIBS)
+ libesd_la_SOURCES = \
+ 	esdlib.c	\
+ 	esdmgr.c	\
+-	esdfile.c	\
+ 	esd-config.h	\
+ 	esd_config.c	\
+ 	audio.c		\
+@@ -373,11 +359,6 @@
+ 	audio_solaris.c		\
+ 	audio_win32.c
+ 
+-libesddsp_la_LDFLAGS = -version-info $(ESD_VERSION_INFO)
+-libesddsp_la_LIBADD = libesd.la $(DL_LIB) -lm
+-libesddsp_la_SOURCES = \
+-	esddsp.c
+-
+ include_HEADERS = \
+ 	esd.h
+ 
+@@ -394,34 +375,8 @@
+ 	esd-config.h	\
+ 	esd-server.h
+ 
+-esdcat_SOURCES = \
+-	esdcat.c
+-
+-esdctl_SOURCES = \
+-	$(getopt_src) \
+-	esdctl.c
+-
+-esdfilt_SOURCES = \
+-	esdfilt.c
+-
+-esdmon_SOURCES = \
+-	esdmon.c
+-
+-esdrec_SOURCES = \
+-	esdrec.c
+-
+-esdsample_SOURCES = \
+-	esdsample.c
+-
+-esdloop_SOURCES = \
+-	esdloop.c
+-
+-esdplay_SOURCES = \
+-	$(getopt_src) \
+-	esdplay.c
+-
+-LDADD = libesd.la $(AUDIOFILE_LIBS)
+-esd_LDADD = $(WRAP_LIB) $(LDADD)
++LDADD = libesd.la
++esd_LDADD = $(WRAP_LIB) $(LDADD) -lm
+ m4datadir = $(datadir)/aclocal
+ m4data_DATA = esd.m4
+ esdconfdir = $(sysconfdir)
+@@ -666,7 +621,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/getopt1.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libesd_la-audio.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libesd_la-esd_config.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libesd_la-esdfile.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libesd_la-esdlib.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libesd_la-esdmgr.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libesd_la-genrand.Plo@am__quote@
+@@ -711,13 +665,6 @@
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libesd_la_CFLAGS) $(CFLAGS) -c -o libesd_la-esdmgr.lo `test -f 'esdmgr.c' || echo '$(srcdir)/'`esdmgr.c
+ 
+-libesd_la-esdfile.lo: esdfile.c
+-@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libesd_la_CFLAGS) $(CFLAGS) -MT libesd_la-esdfile.lo -MD -MP -MF $(DEPDIR)/libesd_la-esdfile.Tpo -c -o libesd_la-esdfile.lo `test -f 'esdfile.c' || echo '$(srcdir)/'`esdfile.c
+-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libesd_la-esdfile.Tpo $(DEPDIR)/libesd_la-esdfile.Plo
+-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='esdfile.c' object='libesd_la-esdfile.lo' libtool=yes @AMDEPBACKSLASH@
+-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+-@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libesd_la_CFLAGS) $(CFLAGS) -c -o libesd_la-esdfile.lo `test -f 'esdfile.c' || echo '$(srcdir)/'`esdfile.c
+-
+ libesd_la-esd_config.lo: esd_config.c
+ @am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libesd_la_CFLAGS) $(CFLAGS) -MT libesd_la-esd_config.lo -MD -MP -MF $(DEPDIR)/libesd_la-esd_config.Tpo -c -o libesd_la-esd_config.lo `test -f 'esd_config.c' || echo '$(srcdir)/'`esd_config.c
+ @am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libesd_la-esd_config.Tpo $(DEPDIR)/libesd_la-esd_config.Plo

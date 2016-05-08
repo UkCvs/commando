@@ -1,0 +1,19 @@
+diff -uNr ../strace-4.5.18.org/file.c ./file.c
+--- ../file.c	2008-08-01 03:13:10.000000000 +0200
++++ ../file.c	2008-09-30 17:55:16.000000000 +0200
+@@ -98,15 +98,6 @@
+ #    undef off_t
+ #    undef loff_t
+ 
+-#    define dev_t __kernel_dev_t
+-#    define ino_t __kernel_ino_t
+-#    define mode_t __kernel_mode_t
+-#    define nlink_t __kernel_nlink_t
+-#    define uid_t __kernel_uid_t
+-#    define gid_t __kernel_gid_t
+-#    define off_t __kernel_off_t
+-#    define loff_t __kernel_loff_t
+-
+ #    include <asm/stat.h>
+ 
+ #    undef dev_t

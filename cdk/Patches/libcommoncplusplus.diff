@@ -1,0 +1,62 @@
+diff -Naur commoncpp2-1.0.13.orig/configure commoncpp2-1.0.13/configure
+--- commoncpp2-1.0.13.orig/configure	2003-07-19 20:03:47.000000000 +0200
++++ commoncpp2-1.0.13/configure	2005-10-19 00:15:05.000000000 +0200
+@@ -19241,19 +19241,6 @@
+ 
+ 
+ 
+-if test "$prefix" != "/usr" ; then
+-	if test -d "$prefix" ; then
+-		bprefix="$prefix"
+-	else
+-		bprefix=/usr/local
+-	fi
+-	if test -d $bprefix/include ; then
+-		CXXFLAGS="$CXXFLAGS -I$bprefix/include"
+-	fi
+-	if test -d $bprefix/lib ; then
+-		LIBS="$LIBS -L$bprefix/lib"
+-	fi
+-fi
+ 
+ 
+ 
+diff -Naur commoncpp2-1.0.13.orig/include/cc++/thread.h commoncpp2-1.0.13/include/cc++/thread.h
+--- commoncpp2-1.0.13.orig/include/cc++/thread.h	2003-06-07 01:16:45.000000000 +0200
++++ commoncpp2-1.0.13/include/cc++/thread.h	2005-10-19 00:15:18.000000000 +0200
+@@ -1080,12 +1080,12 @@
+ 	static Thread* _main;
+ 
+ 	Thread *_parent;
+-	enum Cancel _cancel;
++	Cancel _cancel;
+ 	Semaphore *_start;
+ 
+ 	// private data
+ 	friend class ThreadImpl;
+-	class ThreadImpl* priv;
++	ThreadImpl* priv;
+ 
+ #ifndef WIN32
+ 	friend Thread *getThread(void);
+diff -Naur commoncpp2-1.0.13.orig/src/ccgnu2-config.in commoncpp2-1.0.13/src/ccgnu2-config.in
+--- commoncpp2-1.0.13.orig/src/ccgnu2-config.in	2003-06-07 01:16:46.000000000 +0200
++++ commoncpp2-1.0.13/src/ccgnu2-config.in	2005-10-19 00:15:05.000000000 +0200
+@@ -29,7 +29,7 @@
+ Options:
+ 	[--prefix]
+ 	[--version]
+-	[--flags]
++	[--cflags]
+ 	[--libs]
+ 	[--gnulibs]
+ 	[--iolibs]
+@@ -53,7 +53,7 @@
+ 	--version)
+ 		echo @VERSION@
+ 		;;
+-	--flags)
++	--cflags)
+ 		echo $includedir $ccflags
+ 		;;
+ 	--libs | --gnulibs)

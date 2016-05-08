@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# $Id: start_enigma,v 1.8 2006/03/30 07:29:46 saruman Exp $
+
+camd2
+unset TZ
+touch /tmp/.enigma
+while [ -e /tmp/.enigma ]
+do
+	/bin/enigma
+	case "$?" in
+		0)
+			echo "Shutdown"
+			[ -e /tmp/tuxmaild.pid ] && kill $( cat /tmp/tuxmaild.pid )
+			[ -e /tmp/tuxcald.pid ] && kill $( cat /tmp/tuxcald.pid )
+			rm /tmp/.enigma
+			/sbin/halt
+			;;
+		2)
+			echo "Restart"
+			;;
+		*)
+			[ -e /tmp/tuxmaild.pid ] && kill $( cat /tmp/tuxmaild.pid )
+			[ -e /tmp/tuxcald.pid ] && kill $( cat /tmp/tuxcald.pid )
+			rm /tmp/.enigma
+			/sbin/reboot
+			;;
+		esac
+done

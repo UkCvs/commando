@@ -1,0 +1,12 @@
+diff -uNr ../kbd-1.14.1.org/configure.ac ./configure.ac
+--- ../configure.ac	2008-03-24 17:26:26.000000000 +0100
++++ ../configure.ac	2008-09-23 18:11:12.000000000 +0200
+@@ -50,7 +50,7 @@
+ AC_TYPE_SIGNAL
+ AC_FUNC_STAT
+ AC_CHECK_FUNCS([alarm memset setlocale strcasecmp strchr strdup strerror \
+-strspn strstr strtol strtoul setpgrp malloc realloc])
++strspn strstr strtol strtoul malloc realloc])
+ 
+ case $host_cpu in
+ 	m68*|sparc*) KEYCODES_PROGS=no ;;

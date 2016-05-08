@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case $1 in
+	start)
+		if [ -x /sbin/crond -a -e /var/spool/cron/crontabs/root ]; then
+			/sbin/crond -c /var/spool/cron/crontabs/
+		fi
+		;;
+	stop)
+		killall crond
+		;;
+esac
+
+exit 0

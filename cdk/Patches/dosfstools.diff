@@ -1,0 +1,15 @@
+diff -uNr dosfstools-3.0.9.org//src/mkdosfs.c dosfstools-3.0.9/src/mkdosfs.c
+--- dosfstools-3.0.9.org//src/mkdosfs.c	2010-01-31 08:29:13.000000000 +0100
++++ dosfstools-3.0.9/src/mkdosfs.c	2010-07-25 18:00:59.000000000 +0200
+@@ -63,6 +63,11 @@
+ #include <time.h>
+ #include <errno.h>
+ 
++#include <linux/version.h>
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,0))
++#include <linux/fs.h>
++#endif
++
+ # include <asm/types.h>
+ 
+ #if __BYTE_ORDER == __BIG_ENDIAN

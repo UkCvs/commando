@@ -1,0 +1,101 @@
+#!/bin/sh
+####################################################################################
+####                                Blockads
+####                     Werbezapper mit Internetanbindung
+####
+####                    Bugreport und Anregungen im Board:
+####       http://www.dbox2-tuning.net/forum/viewforum.php?f=27&start=0
+####      Das New-Tuxwetter-Team: SnowHead, Worschter, Zapt, Sanguiniker
+####################################################################################
+
+# DECLARE USER VARS ****************************************
+BLOCKADCFG="/var/tuxbox/config/blockads.conf"
+
+  pth="/bin/input"
+  if [ ! -e $pth ]; then
+    pth="/var/bin/input"
+    if [ ! -e $pth ]; then
+      /bin/wget -Y off -O /dev/null http://localhost/control/message?nmsg=Eingabeprogramm%20input%20ist%20nicht%20installiert.%0APlugin%20kann%20nicht%20ausgef%C3%BChrt%20werden.
+      exit 0
+    fi
+  fi
+
+  case "$1" in
+  reztime)
+    echo "aendere Rezap Time"
+    if grep -q "^RezapTime=.*" $BLOCKADCFG; then
+      sed -e "s/^RezapTime=.*/RezapTime=$2/g" $BLOCKADCFG > /tmp/blockads.conf
+    fi
+  ;;
+
+  rezentry)
+    echo "aendere Rezap Eintrag $2"
+  	def=`grep "^Time$2=" "$BLOCKADCFG"`
+  	if [ `expr length $def` -gt 0 ]; then
+  	  def=`expr substr $def 7 2`
+  	else
+  	  def=0
+  	fi
+    res=`$pth t="Rezap-Zeit" d="$def" l='## Minuten'`
+    if [ -z $res ]; then
+      exit 1
+    fi
+
+    if grep -q "^Time$2=.*" $BLOCKADCFG; then
+      sed -e "s/^Time$2=.*/Time$2=$res/g" $BLOCKADCFG > /tmp/blockads.conf
+    fi
+  ;;
+
+  iconnect)
+    echo "aendere Internetverbindung"
+    if [ -z "$2" ]; then
+      sed -e "s/^Internet=.*/Internet=/g" $BLOCKADCFG > /tmp/blockads.conf
+    else
+      sed -e "s/^Internet=.*/Internet=$2/g" $BLOCKADCFG > /tmp/blockads.conf
+    fi
+  ;;
+
+  zap)
+    echo "aendere ZapAlways"
+    if grep -q "^ZapAlways=.*" $BLOCKADCFG; then
+      sed -e "s/^ZapAlways=.*/ZapAlways=$2/g" $BLOCKADCFG > /tmp/blockads.conf
+    else
+      echo ZapAlways=$2 >> $BLOCKADCFG
+    fi
+  ;;
+
+  debounce)
+    echo "aendere Debounce Time"
+  	def=`grep "^Debounce=" "$BLOCKADCFG"`
+  	if [ `expr length "$def"` -gt 0 ]; then
+  	  def=`expr substr $def 10 2`
+  	else
+  	  def=15
+  	fi
+  	res=`$pth t="Server-Entprell-Zeit" d="$def" l='## Sekunden'`
+    if [ -z $res ]; then
+      exit 1
+    fi
+    if grep -q "^Debounce=.*" $BLOCKADCFG; then
+      sed -e "s/^Debounce=.*/Debounce=$res/g" $BLOCKADCFG > /tmp/blockads.conf
+    else
+      echo Debounce=$res >> $BLOCKADCFG
+    fi
+  ;;
+
+  vol)
+    echo "aendere KeepVolume"
+    if grep -q "^KeepVolume=.*" $BLOCKADCFG; then
+      sed -e "s/^KeepVolume=.*/KeepVolume=$2/g" $BLOCKADCFG > /tmp/blockads.conf
+    else
+      echo KeepVolume=$2 >> $BLOCKADCFG
+    fi
+  ;;
+
+  esac
+  if [ -e /tmp/blockads.conf ]; then
+    mv /tmp/blockads.conf $BLOCKADCFG
+    rm -f /tmp/blockads.conf
+  fi
+
+  exit 1

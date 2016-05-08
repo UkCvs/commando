@@ -1,0 +1,297 @@
+<html>
+	<head>
+		<title>Enigma Web Interface - #BOX#</title>
+		<link rel="stylesheet" type="text/css" href="webif.css">
+		<script language="javascript" type="text/javascript" src="/window.js"></script>
+		<script language="javascript" type="text/javascript" src="/dhtml.js"></script>
+		<script language="javascript" type="text/javascript" src="/index.js"></script>
+		<script>
+			function headerUpdateVolumeBar(volume, mute)
+			{
+				for (var i = 9; i <= 63; i += 6)
+				{
+					var vol = 0;
+					if (mute == 0)
+						vol = volume;
+					if (i <= vol)
+						getElem("id", "imgVol" + i, null).src = "led_on.gif";
+					else
+						getElem("id", "imgVol" + i, null).src = "led_off.gif";
+				}
+				if (mute == 0)
+					getElem("id", "mute", null).src = "speak_on.gif";
+				else
+					getElem("id", "mute", null).src = "speak_off.gif";
+			}
+			function headerUpdateRecording(recording)
+			{
+				if (recording == 1)
+					getElem("id", "recording", null).src = "blinking_red.gif";
+				else
+					getElem("id", "recording", null).src = "trans.gif";
+			}
+			function headerUpdateChannelStatusBar(dolby, crypt, format)
+			{
+				if (dolby == 1)
+					getElem("id", "imgDolby", null).src = "dolby_on.png";
+				else
+					getElem("id", "imgDolby", null).src = "dolby_off.png";
+				if (crypt == 1)
+					getElem("id", "imgCrypt", null).src = "crypt_on.png";
+				else
+					getElem("id", "imgCrypt", null).src = "crypt_off.png";
+				if (format == 1)
+					getElem("id", "imgFormat", null).src = "format_on.png";
+				else
+					getElem("id", "imgFormat", null).src = "format_off.png";
+			}
+			function headerUpdateStatusBar(vpid, apid, ip, lock, upTime, agc, snr, ber)
+			{
+				getElem("id", "vpid", null).firstChild.nodeValue = vpid;
+				getElem("id", "apid", null).firstChild.nodeValue = apid;
+				getElem("id", "ip", null).firstChild.nodeValue = ip;
+				getElem("id", "lock", null).firstChild.nodeValue = lock;
+				getElem("id", "uptime", null).firstChild.nodeValue = upTime;
+				getElem("id", "agc", null).firstChild.nodeValue = "AGC: " + agc + "%";
+				getElem("id", "snr", null).firstChild.nodeValue = "SNR: " + snr + "%";
+				getElem("id", "ber", null).firstChild.nodeValue = "BER: " + ber;
+			}
+			function headerUpdateEPGData(serviceName, nowT, nowD, nowSt, nextT, nextD, nextSt)
+			{
+				getElem("id", "servicename", null).firstChild.nodeValue = serviceName;
+				getElem("id", "nowt", null).firstChild.nodeValue = nowT;
+				getElem("id", "nowd", null).firstChild.nodeValue = nowD;
+				if (!MS)
+					nowSt = nowSt.substr(0, 40);
+				getElem("id", "nowst", null).firstChild.nodeValue = nowSt;
+				getElem("id", "nextt", null).firstChild.nodeValue = nextT;
+ 				getElem("id", "nextd", null).firstChild.nodeValue = nextD;
+				if (!MS)
+					nextSt = nextSt.substr(0, 40);
+				getElem("id", "nextst", null).firstChild.nodeValue = nextSt;
+			}
+			function topnavi(command)
+			{
+				parent.body.location = "body" + command;
+				parent.leftnavi.location = "leftnavi" + command;
+			}
+			function setTitle(title)
+			{
+				getElem("id", "title", null).firstChild.nodeValue = title;
+			}
+			function init()
+			{
+				data.location.reload();
+				setTimeout("init()", 10000);
+			}
+			function updateVideoBar(videoPosition, videoTime, diskGB, diskH)
+			{
+				updateVideoBar2(videoPosition);
+				getElem("id", "videoTime", null).firstChild.nodeValue = videoTime;
+				getElem("id", "diskgb", null).firstChild.nodeValue = diskGB;
+				getElem("id", "diskh", null).firstChild.nodeValue = diskH;
+			}
+			function updateVideoBar2(videoPosition)
+			{
+				for (var i = 1; i <= 20; i += 1)
+				{
+					if (i <= videoPosition)
+						getElem("id", "vid" + i, null).src = "led_on.gif";
+					else
+						getElem("id", "vid" + i, null).src = "led_off.gif";
+				}
+			}
+			function determineBrowser()
+			{
+				var browser = navigator.appName;
+				if (navigator.appName == "Microsoft Internet Explorer")
+					browser = "MSIE";
+				else
+					if ((navigator.appName == "Netscape") && (navigator.userAgent.indexOf("Gecko") != -1))
+						browser = "Firefox";
+				return browser;
+			}
+			function webxtv(browser)
+			{
+				NewWindow("/webxtv?browser=" + browser, "tv", "780", "735", "no", "0");
+			}
+			function teletext()
+			{
+				NewWindow("/teletext", "teletext", "480", "560", "no", "0");
+			}
+		</script>
+	</head>
+	<body id="index_big" style="margin: 0px; border: 0px; padding: 0px" background="bg.png" onLoad="init()">
+		<table width="780px" height="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tbody valign="top">
+		<tr>
+			<td colspan="2">
+				<!-- begin header -->
+				<table id="headTable" style="table-layout: fixed" width="780px" height="112px" border="0" cellpadding="0" cellspacing="0" background="#TOPBALK#">
+				<tr>
+					<td width="150px">&nbsp;</td>
+					<td width="620px">
+						<table id="headercell" style="table-layout: fixed" width="620px" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="620px">
+								<table style="table-layout: fixed" width="620px" border="0" height="60px" cellpadding="0" cellspacing="0">
+								<tr>
+									<td id="servicename" width="440px" class="servicename" align="left">&nbsp;</td>
+									<td width="180px" id="empty" align=right>#EMPTYCELL#</td>
+								</tr>
+								<tr>
+									<td width="440px">
+										<table style="table-layout:fixed" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td id="nowt" class="epgzeit_bold" width="50px" align=left>&nbsp;</td>
+											<td id="nowd" class="epgdur" width="40px" align=left>&nbsp;</td>
+											<td id="nowst" class="epgname_bold" width="350px" height="20px" align=left>&nbsp;</td>
+
+										</tr>
+										</table>
+									</td>
+									<td width="180px" align=right>
+										<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td><a href="javascript:setVol(9)"><img id="imgVol9" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(15)"><img id="imgVol15" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(21)"><img id="imgVol21" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(27)"><img id="imgVol27" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(33)"><img id="imgVol33" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(39)"><img id="imgVol39" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(45)"><img id="imgVol45" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(51)"><img id="imgVol51" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(57)"><img id="imgVol57" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td><a href="javascript:setVol(63)"><img id="imgVol63" src="led_on.gif" border="0" width="15" height="8"></a></td>
+											<td>&nbsp;</td>
+											<td><a href="javascript:toggleMute()"><img id="mute" border="0" src="speak_on.gif"></a></td>
+										</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td width="440px">
+										<table style="table-layout:fixed" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td id="nextt" class="epgzeit_bold" width="50px" align=left>&nbsp;</td>
+											<td id="nextd" class="epgdur" width="40px" align=left>&nbsp;</td>
+											<td id="nextst" class="epgname_bold" width="350px" height="20px" align=left>&nbsp;</td>
+
+										</tr>
+										</table>
+									</td>
+									<td width="180px" align="right">
+										<table border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td><img id="recording" width="12" border="0" src="trans.gif"></td>
+											<td><img height="0" width="5" border="0" src="trans.gif"></td>
+											<td><img id="imgCrypt" src="crypt_off.png" border="0"></td>
+											<td><img height="0" width="5" border="0" src="trans.gif"></td>
+											<td><img id="imgFormat" src="format_off.png" border="0"></td>
+											<td><img height="0" width="5" border="0" src="trans.gif"></td>
+											<td><img id="imgDolby" src="dolby_off.png" border="0"></td>
+										</tr>
+										</table>
+									</td>
+								</tr>
+								</table>
+								<table style="table-layout: fixed" width="620px" height="7px" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="630px" height="7px">&nbsp;</td>
+								</tr>
+								</table>
+								<table id="statcell" border="0" cellpadding="0" cellspacing="0" height="20px">
+								<tr>
+									<td id="snr">&nbsp;</td>
+									<td>&nbsp;<img src="squ.png">&nbsp;</td>
+									<td id="agc">&nbsp;</td>
+									<td>&nbsp;<img src="squ.png">&nbsp;</td>
+									<td id="ber">&nbsp;</td>
+									<td>&nbsp;<img src="squ.png">&nbsp;</td>
+									<td id="lock">&nbsp;</td>
+									<td>&nbsp;<img src="squ.png">&nbsp;</td>
+									<td id="uptime">&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;<img src="squ.png">&nbsp;</td>
+									<td id="ip">&nbsp;</td>
+									<td>&nbsp;<img src="squ.png">&nbsp;</td>
+									<td>vpid:&nbsp;<a id="vpid" href="javascript:vlc()">&nbsp;</a></td>
+									<td>&nbsp;<img src="squ.png">&nbsp;</td>
+									<td>apid:&nbsp;<a id="apid" href="audio.pls">&nbsp;</a></td>
+								</tr>
+								</table>
+								<table style="table-layout: fixed" width="620px" height="5px" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="630px" height="5px">&nbsp;</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+				<!-- end header -->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<!-- channavi start -->
+				<table id="channavi" border="0" height="22px" width="780" cellspacing="0" cellpadding="0">
+				<tbody align="left">
+				<tr>
+					<td width="120" align="center">
+						<script>
+						var browser = determineBrowser();
+						if (browser == "MSIE")
+							document.writeln('<a href=javascript:webxtv("MSIE")>WEB-X-TV</a>');
+						else
+						if (browser == "Firefox")
+							document.writeln('<a href=javascript:webxtv("Firefox")>WEB-X-TV</a>');
+						else
+							document.writeln('&nbsp;');
+						</script>
+					</td>
+					<td align="left">#CHANNAVI#</td>
+					<td width=40 align="center"><a href="javascript:teletext()">TEXT</a></td>
+				</tr>
+				</tbody>
+				</table>
+				<!-- channavi end -->
+			</td>
+		</tr>
+		#DVRCONTROLS#
+		<tr>
+			<td colspan="2">
+				<!-- topnavi start -->
+				<table id="topnavi" border="0" width="100%" height="22px" cellspacing="0" cellpadding="0">
+				<tbody align="left">
+				<tr>
+					<td width="120">&nbsp;</td>
+					<td align="left">#TOPNAVI#</td>
+				</tr>
+				</tbody>
+				</table>
+				<!-- topnavi end -->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table id="titletable" width="100%" height="26px" border="0" cellspacing="0" cellpadding="0" background="mepg_grad.png">
+				<tr>
+					<td width="120px" align="center" background="mepg_grad.png">&nbsp;</td>
+					<td id="title" align="left" valign="middle" background="mepg_grad.png">&nbsp;</td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+		<tr height="100%">
+			<td><iframe name="leftnavi" width="110px" height="100%" src="leftnavi" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></td>
+			<td><iframe name="body" width="670px" height="100%" src="body" scrolling="auto" frameborder="0" marginwidth="0" marginheight="0" style="background-color: #F4F4F4F4"></iframe></td>
+		</tr>
+		</tbody>
+		</table>
+		<iframe name="vlccmd" src="blank" height="0" frameborder="0" framemargin="0" framewidth="0"></iframe>
+		<iframe name="data" src="data" height="0" frameborder="0" framemargin="0" framewidth="0"></iframe>
+	</body>
+</html>

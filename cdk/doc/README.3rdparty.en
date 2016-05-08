@@ -1,0 +1,28 @@
+#
+# $Revision: 1.4 $
+#
+# This document describes to add
+# 3rd party software to the CDK
+#
+# Permission is granted to copy, distribute and/or modify this document
+# under the terms of the GNU Free Documentation License, Version 1.2
+# or any later version published by the Free Software Foundation;
+# with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+# A copy of the license is included in cdk/common-licenses/FDL-1.2
+# 
+# This document is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+
+Documentation is found at 
+http://www.bengt-martensson.de/dbox2/flash-yadds-newmake.html (elementary) 
+and
+http://www.bengt-martensson.de/dbox2/newmake-architecture.html 
+(architectural description)
+
+for more informations about installation of 3rdParty-tools, please mainly use 
+Tuxbox-Wiki:
+	http://wiki.dbox2-tuning.net/Development:Newmake.3rdparty
+	http://wiki.dbox2-tuning.net/Development:Newmake.3rdparty.en
+

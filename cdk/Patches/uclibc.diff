@@ -1,0 +1,34 @@
+--- a/libpthread/linuxthreads.old/sysdeps/powerpc/pt-machine.h
++++ b/libpthread/linuxthreads.old/sysdeps/powerpc/pt-machine.h
+@@ -56,6 +56,7 @@ register struct _pthread_descr_struct *_
+ #define HAS_COMPARE_AND_SWAP_WITH_RELEASE_SEMANTICS
+ #define IMPLEMENT_TAS_WITH_CAS
+
++PT_EI int __compare_and_swap (long int *p, long int oldval, long int newval);
+ PT_EI int
+ __compare_and_swap (long int *p, long int oldval, long int newval)
+ {
+@@ -79,6 +80,8 @@ __compare_and_swap (long int *p, long in
+   return ret == 0;
+ }
+
++PT_EI int __compare_and_swap_with_release_semantics (long int *p, long int
++		oldval, long int newval);
+ PT_EI int
+ __compare_and_swap_with_release_semantics (long int *p,
+ 					   long int oldval, long int newval)
+--- evil/libc/sysdeps/linux/powerpc/crtn.S
++++ good/libc/sysdeps/linux/powerpc/crtn.S
+@@ -9,7 +9,6 @@
+ 	addi 1,1,32
+ 	mtlr 0
+ 	blr
+-	.size	_init, .-_init
+ 	
+ 	.section .fini
+ 	.align 2
+@@ -20,4 +19,3 @@
+ 	addi 1,1,32
+ 	mtlr 0
+ 	blr
+-	.size	_fini, .-_fini

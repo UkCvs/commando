@@ -1,0 +1,410 @@
+diff -uNr samba-2.2.12.org//source/configure.in samba-2.2.12/source/configure.in
+--- samba-2.2.12.org//source/configure.in	2004-08-12 20:24:30.000000000 +0200
++++ samba-2.2.12/source/configure.in	2010-03-15 19:12:28.000000000 +0100
+@@ -151,7 +151,9 @@
+ # Tests needed for glibc 2.1 large file support.
+ # 
+ 	*linux*)
+-		AC_MSG_RESULT([disabling large file support for glibc2.1 on Linux])     
++		GLIBC_LFS_SUPPORT=yes
++       	old_CPPFLAGS="$CPPFLAGS"
++               CPPFLAGS="-D_LARGEFILE64_SOURCE -D_GNU_SOURCE $CPPFLAGS"
+ 		;;
+     *hurd*)
+         AC_MSG_CHECKING([for LFS support])
+diff -uNr samba-2.2.12.org//source/include/includes.h samba-2.2.12/source/include/includes.h
+--- samba-2.2.12.org//source/include/includes.h	2004-08-12 20:24:29.000000000 +0200
++++ samba-2.2.12/source/include/includes.h	2010-04-24 22:39:31.000000000 +0200
+@@ -344,10 +344,6 @@
+ #include <compat.h>
+ #endif
+ 
+-#ifdef HAVE_STROPTS_H
+-#include <stropts.h>
+-#endif
+-
+ #ifdef HAVE_POLL_H
+ #include <poll.h>
+ #endif
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/include/proto.h samba-2.0.10/source/include/proto.h
+--- samba-2.0.10_orig/source/include/proto.h	2001-06-23 11:26:22.000000000 +0200
++++ samba-2.0.10/source/include/proto.h	2010-08-14 16:45:30.000000000 +0200
+@@ -57,7 +57,7 @@
+ BOOL need_to_check_log_size( void );
+ void check_log_size( void );
+ void dbgflush( void );
+-BOOL dbghdr( int level, char *file, char *func, int line );
++BOOL dbghdr( int level, char *file, const char *func, int line );
+ 
+ /*The following definitions come from  lib/doscalls.c  */
+ 
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/lib/debug.c samba-2.0.10/source/lib/debug.c
+--- samba-2.0.10_orig/source/lib/debug.c	2000-04-15 02:21:26.000000000 +0200
++++ samba-2.0.10/source/lib/debug.c	2010-08-14 16:45:41.000000000 +0200
+@@ -544,7 +544,7 @@
+  * ************************************************************************** **
+  */
+ 
+-BOOL dbghdr( int level, char *file, char *func, int line )
++BOOL dbghdr( int level, char *file, const char *func, int line )
+ {
+   /* Ensure we don't lose any real errno value. */
+   int old_errno = errno;
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/Makefile.in samba-2.0.10/source/Makefile.in
+--- samba-2.0.10_orig/source/Makefile.in	2000-03-16 23:57:08.000000000 +0100
++++ samba-2.0.10/source/Makefile.in	2010-08-14 11:38:33.000000000 +0200
+@@ -37,10 +37,10 @@
+ # set these to where to find various files
+ # These can be overridden by command line switches (see smbd(8))
+ # or in smb.conf (see smb.conf(5))
+-SMBLOGFILE = $(VARDIR)/log.smb
+-NMBLOGFILE = $(VARDIR)/log.nmb
+-CONFIGFILE = $(LIBDIR)/smb.conf
+-LMHOSTSFILE = $(LIBDIR)/lmhosts
++SMBLOGFILE = /tmp/log.smb
++NMBLOGFILE = /tmp/log.nmb
++CONFIGFILE = /etc/smb.conf
++LMHOSTSFILE = /lib/lmhosts
+ DRIVERFILE = $(LIBDIR)/printers.def
+ PASSWD_PROGRAM = /bin/passwd
+ # This is where smbpasswd et al go
+@@ -115,14 +115,14 @@
+ RPC_SERVER_OBJ = rpc_server/srv_lsa.o \
+                  rpc_server/srv_lsa_hnd.o rpc_server/srv_netlog.o \
+                  rpc_server/srv_pipe_hnd.o rpc_server/srv_reg.o \
+-                 rpc_server/srv_samr.o rpc_server/srv_srvsvc.o \
++                 rpc_server/srv_srvsvc.o \
+                  rpc_server/srv_util.o rpc_server/srv_wkssvc.o \
+ 		rpc_server/srv_pipe.o
+ 
+ RPC_PARSE_OBJ = rpc_parse/parse_lsa.o rpc_parse/parse_misc.o \
+                 rpc_parse/parse_net.o rpc_parse/parse_prs.o \
+                 rpc_parse/parse_reg.o rpc_parse/parse_rpc.o \
+-                rpc_parse/parse_samr.o rpc_parse/parse_srv.o \
++                rpc_parse/parse_srv.o \
+                 rpc_parse/parse_wks.o rpc_parse/parse_sec.o
+ 
+ RPC_CLIENT_OBJ = \
+@@ -132,8 +132,7 @@
+ 		rpc_client/cli_lsarpc.o   \
+ 		rpc_client/cli_wkssvc.o   \
+ 		rpc_client/cli_srvsvc.o   \
+-		rpc_client/cli_reg.o   \
+-		rpc_client/cli_samr.o 
++		rpc_client/cli_reg.o   
+ 
+ 
+ LOCKING_OBJ = locking/locking.o locking/locking_shm.o locking/locking_slow.o \
+@@ -157,7 +156,7 @@
+ 
+ SMBD_OBJ = $(SMBD_OBJ1) $(PARAM_OBJ) $(LIBSMB_OBJ) $(UBIQX_OBJ) \
+            $(RPC_SERVER_OBJ) $(RPC_CLIENT_OBJ) $(RPC_PARSE_OBJ) \
+-           $(LOCKING_OBJ) $(PASSDB_OBJ) $(PRINTING_OBJ) $(PROFILE_OBJ) $(LIB_OBJ)
++           $(LOCKING_OBJ) $(PASSDB_OBJ) $(PROFILE_OBJ) $(LIB_OBJ)
+ 
+ 
+ NMBD_OBJ1 = nmbd/asyncdns.o nmbd/nmbd.o nmbd/nmbd_become_dmb.o \
+@@ -211,7 +210,6 @@
+              rpcclient/display.o \
+              rpcclient/cmd_lsarpc.o \
+              rpcclient/cmd_wkssvc.o \
+-             rpcclient/cmd_samr.o \
+              rpcclient/cmd_reg.o \
+              rpcclient/cmd_srvsvc.o \
+              rpcclient/cmd_netlogon.o \
+@@ -251,7 +249,6 @@
+              rpcclient/display.o \
+              rpcclient/cmd_lsarpc.o \
+              rpcclient/cmd_wkssvc.o \
+-             rpcclient/cmd_samr.o \
+              rpcclient/cmd_srvsvc.o \
+              rpcclient/cmd_netlogon.o \
+              $(PARAM_OBJ) $(LIBSMB_OBJ) $(UBIQX_OBJ) $(LIB_OBJ) \
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/rpc_server/srv_pipe.c samba-2.0.10/source/rpc_server/srv_pipe.c
+--- samba-2.0.10_orig/source/rpc_server/srv_pipe.c	2000-04-18 18:27:45.000000000 +0200
++++ samba-2.0.10/source/rpc_server/srv_pipe.c	2010-08-14 11:33:21.000000000 +0200
+@@ -468,7 +468,9 @@
+ static struct api_cmd api_fd_commands[] =
+ {
+     { "lsarpc",   "lsass",   api_ntlsa_rpc },
++#if 0
+     { "samr",     "lsass",   api_samr_rpc },
++#endif
+     { "srvsvc",   "ntsvcs",  api_srvsvc_rpc },
+     { "wkssvc",   "ntsvcs",  api_wkssvc_rpc },
+     { "NETLOGON", "lsass",   api_netlog_rpc },
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/smbd/close.c samba-2.0.10/source/smbd/close.c
+--- samba-2.0.10_orig/source/smbd/close.c	2000-04-21 19:43:13.000000000 +0200
++++ samba-2.0.10/source/smbd/close.c	2010-08-14 13:40:58.000000000 +0200
+@@ -123,9 +123,11 @@
+ 
+     fsp->fd_ptr = NULL;
+ 
++#if 0
+ 	/* NT uses smbclose to start a print - weird */
+ 	if (normal_close && fsp->print_file)
+ 		print_file(conn, fsp);
++#endif
+ 
+ 	/* check for magic scripts */
+ 	if (normal_close) {
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/smbd/ipc.c samba-2.0.10/source/smbd/ipc.c
+--- samba-2.0.10_orig/source/smbd/ipc.c	2000-03-30 00:20:06.000000000 +0200
++++ samba-2.0.10/source/smbd/ipc.c	2010-08-14 11:46:37.000000000 +0200
+@@ -476,7 +476,7 @@
+ /****************************************************************************
+   get a print queue
+   ****************************************************************************/
+-
++#if 0
+ static void PackDriverData(struct pack_desc* desc)
+ {
+   char drivdata[4+4+32];
+@@ -1004,7 +1004,7 @@
+   
+   return True;
+ }
+-
++#endif
+ /****************************************************************************
+   get info level for a server list query
+   ****************************************************************************/
+@@ -1834,7 +1834,7 @@
+ 
+   return(True);
+ }
+-
++#if 0
+ /****************************************************************************
+   delete a print job
+   Form: <W> <> 
+@@ -2091,7 +2091,7 @@
+ 	
+ 	return(True);
+ }
+-
++#endif
+ 
+ /****************************************************************************
+   get info about the server
+@@ -2756,7 +2756,7 @@
+ 
+   return(True);
+ }
+-
++#if 0
+ /****************************************************************************
+   api_WPrintJobEnumerate
+   ****************************************************************************/
+@@ -3189,7 +3189,7 @@
+   DEBUG(4,("WPrintPortEnum: errorcode %d\n",desc.errcode));
+   return(True);
+ }
+-
++#endif
+ /****************************************************************************
+  Start the first part of an RPC reply which began with an SMBtrans request.
+ ****************************************************************************/
+@@ -3407,6 +3409,7 @@
+   {"RNetUserGetInfo",	56,	api_RNetUserGetInfo,0},
+   {"NetUserGetGroups",	59,	api_NetUserGetGroups,0},
+   {"NetWkstaGetInfo",	63,	api_NetWkstaGetInfo,0},
++#if 0
+   {"DosPrintQEnum",	69,	api_DosPrintQEnum,0},
+   {"DosPrintQGetInfo",	70,	api_DosPrintQGetInfo,0},
+   {"WPrintQueuePause",  74, api_WPrintQueuePurge,0},
+@@ -3418,16 +3421,21 @@
+   {"RDosPrintJobResume",83,	api_RDosPrintJobDel,0},
+   {"WPrintDestEnum",	84,	api_WPrintDestEnum,0},
+   {"WPrintDestGetInfo",	85,	api_WPrintDestGetInfo,0},
++#endif
+   {"NetRemoteTOD",	91,	api_NetRemoteTOD,0},
++#if 0
+   {"WPrintQueuePurge",	103,	api_WPrintQueuePurge,0},
++#endif
+   {"NetServerEnum",	104,	api_RNetServerEnum,0},
+   {"WAccessGetUserPerms",105,	api_WAccessGetUserPerms,0},
+   {"SetUserPassword",	115,	api_SetUserPassword,0},
+   {"WWkstaUserLogon",	132,	api_WWkstaUserLogon,0},
++#if 0
+   {"PrintJobInfo",	147,	api_PrintJobInfo,0},
+   {"WPrintDriverEnum",	205,	api_WPrintDriverEnum,0},
+   {"WPrintQProcEnum",	206,	api_WPrintQProcEnum,0},
+   {"WPrintPortEnum",	207,	api_WPrintPortEnum,0},
++#endif
+   {"SamOEMChangePassword", 214, api_SamOEMChangePassword,0},
+   {NULL,		-1,	api_Unsupported,0}};
+ 
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/smbd/process.c samba-2.0.10/source/smbd/process.c
+--- samba-2.0.10_orig/source/smbd/process.c	2000-04-15 02:21:27.000000000 +0200
++++ samba-2.0.10/source/smbd/process.c	2010-08-14 13:45:45.000000000 +0200
+@@ -343,10 +343,12 @@
+    {SMBlseek,"SMBlseek",reply_lseek,AS_USER},
+    {SMBflush,"SMBflush",reply_flush,AS_USER},
+    {SMBctemp,"SMBctemp",reply_ctemp,AS_USER | QUEUE_IN_OPLOCK },
++#if 0
+    {SMBsplopen,"SMBsplopen",reply_printopen,AS_USER | QUEUE_IN_OPLOCK },
+    {SMBsplclose,"SMBsplclose",reply_printclose,AS_USER},
+    {SMBsplretq,"SMBsplretq",reply_printqueue,AS_USER},
+    {SMBsplwr,"SMBsplwr",reply_printwrite,AS_USER},
++#endif
+    {SMBlock,"SMBlock",reply_lock,AS_USER},
+    {SMBunlock,"SMBunlock",reply_unlock,AS_USER},
+    
+@@ -908,7 +910,7 @@
+     DEBUG(2,("Closing idle connection 2.\n"));
+     return False;
+   }
+-
++#if 0
+   if(global_machine_password_needs_changing)
+   {
+     unsigned char trust_passwd_hash[16];
+@@ -954,7 +956,7 @@
+     trust_password_unlock();
+     global_machine_password_needs_changing = False;
+   }
+-
++#endif
+   /*
+    * Check to see if we have any blocking locks
+    * outstanding on the queue.
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/smbd/reply.c samba-2.0.10/source/smbd/reply.c
+--- samba-2.0.10_orig/source/smbd/reply.c	2001-06-23 10:51:24.000000000 +0200
++++ samba-2.0.10/source/smbd/reply.c	2010-08-14 13:40:11.000000000 +0200
+@@ -597,12 +597,12 @@
+ 
+   if (!check_domain_match(orig_user, domain))
+      return False;
+-
++#if 0
+   ret = domain_client_validate(orig_user, domain,
+                                 smb_apasswd, smb_apasslen,
+                                 smb_ntpasswd, smb_ntpasslen,
+                                 &user_exists);
+-
++#endif
+   if(ret) {
+     /*
+      * User validated ok against Domain controller.
+@@ -2991,7 +2991,7 @@
+ 	return -1;
+ }
+ 
+-
++#if 0
+ /****************************************************************************
+   reply to a printopen
+ ****************************************************************************/
+@@ -3176,7 +3176,7 @@
+   
+   return(outsize);
+ }
+-
++#endif
+ 
+ /****************************************************************************
+   reply to a mkdir
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/smbd/server.c samba-2.0.10/source/smbd/server.c
+--- samba-2.0.10_orig/source/smbd/server.c	2000-03-16 23:59:52.000000000 +0100
++++ samba-2.0.10/source/smbd/server.c	2010-08-14 11:40:22.000000000 +0200
+@@ -301,7 +301,7 @@
+ 
+ 	ret = lp_load(servicesf,False,False,True);
+ 
+-	load_printers();
++//	load_printers();
+ 
+ 	/* perhaps the config filename is now set */
+ 	if (!test)
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/smbd/service.c samba-2.0.10/source/smbd/service.c
+--- samba-2.0.10_orig/source/smbd/service.c	2000-03-16 23:59:52.000000000 +0100
++++ samba-2.0.10/source/smbd/service.c	2010-08-14 13:41:30.000000000 +0200
+@@ -121,7 +121,7 @@
+       }
+      }
+    }
+-
++#if 0
+    /* If we still don't have a service, attempt to add it as a printer. */
+    if (iService < 0)
+    {
+@@ -146,7 +146,7 @@
+             DEBUG(3,("%s is not a valid printer name\n", service));
+       }
+    }
+-
++#endif
+    /* just possibly it's a default service? */
+    if (iService < 0) 
+    {
+
+diff -r -N -U 3 -H -d samba-2.0.10_orig/source/client/smbmount.c samba-2.0.10/source/client/smbmount.c
+--- samba-2.0.10_orig/source/client/smbmount.c	2000-03-16 23:59:52.000000000 +0100
++++ samba-2.0.10/source/client/smbmount.c	2010-08-14 13:41:30.000000000 +0200
+@@ -477,27 +477,27 @@
+ 	printf("Version %s\n\n",VERSION);
+ 
+ 	printf(
+-"Options:
+-      username=<arg>                  SMB username
+-      password=<arg>                  SMB password
+-      netbiosname=<arg>               source NetBIOS name
+-      uid=<arg>                       mount uid or username
+-      gid=<arg>                       mount gid or groupname
+-      port=<arg>                      remote SMB port number
+-      fmask=<arg>                     file umask
+-      dmask=<arg>                     directory umask
+-      debug=<arg>                     debug level
+-      ip=<arg>                        destination host or IP address
+-      workgroup=<arg>                 workgroup on destination
+-      sockopt=<arg>                   TCP socket options
+-      scope=<arg>                     NetBIOS scope
+-      guest                           don't prompt for a password
+-      ro                              mount read-only
+-      rw                              mount read-write
+-
+-This command is designed to be run from within /bin/mount by giving
+-the option '-t smbfs'. For example:
+-  mount -t smbfs -o username=tridge,password=foobar //fjall/test /data/test
++"Options:\n\
++      username=<arg>                  SMB username\n\
++      password=<arg>                  SMB password\n\
++      netbiosname=<arg>               source NetBIOS name\n\
++      uid=<arg>                       mount uid or username\n\
++      gid=<arg>                       mount gid or groupname\n\
++      port=<arg>                      remote SMB port number\n\
++      fmask=<arg>                     file umask\n\
++      dmask=<arg>                     directory umask\n\
++      debug=<arg>                     debug level\n\
++      ip=<arg>                        destination host or IP address\n\
++      workgroup=<arg>                 workgroup on destination\n\
++      sockopt=<arg>                   TCP socket options\n\
++      scope=<arg>                     NetBIOS scope\n\
++      guest                           don't prompt for a password\n\
++      ro                              mount read-only\n\
++      rw                              mount read-write\n\
++\n\
++This command is designed to be run from within /bin/mount by giving\n\
++the option '-t smbfs'. For example:\n\
++  mount -t smbfs -o username=tridge,password=foobar //fjall/test /data/test\n\
+ ");
+ }
+ 
+diff -ruN samba-2.0.10.orig/source/smbd/password.c samba-2.0.10/source/smbd/password.c
+--- samba-2.0.10.orig/source/smbd/password.c	2000-03-16 23:59:48.000000000 +0100
++++ samba-2.0.10/source/smbd/password.c	2006-03-06 22:21:12.000000000 +0100
+@@ -1149,7 +1149,7 @@
+ 
+   return(True);
+ }
+-
++#if 0
+ /***********************************************************************
+  Connect to a remote machine for domain security authentication
+  given a name or IP address.
+@@ -1504,3 +1504,4 @@
+   cli_shutdown(&cli);
+   return True;
+ }
++#endif

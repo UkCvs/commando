@@ -1,0 +1,24 @@
+    MENUDON=Bildschirm-Uhr Einstellungen,/var/tuxbox/config/clock.conf
+        ACTION=&Horizontale Position,/bin/cops X
+        ACTION=&Vertikale Position,/bin/cops Y
+        MENUSON=Hintergrundfarbe,grep -q "BCOL=" /var/tuxbox/config/clock.conf
+	        SHELLRESOFF=-&Transparent,/bin/cops BCOL 0,grep -q "BCOL=0" /var/tuxbox/config/clock.conf
+	        SHELLRESOFF=-&Schwarz,/bin/cops BCOL 1,grep -q "BCOL=1" /var/tuxbox/config/clock.conf
+	        SHELLRESOFF=-&Wei~z,/bin/cops BCOL 2,grep -q "BCOL=2" /var/tuxbox/config/clock.conf
+	    ENDMENU
+        MENUSON=Ziffernfarbe,grep -q "FCOL=" /var/tuxbox/config/clock.conf
+	        SHELLRESOFF=-&Transparent,/bin/cops FCOL 0,grep -q "FCOL=0" /var/tuxbox/config/clock.conf
+	        SHELLRESOFF=-&Schwarz,/bin/cops FCOL 1,grep -q "FCOL=1" /var/tuxbox/config/clock.conf
+	        SHELLRESOFF=-&Wei~z,/bin/cops FCOL 2,grep -q "FCOL=2" /var/tuxbox/config/clock.conf
+	    ENDMENU
+        SHELLRESON=&Sekunden anzeigen:~t~tein,/bin/cops SEC 0,grep -q "SEC=1" /var/tuxbox/config/clock.conf
+        SHELLRESON=&Sekunden anzeigen:~t~taus,/bin/cops SEC 1,grep -q "SEC=0" /var/tuxbox/config/clock.conf
+        SHELLRESON=&Datum anzeigen:~t~tein,/bin/cops DATE 0,grep -q "DATE=1" /var/tuxbox/config/clock.conf
+        SHELLRESON=&Datum anzeigen:~t~taus,/bin/cops DATE 1,grep -q "DATE=0" /var/tuxbox/config/clock.conf
+        SHELLRESON=&Schrift:~t~t~t~t~tklein,/bin/cops BIG 1,grep -q "BIG=0" /var/tuxbox/config/clock.conf
+        SHELLRESON=&Schrift:~t~t~t~t~tgro~z,/bin/cops BIG 0,grep -q "BIG=1" /var/tuxbox/config/clock.conf
+        SHELLRESON=&Mail ~uberwachen:~t~tein,/bin/cops MAIL 0,grep -q "MAIL=1" /var/tuxbox/config/clock.conf
+        SHELLRESON=&Mail ~uberwachen:~t~taus,/bin/cops MAIL 1,grep -q "MAIL=0" /var/tuxbox/config/clock.conf
+    ENDMENU
+SHELLRESOFF=Uhr anzeigen,/var/bin/clock,pidof clock > /dev/null
+SHELLRESON=Uhr ausblenden,touch /tmp/.clock_kill,pidof clock > /dev/null

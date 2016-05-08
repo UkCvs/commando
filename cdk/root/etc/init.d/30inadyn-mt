@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Tuxbox init script for /bin/inadyn-mt
+
+case $1 in
+	start)
+		if [ -x /bin/inadyn-mt -a -e /var/etc/inadyn-mt.conf ]; then
+			inadyn-mt --background --input_file /var/etc/inadyn-mt.conf
+		fi
+		;;
+esac
+
+exit 0

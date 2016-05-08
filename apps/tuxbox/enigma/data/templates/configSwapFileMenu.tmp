@@ -1,0 +1,24 @@
+<script>
+function configSwapFile()
+{
+	var activate = "off";
+	if (swapfileconfig.swap.checked)
+		activate = "on";
+	document.location = "/cgi-bin/setConfigSwapFile?swap=" + activate + "&swapfile=" + swapfileconfig.swapfile.value;
+	setTimeout("document.location.reload()", 500);
+}
+</script>
+<form name="swapfileconfig">
+	<table border="0" cellspacing="5" cellpadding="0">
+		<tr>
+			<td><input type="checkbox" name="swap" value="on" #SWAP#></td>
+			<td>Use Swap File:</td>
+			<td><input style="color: #000000" name="swapfile" type="text" size="50" maxlength="50" value="#SWAPFILE#"></td>
+		</tr>
+	</table>
+	<br>
+	#SWAPFILEBUTTON#
+</form>
+<br><br>
+Please note that a 32 MB swap file will automatically be created if the file does not exist. 
+This takes a while, so please be patient. 

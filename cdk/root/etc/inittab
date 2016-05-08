@@ -1,0 +1,23 @@
+# $Id: inittab,v 1.7 2009/11/21 13:35:52 rhabarber1848 Exp $
+
+# after sysinit is done, the consoles are started.
+# so only absolutely necessary stuff is done in sysinit
+::sysinit:/etc/init.d/sysinit
+
+# rcS does the "real" boot
+::once:/etc/init.d/rcS
+
+#tts/0::respawn:/bin/agetty -L tts/0 9600 vt102
+
+# this sucks
+::askfirst:-/bin/sh
+#vc/1::askfirst:-/bin/sh
+vc/2::askfirst:-/bin/sh
+vc/3::askfirst:-/bin/sh
+#vc/4::askfirst:-/bin/sh
+#vc/5::askfirst:-/bin/sh
+#vc/6::askfirst:-/bin/sh
+
+::restart:/sbin/init
+::ctrlaltdel:/sbin/reboot
+::shutdown:/etc/init.d/rcK

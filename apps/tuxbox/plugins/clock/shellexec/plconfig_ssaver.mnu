@@ -1,0 +1,18 @@
+MENUDON=Screensaver,/var/tuxbox/config/ssaver.conf,ICON=/share/tuxbox/neutrino/icons/color.raw
+	SHELLRESON=&Hintergrundfarbe~t~ttransparent,/bin/ssops BCOL 01,grep -q "^BCOL=00" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Hintergrundfarbe~t~t   schwarz,/bin/ssops BCOL 02,grep -q "^BCOL=01" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Hintergrundfarbe~t~t~twei~z,/bin/ssops BCOL 00,grep -q "^BCOL=02" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Ziffernfarbe~t~t~t~ttransparent,/bin/ssops FCOL 01,grep -q "^FCOL=00" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Ziffernfarbe~t~t~t~t   schwarz,/bin/ssops FCOL 02,grep -q "^FCOL=01" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Ziffernfarbe~t~t~t~t~twei~z,/bin/ssops FCOL 99,grep -q "^FCOL=02" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Ziffernfarbe~t~t~t~t~tzuf~allig,/bin/ssops FCOL 00,grep -q "^FCOL=99" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Sekunden anzeigen~t~t~tein,/bin/ssops SEC 0,grep -q "^SEC=1" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Sekunden anzeigen~t~t~taus,/bin/ssops SEC 1,grep -q "^SEC=0" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Doppelpunkt blinkend~t~tein,/bin/ssops BLINK 0,grep -q "^BLINK=1" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Doppelpunkt blinkend~t~taus,/bin/ssops BLINK 1,grep -q "^BLINK=0" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Datum anzeigen~t~t~t~tein,/bin/ssops DATE 0,grep -q "^DATE=1" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Datum anzeigen~t~t~t~taus,/bin/ssops DATE 1,grep -q "^DATE=0" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Schrift~t~t~t~t~t~tklein,/bin/ssops BIG 1,grep -q "^BIG=0" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Schrift~t~t~t~t~t~tgro~z,/bin/ssops BIG 0,grep -q "^BIG=1" /var/tuxbox/config/ssaver.conf
+	SHELLRESON=&Verz~ogerung,/bin/ssops SLOW,grep -q "^SLOW=" /var/tuxbox/config/ssaver.conf
+ENDMENU

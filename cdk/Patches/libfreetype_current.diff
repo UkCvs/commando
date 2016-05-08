@@ -1,0 +1,270 @@
+diff -uNr freetype-2.3.9.org/builds/unix/freetype-config.in freetype-2.3.9/builds/unix/freetype-config.in
+--- freetype-2.3.9.org/builds/unix/freetype-config.in	2009-02-04 00:09:49.000000000 +0100
++++ freetype-2.3.9/builds/unix/freetype-config.in	2009-08-19 18:38:46.000000000 +0200
+@@ -132,11 +132,7 @@
+ 
+ if test "$echo_cflags" = "yes" ; then
+   cflags="-I${SYSROOT}$includedir/freetype2"
+-  if test "${SYSROOT}$includedir" != "/usr/include" ; then
+-    echo $cflags -I${SYSROOT}$includedir
+-  else
+     echo $cflags
+-  fi
+ fi
+ 
+ if test "$echo_libs" = "yes" ; then
+diff -uNr freetype-2.3.9.org/builds/unix/unix-cc.in freetype-2.3.9/builds/unix/unix-cc.in
+--- freetype-2.3.9.org/builds/unix/unix-cc.in	2006-10-15 10:57:22.000000000 +0200
++++ freetype-2.3.9/builds/unix/unix-cc.in	2009-08-19 18:39:34.000000000 +0200
+@@ -100,7 +100,7 @@
+ CCraw_build  := @CC_BUILD@	# native CC of building system
+ E_BUILD      := @EXEEXT_BUILD@	# extension for exexutable on building system
+ EXPORTS_LIST := $(OBJ_DIR)/ftexport.sym
+-CCexe        := $(CCraw_build)	# used to compile `apinames' only
++CCexe        := gcc
+ 
+ 
+ # Library linking
+diff -uNr freetype-2.3.9.org/include/freetype/config/ftoption.h freetype-2.3.9/include/freetype/config/ftoption.h
+--- freetype-2.3.9.org/include/freetype/config/ftoption.h	2008-11-05 10:25:14.000000000 +0100
++++ freetype-2.3.9/include/freetype/config/ftoption.h	2009-08-19 18:38:46.000000000 +0200
+@@ -480,7 +480,7 @@
+   /*   Do not #undef this macro here, since the build system might         */
+   /*   define it for certain configurations only.                          */
+   /*                                                                       */
+-/* #define TT_CONFIG_OPTION_BYTECODE_INTERPRETER */
++#define TT_CONFIG_OPTION_BYTECODE_INTERPRETER
+ 
+ 
+   /*************************************************************************/
+@@ -527,7 +527,7 @@
+   /*     ...                                                               */
+   /*   }                                                                   */
+   /*                                                                       */
+-#define TT_CONFIG_OPTION_UNPATENTED_HINTING
++/* #define TT_CONFIG_OPTION_UNPATENTED_HINTING */
+ 
+ 
+   /*************************************************************************/
+diff -uNr freetype-2.3.9.org/src/base/ftapi.c freetype-2.3.9/src/base/ftapi.c
+--- freetype-2.3.9.org/src/base/ftapi.c	2007-01-16 06:10:55.000000000 +0100
++++ freetype-2.3.9/src/base/ftapi.c	2009-08-19 18:38:46.000000000 +0200
+@@ -118,4 +118,18 @@
+   }
+ 
+ 
++  FT_BASE_DEF( FT_Short )
++  FT_Get_Short( FT_Stream stream )
++  {
++    return FT_GET_SHORT();
++  }
++
++
++  FT_BASE_DEF( FT_Long )
++  FT_Get_Long( FT_Stream stream )
++      {
++    return FT_GET_LONG();
++  }
++
++
+ /* END */
+diff -uNr freetype-2.3.9.org/src/base/ftbase.c freetype-2.3.9/src/base/ftbase.c
+--- freetype-2.3.9.org/src/base/ftbase.c	2008-10-04 13:22:08.000000000 +0200
++++ freetype-2.3.9/src/base/ftbase.c	2009-08-19 18:40:14.000000000 +0200
+@@ -31,6 +31,7 @@
+ #include "ftstream.c"
+ #include "fttrigon.c"
+ #include "ftutil.c"
++#include "ftapi.c"
+ 
+ #if defined( FT_MACINTOSH ) && !defined ( DARWIN_NO_CARBON )
+ #include "ftmac.c"
+diff -uNr freetype-2.3.9.org/src/bdf/bdflib.c freetype-2.3.9/src/bdf/bdflib.c
+--- freetype-2.3.9.org/src/bdf/bdflib.c	2009-03-12 07:41:29.000000000 +0100
++++ freetype-2.3.9/src/bdf/bdflib.c	2009-08-19 18:38:46.000000000 +0200
+@@ -1584,6 +1584,14 @@
+         goto Exit;
+       }
+ 
++      /* Check that the encoding is in the range [0, 65535] because       */
++      /* otherwise p->have (a bitmap with static size) overflows.         */
++      if ( p->glyph_enc >= sizeof(p->have) * 8 )
++      {
++	error = BDF_Err_Invalid_File_Format; /* Not the ideal error code */
++	goto Exit;
++      }
++
+       /* Check to see whether this encoding has already been encountered. */
+       /* If it has then change it to unencoded so it gets added if        */
+       /* indicated.                                                       */
+diff -uNr freetype-2.3.9.org/src/sfnt/ttmtx.c freetype-2.3.9/src/sfnt/ttmtx.c
+--- freetype-2.3.9.org/src/sfnt/ttmtx.c	2008-11-28 07:29:08.000000000 +0100
++++ freetype-2.3.9/src/sfnt/ttmtx.c	2009-08-19 18:38:46.000000000 +0200
+@@ -174,7 +174,7 @@
+     }
+ 
+     if ( FT_QNEW_ARRAY( *longs,  num_longs  ) ||
+-         FT_QNEW_ARRAY( *shorts, num_shorts ) )
++         (num_shorts > 0 && FT_QNEW_ARRAY( *shorts, num_shorts ) ) )
+       goto Fail;
+ 
+     if ( FT_FRAME_ENTER( table_len ) )
+diff -uNr freetype-2.3.12.org/include/freetype/config/ftoption.h freetype-2.3.12/include/freetype/config/ftoption.h
+--- freetype-2.3.12.org/include/freetype/config/ftoption.h	2012-03-10 12:42:47.000000000 +0100
++++ freetype-2.3.12/include/freetype/config/ftoption.h	2012-03-10 12:46:58.000000000 +0100
+@@ -149,7 +149,7 @@
+   /*                                                                       */
+   /*   Define this macro if you want to enable this `feature'.             */
+   /*                                                                       */
+-#define FT_CONFIG_OPTION_USE_LZW
++/* #define FT_CONFIG_OPTION_USE_LZW */
+ 
+ 
+   /*************************************************************************/
+@@ -283,7 +283,7 @@
+   /*                                                                       */
+   /*   Note that the `FOND' resource isn't checked.                        */
+   /*                                                                       */
+-#define FT_CONFIG_OPTION_MAC_FONTS
++/* #define FT_CONFIG_OPTION_MAC_FONTS */
+ 
+ 
+   /*************************************************************************/
+@@ -317,7 +317,7 @@
+   /* supply font data incrementally as the document is parsed, such        */
+   /* as the Ghostscript interpreter for the PostScript language.           */
+   /*                                                                       */
+-#define FT_CONFIG_OPTION_INCREMENTAL
++/* #define FT_CONFIG_OPTION_INCREMENTAL */
+ 
+ 
+   /*************************************************************************/
+@@ -473,8 +473,8 @@
+ #define TT_CONFIG_CMAP_FORMAT_8
+ #define TT_CONFIG_CMAP_FORMAT_10
+ #define TT_CONFIG_CMAP_FORMAT_12
+-#define TT_CONFIG_CMAP_FORMAT_13
+-#define TT_CONFIG_CMAP_FORMAT_14
++/* #define TT_CONFIG_CMAP_FORMAT_13 */
++/* #define TT_CONFIG_CMAP_FORMAT_14 */
+ 
+ 
+   /*************************************************************************/
+@@ -497,7 +497,7 @@
+   /*   Do not #undef this macro here, since the build system might         */
+   /*   define it for certain configurations only.                          */
+   /*                                                                       */
+-#define TT_CONFIG_OPTION_BYTECODE_INTERPRETER
++/* #define TT_CONFIG_OPTION_BYTECODE_INTERPRETER */
+ 
+ 
+   /*************************************************************************/
+@@ -586,7 +586,7 @@
+   /* and avar tables).  This has many similarities to Type 1 Multiple      */
+   /* Masters support.                                                      */
+   /*                                                                       */
+-#define TT_CONFIG_OPTION_GX_VAR_SUPPORT
++/* #define TT_CONFIG_OPTION_GX_VAR_SUPPORT */
+ 
+ 
+   /*************************************************************************/
+@@ -594,7 +594,7 @@
+   /* Define TT_CONFIG_OPTION_BDF if you want to include support for        */
+   /* an embedded `BDF ' table within SFNT-based bitmap formats.            */
+   /*                                                                       */
+-#define TT_CONFIG_OPTION_BDF
++/* #define TT_CONFIG_OPTION_BDF */
+ 
+ 
+   /*************************************************************************/
+@@ -666,13 +666,13 @@
+   /* Compile autofit module with CJK (Chinese, Japanese, Korean) script    */
+   /* support.                                                              */
+   /*                                                                       */
+-#define AF_CONFIG_OPTION_CJK
++/* #define AF_CONFIG_OPTION_CJK */
+ 
+   /*************************************************************************/
+   /*                                                                       */
+   /* Compile autofit module with Indic script support.                     */
+   /*                                                                       */
+-#define AF_CONFIG_OPTION_INDIC
++/* #define AF_CONFIG_OPTION_INDIC */
+ 
+   /* */
+ 
+--- freetype-2.3.12.org/modules.cfg	2009-03-14 14:45:26.000000000 +0100
++++ freetype-2.3.12/modules.cfg	2012-03-18 19:13:37.000000000 +0100
+@@ -42,30 +42,30 @@
+ # CFF/OpenType font driver.
+ #
+ # This driver needs the `sfnt', `pshinter', and `psnames' modules.
+-FONT_MODULES += cff
++# FONT_MODULES += cff
+ 
+ # Type 1 CID-keyed font driver.
+ #
+ # This driver needs the `psaux', `pshinter', and `psnames' modules.
+-FONT_MODULES += cid
++# FONT_MODULES += cid
+ 
+ # PFR/TrueDoc font driver.  See optional extension ftpfr.c below also.
+-FONT_MODULES += pfr
++# FONT_MODULES += pfr
+ 
+ # PostScript Type 42 font driver.
+ #
+ # This driver needs the `truetype' module.
+-FONT_MODULES += type42
++# FONT_MODULES += type42
+ 
+ # Windows FONT/FNT font driver.  See optional extension ftwinfnt.c below
+ # also.
+-FONT_MODULES += winfonts
++# FONT_MODULES += winfonts
+ 
+ # PCF font driver.
+ FONT_MODULES += pcf
+ 
+ # BDF font driver.  See optional extension ftbdf.c below also.
+-FONT_MODULES += bdf
++# FONT_MODULES += bdf
+ 
+ # SFNT files support.  If used without `truetype' or `cff', it supports
+ # bitmap-only fonts within an SFNT wrapper.
+@@ -120,7 +120,7 @@
+ # Support for streams compressed with LZW (files with suffix .Z).
+ #
+ # See include/freetype/ftlzw.h for the API.
+-AUX_MODULES += lzw
++# AUX_MODULES += lzw
+ 
+ # OpenType table validation.  Needs ftotval.c below.
+ #
+@@ -150,7 +150,7 @@
+ # Access BDF-specific strings.  Needs BDF font driver.
+ #
+ # See include/freetype/ftbdf.h for the API.
+-BASE_EXTENSIONS += ftbdf.c
++# BASE_EXTENSIONS += ftbdf.c
+ 
+ # Utility functions for converting 1bpp, 2bpp, 4bpp, and 8bpp bitmaps into
+ # 8bpp format, and for emboldening of bitmap glyphs.
+@@ -206,7 +206,7 @@
+ # Interface for accessing PFR-specific data.  Needs PFR font driver.
+ #
+ # See include/freetype/ftpfr.h for the API.
+-BASE_EXTENSIONS += ftpfr.c
++# BASE_EXTENSIONS += ftpfr.c
+ 
+ # Path stroker.  Needs ftglyph.c.
+ #
+@@ -228,7 +228,7 @@
+ # driver.
+ #
+ # See include/freetype/ftwinfnt.h for the API.
+-BASE_EXTENSIONS += ftwinfnt.c
++# BASE_EXTENSIONS += ftwinfnt.c
+ 
+ # Support functions for X11.
+ #

@@ -1,0 +1,5 @@
+.libs
+Makefile
+libsectionsdclient.la
+sectionsdclient.lo
+sectionsdcontrol

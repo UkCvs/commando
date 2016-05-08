@@ -1,0 +1,168 @@
+#
+# $Id: README.firmware,v 1.6 2003/09/30 07:05:56 obi Exp $
+#
+# This document describes the binary firmware (so called microcode) which
+# is needed to have a functional MPEG2 chipset in a dbox2.
+#
+# Copyright (C) 2002-2003 Andreas Oberritter <obi@tuxbox.org>
+#
+# Permission is granted to copy, distribute and/or modify this document
+# under the terms of the GNU Free Documentation License, Version 1.2
+# or any later version published by the Free Software Foundation;
+# with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+# A copy of the license is included in common-licenses/FDL-1.2
+#
+# This document is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+
+Introduction:
+-------------
+Some drivers need to load binary firmware for the chips to operate.
+
+Those are:
+- avia_av (mpeg decoder, C-Cube AViA500/AViA600, "avia500.ux, avia600.ux")
+- avia_gt (transport demux, C-Cube AViA-GTX/AViA-eNX, "ucode.bin")
+- cam     (conditional access module, BetaResearch SEC, "cam-alpha.bin")
+
+There are lots of different firmware versions available, but not every
+difference is known. In fact, almost only the version numbers are known to be
+different. See below for more about firmware versions.
+
+Unfortunately, there is no official download location for them and - due to
+unknown license terms - we can not provide these binaries next to the driver
+sources.
+
+However, there are several ways to get the firmware.
+
+
+ucodex:
+-------
+You can use the microcode extraction utility "ucodex" to recursively scan
+directories for firmware. You can get it from CVS and build it by using the
+commands listed below. You must have openssl development headers installed on
+your system to succeed. "ucodex" has been tested on Linux and FreeBSD, but it
+should work on any platform which has a c-compiler and openssl.
+
+   cvs -d:pserver:anonymous@cvs.tuxbox.org:/cvs/tuxbox -z3 co hostapps
+   cd hostapps
+   ./autogen.sh
+   ./configure
+   cd ucodex
+   make
+   make install
+
+Syntax for execution is one of:
+ucodex <filename>
+ucodex <directory>
+
+
+Extraction:
+-----------
+
+1. If you own a dbox2 which still has its original operating system or if you
+   own a backup of it, then you can extract alle three files from it. See
+   http://www.dietmar-h.net for details. This is the only way to get the cam
+   firmware. Ensure that you have the latest and greatest version by doing a
+   software update via cable or satellite before extracting. The current
+   software version (2.01) contains the following firmware versions:
+   avia500v110, avia600v022, cam_01_02_05[DEF], ucode_B107
+
+
+2. Some other dvb receivers are equipped with the same mpeg chipset as the
+   various versions of the dbox2. Some of them offer the possibility to perform
+   software updates using a serial interface. For those, manufacturers provide
+   updates to be downloaded via internet. Examples are:
+
+   -------------------------------------------------------------------------
+ 
+   http://www.media-com.com/downloads/vortec/downloadfiles/VS96PL500.exe
+   (avia500v093, ucode_0014)
+   
+   http://www.media-com.com/downloads/vortec/downloadfiles/VS96PL600.exe
+   (avia600vb017, ucode_0014)
+ 
+   -------------------------------------------------------------------------
+
+   http://www.micronik.de/software/MK12133.zip
+   http://www.micronik.de/software/MK13133.zip
+   (avia500v093, avia600vb028, ucode_001A)
+
+   http://www.micronik.de/software/v12-111.zip
+   http://www.micronik.de/software/v13-111.zip
+   (avia500v093, avia600vb022, ucode_001A)
+
+   These links are dead at the moment, but they are still on their web site,
+   so maybe they will be working again in the future.
+
+   You can still get the files from www.dvb-portal.de -> Downloads ->
+   Micronik -> Firmware. Newer versions, at least up to 1.52a, contain the
+   same microcodes as 1.33 does.
+
+   -------------------------------------------------------------------------
+
+   http://eubnet.de/sat/firmware/Radix/3ci17b.zip
+   (avia500v083, ucode_0014)
+
+   http://eubnet.de/sat/firmware/Radix/fta2ad38.zip
+   (avia500v083, ucode_0013)
+
+   -------------------------------------------------------------------------
+   
+   http://www.freesat.co.kr/service/service.html#direct
+ 
+   There are some receivers which also use the AViA mpeg chipset. I do not
+   remember which of them use it and my extraction utility fails. Detailed
+   information and bugfixes are welcome.
+
+   -------------------------------------------------------------------------
+
+   You can extract the zip or exe archives using "unzip". Usually they
+   contain files with the extesion bin or hex. Just run "ucodex" to extract
+   the firmware from them.
+
+
+
+Supported firmware status:
+--------------------------
+avia_av:
+   All versions are known to work, but some show strange effects when using
+   AC-3 audio output. Using the latest versions (avia500v110, avia600vb028)
+   is recommended.
+
+avia_gt:
+   ucode_0013, ucode_0014:
+   Known to work and hardware section filtering is supported.
+   Special thanks go to PentaMedia (www.pentamedia.com) for providing a GPL
+   driver for the GTX chipset including almost no source code. They use ucode
+   version 0014 which is therefore now built into our driver, too. It is used
+   if no other firmware is provided on the filesystem.
+
+   ucode_001A, ucode_B102, ucode_B107, ucode_B121:
+   Known to work but hardware section filtering is not supported by the driver.
+
+   All other ucode versions are currently not supported by the driver. Bugfixes
+   and documentation are always welcome.
+
+cam:
+   All known firmware versions are supported by the driver. However, command
+   handling is done in userspace, thus userspace applications might need to
+   change some bits depending on the used firmware version.
+   Version strings usually have one of three suffixes: D, E or F.
+   Each suffix matches special series of smart cards:
+
+   cam_xx_yy_zzD: betacrypt D .... .... ... Z,
+                  Nagravision K02
+
+   cam_xx_yy_zzE: betacrypt C .... .... ... Z,
+                  Nagravision A02,
+                  Nagravision S02,
+                  Nagravision P02
+
+   cam_xx_yy_zzF: betacrypt F .... .... ... Z
+
+betacrypt is a trademark of BetaResearch GmbH Germany. Nagravision is a
+trademark of Kudelski S.A. Switzerland. The names of actual companies and
+products mentioned herein may be the trademarks of their respective owners.
+

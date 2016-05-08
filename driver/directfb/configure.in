@@ -1,0 +1,91 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(Makefile.am)
+
+# Save this value here, since automake will set cflags later
+cflags_set="${CFLAGS}set"
+
+#
+# Making releases:
+#   DIRECTFB_MICRO_VERSION += 1;
+#   DIRECTFB_INTERFACE_AGE += 1;
+#   DIRECTFB_BINARY_AGE += 1;
+# if any functions have been added, set DIRECTFB_INTERFACE_AGE to 0.
+# if backwards compatibility has been broken,
+# set DIRECTFB_BINARY_AGE and DIRECTFB_INTERFACE_AGE to 0.
+#
+DIRECTFB_MAJOR_VERSION=1
+DIRECTFB_MINOR_VERSION=0
+DIRECTFB_MICRO_VERSION=0
+DIRECTFB_INTERFACE_AGE=0
+DIRECTFB_BINARY_AGE=0
+DIRECTFB_VERSION=$DIRECTFB_MAJOR_VERSION.$DIRECTFB_MINOR_VERSION.$DIRECTFB_MICRO_VERSION
+
+AC_SUBST(DIRECTFB_MAJOR_VERSION)
+AC_SUBST(DIRECTFB_MINOR_VERSION)
+AC_SUBST(DIRECTFB_MICRO_VERSION)
+AC_SUBST(DIRECTFB_INTERFACE_AGE)
+AC_SUBST(DIRECTFB_BINARY_AGE)
+AC_SUBST(DIRECTFB_VERSION)
+
+# libtool versioning
+LT_RELEASE=$DIRECTFB_MAJOR_VERSION.$DIRECTFB_MINOR_VERSION
+LT_CURRENT=`expr $DIRECTFB_MICRO_VERSION - $DIRECTFB_INTERFACE_AGE`
+LT_REVISION=$DIRECTFB_INTERFACE_AGE
+LT_AGE=`expr $DIRECTFB_BINARY_AGE - $DIRECTFB_INTERFACE_AGE`
+
+AC_SUBST(LT_RELEASE)
+AC_SUBST(LT_CURRENT)
+AC_SUBST(LT_REVISION)
+AC_SUBST(LT_AGE)
+
+VERSION=$DIRECTFB_VERSION
+PACKAGE=directfb-gtx-driver
+
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+AM_CONFIG_HEADER(config.h)
+AM_MAINTAINER_MODE
+AC_DISABLE_STATIC
+AM_PROG_LIBTOOL
+AM_SANITY_CHECK
+AC_ISC_POSIX
+AM_PROG_CC_STDC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_HEADER_STDC
+AC_C_CONST
+AC_PROG_CPP
+
+PKG_CHECK_MODULES(DFB, directfb-internal >= $DIRECTFB_VERSION)
+
+AC_ARG_ENABLE(debug, [  --enable-debug          enable debugging support [default=no]],, enable_debug=no)
+if test "x$enable_debug" = xyes; then
+    DFB_CFLAGS="$DFB_CFLAGS -g3 -DDFB_DEBUG"
+else
+    DFB_CFLAGS="$DFB_CFLAGS -g0"
+fi
+AM_CONDITIONAL(ENABLE_DEBUG, test "x$enable_debug" = xyes)
+
+AC_ARG_WITH(kernel_source,
+	[  --with-kernel-source=DIR],
+	[kernel_source="$withval"],[kernel_source="/usr/src/linux"])
+
+CPPFLAGS="$CPPFLAGS -I$kernel_source/include"
+AC_CHECK_HEADERS(linux/fb.h,[LINUX_FB_H="yes"])
+if ! test "$LINUX_FB_H"; then
+	AC_MSG_ERROR([linux/fb.h not found])
+fi
+
+MODULEDIR="${libdir}/directfb-${DIRECTFB_VERSION}"
+AC_SUBST(MODULEDIR)
+
+AC_OUTPUT([
+Makefile
+gfxdrivers/Makefile
+gfxdrivers/gtx/Makefile
+])
+
+AC_MSG_RESULT([
+Build options:
+  Module directory       $MODULEDIR
+  Debug mode             $enable_debug
+])

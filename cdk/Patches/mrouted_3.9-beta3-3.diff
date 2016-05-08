@@ -1,0 +1,210 @@
+diff -Naur mrouted-3.9-beta3.orig.orig/Makefile mrouted-3.9-beta3.orig/Makefile
+--- mrouted-3.9-beta3.orig.orig/Makefile	Sun Mar  1 04:09:11 1998
++++ mrouted-3.9-beta3.orig/Makefile	Sat Oct 29 23:32:39 2005
+@@ -24,15 +24,15 @@
+ #
+ # Uncomment the following three lines if you want to use RSRR (Routing
+ # Support for Resource Reservations), currently used by RSVP.
+-#RSRRDEF=	-DRSRR
+-#RSRRC=		rsrr.c
+-#RSRRO=		rsrr.o
++RSRRDEF=	-DRSRR
++RSRRC=		rsrr.c
++RSRRO=		rsrr.o
+ #
+ LDFLAGS=
+-CFLAGS=		-O ${MCAST_INCLUDE} ${SNMPDEF} ${RSRRDEF}	## SunOS, OSF1, FreeBSD, IRIX
++#CFLAGS=		-O ${MCAST_INCLUDE} ${SNMPDEF} ${RSRRDEF}	## SunOS, OSF1, FreeBSD, IRIX
+ #CFLAGS=		-O ${MCAST_INCLUDE} ${SNMPDEF} ${RSRRDEF} -DSYSV -DSUNOS5	## Solaris 2.x
+ #LIB2=-lsocket -lnsl	## Solaris 2.x
+-#CFLAGS=		-O ${MCAST_INCLUDE} ${SNMPDEF} ${RSRRDEF} -D__BSD_SOURCE -DRAW_INPUT_IS_RAW -DRAW_OUTPUT_IS_RAW -DIOCTL_OK_ON_RAW_SOCKET	## Linux
++CFLAGS=		-O ${MCAST_INCLUDE} ${SNMPDEF} ${RSRRDEF} -D__BSD_SOURCE -DRAW_INPUT_IS_RAW -DRAW_OUTPUT_IS_RAW -DIOCTL_OK_ON_RAW_SOCKET	## Linux
+ LIBS=		${SNMPLIBDIR} ${SNMPLIBS} ${LIB2}
+ LINTFLAGS=	${MCAST_INCLUDE}
+ IGMP_SRCS=	igmp.c inet.c kern.c
+@@ -79,7 +79,7 @@
+ 	${CC} ${LDFLAGS} -o $@ ${CFLAGS} ${MSTAT_OBJS} -Lsnmplib -lsnmp
+ 
+ clean: FRC ${SNMPCLEAN}
+-	rm -f ${OBJS} core mrouted map-mbone mrinfo mstat tags TAGS
++	rm -f ${OBJS} vers.o core mrouted map-mbone mrinfo mstat tags TAGS
+ 
+ snmpclean:	FRC
+ 	-(cd snmpd; make clean)
+diff -Naur mrouted-3.9-beta3.orig.orig/defs.h mrouted-3.9-beta3.orig/defs.h
+--- mrouted-3.9-beta3.orig.orig/defs.h	Sun Mar  1 03:51:42 1998
++++ mrouted-3.9-beta3.orig/defs.h	Sat Oct 29 23:32:39 2005
+@@ -45,7 +45,7 @@
+ #undef rtentry
+ #endif
+ #endif
+-#include <netinet/ip_mroute.h>
++#include "netinet/ip_mroute.h"
+ #ifdef RSRR
+ #include <sys/un.h>
+ #endif /* RSRR */
+@@ -180,7 +180,7 @@
+ #if !(defined(BSD) && (BSD >= 199103))
+ extern int		errno;
+ extern int		sys_nerr;
+-extern char *		sys_errlist[];
++/*extern char *		sys_errlist[];*/
+ #endif
+ 
+ #ifdef OLD_KERNEL
+diff -Naur mrouted-3.9-beta3.orig.orig/main.c mrouted-3.9-beta3.orig/main.c
+--- mrouted-3.9-beta3.orig.orig/main.c	Sun Mar  1 02:49:00 1998
++++ mrouted-3.9-beta3.orig/main.c	Sat Oct 29 23:32:39 2005
+@@ -32,6 +32,8 @@
+ #include "snmp.h"
+ #endif
+ 
++#include <time.h>
++
+ #ifndef lint
+ static char rcsid[] = "@(#) $Id: \
+ main.c,v 3.8.4.29 1998/03/01 01:49:00 fenner Exp $";
+diff -Naur mrouted-3.9-beta3.orig.orig/mrouted.conf mrouted-3.9-beta3.orig/mrouted.conf
+--- mrouted-3.9-beta3.orig.orig/mrouted.conf	Wed Nov 29 23:40:47 1995
++++ mrouted-3.9-beta3.orig/mrouted.conf	Sat Oct 29 23:32:39 2005
+@@ -30,7 +30,7 @@
+ #
+ #
+ # Template tunnel for mcast_install
+-tunnel 128.4.0.77 128.4.0.8 metric 1 threshold 64 rate_limit 500  # <-- REPLACE
++#tunnel 128.4.0.77 128.4.0.8 metric 1 threshold 64 rate_limit 500  # <-- REPLACE
+ #	boundary LOCAL
+ #
+ # You might want to specify a boundary on your tunnel to the outside world,
+diff -Naur mrouted-3.9-beta3.orig.orig/netinet/ip_mroute.h mrouted-3.9-beta3.orig/netinet/ip_mroute.h
+--- mrouted-3.9-beta3.orig.orig/netinet/ip_mroute.h	Thu Jan  1 01:00:00 1970
++++ mrouted-3.9-beta3.orig/netinet/ip_mroute.h	Sat Oct 29 23:33:43 2005
+@@ -0,0 +1,9 @@
++#ifndef __NETINET_IP_MROUTE_H
++#define __NETINET_IP_MROUTE_H
++
++#define _LINUX_IN_H
++
++#define __u32 uint32_t
++#include <linux/mroute.h>
++
++#endif
+diff -Naur mrouted-3.9-beta3.orig.orig/pathnames.h mrouted-3.9-beta3.orig/pathnames.h
+--- mrouted-3.9-beta3.orig.orig/pathnames.h	Wed Nov 29 23:36:57 1995
++++ mrouted-3.9-beta3.orig/pathnames.h	Sat Oct 29 23:32:39 2005
+@@ -12,14 +12,14 @@
+ 
+ #define _PATH_MROUTED_CONF	"/etc/mrouted.conf"
+ 
+-#if (defined(BSD) && (BSD >= 199103))
++/*#if (defined(BSD) && (BSD >= 199103))*/
+ #define _PATH_MROUTED_PID	"/var/run/mrouted.pid"
+ #define _PATH_MROUTED_GENID	"/var/run/mrouted.genid"
+ #define _PATH_MROUTED_DUMP	"/var/tmp/mrouted.dump"
+ #define _PATH_MROUTED_CACHE	"/var/tmp/mrouted.cache"
+-#else
++/*#else
+ #define _PATH_MROUTED_PID	"/etc/mrouted.pid"
+ #define _PATH_MROUTED_GENID	"/etc/mrouted.genid"
+ #define _PATH_MROUTED_DUMP	"/usr/tmp/mrouted.dump"
+ #define _PATH_MROUTED_CACHE	"/usr/tmp/mrouted.cache"
+-#endif
++#endif*/
+diff -Naur mrouted-3.9-beta3.orig.orig/vers.c mrouted-3.9-beta3.orig/vers.c
+--- mrouted-3.9-beta3.orig.orig/vers.c	Thu Jan  1 01:00:00 1970
++++ mrouted-3.9-beta3.orig/vers.c	Sat Oct 29 23:32:39 2005
+@@ -0,0 +1 @@
++char todaysversion[]="3.9-beta3";
+diff -uNr mrouted-3.9-beta3.orig.orig/cfparse.y mrouted-3.9-beta3.orig/cfparse.y
+--- mrouted-3.9-beta3.orig.orig/cfparse.y	1998-03-01 02:48:58.000000000 +0100
++++ mrouted-3.9-beta3.orig/cfparse.y	2009-01-17 17:01:41.000000000 +0100
+@@ -584,7 +584,7 @@
+ 				    fatal("Hostname %s does not %s",
+ 					$1, "map to a unique address");
+ 
+-				  bcopy(hp->h_addr_list[0], &$$,
++				  memmove(&$$, hp->h_addr_list[0],
+ 					    hp->h_length);
+ 				}
+ 
+diff -uNr mrouted-3.9-beta3.orig.orig/config.c mrouted-3.9-beta3.orig/config.c
+--- mrouted-3.9-beta3.orig.orig/config.c	1998-01-06 02:57:41.000000000 +0100
++++ mrouted-3.9-beta3.orig/config.c	2009-01-17 17:01:41.000000000 +0100
+@@ -89,7 +89,7 @@
+ 	 * SIOCGIFFLAGS stomps over it because the requests
+ 	 * are returned in a union.)
+ 	 */
+-	bcopy(ifrp->ifr_name, ifr.ifr_name, sizeof(ifr.ifr_name));
++	memmove(ifr.ifr_name, ifrp->ifr_name, sizeof(ifr.ifr_name));
+ 
+ 	/*
+ 	 * Ignore loopback interfaces and interfaces that do not support
+diff -uNr mrouted-3.9-beta3.orig.orig/main.c mrouted-3.9-beta3.orig/main.c
+--- mrouted-3.9-beta3.orig.orig/main.c	2009-01-17 17:01:28.000000000 +0100
++++ mrouted-3.9-beta3.orig/main.c	2009-01-17 17:01:41.000000000 +0100
+@@ -429,7 +429,7 @@
+     gettimeofday(&curtime, NULL);
+     lasttime = curtime;
+     for(;;) {
+-	bcopy((char *)&readers, (char *)&rfds, sizeof(rfds));
++	memmove((char *)&rfds, (char *)&readers, sizeof(rfds));
+ 	secs = timer_nextTimer();
+ 	if (secs == -1)
+ 	    timeout = NULL;
+@@ -1001,8 +1001,6 @@
+ 		    thyme->tm_min, thyme->tm_sec, now.tv_usec / 1000, msg);
+ 	if (syserr == 0)
+ 	    fprintf(stderr, "\n");
+-	else if (syserr < sys_nerr)
+-	    fprintf(stderr, ": %s\n", sys_errlist[syserr]);
+ 	else
+ 	    fprintf(stderr, ": errno %d\n", syserr);
+     }
+diff -uNr mrouted-3.9-beta3.orig.orig/mapper.c mrouted-3.9-beta3.orig/mapper.c
+--- mrouted-3.9-beta3.orig.orig/mapper.c	1998-01-06 02:57:47.000000000 +0100
++++ mrouted-3.9-beta3.orig/mapper.c	2009-01-17 17:01:41.000000000 +0100
+@@ -197,8 +197,6 @@
+ 	    vfprintf(stderr, fmt, ap);
+ 	    if (syserr == 0)
+ 		fprintf(stderr, "\n");
+-	    else if (syserr < sys_nerr)
+-		fprintf(stderr, ": %s\n", sys_errlist[syserr]);
+ 	    else
+ 		fprintf(stderr, ": errno %d\n", syserr);
+     }
+diff -uNr mrouted-3.9-beta3.orig.orig/mrinfo.c mrouted-3.9-beta3.orig/mrinfo.c
+--- mrouted-3.9-beta3.orig.orig/mrinfo.c	1998-03-01 04:05:20.000000000 +0100
++++ mrouted-3.9-beta3.orig/mrinfo.c	2009-01-17 17:01:41.000000000 +0100
+@@ -159,8 +159,6 @@
+ 		vfprintf(stderr, fmt, ap);
+ 		if (syserr == 0)
+ 			fprintf(stderr, "\n");
+-		else if (syserr < sys_nerr)
+-			fprintf(stderr, ": %s\n", sys_errlist[syserr]);
+ 		else
+ 			fprintf(stderr, ": errno %d\n", syserr);
+ 	}
+diff -uNr mrouted-3.9-beta3.orig.orig/prune.c mrouted-3.9-beta3.orig/prune.c
+--- mrouted-3.9-beta3.orig.orig/prune.c	1998-03-01 03:06:32.000000000 +0100
++++ mrouted-3.9-beta3.orig/prune.c	2009-01-17 17:01:41.000000000 +0100
+@@ -2450,7 +2450,7 @@
+     /* copy the packet to the sending buffer */
+     p = send_buf + MIN_IP_HEADER_LEN + IGMP_MINLEN;
+     
+-    bcopy(data, p, datalen);
++    memmove(p, data, datalen);
+     
+     p += datalen;
+     
+diff -uNr mrouted-3.9-beta3.orig.orig/route.c mrouted-3.9-beta3.orig/route.c
+--- mrouted-3.9-beta3.orig.orig/route.c	1998-01-15 01:08:34.000000000 +0100
++++ mrouted-3.9-beta3.orig/route.c	2009-01-17 17:01:41.000000000 +0100
+@@ -968,7 +968,7 @@
+     bh->bh_dst = dst;
+     bh->bh_level = level;
+     bh->bh_datalen = datalen;
+-    bcopy(p, (char *)(bh + 1), datalen);
++    memmove((char *)(bh + 1), p, datalen);
+     v->uv_blasterend += bblen;
+ 
+     if (v->uv_blastertimer == 0) {

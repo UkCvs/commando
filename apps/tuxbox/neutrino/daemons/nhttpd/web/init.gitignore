@@ -1,0 +1,6 @@
+Makefile
+Makefile.in
+test.htm
+gmon.out
+yhttpd.exe.stackdump
+*.js.gz

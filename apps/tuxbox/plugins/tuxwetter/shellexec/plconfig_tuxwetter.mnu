@@ -1,0 +1,13 @@
+MENUDON=Tuxwetter-Einstellungen,/bin/twops
+	SHELLRESON=&Startbildschirm~t~t~t~taus,/bin/twops tuxwet sscreen,grep -q "^SplashScreen=0" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESOFF=&Startbildschirm~t~t~t~tein,/bin/twops tuxwet sscreen,grep -q "^SplashScreen=0" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESON=&Wettersymbole einblenden~taus,/bin/twops tuxwet sicons,grep -q "^ShowIcons=0" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESOFF=&Wettersymbole einblenden~tein,/bin/twops tuxwet sicons,grep -q "^ShowIcons=0" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESON=&'Einheiten,Zeit,Datum~tnonmetric',/bin/twops tuxwet metric,grep -q "^Metric=0" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESOFF=&'Einheiten,Zeit,Datum~t~tmetric',/bin/twops tuxwet metric,grep -q "^Metric=0" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESON=&Internetverbindung~t~t~tDSL,/bin/twops tuxwet iconnect ISDN,grep -q "^InetConnection=DSL" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESON=&Internetverbindung~t~t~tISDN,/bin/twops tuxwet iconnect ANALOG,grep -q "^InetConnection=ISDN" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	SHELLRESON=&Internetverbindung~t~t~tAnalog,/bin/twops tuxwet iconnect DSL,grep -q "^InetConnection=ANALOG" /var/tuxbox/config/tuxwetter/tuxwetter.mcfg
+	ACTION=&Timeout-Zeit~t~t~t~t5 s,/bin/twops tuxwet timeout
+	ACTION=&API-Key~t8fe33dfb41145603102808,/bin/twops tuxwet apikey
+ENDMENU

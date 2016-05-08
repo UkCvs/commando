@@ -1,0 +1,5 @@
+   MENU=Logo-Maskierung
+    SHELLRESOFF=Logomaskierung einschalten,/bin/logomask,pidof logomask
+    SHELLRESON=Logomaskierung ausschalten,touch /tmp/.logomask_kill,pidof logomask
+    DEPENDON=§Logomaskierung konfigurieren,/bin/logoset,/bin/logoset
+   ENDMENU

@@ -1,0 +1,168 @@
+Einleitung
+==========
+
+ggrab ist ein Streaming Tool für die Dbox2 mit Neutrino
+Dieses Programm ist beta, d.h. es kann zu unerwünschten Effekten kommen!!!
+
+Lauffähig gemeldet unter:
+Linux
+Cygwin
+Solaris
+MacOS X
+FreeBSD
+
+Features
+=========
+- MPEG2 Program Stream mit 1 Video und bis zu 9 Audio Streams, (theoretisch) ;-)
+- Audio Stream auch AC3 
+- Ausgabe von ungemuxten PES-Streams (1 Video, 9 Audio), Option: -pes
+- Ausgabe von MPEG Audio Frames (bis zu 10), Option: -raw
+- Looping von Ausgabedateien -> Fernsehausgabe mit mplayer, Option: -loop
+- Ausgabe auf stdout -> pipe in mplayer, Option: -o - 
+- Aufnahmedauer einstellbar, Option -m
+- Split-Size Dateien einstellbar, Option -s
+- Streaming per UDP. s.u.
+
+
+Ausgabedateien
+==============
+
+Standard: 	vts_01_x.vob 	 -> MPEG Program Packet Datei mit x fortlaufend (Format wie DVD)
+PES-Packet: 	vts_01_sy_px.vob -> Elementray Stream mit Timestamps zum Muxen, y = Streamnummer, x=Fortlaufende Dateinummer
+MPEG-Frames: 	vts_01_sy_sx.mpg -> Raw MPEG Audio Frames, y=Streamnummer, x=Fortlaufende Dateinummer
+
+
+es ist parameterkompatibel zum bisherigen "grab". Hier habe ich auch einiges abgeschaut...
+
+Das neue hieran ist eine neue Speicherverwaltung und
+eine andere Behandlung von Fehlern im zu grabbenden Stream.
+Ich veruche hier die Philosophie, möglichst wenig wegzuwerfen,
+und die Korrektur möglichst dem Player zu überlassen.
+
+Dadurch treten hier auch nicht die gefürchteten Resyncs auf. Natürlich
+sind hier auch bei hoher Datenrate Streamfehler möglich.
+
+Dieses ist ein Versuch, und ich benötige das Feedback, was nicht funktioniert.
+Wenn bestimmte Ferhnsehprogramme gar nicht funktionieren, bitte Rückmeldung.
+Bitte auch Rückmeldung bzgl. Kompatibilität zu Authoring Tools, Player und Mux-Programmen.
+(Ich kann leider nur Astra testen). 
+
+Zusätzlich ist ein Streamingserver (sserver) enthalten.
+Der Streamingserver muß im gleichen Verzeichnis wie ggrab liegen.
+Nach starten des Streamingserves kann mit der Fernbedienung und über timer
+aufgenommen werden. Optionen an ggrab werden von sserver an ggrab weitergereicht.
+Der Streaming-Server setzt die Dateinamen aus den EPG-Daten zusammen. 
+Bei Nutzung des Streming-Server muß die IP-Adresse der Box nicht angegeben werden.
+
+
+Installation:
+=============
+
+In das Verzeichnis gehen, welches beim Entpacken angelegt wurde.
+Dann mit "make" übersetzen. Bei Mac OS X muß im Makefile das
+Define __MACOSX__ gesetzt werden
+
+
+Aufruf:
+=======
+ggrab [optionen]
+
+ggrab -h zeigt selbsterkärend alle Optionen
+
+oder mit Streamingserver:
+./sserver [optionen]
+
+Beenden des Programms mit ^C
+Neue Datei beginnen mit kill -USR2 <pidggrab>
+
+Unter Cygwin:
+Beenden mit q<cr>
+Neue Datei mit n<cr>
+
+
+Optionen ggrab
+=============
+
+-p <pid1> <pid2> <pidn> <pid10>	Zu empfangende Video und Audio Streams in hexadezimal. 
+				Beispiel : -p 0xff 0x100 0x101
+
+-host <host>    		Name/IP-Adresse der dbox2 Default: dbox
+				Beispiel: -host 192.168.0.23
+-port <port>   			Port-Nummer auf der dbox2 (Nicht die des Streamingservers!) 
+				Default:31338 (braucht normalerweise nicht verändert werden)
+-o <path>      			Pfad/Basisname der Dateien. Default: vts_01_
+				Beispiel: -o /var/mpg/film/xxx
+-o -           			Ausgabe nach stdout zum Pipe nach z.B. mplayer
+-e <extension> 			Dateiextension für die Program- und PES-Streams, Default: vob
+				Beispiel: -e mpg
+-m <minuten>   			Anzahl Minuten Aufzeichnungsdauer Default: 24 h
+-s <megabyte>  			Maximale Dateigröße, Default: 2000 MB
+-q             			Keine Ausgaben
+-rt           			Priorität auf Real-Time-Scheduling setzen 
+-pes           			Ausgabe in mehreren ungemuxten PES-Dateien (z.B. für Clipmode) 
+-raw           			Ausgabe von MPEG audio Frames, direkt in Playern abspielbar
+-log           			schreibt die empfangenen Streams unverändert in Log-Datei log.x Nummer Stream
+-nos           			Defaultmäßig wird sectionsd gestopped. Hiermit kann das verhindert werden
+-core          			Bei Fehlerabbrüchen des Programms wird ein Core-File geschrieben
+-debug         			Erweiterte Ausgaben:
+				rt: = Datenrate des Streams in kbit/s
+				bf: = Füllung Read-Receive Buffer (Sollte unter 64000 bleiben)
+				dd: = Delta zwischen Zeitstempel und tatsächlichen Daten im Stream in s
+				rb: = Genutzte Ringpuffergröße
+				pl: = Paketverlust bei UDP (Anzahl verlorener Pakete)
+-loop          			Wechselnde Ausgabe in zwei Dateien für z.B. mplayer <basename>1.vob und 
+				<basename>2.vob
+-udp [uport]   			UDP Streaming, (experimental) Default Basisport 30000 
+
+
+Optionen Streamingserver
+========================
+-sport		Port des Stremingservers, wie er auf der dbox2 eingestellt ist. Default: 4000
+
+Alle anderen Optionen werden an ggrab weitergereicht.
+
+
+
+Streaming per udp
+=================
+Um die Datenrate und die Kollisionen bei Datentransfer von der Box zu senken,
+habe ich hier das Streaming per unbestätigten UDP-Paketen realisiert.
+Diese Feature ist zum erstan Mal im Alexw vom 6.2.2003
+
+Begründung für UDP:
+Bei tcp ist die Verbindung gesichert, daß heißt, die Daten werden 
+immer von der Gegenseite durch Quittungen bestätigt. Wenn nun die Datenrate sehr hoch wird,
+für dieses auf der Halbduplex-Verbindung zu sehr häufigen Kollision und schließlich
+hierdurch zu Paketverlusten. Normalerweise korrigiert tcp diesen Paketverlust.
+Diese nimmt jedoch eien größere Zeit in Anspruch. Stichworte hier:
+Heruntersetzen der Window-Size, Ping-Pong-Verkehr
+Dieses führt bei der hoen Last unweigerlich zum Pufferüberlauf auf der Box und damit zu
+Aussetzern im Stream.
+Bei UDP treten keine Kollisionen auf, es braucht weniger Bandbreite und Prozessorzeit.
+Bei den bisherigen Tests konnte problemlos mit Dauerdatenraten über 7000 kBit/s und Peaks
+bis 1 MBit/s gestreamt werden.
+
+
+Beschreibung Schnittstelle streamudp:
+
+GET /<pid> HTTP 1.0\r\n\r\n 		-> Streaming per TCP kompatibel zum bisherigen Streampes
+GET /<pid>,<udpport> HTTP 1.0\r\n\r\n 	-> Streaming per UDP auf Port <udpport>
+
+<pid> wird in hexadezimal angegeben
+<udpport> wird in dezimal angegeben
+
+
+Format der UDP-Messages:
+========================
+n    Byte Gesamtlänge: (n = 1444 zur Zeit, max bis 65525 per fragmented IP)
+n-4  Byte Daten:
+4    Byte Paketzähler in Network Byte Order beginnent bei 0
+
+
+Viel Spass damit!
+=================
+Kontakt:
+Forum "wingrab" bei tuxbox.berlios.de (mein Nick ist Gandalfx)
+IRC channel #dbox2 Nick meist Gandalfx, Gandalfy
+Mail: Peter Menzebach <pm-ggrab at menzebach.de>
+Download: auf www.menzebach.de

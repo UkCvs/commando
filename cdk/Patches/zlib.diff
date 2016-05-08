@@ -1,0 +1,52 @@
+diff -uNr zlib-1.2.5.org//configure zlib-1.2.5/configure
+--- zlib-1.2.5.org//configure	2010-04-20 06:15:19.000000000 +0200
++++ zlib-1.2.5/configure	2011-06-11 18:50:57.000000000 +0200
+@@ -19,7 +19,6 @@
+ fi
+ 
+ STATICLIB=libz.a
+-LDFLAGS="${LDFLAGS} -L. ${STATICLIB}"
+ VER=`sed -n -e '/VERSION "/s/.*"\(.*\)".*/\1/p' < zlib.h`
+ VER3=`sed -n -e '/VERSION "/s/.*"\([0-9]*\\.[0-9]*\\.[0-9]*\).*/\1/p' < zlib.h`
+ VER2=`sed -n -e '/VERSION "/s/.*"\([0-9]*\\.[0-9]*\)\\..*/\1/p' < zlib.h`
+@@ -174,7 +173,6 @@
+              LDSHARED=${LDSHARED-"cc -shared -Wl,-soname,libz.so.1"} ;;
+   OSF1\ V4*) SFLAGS=${CFLAGS-"-O -std1"}
+              CFLAGS=${CFLAGS-"-O -std1"}
+-             LDFLAGS="${LDFLAGS} -Wl,-rpath,."
+              LDSHARED=${LDSHARED-"cc -shared  -Wl,-soname,libz.so -Wl,-msym -Wl,-rpath,$(libdir) -Wl,-set_version,${VER}:1.0"} ;;
+   OSF1*)     SFLAGS=${CFLAGS-"-O -std1"}
+              CFLAGS=${CFLAGS-"-O -std1"}
+diff -uNr zlib-1.2.5.org//Makefile.in zlib-1.2.5/Makefile.in
+--- zlib-1.2.5.org//Makefile.in	2010-04-20 06:12:21.000000000 +0200
++++ zlib-1.2.5/Makefile.in	2011-06-11 18:52:16.000000000 +0200
+@@ -36,7 +36,7 @@
+ SHAREDLIBM=libz.so.1
+ LIBS=$(STATICLIB) $(SHAREDLIBV)
+ 
+-AR=ar rc
++AR=ar
+ RANLIB=ranlib
+ LDCONFIG=ldconfig
+ LDSHAREDLIBC=-lc
+@@ -44,6 +44,8 @@
+ SHELL=/bin/sh
+ EXE=
+ 
++DESTDIR =
++
+ prefix = /usr/local
+ exec_prefix = ${prefix}
+ libdir = ${exec_prefix}/lib
+diff -uNr zlib-1.2.5.org//zlib.h zlib-1.2.5/zlib.h
+--- zlib-1.2.5.org//zlib.h	2010-04-20 06:12:48.000000000 +0200
++++ zlib-1.2.5/zlib.h	2011-06-11 18:50:27.000000000 +0200
+@@ -1578,7 +1578,7 @@
+ #  define gzoffset gzoffset64
+ #  define adler32_combine adler32_combine64
+ #  define crc32_combine crc32_combine64
+-#  ifdef _LARGEFILE64_SOURCE
++#  ifndef _LARGEFILE64_SOURCE
+      ZEXTERN gzFile ZEXPORT gzopen64 OF((const char *, const char *));
+      ZEXTERN z_off_t ZEXPORT gzseek64 OF((gzFile, z_off_t, int));
+      ZEXTERN z_off_t ZEXPORT gztell64 OF((gzFile));

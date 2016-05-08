@@ -1,0 +1,98 @@
+#!/bin/sh
+####################################################################################
+####                       Konfiguration für Clock
+####                     Uhrzeitanzeige am Bildschirm
+####                    Bugreport und Anregungen im Board:
+####       http://www.dbox2-tuning.net/forum/viewforum.php?f=27&start=0
+####              Das New-Tuxwetter-Team: SnowHead und Worschter
+####################################################################################
+
+CLOCKCFG="/var/tuxbox/config/clock.conf"
+
+  pth="/bin/input"
+    if [ ! -e $pth ]; then
+      pth="/var/bin/input"
+      if [ ! -e $pth ]; then
+      /bin/wget -Y off -O /dev/null http://localhost/control/message?nmsg=Eingabeprogramm%20input%20ist%20nicht%20installiert.%0APlugin%20kann%20nicht%20ausgef%C3%BChrt%20werden.
+      exit 1
+    fi
+  fi
+
+  case "$1" in
+  DATE)
+    if grep -q "DATE=.*" $CLOCKCFG; then
+      sed -e "s/DATE=.*/DATE=$2/g" $CLOCKCFG > /tmp/clock.conf
+    fi
+  ;;
+
+  BIG)
+    if grep -q "BIG=.*" $CLOCKCFG; then
+      sed -e "s/BIG=.*/BIG=$2/g" $CLOCKCFG > /tmp/clock.conf
+    fi
+  ;;
+
+  SEC)
+    if grep -q "SEC=.*" $CLOCKCFG; then
+      sed -e "s/SEC=.*/SEC=$2/g" $CLOCKCFG > /tmp/clock.conf
+    fi
+  ;;
+
+  MAIL)
+    if grep -q "MAIL=.*" $CLOCKCFG; then
+      sed -e "s/MAIL=.*/MAIL=$2/g" $CLOCKCFG > /tmp/clock.conf
+    fi
+  ;;
+
+  FCOL)
+    if grep -q "FCOL=.*" $CLOCKCFG; then
+      sed -e "s/FCOL=.*/FCOL=$2/g" $CLOCKCFG > /tmp/clock.conf
+    fi
+  ;;
+
+  BCOL)
+    if grep -q "BCOL=.*" $CLOCKCFG; then
+      sed -e "s/BCOL=.*/BCOL=$2/g" $CLOCKCFG > /tmp/clock.conf
+    fi
+  ;;
+
+  X)
+  	def=`grep ^X= /var/tuxbox/config/clock.conf`
+  	if [ `expr length $def` -gt 0 ]; then
+  	  def=`expr substr $def 3 3`
+  	else
+  	  def=0
+  	fi
+    res=`$pth t="Horizontal" l="###" d=$def`
+    if [ -z $res ]; then
+      exit 1
+    fi
+    sed -e "s/X=.*/X=$res/g" $CLOCKCFG > /tmp/clock.conf
+  ;;  
+
+  Y)
+  	def=`grep ^Y= /var/tuxbox/config/clock.conf`
+  	if [ `expr length $def` -gt 0 ]; then
+  	  def=`expr substr $def 3 3`
+  	else
+  	  def=0
+  	fi
+    res=`$pth t="Vertikal" l="###" d=$def`
+    if [ -z $res ]; then
+      exit 1
+    fi
+    sed -e "s/Y=.*/Y=$res/g" $CLOCKCFG > /tmp/clock.conf
+  ;;  
+  
+  *)
+    exit 1
+  esac
+  
+  rm $CLOCKCFG
+  sleep 1
+  mv /tmp/clock.conf $CLOCKCFG
+  
+  if pidof clock > /dev/null; then
+  	touch /tmp/.clock_kill
+  	sleep 1
+  	/var/bin/clock &
+  fi

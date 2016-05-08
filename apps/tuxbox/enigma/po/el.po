@@ -1,0 +1,6908 @@
+# created by Enigma Language Editor 0.2
+# 			 (c) 10/2002 ole <olest@gmx.net>
+# *************************************
+# *	 use/modify on your own risk!		*
+# *************************************
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tuxbox-enigma 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-24 13:40+0100\n"
+"PO-Revision-Date: Thu Aug 11 13:47:23 CEST 2005\n"
+"Last-Translator: unknown\n"
+"Language-Team: Greek / George Zotos <zotos@zotos.biz>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: default.esml:1084
+msgid "Receiver Time:"
+msgstr ""
+
+#: chk_blue2.esml:316
+msgid "FF "
+msgstr "ΓΜ"
+
+#: default.esml:912
+msgid "&#53;"
+msgstr ""
+
+#: default.esml:411
+msgid "here you can change your sat/lnb mapping"
+msgstr "Εδώ μπορείτε να αλλάξετε την σχέση δορυφόρυ/LNB"
+
+#: default.esml:1038
+msgid "Push OK to select Filesize"
+msgstr ""
+
+#: default.esml:473
+msgid "motor power input difference between running and not running"
+msgstr "Διαφορά κατανάλωσης μοτέρ κατά την κίνηση και σταματημένο"
+
+#: default.esml:1003 default.esml:1253
+#, fuzzy
+msgid "Transparency"
+msgstr "Αναμεταδότης:"
+
+#: default.esml:1275
+msgid ""
+"change remote control repeat delay\n"
+"left => shorter, right => longer (...delay)"
+msgstr ""
+
+#: default.esml:1159
+msgid "TSID:"
+msgstr ""
+
+#: default.esml:1116
+msgid "change Parental PIN (ok)"
+msgstr "Αλλαγή κωδικού PIN (OK)"
+
+#: default.esml:438
+msgid "send no DiSEqC when only Hi/Lo or H/V changes"
+msgstr "Χωρίς DiSEqC όταν αλλάζει μόνο το Hi/Lo ή το H/V"
+
+#: default.esml:1367 default.esml:1370
+msgid "waiting for module"
+msgstr "Αναμονή για το μόντουλ"
+
+#: default.esml:1090
+msgid "New Time:"
+msgstr ""
+
+#: default.esml:371 default.esml:447 default.esml:680
+msgid "SNR"
+msgstr ""
+
+#: default.esml:1114
+msgid "Parental setup"
+msgstr "Ρυθμίσεις γωνικού κλειδώματος"
+
+#: default.esml:1196
+#, fuzzy
+msgid "Inverted"
+msgstr "Αντιστροφή:"
+
+#: default.esml:440
+msgid "prev. page"
+msgstr "Προηγούμενο"
+
+#: default.esml:413
+msgid "LOF/L:"
+msgstr ""
+
+#: default.esml:783 src/timer.cpp:2699
+msgid "Wednesday"
+msgstr "Τετάρτη"
+
+#: default.esml:1014 src/streaminfo.cpp:168
+msgid "title"
+msgstr "Τίτλος"
+
+#: default.esml:999
+msgid "switch to 16:9 mode when displaying teletext pages"
+msgstr ""
+
+#: default.esml:882
+msgid "Partition Check"
+msgstr "Έλενχος κατάτμησης"
+
+#: default.esml:824 default.esml:848
+msgid "enter recording end time (0..9, left, right, ok)"
+msgstr "Επιλογή τέλους χρόνου εγγραφής (0..9, <, >)"
+
+#: default.esml:1303
+msgid "enable/disable ac3 default output (ok)"
+msgstr "Ενεργοποίηση ή όχι εξόδου AC3 (OK)"
+
+#: default.esml:449 default.esml:683
+msgid "LOCK"
+msgstr "OK"
+
+#: default.esml:1000
+#, fuzzy
+msgid "switch to 16:9 in split screen mode"
+msgstr "Λειτουργία με αρχεία"
+
+#: default.esml:1235
+msgid "Extra:"
+msgstr ""
+
+#: default.esml:1001 default.esml:1190 default.esml:1255
+msgid "Brightness"
+msgstr "Φωτηνότ"
+
+#: default.esml:419
+msgid "turn 12V output on (for 12V relais) (ok)"
+msgstr ""
+
+#: default.esml:1304
+msgid "Auto VCR switching"
+msgstr ""
+
+#: default.esml:541
+msgid "enable/disable use BAT for scan (if exists)"
+msgstr "Χρήση του BAT κατά την ανίχνευση (αν υπάρχει)"
+
+#: default.esml:603 default.esml:1286
+msgid "Skin Selector"
+msgstr "Επιλογή επιφάνειας μενού"
+
+#: default.esml:583
+msgid "transponder scanned:"
+msgstr "Ανίχνευση αναμεταδότη:"
+
+#: default.esml:994
+msgid "teletext page number (100 - 899)"
+msgstr ""
+
+#: default.esml:809 src/enigma_info.cpp:134 src/enigma_info.cpp:137
+#: src/enigma_info.cpp:140 src/enigma_info.cpp:143
+#, c-format
+msgid "Frontend"
+msgstr "Δέκτης"
+
+#: default.esml:776
+msgid "press ok to change event name manually"
+msgstr "Πατήστε OK για να δώσετε όνομα στο γεγονός"
+
+#: default.esml:1243
+msgid "umount"
+msgstr ""
+
+#: default.esml:555
+msgid "no circ polariz."
+msgstr "Μη κυκλικ. πόλωση"
+
+#: default.esml:618 default.esml:636
+msgid "MHz"
+msgstr ""
+
+#: default.esml:1144 default.esml:1322
+#, fuzzy
+msgid "Name:"
+msgstr "Παιχνίδια"
+
+#: default.esml:471 default.esml:506
+msgid "Motor Config"
+msgstr "Ρύθμιση ρότορα"
+
+#: default.esml:497
+msgid "remove selected entry"
+msgstr "Διαγραφή επιλεγμένου γεγονότος"
+
+#: default.esml:922 default.esml:1242
+msgid "&lt;"
+msgstr ""
+
+#: default.esml:439
+msgid "Swap Commands"
+msgstr "Ανταλλαγή:"
+
+#: default.esml:1301 default.esml:1314
+msgid "choose TV system ( left, right )"
+msgstr "Επιλογή συστήματος TV (<, >)"
+
+#: default.esml:1296
+msgid "Color Format:"
+msgstr "Σύστημα:"
+
+#: default.esml:1152 default.esml:1328
+#, fuzzy
+msgid "Audio PID:"
+msgstr "Ήχος"
+
+#: default.esml:522
+msgid "close motor setup"
+msgstr "Επιστροφή στο προηγούμενο μενού"
+
+#: default.esml:1299
+msgid "choose aspect ratio ( left, right )"
+msgstr "Επιλέξτε λόγο πλευρών οθόνης (<, >)"
+
+#: default.esml:542 default.esml:554 default.esml:573
+msgid "add only unscrambled services"
+msgstr "Κρύψημο κλειδωμένων υπηρεσιών"
+
+#: default.esml:1163
+msgid "no DVB"
+msgstr ""
+
+#: default.esml:1204 default.esml:1226
+msgid "IP:"
+msgstr ""
+
+#: default.esml:875
+msgid "select filsystem to format"
+msgstr "Επιλέξτε τύπο φορμαρίσματος"
+
+#: default.esml:1176
+msgid "Srv IP:"
+msgstr ""
+
+#: default.esml:1356
+msgid "Extended networks search"
+msgstr "Προχωρημένη έρευνα δικτύου"
+
+#: default.esml:983 default.esml:984
+msgid "set directory where timeshift files will be stored"
+msgstr ""
+
+#: default.esml:1306
+msgid "show testpicture"
+msgstr ""
+
+#: default.esml:516
+msgid "Recalc Params:"
+msgstr "Αναθεώρηση παραμέτρων"
+
+#: default.esml:1178
+msgid "Srv Port:"
+msgstr ""
+
+#: default.esml:1146 default.esml:1324
+#, fuzzy
+msgid "Provider:"
+msgstr "Παροχείς"
+
+#: default.esml:1196
+msgid "enable/disable inverted LCD (ok)"
+msgstr "Κανονική ή αρνητική εικόνα LCD (οκ)"
+
+#: default.esml:1236
+msgid "press ok to edit extra options"
+msgstr "Πατήστε OK για να αλλάξετε κατεύθυνση"
+
+#: default.esml:617 default.esml:635 default.esml:654
+msgid "enter transponder frequeny (0..9, left, right)"
+msgstr "Συχνότητα αναμεταδότη (0..9, <, >)"
+
+#: default.esml:1106
+msgid "Show busy sign"
+msgstr ""
+
+#: default.esml:876 default.esml:1403
+#, fuzzy
+msgid "save settings"
+msgstr "Ρυθμίσεις συστήματος"
+
+#: default.esml:1119
+msgid "don't show locked services in any list"
+msgstr "Μη εμφάνιση κλειδωμένων υπηρεσιών στις λίστες"
+
+#: default.esml:1215
+msgid "Enable Network"
+msgstr "Ενεργοποίηση Δικτύου (ok)"
+
+#: default.esml:1175
+msgid "Ngrab Server"
+msgstr "Εξυπηρετητής Ngrab"
+
+#: default.esml:544
+msgid "start the transponder scan"
+msgstr "Εκίνηση ανίχνευσης"
+
+#: default.esml:544 default.esml:556 default.esml:575 default.esml:598
+msgid "start scan"
+msgstr "Έναρξη"
+
+#: default.esml:869
+msgid "check"
+msgstr "Έλεγχος"
+
+#: default.esml:696 default.esml:703 default.esml:710 default.esml:718
+#: default.esml:729 default.esml:740 lib/dvb/servicedvb.cpp:1557
+msgid "Services"
+msgstr "υπηρεσίες"
+
+#: default.esml:1037 src/channelinfo.cpp:292 src/swapmanager.cpp:90
+#: src/swapmanager.cpp:213
+#, c-format
+msgid "Filesize:"
+msgstr "Μέγεθος αρχείου:"
+
+#: default.esml:1075
+msgid "Time Zone:"
+msgstr "Χρονική ζώνη:"
+
+#: default.esml:1065 src/system_settings.cpp:60
+msgid "Keyboard Setup"
+msgstr "Ρυθμίσεις πληκτρολογίου"
+
+#: default.esml:914
+msgid "&#54;"
+msgstr ""
+
+#: default.esml:1276
+#, fuzzy
+msgid "Remotecontrol Style:"
+msgstr "Ρυθμίσεις Τηλεκοντόλ"
+
+#: default.esml:1005
+#, fuzzy
+msgid "Language"
+msgstr "Γλώσσες"
+
+#: default.esml:662
+msgid "choose the bandwidth (left, right)"
+msgstr "Επιλογή του FEC (<, >)"
+
+#: default.esml:1158
+#, fuzzy
+msgid "to enter service id press OK"
+msgstr "Για να αλλαχτή η υπηρεσία πατήστε ΟΚ"
+
+#: default.esml:1219
+msgid "mounts"
+msgstr ""
+
+#: default.esml:981
+msgid "activate permanent timeshift"
+msgstr ""
+
+#: default.esml:873
+msgid "acoustic management:"
+msgstr ""
+
+#: default.esml:1182
+msgid "detect MAC Adress"
+msgstr "Ανίχνευση διεύθυνσης MAC"
+
+#: default.esml:926 default.esml:1246
+msgid "&gt;"
+msgstr ""
+
+#: default.esml:826 default.esml:838 default.esml:850 src/enigma.cpp:561
+#: src/enigma_mainmenu.cpp:67 src/enigma_mainmenu.cpp:199
+#: src/setup_extra.cpp:146 src/timer.cpp:2210 src/timer.cpp:2212
+msgid "Shutdown"
+msgstr "Τέλος λειτουργίας"
+
+#: default.esml:1256
+msgid "change the brightness correction"
+msgstr "Αλλαγή φωτηνότητας μενού"
+
+#: default.esml:1215
+msgid "enable/disable network (ok)"
+msgstr "Ενεργοποίηση ή όχι δικτύου (OK)"
+
+#: default.esml:1116 default.esml:1118
+msgid "change PIN"
+msgstr "Αλλαγή κωδικού PIN"
+
+#: default.esml:1042
+#, fuzzy
+msgid "Start Swap"
+msgstr "Έναρξη"
+
+#: default.esml:472
+msgid "Use Motor Input Power"
+msgstr "Χρήση ισχύος ρότορα:"
+
+#: default.esml:1117
+msgid "Setup lock"
+msgstr "Κλείδωμα ρυθμίσεων"
+
+#: default.esml:1179
+msgid "enter ngrab server port (standard is 4000)"
+msgstr "Δώστε την πόρτα του server (συνήθως 4000)"
+
+#: default.esml:777
+msgid "Starttime"
+msgstr "Ώρα έναρξης:"
+
+#: default.esml:1277
+msgid "select your favourite RC style (ok)"
+msgstr "Επιλογή τύπου τηλεκοντρόλ"
+
+#: default.esml:655
+msgid "KHz"
+msgstr ""
+
+#: default.esml:381
+msgid "HTTP Download"
+msgstr ""
+
+#: default.esml:440
+msgid "goto prev page (LNB)"
+msgstr "Πρός την προηγούμενη σελίδα (LNB)."
+
+#: default.esml:1401
+msgid "set HTTP/FTP-Server where packages are hosted"
+msgstr ""
+
+#: default.esml:1394 src/enigma_ipkg.cpp:280
+#, fuzzy
+msgid "Package Settings"
+msgstr "Ρύθμιση ώρας"
+
+#: default.esml:1367 default.esml:1370
+msgid "enter Common Interface menu (mmi)"
+msgstr "Μενού κοινής διεπαφής CI (mmi)"
+
+#: default.esml:476
+msgid "Use gotoXX Function"
+msgstr "Χρήση λειτουργείας gotoXX"
+
+#: default.esml:1050 src/setup_extra.cpp:91 src/setup_epg.cpp:52
+#, fuzzy
+msgid "EPG settings"
+msgstr "Ρυθμίσεις OSD"
+
+#: default.esml:1166
+msgid "DEC"
+msgstr ""
+
+#: default.esml:1411
+msgid "space used:"
+msgstr ""
+
+#: default.esml:1154
+msgid "set this check when the entered audio pid is a ac3 audio pid"
+msgstr ""
+
+#: default.esml:1271
+msgid "Remotecontrol Setup"
+msgstr "Ρυθμίσεις Τηλεκοντόλ"
+
+#: default.esml:981
+msgid "activate timeshift"
+msgstr ""
+
+#: default.esml:1228
+msgid "press ok to change mount type"
+msgstr "Πατήστε OK για να επιλέξετε τύπο σύνδεσης"
+
+#: default.esml:464 default.esml:512
+msgid "Transponder:"
+msgstr "Αναμεταδότης:"
+
+#: default.esml:998
+#, fuzzy
+msgid "select teletext service"
+msgstr "Διαγραφή υπηρεσίας"
+
+#: default.esml:1206
+msgid "DHCP"
+msgstr ""
+
+#: default.esml:1371
+msgid "can your CI descramble two services at the same time?"
+msgstr "Μπορεί το CI σας να αποκωδικοποιήσει 2 υπηρεσίες ταυτόχρονα;"
+
+#: default.esml:1231
+msgid "LocalDir:"
+msgstr ""
+
+#: default.esml:992 src/enigma_main.cpp:1571 src/enigma_main.cpp:1577
+#: src/enigma_main.cpp:1583
+#, c-format
+msgid "Favourites"
+msgstr "Αγαπημένα"
+
+#: default.esml:1155
+msgid "Text PID:"
+msgstr ""
+
+#: default.esml:1083 src/time_settings.cpp:41
+msgid "Time Correction"
+msgstr "Διώρθωση ώρας"
+
+#: default.esml:1189
+msgid "LC-Display Setup"
+msgstr "Ρύθμιση LCD"
+
+#: default.esml:906
+msgid "&#50;"
+msgstr ""
+
+#: default.esml:1365 default.esml:1368
+msgid "Reset"
+msgstr "Επανεκίνηση - Reset"
+
+#: default.esml:805 src/enigma_info.cpp:43
+msgid "About..."
+msgstr "Περί..."
+
+#: default.esml:1306
+msgid "test"
+msgstr "Δοκιμή"
+
+#: default.esml:1032 default.esml:1054 src/channelinfo.cpp:293
+#: src/swapmanager.cpp:56 src/swapmanager.cpp:57 src/swapmanager.cpp:58
+#: src/swapmanager.cpp:80
+#, c-format
+msgid "Filename:"
+msgstr "Όνομα αρχείου:"
+
+#: default.esml:916
+msgid "&#55;"
+msgstr ""
+
+#: default.esml:799
+msgid "scan EPG"
+msgstr "Έρευνα στο EPG"
+
+#: default.esml:1025
+msgid "Begin EPG Search"
+msgstr ""
+
+#: stone.esml:464 silver.esml:471 src/enigma_main.cpp:3198
+msgid "audio track"
+msgstr "Επιλογή ήχου"
+
+#: default.esml:1234
+msgid "press ok to change mount options"
+msgstr "Πατήστε OK για να αλλάξετε κατεύθυνση"
+
+#: default.esml:1087
+#, fuzzy
+msgid "Transponder Time:"
+msgstr "Αναμεταδότης:"
+
+#: default.esml:1160
+msgid "to enter tsid (transport stream id) press OK"
+msgstr ""
+
+#: default.esml:995
+#, fuzzy
+msgid "remove selected page from favourites"
+msgstr "Διαγραφή επιλεγμένου δορυφόρου"
+
+#: default.esml:940
+msgid "press ok to start edit mode"
+msgstr "Πατήστε OK για να κάνετε επεμβάσεις"
+
+#: default.esml:1095
+#, fuzzy
+msgid "press ok to select another year"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: default.esml:1273
+msgid ""
+"change remote control repeat rate\n"
+"left => less, right => more (... repeats)"
+msgstr ""
+
+#: default.esml:783 src/epgwindow.cpp:127 src/timer.cpp:222
+msgid "Wed"
+msgstr "Τετ"
+
+#: default.esml:478
+msgid "Longitude:"
+msgstr "Γεωγραφικό μήκος:"
+
+#: default.esml:1244
+msgid "press ok to mount this share"
+msgstr "Πατήστε OK για να δώσετε όνομα"
+
+#: default.esml:666
+msgid "choose the code rate LP (left, right)"
+msgstr "Επιλογή του FEC (<, >)"
+
+#: default.esml:522
+msgid "prev page"
+msgstr "Προηγούμενο"
+
+#: default.esml:1245
+msgid "press ok to save this share"
+msgstr "Πατήστε OK για να δώσετε όνομα"
+
+#: default.esml:419
+msgid "12V output on"
+msgstr ""
+
+#: default.esml:769
+msgid "delete expired timer (ok)"
+msgstr "Διαγραφή του επιλεγμένου χρονοδιακόπτη (ok)"
+
+#: default.esml:1115
+msgid "Parental lock"
+msgstr "Γωνικό κλείδωμα"
+
+#: default.esml:465 default.esml:513
+msgid "choose the Transponder you wish to find"
+msgstr "Διαλέξτε τον αναμεταδότη που θέλετε να ανιχνεύσετε"
+
+#: default.esml:1209
+msgid "Type:"
+msgstr ""
+
+#: default.esml:1023
+msgid "Select a genre if you want to search for a genre"
+msgstr ""
+
+#: default.esml:1242
+msgid "go to previous share"
+msgstr "Πήδημα στο προηγούμενο δείκτη θέσης"
+
+#: default.esml:1000
+msgid "16:9 mode on splitscreen"
+msgstr ""
+
+#: default.esml:1167
+#, fuzzy
+msgid "read NIT"
+msgstr "Χρήση ONIT"
+
+#: default.esml:784 src/timer.cpp:2700
+msgid "Thursday"
+msgstr "Πέμπτη"
+
+#: default.esml:1263
+msgid "TuxText position"
+msgstr "Θέση TuxText"
+
+#: default.esml:1261
+msgid "Show Mainmenu like Listbox"
+msgstr ""
+
+#: default.esml:1354
+msgid "press ok to change direction"
+msgstr "Πατήστε OK για να αλλάξετε κατεύθυνση"
+
+#: default.esml:500
+msgid "goto advanced motor setup"
+msgstr "Προχορημένες επιλογές για ρότορα"
+
+#: default.esml:1193
+msgid "set LCD contrast ( left / right )"
+msgstr "Ρύθμιση αντίθεσης LCD (<, >)"
+
+#: default.esml:868
+msgid "format"
+msgstr "φορμάρισμα"
+
+#: default.esml:556 default.esml:575
+msgid "starts the transponder scan"
+msgstr "Εκίνηση ανίνχευσης."
+
+#: default.esml:967
+msgid "sat"
+msgstr "Ρύθμιση"
+
+#: default.esml:664
+msgid "choose the transmission mode (left, right)"
+msgstr "Επιλογή του FEC (<, >)"
+
+#: default.esml:799
+msgid "search event name for this beg-/end time in epg"
+msgstr "Έυρεση ονόματος γεγονότος από το EPG, αν υπάρχει"
+
+#: default.esml:1208
+msgid "enter netmask of your network (0..9, left, right)"
+msgstr "Δώστε τη μάσκα του δικτύου σας (0..9, <, >)"
+
+#: default.esml:462 default.esml:510
+msgid "choose the Satellite you wish to find"
+msgstr "Διαλέξτε τον δορυφόρο που θέλετε βρήτε"
+
+#: default.esml:910
+msgid "&#52;"
+msgstr ""
+
+#: default.esml:496
+msgid "add to table/existing will be overwritten"
+msgstr "προσθήκη στον πίνακα -το υπάρχον διαγράφεται"
+
+#: default.esml:1102
+msgid "Slide Viewer"
+msgstr ""
+
+#: default.esml:1040
+#, fuzzy
+msgid "Stop Swap"
+msgstr "Σταμάτημα"
+
+#: default.esml:1302
+msgid "don't send WSS signal when A-ratio is 4:3"
+msgstr "Μη αποστολή σήματος WSS αν η εικόνα είναι 4:3"
+
+#: default.esml:397 src/enigma_main.cpp:7895 src/enigma_main.cpp:7934
+#: src/sselect.cpp:455 src/sselect.cpp:2193 src/sselect.cpp:2232
+msgid "delete"
+msgstr "*Διαγραφή*"
+
+#: default.esml:428
+msgid "Toneburst:"
+msgstr "Ριπή τόνων:"
+
+#: default.esml:1165
+msgid "don't update the service name with content of the sdt"
+msgstr ""
+
+#: default.esml:1056
+msgid "only cache EPG data from bouquets"
+msgstr ""
+
+#: default.esml:623 default.esml:641
+msgid "FEC:"
+msgstr ""
+
+#: default.esml:1164
+msgid ""
+"update name/provider/service type with content of the sdt (and auto remove "
+"service)"
+msgstr ""
+
+#: default.esml:454 default.esml:684
+msgid "SYNC"
+msgstr ""
+
+#: default.esml:481
+msgid "Latitude:"
+msgstr "Γεωγραφικό πλάτος:"
+
+#: default.esml:1106
+msgid "Show busy sign while preprocessing slide"
+msgstr ""
+
+#: default.esml:622
+msgid "choose polarity (left, right)"
+msgstr "Επιλέξτε πολικότητα (<, >)"
+
+#: default.esml:1237 src/setupnetwork.cpp:493
+msgid "Login:"
+msgstr ""
+
+#: default.esml:619 default.esml:637 default.esml:656
+msgid "Inv:"
+msgstr ""
+
+#: default.esml:1336
+msgid "Video format:"
+msgstr "Εικόνα:"
+
+#: default.esml:1041
+msgid "Create Swap-File"
+msgstr ""
+
+#: default.esml:1033
+msgid "Push OK to select Filename"
+msgstr ""
+
+#: default.esml:827 default.esml:839 default.esml:851 default.esml:867
+#: default.esml:1194 src/setup_extra.cpp:145 src/setup_extra.cpp:150
+#: src/timer.cpp:2205
+msgid "Standby"
+msgstr "Αναμονή:"
+
+#: default.esml:1157 default.esml:1342
+#, fuzzy
+msgid "Service ID:"
+msgstr "υπηρεσίες"
+
+#: default.esml:991
+#, fuzzy
+msgid "Teletext Settings"
+msgstr "Ρύθμιση ώρας"
+
+#: default.esml:640 default.esml:658
+msgid "choose modulation (left, right)"
+msgstr "Επιλέξτε πολικότητα (<, >)"
+
+#: default.esml:1272
+msgid "Repeat Rate:"
+msgstr "Ρυθμός:"
+
+#: default.esml:1207
+msgid "Netmask:"
+msgstr ""
+
+#: default.esml:904
+msgid "&#49;"
+msgstr ""
+
+#: default.esml:781
+msgid "select what todo after event"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: default.esml:1105
+msgid "Include subdirectories"
+msgstr ""
+
+#: default.esml:1015
+msgid "Enter title for epg searching"
+msgstr ""
+
+#: default.esml:1265
+#, fuzzy
+msgid "additional settings"
+msgstr "Επιλογές που αφορούν την εικόνα και τον ήχο."
+
+#: default.esml:769
+msgid "cleanup"
+msgstr ""
+
+#: default.esml:628 default.esml:646
+msgid "KSymb/s"
+msgstr ""
+
+#: default.esml:872
+msgid "set harddisk standby timeout (0 - 20; 0 = disabled)"
+msgstr ""
+
+#: default.esml:1018 src/sselect.cpp:466
+msgid "All Services"
+msgstr "Όλες οι υπηρεσίες"
+
+#: default.esml:1302
+msgid "Disable WSS on 4:3"
+msgstr "Ακύρωση WSS σε εικόνα 4:3"
+
+#: default.esml:1206
+msgid "get Network data from a DHCP Server in the local Network"
+msgstr ""
+
+#: default.esml:1219
+msgid "here you can setup nfs/cifs mounts"
+msgstr ""
+
+#: default.esml:869
+msgid "do a filesystem check"
+msgstr "Έλεγχος του δίσκου"
+
+#: default.esml:868
+msgid "initialize the disk for use with the dreambox"
+msgstr "Φορμάρισμα του δίσκου για να δουλέψει με το dreambox."
+
+#: default.esml:1151
+msgid "to enter pcr pid press OK"
+msgstr ""
+
+#: default.esml:1364
+msgid "Common Interface Module"
+msgstr "Κοινή διεπαφή (CI)..."
+
+#: default.esml:780
+msgid "Mo"
+msgstr "Δευ"
+
+#: default.esml:1295 src/system_settings.cpp:47
+msgid "A/V Settings"
+msgstr "Ρυθμίσεις εικόνας/ήχου"
+
+#: default.esml:431
+msgid "select DiSEqC parameter (ok)"
+msgstr "Επιλέξτε παράμετρο DiSEqC (ok)"
+
+#: default.esml:1058
+msgid "remove all entries from EPG cache"
+msgstr ""
+
+#: default.esml:1241
+#, fuzzy
+msgid "Automount"
+msgstr "Ήχος"
+
+#: default.esml:1115
+msgid "enable/disable parental lock"
+msgstr "Γωνικό κλείδωμα ναι/όχι"
+
+#: default.esml:627 default.esml:645
+msgid "enter symbol rate (0..9, left, right)"
+msgstr "Symbolrate (0..9, <, >)"
+
+#: default.esml:1119
+msgid "Hide locked services"
+msgstr "Κρύψημο κλειδωμένων υπηρεσιών"
+
+#: default.esml:1127
+msgid "Storage Location:"
+msgstr "Θέση αποθήκευσης:"
+
+#: default.esml:929
+msgid "abc2 &lt;-&gt; 2abc"
+msgstr ""
+
+#: default.esml:397
+msgid "remove the selected Satellite"
+msgstr "Διαγραφή επιλεγμένου δορυφόρου"
+
+#: default.esml:614
+msgid "choose wished satellite (ok)"
+msgstr "Επιλέξτε επιθυμητό δορυφόρο (ΟΚ, <,>)"
+
+#: default.esml:1213
+msgid "Gateway:"
+msgstr ""
+
+#: default.esml:995
+#, fuzzy
+msgid "remove page"
+msgstr "Προηγούμενο"
+
+#: default.esml:870
+msgid "show extended configuration"
+msgstr "Εμφάνιση περισσοτέρων παραμέτρων"
+
+#: default.esml:1182
+msgid "try to autodetect server MAC address"
+msgstr "Προσπάθεια αυτόματης εύρεσης διεύθυνσης MAC του server"
+
+#: default.esml:508
+msgid "choose what you want to do"
+msgstr "Επιλέξτε τι θέλετε να κάνετε"
+
+#: default.esml:1039
+#, fuzzy
+msgid "Delete Swap-File"
+msgstr "Διαγραφή αρχείου"
+
+#: default.esml:487
+msgid "Number in motor:"
+msgstr "Αριθμός στον ρότορα"
+
+#: default.esml:859
+msgid "model:"
+msgstr "Μοντέλο:"
+
+#: default.esml:1366 default.esml:1369
+msgid "Init"
+msgstr "Εκίνηση - Init"
+
+#: default.esml:1161
+msgid "ONID:"
+msgstr ""
+
+#: default.esml:1351
+msgid "press ok to change satellite name"
+msgstr "Πατήστε OK για να αλλάξετε το όνομα του δορυφόρου."
+
+#: default.esml:1092
+msgid "New Date:"
+msgstr ""
+
+#: default.esml:1262
+msgid "Change skin"
+msgstr "Αλλαγή επιφάνειας μενού"
+
+#: default.esml:432
+msgid "DiSEqC Parameter:"
+msgstr "Παράμετρος DiSEqC:"
+
+#: default.esml:418
+msgid "0,5V higher LNB Voltage (for long cables) (ok)"
+msgstr "0,5V υψηλότερη τάση (για μακριά καλώδια)"
+
+#: default.esml:639
+msgid "Modulation:"
+msgstr "Διάρκεια:"
+
+#: default.esml:540
+msgid "enable/disable check ONIT on any transponder"
+msgstr "Έλεγχος ή όχι ONIT για κάθε αναμεταδότη"
+
+#: default.esml:1244
+#, fuzzy
+msgid "mount"
+msgstr "Νότος"
+
+#: default.esml:865
+msgid "status:"
+msgstr "Είδος:"
+
+#: default.esml:541 default.esml:1357
+msgid "use BAT"
+msgstr "Χρήση BAT"
+
+#: default.esml:1018
+msgid "Select this option if you want to search the title in all services"
+msgstr ""
+
+#: chk_blue2.esml:313
+msgid "FR "
+msgstr "ΓΜ"
+
+#: default.esml:1350
+msgid "Satellite Edit"
+msgstr "Σύνταξη Δορυφόρου"
+
+#: default.esml:758 default.esml:765 stone.esml:462 silver.esml:469
+#: src/epgwindow.cpp:198
+#, c-format
+msgid "EPG"
+msgstr ""
+
+#: default.esml:1238
+msgid "press ok to edit username"
+msgstr "Πατήστε OK για να δώσετε όνομα"
+
+#: default.esml:786
+msgid "Sa"
+msgstr "Σαβ"
+
+#: default.esml:863
+msgid "connected:"
+msgstr "Σύνδεση:"
+
+#: default.esml:1344
+msgid "Namespace:"
+msgstr ""
+
+#: default.esml:1304
+msgid "auto switch to VCR connector"
+msgstr "Αυτόματη επιλογή VCR"
+
+#: default.esml:626 default.esml:644
+msgid "Symbol Rate:"
+msgstr "Symbolrate:"
+
+#: default.esml:996
+msgid "add page to favourites"
+msgstr ""
+
+#: default.esml:828 default.esml:840 default.esml:852 default.esml:1096
+msgid "set"
+msgstr "Ρύθμιση"
+
+#: default.esml:814
+msgid "FP Version"
+msgstr "Αντιστροφή"
+
+#: default.esml:1334
+msgid "Teletext PID:"
+msgstr ""
+
+#: default.esml:1019 default.esml:1233
+#, fuzzy
+msgid "Options:"
+msgstr "Αποστολές"
+
+#: default.esml:518
+msgid "calc param 2 (see your motor manual or let it 00)"
+msgstr "παράμετρος 2 (δείτε τις οδηγίες του ρότορα ή αφήστετο 00)"
+
+#: default.esml:796
+msgid "select the timer type (ok)"
+msgstr "Επιλογή τύπου χρονοδιακόπτη (οk)"
+
+#: default.esml:1020
+msgid "Select this option if you want to search the exact title"
+msgstr ""
+
+#: default.esml:551 default.esml:571
+msgid "choose satellite/cable provider (ok)"
+msgstr "Επιλέξτε δορυφόρο που θα γίνει η ανίχνευση (<, >, OK)"
+
+#: default.esml:1297
+msgid "choose color format ( left, right )"
+msgstr "Επιλέξτε τύπο χρώματος (<, >)"
+
+#: default.esml:1252 src/setup_osd_extra.cpp:8 src/system_settings.cpp:63
+msgid "OSD Settings"
+msgstr "Ρυθμίσεις OSD"
+
+#: default.esml:815 lib/gui/emessage.cpp:124
+msgid "OK"
+msgstr ""
+
+#: default.esml:659
+msgid "Guard:"
+msgstr ""
+
+#: default.esml:1013 src/enigma_main.cpp:5315 src/epgsearch.cpp:254
+#: src/epgwindow.cpp:372 src/epgwindow.cpp:436 src/sselect.cpp:80
+#: src/sselect.cpp:1928
+#, fuzzy
+msgid "EPG Search"
+msgstr "Στιλ EPG"
+
+#: default.esml:1057
+msgid "use the EPG cache for the infobar if the EIT is unavailable"
+msgstr ""
+
+#: default.esml:1118
+msgid "change Setup PIN (ok)"
+msgstr "Αλλαγή κωδικού PIN ρυθμίσεων (ΟΚ)"
+
+#: default.esml:1262
+msgid "press ok to open skin selector"
+msgstr "Επιλογή στιλ επιφάνειας μενού"
+
+#: default.esml:605
+msgid "select skin and press ok or choose save"
+msgstr "Επιλέξτε επιφάνεια και πατήστε ΟΚ"
+
+#: default.esml:982
+msgid "activate pause button"
+msgstr ""
+
+#: default.esml:421
+msgid "goto next page (DiSEqC)"
+msgstr "Προς επόμενη σελίδα (DiSEqC)"
+
+#: default.esml:1229
+msgid "Dir:"
+msgstr ""
+
+#: default.esml:1168
+msgid "test values"
+msgstr ""
+
+#: default.esml:967
+msgid "select sat(up/down), ok(edit), green(add new), red(delete)"
+msgstr "Επιλογή(πάνω,κάτω),οκ(αλλαγή),πράσινο(νέος),κόκκ.(διαγραφή)"
+
+#: default.esml:1240
+msgid "press ok to edit password"
+msgstr "Πατήστε OK για να αλλάξετε τον κωδικό του παροχέα σας"
+
+#: default.esml:982
+msgid "use yellow button as pause button"
+msgstr ""
+
+#: default.esml:798
+msgid "apply"
+msgstr "Εφαρμογή"
+
+#: default.esml:1398 default.esml:1399
+msgid "set directory where target Package files will be stored"
+msgstr ""
+
+#: default.esml:1274
+msgid "Repeat Delay:"
+msgstr "Καθυστέρηση:"
+
+#: default.esml:785
+msgid "Fr"
+msgstr "Παρ"
+
+#: default.esml:545
+#, fuzzy
+msgid "enter pids"
+msgstr "Χειμερινά σπορ"
+
+#: default.esml:779
+msgid "Repeated timer"
+msgstr "Επαναλυπτικό γεγονός"
+
+#: default.esml:1371
+msgid "can handle two services"
+msgstr "Διαγραφή υπηρεσίας"
+
+#: default.esml:521
+msgid "bla"
+msgstr ""
+
+#: default.esml:977
+msgid "delay (seconds):"
+msgstr ""
+
+#: default.esml:1177
+msgid "enter IP Adress of the Ngrab Server (0..9, left, right)"
+msgstr "Δώστε τη διεύθυνση του NGrab Server (0..9, <, >)"
+
+#: default.esml:1107
+msgid "Always show slides in 16:9 format"
+msgstr ""
+
+#: default.esml:786 src/timer.cpp:2700
+msgid "Saturday"
+msgstr "Σάββατο"
+
+#: default.esml:836
+msgid "(0..9, left, right, ok)"
+msgstr "(0..9, <, >, οκ)"
+
+#: default.esml:439
+msgid "swaps committed and uncommitted DiSEqC Commands"
+msgstr "Μη αποστολή εντολής committed DiSEqC"
+
+#: default.esml:932
+msgid "vol-"
+msgstr ""
+
+#: default.esml:446 src/enigma_scan.cpp:53
+msgid "Satfind"
+msgstr "Σήμα"
+
+#: default.esml:1004
+msgid "set amount of transparency when in semi-transparent mode"
+msgstr ""
+
+#: default.esml:1057
+msgid "Use EPG cache for Infobar"
+msgstr ""
+
+#: default.esml:437
+msgid "send the complete DiSEqC sequence twice"
+msgstr "Διπλή αποστολή ολόκληρης της εντολής DiSEqC"
+
+#: default.esml:1338
+#, fuzzy
+msgid "Transport Stream ID:"
+msgstr "Ανίχνευση καναλιών"
+
+#: default.esml:1007
+msgid "use truetype font instead of standard font"
+msgstr ""
+
+#: default.esml:1143
+msgid "Manual PIDs"
+msgstr ""
+
+#: default.esml:1217
+msgid "enter port of the Web Interface (0..9, left, right)"
+msgstr "Δώστε τη διεύθυνση του Web Interface (0..9, <, >)"
+
+#: default.esml:978
+#, fuzzy
+msgid "max. recording time (minutes):"
+msgstr "Αύξηση του χρόνου έναρξης σε βήματα του 1 λεπτού"
+
+#: default.esml:1150 default.esml:1330
+msgid "PCR PID:"
+msgstr ""
+
+#: default.esml:436
+msgid "Uncommitted Switch:"
+msgstr "Διακόπτης Uncommitted:"
+
+#: default.esml:997 default.esml:1016
+#, fuzzy
+msgid "Service:"
+msgstr "υπηρεσίες"
+
+#: default.esml:619 default.esml:637 default.esml:656
+msgid "enable/disable inversion here (ok)"
+msgstr "Αντιστροφής ή όχι φάσματος (OK)"
+
+#: default.esml:788 default.esml:792
+msgid "select year (ok)"
+msgstr "Επιλογή χρονιάς (ok)"
+
+#: default.esml:418
+msgid "increased voltage"
+msgstr "Αυξημένη τάση"
+
+#: default.esml:1243
+msgid "press ok to unmount this share"
+msgstr "Πατήστε OK για να δώσετε όνομα"
+
+#: default.esml:668
+msgid "choose the code rate HP (left, right)"
+msgstr "Επιλογή του FEC (<, >)"
+
+#: default.esml:1104
+#, fuzzy
+msgid "Select slideshow timeout (left, right)"
+msgstr "Επιλέξτε πολικότητα (<, >)"
+
+#: default.esml:1239 src/setupnetwork.cpp:519
+msgid "Password:"
+msgstr "Κωδικός:"
+
+#: default.esml:1211
+#, fuzzy
+msgid "Nameserver:"
+msgstr "Εξυπηρετητής Ngrab"
+
+#: default.esml:847
+msgid "recording end time:"
+msgstr "Ρύθμιση τέλους χρόνου εγγαφής:"
+
+#: default.esml:1149
+#, fuzzy
+msgid "to enter video pid press OK"
+msgstr "Για να αλλαχτή η υπηρεσία πατήστε ΟΚ"
+
+#: default.esml:472
+msgid "Use motor input power for running detection.. else use timeout"
+msgstr "Χρήση ισχύος εισόδου ρότορα για έλεγχο κίνησης ή χρονοκαθυστέρηση"
+
+#: default.esml:493 default.esml:514
+msgid "Direction:"
+msgstr "Κατεύθυνση"
+
+#: default.esml:582
+msgid "services scanned     :"
+msgstr "Ανιχνεύτηκαν υπηρεσίες :"
+
+#: default.esml:1006
+msgid "set the language of the displayed pages"
+msgstr ""
+
+#: default.esml:871
+msgid "standby timeout (min):"
+msgstr ""
+
+#: default.esml:606 default.esml:798 default.esml:985 default.esml:1059
+#: default.esml:1068 default.esml:1077 default.esml:1108 default.esml:1120
+#: default.esml:1129 default.esml:1183 default.esml:1197 default.esml:1218
+#: default.esml:1264 default.esml:1280 default.esml:1305 default.esml:1315
+#: default.esml:1358 src/tpeditwindow.cpp:114
+msgid "save changes and return"
+msgstr "Επιστροφή με αποθήκευση αλλαγών"
+
+#: default.esml:497 default.esml:767 default.esml:933 default.esml:970
+msgid "remove"
+msgstr "διαγραφή"
+
+#: default.esml:565
+msgid "aborts the transponder scan"
+msgstr "Εκίνηση ανίνχευσης."
+
+#: default.esml:1241
+msgid "enable/disable automount (ok)"
+msgstr "Ενεργοποίηση ή όχι εξόδου AC3 (OK)"
+
+#: default.esml:429
+msgid "select DiSEqC mode (ok)"
+msgstr "Επιλογή τύπου DiSEqC (ok)"
+
+#: default.esml:928
+msgid "abc &lt;-&gt; ABC"
+msgstr ""
+
+#: default.esml:1258
+msgid "change the contrast"
+msgstr "Αλλαγή αντίθεσης μενού"
+
+#: default.esml:417
+msgid "enter LNB threshold frequency (0..9, ok)"
+msgstr "δώστε την συχνότητα αλλαγής μπάντας του LNB (0..9, OK)"
+
+#: default.esml:488
+msgid "insert rotor memory cell for this orbital position"
+msgstr "Επιλέξτε ποιά τροχιακή θέση να αποθηκευτεί στον ρότορα"
+
+#: default.esml:565 default.esml:897 default.esml:1387
+msgid "abort"
+msgstr "Ακύρωση"
+
+#: default.esml:457 default.esml:682
+msgid "BER"
+msgstr ""
+
+#: default.esml:885 default.esml:1024
+msgid "close window"
+msgstr "Επιστροφή στο προηγούμενο μενού."
+
+#: default.esml:1355
+msgid "Network search"
+msgstr "Έρευνα δικτύου"
+
+#: default.esml:812
+msgid "Software Version"
+msgstr "Έκδοση λογισμικού"
+
+#: default.esml:496 default.esml:768 default.esml:968
+msgid "add"
+msgstr "προσθήκη"
+
+#: default.esml:1117
+msgid "enable/disable setup lock"
+msgstr "Ρυθμίσεις κλειδωμένες ναι/όχι"
+
+#: default.esml:1353
+msgid "enter orbital position without dot (19.2&#176; = 192)"
+msgstr "Δώστε την τροχιακή θέση χωρίς '.'(19.2° = 192)"
+
+#: default.esml:1365 default.esml:1368
+msgid "reset the Common Interface module"
+msgstr "Επανεκίνηση - Reset - CI module"
+
+#: default.esml:867
+msgid "send harddisk to standby immediately"
+msgstr ""
+
+#: default.esml:665
+msgid "Coderate LP:"
+msgstr ""
+
+#: default.esml:908
+msgid "&#51;"
+msgstr ""
+
+#: default.esml:1031 src/setup_extra.cpp:86 src/swapmanager.cpp:280
+#: src/swapmanager.cpp:315
+msgid "Swap Manager"
+msgstr ""
+
+#: stone.esml:463 silver.esml:470
+msgid "subservices"
+msgstr "Υπο-υπηρεσίες"
+
+#: default.esml:1263
+msgid "here you can center the Tuxtxt (builtin videotext)"
+msgstr "Εδώ μπορείτε να κεντράρετε το ενσωματωμένο τελετέξτ (TuxTxt)"
+
+#: default.esml:1232
+msgid "enter name of the local mount point with trailing slash"
+msgstr ""
+
+#: stone.esml:465 silver.esml:472 src/enigma_plugins.cpp:77
+#: src/enigma_plugins.cpp:117
+msgid "Plugins"
+msgstr "Πρόσθετα (Plugins)"
+
+#: default.esml:789 default.esml:793
+msgid "select month (ok)"
+msgstr "Επιλογή μήνα (ok)"
+
+#: default.esml:482
+msgid "enter your latitude (0..9, +, -, ok)"
+msgstr "Γεωγραφικό πλάτος (0..9, +, -, ΟΚ)"
+
+#: default.esml:430
+msgid "DiSEqC Mode:"
+msgstr "Τύπος DiSEqC:"
+
+#: default.esml:562 default.esml:581 src/scan.cpp:648
+msgid "scanning..."
+msgstr "Ανίχνευση"
+
+#: default.esml:403
+msgid "LNB Configuration"
+msgstr "Ρύθμιση LNB"
+
+#: default.esml:1384 src/enigma_ipkg.cpp:272 src/setup_extra.cpp:94
+msgid "package manager"
+msgstr ""
+
+#: default.esml:519
+msgid "calc param 3 (see your motor manual or let it 00)"
+msgstr "παράμετρος 3 (δήτε τις οδηγίες του ρότορα ή αφήστετο 00)"
+
+#: default.esml:374 default.esml:452 default.esml:681
+msgid "AGC"
+msgstr "AGC"
+
+#: default.esml:435
+msgid "select uncommitted input"
+msgstr "Επιλογή LNB στην 'Uncommitted' είσοδο."
+
+#: default.esml:476
+msgid "when the motor support this, then use"
+msgstr "Χρήση αυτού αν ο ρότορας το υποστηρίζει"
+
+#: default.esml:1163
+msgid "don't read PAT/PMT/SDT for this service (only use cached pids)"
+msgstr ""
+
+#: default.esml:999
+msgid "16:9 mode in normal view"
+msgstr ""
+
+#: chk_blue2.esml:314 src/enigma_main.cpp:5003
+msgid "Play"
+msgstr "Αναπαραγωγή"
+
+#: default.esml:930
+msgid "vol+"
+msgstr ""
+
+#: default.esml:996
+#, fuzzy
+msgid "add page"
+msgstr "Προσθήκη σημαδιού"
+
+#: default.esml:1395
+msgid "IPKG Install Option:"
+msgstr ""
+
+#: default.esml:1180
+msgid "Srv MAC:"
+msgstr ""
+
+#: default.esml:1195
+msgid "set LCD brightness for Standby Mode ( left / right )"
+msgstr "Ρύθμιση φωτεινότητας LCD κατά την αναμονή (<, >)"
+
+#: default.esml:661
+msgid "Bandwidth:"
+msgstr ""
+
+#: default.esml:1191
+msgid "set LCD brightness ( left / right )"
+msgstr "Ρύθμιση φωτεινότητας LCD (<, >)"
+
+#: default.esml:779
+msgid "for a multiple event enable this"
+msgstr "Για πολλαπλό γεγονός ενεργοποιήστε το"
+
+#: default.esml:766
+msgid "press ok to select another event"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: default.esml:1107
+msgid "Show in 16:9 format"
+msgstr ""
+
+#: default.esml:1126
+#, fuzzy
+msgid "Store Satellite"
+msgstr "Νέος δορυφόρος"
+
+#: default.esml:1205
+msgid "enter IP Address of the box (0..9, left, right)"
+msgstr "Δώστε διεύθυνση του DREAMBOX (0..9, <, >)"
+
+#: default.esml:391
+msgid "22Khz"
+msgstr ""
+
+#: default.esml:1366 default.esml:1369
+msgid "send the ca-pmt to CI"
+msgstr "Αποστολή ca-pmt στο CI"
+
+#: default.esml:415
+msgid "LOF/H:"
+msgstr ""
+
+#: default.esml:849
+msgid "o'clock"
+msgstr "η ώρα"
+
+#: default.esml:1007
+msgid "use truetype font"
+msgstr ""
+
+#: default.esml:979
+msgid "set number of seconds recording is delayed after switching channel"
+msgstr ""
+
+#: default.esml:1021
+msgid "Select this option if you want to make this epg search case sensitive"
+msgstr ""
+
+#: default.esml:768
+msgid "add new Timer (ok)"
+msgstr "Προσθήκη στον χρονοδιακόπτη (ok)"
+
+#: default.esml:891 src/setup_extra.cpp:76 src/software_update.cpp:29
+msgid "Software Update"
+msgstr "Αναβάθμιση λογισμικού"
+
+#: default.esml:797
+msgid "to change service press ok"
+msgstr "Για να αλλαχτή η υπηρεσία πατήστε ΟΚ"
+
+#: default.esml:1021
+msgid "Case Sensitive"
+msgstr ""
+
+#: default.esml:1192 default.esml:1257
+msgid "Contrast"
+msgstr "Αντίθεση"
+
+#: default.esml:1164
+#, fuzzy
+msgid "use sdt"
+msgstr "Παύση"
+
+#: default.esml:787
+msgid "Su"
+msgstr "Κυρ"
+
+#: default.esml:396
+msgid "new"
+msgstr "Νέος"
+
+#: default.esml:835
+msgid "duration:"
+msgstr "Διάρκεια:"
+
+#: default.esml:1396
+msgid "select option used for installation"
+msgstr ""
+
+#: default.esml:438
+msgid "Fast DiSEqC"
+msgstr "Γρήγορο DiSEqC"
+
+#: default.esml:980
+msgid "set maximum number of recorded minutes"
+msgstr ""
+
+#: default.esml:480 default.esml:483 default.esml:494
+msgid "choose direction"
+msgstr "Επιλογή κατεύθυνσης"
+
+#: default.esml:1056
+msgid "uncheck to cache all available data"
+msgstr ""
+
+#: default.esml:861
+msgid "capacity:"
+msgstr "Μέγεθος:"
+
+#: default.esml:517
+msgid "calc param 1 (see your motor manual or let it 00)"
+msgstr "παράμετρος 1 (δείτε τις οδηγίες του ρότορα ή αφήστετο 00)"
+
+#: default.esml:1094
+#, fuzzy
+msgid "press ok to select another month"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: default.esml:1167
+msgid "read tsid and onid from the nit (this can take up to 10 seconds)"
+msgstr ""
+
+#: default.esml:663
+msgid "Transm. Mode:"
+msgstr "Αναμεταδότης:"
+
+#: default.esml:784 src/epgwindow.cpp:127 src/timer.cpp:222
+msgid "Thu"
+msgstr "Πεμ"
+
+#: default.esml:1212
+msgid "enter your domain name server (0..9, left, right)"
+msgstr "Δώστε τη διεύθυνση του DNS σας (0..9, <, >)"
+
+#: default.esml:1216
+#, fuzzy
+msgid "Port:"
+msgstr "Πολικότητα:"
+
+#: default.esml:782 src/timer.cpp:2699
+msgid "Tuesday"
+msgstr "Τρίτη"
+
+#: default.esml:795
+msgid "edit the end time (0..9, left, right)"
+msgstr "Επιλογή τέλους χρόνου (0..9, <, >)"
+
+#: default.esml:838
+msgid "shutdown the box to deepstandby (ok)"
+msgstr "Κλείσημο δέκτη σε βαθύ ύπνο (οκ)"
+
+#: default.esml:823
+msgid "recording duration:"
+msgstr "ρύθμιση διάρκειας εγγραφής:"
+
+#: default.esml:968
+msgid "add new Transponder to selected sat (ok)"
+msgstr "Προσθήκη νέου αναμεταδότη στον επιλεγμένο δορυφόρο (ΟΚ)"
+
+#: default.esml:1162
+msgid "to enter onid (original network id) press OK"
+msgstr ""
+
+#: default.esml:1312
+msgid "TV System Wizard"
+msgstr ""
+
+#: default.esml:1074
+msgid "Time Zone Setup"
+msgstr "Ρύθμιση χρονικής ζώνης"
+
+#: default.esml:1227
+msgid "enter IP Address (0..9, left, right)"
+msgstr "Δώστε διεύθυνση IP (0..9, <, >)"
+
+#: default.esml:840
+msgid "set sleeptimer and close window (ok)"
+msgstr "Θέσε τον χρονοδιακόπτη ύπνου και κλείσε το παράθυρο (ΟΚ)"
+
+#: default.esml:524
+msgid "open transponder scan"
+msgstr "Ανίχνευση αναμεταδότη"
+
+#: default.esml:396
+msgid "add a new Satellite"
+msgstr "Προσθήκη νέου δορυφόρου"
+
+#: default.esml:825 default.esml:837
+msgid "min"
+msgstr "λεπ"
+
+#: default.esml:474
+msgid "mA"
+msgstr ""
+
+#: default.esml:780 src/timer.cpp:2699
+msgid "Monday"
+msgstr "Δευτέρα"
+
+#: default.esml:461 default.esml:509 default.esml:613 src/enigma_info.cpp:134
+#: src/rotorconfig.cpp:555 src/scan.cpp:1400
+#, c-format
+msgid "Satellite"
+msgstr "Δορυφόρο"
+
+#: default.esml:392
+msgid "Voltage"
+msgstr "Τάση"
+
+#: default.esml:1340
+#, fuzzy
+msgid "Original Network ID:"
+msgstr "Ενεργοποίηση Δικτύου (ok)"
+
+#: default.esml:689
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: default.esml:931
+msgid "insert"
+msgstr "Ρύθμιση"
+
+#: default.esml:1035 default.esml:1036 default.esml:1052 default.esml:1053
+msgid "Push OK to select directory"
+msgstr ""
+
+#: default.esml:1145
+#, fuzzy
+msgid "to enter service name press OK"
+msgstr "Για να αλλαχτή η υπηρεσία πατήστε ΟΚ"
+
+#: default.esml:976
+#, fuzzy
+msgid "setup timeshifting"
+msgstr "Επιλογές που αφορόυν την ώρα και ημερομηνία."
+
+#: default.esml:395 default.esml:420 default.esml:441 default.esml:499
+#: default.esml:606 default.esml:876 default.esml:985 default.esml:1059
+#: default.esml:1068 default.esml:1077 default.esml:1108 default.esml:1120
+#: default.esml:1129 default.esml:1169 default.esml:1183 default.esml:1197
+#: default.esml:1218 default.esml:1245 default.esml:1264 default.esml:1280
+#: default.esml:1289 default.esml:1305 default.esml:1315 default.esml:1358
+#: default.esml:1403 src/rotorconfig.cpp:466 src/rotorconfig.cpp:482
+#: src/rotorconfig.cpp:486 src/setup_rfmod.cpp:144 src/tpeditwindow.cpp:111
+msgid "save"
+msgstr "Αποθήκευση"
+
+#: default.esml:1093
+#, fuzzy
+msgid "press ok to select another day"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: default.esml:782 src/epgwindow.cpp:127 src/timer.cpp:222
+msgid "Tue"
+msgstr "Τρι"
+
+#: default.esml:485
+msgid "choose entry to edit or remove"
+msgstr "Επιλέξτε καταχώρηση για να αλλάξετε ή διαγράψετε"
+
+#: default.esml:1260
+#, fuzzy
+msgid "change the transparency of the subtitle black background"
+msgstr "Αλλαγή διαφάνειας μενού"
+
+#: default.esml:778
+msgid "Endtime"
+msgstr "Ώρα αποπεράτωσης"
+
+#: default.esml:1153
+msgid "to enter audio pid press OK"
+msgstr ""
+
+#: default.esml:1165
+msgid "hold name"
+msgstr ""
+
+#: default.esml:920
+msgid "&#57;"
+msgstr ""
+
+#: default.esml:1034 default.esml:1051 default.esml:1397
+#, fuzzy
+msgid "Directory:"
+msgstr "Κατεύθυνση"
+
+#: default.esml:545
+#, fuzzy
+msgid "enter manual pids"
+msgstr "Χειροκίνητη αναβάθμιση λογισμικού"
+
+#: default.esml:1025 src/setup_extra.cpp:119 src/setup_extra.cpp:121
+#, fuzzy, c-format
+msgid "start"
+msgstr "Επανεκίνηση"
+
+#: default.esml:1355
+msgid ""
+"scan Network Information Table(s)\n"
+"this is recommend"
+msgstr ""
+"Ανίχνευση πίνακα πληροφοριών δικτύου (NIT)\n"
+"Αυτή η επιλογή προτείνεται"
+
+#: default.esml:604
+msgid "Skins:"
+msgstr "Τύπος:"
+
+#: default.esml:791
+msgid "edit the start time (0..9, left, right)"
+msgstr "Επιλογή χρόνου έναρξης (0..9, <, >)"
+
+#: default.esml:412
+msgid "enter LNB lowband offset frequency (0..9, ok)"
+msgstr "Συχνότητα LNB, χαμηλή μπάντα (0..9, OK)"
+
+#: default.esml:785 src/timer.cpp:2700
+msgid "Friday"
+msgstr "Παρασκευή"
+
+#: default.esml:1400
+msgid "IPKG Server:"
+msgstr ""
+
+#: default.esml:1103
+#, fuzzy
+msgid "Timeout"
+msgstr "Χρονοδιακόπτης"
+
+#: default.esml:490 default.esml:1352
+msgid "Orbital Position:"
+msgstr "Τροχιακή θέση:"
+
+#: default.esml:414
+msgid "enter LNB highband offset frequency (0..9, ok)"
+msgstr "Συχνότητα LNB υψηλής μπάντας (0..9, OK)"
+
+#: default.esml:434
+msgid "DiSEqC Repeats:"
+msgstr "Επαναλήψεις DiSEqC:"
+
+#: default.esml:826 default.esml:850
+msgid "shutdown the box after recording (ok)"
+msgstr "Κλείσημο του δέκτη μετά το τέλος εγγραφής"
+
+#: default.esml:1017
+msgid ""
+"Select this option if you want to search the title only in selected channel"
+msgstr ""
+
+#: default.esml:1214
+msgid "enter your gateways IP Address (0..9, left, right)"
+msgstr "Δώστε τη διεύθυνση του Gateway (0..9, <, >)"
+
+#: default.esml:822 default.esml:846
+msgid "Stop Record"
+msgstr "Σταμάτημα εγγραφής"
+
+#: default.esml:956
+msgid "Please choose your DiSEqC-Configuration:"
+msgstr "Παρακαλώ επιλέξτε τον τύπο DiSEqC που έχετε:"
+
+#: default.esml:1105
+msgid "Include slides of subdirectories in slideshow"
+msgstr ""
+
+#: chk_blue2.esml:315 src/enigma_main.cpp:3198
+#, fuzzy
+msgid "Pause"
+msgstr "Παύση"
+
+#: default.esml:1303
+msgid "AC3 default output"
+msgstr "Έξοδος ήχου AC3"
+
+#: default.esml:1066
+msgid "Keyboard Mapping:"
+msgstr "Ρυθμίσεις πληκτρολογίου"
+
+#: default.esml:507
+msgid "Mode:"
+msgstr "Τύπος:"
+
+#: default.esml:1128
+msgid "change storage Location or store"
+msgstr "Αλλαγή θέσης μνήμης ή αποθήκευση"
+
+#: default.esml:586
+msgid "Progress:"
+msgstr "Πρόοδος:"
+
+#: default.esml:387 src/enigma_scan.cpp:52
+msgid "Satellite Configuration"
+msgstr "Σύνθεση δορυφόρου"
+
+#: default.esml:1279
+msgid "cursor to next char timeout(msek) in textinputfields"
+msgstr "Χρόνος μετακίνησης δείκτη στα πεδία (msec)"
+
+#: default.esml:1022 src/epgsearch.cpp:250 src/epgsearch.cpp:251
+#: src/streaminfo.cpp:172
+msgid "genre"
+msgstr "Είδος"
+
+#: default.esml:1254
+msgid "change the transparency correction"
+msgstr "Αλλαγή διαφάνειας μενού"
+
+#: default.esml:416
+msgid "Threshold:"
+msgstr "Κατώφλι:"
+
+#: default.esml:1246
+msgid "go to next share"
+msgstr "Επιλογή επόμενης υπό-υπηρεσίας"
+
+#: default.esml:441
+msgid "save changes"
+msgstr "Επιστροφή με αποθήκευση αλλαγών"
+
+#: default.esml:523
+msgid "save in motor"
+msgstr "Αποθήκευση στον ρότορα"
+
+#: default.esml:969
+msgid "edit selected transponder (ok)"
+msgstr "Σύνταξη επιλεγμένου αναμεταδότη (οκ)"
+
+#: default.esml:621
+msgid "Polarity:"
+msgstr "Πολικότητα:"
+
+#: default.esml:970
+#, fuzzy
+msgid "remove selected transponder"
+msgstr "Σύνταξη επιλεγμένου αναμεταδότη (οκ)"
+
+#: default.esml:390
+msgid "LNB"
+msgstr ""
+
+#: default.esml:1154
+msgid "is AC3 Pid"
+msgstr ""
+
+#: default.esml:885 default.esml:1024 default.esml:1388 default.esml:1402
+msgid "close"
+msgstr "κλείσιμο"
+
+#: default.esml:1169
+msgid ""
+"save data and close window (the new channel could be found in the all "
+"services list)"
+msgstr ""
+
+#: default.esml:616 default.esml:634 default.esml:653
+msgid "Frequency:"
+msgstr "Συχνότητα:"
+
+#: default.esml:1298
+msgid "Aspect Ratio:"
+msgstr "Λόγος πλευρών:"
+
+#: default.esml:1002
+msgid "set brightness of the displayed teletext page"
+msgstr ""
+
+#: default.esml:1055
+msgid "press ok to enter the name"
+msgstr "Πατήστε OK για να δώσετε όνομα"
+
+#: default.esml:667
+msgid "Coderate HP:"
+msgstr ""
+
+#: default.esml:767
+msgid "delete the current selected timer (ok)"
+msgstr "Διαγραφή του επιλεγμένου χρονοδιακόπτη (ok)"
+
+#: default.esml:427
+msgid "select MiniDiSEqC parameter (ok)"
+msgstr "Επιλογή παραμέτρου MiniDiSEqC (ok)"
+
+#: default.esml:479
+msgid "enter your longitude (0..9, +, -, ok)"
+msgstr "Γεωγραφικό μήκος (0..9, +, -, ΟΚ)"
+
+#: default.esml:839
+msgid "goto standby (ok)"
+msgstr "κατάσταση αναμονής λειτουργίας (οκ)"
+
+#: default.esml:1357
+msgid "use Provider DVB Bouquet Tables if exist"
+msgstr "Χρήση πίνακα μπουκέτου παροχέα, αν υπάρχει."
+
+#: default.esml:1181
+msgid "enter MAC address of server (for wake on lan)"
+msgstr "Δώστε την διεύθυνση MAC του server (για WOL)"
+
+#: default.esml:1210
+msgid "press ok to change connection type"
+msgstr "Πατήστε OK για να επιλέξετε τύπο σύνδεσης"
+
+#: default.esml:1096
+#, fuzzy
+msgid "set new time and close window"
+msgstr "Θέσε τον χρονοδιακόπτη ύπνου και κλείσε το παράθυρο (ΟΚ)"
+
+#: default.esml:787 src/timer.cpp:2699
+msgid "Sunday"
+msgstr "Κυριακή"
+
+#: default.esml:389
+msgid "Sat/Position"
+msgstr "Δορυφόρος"
+
+#: default.esml:1091
+msgid "enter correct time here"
+msgstr ""
+
+#: default.esml:410
+msgid "Sat/LNB mapping:"
+msgstr "Σχέση Δορυφ/LNB:"
+
+#: default.esml:420
+msgid "save changes and use current selected LNB for the chosen satellite"
+msgstr "Αποθήκευση αλλαγών και χρήση του επιλεγμένου LNB."
+
+#: default.esml:499
+msgid ""
+"save changes and use the selected LNB (in first page) for the choosen "
+"satellite"
+msgstr "Αποθήκευση και χρήση του LNB για τον επιλεγμένο δορυφόρο."
+
+#: default.esml:1137
+msgid "please enter pin:"
+msgstr "Παρακαλώ δώστε κωδικό PIN:"
+
+#: default.esml:834
+msgid "Set Sleeptimer"
+msgstr "Χρονοδιακόπτης ύπνου"
+
+#: default.esml:1148 default.esml:1326
+#, fuzzy
+msgid "Video PID:"
+msgstr "Εικόνα"
+
+#: default.esml:597
+msgid "press ok to change"
+msgstr "Πατήστε OK για να αλλάξετε κατεύθυνση"
+
+#: default.esml:1156
+msgid "to enter (video) text pid press OK"
+msgstr ""
+
+#: chk_blue2.esml:317 src/rotorconfig.cpp:762
+#, fuzzy, c-format
+msgid "Stop"
+msgstr "Σταμάτημα"
+
+#: default.esml:964
+msgid "Transponders"
+msgstr "Αναμεταδότες"
+
+#: default.esml:1076
+msgid "select your time zone (ok)"
+msgstr "Επιλογή τοπικής χρονικής ζώνης (οk)"
+
+#: default.esml:828 default.esml:852
+msgid "set recording end time and close window (ok)"
+msgstr "Θέσε την ώρα τέλους εγραφής και κλείσε το παράθυρο"
+
+#: default.esml:1332
+msgid "PMT PID:"
+msgstr ""
+
+#: default.esml:395
+msgid "close Satellite Configuration"
+msgstr "Κλείσημο ρυθμίσεων δορυφόρων"
+
+#: default.esml:969
+msgid "edit"
+msgstr "σύνταξη"
+
+#: default.esml:1300 default.esml:1313
+msgid "TV System:"
+msgstr ""
+
+#: default.esml:421 default.esml:500
+msgid "next page"
+msgstr "Επόμενο"
+
+#: default.esml:515
+msgid "press left or right to move motor"
+msgstr "Πατήστε το < ή το > για να κινήσετε το ρότορα"
+
+#: default.esml:1288 default.esml:1409
+msgid " "
+msgstr ""
+
+#: default.esml:1278
+msgid "Next Char Timeout:"
+msgstr "Χρόνος επόμενου χαρακτ."
+
+#: default.esml:1356
+msgid ""
+"scan NITs of other transponders\n"
+"this is slower, but sometimes needed)"
+msgstr ""
+"Ανίχνευση NIT όλων των αναμεταδοτών.\n"
+"Πιό αργή έρευνα αλλά καμιά φορά αναγκαία"
+
+#: default.esml:520
+msgid "Counter(Movement)"
+msgstr "Μετρητής (Κίνηση)"
+
+#: default.esml:524 src/enigma_tuxtxt.cpp:108 src/enigma_tuxtxt.cpp:324
+msgid "search"
+msgstr "Ανίχνευση"
+
+#: default.esml:540
+msgid "use ONIT"
+msgstr "Χρήση ONIT"
+
+#: default.esml:543
+msgid "enable/disable initiate network search"
+msgstr "Ενεργοποίηση ή όχι ανίχνευσης δικτύου"
+
+#: default.esml:388
+msgid "select your configuration here"
+msgstr "Επιλογή τοπικής χρονικής ζώνης (οk)"
+
+#: default.esml:1020
+msgid "Exact match"
+msgstr ""
+
+#: default.esml:1058
+msgid "clear EPG cache"
+msgstr ""
+
+#: default.esml:918
+msgid "&#56;"
+msgstr ""
+
+#: default.esml:1265
+#, fuzzy
+msgid "open additional settings"
+msgstr "Επιλογές που αφορόυν την ώρα και ημερομηνία."
+
+#: default.esml:624 default.esml:642 default.esml:660
+msgid "choose the FEC (left, right)"
+msgstr "Επιλογή του FEC (<, >)"
+
+#: default.esml:433
+msgid "select DiSEqC repeats (ok)"
+msgstr "Επαναλήψεις εντολών DiSEqC (ok)"
+
+#: default.esml:947 src/system_settings.cpp:64
+msgid "OSD Language"
+msgstr "Γλώσσα μενού"
+
+#: default.esml:955
+msgid "DiSEqC..."
+msgstr "Αλλαγή τύπου DiSEqC"
+
+#: default.esml:790 default.esml:794
+msgid "select day (ok)"
+msgstr "Επιλογή ημέρας (ok)"
+
+#: default.esml:555
+msgid "change circular to linear polarization"
+msgstr "Αλλαγή από κυκλική σε γραμμική πόλωση"
+
+#: default.esml:1168
+msgid "test entered values"
+msgstr ""
+
+#: chk_blue2.esml:318 src/enigma_main.cpp:123 src/enigma_main.cpp:136
+#: src/enigma_main.cpp:3412 src/enigma_main.cpp:8141
+msgid "Record"
+msgstr "Εγγραφή"
+
+#: default.esml:924
+msgid "&#48;"
+msgstr ""
+
+#: default.esml:775
+msgid "Timer Edit"
+msgstr "Ρύθμιση χρονοδιακόπτη"
+
+#: default.esml:1259
+#, fuzzy
+msgid "Subtitle Transparency"
+msgstr "Αναμεταδότης:"
+
+#: default.esml:1261
+msgid "show the Mainmenu in normal listbox style"
+msgstr ""
+
+#: default.esml:883
+msgid "status output:"
+msgstr "Κατάσταση:"
+
+#: default.esml:437
+msgid "Sequence repeat"
+msgstr "Επανάληψη:"
+
+#: default.esml:511
+msgid "enter stored satellite pos"
+msgstr "Δώστε θέση αποθηκευμένου δορυφόρου"
+
+#: default.esml:1067
+msgid "select your keyboard mapping (ok)"
+msgstr "Επιλογή τοπικής χρονικής ζώνης (οk)"
+
+#: default.esml:810 default.esml:858 src/setup_harddisk.cpp:488
+msgid "Harddisk"
+msgstr "Σκληρός Δίσκος..."
+
+#: default.esml:827 default.esml:851
+msgid "goto standby after recording (ok)"
+msgstr "Σε αναμονή μετά την εγγραφή"
+
+#: default.esml:1203
+msgid "Communication setup"
+msgstr "Ρυθμίσεις επικοινωνίας και διασυνδέσεων"
+
+#: default.esml:542 default.esml:554 default.esml:573
+msgid "only Free"
+msgstr "Μόνο ελεύθερα"
+
+#: default.esml:874
+msgid "set automatic acoustic management (0 - 254)"
+msgstr ""
+
+#: default.esml:657
+msgid "Constellation:"
+msgstr "Αντίθεση:"
+
+#: default.esml:543
+msgid "network search"
+msgstr "Έρευνα δικτύου"
+
+#: default.esml:1147
+msgid "to enter provider name press OK"
+msgstr ""
+
+#: lib/dvb/dvbci.cpp:65 lib/dvb/dvbci.cpp:114 lib/dvb/dvbci.cpp:132
+#: lib/dvb/dvbci.cpp:1284
+msgid "no module"
+msgstr "Δεν υπάρχει μόντουλ CI"
+
+#: lib/dvb/dvbwidgets.cpp:51 src/scan.cpp:777
+msgid "horizontal"
+msgstr "οριζόντια"
+
+#: lib/dvb/dvbwidgets.cpp:52 src/scan.cpp:777
+msgid "vertical"
+msgstr "Κάθετα"
+
+#: lib/dvb/dvbwidgets.cpp:56 lib/dvb/dvbwidgets.cpp:65
+msgid "Auto"
+msgstr "Ήχος"
+
+#: lib/dvb/dvbwidgets.cpp:57 lib/dvb/dvbwidgets.cpp:67
+msgid "16-QAM"
+msgstr ""
+
+#: lib/dvb/dvbwidgets.cpp:58
+msgid "32-QAM"
+msgstr ""
+
+#: lib/dvb/dvbwidgets.cpp:59 lib/dvb/dvbwidgets.cpp:68
+msgid "64-QAM"
+msgstr ""
+
+#: lib/dvb/dvbwidgets.cpp:60
+msgid "128-QAM"
+msgstr ""
+
+#: lib/dvb/dvbwidgets.cpp:61
+msgid "256-QAM"
+msgstr ""
+
+#: lib/dvb/dvbwidgets.cpp:66
+msgid "QPSK"
+msgstr ""
+
+#: lib/dvb/service.cpp:202 lib/dvb/service.cpp:230 src/enigma_bouquet.cpp:221
+#: src/enigma_main.cpp:4657 src/enigma_main.cpp:4669 src/parentallock.cpp:85
+#: src/parentallock.cpp:117 src/timer.cpp:2418
+msgid "parental"
+msgstr "γωνικό"
+
+#: lib/dvb/servicedvb.cpp:1080 lib/dvb/servicedvb.cpp:1084
+#: lib/dvb/servicedvb.cpp:1088 lib/dvb/servicedvb.cpp:1549 src/sselect.cpp:471
+#, c-format
+msgid "Providers"
+msgstr "Παροχείς"
+
+#: lib/dvb/servicedvb.cpp:1080 lib/dvb/servicedvb.cpp:1093
+#: lib/dvb/servicedvb.cpp:1108 src/enigma_bouquet.cpp:26
+#: src/enigma_main.cpp:1499 src/enigma_main.cpp:1571
+msgid "TV"
+msgstr ""
+
+#: lib/dvb/servicedvb.cpp:1084 lib/dvb/servicedvb.cpp:1097
+#: lib/dvb/servicedvb.cpp:1112 src/enigma_bouquet.cpp:27
+#: src/enigma_main.cpp:1522 src/enigma_main.cpp:1577
+msgid "Radio"
+msgstr ""
+
+#: lib/dvb/servicedvb.cpp:1088 lib/dvb/servicedvb.cpp:1101
+#: lib/dvb/servicedvb.cpp:1116
+msgid "Data"
+msgstr ""
+
+#: lib/dvb/servicedvb.cpp:1093 lib/dvb/servicedvb.cpp:1097
+#: lib/dvb/servicedvb.cpp:1101 src/epgsearch.cpp:236
+#, c-format
+msgid "All services"
+msgstr "Όλες οι υπηρεσίες"
+
+#: lib/dvb/servicedvb.cpp:1108 lib/dvb/servicedvb.cpp:1112
+#: lib/dvb/servicedvb.cpp:1116 src/sselect.cpp:468
+#, c-format
+msgid "Satellites"
+msgstr "Δορυφόροι"
+
+#: lib/dvb/servicedvb.cpp:1565
+#, fuzzy
+msgid "new found"
+msgstr "Ενεργοποίηση ήχου"
+
+#: lib/dvb/servicedvb.cpp:1569
+#, fuzzy
+msgid "current transponder"
+msgstr "Ανίχνευση αναμεταδότη"
+
+#: lib/dvb/servicemp3.cpp:191
+msgid "Connecting..."
+msgstr "Σύνδεση..."
+
+#: lib/dvb/servicemp3.cpp:410
+msgid "buffering..."
+msgstr ""
+
+#: lib/dvb/servicemp3.cpp:567
+msgid "playing..."
+msgstr "Αναπαραγωγή..."
+
+#: lib/dvb/serviceplaylist.cpp:156
+#, c-format
+msgid " (%d entries)"
+msgstr " (%d θέσεις)"
+
+#: lib/dvb/servicestructure.cpp:14
+msgid "root node"
+msgstr "Βάση (root)"
+
+#: lib/dvb/servicestructure.cpp:15 src/enigma_mainmenu.cpp:54
+#: src/enigma_mainmenu.cpp:187
+msgid "TV mode"
+msgstr "Κανάλια TV"
+
+#: lib/dvb/servicestructure.cpp:16
+msgid "Radio Mode"
+msgstr "Κανάλια Radio"
+
+#: lib/dvb/servicestructure.cpp:18
+msgid "File Mode"
+msgstr "Αρχεία"
+
+#: lib/dvb/servicestructure.cpp:20
+msgid "TV/Radio"
+msgstr ""
+
+#: lib/dvb/servicestructure.cpp:21 src/enigma_main.cpp:1499
+#: src/enigma_main.cpp:1510 src/enigma_main.cpp:1522 src/enigma_main.cpp:8291
+#: src/sselect.cpp:472 src/sselect.cpp:479
+#, c-format
+msgid "Bouquets"
+msgstr "Μπουκέτα"
+
+#: lib/gui/emessage.cpp:125
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: lib/gui/emessage.cpp:126
+msgid "Yes"
+msgstr "Ναι"
+
+#: lib/gui/emessage.cpp:127
+msgid "No"
+msgstr "'Οχι"
+
+#: lib/gui/listbox.cpp:869
+msgid "no description available"
+msgstr "Δεν υπάρχει περιγραφή"
+
+#: lib/gui/textinput.cpp:35
+msgid "press ok to save (help is available)"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: lib/gui/textinput.cpp:60
+msgid "press ok to save"
+msgstr "Πατήστε OK για αποθήκευση"
+
+#: lib/picviewer/pictureviewer.cpp:118
+msgid "display next picture"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:119
+#, fuzzy
+msgid "display previous picture"
+msgstr "Πήδημα στο προηγούμενο δείκτη θέσης"
+
+#: lib/picviewer/pictureviewer.cpp:120
+msgid "start slideshow"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:121
+msgid "stop slideshow"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:122
+msgid "toggle fit to screen width/fit to screen"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:123
+msgid "zoom out"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:124
+#, fuzzy
+msgid "zoom in"
+msgstr "λεπ"
+
+#: lib/picviewer/pictureviewer.cpp:125
+msgid "toggle 16/9 mode"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:126
+msgid "move picture up"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:127
+msgid "move picture left"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:128
+msgid "move picture right"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:129
+msgid "move picture down"
+msgstr ""
+
+#: lib/picviewer/pictureviewer.cpp:137
+#, fuzzy
+msgid "Loading slide... please wait."
+msgstr "Ανίχνευση σε εξέλιξη... παρακαλώ περιμένετε"
+
+#: src/channelinfo.cpp:78 src/channelinfo.cpp:105 src/epgsearch.cpp:151
+msgid "Movie"
+msgstr "Ταινία"
+
+#: src/channelinfo.cpp:78 src/epgsearch.cpp:153
+msgid "Adventure"
+msgstr "Περιπέτεια"
+
+#: src/channelinfo.cpp:78 src/epgsearch.cpp:154
+msgid "SciFi"
+msgstr "Επισ. Φαντασία"
+
+#: src/channelinfo.cpp:78 src/epgsearch.cpp:155
+msgid "Comedy"
+msgstr "Κωμωδία"
+
+#: src/channelinfo.cpp:79 src/epgsearch.cpp:156
+msgid "Soap"
+msgstr "Σαπουνόπερα"
+
+#: src/channelinfo.cpp:79 src/epgsearch.cpp:157
+msgid "Romance"
+msgstr "Ρομαντικό"
+
+#: src/channelinfo.cpp:79 src/epgsearch.cpp:158
+msgid "Serious"
+msgstr "Σοβαρό"
+
+#: src/channelinfo.cpp:79 src/epgsearch.cpp:159
+msgid "Adult"
+msgstr "Για μεγάλους"
+
+#: src/channelinfo.cpp:82 src/epgsearch.cpp:160
+msgid "News"
+msgstr "Ειδησεογραφικό"
+
+#: src/channelinfo.cpp:82
+msgid "Weather"
+msgstr "Καιρός"
+
+#: src/channelinfo.cpp:82
+msgid "Magazine"
+msgstr "Μαγκαζίνο"
+
+#: src/channelinfo.cpp:82
+msgid "Documentary"
+msgstr "Ντοκιμαντέρ"
+
+#: src/channelinfo.cpp:82
+msgid "Discussion"
+msgstr "Συζήτηση"
+
+#: src/channelinfo.cpp:86 src/epgsearch.cpp:161
+msgid "Show"
+msgstr "Διάφορα show"
+
+#: src/channelinfo.cpp:86
+msgid "Game Show"
+msgstr "Παιχνίδια"
+
+#: src/channelinfo.cpp:86
+msgid "Variety"
+msgstr "Ποικιλία"
+
+#: src/channelinfo.cpp:86
+msgid "Talk"
+msgstr "Μπλα-Μπλα"
+
+#: src/channelinfo.cpp:90 src/epgsearch.cpp:162
+msgid "Sports"
+msgstr "Σπορ"
+
+#: src/channelinfo.cpp:90
+msgid "Special Event"
+msgstr "Ειδικά γεγονότα"
+
+#: src/channelinfo.cpp:90
+msgid "Sports Mag."
+msgstr "Αθλητικό μαγκαζίνο"
+
+#: src/channelinfo.cpp:90
+msgid "Football"
+msgstr "Ποδόσφαιρο"
+
+#: src/channelinfo.cpp:90
+msgid "Tennis"
+msgstr "Τέννις"
+
+#: src/channelinfo.cpp:90
+msgid "Team Sports"
+msgstr "Ομαδικά αθλήματα"
+
+#: src/channelinfo.cpp:91
+msgid "Athletics"
+msgstr "Αθλητισμός"
+
+#: src/channelinfo.cpp:91
+msgid "Motor Sports"
+msgstr "Αυτοκινητιστικά"
+
+#: src/channelinfo.cpp:91
+msgid "Water Sports"
+msgstr "Θαλάσσια σπορ"
+
+#: src/channelinfo.cpp:91
+msgid "Winter Sports"
+msgstr "Χειμερινά σπορ"
+
+#: src/channelinfo.cpp:91
+msgid "Equestrian"
+msgstr "Ιππικοί αγώνες"
+
+#: src/channelinfo.cpp:92
+msgid "Martial Sports"
+msgstr "Πολεμικές τέχνες"
+
+#: src/channelinfo.cpp:95 src/epgsearch.cpp:163
+msgid "Children"
+msgstr "Παιδικά"
+
+#: src/channelinfo.cpp:95
+msgid "Pre-School"
+msgstr "Προ-σχολικό"
+
+#: src/channelinfo.cpp:95
+msgid "Age 6-14"
+msgstr "6-14 χρονών"
+
+#: src/channelinfo.cpp:95
+msgid "Age 10-16"
+msgstr "10-16 χρονών"
+
+#: src/channelinfo.cpp:95
+msgid "School"
+msgstr "Σχολικά"
+
+#: src/channelinfo.cpp:96
+msgid "Cartoons"
+msgstr "Κιν. Σχέδια"
+
+#: src/channelinfo.cpp:100 src/epgsearch.cpp:164
+msgid "Music"
+msgstr "Μουσική"
+
+#: src/channelinfo.cpp:100
+msgid "Rock/Pop"
+msgstr ""
+
+#: src/channelinfo.cpp:100
+msgid "Classical"
+msgstr "Κλασική"
+
+#: src/channelinfo.cpp:100
+msgid "Folk"
+msgstr "Λαϊκά"
+
+#: src/channelinfo.cpp:100
+msgid "Jazz"
+msgstr "Τζάζ"
+
+#: src/channelinfo.cpp:100
+msgid "Musical"
+msgstr "Μουσική"
+
+#: src/channelinfo.cpp:100
+msgid "Ballet"
+msgstr "Μπαλέτο"
+
+#: src/channelinfo.cpp:104 src/epgsearch.cpp:165
+msgid "Culture"
+msgstr "Κουλτούρα"
+
+#: src/channelinfo.cpp:104
+msgid "Perf. Arts"
+msgstr "Τένχες"
+
+#: src/channelinfo.cpp:104
+msgid "Fine Arts"
+msgstr "Υψηλή τέχνη"
+
+#: src/channelinfo.cpp:104
+msgid "Religion"
+msgstr "Θρησκία"
+
+#: src/channelinfo.cpp:104
+msgid "Pop. Arts"
+msgstr "Λαϊκή Τέχνη"
+
+#: src/channelinfo.cpp:104
+msgid "Literature"
+msgstr "Λογοτεχνία"
+
+#: src/channelinfo.cpp:105
+msgid "Experimental"
+msgstr "Πειραματικό"
+
+#: src/channelinfo.cpp:105
+msgid "Press"
+msgstr "Τύπος"
+
+#: src/channelinfo.cpp:105
+msgid "New Media"
+msgstr "Νέα μέσα"
+
+#: src/channelinfo.cpp:105
+msgid "Art Mag."
+msgstr "Τέχνη"
+
+#: src/channelinfo.cpp:105
+msgid "Fashion"
+msgstr "Μόδα"
+
+#: src/channelinfo.cpp:108 src/epgsearch.cpp:166
+msgid "Social"
+msgstr "Κοινωνικά"
+
+#: src/channelinfo.cpp:108
+msgid "Soc. Mag."
+msgstr "Κοινονικό μαγκαζίνο"
+
+#: src/channelinfo.cpp:108
+msgid "Economics"
+msgstr "Οικονομικό"
+
+#: src/channelinfo.cpp:108
+msgid "Remark. People"
+msgstr "Ανθρωποι"
+
+#: src/channelinfo.cpp:112 src/epgsearch.cpp:167
+msgid "Education"
+msgstr "Εκπαιδευτικό"
+
+#: src/channelinfo.cpp:112
+msgid "Nature"
+msgstr "φύση"
+
+#: src/channelinfo.cpp:112
+msgid "Technology"
+msgstr "Τεχνολογία"
+
+#: src/channelinfo.cpp:112
+msgid "Medicine"
+msgstr "Ιατρικό"
+
+#: src/channelinfo.cpp:112
+msgid "Expeditions"
+msgstr "Αποστολές"
+
+#: src/channelinfo.cpp:112
+msgid "Spiritual"
+msgstr "Πνευματικό"
+
+#: src/channelinfo.cpp:113
+msgid "Further Ed."
+msgstr "Εκπαιδευτικό"
+
+#: src/channelinfo.cpp:113
+msgid "Languages"
+msgstr "Γλώσσες"
+
+#: src/channelinfo.cpp:116 src/epgsearch.cpp:168
+msgid "Hobbies"
+msgstr "Χόμπι"
+
+#: src/channelinfo.cpp:116
+msgid "Travel"
+msgstr "Ταξίδια"
+
+#: src/channelinfo.cpp:116
+msgid "Handicraft"
+msgstr "Χειροτεχνία"
+
+#: src/channelinfo.cpp:116
+msgid "Motoring"
+msgstr "Αυτοκίνητα"
+
+#: src/channelinfo.cpp:116
+msgid "Fitness"
+msgstr "Υγεία"
+
+#: src/channelinfo.cpp:116
+msgid "Cooking"
+msgstr "Μαγειρική"
+
+#: src/channelinfo.cpp:117
+msgid "Shopping"
+msgstr "Τηλεαγορές"
+
+#: src/channelinfo.cpp:117
+msgid "Gardening"
+msgstr "Κηπουρική"
+
+#: src/channelinfo.cpp:120
+msgid "Orig. Lang."
+msgstr "Αρχική Γλώσσα"
+
+#: src/channelinfo.cpp:120
+msgid "B&W"
+msgstr "Α&Μ"
+
+#: src/channelinfo.cpp:120
+msgid "Unpublished"
+msgstr "Αδημοσίευτο"
+
+#: src/channelinfo.cpp:120 src/epgsearch.cpp:169
+msgid "Live"
+msgstr "Ζωντανό"
+
+#: src/channelinfo.cpp:257
+msgid "no data for this service avail"
+msgstr "Δεν υπάρχουν πληροφορίες"
+
+#: src/engrab.cpp:37 src/enigma_event.cpp:201 src/enigma_event.cpp:209
+#: src/enigma_event.cpp:386 src/enigma_event.cpp:395 src/timer.cpp:2355
+msgid "no description is available"
+msgstr "Δεν υπάρχει περιγραφή"
+
+#: src/enigma.cpp:306
+msgid ""
+"Welcome to enigma.\n"
+"\n"
+"Please do a transponder scan first.\n"
+"(mainmenu > setup > channels > transponder scan)"
+msgstr ""
+"Καλως ήρθατε στο Enigma.\n"
+"\n"
+"Παρακαλώ κάντε πρώτα μία ανίχνευση για κανάλια.\n"
+"(Κυρίως Μενού > Εγκατάσταση > Κανάλια > Έρευνα αναμεταδοτων"
+
+#: src/enigma.cpp:308
+msgid "First start of enigma"
+msgstr "Πρώτη εκκίνηση του Enigma"
+
+#: src/enigma.cpp:532
+msgid "It's now safe to unplug power!"
+msgstr ""
+
+#: src/enigma.cpp:533
+#, fuzzy
+msgid "Shutdown finished"
+msgstr "Τέλος ανίχνευσης"
+
+#: src/enigma.cpp:560
+msgid "Please wait... your Dreambox is shutting down!"
+msgstr ""
+
+#: src/enigma_bouquet.cpp:19
+msgid "Bouquet Type"
+msgstr "Τύπος μπουκέτου"
+
+#: src/enigma_bouquet.cpp:29 src/enigma_main.cpp:1510 src/enigma_main.cpp:1583
+msgid "File"
+msgstr "Ταινία"
+
+#: src/enigma_bouquet.cpp:43 src/enigma_setup.cpp:45
+msgid "Service Organising"
+msgstr "Ταξινόμιση υπηρεσιών"
+
+#: src/enigma_bouquet.cpp:51
+msgid "Create new bouquet"
+msgstr "Δημιουργία νέου μπουκέτου"
+
+#: src/enigma_bouquet.cpp:51
+msgid "create new empty bouquet"
+msgstr "Δημιουργία νέου κενού μπουκέτου"
+
+#: src/enigma_bouquet.cpp:52
+msgid "Add services to bouquet"
+msgstr "Προσθήκη υπηρεσιών στο μπουκέτο"
+
+#: src/enigma_bouquet.cpp:52
+msgid "add multiple services to a specific bouquet"
+msgstr "Προσθήκη πολλαπλών υπηρεσιών σε συγκεκριμένο μπουκέτο"
+
+#: src/enigma_bouquet.cpp:53
+msgid "Edit bouquets"
+msgstr "Σύνταξη μπουκέτων"
+
+#: src/enigma_bouquet.cpp:53
+msgid "sort,rename,delete services/bouquets "
+msgstr "Ταξινόμιση,μετονομασία,διαγραφή υπηρεσιών/μπουκέτων"
+
+#: src/enigma_bouquet.cpp:57
+msgid "Lock/Unlock Services"
+msgstr "Κλείδωμα/ξεκλείδωμα υπηρεσιών"
+
+#: src/enigma_bouquet.cpp:57
+msgid "lock,unlock services (parental locking)"
+msgstr "Κλείδωμα/ξεκλείδωμα υπηρεσιών (γονικό κλείδωμα)"
+
+#: src/enigma_ci.cpp:65
+msgid "Common Interface Modules"
+msgstr "Κοινή διεπαφή (CI)..."
+
+#: src/enigma_ci.cpp:113 src/enigma_ci.cpp:119
+msgid "resetting....please wait"
+msgstr "Επανεκίνηση... περιμένετε!"
+
+#: src/enigma_ci.cpp:165
+msgid "Common Interface Module - mmi"
+msgstr "Κοινή διεπαφή (CI) - mmi"
+
+#: src/enigma_ci.cpp:166
+msgid "waiting for CI answer..."
+msgstr "Αναμονή για το μόντουλ..."
+
+#: src/enigma_dyn.cpp:2118
+#, fuzzy
+msgid "External Message"
+msgstr "Μήνυμα"
+
+#: src/enigma_epg.cpp:86
+msgid "press 1 ... 6 to select count of visible hours"
+msgstr ""
+
+#: src/enigma_event.cpp:22
+msgid "closes the Event View"
+msgstr "Κλείνει την ένδειξη γεγονότων"
+
+#: src/enigma_event.cpp:194 src/enigma_event.cpp:376 src/streaminfo.cpp:465
+#: src/streaminfo.cpp:523
+msgid "no information is available"
+msgstr "Δεν υπάρχουν πληροφορίες"
+
+#: src/enigma_event.cpp:310
+#, c-format
+msgid "Original duration: %d min"
+msgstr ""
+
+#: src/enigma_info.cpp:39 src/enigma_main.cpp:5700 src/enigma_mainmenu.cpp:64
+#: src/enigma_mainmenu.cpp:83 src/enigma_mainmenu.cpp:197
+#: src/enigma_mainmenu.cpp:207 src/rotorconfig.cpp:856 src/timer.cpp:2744
+msgid "Information"
+msgstr "Πληροφορίες"
+
+#: src/enigma_info.cpp:42 src/streaminfo.cpp:434
+msgid "Streaminfo"
+msgstr "Λεπτομέρειες"
+
+#: src/enigma_info.cpp:42
+msgid "open the Streaminfo"
+msgstr "Λεπτομέρειες μετάδοσης"
+
+#: src/enigma_info.cpp:43
+msgid "open the about dialog"
+msgstr "Ανοιγμα διαλόγου Περί..."
+
+#: src/enigma_info.cpp:105
+#, fuzzy, c-format
+msgid "Processor:"
+msgstr "Επεξεργαστής:"
+
+#: src/enigma_info.cpp:137
+msgid "Cable"
+msgstr ""
+
+#: src/enigma_info.cpp:140
+msgid "Terrestrial"
+msgstr "Επίγειο"
+
+#: src/enigma_info.cpp:143 src/enigma_info.cpp:197 src/epgsearch.cpp:119
+#: src/timer.cpp:2761 src/upgrade.cpp:281
+msgid "unknown"
+msgstr "Αγνωστο"
+
+#: src/enigma_info.cpp:191 src/streaminfo.cpp:315 src/streaminfo.cpp:316
+#: src/streaminfo.cpp:317 src/streaminfo.cpp:318 src/streaminfo.cpp:319
+#: src/streaminfo.cpp:358 src/streaminfo.cpp:397
+msgid "none"
+msgstr "Χωρίς"
+
+#: src/enigma_info.cpp:202
+msgid "release"
+msgstr "Έκδοση"
+
+#: src/enigma_info.cpp:203
+msgid "beta"
+msgstr "βήτα"
+
+#: src/enigma_info.cpp:204
+msgid "internal"
+msgstr "εσωτερική"
+
+#: src/enigma_ipkg.cpp:90
+msgid "sorry, start script."
+msgstr ""
+
+#: src/enigma_ipkg.cpp:162
+msgid "An error occured during exucution"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:206
+#, c-format
+msgid "WARNING: Your /var is already %d%% full. Continue?"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:209
+msgid "Continue"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:280
+#, fuzzy
+msgid "open package manager settings"
+msgstr "Επιλογές που αφορόυν την ώρα και ημερομηνία."
+
+#: src/enigma_ipkg.cpp:282
+msgid "Update package list"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:282
+msgid "reload package list from server"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:283 src/enigma_ipkg.cpp:474
+msgid "Install package (Online)"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:283
+msgid "Install package from server"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:284 src/enigma_ipkg.cpp:466
+msgid "Install package (Offline)"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:284
+msgid "Install package from box"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:285 src/enigma_ipkg.cpp:470 src/enigma_ipkg.cpp:507
+#, fuzzy
+msgid "Remove package"
+msgstr "Προηγούμενο"
+
+#: src/enigma_ipkg.cpp:285
+msgid "Remove installed package"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:315
+msgid "There was no list found. Please perform package update first!"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:315
+msgid "INFO"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:467 src/enigma_ipkg.cpp:475
+msgid "select package to install"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:471
+#, fuzzy
+msgid "select package to remove"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: src/enigma_ipkg.cpp:498
+#, fuzzy, c-format
+msgid "Do you want to install package %s offline?"
+msgstr ""
+"Θέλετε να ερευνήσετε\n"
+"και άλλο %s?"
+
+#: src/enigma_ipkg.cpp:500 src/enigma_ipkg.cpp:516
+msgid "Install package"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:505
+#, c-format
+msgid "Do you really want to remove package %s?"
+msgstr ""
+
+#: src/enigma_ipkg.cpp:514
+#, fuzzy, c-format
+msgid "Do you want to install package %s online?"
+msgstr ""
+"Θέλετε να ερευνήσετε\n"
+"και άλλο %s?"
+
+#: src/enigma_main.cpp:88
+msgid "show main menu"
+msgstr "Κυρίως μενού"
+
+#: src/enigma_main.cpp:96
+msgid "show infobar or EPG"
+msgstr "Εμφάνιση μπάρας πληροφοριών ή το EPG"
+
+#: src/enigma_main.cpp:98
+msgid "show subservices/NVOD"
+msgstr "Εμφάνιση υπουπηρεσιών NVOD"
+
+#: src/enigma_main.cpp:99 src/enigma_main.cpp:100
+msgid "show audio selector"
+msgstr "Εμφάνιση επιλογέα ήχου"
+
+#: src/enigma_main.cpp:101
+msgid "show Videotext"
+msgstr "Εμφάνιση Videotext"
+
+#: src/enigma_main.cpp:102
+msgid "show extension Plugins"
+msgstr "Εμφάνιση πρόσθετων (plugins)"
+
+#: src/enigma_main.cpp:103
+msgid "show epg schedule list"
+msgstr "Εμφάνιση χρονοδιαγράμματος EPG"
+
+#: src/enigma_main.cpp:104
+msgid "show extended info"
+msgstr "Εμφάνιση προχωρημένου (extended) EPG"
+
+#: src/enigma_main.cpp:110
+msgid "playlist/history next"
+msgstr "Επιλογή επόμενου στη λίστα"
+
+#: src/enigma_main.cpp:111
+msgid "playlist/history prev"
+msgstr "Επιλογή προηγούμενου στη λίστα"
+
+#: src/enigma_main.cpp:120 src/enigma_main.cpp:133
+msgid "stop playback"
+msgstr "Σταμάτημα αναπαραγωγής"
+
+#: src/enigma_main.cpp:121 src/enigma_main.cpp:134
+msgid "pause playback"
+msgstr "Παύση αναπαραγωγής"
+
+#: src/enigma_main.cpp:122 src/enigma_main.cpp:135
+msgid "resume playback"
+msgstr "Συνέχιση αναπαραγωγής"
+
+#: src/enigma_main.cpp:125
+msgid "start skipping forward"
+msgstr "Γρήγορα βήματα μπροστά"
+
+#: src/enigma_main.cpp:129
+msgid "start skipping reverse"
+msgstr "Γρήγορα βήματα πίσω"
+
+#: src/enigma_main.cpp:151 src/sselect.cpp:141
+msgid "switch to TV mode"
+msgstr "Λειτουργία TV"
+
+#: src/enigma_main.cpp:152 src/sselect.cpp:142
+msgid "switch to Radio mode"
+msgstr "Λειτουργία Radio"
+
+#: src/enigma_main.cpp:153 src/sselect.cpp:143
+msgid "switch to File mode"
+msgstr "Λειτουργία με αρχεία"
+
+#: src/enigma_main.cpp:155
+msgid "toggle DVR panel"
+msgstr "Πάνελ ψηφιακού βίντεο DVR"
+
+#: src/enigma_main.cpp:156
+msgid "toggle index mark"
+msgstr "Δείκτης επιλογής θέσης ναί/όχι"
+
+#: src/enigma_main.cpp:158
+msgid "seek to next index mark"
+msgstr "Πήδημα στον επόμενο δείκτης θέσης"
+
+#: src/enigma_main.cpp:159
+msgid "seek to previous index mark"
+msgstr "Πήδημα στο προηγούμενο δείκτη θέσης"
+
+#: src/enigma_main.cpp:339
+msgid " to "
+msgstr " προς "
+
+#: src/enigma_main.cpp:349
+msgid " Euro lost)"
+msgstr " Euro χάθηκε)"
+
+#: src/enigma_main.cpp:390
+msgid "not valid!"
+msgstr "μη επιτρεπτό!"
+
+#: src/enigma_main.cpp:408
+msgid "NVOD"
+msgstr ""
+
+#: src/enigma_main.cpp:519
+msgid "Video"
+msgstr "Εικόνα"
+
+#: src/enigma_main.cpp:663 src/enigma_main.cpp:930
+msgid "Audio"
+msgstr "Ήχος"
+
+#: src/enigma_main.cpp:683 src/enigma_main.cpp:950
+msgid "   Left Mono  >"
+msgstr ""
+
+#: src/enigma_main.cpp:684 src/enigma_main.cpp:951
+msgid "<  Stereo  >"
+msgstr "< Στερεοφωνικό >"
+
+#: src/enigma_main.cpp:685 src/enigma_main.cpp:952
+msgid "<  Right Mono  "
+msgstr ""
+
+#: src/enigma_main.cpp:714
+#, c-format
+msgid "Audiotrack"
+msgstr "Επιλογή ήχου"
+
+#: src/enigma_main.cpp:877
+#, c-format
+msgid "Teletext Page %03x (%s)"
+msgstr ""
+
+#: src/enigma_main.cpp:990
+msgid "no subtitles"
+msgstr ""
+
+#: src/enigma_main.cpp:1032
+msgid "multiple Services"
+msgstr "πολλαπλές υπηρεσίες"
+
+#: src/enigma_main.cpp:1047 src/enigma_main.cpp:1098 src/enigma_main.cpp:1112
+msgid "enable quickzap"
+msgstr "Ενεργοποίηση γρήγορου ζάπινγκ (quickzap)"
+
+#: src/enigma_main.cpp:1055
+msgid "add to bouquet"
+msgstr "Προσθήκη στα μπουκέτα"
+
+#: src/enigma_main.cpp:1094
+msgid "disable quickzap"
+msgstr "Απενεργοποίηση γρήγορου ζάπινγκ (quickzap)"
+
+#: src/enigma_main.cpp:1196 src/enigma_main.cpp:1201
+#, c-format
+msgid "Channel"
+msgstr "Κανάλι"
+
+#: src/enigma_main.cpp:1276
+#, c-format
+msgid "Please wait while the motor is turning to %d.%d°%c ...."
+msgstr "Παρακαλώ περιμένετε, ο ρότορας μετακινήται στο %d.%d%c ...."
+
+#: src/enigma_main.cpp:1276
+msgid "Message"
+msgstr "Μήνυμα"
+
+#: src/enigma_main.cpp:1378
+msgid "recorded movies"
+msgstr "Αποθηκευμένες ταινίες"
+
+#: src/enigma_main.cpp:2015
+msgid "please wait while initializing Common Interface ..."
+msgstr "Παρακαλώ περιμένετε μέχρι να απαντήσει το CI ..."
+
+#: src/enigma_main.cpp:2102
+msgid "rewind one minute"
+msgstr ""
+
+#: src/enigma_main.cpp:2103
+msgid "rewind six minutes"
+msgstr ""
+
+#: src/enigma_main.cpp:2104
+msgid "rewind nine minutes"
+msgstr ""
+
+#: src/enigma_main.cpp:2105
+msgid "enter number of minutes to rewind"
+msgstr ""
+
+#: src/enigma_main.cpp:2106
+msgid "fast forward one minute"
+msgstr ""
+
+#: src/enigma_main.cpp:2107
+msgid "fast forward six minutes"
+msgstr ""
+
+#: src/enigma_main.cpp:2108
+msgid "fast forward nine minutes"
+msgstr ""
+
+#: src/enigma_main.cpp:2109
+msgid "enter number of minutes to fast forward"
+msgstr ""
+
+#: src/enigma_main.cpp:2344 src/enigma_main.cpp:2347 src/enigma_main.cpp:2467
+#: src/enigma_main.cpp:2470
+msgid "no EPG available"
+msgstr "Δεν υπάρχει EPG"
+
+#: src/enigma_main.cpp:3129
+msgid "ShutdownTimer"
+msgstr "Χρονοδιακόπτης τέλους λειτουργίας"
+
+#: src/enigma_main.cpp:3129
+msgid "SleepTimer"
+msgstr "Χρονοδιακόπτης ύπνου"
+
+#: src/enigma_main.cpp:3412
+msgid "Sorry, you cannot record this service."
+msgstr "Αυτή η υπηρεσία δεν μπορεί να εγγραφεί."
+
+#: src/enigma_main.cpp:3617
+msgid "Show recorded movies?"
+msgstr "Αποθηκευμένες ταινίες"
+
+#: src/enigma_main.cpp:3617
+msgid "recording finished"
+msgstr "Τέλος εγγραφής"
+
+#: src/enigma_main.cpp:3940
+msgid "Shutdown your Receiver now?"
+msgstr "Τέλος λειτουργίας"
+
+#: src/enigma_main.cpp:3940 src/enigma_main.cpp:3960
+msgid "Timer Message"
+msgstr "Μήνυμα"
+
+#: src/enigma_main.cpp:3960
+msgid "Go to Standby now?"
+msgstr "κατάσταση αναμονής λειτουργίας (οκ)"
+
+#: src/enigma_main.cpp:4017 src/enigma_main.cpp:4080
+msgid "Enter new name:"
+msgstr "Δώστε νέο όνομα:"
+
+#: src/enigma_main.cpp:4018 src/enigma_main.cpp:4081 src/sselect.cpp:156
+msgid "rename selected entry"
+msgstr "Μετονομασία επιλεγμένης καταχώρησης"
+
+#: src/enigma_main.cpp:4143
+msgid "Sorry, you cannot delete this service."
+msgstr "Αυτή η υπηρεσία δεν μπορεί να διαγραφεί."
+
+#: src/enigma_main.cpp:4143 src/sselect.cpp:154
+msgid "delete selected entry"
+msgstr "Διαγραφή επιλεγμένης καταχώρησης"
+
+#: src/enigma_main.cpp:4167 src/enigma_main.cpp:4289 src/sselect.cpp:2231
+#, c-format
+msgid ""
+"You are trying to delete '%s'.\n"
+"Really do this?"
+msgstr ""
+
+#: src/enigma_main.cpp:4168
+msgid "Delete recorded stream"
+msgstr "Διαγραφή γραμμένου σήματος"
+
+#: src/enigma_main.cpp:4196
+msgid ""
+"This is a complete Bouquet!\n"
+"Really delete?"
+msgstr ""
+"Αυτό είναι ολόκληρο μπουκέτο!\n"
+"Σίγουρα θέλετε να διαγραφεί;"
+
+#: src/enigma_main.cpp:4197
+msgid "Delete bouquet"
+msgstr "Διαγραφή μπουκέτου"
+
+#: src/enigma_main.cpp:4290 src/enigma_main.cpp:7951
+msgid "delete file"
+msgstr "Διαγραφή αρχείου"
+
+#: src/enigma_main.cpp:4359
+msgid "Enter new Filename:"
+msgstr "Δώστε νέο όνομα:"
+
+#: src/enigma_main.cpp:4360 src/enigma_main.cpp:7952
+msgid "rename file"
+msgstr "Μετονομασία αρχείου"
+
+#: src/enigma_main.cpp:4392
+msgid "Enter new name for the bouquet:"
+msgstr "Δώστε νέο όνομα για το μπουκέτο:"
+
+#: src/enigma_main.cpp:4393
+msgid "Rename bouquet"
+msgstr "Μετονομασία μπουκέτου"
+
+#: src/enigma_main.cpp:4418
+msgid "Enter name for the new bouquet:"
+msgstr "Δώστε όνομα του νέου μπουκέτου:"
+
+#: src/enigma_main.cpp:4419
+msgid "Add new bouquet"
+msgstr "Προσθήκη νέου μπουκέτου"
+
+#: src/enigma_main.cpp:4474
+msgid "unnamed"
+msgstr "Χωρίς όνομα"
+
+#: src/enigma_main.cpp:4475
+msgid "Enter marker name:"
+msgstr "Δώστε όνομα στο σημάδι:"
+
+#: src/enigma_main.cpp:4476
+msgid "create marker"
+msgstr "Δημιουργεία σημαδιού"
+
+#: src/enigma_main.cpp:4517
+msgid "unnamed bouquet"
+msgstr "Μπουκέτο χωρίς όνομα"
+
+#: src/enigma_main.cpp:5002 src/enigma_main.cpp:5003
+msgid "This directory doesn't contain anything playable!"
+msgstr "Αυτός ο κατάλογος δεν περιέχει κάτι που μπορεί να αναπαραχθεί!"
+
+#: src/enigma_main.cpp:5315 src/epgwindow.cpp:436 src/sselect.cpp:1928
+#, fuzzy
+msgid " was not found!"
+msgstr "Το πρόσθετο αρχείο '%s' δεν βρέθηκε"
+
+#: src/enigma_main.cpp:5574
+msgid ""
+"A timer based recording is currently in progress!\n"
+"This stops the timer, and recording!"
+msgstr ""
+"Ο χρονοδιακόπτης έχει ενεργοποιήσει ψηφιακή εγγραφή.<nΑυτή η επιλογή θα "
+"σταματίσει τον χρονοδιακόπτη και την εγγραφή"
+
+#: src/enigma_main.cpp:5584
+msgid ""
+"A recording is currently in progress!\n"
+"This stops the recording!"
+msgstr ""
+"Γίνεται ψηφιακή εγγραφή αυτή τη στιγμή!\n"
+"Αυτή η επιλογή θα σταματίσει την ψηφιακή εγγραφή!"
+
+#: src/enigma_main.cpp:5596
+msgid ""
+"A timer event is currently in progress!\n"
+"This stops the timer event!"
+msgstr ""
+"Ο χρονοδιακόπτης είναι ενεργός!\n"
+"Αυτή η επιλογή θα σταματίσει τον χρονοδιακόπτη!"
+
+#: src/enigma_main.cpp:5604
+msgid "Really do this?"
+msgstr "Σίγουρα να γίνει αυτό;"
+
+#: src/enigma_main.cpp:5699
+msgid "please wait until the timer has started the recording (max 10 seconds)"
+msgstr ""
+
+#: src/enigma_main.cpp:6478
+msgid "Record failed due to inaccessable storage."
+msgstr ""
+
+#: src/enigma_main.cpp:6480
+msgid ""
+"Record stopped due to full harddisk. Delete some recordings and try again."
+msgstr ""
+
+#: src/enigma_main.cpp:6482
+msgid ""
+"Record failed due to an write error during recording. Check for filesystem "
+"corruption."
+msgstr ""
+
+#: src/enigma_main.cpp:6484
+msgid "record failed"
+msgstr "Τέλος εγγραφής"
+
+#: src/enigma_main.cpp:6757 src/enigma_main.cpp:6758
+msgid "One moment please..."
+msgstr "Παρακαλώ περιμένετε..."
+
+#: src/enigma_main.cpp:6758 src/enigma_main.cpp:6762 src/enigma_main.cpp:6770
+#: src/enigma_main.cpp:6777 src/enigma_main.cpp:6783 src/enigma_main.cpp:6788
+#: src/enigma_main.cpp:6793 src/timer.cpp:2278
+msgid "switch"
+msgstr "Μήνυμα"
+
+#: src/enigma_main.cpp:6761 src/enigma_main.cpp:6762
+msgid "Service could not be found !"
+msgstr "Η υπήρεσία δεν βρέθηκε."
+
+#: src/enigma_main.cpp:6769 src/enigma_main.cpp:6770
+msgid "This service could not be descrambled"
+msgstr "Αυτή η υπηρεσία δεν μπορεί να αποκωδικοποιηθεί"
+
+#: src/enigma_main.cpp:6776 src/enigma_main.cpp:6777
+msgid "This service doesn't currently send a signal"
+msgstr "Αυτή η υπηρεσία δεν στέλνει (τώρα) σήμα."
+
+#: src/enigma_main.cpp:6781 src/enigma_main.cpp:6783
+msgid "This content could not be displayed"
+msgstr "Τα περιεχόμενα αυτά δεν μπορούν να αποδωθούν"
+
+#: src/enigma_main.cpp:6786 src/enigma_main.cpp:6788
+msgid "NVOD Service - please select a starttime"
+msgstr "Υπηρεσία NVOD - Παρακαλώ επιλέξτε ώρα έναρξης!"
+
+#: src/enigma_main.cpp:6791 src/enigma_main.cpp:6793
+msgid "Unknown error!!"
+msgstr "Σου είπε κανείς να παίζεις με τα πλήκτρα;"
+
+#: src/enigma_main.cpp:7326 src/sselect.cpp:478
+msgid "Playlist"
+msgstr "Λίστα αναπαραγωγής"
+
+#: src/enigma_main.cpp:7328
+msgid "History"
+msgstr "Ιστορία"
+
+#: src/enigma_main.cpp:7809
+msgid "Service Menu"
+msgstr "Μενού υπηρεσιών"
+
+#: src/enigma_main.cpp:7826
+msgid "add service to playlist"
+msgstr "Προσθήκη υπηρεσίας στην Playlist"
+
+#: src/enigma_main.cpp:7826
+msgid "add selected service to the playlist"
+msgstr "Προσθήκη υπηρεσίας στην Playlist"
+
+#: src/enigma_main.cpp:7838
+#, fuzzy
+msgid "remove all 'new found' flags"
+msgstr "Δημιουργία νέου μπουκέτου"
+
+#: src/enigma_main.cpp:7838
+#, fuzzy
+msgid "select to remove all 'new found' flags from this satellite"
+msgstr "Δημιουργία νέου μπουκέτου"
+
+#: src/enigma_main.cpp:7844
+msgid "remove 'new found flag'"
+msgstr ""
+
+#: src/enigma_main.cpp:7844
+#, fuzzy
+msgid "select to remove the 'new found flag'"
+msgstr "Δημιουργία νέου μπουκέτου"
+
+#: src/enigma_main.cpp:7847
+msgid "create new bouquet"
+msgstr "Δημιουργία νέου μπουκέτου"
+
+#: src/enigma_main.cpp:7847
+msgid "select to create a new bouquet"
+msgstr "Δημιουργία νέου μπουκέτου"
+
+#: src/enigma_main.cpp:7859
+msgid "duplicate bouquet"
+msgstr "Διπλότυπο μπουκέτο"
+
+#: src/enigma_main.cpp:7859
+msgid "duplicate the complete bouquet with all content"
+msgstr ""
+
+#: src/enigma_main.cpp:7865 src/enigma_main.cpp:7926 src/enigma_main.cpp:7931
+#: src/enigma_main.cpp:7949
+msgid "add to specific bouquet"
+msgstr "Προσθήκη σε κάποιο μπουκέτο"
+
+#: src/enigma_main.cpp:7865
+msgid "add the selected service to another bouquet"
+msgstr "Προσθήκη πολλαπλών υπηρεσιών σε συγκεκριμένο μπουκέτο"
+
+#: src/enigma_main.cpp:7867
+msgid "add marker"
+msgstr "Προσθήκη σημαδιού"
+
+#: src/enigma_main.cpp:7867
+msgid "create a new marker in the current bouquet"
+msgstr "Δημιουργία νέου δείκτη (marker)"
+
+#: src/enigma_main.cpp:7876 src/enigma_main.cpp:7891 src/enigma_main.cpp:7933
+#: src/enigma_plugins.cpp:93 src/sselect.cpp:457
+msgid "rename"
+msgstr "Μετονομασία"
+
+#: src/enigma_main.cpp:7876
+msgid "rename the current selected bouquet"
+msgstr "Διαγραφή του επιλεγμένου χρονοδιακόπτη (ok)"
+
+#: src/enigma_main.cpp:7891 src/enigma_main.cpp:7933
+msgid "rename the current selected service/movie"
+msgstr "Διαγραφή του επιλεγμένου χρονοδιακόπτη (ok)"
+
+#: src/enigma_main.cpp:7895 src/enigma_main.cpp:7934
+msgid "delete the current selected service/movie"
+msgstr "Διαγραφή του επιλεγμένου χρονοδιακόπτη (ok)"
+
+#: src/enigma_main.cpp:7901 src/enigma_main.cpp:7936
+msgid "set as startup service"
+msgstr ""
+
+#: src/enigma_main.cpp:7901
+#, fuzzy
+msgid "currently selected service will be selected on startup"
+msgstr "Προσθήκη πολλαπλών υπηρεσιών σε συγκεκριμένο μπουκέτο"
+
+#: src/enigma_main.cpp:7902 src/enigma_main.cpp:7937
+#, fuzzy
+msgid "reset startup service"
+msgstr "Διαγραφή υπηρεσίας"
+
+#: src/enigma_main.cpp:7902 src/enigma_main.cpp:7937
+#, fuzzy
+msgid "last selected service will be selected on startup"
+msgstr "Προσθήκη πολλαπλών υπηρεσιών σε συγκεκριμένο μπουκέτο"
+
+#: src/enigma_main.cpp:7909 src/enigma_plugins.cpp:87
+msgid "disable move mode"
+msgstr "απενεργοποίηση μετακίνησης"
+
+#: src/enigma_main.cpp:7909 src/enigma_plugins.cpp:87
+msgid "switch move mode off"
+msgstr "Λειτουργία με αρχεία"
+
+#: src/enigma_main.cpp:7911 src/enigma_plugins.cpp:89
+msgid "enable move mode"
+msgstr "ενεργοποίηση μετακίνησης"
+
+#: src/enigma_main.cpp:7911 src/enigma_plugins.cpp:89
+msgid "activate mode to simply change the entry order"
+msgstr ""
+
+#: src/enigma_main.cpp:7920
+msgid "copy to bouquet list"
+msgstr "Αντιγραφή στη λίστα μπουκέτων"
+
+#: src/enigma_main.cpp:7920
+msgid "copy the selected provider to the bouquet list"
+msgstr "Άνοιγμα λίστας υπηρεσιών και προβολή μπουκέτων"
+
+#: src/enigma_main.cpp:7926 src/enigma_main.cpp:7931
+msgid "add the selected service to a selectable bouquet"
+msgstr "Προσθήκη πολλαπλών υπηρεσιών σε συγκεκριμένο μπουκέτο"
+
+#: src/enigma_main.cpp:7936
+#, fuzzy
+msgid "set the current selected service/movie as startup service"
+msgstr "Διαγραφή του επιλεγμένου χρονοδιακόπτη (ok)"
+
+#: src/enigma_main.cpp:7949
+msgid "add the selected file to a selectable bouquet"
+msgstr "Προσθήκη πολλαπλών υπηρεσιών σε συγκεκριμένο μπουκέτο"
+
+#: src/enigma_main.cpp:7951
+msgid "delete the selected file (and all corresponding ts files"
+msgstr ""
+
+#: src/enigma_main.cpp:7952
+msgid "rename the selected file (and all corresponding ts files"
+msgstr ""
+
+#: src/enigma_main.cpp:7966
+msgid "disable edit mode"
+msgstr "απενεργοποίηση επεμβάσεων"
+
+#: src/enigma_main.cpp:7966
+msgid "disable the edit mode"
+msgstr "απενεργοποίηση επεμβάσεων"
+
+#: src/enigma_main.cpp:7968
+msgid "enable edit mode"
+msgstr "ενεργοποίηση επεμβάσεων"
+
+#: src/enigma_main.cpp:7968
+msgid "activate mode to simply add many services to a selectable bouquet"
+msgstr "Προσθήκη υπηρεσίας σε κάποιο μπουκέτο"
+
+#: src/enigma_main.cpp:7978
+msgid "unlock"
+msgstr "Ξεκλείδωμα"
+
+#: src/enigma_main.cpp:7978
+msgid "do parental-unlock the selected service or file"
+msgstr ""
+
+#: src/enigma_main.cpp:7980
+msgid "lock"
+msgstr "Κλείδωμα"
+
+#: src/enigma_main.cpp:7980
+msgid "do parentallock the selected service or file"
+msgstr ""
+
+#: src/enigma_main.cpp:7984
+msgid "disable parental lock"
+msgstr "Απενεργοποίηση γωνικού κλειδώματος"
+
+#: src/enigma_main.cpp:7984
+msgid "temporary disable the parental locking"
+msgstr "Απενεργοποίηση γωνικού κλειδώματος"
+
+#: src/enigma_main.cpp:7986
+msgid "enable parental lock"
+msgstr "Ενεργοποίηση γωνικού κλειδώματος"
+
+#: src/enigma_main.cpp:7986
+msgid "re-enable the parental locking"
+msgstr "Ενεργοποίηση γωνικού κλειδώματος"
+
+#: src/enigma_main.cpp:8004
+msgid "Shutdown/Standby Menu"
+msgstr "Μενού Αναμονής/Επανεκίνησης"
+
+#: src/enigma_main.cpp:8016
+msgid "reboot now"
+msgstr "Επανεκίνηση τώρα"
+
+#: src/enigma_main.cpp:8016 src/enigma_main.cpp:8024
+msgid "restart your receiver"
+msgstr "Επανεκίνηση του δέκτη"
+
+#: src/enigma_main.cpp:8023
+msgid "shutdown now"
+msgstr "Τέλος λειτουργίας τώρα"
+
+#: src/enigma_main.cpp:8023
+msgid "shutdown your receiver"
+msgstr "Τέλος λειτουργίας"
+
+#: src/enigma_main.cpp:8024
+msgid "restart"
+msgstr "Επανεκίνηση"
+
+#: src/enigma_main.cpp:8028
+msgid "goto standby"
+msgstr "κατάσταση αναμονής λειτουργίας"
+
+#: src/enigma_main.cpp:8028
+msgid "goto standby mode"
+msgstr "κατάσταση αναμονής λειτουργίας"
+
+#: src/enigma_main.cpp:8029
+msgid "set sleeptimer"
+msgstr "Χρονοδιακόπτης ύπνου"
+
+#: src/enigma_main.cpp:8029
+msgid "set a sleep timer"
+msgstr "Χρονοδιακόπτης ύπνου"
+
+#: src/enigma_main.cpp:8151
+msgid "stop record now"
+msgstr "Σταμάτημα εγγραφής"
+
+#: src/enigma_main.cpp:8151
+msgid "immediate stop the recording"
+msgstr ""
+
+#: src/enigma_main.cpp:8153
+msgid "set record duration"
+msgstr "ρύθμιση διάρκειας εγγραφής"
+
+#: src/enigma_main.cpp:8153
+msgid "set the recording time (in minutes)"
+msgstr "Αύξηση του χρόνου έναρξης σε βήματα του 1 λεπτού"
+
+#: src/enigma_main.cpp:8154
+msgid "set record stop time"
+msgstr "ρύθμιση ώρα τέλους εγγραφής"
+
+#: src/enigma_main.cpp:8154
+msgid "set the recording end time"
+msgstr "Ρύθμιση τέλους χρόνου εγγαφής"
+
+#: src/enigma_main.cpp:8160
+#, c-format
+msgid "add timeshift to recording (%d min) "
+msgstr ""
+
+#: src/enigma_main.cpp:8161
+msgid "add recorded timeshift at beginning of this recording"
+msgstr ""
+
+#: src/enigma_mainmenu.cpp:57 src/enigma_mainmenu.cpp:188
+msgid "Radio mode"
+msgstr "Κανάλια Radio"
+
+#: src/enigma_mainmenu.cpp:61 src/enigma_mainmenu.cpp:190
+msgid "File mode"
+msgstr "Αρχεία"
+
+#: src/enigma_mainmenu.cpp:70 src/enigma_mainmenu.cpp:86
+#: src/enigma_mainmenu.cpp:195 src/enigma_mainmenu.cpp:205
+#: src/enigma_mainmenu.cpp:295 src/enigma_setup.cpp:37
+#: src/parentallock.cpp:105 src/parentallock.cpp:117
+msgid "Setup"
+msgstr "Εγκατάσταση"
+
+#: src/enigma_mainmenu.cpp:73 src/enigma_mainmenu.cpp:196
+#: src/enigma_plugins.cpp:117
+msgid "Games"
+msgstr "Παιχνίδια"
+
+#: src/enigma_mainmenu.cpp:76 src/enigma_mainmenu.cpp:89
+#: src/enigma_mainmenu.cpp:194 src/enigma_mainmenu.cpp:204
+msgid "Timer"
+msgstr "Χρονοδιακόπτης"
+
+#: src/enigma_mainmenu.cpp:79 src/enigma_mainmenu.cpp:92
+#: src/enigma_mainmenu.cpp:192 src/enigma_mainmenu.cpp:202
+msgid "VCR"
+msgstr "Εξωτερικό Βίντεο"
+
+#: src/enigma_mainmenu.cpp:98 src/enigma_mainmenu.cpp:106
+#: src/enigma_mainmenu.cpp:359
+msgid "Mainmenu"
+msgstr "Κυρίως Μενού"
+
+#: src/enigma_plugins.cpp:93
+#, fuzzy
+msgid "rename the selected plugin"
+msgstr "Διαγραφή επιλεγμένου δορυφόρου"
+
+#: src/enigma_plugins.cpp:99
+msgid "number buttons first"
+msgstr ""
+
+#: src/enigma_plugins.cpp:99
+msgid "use number buttons as first shortcuts"
+msgstr ""
+
+#: src/enigma_plugins.cpp:101
+msgid "color buttons first"
+msgstr ""
+
+#: src/enigma_plugins.cpp:101
+msgid "use color buttons as first shortcuts"
+msgstr ""
+
+#: src/enigma_plugins.cpp:123
+msgid "select plugin and press ok"
+msgstr "Επιλέξτε πρόσθετο και πατήστε OK"
+
+#: src/enigma_plugins.cpp:210
+#, c-format
+msgid "Couldn't read plugin directory %s"
+msgstr "Δεν ειναι δυνατή η ανάγνωση του καταλόγου με τα πρόσθετα %s"
+
+#: src/enigma_plugins.cpp:214 src/enigma_plugins.cpp:357 src/scan.cpp:1684
+#: src/scan.cpp:1736 src/scan.cpp:1848 src/sselect.cpp:2219
+#: src/sselect.cpp:2238 src/swapmanager.cpp:325 src/swapmanager.cpp:351
+#: src/swapmanager.cpp:371 src/swapmanager.cpp:387 src/upgrade.cpp:433
+#: src/upgrade.cpp:513 src/upgrade.cpp:524
+msgid "Error"
+msgstr "Λάθος"
+
+#: src/enigma_plugins.cpp:327
+msgid "E: currently another plugin is running..."
+msgstr ""
+
+#: src/enigma_plugins.cpp:334
+#, c-format
+msgid "plugin '%s' not found"
+msgstr "Το πρόσθετο αρχείο '%s' δεν βρέθηκε"
+
+#: src/enigma_plugins.cpp:337
+msgid "E: no name given"
+msgstr "Ε: Δεν δόθηκε όνομα"
+
+#: src/enigma_plugins.cpp:357
+#, c-format
+msgid "Cannot execute %s (check rights)"
+msgstr ""
+
+#: src/enigma_plugins.cpp:418
+#, fuzzy
+msgid "Enter new name for the plugin:"
+msgstr "Δώστε νέο όνομα για το μπουκέτο:"
+
+#: src/enigma_plugins.cpp:419
+#, fuzzy
+msgid "Rename plugin"
+msgstr "Μετονομασία αρχείου"
+
+#: src/enigma_plugins.cpp:751
+#, c-format
+msgid "Output from %s"
+msgstr ""
+
+#: src/enigma_plugins.cpp:776
+#, fuzzy, c-format
+msgid "Executing %s. Please wait..."
+msgstr "Επανεκίνηση... περιμένετε!"
+
+#: src/enigma_plugins.cpp:779
+#, c-format
+msgid "Could not execute %s"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:34
+#, fuzzy
+msgid "toggle double height"
+msgstr "Φήμωση ήχου ναί/όχι"
+
+#: src/enigma_tuxtxt.cpp:35
+msgid "toggle splitscreen mode"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:36
+msgid "toggle transparency"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:37
+#, fuzzy
+msgid "toggle hidden information"
+msgstr "Εμφάνιση περισσοτέρων παραμέτρων"
+
+#: src/enigma_tuxtxt.cpp:120
+#, fuzzy
+msgid "automatic"
+msgstr "για αυτόματη ανίχνευση"
+
+#: src/enigma_tuxtxt.cpp:121
+msgid "Czech/Slovak"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:122
+msgid "English"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:123
+#, fuzzy
+msgid "Estonian"
+msgstr "Ιππικοί αγώνες"
+
+#: src/enigma_tuxtxt.cpp:124
+#, fuzzy
+msgid "French"
+msgstr "Συχνότητα:"
+
+#: src/enigma_tuxtxt.cpp:125
+msgid "German"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:126
+msgid "Italian"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:127
+msgid "Latvian/Lithuanian"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:128
+#, fuzzy
+msgid "Polish"
+msgstr "Πρόσθετα (Plugins)"
+
+#: src/enigma_tuxtxt.cpp:129
+msgid "Portuguese/Spanish"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:130
+#, fuzzy
+msgid "Romanian"
+msgstr "Ρομαντικό"
+
+#: src/enigma_tuxtxt.cpp:131
+msgid "Serbian/Croatian/Slovenian"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:132
+msgid "Swedish/Finnish/Hungarian"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:133
+msgid "Turkish"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:134
+msgid "Serbian/Croatian"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:135
+msgid "Russian/Bulgarian"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:136
+msgid "Ukranian"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:137
+#, fuzzy
+msgid "Greek"
+msgstr "Τρείς"
+
+#: src/enigma_tuxtxt.cpp:138
+msgid "Hebrew"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:139
+msgid "Arabic"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:246
+#, fuzzy
+msgid "no services on this transponder"
+msgstr "Ανίχνευση αναμεταδότη"
+
+#: src/enigma_tuxtxt.cpp:324
+msgid "Searching for Teletext services on this Transponder"
+msgstr ""
+
+#: src/enigma_tuxtxt.cpp:598
+#, fuzzy
+msgid "switch to direct page selecting mode"
+msgstr "Λειτουργία με αρχεία"
+
+#: src/enigma_tuxtxt.cpp:599
+#, fuzzy
+msgid "show previously selected page"
+msgstr "Δείχνει το μενού επιλογής υπηρεσίας"
+
+#: src/enigma_tuxtxt.cpp:600
+#, fuzzy
+msgid "go to next favourite page"
+msgstr "Επιλογή επόμενης υπό-υπηρεσίας"
+
+#: src/enigma_scan.cpp:40 src/enigma_setup.cpp:47
+msgid "Service Searching"
+msgstr "Ανίχνευση υπηρεσιών"
+
+#: src/enigma_scan.cpp:52
+msgid "open satellite config"
+msgstr "Ρυθμίσεις δορυφόρων"
+
+#: src/enigma_scan.cpp:53
+msgid "open the satfinder"
+msgstr "Δείχνει το σήμα"
+
+#: src/enigma_scan.cpp:54
+msgid "Motor Setup"
+msgstr "Ρύθμιση ρότορα"
+
+#: src/enigma_scan.cpp:54
+msgid "open Motor Setup"
+msgstr "Ρύθμιση ρότορα"
+
+#: src/enigma_scan.cpp:55 src/tpeditwindow.cpp:99
+msgid "Transponder Edit"
+msgstr "Σύνταξη αναμεταδότη"
+
+#: src/enigma_scan.cpp:55
+msgid "for automatic scan"
+msgstr "για αυτόματη ανίχνευση"
+
+#: src/enigma_scan.cpp:59 src/satfind.cpp:59
+#, fuzzy
+msgid "Signalfind"
+msgstr "Σήμα"
+
+#: src/enigma_scan.cpp:59
+#, fuzzy
+msgid "open the signalfinder"
+msgstr "Δείχνει το σήμα"
+
+#: src/enigma_scan.cpp:60 src/scan.cpp:41
+#, fuzzy
+msgid "Disable 5V"
+msgstr "Χωρίς DiSEqC"
+
+#: src/enigma_scan.cpp:60 src/scan.cpp:41
+msgid "disable 5V for passive terrerstrial antennas"
+msgstr ""
+
+#: src/enigma_scan.cpp:65 src/scan.cpp:45
+msgid "Automatic Transponder Scan"
+msgstr "Αυτόματη ανίχνευση αναμεταδοτών"
+
+#: src/enigma_scan.cpp:65 src/scan.cpp:45
+msgid "open automatic transponder scan"
+msgstr "Μενού αυτόματης ανίχνευσης αναμεταδοτών"
+
+#: src/enigma_scan.cpp:67 src/scan.cpp:47
+msgid "Automatic Multisat Scan"
+msgstr "Αυτόματη ανίχνευση πολλών δορυφόρων"
+
+#: src/enigma_scan.cpp:67 src/scan.cpp:47
+msgid "open automatic multisat transponder scan"
+msgstr "Μενού αυτόματης ανίχνευσης πολλαπλών δορυφόρων"
+
+#: src/enigma_scan.cpp:69
+msgid "Manual Transponder Scan"
+msgstr "Χειροκίνητη ανίχνευση"
+
+#: src/enigma_scan.cpp:69 src/scan.cpp:48
+msgid "open manual transponder scan"
+msgstr "Προς μενού χειροκίνητης ανίχνευσης καναλιών"
+
+#: src/enigma_scan.cpp:146
+msgid ""
+"DiSEqC 1.2 is enabled on more than one LNB, please select the LNB the motor "
+"is connected to"
+msgstr ""
+"Παραπάνω από ένα LNB έχει ενεργοποιημένο DiSEqC 1.2, παρακαλώ επιλέξτε το "
+"LNB που είναι συνδεμένος ο ρότορας"
+
+#: src/enigma_scan.cpp:146 src/setupnetwork.cpp:847
+msgid "Info"
+msgstr "Πληροφορίες"
+
+#: src/enigma_scan.cpp:157
+msgid ""
+"Found no LNB with DiSEqC 1.2 enabled,\n"
+"please goto Satellite Config first, and enable DiSEqC 1.2"
+msgstr ""
+"Δεν βέθηκε LNB με DiSEqC 1.2.\n"
+"Παρακαλώ πηγαίνετε στην επιλογή δορυφόρου και ενεργοποιήστε το DiSEqC 1.2."
+
+#: src/enigma_scan.cpp:157 src/rotorconfig.cpp:650 src/rotorconfig.cpp:836
+msgid "Warning"
+msgstr "Προσοχή"
+
+#: src/enigma_scan.cpp:196
+msgid "Select LNB"
+msgstr "Επιλογή LNB"
+
+#: src/enigma_scan.cpp:207
+#, c-format
+msgid "use LNB %d for Motor"
+msgstr "Χρήση LNB %d για το μοτέρ"
+
+#: src/enigma_setup.cpp:45
+msgid "open service organising"
+msgstr "Μενού όργανωσης υπηρεσιών"
+
+#: src/enigma_setup.cpp:47
+msgid "open service searching"
+msgstr "Μενού άνίχνευσης υπηρεσιών"
+
+#: src/enigma_setup.cpp:49 src/system_settings.cpp:37
+msgid "System Settings"
+msgstr "Ρυθμίσεις συστήματος"
+
+#: src/enigma_setup.cpp:49
+msgid "open system settings"
+msgstr "Μενού ρυθμίσεων συστήματος"
+
+#: src/enigma_setup.cpp:52
+msgid "Common Interface"
+msgstr "Κοινή διεπαφή (CI)..."
+
+#: src/enigma_setup.cpp:52
+msgid "open common interface menu"
+msgstr "Ρυθμίσεις του Common Interface (CI)"
+
+#: src/enigma_setup.cpp:54
+msgid "Parental Lock"
+msgstr "Γωνικό κλείδωμα"
+
+#: src/enigma_setup.cpp:54
+msgid "open parental setup"
+msgstr "Ρυθμίσεις γωνικού κλειδώματος"
+
+#: src/enigma_setup.cpp:56 src/setup_extra.cpp:46
+msgid "Expert Setup"
+msgstr "Προχωρημένες ρυθμίσεις"
+
+#: src/enigma_setup.cpp:56
+msgid "open expert setup"
+msgstr "Μενού προχωρημένων ρυθμίσεων"
+
+#: src/enigma_setup.cpp:60
+#, fuzzy
+msgid "Timeshift"
+msgstr "Λίστα χρονοδιακόπτη"
+
+#: src/enigma_setup.cpp:60
+#, fuzzy
+msgid "open timeshift setup"
+msgstr "Μενού προχωρημένων ρυθμίσεων"
+
+#: src/epgactions.h:15
+msgid "add this event as DVR Event to timer list"
+msgstr "Προσθήκη γεγονότος στον χρονοδιακόπτη"
+
+#: src/epgactions.h:16
+msgid "add this event as NGRAB Event to timer list"
+msgstr "Προσθήκη γεγονότος στον χρονοδιακόπτη"
+
+#: src/epgactions.h:17
+msgid "add this event as simple Switch Event to timer list"
+msgstr "Αυτό το γεγονός είναι ήδη στην λίστα του χρονοδικόπτη."
+
+#: src/epgactions.h:18
+msgid "remove this event from timer list"
+msgstr "Διαγραφή εγγραφής από την λίστα του χρονοδιακόπτη"
+
+#: src/epgactions.h:19
+msgid "show extended event information"
+msgstr "Εμφάνιση περισσοτέρων παραμέτρων"
+
+#: src/epgactions.h:20
+#, fuzzy
+msgid "search for event information"
+msgstr "Εμφάνιση περισσοτέρων παραμέτρων"
+
+#: src/epgsearch.cpp:152
+#, fuzzy
+msgid "Thriller"
+msgstr "Χρονοδιακόπτης"
+
+#: src/epgsearch.cpp:245 src/epgsearch.cpp:250
+#, fuzzy
+msgid "Searching for "
+msgstr "Ανίχνευση σε εξέλιξη "
+
+#: src/epgwindow.cpp:127 src/timer.cpp:222
+msgid "Sun"
+msgstr "Κυρ"
+
+#: src/epgwindow.cpp:127 src/timer.cpp:222
+msgid "Mon"
+msgstr "Δευ"
+
+#: src/epgwindow.cpp:127 src/timer.cpp:222
+msgid "Fri"
+msgstr "Παρ"
+
+#: src/epgwindow.cpp:127 src/timer.cpp:222
+msgid "Sat"
+msgstr "Σαβ"
+
+#: src/parentallock.cpp:133
+#, c-format
+msgid "New %s PIN"
+msgstr "Νέος κωδικός %s PIN"
+
+#: src/parentallock.cpp:140
+#, c-format
+msgid "Reenter %s PIN"
+msgstr "Ξαναδώστε τον κωδικό %s PIN"
+
+#: src/parentallock.cpp:148
+msgid ""
+"The PINs are not equal!\n"
+"\n"
+"Do you want to retry?"
+msgstr ""
+"Οι κωδικοί δεν είναι ίδιοι!\n"
+"\n"
+"Θέλετε να ξαναπροσπαθήσετε;"
+
+#: src/parentallock.cpp:149 src/parentallock.cpp:224
+msgid "PIN validation failed"
+msgstr "Ο έλεγχος του κωδικού PIN απέτυχε"
+
+#: src/parentallock.cpp:163
+msgid "PIN change completed"
+msgstr "Η αλλαγή του κωδικού PIN ολοκληρώθηκε"
+
+#: src/parentallock.cpp:164
+msgid "PIN changed"
+msgstr "Ο κωδικός PIN αλλάχτηκε"
+
+#: src/parentallock.cpp:212
+#, c-format
+msgid "current %s PIN"
+msgstr "Τωρινός κωδικός %s PIN"
+
+#: src/parentallock.cpp:223
+msgid ""
+"The entered PIN is incorrect.\n"
+"Do you want to retry?"
+msgstr ""
+"Ο κωδικός PIN που δώσατε είναι λάθος.\n"
+"Θέλετε να ξαναπροσπαθήσετε;"
+
+#: src/rotorconfig.cpp:47 src/rotorconfig.cpp:81 src/tpeditwindow.cpp:66
+msgid "East"
+msgstr "Ανατολή"
+
+#: src/rotorconfig.cpp:48 src/rotorconfig.cpp:82 src/tpeditwindow.cpp:67
+msgid "West"
+msgstr "Δύση"
+
+#: src/rotorconfig.cpp:59
+msgid "North"
+msgstr "Βοράς"
+
+#: src/rotorconfig.cpp:60
+msgid "South"
+msgstr "Νότος"
+
+#: src/rotorconfig.cpp:96
+msgid "enter orbital position without dot (19.2° = 192)"
+msgstr "Δώστε την τροχιακή θέση χωρίς '.'(19.2° = 192)"
+
+#: src/rotorconfig.cpp:264 src/rotorconfig.cpp:321
+msgid "delete me"
+msgstr "*Διάγραψέ με*"
+
+#: src/rotorconfig.cpp:358 src/rotorconfig.cpp:361
+msgid "drive Motor East"
+msgstr "Κίνηση ρότορα ανατολικά"
+
+#: src/rotorconfig.cpp:359
+msgid "drive Motor East.. one step"
+msgstr "Κίνηση ρότορα ανατολικά.. ένα βήμα"
+
+#: src/rotorconfig.cpp:360
+msgid "stop Motor drive East"
+msgstr "Σταματημα ανατολικής κίνησης ρότορα"
+
+#: src/rotorconfig.cpp:362
+msgid "drive Motor West.. one step"
+msgstr "Κίνηση ρότορα δυτικά.. ένα βήμα"
+
+#: src/rotorconfig.cpp:363
+msgid "stop Motor drive West"
+msgstr "Σταμάτημα δυτικής κίνησης ρότορα"
+
+#: src/rotorconfig.cpp:420
+msgid "position"
+msgstr "Τροχιακή θέση(?)"
+
+#: src/rotorconfig.cpp:420
+msgid "store new sat positions"
+msgstr "Αποθήκευση νέων δορυφορικών θέσεων"
+
+#: src/rotorconfig.cpp:421
+msgid "drive to stored pos"
+msgstr "Κίνηση σε αποθηκευμένη θέση"
+
+#: src/rotorconfig.cpp:421
+msgid "drive to stored position"
+msgstr "Κίνηση ρότορα σε αποθηκευμένη θέση"
+
+#: src/rotorconfig.cpp:422
+msgid "drive to satellite"
+msgstr "Κίνηση στο δορυφόρο"
+
+#: src/rotorconfig.cpp:422
+msgid "drive to stored satellite"
+msgstr "Κίνηση σε αποθηκευμένο δορυφόρου"
+
+#: src/rotorconfig.cpp:423
+msgid "drive to 0°"
+msgstr "Κίνηση στο 0"
+
+#: src/rotorconfig.cpp:423
+msgid "drives to 0"
+msgstr "Μετακινεί τον ρότορα στη θέση 0"
+
+#: src/rotorconfig.cpp:424
+msgid "recalculate"
+msgstr "Αναθεώρηση"
+
+#: src/rotorconfig.cpp:424
+msgid "recalculate stored positions rel. to current pos"
+msgstr "Αναθεώρηση αποθηκευμένων θέσεων σε σχέση με την τωρινή"
+
+#: src/rotorconfig.cpp:425
+msgid "set east limit"
+msgstr "Ρύθμιση ανατολικού ορίου"
+
+#: src/rotorconfig.cpp:425
+msgid "set east soft limit"
+msgstr "Ρύθμιση ανατολικού τεχνητού ορίου"
+
+#: src/rotorconfig.cpp:426
+msgid "set west limit"
+msgstr "Ρύθμιση δυτικού ορίου"
+
+#: src/rotorconfig.cpp:426
+msgid "set west soft limit"
+msgstr "Ρύθμιση δυτικού τεχνητού ορίου"
+
+#: src/rotorconfig.cpp:427
+msgid "disable limits"
+msgstr "Ακύρωση ορίων"
+
+#: src/rotorconfig.cpp:427 src/rotorconfig.cpp:489
+msgid "disable soft limits"
+msgstr "Ακύρωση τεχνητών ορίων"
+
+#: src/rotorconfig.cpp:428
+msgid "enable limits"
+msgstr "Ενεργοποίηση ορίων"
+
+#: src/rotorconfig.cpp:428 src/rotorconfig.cpp:493
+msgid "enable soft limits"
+msgstr "Ενεργοποίηση τεχνητών ορίων"
+
+#: src/rotorconfig.cpp:465
+msgid "store current pos in motor"
+msgstr "Αποθήκευση θέσης στο ρότορα"
+
+#: src/rotorconfig.cpp:469
+msgid "drive motor to stored pos"
+msgstr "Κίνηση του μοτέρ στην θέση μνήμης"
+
+#: src/rotorconfig.cpp:470 src/rotorconfig.cpp:474 src/rotorconfig.cpp:498
+msgid "go"
+msgstr "πήγαινε"
+
+#: src/rotorconfig.cpp:473
+msgid "drive motor to reference position"
+msgstr "Κίνηση του μοτέρ στην αρχική θέση"
+
+#: src/rotorconfig.cpp:477
+msgid "recalculate all stored positions"
+msgstr "Αναθεώρηση αποθηκευμένων θέσεων"
+
+#: src/rotorconfig.cpp:478
+msgid "recalc"
+msgstr "Αναθεώρηση"
+
+#: src/rotorconfig.cpp:481
+msgid "store current pos as east soft limit"
+msgstr "Αποθήκεση σαν ανατολικό τεχνητό όριο"
+
+#: src/rotorconfig.cpp:485
+msgid "store current pos as west soft limit"
+msgstr "Αποθήκευση σαν δυτικό τεχνητό όριο"
+
+#: src/rotorconfig.cpp:490 src/rotorconfig.cpp:494
+msgid "do it"
+msgstr "κάντο"
+
+#: src/rotorconfig.cpp:497
+msgid "drive motor to satellite"
+msgstr "Κίνηση ρότορα στον δορυφόρο"
+
+#: src/rotorconfig.cpp:649
+msgid ""
+"Wrong use of this function can corrupt all stored sat positions.\n"
+"Are you sure you want to use this function?"
+msgstr ""
+"Κακή χρήση αυτής της λειτουργίας μπορεί να χαλάσει τις αποθηκευμένες θέσεις "
+"δορυφόρων.\n"
+"Σίγουρα θέλετε να το κάνετε;"
+
+#: src/rotorconfig.cpp:715
+msgid "one step East..."
+msgstr "Ένα βήμα Ανατολικά..."
+
+#: src/rotorconfig.cpp:724
+msgid "one step west..."
+msgstr "Ένα βήμα Δυτικά..."
+
+#: src/rotorconfig.cpp:738
+msgid "turning to east..."
+msgstr "Κίνηση προς την Ανατολή ..."
+
+#: src/rotorconfig.cpp:749
+msgid "turning to west..."
+msgstr "Κίνηση προς την Δύση..."
+
+#: src/rotorconfig.cpp:836
+#, c-format
+msgid ""
+"%d.%d°%c is currently stored at location %d!\n"
+"When you store this now at Location %d, we must remove the old Location.\n"
+"Are you sure you want to do this?"
+msgstr ""
+"%d.%d%c είναι αποθηκευμένο στον κατάλογο %d!\n"
+"Αν το αποθηκέυσετε στον νέο κατάλογο %d, θα διαγραφεί από τον παλιό.\n"
+"Σίγουρα θέλετε να γίνει αυτό;"
+
+#: src/rotorconfig.cpp:854
+#, c-format
+msgid ""
+"Store %d.%d°%c at location %d.\n"
+"If you want another location, then say no and change the location manually.\n"
+"Are you sure you want to store at this location?"
+msgstr ""
+"Αποθήκευση %d.%d%c στον κατάλογο %d.\n"
+"Αν θέλετε άλλο κατάλογο, πατήστε ΟΧΙ και επιλέξτε τον κατάλογο που θέλετε.\n"
+"Σίγουρα θέλετε να το αποθηκεύσετε σε αυτή την θέση;"
+
+#: src/satconfig.cpp:52
+msgid "one single satellite"
+msgstr "Μόνο ένας δορυφόρος"
+
+#: src/satconfig.cpp:52
+msgid "one directly connected LNB"
+msgstr "Ένα LNB απευθείας συνδεμένο"
+
+#: src/satconfig.cpp:53
+msgid "2 satellites via Toneburst"
+msgstr "2 δορυφόροι με ριπή τόνου (toneburst)"
+
+#: src/satconfig.cpp:53
+msgid "2 LNBs via Toneburst Signal"
+msgstr "2 LNB με ριπή τόνου (toneburst)"
+
+#: src/satconfig.cpp:54
+msgid "2 satellites via 22Khz (only Highband)"
+msgstr "2 δορυφόροι μέσω 22Khz (μόνο HighBand)"
+
+#: src/satconfig.cpp:54
+msgid "2 LNBs via 22Khz Signal.. special for old analog switches"
+msgstr ""
+
+#: src/satconfig.cpp:55
+msgid "2 satellites via DiSEqC A/B"
+msgstr "2 δορυφόροι με DiSEqC A/B"
+
+#: src/satconfig.cpp:55
+msgid "2 LNBs via DiSEqC"
+msgstr "2 LNB με DiSEqC"
+
+#: src/satconfig.cpp:56
+msgid "4 satellites via DiSEqC OPT A/B"
+msgstr "4 δορυφόροι μέσω DiSEqC OPT A/B"
+
+#: src/satconfig.cpp:56
+msgid "4 LNBs via DiSEqC"
+msgstr "4 LNBs μέσω DiSEqC"
+
+#: src/satconfig.cpp:57
+msgid "many satellites via DiSEqC Rotor"
+msgstr "Πολλοί δορυφόροι μέσω DiSEqC ρότορα"
+
+#: src/satconfig.cpp:57
+msgid "1 LNB with DiSEqC Rotor"
+msgstr "1 LNB με DiSEqC ρότορα"
+
+#: src/satconfig.cpp:58
+msgid "non-standard user defined configuration..."
+msgstr "Μή στάνταρ ρύθμιση..."
+
+#: src/satconfig.cpp:58
+msgid "special"
+msgstr "Ειδικά"
+
+#: src/satconfig.cpp:122
+msgid ""
+"Configuration contains some elements\n"
+"which don't fit into new DiSEqC-Type. Drop these items?"
+msgstr ""
+"Οι επιλογές περιέχουν ρυθμίσεις \n"
+"που δεν αφορούν την νέα επιλογή DiSEqC.  Να διαγραφούν;"
+
+#: src/satconfig.cpp:122
+msgid "Change DiSEqC-Type..."
+msgstr "Αλλαγή τύπου DiSEqC..."
+
+#: src/satconfig.cpp:316
+msgid "direct connection"
+msgstr "Απευθείας σύνδεση"
+
+#: src/satconfig.cpp:724
+msgid "press ok to select another satellite"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετικό γεγονός"
+
+#: src/satconfig.cpp:739
+msgid "press ok to goto LNB config"
+msgstr "Πατήστε OK, για να περάσετε στην ρύθμιση των LNB"
+
+#: src/satconfig.cpp:757
+msgid "press ok to select another 22kHz mode"
+msgstr "Πατήστε OK για να επιλέξετε διαφορετική λειτουργία των 22kHz"
+
+#: src/satconfig.cpp:758
+msgid "22kHz signal is automatically switched"
+msgstr "Αυτόματη χρήση σήματος 22kHz"
+
+#: src/satconfig.cpp:759
+msgid "22kHz is always enabled (high band)"
+msgstr "Μόνιμα ενεργά 22kHz (πάνω μπάντα)"
+
+#: src/satconfig.cpp:760
+msgid "22kHz is always disabled (low band)"
+msgstr "Μόνιμα χωρίς 22kHz (κάτω μπάντα)"
+
+#: src/satconfig.cpp:770
+msgid "press ok to select another LNB Voltage mode"
+msgstr "Πατήστε OK για να επιλέξετε την τάση του LNB"
+
+#: src/satconfig.cpp:771
+msgid "Voltage is automatically changed"
+msgstr "Αυτόματη επιλογή τάσης"
+
+#: src/satconfig.cpp:772
+msgid "Voltage is always 14V (vertical)"
+msgstr "Μόνιμα 14V (κάθετα)"
+
+#: src/satconfig.cpp:773
+msgid "Voltage is always 18V (horizontal)"
+msgstr "Μόνιμα 18V (οριζόντια)"
+
+#: src/satconfig.cpp:774
+msgid "Voltage is always off"
+msgstr "Μόνιμα χωρίς τάση (0V)"
+
+#: src/satconfig.cpp:1123 src/satconfig.cpp:1152 src/satconfig.cpp:1160
+msgid "None"
+msgstr "Χωρίς"
+
+#: src/satconfig.cpp:1123
+msgid "sends no tone burst"
+msgstr "Δεν στέλνει ριπή τόνου (tone burst)"
+
+#: src/satconfig.cpp:1124
+msgid "sends modulated tone burst"
+msgstr "Στέλνει διαμορφωμένη ριπή τόνου (modulated tone burst)"
+
+#: src/satconfig.cpp:1125
+msgid "sends unmodulated tone burst"
+msgstr "Στέλνει μη διαμορφωμένη ριπή τόνου (Unmodulated tone burst)"
+
+#: src/satconfig.cpp:1129
+msgid "Disable DiSEqC"
+msgstr "Χωρίς DiSEqC"
+
+#: src/satconfig.cpp:1130 src/satconfig.cpp:1131 src/satconfig.cpp:1132
+#, c-format
+msgid "Use DiSEqC Version %s"
+msgstr "Χρήση DiSEqC Version %s"
+
+#: src/satconfig.cpp:1138 src/satconfig.cpp:1139 src/satconfig.cpp:1140
+#: src/satconfig.cpp:1141
+#, c-format
+msgid "sends DiSEqC cmd %s"
+msgstr "Αποστολή DiSEqC cmd %s"
+
+#: src/satconfig.cpp:1142
+msgid "sends no committed DiSEqC cmd"
+msgstr "Μη αποστολή εντολής committed DiSEqC"
+
+#: src/satconfig.cpp:1146
+#, c-format
+msgid "sends switch cmd %d"
+msgstr "Αποστολή switch cmd %d"
+
+#: src/satconfig.cpp:1152
+msgid "sends no DiSEqC repeats"
+msgstr "Χωρίς επανάληψη εντολής DiSEqC"
+
+#: src/satconfig.cpp:1153
+msgid "One"
+msgstr "Μία"
+
+#: src/satconfig.cpp:1153
+msgid "sends one repeat"
+msgstr "Στέλνει μία επανάληψη"
+
+#: src/satconfig.cpp:1154
+msgid "Two"
+msgstr "Δύο"
+
+#: src/satconfig.cpp:1154
+msgid "sends two repeats"
+msgstr "Στέλνει δύο επαναλήψεις"
+
+#: src/satconfig.cpp:1155
+msgid "Three"
+msgstr "Τρείς"
+
+#: src/satconfig.cpp:1155
+msgid "sends three repeats"
+msgstr "Στέλνει τρείς επαναλήψεις"
+
+#: src/satconfig.cpp:1160
+msgid "sends no uncommitted switch command"
+msgstr "Μη αποστολή 'Uncommitted' εντολής"
+
+#: src/satconfig.cpp:1164
+#, c-format
+msgid "Input %d"
+msgstr "Είσοδος %d"
+
+#: src/satconfig.cpp:1164
+#, c-format
+msgid "select uncommitted switch Input %d"
+msgstr "Επιλογή διακόπτη 'Uncommitted Switch %d'"
+
+#: src/satfind.cpp:60
+#, fuzzy
+msgid "Region:"
+msgstr "Θρησκία"
+
+#: src/scan.cpp:48
+msgid "manual scan.."
+msgstr "Απλή ανίχνευση"
+
+#: src/scan.cpp:213
+msgid "Waiting for tuner lock on:"
+msgstr ""
+
+#: src/scan.cpp:341
+msgid ""
+"To begin searching for a valid satellite press OK, or choose your desired "
+"satellite manually and press OK"
+msgstr ""
+"Γιά να ξεκινήση η ανίχνευση επιλέξτε τον επιθυμητό δορυφόρο και πατήστε OK"
+
+#: src/scan.cpp:344
+msgid ""
+"To begin searching for a valid cable provider press OK, or choose your "
+"desired cable provider manually and press OK"
+msgstr ""
+"Γιά να ξεκινήσει η ανίχνευση επιλέξτε τον επιθυμητό παροχέα και πατήστε OK"
+
+#: src/scan.cpp:347
+msgid ""
+"To begin searching for a valid transponder press OK, or choose your desired "
+"location manually and press OK"
+msgstr ""
+"Γιά να ξεκινήση η ανίχνευση επιλέξτε τον επιθυμητό δορυφόρο και πατήστε OK"
+
+#: src/scan.cpp:439
+msgid ""
+"A valid transponder has been found. Verify that the right network is selected"
+msgstr "Σήμα βρέθηκε. Επιβεβαιώστε ότι ο σωστός δορυφόρος είναι επιλεγμένος"
+
+#: src/scan.cpp:521
+msgid ""
+"All known transponders have been tried, but no lock was possible. Verify "
+"antenna-/cable-setup or try manual search if its some obscure satellite/"
+"network."
+msgstr ""
+"Όλοι οι γνωστοί αναμεταδότες δοκιμάστηκαν αλλα σήμα δεν βρέθηκε. Παρακαλώ "
+"ελένξτε τις παραμέτρους της κεραίας ή δοκιμάστε την χειροκίνητη ανίχνευση."
+
+#: src/scan.cpp:529
+msgid ""
+"All known transponders have been tried, but no lock was possible. Verify "
+"antenna-/cable-setup or try another satellite/network."
+msgstr ""
+"Όλοι οι γνωστοί αναμεταδότες δοκιμάστηκαν αλλα σήμα δεν βρέθηκε. Παρακαλώ "
+"ελένξτε τις παραμέτρους της κεραίας ή δοκιμάστε άλλο δορυφόρο."
+
+#: src/scan.cpp:538
+msgid "Search in progress "
+msgstr "Ανίχνευση σε εξέλιξη "
+
+#: src/scan.cpp:702
+#, c-format
+msgid "%02i minutes and %02i seconds left"
+msgstr " %d λεπτά και %02d δευτερόλεπτα"
+
+#: src/scan.cpp:704
+#, c-format
+msgid "%02i seconds left"
+msgstr "%02i δευτερόλεπτα απομένουν"
+
+#: src/scan.cpp:843
+msgid "[only free]"
+msgstr "Μόνο ελεύθερα"
+
+#: src/scan.cpp:844
+msgid "[all]"
+msgstr "[όλα]"
+
+#: src/scan.cpp:844
+msgid "[nothing]"
+msgstr "[κανένα]"
+
+#: src/scan.cpp:942
+msgid "Transponder Scan"
+msgstr "Ανίχνευση καναλιών"
+
+#: src/scan.cpp:1235
+msgid "Waiting for tuner lock... please wait"
+msgstr "Ανίχνευση σε εξέλιξη... παρακαλώ περιμένετε"
+
+#: src/scan.cpp:1288 src/scan.cpp:1356
+msgid "Scan is in progress... please wait"
+msgstr "Ανίχνευση σε εξέλιξη... παρακαλώ περιμένετε"
+
+#: src/scan.cpp:1319 src/scan.cpp:1372
+#, fuzzy, c-format
+msgid ""
+"The transponder scan has finished and found \n"
+"   %i new Transponders,\n"
+"   %i new TV Services,\n"
+"   %i new Radio Services and\n"
+"   %i new Data Services.\n"
+"%i Transponders with %i Services scanned."
+msgstr ""
+"Η ανίχνευση τελείωσε.  Βρέθηκαν:\n"
+"%i νέοι αναμεταδότες,\n"
+"%i νέα κανάλια TV,\n"
+"%i νέα κανάλια Radio και \n"
+"%i νέα κανάλια Data. \n"
+"Ερευνήθηκαν %i αναμεταδότες \n"
+"%i υπηρεσιών."
+
+#: src/scan.cpp:1384
+msgid "Done."
+msgstr "Τέλος."
+
+#: src/scan.cpp:1392
+msgid "Scan is in finished, press ok to close window"
+msgstr "Η ανίχνευση τελείωσε. Πατήστε OK."
+
+#: src/scan.cpp:1400
+#, c-format
+msgid ""
+"Do you want\n"
+"to scan another\n"
+"%s?"
+msgstr ""
+"Θέλετε να ερευνήσετε\n"
+"και άλλο %s?"
+
+#: src/scan.cpp:1400
+#, c-format
+msgid "Transponder"
+msgstr "Αναμεταδότη"
+
+#: src/scan.cpp:1401
+msgid "Scan finished"
+msgstr "Τέλος ανίχνευσης"
+
+#: src/scan.cpp:1507
+#, fuzzy
+msgid "enter service name"
+msgstr "Διαγραφή υπηρεσίας"
+
+#: src/scan.cpp:1510
+#, fuzzy
+msgid "enter provider name"
+msgstr "Δώστε όνομα στο σημάδι:"
+
+#: src/scan.cpp:1513
+msgid "enter video pid"
+msgstr ""
+
+#: src/scan.cpp:1516
+msgid "enter pcr pid (in most case the same pid as the video pid)"
+msgstr ""
+
+#: src/scan.cpp:1519
+msgid "enter audio pid"
+msgstr ""
+
+#: src/scan.cpp:1524
+msgid "enter (video) text pid"
+msgstr ""
+
+#: src/scan.cpp:1527
+#, fuzzy
+msgid "enter service id"
+msgstr "Διαγραφή υπηρεσίας"
+
+#: src/scan.cpp:1530
+msgid "enter tsid (transport stream id)"
+msgstr ""
+
+#: src/scan.cpp:1533
+msgid "enter onid (original network id)"
+msgstr ""
+
+#: src/scan.cpp:1683
+msgid ""
+"Reading NIT failed... this transponder have no NIT..\n"
+"so you can use random values for tsid and onid or set both to 0"
+msgstr ""
+
+#: src/scan.cpp:1735
+msgid ""
+"No NIT Entry for current transponder values found...\n"
+"so you can use random values for tsid and onid or set both to 0"
+msgstr ""
+
+#: src/scan.cpp:1847
+msgid ""
+"A transponder with the same tsid / onid but other frequency/pol/... already "
+"exist.. create a new transponder with the same data is no possible.. please "
+"do change tsid and/or onid"
+msgstr ""
+
+#: src/scan.cpp:1900
+#, c-format
+msgid ""
+"A service named '%s' with this sid/onid/tsid/namespace is already exist\n"
+"in provider '%s'.\n"
+"Should i use this service name and provider name?"
+msgstr ""
+
+#: src/scan.cpp:1902
+#, fuzzy
+msgid "Service already exist"
+msgstr "Ταξινόμιση υπηρεσιών"
+
+#: src/scan.cpp:1987
+msgid "show/enter values as hexadecimal"
+msgstr ""
+
+#: src/scan.cpp:1993
+msgid "show/enter values as decimal"
+msgstr ""
+
+#: src/setup_extra.cpp:67
+msgid "Communication Setup"
+msgstr "Ρυθμίσεις επικοινωνίας και διασυνδέσεων"
+
+#: src/setup_extra.cpp:67
+msgid "open communication setup"
+msgstr "Ρυθμίσεις για την επικοινωνία και τις διασυνδέσεις"
+
+#: src/setup_extra.cpp:68
+msgid "Ngrab Streaming Setup"
+msgstr "Ρυθμίσεις Ngrab streaming"
+
+#: src/setup_extra.cpp:68
+msgid "open ngrab server setup"
+msgstr "Ρυθμίσεις εξυπηρετητή (server) ngrab "
+
+#: src/setup_extra.cpp:76
+msgid "open software update"
+msgstr "Επιλογές αναβάθμισης λογισμικού."
+
+#: src/setup_extra.cpp:83
+msgid "Remote Control"
+msgstr "Τηλεκοντρόλ"
+
+#: src/setup_extra.cpp:83
+msgid "open remote control setup"
+msgstr "Ρυθμίσεις Τηλεκοντόλ"
+
+#: src/setup_extra.cpp:86
+#, fuzzy
+msgid "open swapspace setup"
+msgstr "Ρυθμίσεις γωνικού κλειδώματος"
+
+#: src/setup_extra.cpp:90 src/setup_extra.cpp:425 src/setup_extra.cpp:442
+msgid "Factory reset"
+msgstr "Εργοστασικές ρυθμίσεις."
+
+#: src/setup_extra.cpp:90
+msgid "all settings will set to factory defaults"
+msgstr ""
+
+#: src/setup_extra.cpp:91
+#, fuzzy
+msgid "open EPG settings"
+msgstr "Επιλογές που αφορούν την εικόνα και τον ήχο."
+
+#: src/setup_extra.cpp:94
+msgid "open package manager"
+msgstr ""
+
+#: src/setup_extra.cpp:101
+msgid "record split size (left, right)"
+msgstr "Επιλέξτε πολικότητα (<, >)"
+
+#: src/setup_extra.cpp:119 src/setup_extra.cpp:130
+#, fuzzy, c-format
+msgid "Change timer offset [%s] (left, right)"
+msgstr "Επιλογή του FEC (<, >)"
+
+#: src/setup_extra.cpp:121 src/setup_extra.cpp:132
+#, c-format
+msgid "Timer offset [%s] %d min"
+msgstr ""
+
+#: src/setup_extra.cpp:130 src/setup_extra.cpp:132
+#, fuzzy, c-format
+msgid "end"
+msgstr "Τετ"
+
+#: src/setup_extra.cpp:139
+#, fuzzy
+msgid "Default action on timer end (left, right)"
+msgstr "Επιλογή τέλους χρόνου (0..9, <, >)"
+
+#: src/setup_extra.cpp:141 src/setup_extra.cpp:145 src/setup_extra.cpp:146
+#: src/setup_extra.cpp:150
+#, c-format
+msgid "Action on timer end"
+msgstr ""
+
+#: src/setup_extra.cpp:141 src/timer.cpp:2204
+msgid "Nothing"
+msgstr "[κανένα]"
+
+#: src/setup_extra.cpp:160
+msgid "disable AC3 recording"
+msgstr ""
+
+#: src/setup_extra.cpp:160
+msgid "don't record AC3 audio track"
+msgstr ""
+
+#: src/setup_extra.cpp:161
+#, fuzzy
+msgid "disable teletext recording"
+msgstr "απενεργοποίηση επεμβάσεων"
+
+#: src/setup_extra.cpp:161
+msgid "don't record teletext track"
+msgstr ""
+
+#: src/setup_extra.cpp:162
+msgid "disable timestamp detection"
+msgstr ""
+
+#: src/setup_extra.cpp:162
+msgid ""
+"don't try to detect duration from DVB timestamps when replaying recordings"
+msgstr ""
+
+#: src/setup_extra.cpp:166
+msgid "Enable fast zapping"
+msgstr ""
+
+#: src/setup_extra.cpp:166
+msgid "enables faster zapping.. but with visible sync"
+msgstr ""
+
+#: src/setup_extra.cpp:167
+msgid "Use http authentification"
+msgstr ""
+
+#: src/setup_extra.cpp:167
+msgid "enables the http (user/password) authentification"
+msgstr ""
+
+#: src/setup_extra.cpp:168
+msgid "Don't open serial port"
+msgstr ""
+
+#: src/setup_extra.cpp:168
+msgid "don't write debug messages to /dev/tts/0"
+msgstr ""
+
+#: src/setup_extra.cpp:169
+msgid "Auto bouquet change"
+msgstr "Προσθήκη στα μπουκέτα"
+
+#: src/setup_extra.cpp:169
+msgid "change into next bouquet when end of current bouquet is reached"
+msgstr ""
+
+#: src/setup_extra.cpp:170
+#, fuzzy
+msgid "Auto reconnect cahandler"
+msgstr "Προσθήκη στα μπουκέτα"
+
+#: src/setup_extra.cpp:170
+msgid "try to reconnect when an external cahandler connection was lost"
+msgstr ""
+
+#: src/setup_extra.cpp:174
+msgid "Enable file sharing"
+msgstr ""
+
+#: src/setup_extra.cpp:174
+msgid "start file sharing(samba) on startup"
+msgstr ""
+
+#: src/setup_extra.cpp:177
+msgid "Disable teletext caching"
+msgstr ""
+
+#: src/setup_extra.cpp:177
+msgid "don't cache teletext pages in background"
+msgstr ""
+
+#: src/setup_extra.cpp:179
+msgid "Disable internal teletext"
+msgstr ""
+
+#: src/setup_extra.cpp:179
+msgid "use external tuxtxt plugin"
+msgstr ""
+
+#: src/setup_extra.cpp:180
+msgid "Enable Zapping History"
+msgstr ""
+
+#: src/setup_extra.cpp:180
+msgid "don't care about actual mode when zapping in history list"
+msgstr ""
+
+#: src/setup_extra.cpp:182
+#, fuzzy
+msgid "Disable Standby"
+msgstr "Χωρίς DiSEqC"
+
+#: src/setup_extra.cpp:182
+msgid "Box goes directly into Deep-Standby"
+msgstr ""
+
+#: src/setup_extra.cpp:187
+#, fuzzy
+msgid "Enable MHW EPG"
+msgstr "εσωτερική"
+
+#: src/setup_extra.cpp:187
+msgid ""
+"Mediahighway EPG, activate swap space when using with multiple operators"
+msgstr ""
+
+#: src/setup_extra.cpp:197
+msgid "Disable CoreFiles"
+msgstr ""
+
+#: src/setup_extra.cpp:197
+msgid "don't create 'Corefiles' after an Enigma crash"
+msgstr ""
+
+#: src/setup_extra.cpp:203
+#, fuzzy
+msgid "Disable HDD mount"
+msgstr "Ακύρωση WSS σε εικόνα 4:3"
+
+#: src/setup_extra.cpp:203
+msgid "don't mount the HDD via 'rcS'"
+msgstr ""
+
+#: src/setup_extra.cpp:211
+msgid "Enable Filemode Autoplay"
+msgstr ""
+
+#: src/setup_extra.cpp:211
+msgid "continue playing last selected movie when entering Filemode"
+msgstr ""
+
+#: src/setup_extra.cpp:220
+msgid "Show Boot-Info"
+msgstr ""
+
+#: src/setup_extra.cpp:220
+msgid "Show Boot-Infos (IP, etc.)"
+msgstr ""
+
+#: src/setup_extra.cpp:226
+#, fuzzy
+msgid "Disable HW_Sections"
+msgstr "Ακύρωση WSS σε εικόνα 4:3"
+
+#: src/setup_extra.cpp:226
+msgid "don't use hardware section filtering"
+msgstr ""
+
+#: src/setup_extra.cpp:232
+#, fuzzy
+msgid "Disable Watchdog"
+msgstr "Χωρίς DiSEqC"
+
+#: src/setup_extra.cpp:232
+msgid "don't use the Watchdog"
+msgstr ""
+
+#: src/setup_extra.cpp:240
+msgid "Disable ENX-Watchdog"
+msgstr ""
+
+#: src/setup_extra.cpp:240
+msgid "don't use the ENX-Watchdog"
+msgstr ""
+
+#: src/setup_extra.cpp:247
+#, fuzzy
+msgid "Enable SPTS-Mode"
+msgstr "Ενεργοποίηση ήχου"
+
+#: src/setup_extra.cpp:247
+msgid "use SPTS-Mode (enables TS-recording)"
+msgstr ""
+
+#: src/setup_extra.cpp:253
+#, fuzzy
+msgid "Disable O_SYNC"
+msgstr "Χωρίς DiSEqC"
+
+#: src/setup_extra.cpp:253
+msgid "The file/recording is not opened for synchronous I/O"
+msgstr ""
+
+#: src/setup_extra.cpp:421
+msgid ""
+"When you do a factory reset, you will lose ALL your configuration data\n"
+"(including bouquets, services, satellite data ...)\n"
+"After completion of factory reset, your receiver will restart "
+"automatically!\n"
+"\n"
+"Really do a factory reset?"
+msgstr ""
+
+#: src/setup_harddisk.cpp:186 src/system_settings.cpp:55
+#: src/system_settings.cpp:130
+msgid "Harddisk Setup"
+msgstr "Ρυθμίσεις σκληρού δίσκου"
+
+#: src/setup_harddisk.cpp:318
+msgid "Are you SURE that you want to format this disk?\n"
+msgstr "Είστε σίγουροι ότι θέλετε να φορμαριστεί;\n"
+
+#: src/setup_harddisk.cpp:319 src/setup_harddisk.cpp:329
+#: src/setup_harddisk.cpp:356 src/setup_harddisk.cpp:366
+#: src/setup_harddisk.cpp:438 src/setup_harddisk.cpp:447
+msgid "formatting harddisk..."
+msgstr "Φορμάρισμα δίσκου..."
+
+#: src/setup_harddisk.cpp:327
+msgid ""
+"There's data on this harddisk.\n"
+"You will lose that data. Proceed?"
+msgstr ""
+"Υπάρχουν δεδομένα στον σκληρό δίσκο.\n"
+"Θα χαθούν όλα. Να φορμαριστεί;"
+
+#: src/setup_harddisk.cpp:355
+msgid ""
+"please wait while initializing harddisk.\n"
+"This might take some minutes.\n"
+msgstr ""
+"Παρακαλώ περιμένετε να φορμαριστεί ο δίσκος.\n"
+"Μπορεί να κάνει κάποια ώρα.\n"
+
+#: src/setup_harddisk.cpp:365
+msgid "sorry, couldn't find sfdisk utility to partition harddisk."
+msgstr "Δυστυχώς δεν βρέθηκε το sfdisk για να κάνει την κατάτμηση του δίσκου."
+
+#: src/setup_harddisk.cpp:437
+msgid "creating filesystem failed."
+msgstr "Δεν έγινε το φορμάρισμα σωστά."
+
+#: src/setup_harddisk.cpp:446
+msgid "successfully formatted your disk!"
+msgstr "Το φορμάρισμα έγινε με επιτυχία!"
+
+#: src/setup_harddisk.cpp:474
+msgid "(error reading information)"
+msgstr "(λάθος κατά την ανάγνωση πληροφοριών)"
+
+#: src/setup_harddisk.cpp:476
+msgid "uninitialized - format it to use!"
+msgstr "Αφορμάριστος!"
+
+#: src/setup_harddisk.cpp:478
+#, c-format
+msgid "in use, %d.%03d GB (~%d minutes) free"
+msgstr "OK: %d.%03d GB (~%d λεπτά) ελεύθερα."
+
+#: src/setup_harddisk.cpp:480
+msgid "initialized, but unknown filesystem"
+msgstr "Αγνωστο λειτουργικό"
+
+#: src/setup_harddisk.cpp:488
+msgid "The settings have been saved successfully"
+msgstr ""
+
+#: src/setup_harddisk.cpp:598
+msgid "could not unmount the filesystem... "
+msgstr "δεν έγινε αποσύνδεση του δίσκου"
+
+#: src/setup_harddisk.cpp:599 src/setup_harddisk.cpp:612
+#: src/setup_harddisk.cpp:632 src/setup_harddisk.cpp:648
+msgid "check filesystem..."
+msgstr "Έλεγχος δίσκου..."
+
+#: src/setup_harddisk.cpp:611 src/setup_harddisk.cpp:631
+#, fuzzy, c-format
+msgid "sorry, couldn't find %s%s utility to check the %s filesystem."
+msgstr "Δυστυχώς δεν βρέθηκε το fsck.ext3."
+
+#: src/setup_harddisk.cpp:647
+msgid "not supported filesystem for check."
+msgstr "Δεν υποστηρίζεται σε αυτό το σύστημα αρχείων"
+
+#: src/setup_osd.cpp:45
+msgid "enable set the leftTop Point of the rectangle"
+msgstr "Επιλογή ρύθμισης επάνω αριστερού μέρους του τετραγώνου"
+
+#: src/setup_osd.cpp:46
+msgid "enable set the rightBottom Point of the rectangle"
+msgstr "Επιλογή ρύθμισης κάτω δεξιού μέρους του τετραγώνου"
+
+#: src/setup_osd.cpp:47
+msgid "saves the current positions"
+msgstr "Αποθήκευση τών θέσεων"
+
+#: src/setup_osd.cpp:174
+msgid ""
+"here you can center the tuxtxt rectangle...\n"
+"press red to select the left top edge\n"
+"press green to select the right bottom edge\n"
+"use the cursor keys to move the selected edges"
+msgstr ""
+
+#: src/setup_osd.cpp:297
+msgid ""
+"You have to restart enigma to apply the new skin\n"
+"Restart now?"
+msgstr ""
+"Πρέπει να κάνετε επανεκίνηση για να αλλάξει η επιφάνεια.\n"
+"Να γίνει τώρα;"
+
+#: src/setup_osd.cpp:297
+msgid "Skin changed"
+msgstr "Η επιφάνεια άλλαξε"
+
+#: src/setup_osd_extra.cpp:23
+#, fuzzy
+msgid "infobar timeout (left, right)"
+msgstr "Επιλέξτε πολικότητα (<, >)"
+
+#: src/setup_osd_extra.cpp:24 src/setup_osd_extra.cpp:25
+#: src/setup_osd_extra.cpp:26 src/setup_osd_extra.cpp:27
+#: src/setup_osd_extra.cpp:28 src/setup_osd_extra.cpp:29
+#: src/setup_osd_extra.cpp:30 src/setup_osd_extra.cpp:31
+#: src/setup_osd_extra.cpp:32 src/setup_osd_extra.cpp:33
+#: src/setup_osd_extra.cpp:34
+#, c-format
+msgid "Infobar timeout %d sec"
+msgstr ""
+
+#: src/setup_osd_extra.cpp:40
+#, fuzzy
+msgid "show infobar on service switch"
+msgstr "Εμφάνιση μπάρας πληροφοριών ή το EPG"
+
+#: src/setup_osd_extra.cpp:40
+msgid "show infobar when switching to another service"
+msgstr ""
+
+#: src/setup_osd_extra.cpp:41
+msgid "Serviceselector help buttons"
+msgstr "Πλήκτρα βοήθειας λίστας επιλογής υπηρεσιών"
+
+#: src/setup_osd_extra.cpp:41
+msgid "show colored help buttons in service selector"
+msgstr "Εμφάνιση ένχρωμων πλήκτρων βοήθειας στην λίστα επιλογής υπηρεσιών"
+
+#: src/setup_osd_extra.cpp:43
+msgid "Show Sat position"
+msgstr "Αποθήκευση νέων δορυφορικών θέσεων"
+
+#: src/setup_osd_extra.cpp:43
+msgid "show sat position in the infobar"
+msgstr "Ένδειξη εναπομείναντος χρόνου γεγονότος στην μπάρα πληροφοριών"
+
+#: src/setup_osd_extra.cpp:44
+msgid "Skip confirmations"
+msgstr "Παράλειψη επιβεβαιώσεων"
+
+#: src/setup_osd_extra.cpp:44
+msgid "enable/disable confirmations"
+msgstr "Ενεργοποίηση ή όχι επιβεβαιώσεων (OK)"
+
+#: src/setup_osd_extra.cpp:45
+msgid "Hide error windows"
+msgstr "Απόκρυψη μηνυμάτων λαθών"
+
+#: src/setup_osd_extra.cpp:45
+msgid "don't show zap error messages"
+msgstr "Απόκρυψη μηνυμάτων λαθών zap"
+
+#: src/setup_osd_extra.cpp:46
+msgid "Auto show Infobar"
+msgstr "Αυτόματη εμφάνιση μπάρας πληροφοριών"
+
+#: src/setup_osd_extra.cpp:46
+msgid "always show infobar when new event info is avail"
+msgstr "Εμφάνιση μπάρας πληροφοριών εάν αλλάξουν πληροφορίες"
+
+#: src/setup_osd_extra.cpp:47
+msgid "Show remaining Time"
+msgstr "Εμφάνιση εναπομείναντος χρόνου"
+
+#: src/setup_osd_extra.cpp:47
+msgid "show event remaining time in the infobar"
+msgstr "Ένδειξη εναπομείναντος χρόνου γεγονότος στην μπάρα πληροφοριών"
+
+#: src/setup_osd_extra.cpp:48
+msgid "Hide shortcut icons"
+msgstr ""
+
+#: src/setup_osd_extra.cpp:48
+msgid "hide shortcut icons in menus"
+msgstr ""
+
+#: src/setup_rfmod.cpp:27
+msgid "UHF-Modulator Setup"
+msgstr "Ρύθμιση διαμορφωτή UHF"
+
+#: src/setup_rfmod.cpp:34
+#, fuzzy
+msgid "UHF Modulator on"
+msgstr "Διαμορφωτης RF UHF"
+
+#: src/setup_rfmod.cpp:37
+#, fuzzy
+msgid "enable UHF Modulator"
+msgstr "Διαμορφωτης RF UHF"
+
+#: src/setup_rfmod.cpp:43 src/setup_rfmod.cpp:165
+msgid "Test Pattern"
+msgstr "Δοκιμαστική εικόνα"
+
+#: src/setup_rfmod.cpp:46
+msgid "enable test pattern"
+msgstr "Ενεργοποίηση δοκιμαστικής εικόνας"
+
+#: src/setup_rfmod.cpp:53
+msgid "Sound enable"
+msgstr "Ενεργοποίηση ήχου"
+
+#: src/setup_rfmod.cpp:56
+msgid "enable Sound"
+msgstr "Ενεργοποίηση ήχου"
+
+#: src/setup_rfmod.cpp:63
+msgid "Sound Subcarrier:"
+msgstr ""
+
+#: src/setup_rfmod.cpp:75
+msgid "4.5 MHz"
+msgstr "4,5 MHz"
+
+#: src/setup_rfmod.cpp:76
+msgid "5.5 MHz"
+msgstr "5,5 MHz"
+
+#: src/setup_rfmod.cpp:77
+msgid "6.0 MHz"
+msgstr "6,0 MHz"
+
+#: src/setup_rfmod.cpp:78
+msgid "6.5 MHz"
+msgstr "6,5 MHz"
+
+#: src/setup_rfmod.cpp:88
+msgid "change sound subcarrier frequency"
+msgstr "Αλλαγή συχνότητας φέρουσας ήχου"
+
+#: src/setup_rfmod.cpp:92
+#, fuzzy
+msgid "Channel Nr.:"
+msgstr "Κανάλι:"
+
+#: src/setup_rfmod.cpp:113
+msgid "change channel"
+msgstr "Αλλαγή καναλιού UHF"
+
+#: src/setup_rfmod.cpp:117
+#, fuzzy
+msgid "Fine Tune:"
+msgstr "Χρονική ζώνη:"
+
+#: src/setup_rfmod.cpp:140
+msgid "250Khz steps"
+msgstr "Βήματα 250khz"
+
+#: src/setup_rfmod.cpp:149
+msgid "save settings and leave rf setup"
+msgstr "Επιστροφή με αποθήκευση παραμέτρων RF."
+
+#: src/setup_rfmod.cpp:165
+msgid "if you can read this your rfmod will not work."
+msgstr "Αν διαβάζεις αυτό ο διαμορφωτής RF δεν λειτουργεί"
+
+#: src/setup_timezone.cpp:70
+msgid ""
+"You have to restart enigma to apply the new Timezone\n"
+"Restart now?"
+msgstr ""
+"Πρέπει να κάνετε επανεκίνηση για να αλλάξει η επιφάνεια.\n"
+"Να γίνει τώρα;"
+
+#: src/setup_timezone.cpp:70
+msgid "Timezone changed"
+msgstr "Η χρονική ζώνη άλλαξε"
+
+#: src/setup_epg.cpp:52
+msgid "Cache has been cleared!"
+msgstr ""
+
+#: src/setupengrab.cpp:136
+msgid "Please check your NGrab Server or the IP"
+msgstr "Παρακαλώ ελέξτε το Ngrab Server ή το IP"
+
+#: src/setupengrab.cpp:137
+msgid "HW Address(MAC) detection failed"
+msgstr "Απέτυχε η προσπάθεια εύρεσης διεύθυνσης MAC"
+
+#: src/setupnetwork.cpp:464 src/setupnetwork.cpp:472
+msgid "LAN"
+msgstr "Δίκτυο LAN"
+
+#: src/setupnetwork.cpp:464 src/setupnetwork.cpp:472
+msgid "communicate to Local Area Network"
+msgstr "Επικοινωνία με τοπικό δίκτυο LAN"
+
+#: src/setupnetwork.cpp:466 src/setupnetwork.cpp:473
+msgid "WAN(PPPoE)"
+msgstr "WAN(PPPoE)"
+
+#: src/setupnetwork.cpp:466 src/setupnetwork.cpp:473
+msgid "communicate to the Internet via DSL"
+msgstr "Σύνδεση στο Internet με DSL"
+
+#: src/setupnetwork.cpp:482
+msgid "T-Online User press ok here"
+msgstr "Για χρήστες T-Online"
+
+#: src/setupnetwork.cpp:505
+msgid "press ok to edit your provider login name"
+msgstr "Πατήστε OK για να δώσετε το login του παροχέα σας"
+
+#: src/setupnetwork.cpp:528
+msgid "press ok to edit your provider password"
+msgstr "Πατήστε OK για να αλλάξετε τον κωδικό του παροχέα σας"
+
+#: src/setupnetwork.cpp:545 src/setupnetwork.cpp:552 src/setupnetwork.cpp:566
+#, c-format
+msgid "reject incoming connections on port %d"
+msgstr "Απόρρηψη εισερχόμενων συνδέσεων στην πόρτα %d"
+
+#: src/setupnetwork.cpp:559
+msgid "reject incoming connections on ports 137,138,139"
+msgstr "Απόρρηψη εισερχόμενων συνδέσεων στις πόρτες 137,138,139"
+
+#: src/setupnetwork.cpp:893
+msgid "Samba File System(to mount share from another Dreambox)"
+msgstr ""
+
+#: src/setupnetwork.cpp:1007
+msgid "enter the name of the share without trailing slash"
+msgstr ""
+
+#: src/setupnetwork.cpp:1010
+msgid "enter the name of the share (//DreamBOX/harddisk)"
+msgstr ""
+
+#: src/setupnetwork.cpp:1129 src/setupnetwork.cpp:1167
+msgid "invalid or missing dir or local dir"
+msgstr ""
+
+#: src/setupnetwork.cpp:1147
+msgid "NFS/CIFS-Entry stored. Further entry?\n"
+msgstr ""
+
+#: src/setupnetwork.cpp:1148
+msgid "NFS/CIFS-Setup..."
+msgstr ""
+
+#: src/setupnetwork.cpp:1174
+msgid "NFS/CIFS mount error already mounted"
+msgstr ""
+
+#: src/setupvideo.cpp:54
+msgid "CVBS"
+msgstr ""
+
+#: src/setupvideo.cpp:55
+msgid "RGB"
+msgstr ""
+
+#: src/setupvideo.cpp:56
+msgid "SVideo"
+msgstr ""
+
+#: src/setupvideo.cpp:57
+msgid "YPbPr"
+msgstr ""
+
+#: src/setupvideo.cpp:66
+msgid "4:3 letterbox"
+msgstr "4:3 Letterbox"
+
+#: src/setupvideo.cpp:67
+msgid "4:3 panscan"
+msgstr "4:3 pan&scan"
+
+#: src/setupvideo.cpp:68
+msgid "16:9"
+msgstr ""
+
+#: src/setupvideo.cpp:71
+msgid "always 16:9"
+msgstr "Πάντα 16:9"
+
+#: src/software_update.cpp:38
+msgid "Internet Update"
+msgstr "Αναβάθμιση από το internet"
+
+#: src/software_update.cpp:38
+msgid "open internet update"
+msgstr "Αναβάθμιση λογισμικού από το internet."
+
+#: src/software_update.cpp:39
+msgid "Manual Update"
+msgstr "Χειροκίνητη αναβάθμιση"
+
+#: src/software_update.cpp:39
+msgid "open manual update"
+msgstr "Χειροκίνητη αναβάθμιση λογισμικού"
+
+#: src/software_update.cpp:41
+msgid "Expert Flash Save/Restore"
+msgstr ""
+
+#: src/software_update.cpp:41
+msgid "open expert flash tool"
+msgstr "Μενού προχωρημένων ρυθμίσεων"
+
+#: src/software_update.cpp:63
+#, fuzzy
+msgid ""
+"Upload your Image via FTP or Samba to the '/tmp' folder.Then rename it to "
+"'root.cramfs' and press ok.In the following list select 'manual update' and "
+"follow the instructions."
+msgstr ""
+"Ανεβάστε το αρχείo της αναβάθμισης με FTP ή SAMBA στον υποκατάλογο '/"
+"tmp.'Μετονομάστετο σε 'root.cramfs' και πατήστε ΟΚ.  Στην επόμενη λίστα "
+"επιλέξτε'Χειροκίνητη αναβάθμιση' και ακολουθήστε τις οδηγίες."
+
+#: src/software_update.cpp:65
+msgid "Manual update"
+msgstr "Χειροκίνητη αναβάθμιση"
+
+#: src/sselect.cpp:56
+msgid "open the EPG with selected style"
+msgstr "Άνοιγμα του EPG με το επιλεγμένο στιλ"
+
+#: src/sselect.cpp:63
+msgid "EPG Style"
+msgstr "Στιλ EPG"
+
+#: src/sselect.cpp:78
+msgid "Channel EPG"
+msgstr "EPG Καναλιού"
+
+#: src/sselect.cpp:78
+msgid "open EPG for selected Channel"
+msgstr "EPG για το επιλεγμένο κανάλι"
+
+#: src/sselect.cpp:79
+msgid "Multi EPG"
+msgstr "Πολλαπλό EPG"
+
+#: src/sselect.cpp:79
+msgid "open EPG for next five channels"
+msgstr "EPG για τα επόμενα πέντε κανάλια"
+
+#: src/sselect.cpp:80
+msgid "Search event in EPG cache"
+msgstr ""
+
+#: src/sselect.cpp:86
+msgid "External EPG"
+msgstr "εσωτερική"
+
+#: src/sselect.cpp:86
+msgid "open external plugin EPG"
+msgstr ""
+
+#: src/sselect.cpp:136
+msgid "go up a directory"
+msgstr "Προς τον προηγούμενο κατάλογο"
+
+#: src/sselect.cpp:137
+msgid "shows the EPG selector for the highlighted channel"
+msgstr "Δείχνει το EPG για το επιλεγμένο κανάλι"
+
+#: src/sselect.cpp:138
+msgid "show service selector menu"
+msgstr "Δείχνει το μενού επιλογής υπηρεσίας"
+
+#: src/sselect.cpp:144
+msgid "toggle between classic and multi column style"
+msgstr "Αλλαγή στίλ, μεταξύ κλασσικού και πολλαπλών στειλών"
+
+#: src/sselect.cpp:145 src/sselect.cpp:1718 src/sselect.cpp:1728
+msgid "toggle focus between service and bouquet list (in combi column style)"
+msgstr "Εναλλαγή μεταξύ λίστας υπηρεσιών και λίστας μπουκέτων"
+
+#: src/sselect.cpp:146
+msgid "go to the prev Marker if exist.. else goto first service"
+msgstr "Επιλογή προηγούμενου δείκτη άν υπάρχει ή στην πρώτη υπηρεσία"
+
+#: src/sselect.cpp:147
+msgid "go to the next Marker if exist.. else goto last service"
+msgstr "Επιλογή επόμενου δείκτη άν υπάρχει ή στην τελευταία υπηρεσία"
+
+#: src/sselect.cpp:149
+msgid "show all services"
+msgstr "Εμφάνιση όλων των υπηρεσιών"
+
+#: src/sselect.cpp:150
+msgid "show satellite list"
+msgstr "Εμφάνιση λίστας δορυφόρων"
+
+#: src/sselect.cpp:151
+msgid "show provider list"
+msgstr "Εμφάνιση λίστας παροχέων"
+
+#: src/sselect.cpp:152
+msgid "show bouquet list"
+msgstr "Εμφάνιση λίστας μπουκέτων"
+
+#: src/sselect.cpp:155
+msgid "mark selected entry for move"
+msgstr "Επιλογή καταχώρησης για μετακίνηση"
+
+#: src/sselect.cpp:157
+msgid "create new marker entry"
+msgstr "Δημιουργία νέου δείκτη (marker)"
+
+#: src/sselect.cpp:364
+msgid "[GO UP]"
+msgstr "[ΕΠΙΣΤΡΟΦΗ]"
+
+#: src/sselect.cpp:366
+msgid "(removed service)"
+msgstr "(διαγεγραμμένη υπηρεσία)"
+
+#: src/sselect.cpp:456
+msgid "mark"
+msgstr "Μαρκάρισμα"
+
+#: src/sselect.cpp:458
+msgid "marker"
+msgstr "Δείκτης"
+
+#: src/sselect.cpp:476 src/sselect.cpp:2190
+msgid "Root"
+msgstr ""
+
+#: src/sselect.cpp:477
+msgid "Movies"
+msgstr "Ταινίες"
+
+#: src/sselect.cpp:991
+msgid "Select No or press Abort to lock/unlock the complete directory"
+msgstr "Επιλέξτε Όχι ή πατήστε Άκυρο' για να κλειδώσετε ή όχι όλο τον κατάλογο"
+
+#: src/sselect.cpp:991
+msgid "Enter Directory"
+msgstr "Δώστε υποκατάλογο"
+
+#: src/sselect.cpp:1708
+#, fuzzy
+msgid "toggle between now and next epg entries in single column list"
+msgstr "Εναλλαγή μεταξύ λίστας υπηρεσιών και λίστας μπουκέτων"
+
+#: src/sselect.cpp:2191
+#, fuzzy
+msgid "Select"
+msgstr "Επιλογή LNB"
+
+#: src/sselect.cpp:2192 src/sselect.cpp:2210
+#, fuzzy
+msgid "New Directory"
+msgstr "Δώστε υποκατάλογο"
+
+#: src/sselect.cpp:2209
+#, fuzzy
+msgid "Enter name of new directory:"
+msgstr "Δώστε όνομα του νέου μπουκέτου:"
+
+#: src/streaminfo.cpp:166
+msgid "album"
+msgstr "Άλμπουμ"
+
+#: src/streaminfo.cpp:170
+msgid "artist"
+msgstr "Καλλιτέχνης"
+
+#: src/streaminfo.cpp:174
+msgid "year"
+msgstr "Χρονιά"
+
+#: src/streaminfo.cpp:176
+msgid "composer"
+msgstr "Συνθέτης"
+
+#: src/streaminfo.cpp:178
+msgid "track"
+msgstr "Κομμάτι"
+
+#: src/streaminfo.cpp:180
+msgid "length"
+msgstr "Διάρκεια"
+
+#: src/streaminfo.cpp:353
+msgid "supported coding systems:"
+msgstr "Σύστηματα κωδικοποίησης DREAMBOX:"
+
+#: src/streaminfo.cpp:393
+msgid "Systems used in service:"
+msgstr "Σύστηματα κωδικοποίησης καναλιού:"
+
+#: src/streaminfo.cpp:434
+msgid "Record mode - read manual"
+msgstr "Έιδος εγγραφής - δήτε τις οδηγίες"
+
+#: src/streaminfo.cpp:544
+msgid "Service information (right)"
+msgstr "Πληροφορίες υπηρεσίας (>)"
+
+#: src/streaminfo.cpp:545
+msgid "Scrambled system information (left, right)"
+msgstr "Πληροφορίες κωδικοποίησης (<, >)"
+
+#: src/streaminfo.cpp:546
+msgid "Transponder information (left)"
+msgstr "Πληροφορίες αναμεταδότη (<)"
+
+#: src/swapmanager.cpp:227
+msgid "Not found"
+msgstr ""
+
+#: src/swapmanager.cpp:228 src/swapmanager.cpp:237
+msgid "Inactive"
+msgstr ""
+
+#: src/swapmanager.cpp:236 src/swapmanager.cpp:245
+msgid "Found"
+msgstr ""
+
+#: src/swapmanager.cpp:246
+#, fuzzy
+msgid "Active"
+msgstr "Ζωντανό"
+
+#: src/swapmanager.cpp:249 src/swapmanager.cpp:319
+#, c-format
+msgid "Swap-File: %s"
+msgstr ""
+
+#: src/swapmanager.cpp:250
+#, c-format
+msgid "Swap-Status: %s"
+msgstr ""
+
+#: src/swapmanager.cpp:280
+msgid ""
+"The swapfile will now be created. This may take some time depending on the "
+"size of your swapfile"
+msgstr ""
+
+#: src/swapmanager.cpp:315
+msgid "The swapfile has been created!"
+msgstr ""
+
+#: src/swapmanager.cpp:381
+msgid "Swapfile has been deleted!"
+msgstr ""
+
+#: src/timer.cpp:290 src/timer.cpp:2071 src/timer.cpp:2164
+msgid "Timerlist"
+msgstr "Λίστα χρονοδιακόπτη"
+
+#: src/timer.cpp:1601
+msgid ""
+"You would delete the running event..\n"
+"this stops the timer mode (recording)!"
+msgstr ""
+"Θέλετε να διαγράψετε το ενεργό γεγονός..\n"
+"Αυτό θα σταματήση την εγγραφή"
+
+#: src/timer.cpp:1602
+msgid "Delete the event from the timer list"
+msgstr "Διαγραφή από τον χρονοδιακόπτη"
+
+#: src/timer.cpp:1603
+msgid "Really delete this event?"
+msgstr "Σίγουρα θέλετε να διαγράψετε αυτό το γεγονός;"
+
+#: src/timer.cpp:1607
+msgid ""
+"You would update the running event.. \n"
+"this stops the timer mode (recording)!"
+msgstr ""
+"Θέλετε να ανανεώσετε το ενεργό γεγονός..\n"
+"Αυτό θα σταματήση την εγγραφή"
+
+#: src/timer.cpp:1608
+msgid "Update event in timer list"
+msgstr "Ενημέρωση γεγονότος στον χρονοδιακόπτη"
+
+#: src/timer.cpp:1609 src/timer.cpp:2530
+msgid "Really update this event?"
+msgstr "Σίγουρα θέλετε να ενημερώσετε το γεγονός αυτό;"
+
+#: src/timer.cpp:1754
+msgid "This event is already in the timerlist."
+msgstr "Αυτό το γεγονός είναι ήδη στην λίστα του χρονοδικόπτη."
+
+#: src/timer.cpp:1755 src/timer.cpp:1800
+msgid "Add event to timerlist"
+msgstr "Προσθήκη γεγονότος στον χρονοδιακόπτη"
+
+#: src/timer.cpp:1792
+msgid "The Endtime overlaps with another event in the timerlist"
+msgstr "Αυτό το γεγονός υπερκαλύπτει κατί ήδη στην λίστα του χρονοδικόπτη."
+
+#: src/timer.cpp:1792
+msgid "Set Stop Time"
+msgstr "Ρύθμιση χρόνου λήξης"
+
+#: src/timer.cpp:1798
+msgid ""
+"This event cannot added to the timerlist.\n"
+"The event overlaps with another event in the timerlist\n"
+"Please check the timerlist manually."
+msgstr ""
+"Αυτό το γεγονός δεν μπορεί να προστεθεί στον χρονοδιακόπτη.\n"
+"Υπερκαλύπτει κάποιο άλλο γεγονός.\n"
+"Παρακαλώ ελένξτε την λίστα του χρονοδιακόπτη."
+
+#: src/timer.cpp:1876
+msgid "add new event to Timerlist"
+msgstr "Προσθήκη νέου γεγονότος στο χρονοδιακόπτη"
+
+#: src/timer.cpp:1877
+msgid "remove this entry from timer list"
+msgstr "Διαγραφή εγγραφής από την λίστα του χρονοδιακόπτη"
+
+#: src/timer.cpp:2157 src/timer.cpp:2159
+#, fuzzy, c-format
+msgid "free space"
+msgstr "Προηγούμενο"
+
+#: src/timer.cpp:2176
+msgid "increase the event begin time in 1 minute steps"
+msgstr "Αύξηση του χρόνου έναρξης σε βήματα του 1 λεπτού"
+
+#: src/timer.cpp:2177
+msgid "decrease the event begin time in 1 minute steps"
+msgstr "Μείωση του χρόνου έναρξης σε βήματα του 1 λεπτού"
+
+#: src/timer.cpp:2178
+msgid "increase the event end time in 1 minute steps"
+msgstr "Αύξηση του χρόνου τέλους σε βήματα του 1 λεπτού"
+
+#: src/timer.cpp:2179
+msgid "decrease the event end time in 1 minute steps"
+msgstr "Μείωση του χρόνου τέλους σε βήματα του 1 λεπτού"
+
+#: src/timer.cpp:2188
+msgid "January"
+msgstr "Ιανουάριος"
+
+#: src/timer.cpp:2188
+msgid "February"
+msgstr "Φεβρουάριος"
+
+#: src/timer.cpp:2188
+msgid "March"
+msgstr "Μάρτιος"
+
+#: src/timer.cpp:2189
+msgid "April"
+msgstr "Απρίλιος"
+
+#: src/timer.cpp:2189
+msgid "May"
+msgstr "Μάιος"
+
+#: src/timer.cpp:2189
+msgid "June"
+msgstr "Ιούνιος"
+
+#: src/timer.cpp:2189
+msgid "July"
+msgstr "Ιούλιος"
+
+#: src/timer.cpp:2190
+msgid "August"
+msgstr "Αυγουστος"
+
+#: src/timer.cpp:2190
+msgid "September"
+msgstr "Σεπτέμβριος"
+
+#: src/timer.cpp:2190
+msgid "October"
+msgstr "Οκτώβριος"
+
+#: src/timer.cpp:2191
+msgid "November"
+msgstr "Νοέμβριος"
+
+#: src/timer.cpp:2191
+msgid "December"
+msgstr "Δεκέμβριος"
+
+#: src/timer.cpp:2204
+msgid "do nothing"
+msgstr "[κανένα]"
+
+#: src/timer.cpp:2205
+msgid "put box into standby"
+msgstr "κατάσταση αναμονής λειτουργίας"
+
+#: src/timer.cpp:2210
+#, fuzzy
+msgid "shutdown the box"
+msgstr "Τέλος λειτουργίας τώρα"
+
+#: src/timer.cpp:2212
+msgid "put box into deep standby"
+msgstr "Κλείσημο δέκτη σε βαθύ ύπνο"
+
+#: src/timer.cpp:2281
+msgid "record DVR"
+msgstr "Ψηφιακή εγγραφή"
+
+#: src/timer.cpp:2285
+msgid "Ngrab"
+msgstr ""
+
+#: src/timer.cpp:2291
+msgid "Record VCR"
+msgstr "Εγγραφή σε Video"
+
+#: src/timer.cpp:2382
+msgid "unknown service"
+msgstr "Αγνωστη υπηρεσία"
+
+#: src/timer.cpp:2528
+msgid ""
+"The new endtime is before now time!\n"
+"This stops the running timer(recording)\n"
+msgstr ""
+
+#: src/timer.cpp:2534 src/timer.cpp:2546 src/timer.cpp:2556 src/timer.cpp:2574
+msgid "Update event in timerlist"
+msgstr "Ενημέρωση γεγονότος στον χρονοδιακόπτη"
+
+#: src/timer.cpp:2545
+msgid "New endtime are now adjusted"
+msgstr ""
+
+#: src/timer.cpp:2555
+msgid "The event has already finished... you can not change endtime!"
+msgstr "Αυτό το γεγονός είναι ήδη στην λίστα του χρονοδικόπτη."
+
+#: src/timer.cpp:2574
+msgid ""
+"Invalid begin or end time.!\n"
+"Please check time and date"
+msgstr ""
+"Λάθος χρόνος έναρξης ή λήξης!\n"
+"Παρακάλώ έλέξτε την ώρα και την ημερομηνία"
+
+#: src/timer.cpp:2744
+msgid ""
+"Sorry, you can not add a time shifted service manually to the timer.\n"
+"Please close the Timer and use the EPG of the service you wish to add!"
+msgstr ""
+"Δεν μπορείτε να προσθέσετε αυτό στον χρονοδιακόπτη\n"
+"Κλέιστε τον χρονοδιακόπτη και χρησημοποιήστε το EPG για την υπηρεσία που "
+"θέλετε να προσθέσετε"
+
+#: src/timer.cpp:2801
+msgid "no description found"
+msgstr "Δεν βρέθηκε περιγραφή"
+
+#: src/tpeditwindow.cpp:138
+msgid "add new Network"
+msgstr "Προσθήκη νέου Δικτύου (ok)"
+
+#: src/tpeditwindow.cpp:139
+msgid "remove selected Network"
+msgstr "Διαγραφή επιλεγμένου δικτύου"
+
+#: src/tpeditwindow.cpp:202
+msgid "Save changed Transponders?"
+msgstr "Να αποθηκευτούν οι αλλαγές;"
+
+#: src/tpeditwindow.cpp:203
+msgid "Transponders changed"
+msgstr "Οι αναμεταδότες ενημερώθηκαν"
+
+#: src/tpeditwindow.cpp:211
+msgid "Transponders couldn't be written to file!"
+msgstr "Οι αναμεταδότες δεν αποθηκεύτηκαν στο αρχείο!"
+
+#: src/tpeditwindow.cpp:212
+msgid "Write Error"
+msgstr "Σφάλμα κατά την εγγραφή"
+
+#: src/tpeditwindow.cpp:389
+msgid "new Satellite"
+msgstr "Νέος δορυφόρος"
+
+#: src/tpeditwindow.cpp:418
+msgid "Really delete the selected satellite?"
+msgstr "Σίγουρα να διαγραφεί ο επιλεγμένος δορυφόρος;"
+
+#: src/tpeditwindow.cpp:419
+#, c-format
+msgid "Delete %s"
+msgstr "Διαγραφή %s"
+
+#: src/upgrade.cpp:158
+msgid "Please select the software version to upgrade to:"
+msgstr "Παρακαλώ επιλέξτε έκδοση αναβάθμισης:"
+
+#: src/upgrade.cpp:191
+msgid "manual upload"
+msgstr "Χειροκείνητο φόρτωμα"
+
+#: src/upgrade.cpp:209
+msgid "downloading catalog..."
+msgstr "κατέβασμα καταλόγου..."
+
+#: src/upgrade.cpp:229
+msgid "downloading changelog..."
+msgstr "κατέβασμα καταλόγου αλλαγών (changelog)..."
+
+#: src/upgrade.cpp:254
+msgid "downloading image..."
+msgstr "κατέβασμα αρχείου λογισμικού..."
+
+#: src/upgrade.cpp:312
+msgid "Please select version to upgrade or LAME! to abort"
+msgstr "Παρακαλώ επιλέξτε έκδοση ή LAME για ακύρωση:"
+
+#: src/upgrade.cpp:486
+msgid "Download aborted."
+msgstr "Ακύρωση διαβάσματος αρχείου."
+
+#: src/upgrade.cpp:505
+msgid "checking consistency of file..."
+msgstr "Έλεγχος του αρχείου..."
+
+#: src/upgrade.cpp:509 src/upgrade.cpp:512
+msgid "write error while downloading..."
+msgstr "Σφάλμα εγγραφής κατά το κατέβασμα..."
+
+#: src/upgrade.cpp:520 src/upgrade.cpp:523
+msgid "Data error. The checksum didn't match."
+msgstr "Σφάλμα δεδομένων. Η σούμα δεν ταιριάζει."
+
+#: src/upgrade.cpp:529
+msgid "Checksum OK. Ready to upgrade."
+msgstr "Η σούμα ταιριάζει. Έτοιμο για αναβάθμιση."
+
+#: src/upgrade.cpp:532
+msgid "Are you sure you want to upgrade to this new version?"
+msgstr "Σίγουρα θέλετε να γίνει η αναβάθμιση στην νέα έκδοση;"
+
+#: src/upgrade.cpp:533
+msgid "Ready to upgrade"
+msgstr "Έτοιμο για αναβάθμιση"
+
+#: src/upgrade.cpp:565
+msgid "Can't read flashimage.img!"
+msgstr "Η ανάγνωση του flashimage.img δεν είναι δυνατή!"
+
+#: src/upgrade.cpp:565 src/upgrade.cpp:575 src/upgrade.cpp:696
+#: src/upgrade.cpp:704
+msgid "Flash"
+msgstr "Εγγραφή στη μνήμη flash"
+
+#: src/upgrade.cpp:575
+msgid "flashimage.img has filesize of 0byte!"
+msgstr "Το αρχείο flashimage.img έχει μέγεθος 0 bytes!"
+
+#: src/upgrade.cpp:602 src/upgrade.cpp:681
+msgid "Please wait... do NOT switch off the receiver!"
+msgstr "Παρακαλώ περιμένετε...ΜΗΝ κλείσετε το μηχάνημα!"
+
+#: src/upgrade.cpp:603 src/upgrade.cpp:682
+msgid "upgrade in progress"
+msgstr "Αναβάθμιση σε εξέλιξη"
+
+#: src/upgrade.cpp:606 src/upgrade.cpp:693
+msgid "Erasing Flash..."
+msgstr "Διαγραφή μνήμης flash..."
+
+#: src/upgrade.cpp:631 src/upgrade.cpp:716
+msgid "Writing Software to Flash..."
+msgstr "Εγραφή λογισμικού στη μνήμη Flash..."
+
+#: src/upgrade.cpp:696
+msgid "Erase error!"
+msgstr "Σφάλμα κατά τη διαγραφή!"
+
+#: src/upgrade.cpp:704
+msgid "Can't open mtd!"
+msgstr "Δεν μπορώ να ανοίξω το mtd!"
+
+#: src/upgrade.cpp:740
+msgid ""
+"upgrade successful!\n"
+"restarting..."
+msgstr ""
+"Επιτυχής αναβάθμιση!\n"
+"Επανεκίνηση..."
+
+#: src/upgrade.cpp:741
+msgid "upgrade ok"
+msgstr "Η αναβάθμιση έγινε με επιτυχία"
+
+#: src/upgrade.cpp:800
+msgid "This is the currently installed release."
+msgstr "Αυτή είναι η υπάρχουσα εκγατεστημένη έκδοση."
+
+#: src/upgrade.cpp:803
+msgid "This is an older release."
+msgstr "Παλαιώτερη έκδοση."
+
+#: src/upgrade.cpp:806
+msgid "No changelog data available."
+msgstr "Δεν υπάρχει κατάλογος αλλαγών (changelog)"
+
+#: src/upgrade.cpp:820
+msgid "No new features were added in this release."
+msgstr "Δεν έχουν προστεθεί νεές λειτουργίες σε αυτή την έκδοση."
+
+#: src/upgrade.cpp:823
+msgid "The following new features were added in this release:\n"
+msgstr "οι παρακάτω προσθήκες έγιναν σε αυτή την έκδοση:\n"
+
+#: src/wizard_fpupdate.cpp:13
+msgid ""
+"New Software for the frontprocessor is avail.\n"
+"Your Dreambox must upgrade now!\n"
+"DO NOT TURN OFF THE POWER DURING UPDATE !!!."
+msgstr ""
+
+#: src/wizard_fpupdate.cpp:16
+msgid "New software avail"
+msgstr "Υπάρχει νέο λογισμικό."
+
+#: src/wizard_fpupdate.cpp:21
+msgid ""
+"Upgrading frontprocessor...\n"
+"DO NOT TURN OFF THE POWER!\n"
+"THE DREAMBOX WILL AUTOMATICALLY REBOOT!\n"
+msgstr ""
+
+#: src/wizard_fpupdate.cpp:24
+msgid "Upgrade in process..."
+msgstr "Αναβάθμιση σε εξέλιξη ..."
+
+#: src/wizard_language.cpp:174
+msgid "Choose your language..."
+msgstr "       Γλώσσα των μενού ..."
+
+#: src/wizard_language.cpp:175
+msgid "press up/down/ok"
+msgstr "Πατώντας ΟΚ επιλέγετε τα Ελληνικά"
+
+#: src/wizard_scan.cpp:118
+msgid "Direct connection to one LNB"
+msgstr "Απευθείας σύνδεση με ένα LNB."
+
+#: src/wizard_scan.cpp:121
+msgid "Simple DiSEqC (2 LNBs/satellites)"
+msgstr "Απλό DiSEqC με 2 LNB / δορυφόρους."
+
+#: src/wizard_scan.cpp:124
+msgid "Complex configuration (including DiSEqC 1.2)"
+msgstr "Σύθετη εγκατάσταση (περιλαμβάνει DiSEqC 1.2)"
+
+#: src/system_settings.cpp:45 src/time_settings.cpp:32
+msgid "Time Settings"
+msgstr "Ρύθμιση ώρας"
+
+#: src/system_settings.cpp:45
+msgid "open time settings"
+msgstr "Επιλογές που αφορόυν την ώρα και ημερομηνία."
+
+#: src/system_settings.cpp:47
+msgid "open A/V settings"
+msgstr "Επιλογές που αφορούν την εικόνα και τον ήχο."
+
+#: src/system_settings.cpp:50
+msgid "UHF Modulator"
+msgstr "Διαμορφωτης RF UHF"
+
+#: src/system_settings.cpp:50
+msgid "open UHF-Modulator setup"
+msgstr "Επιλογές που αφορούν τον διαμορφωτή RF UHF."
+
+#: src/system_settings.cpp:55
+msgid "open harddisc setup"
+msgstr "μενού ρυθμίσεων σκληρού δίσκου"
+
+#: src/system_settings.cpp:60
+msgid "open keyboard setup"
+msgstr "μενού ρυθμίσεων πληκτρολογίου"
+
+#: src/system_settings.cpp:63
+msgid "open on screen display settings"
+msgstr "Επιλογές που αφορούν τα μενού."
+
+#: src/system_settings.cpp:64
+msgid "open language selector"
+msgstr "Επιλογές που αφορούν τις γλώσσες."
+
+#: src/system_settings.cpp:67
+msgid "LCD Settings"
+msgstr "Ρυθμίσεις οθόνης LCD"
+
+#: src/system_settings.cpp:67
+msgid "open LCD settings"
+msgstr "Επιλογές που αφορούν την οθόνη LCD"
+
+#: src/system_settings.cpp:130
+msgid "sorry, no harddisks found!"
+msgstr "Δεν βρέθηκαν σκληροί δίσκοι!"
+
+#: src/time_settings.cpp:40
+msgid "Timezone Configuration"
+msgstr "Ρύθμιση χρονικής ζώνης"
+
+#: src/time_settings.cpp:40
+msgid "open timezone selector"
+msgstr "Επιλογές που αφορούν τη χρονική ζώνη"
+
+#: src/time_settings.cpp:41
+msgid "open time correction window"
+msgstr "Επιλογές για τη ρύθμιση και διόρθωση ώρας"
+
+#: src/time_settings.cpp:76
+msgid "To change time correction you must tune first to any transponder"
+msgstr "Για να διορθώσετε την ώρα πρέπει πρώτα να επιλέξετε κάποιο κανάλι."
+
+#: src/time_settings.cpp:76
+msgid "time correction change error"
+msgstr "Σφάλμα κατά την ρύθμιση της ώρας."
+
+#~ msgid "Use BAT"
+#~ msgstr "Χρήση BAT"
+
+#~ msgid "volume up"
+#~ msgstr "Ένταση ήχου δυνατότερη"
+
+#~ msgid "volume down"
+#~ msgstr "Ένταση ήχου σιγανότερη"
+
+#~ msgid "toggle mute flag"
+#~ msgstr "Φήμωση ήχου ναί/όχι"
+
+#~ msgid "plugins"
+#~ msgstr "Πρόσθετα (Plugins)"
+
+#~ msgid "Film"
+#~ msgstr "Ταινία"
+
+#~ msgid "Vertical"
+#~ msgstr "Κάθετα"
+
+#, fuzzy
+#~ msgid "options:"
+#~ msgstr "Αποστολές"
+
+#~ msgid "Software upgrade..."
+#~ msgstr "Αναβάθμιση λογισμικού.."
+
+#, fuzzy
+#~ msgid "Search in:"
+#~ msgstr "Ανίχνευση"
+
+#, fuzzy
+#~ msgid "Closes EPG search window"
+#~ msgstr "Κλέισημο παραθύρου βοήθειας"
+
+#~ msgid "Genre:"
+#~ msgstr "Είδος:"
+
+#, fuzzy
+#~ msgid "Delete"
+#~ msgstr "*Διαγραφή*"
+
+#, fuzzy
+#~ msgid "Title:"
+#~ msgstr "Τίτλος"
+
+#, fuzzy
+#~ msgid "all services"
+#~ msgstr "Όλες οι υπηρεσίες"
+
+#~ msgid "SNR:"
+#~ msgstr "SNR"
+
+#~ msgid "AGC:"
+#~ msgstr "AGC"
+
+#, fuzzy
+#~ msgid "Error creating directory"
+#~ msgstr "Προς τον προηγούμενο κατάλογο"
+
+#, fuzzy
+#~ msgid "Error during activation!"
+#~ msgstr "(λάθος κατά την ανάγνωση πληροφοριών)"
+
+#, fuzzy
+#~ msgid "Error during inactivation!"
+#~ msgstr "(λάθος κατά την ανάγνωση πληροφοριών)"
+
+#~ msgid "Error!"
+#~ msgstr "Λάθος!"
+
+#~ msgid "enable/disable capslock"
+#~ msgstr "Ρυθμίσεις κλειδωμένες ναι/όχι"
+
+#~ msgid "insert blank at cursor position"
+#~ msgstr "Αποθήκευση τών θέσεων"
+
+#~ msgid "service selector"
+#~ msgstr "Επιλογή υπηρεσίας"
+
+#~ msgid "switch to next bouquet"
+#~ msgstr "Επιλογή του επόμενου πακέτου"
+
+#~ msgid "switch to previous bouquet"
+#~ msgstr "Επιλογή του προηγούμενου πακέτου"
+
+#~ msgid "add service to a specific bouquet"
+#~ msgstr "Προσθήκη υπηρεσίας σε κάποιο μπουκέτο"
+
+#~ msgid "go to standby (press)"
+#~ msgstr "κατάσταση αναμονής λειτουργίας (press)"
+
+#~ msgid "go to standby without menu (press)"
+#~ msgstr "κατάσταση αναμονής λειτουργίας χωρίς μενού (press)"
+
+#~ msgid "go to standby (repeat)"
+#~ msgstr "κατάσταση αναμονής λειτουργίας (repeat)"
+
+#~ msgid "go to standby (release)"
+#~ msgstr "κατάσταση αναμονής λειτουργίας (release)"
+
+#~ msgid "show infobar"
+#~ msgstr "Εμφάνιση μπάρας πληροφοριών"
+
+#~ msgid "hide infobar"
+#~ msgstr "Απόκρυψη μπάρας πληροφοριών"
+
+#~ msgid "show service selector"
+#~ msgstr "Εμφάνιση επιλογέα υπηρεσιών"
+
+#~ msgid "zap to next subService"
+#~ msgstr "Επιλογή επόμενης υπό-υπηρεσίας"
+
+#~ msgid "zap to prev subService"
+#~ msgstr "Επιλογή πρηγούμενης υπό-υπηρεσίας"
+
+#~ msgid "quickzap next"
+#~ msgstr "quickzap: επόμενο"
+
+#~ msgid "quickzap prev"
+#~ msgstr "quickzap: προηγούμενο"
+
+#~ msgid "service list and down"
+#~ msgstr "Λίστα υπηρεσιών και κάτω"
+
+#~ msgid "service list and up"
+#~ msgstr "Λίστα υπηρεσιών και πάνω"
+
+#~ msgid "repeat skipping forward"
+#~ msgstr "Επανάληψη βήματων μπροστά"
+
+#~ msgid "stop skipping forward"
+#~ msgstr "Σταμάτημα βηματισμού μπροστά"
+
+#~ msgid "repeat skipping reverse"
+#~ msgstr "Επανάληψη βημάτων προς τα πίσω"
+
+#~ msgid "stop skipping reverse"
+#~ msgstr "Σταμάτημα βηματισμού πίσω"
+
+#~ msgid "open the serviceselector and show bouquets"
+#~ msgstr "Άνοιγμα λίστας υπηρεσιών και προβολή μπουκέτων"
+
+#~ msgid "open the serviceselector and show provider"
+#~ msgstr "Άνοιγμα λίστας υπηρεσιών και προβολή παροχέα"
+
+#~ msgid "open the serviceselector and show recorded movies"
+#~ msgstr "Προβολή λίστας εγγεγραμένων ταινιών"
+
+#~ msgid "open the serviceselector and shows the playlist"
+#~ msgstr "Προβολή λίστας παιξήματος (playlist)"
+
+#~ msgid "Infos"
+#~ msgstr "Πληροφορίες"
+
+#~ msgid "reject incoming connections on port 23"
+#~ msgstr "Απόρρηψη εισερχόμενων συνδέσεων στην πόρτα 23"
+
+#~ msgid "reject incoming connections on ports 21"
+#~ msgstr "Απόρρηψη εισερχόμενων συνδέσεων στην πόρτα 21"
+
+#~ msgid "record"
+#~ msgstr "Εγγραφή"
+
+#~ msgid "Record Menu"
+#~ msgstr "Μενού εγγραφών"
+
+#~ msgid "sends DiSEqC cmd A/B"
+#~ msgstr "Αποστολή DiSEqC cmd A/B"
+
+#~ msgid "sends DiSEqC cmd B/A"
+#~ msgstr "Αποστολή DiSEqC cmd B/A"
+
+#~ msgid "sends DiSEqC cmd B/B"
+#~ msgstr "Αποστολή DiSEqC cmd B/B"
+
+#~ msgid "erase"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "EPG - "
+#~ msgstr "EPG - "
+
+#, fuzzy
+#~ msgid "Create Directory"
+#~ msgstr "Δώστε υποκατάλογο"
+
+#, fuzzy
+#~ msgid "Pass:"
+#~ msgstr "Κωδικός:"
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Ανίχνευση"
+
+#, fuzzy
+#~ msgid "Plugin Menu"
+#~ msgstr "Πρόσθετα (Plugins)"
+
+#~ msgid "close the mainmenu"
+#~ msgstr "Επιστροφή στο προηγούμενο μενού"
+
+#~ msgid "select previous entry"
+#~ msgstr "Πήδημα στο προηγούμενο δείκτη θέσης"
+
+#~ msgid "select next entry"
+#~ msgstr "Διαγραφή επιλεγμένης καταχώρησης"
+
+#~ msgid "delete service"
+#~ msgstr "Διαγραφή υπηρεσίας"
+
+#~ msgid "Rename entry"
+#~ msgstr "Αλλαγή ονόματος"
+
+#, fuzzy
+#~ msgid "Harddisk setup"
+#~ msgstr "Ρυθμίσεις σκληρού δίσκου"
+
+#, fuzzy
+#~ msgid "Shutdown..."
+#~ msgstr "Τέλος λειτουργίας"
+
+#~ msgid "Factory reset..."
+#~ msgstr "Εργοστασικές ρυθμίσεις ..."
+
+#~ msgid "Timer list"
+#~ msgstr "Χρονοδιακόπτης"
+
+#~ msgid "Harddisc Setup"
+#~ msgstr "Ρυθμίσεις σκληρού δίσκου"
+
+#~ msgid "Harddisk setup..."
+#~ msgstr "Σκληρός δίσκος..."
+
+#, fuzzy
+#~ msgid "Harddisk:"
+#~ msgstr "Σκληρός Δίσκος..."
+
+#~ msgid "harddisk: "
+#~ msgstr "Σκληρός δίσκος:"
+
+#~ msgid "frontend: "
+#~ msgstr "Δέκτης:"
+
+#~ msgid "save data and close window"
+#~ msgstr "Επιστροφή με αποθήκευση αλλαγών"
+
+#, fuzzy
+#~ msgid "save settings and leave"
+#~ msgstr "Επιστροφή με αποθήκευση παραμέτρων RF."
+
+#, fuzzy
+#~ msgid "Filesize: %d MB"
+#~ msgstr ""
+#~ "\n"
+#~ "Μέγεθος αρχείου: %d MB"
+
+#~ msgid "sorry, couldn't find fsck.ext2 utility to check the ext2 filesystem."
+#~ msgstr "Δυστυχώς δεν βρέθηκε το fsck.ext3."
+
+#~ msgid ""
+#~ "sorry, couldn't find reiserfsck utility to check the reiserfs filesystem."
+#~ msgstr "Δυστυχώς δεν βρέθηκε το reiserfsck."
+
+#~ msgid "ok"
+#~ msgstr "Κλείδωμα"
+
+#~ msgid "Filename: "
+#~ msgstr "Όνομα αρχείου: "
+
+#, fuzzy
+#~ msgid "Start"
+#~ msgstr "Σαβ"
+
+#~ msgid "<    Stop    >"
+#~ msgstr "< Σταμάτημα >"
+
+#, fuzzy
+#~ msgid "Change timer offset [end] (left, right)"
+#~ msgstr "Επιλέξτε πολικότητα (<, >)"
+
+#~ msgid "Use DiSEqC Version 1.1"
+#~ msgstr "Χρήση DiSEqC Version 1.1"
+
+#~ msgid "Use DiSEqC Version 1.2"
+#~ msgstr "Χρήση DiSEqC Version 1.2"
+
+#~ msgid "information"
+#~ msgstr "Πληροφορίες"
+
+#, fuzzy
+#~ msgid "Unknown"
+#~ msgstr "Αγνωστο"
+
+#~ msgid "Satellite:"
+#~ msgstr "Δορυφόρος:"
+
+#~ msgid "Frontend: Satellite"
+#~ msgstr "Tuner: Δορυφορικό"
+
+#~ msgid "Frontend: Cable"
+#~ msgstr "Tuner: Καλώδιακό"
+
+#, fuzzy
+#~ msgid "Frontend: Unknown"
+#~ msgstr "Δέκτης:"
+
+#~ msgid "add only not scrambled services"
+#~ msgstr "Κρύψημο κλειδωμένων υπηρεσιών"
+
+#~ msgid "Audiotrack(AC3)"
+#~ msgstr "Επιλογή ήχου (AC3)"
+
+#~ msgid "setup"
+#~ msgstr "Εγκατάσταση"
+
+#~ msgid "Help window"
+#~ msgstr "Παράθυρο βοήθειας."
+
+#~ msgid "close the help window"
+#~ msgstr "Κλέισημο παραθύρου βοήθειας"
+
+#~ msgid "scroll up"
+#~ msgstr "Ρολάρισμα επάνω"
+
+#~ msgid "scroll down"
+#~ msgstr "Ρολάρισμα κάτω"
+
+#~ msgid "enigma event view"
+#~ msgstr "Παράθυρο προβολής γεγονότων"
+
+#~ msgid "enigma Zapp"
+#~ msgstr "enigma Zapp"
+
+#~ msgid "enigma mainmenu"
+#~ msgstr "Επιστροφή στο προηγούμενο μενού"
+
+#~ msgid "EPG selector"
+#~ msgstr "Επιλογή στιλ EPG"
+
+#~ msgid "PluginOffsetActions"
+#~ msgstr "Ρυθμίσεις για τα πρόσθετα (plugins)"
+
+#~ msgid "EPG Style Selector"
+#~ msgstr "Επιλογή στιλ EPG"
+
+#~ msgid "timerView"
+#~ msgstr "Χρονοδιακόπτης"
+
+#~ msgid "Timer Edit View"
+#~ msgstr "Σύνταξη χρονοδιακόπτη"
+
+#~ msgid "Channel:"
+#~ msgstr "Κανάλι:"
+
+#~ msgid "Bouquets (TV)"
+#~ msgstr "Μπουκέτα (TV)"
+
+#~ msgid "Bouquets (File)"
+#~ msgstr "Μπουκέτα (Αρχεία)"
+
+#~ msgid "Bouquets (Radio)"
+#~ msgstr "Μπουκέτα (Radio)"
+
+#~ msgid "Favourites (TV)"
+#~ msgstr "Αγαπημένα (TV)"
+
+#~ msgid "Favourites (Radio)"
+#~ msgstr "Αγαπημένα (Radio)"
+
+#~ msgid "Favourites (File)"
+#~ msgstr "Αγαπημένα (Αρχεία)"
+
+#~ msgid "restart your dreambox"
+#~ msgstr "Επανεκίνηση του dreambox"
+
+#~ msgid "shutdown your dreambox"
+#~ msgstr "Τέλος λειτουργίας"
+
+#~ msgid "shutdown your dbox-2"
+#~ msgstr "Τέλος λειτουργίας"
+
+#~ msgid "restart your dbox-2"
+#~ msgstr "Επανεκίνηση του dbox-2"
+
+#, fuzzy
+#~ msgid "set as startup"
+#~ msgstr "Ρύθμιση ανατολικού τεχνητού ορίου"
+
+#, fuzzy
+#~ msgid "reset startup"
+#~ msgstr "Επανεκίνηση"
+
+#~ msgid "Pause "
+#~ msgstr "Παύση"
+
+#~ msgid "Play "
+#~ msgstr "Αναπαραγωγή"
+
+#~ msgid ""
+#~ "\n"
+#~ "Filesize: %d MB"
+#~ msgstr ""
+#~ "\n"
+#~ "Μέγεθος αρχείου: %d MB"
+
+#, fuzzy
+#~ msgid "Alpha"
+#~ msgstr "Άλφα:"
+
+#~ msgid "Standby:"
+#~ msgstr "Αναμονή:"
+
+#~ msgid "standby  "
+#~ msgstr "Αναμονή:"
+
+#~ msgid "Providers (TV)"
+#~ msgstr "Παροχείς (TV)"
+
+#~ msgid "Providers (Radio)"
+#~ msgstr "Παροχείς (Radio)"
+
+#~ msgid "Providers (Data)"
+#~ msgstr "Παροχείς (Data)"
+
+#~ msgid "All services (TV)"
+#~ msgstr "Όλες οι υπηρεσίες (TV)"
+
+#~ msgid "All services (Radio)"
+#~ msgstr "Όλες οι υπηρεσίες (Radio)"
+
+#~ msgid "All services (Data)"
+#~ msgstr "Όλες οι υπηρεσίες (Data)"
+
+#~ msgid "Satellites (TV)"
+#~ msgstr "Δορυφόροι (TV)"
+
+#~ msgid "Satellites (Radio)"
+#~ msgstr "Δορυφόροι (Radio)"
+
+#~ msgid "Satellites (Data)"
+#~ msgstr "Δορυφόροι (Data)"
+
+#~ msgid " - provider"
+#~ msgstr " - παροχέας"
+
+#~ msgid " - services"
+#~ msgstr " - υπηρεσίες"
+
+#~ msgid "Delete File"
+#~ msgstr "Διαγραφή αρχείου"
+
+#~ msgid "Rename File"
+#~ msgstr "Μετονομασία αρχείου"
+
+#, fuzzy
+#~ msgid "store settings and close window"
+#~ msgstr "Επιστροφή με αποθήκευση αλλαγών"
+
+#~ msgid "store"
+#~ msgstr "Αποθήκευση"
+
+#, fuzzy
+#~ msgid "store timeshift settings and leave"
+#~ msgstr "Επιστροφή με αποθήκευση παραμέτρων RF."
+
+#, fuzzy
+#~ msgid "Close"
+#~ msgstr "κλείσιμο"
+
+#~ msgid "sends switch cmd 2"
+#~ msgstr "Αποστολή switch cmd 2"
+
+#~ msgid "sends switch cmd 3"
+#~ msgstr "Αποστολή switch cmd 3"
+
+#~ msgid "sends switch cmd 4"
+#~ msgstr "Αποστολή switch cmd 4"
+
+#~ msgid "sends switch cmd 5"
+#~ msgstr "Αποστολή switch cmd 5"
+
+#~ msgid "sends switch cmd 6"
+#~ msgstr "Αποστολή switch cmd 6"
+
+#~ msgid "sends switch cmd 7"
+#~ msgstr "Αποστολή switch cmd 7"
+
+#~ msgid "sends switch cmd 8"
+#~ msgstr "Αποστολή switch cmd 8"
+
+#~ msgid "sends switch cmd 9"
+#~ msgstr "Αποστολή switch cmd 9"
+
+#~ msgid "sends switch cmd 10"
+#~ msgstr "Αποστολή switch cmd 10"
+
+#~ msgid "sends switch cmd 11"
+#~ msgstr "Αποστολή switch cmd 11"
+
+#~ msgid "sends switch cmd 12"
+#~ msgstr "Αποστολή switch cmd 12"
+
+#~ msgid "sends switch cmd 13"
+#~ msgstr "Αποστολή switch cmd 13"
+
+#~ msgid "sends switch cmd 14"
+#~ msgstr "Αποστολή switch cmd 14"
+
+#~ msgid "sends switch cmd 15"
+#~ msgstr "Αποστολή switch cmd 15"
+
+#~ msgid "sends switch cmd 16"
+#~ msgstr "Αποστολή switch cmd 16"
+
+#~ msgid "Input 2"
+#~ msgstr "Είσοδος 2"
+
+#~ msgid "select uncommitted switch Input 2"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 2'"
+
+#~ msgid "Input 3"
+#~ msgstr "Είσοδος 3"
+
+#~ msgid "select uncommitted switch Input 3"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 3'"
+
+#~ msgid "Input 4"
+#~ msgstr "Είσοδος 4"
+
+#~ msgid "select uncommitted switch Input 4"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 4'"
+
+#~ msgid "Input 5"
+#~ msgstr "Είσοδος 5"
+
+#~ msgid "select uncommitted switch Input 5"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 5'"
+
+#~ msgid "Input 6"
+#~ msgstr "Είσοδος 6"
+
+#~ msgid "select uncommitted switch Input 6"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 6'"
+
+#~ msgid "Input 7"
+#~ msgstr "Είσοδος 7"
+
+#~ msgid "select uncommitted switch Input 7"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 7'"
+
+#~ msgid "Input 8"
+#~ msgstr "Είσοδος 8"
+
+#~ msgid "select uncommitted switch Input 8"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 8'"
+
+#~ msgid "Input 9"
+#~ msgstr "Είσοδος 9"
+
+#~ msgid "select uncommitted switch Input 9"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 9'"
+
+#~ msgid "Input 10"
+#~ msgstr "Είσοδος 10"
+
+#~ msgid "select uncommitted switch Input 10"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 10'"
+
+#~ msgid "Input 11"
+#~ msgstr "Είσοδος 11"
+
+#~ msgid "select uncommitted switch Input 11"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 11'"
+
+#~ msgid "Input 12"
+#~ msgstr "Είσοδος 12"
+
+#~ msgid "select uncommitted switch Input 12"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 12'"
+
+#~ msgid "Input 13"
+#~ msgstr "Είσοδος 13"
+
+#~ msgid "select uncommitted switch Input 13"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 13'"
+
+#~ msgid "Input 14"
+#~ msgstr "Είσοδος 14"
+
+#~ msgid "select uncommitted switch Input 14"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 14'"
+
+#~ msgid "Input 15"
+#~ msgstr "Είσοδος 15"
+
+#~ msgid "select uncommitted switch Input 15"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 15'"
+
+#~ msgid "Input 16"
+#~ msgstr "Είσοδος 16"
+
+#~ msgid "select uncommitted switch Input 16"
+#~ msgstr "Επιλογή διακόπτη 'Uncommitted Switch 16'"

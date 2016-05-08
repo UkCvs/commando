@@ -1,0 +1,57 @@
+diff -urN vsftpd-1.0.1.orig/Makefile vsftpd-1.0.1/Makefile
+--- vsftpd-1.0.1.orig/Makefile	Mon Oct  8 23:35:27 2001
++++ vsftpd-1.0.1/Makefile	Fri Mar  1 23:14:33 2002
+@@ -1,10 +1,9 @@
+ # Makefile for systems with GNU tools
+-CC 	=	gcc
+ INSTALL	=	install
+ IFLAGS  = -idirafter dummyinc
+ #CFLAGS = -g
+-CFLAGS	=	-O2 -Wall -W -Wshadow #-pedantic -Werror -Wconversion
++CFLAGS	=	-Os -Wall -W -mcpu=823 -mmultiple -mstring -meabi -msoft-float
+ 
+-LIBS	=	`./vsf_findlibs.sh`
++LIBS	=	-lcrypt
+ LINK	=	-Wl,-s
+ 
+ OBJS	=	main.o utility.o prelogin.o ftpcmdio.o postlogin.o privsock.o \
+diff -uNr vsftpd-2.2.2.org//builddefs.h vsftpd-2.2.2/builddefs.h
+--- vsftpd-2.2.2.org//builddefs.h	2009-11-12 04:27:04.000000000 +0100
++++ vsftpd-2.2.2/builddefs.h	2010-06-06 22:09:03.000000000 +0200
+@@ -2,7 +2,7 @@
+ #define VSF_BUILDDEFS_H
+ 
+ #undef VSF_BUILD_TCPWRAPPERS
+-#define VSF_BUILD_PAM
++#undef VSF_BUILD_PAM
+ #undef VSF_BUILD_SSL
+ 
+ #endif /* VSF_BUILDDEFS_H */
+diff -urN vsftpd-1.0.1.orig/sysdeputil.c vsftpd-1.0.1/sysdeputil.c
+--- vsftpd-1.0.1.orig/sysdeputil.c	Tue Nov 13 22:12:54 2001
++++ vsftpd-1.0.1/sysdeputil.c	Fri Mar  1 23:01:53 2002
+@@ -57,7 +57,7 @@
+ #endif
+ #define VSF_SYSDEP_HAVE_SHADOW
+ #define VSF_SYSDEP_HAVE_USERSHELL
+-#define VSF_SYSDEP_HAVE_LIBCAP
++#undef VSF_SYSDEP_HAVE_LIBCAP
+ #define VSF_SYSDEP_HAVE_UTMPX
+ 
+ #define __USE_GNU
+diff -urN vsftpd-1.0.1.orig/vsftpd-dbox2.conf vsftpd-1.0.1/vsftpd-dbox2.conf
+--- vsftpd-1.0.1.orig/vsftpd-dbox2.conf	Thu Jan  1 01:00:00 1970
++++ vsftpd-1.0.1/vsftpd-dbox2.conf	Fri Mar  1 23:13:43 2002
+@@ -0,0 +1,12 @@
++# config file /etc/vsftpd.conf
++
++anonymous_enable=NO
++local_enable=YES
++write_enable=YES
++local_umask=022
++dirmessage_enable=YES
++xferlog_enable=NO
++connect_from_port_20=YES
++secure_chroot_dir=/share/empty
++banner_file=/etc/issue.net
++use_localtime=YES

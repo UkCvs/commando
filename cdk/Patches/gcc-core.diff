@@ -1,0 +1,42 @@
+diff -Naur gcc-3.4.4.orig/gcc/Makefile.in gcc-3.4.4/gcc/Makefile.in
+--- gcc-3.4.4.orig/gcc/Makefile.in	2005-02-24 10:26:57.000000000 +0100
++++ gcc-3.4.4/gcc/Makefile.in	2005-10-23 17:08:55.000000000 +0200
+@@ -350,7 +350,10 @@
+ CROSS_SYSTEM_HEADER_DIR = @CROSS_SYSTEM_HEADER_DIR@
+ 
+ # autoconf sets SYSTEM_HEADER_DIR to one of the above.
+-SYSTEM_HEADER_DIR = @SYSTEM_HEADER_DIR@
++# Purge it of unneccessary internal relative paths
++# to directories that might not exist yet.
++# The sed idiom for this is to repeat the search-and-replace until it doesn't match, using :a ... ta.
++SYSTEM_HEADER_DIR = `echo @SYSTEM_HEADER_DIR@ | sed -e :a -e "s,[^/]*/\.\.\/,," -e ta`
+ 
+ # Control whether to run fixproto and fixincludes.
+ STMP_FIXPROTO = @STMP_FIXPROTO@
+@@ -2541,11 +2544,13 @@
+ 	$(SHELL) ${srcdir}/mkinstalldirs $(DESTDIR)$(gcc_tooldir)
+ 
+ # Build fixed copies of system files.
++# Abort if no system headers available, unless building a crosscompiler.
++# FIXME: abort unless building --without-headers would be more accurate and less ugly
+ stmp-fixinc: fixinc.sh gsyslimits.h
+ 	@if test ! -d ${SYSTEM_HEADER_DIR}; then \
+ 	  echo The directory that should contain system headers does not exist: >&2 ; \
+ 	  echo "  ${SYSTEM_HEADER_DIR}" >&2 ; \
+-	  if test "x${SYSTEM_HEADER_DIR}" = "x${gcc_tooldir}/sys-include"; \
++	  if test "x${SYSTEM_HEADER_DIR}" = "x`echo "${gcc_tooldir}/sys-include" | sed -e :a -e "s,[^/]*/\.\.\/,," -e ta`"; \
+ 	  then sleep 1; else exit 1; fi; \
+ 	fi
+ 	rm -rf include; mkdir include
+diff -uNr gcc-3.4.6/gcc/collect2.c gcc-3.4.6.new/gcc/collect2.c
+--- gcc-3.4.6/gcc/collect2.c	2005-01-10 16:25:23.000000000 +0100
++++ gcc-3.4.6.new/gcc/collect2.c	2008-12-30 18:37:21.000000000 +0100
+@@ -1534,7 +1534,7 @@
+   if (redir)
+     {
+       /* Open response file.  */
+-      redir_handle = open (redir, O_WRONLY | O_TRUNC | O_CREAT);
++      redir_handle = open (redir, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+ 
+       /* Duplicate the stdout and stderr file handles
+ 	 so they can be restored later.  */
