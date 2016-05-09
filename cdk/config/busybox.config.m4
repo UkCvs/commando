@@ -157,7 +157,7 @@ option(`CONFIG_UNLZMA', `n', `n')
 # CONFIG_LZMA is not set
 # CONFIG_UNXZ is not set
 # CONFIG_XZ is not set
-option(`CONFIG_UNZIP', `n', `n')
+option(`CONFIG_UNZIP', `y', `y')
 
 #
 # Coreutils
@@ -235,7 +235,7 @@ option(`CONFIG_NICE', `y', `y')
 option(`CONFIG_NOHUP', `n', `n')
 option(`CONFIG_OD', `n', `n')
 option(`CONFIG_PRINTENV', `n', `n')
-option(`CONFIG_PRINTF', `n', `n')
+option(`CONFIG_PRINTF', `y', `y')
 option(`CONFIG_PWD', `y', `n')
 option(`CONFIG_READLINK', `y', `y')
 option(`CONFIG_FEATURE_READLINK_FOLLOW', `y', `y')
@@ -280,7 +280,7 @@ option(`CONFIG_UNIQ', `y', `n')
 option(`CONFIG_USLEEP', `n', `n')
 option(`CONFIG_UUDECODE', `n', `n')
 option(`CONFIG_UUENCODE', `n', `n')
-option(`CONFIG_WC', `n', `n')
+option(`CONFIG_WC', `y', `y')
 option(`CONFIG_FEATURE_WC_LARGE', `n', `n')
 option(`CONFIG_WHO', `n', `n')
 option(`CONFIG_WHOAMI', `y', `n')
@@ -345,7 +345,7 @@ option(`CONFIG_WHICH', `n', `n')
 option(`CONFIG_AWK', `y', `y')
 # CONFIG_FEATURE_AWK_LIBM is not set
 # CONFIG_CMP is not set
-option(`CONFIG_DIFF', `n', `n')
+option(`CONFIG_DIFF', `y', `y')
 option(`CONFIG_FEATURE_DIFF_LONG_OPTIONS', `n', `n')
 option(`CONFIG_FEATURE_DIFF_DIR', `n', `n')
 option(`CONFIG_ED', `n', `n')
@@ -666,14 +666,15 @@ CONFIG_FEATURE_BEEP_LENGTH_MS=0
 # CONFIG_FEATURE_CHAT_VAR_ABORT_LEN is not set
 # CONFIG_FEATURE_CHAT_CLR_ABORT is not set
 option(`CONFIG_CHRT', `n', `n')
-ifdef(`cron',
-`option(`CONFIG_CROND', `y', `y')',
-`option(`CONFIG_CROND', `n', `n')'
-)
+#ifdef(`cron',
+#`option(`CONFIG_CROND', `y', `y')',
+#`option(`CONFIG_CROND', `n', `n')'
+#)
+option(`CONFIG_CROND', `y', `y')
 # CONFIG_FEATURE_CROND_D is not set
 option(`CONFIG_FEATURE_CROND_CALL_SENDMAIL', `n', `n')
-CONFIG_FEATURE_CROND_DIR=""
-option(`CONFIG_CRONTAB', `n', `n')
+CONFIG_FEATURE_CROND_DIR="/var/spool/cron"
+option(`CONFIG_CRONTAB', `y', `y')
 option(`CONFIG_DC', `n', `n')
 # CONFIG_FEATURE_DC_LIBM is not set
 option(`CONFIG_DEVFSD', `n', `n')
@@ -727,7 +728,7 @@ option(`CONFIG_RFKILL', `n', `n')
 option(`CONFIG_RUNLEVEL', `n', `n')
 option(`CONFIG_RX', `n', `n')
 option(`CONFIG_SETSID', `n', `n')
-option(`CONFIG_STRINGS', `n', `n')
+option(`CONFIG_STRINGS', `y', `y')
 option(`CONFIG_TASKSET', `n', `n')
 # CONFIG_FEATURE_TASKSET_FANCY is not set
 option(`CONFIG_TIME', `y', `y')
@@ -1024,7 +1025,7 @@ option(`CONFIG_MSH', `n', `n')
 #
 # Bourne Shell Options
 #
-# CONFIG_SH_MATH_SUPPORT is not set
+option(`CONFIG_SH_MATH_SUPPORT', `y', `y')
 # CONFIG_SH_MATH_SUPPORT_64 is not set
 option(`CONFIG_FEATURE_SH_EXTRA_QUIET', `n', `n')
 # CONFIG_FEATURE_SH_STANDALONE is not set
