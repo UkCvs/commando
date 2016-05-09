@@ -223,7 +223,7 @@ gcc_dream;3.4.4;gcc-3.4.4;gcc-core-3.4.4.tar.bz2:gcc-g++-3.4.4.tar.bz2:gcc-g++-p
 dreamfiles;20061230;dreamfiles_20061230;dreamfiles_20061230.tar.bz2;dirextract:dreamfiles_20061230.tar.bz2
 dreamdriver_dm7000;20071022;dreamdriver_dm7000_20071022;dreamdriver_dm7000_20071022.tar.bz2;dirextract:dreamdriver_dm7000_20071022.tar.bz2
 dreamdriver_dm56x0;20071022;dreamdriver_dm56x0_20071022;dreamdriver_dm56x0_20071022.tar.bz2;dirextract:dreamdriver_dm56x0_20071022.tar.bz2
-dreamdriver_dm500;20071022;dreamdriver_dm500_20071022;dreamdriver_dm500_20071022.tar.bz2;dirextract:dreamdriver_dm500_20071022.tar.bz2
+dreamdriver_dm500;20070402;dreamdriver_dm500_20070402;dreamdriver_dm500_20070402.tar.bz2;dirextract:dreamdriver_dm500_20070402.tar.bz2
 
 #
 # ipbox
