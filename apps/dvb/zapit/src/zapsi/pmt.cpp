@@ -372,6 +372,17 @@ int parse_pmt(CZapitChannel * const channel)
 
 	CCaPmt *caPmt = new CCaPmt();
 
+	//pmt.tmp in /tmp create
+	int ia,ii,pmtlen;
+	FILE *fout;
+	pmtlen=((buffer[1]&0xf)<<8)+buffer[2]+3;
+	fout=fopen("/tmp/pmt.tmp","wt");
+
+	for (ia=0;ia<pmtlen;ia++)
+		ii=putc(buffer[ia],fout);
+
+	fclose(fout);
+
 	/* ca pmt */
 	caPmt->program_number = (buffer[3] << 8) + buffer[4];
 	caPmt->reserved1 = buffer[5] >> 6;
