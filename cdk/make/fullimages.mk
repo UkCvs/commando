@@ -222,8 +222,8 @@ else
 	$(hostprefix)/bin/mkcramfs-e -eb $(flashprefix)/boot $(flashprefix)/boot-cramfs.img
 	mv ./bild $(flashprefix)/boot/root/platform/kernel
 endif
-	@if [ `stat -c %s $(flashprefix)/boot-cramfs.img` -gt 1179648 ]; then \
-		echo "ERROR: CramFS part is too big for image (max. allowed 1179648 bytes)"; \
+	@if [ `stat -c %s $(flashprefix)/boot-cramfs.img` -gt 1048576 ]; then \
+		echo "ERROR: CramFS part is too big for image (max. allowed 1048576 bytes)"; \
 		rm -f $(flashprefix)/boot-cramfs.img.too-big 2> /dev/null || /bin/true; \
 		mv $(flashprefix)/boot-cramfs.img $(flashprefix)/boot-cramfs.img.too-big; \
 		exit 1; \
@@ -234,8 +234,8 @@ $(flashprefix)/root-squashfs.img: \
 		$(flashprefix)/root-enigma-squashfs
 	-rm $@
 	$(hostprefix)/bin/mksquashfs-dream $(flashprefix)/root-enigma-squashfs $@ -be -all-root
-	@if [ `stat -c %s $@` -gt 5111808 ]; then \
-		echo "ERROR: SquashFS part is too big for image (max. allowed 5111808 bytes)"; \
+	@if [ `stat -c %s $@` -gt 3276800 ]; then \
+		echo "ERROR: SquashFS part is too big for image (max. allowed 3276800 bytes)"; \
 		rm -f $(flashprefix)/root-squashfs.img.too-big 2> /dev/null || /bin/true; \
 		mv $@ $(flashprefix)/root-squashfs.img.too-big; \
 		exit 1; \
@@ -243,29 +243,64 @@ $(flashprefix)/root-squashfs.img: \
 
 $(flashprefix)/complete.img: $(flashprefix)/boot-cramfs.img $(flashprefix)/root-squashfs.img
 	cp $(flashprefix)/boot-cramfs.img $(flashprefix)/complete.img; \
-	dd if=$(flashprefix)/root-squashfs.img of=$(flashprefix)/complete.img bs=1024 seek=1152
+	dd if=$(flashprefix)/root-squashfs.img of=$(flashprefix)/complete.img bs=1024 seek=1024
 
 $(flashprefix)/neutrino-squashfs.dream: \
 		$(flashprefix)/root \
 		$(flashprefix)/root-neutrino-squashfs \
-		$(flashprefix)/boot-cramfs.img $(flashprefix)/root-neutrino-squashfs.img $(flashprefix)/complete-neutrino.img
+		$(flashprefix)/boot-cramfs.img \
+		$(flashprefix)/root-neutrino-squashfs.img \
+		$(flashprefix)/var-neutrino-jffs2.img \
+		$(flashprefix)/complete-neutrino.img
 		@TUXBOX_CUSTOMIZE@
 
 $(flashprefix)/root-neutrino-squashfs.img: \
 		$(flashprefix)/root \
 		$(flashprefix)/root-neutrino-squashfs
 	-rm $@
-	$(hostprefix)/bin/mksquashfs-dream $(flashprefix)/root-neutrino-squashfs $@ -be -all-root
-	@if [ `stat -c %s $@` -gt 5111808 ]; then \
-		echo "ERROR: SquashFS part is too big for image (max. allowed 5111808 bytes)"; \
+	m4 -D flashprefix=$(flashprefix)/root-neutrino-squashfs \
+		root-neutrino-squashfs-ignore-list.m4 > $(buildprefix)/root-neutrino-squashfs-ignore-list
+	$(hostprefix)/bin/mksquashfs-dream \
+	$(flashprefix)/root-neutrino-squashfs $@ -be -all-root -ef \
+	$(buildprefix)/root-neutrino-squashfs-ignore-list
+	@if [ `stat -c %s $@` -gt 3276800 ]; then \
+		echo "ERROR: SquashFS part is too big for image (max. allowed 3276800 bytes)"; \
 		rm -f $(flashprefix)/root-neutrino-squashfs.img.too-big 2> /dev/null || /bin/true; \
 		mv $@ $(flashprefix)/root-neutrino-squashfs.img.too-big; \
 		exit 1; \
 	fi
 
-$(flashprefix)/complete-neutrino.img: $(flashprefix)/boot-cramfs.img $(flashprefix)/root-neutrino-squashfs.img
-	cp $(flashprefix)/boot-cramfs.img $(flashprefix)/complete-neutrino.img; \
-	dd if=$(flashprefix)/root-neutrino-squashfs.img of=$(flashprefix)/complete-neutrino.img bs=1024 seek=1152
+$(flashprefix)/cramfs-squashfs-neutrino.img: \
+		$(flashprefix)/boot-cramfs.img \
+		$(flashprefix)/root-neutrino-squashfs.img
+	cp $(flashprefix)/boot-cramfs.img $(flashprefix)/cramfs-squashfs-neutrino.img; \
+	dd if=$(flashprefix)/root-neutrino-squashfs.img of=$(flashprefix)/cramfs-squashfs-neutrino.img bs=1024 seek=1024
+
+$(flashprefix)/var-neutrino-jffs2.img: \
+		$(flashprefix)/root \
+		$(flashprefix)/root-neutrino-squashfs
+	-rm $@
+	mkfs.jffs2 -b -U -e 0x20000 --pad=3801088 -r $(flashprefix)/root-neutrino-squashfs/var_init -o $@
+	@if [ `stat -c %s $@` -gt 3801088 ]; then \
+		echo "ERROR: jffs2 part is too big for image (max. allowed 3801088 bytes)"; \
+		rm -f $(flashprefix)/var-neutrino-jffs2.img.too-big 2> /dev/null || /bin/true; \
+		mv $@ $(flashprefix)/var-neutrino-jffs2.img.too-big; \
+		exit 1; \
+	fi
+
+$(flashprefix)/complete-neutrino.img: \
+		$(flashprefix)/boot-cramfs.img \
+		$(flashprefix)/root-neutrino-squashfs.img \
+		$(flashprefix)/cramfs-squashfs-neutrino.img \
+		$(flashprefix)/var-neutrino-jffs2.img
+	cp $(flashprefix)/cramfs-squashfs-neutrino.img $(flashprefix)/complete-neutrino.img; \
+	dd if=$(flashprefix)/var-neutrino-jffs2.img of=$(flashprefix)/complete-neutrino.img bs=1024 seek=4224
+	@if [ `stat -c %s $@` -ne 8126464 ]; then \
+		echo "ERROR: complete image is not flash (w/o bootloader) size (flash. size 8126464 bytes)"; \
+		rm -f $(flashprefix)/complete-neutrino.img.bad.size 2> /dev/null || /bin/true; \
+		mv $@ $(flashprefix)/complete-neutrino.img.bad.size; \
+		exit 1; \
+	fi
 endif
 
 $(flashprefix)/enigma-jffs2.img1x $(flashprefix)/enigma-jffs2.img2x: \
