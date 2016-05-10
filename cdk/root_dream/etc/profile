@@ -1,6 +1,7 @@
 # /etc/profile
 
-export PATH="/sbin:/bin"
+export LD_LIBRARY_PATH=/tmp:/var/lib:/lib:$LD_LIBRARY_PATH
+export PATH="/sbin:/bin:/var/bin:/var/bin/emu"
 
 # get environment from info module
 . /proc/bus/dbox.sh                                                             
