@@ -48,7 +48,7 @@
 #include <daemonc/remotecontrol.h>
 extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 #include <zapit/client/zapittools.h>
-
+#include <iostream>
 #include <global.h>
 #include <neutrino.h>
 
@@ -165,7 +165,19 @@ void CInfoViewer::showSatfind()
 	int snr;
 	int ber;
 
-	sig = signal.sig * 100 / 65535;
+	if (g_info.delivery_system == DVB_S)
+		sig = signal.sig * 100 / 65535;
+	else
+	{
+		if (signal.sig >= 65535)
+			sig = 0;
+		else if (signal.sig > 28671)
+			// UK signal 0x6FFF
+			sig = 100;
+		else
+			sig = signal.sig * 100 / 28671;
+	}
+
 	snr = signal.snr * 100 / 65535;
 	ber = signal.ber / 2621;
 
