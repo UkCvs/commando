@@ -48,7 +48,7 @@
 #include <daemonc/remotecontrol.h>
 extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 #include <zapit/client/zapittools.h>
-#include <iostream>
+
 #include <global.h>
 #include <neutrino.h>
 
