@@ -1,4 +1,4 @@
-SUBDIRS = etc tuxbox
+SUBDIRS = etc spool tuxbox
 
 DIR = /var_init
 

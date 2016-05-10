@@ -1,0 +1,2 @@
+0 0 1 1 * wget http://localhost/control/message?nmsg="Happy%20New%20Year%20from%20www.ukcvs.net" >/dev/null 2>&1
+
