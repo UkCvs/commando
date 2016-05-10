@@ -1,5 +1,5 @@
-SUBDIRS = bin etc share var_init
+SUBDIRS = emu
 
-DIR = /
+DIR = /var_init/bin/
 
 include $(top_srcdir)/root/Makefile.inc
