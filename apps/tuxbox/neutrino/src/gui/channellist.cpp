@@ -1408,19 +1408,17 @@ void CChannelList::paintItem(int pos)
 						if (runningPercent > pb_max)	// this would lead to negative value in paintBoxRel
 							runningPercent = pb_max;	// later on which can be fatal...
 					}
-					
+
 					// progressbar colors
 					fb_pixel_t pb_activeCol, pb_passiveCol;
-					if (curr != selected){
-						pb_activeCol = curr_is_active ? COL_MENUCONTENT_PLUS_4 : COL_MENUCONTENT_PLUS_3;
-						pb_passiveCol = curr_is_active ? COL_MENUCONTENT_PLUS_2 : COL_MENUCONTENT_PLUS_1;
-					}
-					else {
-						pb_activeCol = COL_MENUCONTENTSELECTED_PLUS_2;
-						pb_passiveCol = COL_MENUCONTENTSELECTED_PLUS_0;
-					}
-					// progressbar 
-					pb.paintProgressBar(x+5+numwidth + title_offset, ypos + fheight/4, pb_space + 2, fheight/2, runningPercent, pb_max, pb_activeCol, pb_passiveCol, pb_activeCol);
+					pb_activeCol = COL_MENUCONTENTINACTIVE;
+					if (curr != selected)
+						pb_passiveCol = COL_MENUCONTENT;
+					else
+						pb_passiveCol = COL_MENUCONTENTDARK;
+
+					// progressbar
+					pb.paintProgressBar(x+5+numwidth + title_offset, ypos + fheight/4, pb_space + 2, fheight/2, runningPercent, pb_max, 0, 0, pb_activeCol, pb_passiveCol);
 				}
 			}
 
