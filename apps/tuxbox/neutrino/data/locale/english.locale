@@ -478,7 +478,7 @@ flashupdate.currentversiontime Time
 flashupdate.erasefailed erasure of flash failed
 flashupdate.erasing erasing flash
 flashupdate.experimentalimage The image you have selected is an untested version, this means\nyour box maybe fail to boot after update.\n\nDo you really want to update to this version?
-flashupdate.expertfunctions Expert-functions
+flashupdate.expertfunctions Flash without Bootloader
 flashupdate.fileis0bytes the filesize is 0 Bytes
 flashupdate.fileselector File-Selector
 flashupdate.flashreadyreboot The image was successfully flashed.\nThe DBox will be rebooted now.
@@ -505,7 +505,7 @@ flashupdate.proxyserver_sep Proxyserver
 flashupdate.proxyusername Username
 flashupdate.proxyusername_hint1 enter the proxyserver username
 flashupdate.proxyusername_hint2 a empty entry means no proxy-auth
-flashupdate.readflash Read whole image
+flashupdate.readflash Backup this image
 flashupdate.readflashmtd Backup One Partition
 flashupdate.ready ready
 flashupdate.reallyflashchipset Do you really want to flash?\n\nIf an error occurs or the image is not\nvalid, the box will not boot after flashing.\nUse only images of type: %s\nselected image: %s\nTarget: %s
@@ -520,7 +520,7 @@ flashupdate.updatemode_internet online (internet)
 flashupdate.updatemode_manual manual (ftp)
 flashupdate.url_file config file
 flashupdate.versioncheck checking version
-flashupdate.writeflash Write whole image
+flashupdate.writeflash Flash a new image
 flashupdate.writeflashmtd Flash One Partition
 flashupdate.wrongbase Your Release cycle differs, unable to update\nwithout having installed the right version!
 fontmenu.channellist Channellist

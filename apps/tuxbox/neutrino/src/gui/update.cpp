@@ -86,7 +86,7 @@
 #define FILEBROWSER_UPDATE_FILTER_ALT  "squashfs"
 //#define MTD_OF_WHOLE_IMAGE             4
 #ifdef HAVE_DREAMBOX_HARDWARE
-#define MTD_TEXT_OF_WHOLE_IMAGE		"DreamBOX cramfs+squashfs"
+#define MTD_TEXT_OF_WHOLE_IMAGE		"DreamBOX (w/o bootloader)"
 #else
 #define MTD_TEXT_OF_WHOLE_IMAGE		"Flash without bootloader"
 #define MTD_DEVICE_OF_UPDATE_PART      "/dev/mtd/2"
@@ -555,7 +555,7 @@ void CFlashExpert::readmtd(int mtd)
 	std::string filename = "/tmp/mtd" + to_string(mtd) + ".img"; // US-ASCII (subset of UTF-8 and ISO8859-1)
 	if (mtd == -1)
 	{
-		filename = "/tmp/flashimage.img"; // US-ASCII (subset of UTF-8 and ISO8859-1)
+		filename = "/tmp/dm500-backup.img"; // US-ASCII (subset of UTF-8 and ISO8859-1)
 		mtd = CMTDInfo::getInstance()->findMTDNumberFromDescription(MTD_TEXT_OF_WHOLE_IMAGE); //MTD_OF_WHOLE_IMAGE;
 	}
 	setTitle(LOCALE_FLASHUPDATE_TITLEREADFLASH);
