@@ -1935,6 +1935,9 @@ root_dream/Makefile
 root_dream/bin/Makefile
 root_dream/etc/Makefile
 root_dream/etc/init.d/Makefile
+root_dream/root/Makefile
+root_dream/root/platform/Makefile
+root_dream/root/platform/kernel/Makefile
 root_dream/share/Makefile
 root_dream/share/tuxbox/Makefile
 root_dream/share/udhcpc/Makefile

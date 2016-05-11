@@ -25,6 +25,13 @@ if [ ! -e /root/platform/kernel/bild ] ; then
 	mount -t jffs2 /dev/mtdblock/1 /var
 fi
 
+# if dm 500
+if [ $mID -eq 07 ] ; then
+    if [ -e /root/platform/kernel/logo ] ; then
+        /bin/showframe /root/platform/kernel/logo
+    fi
+fi
+
 # if dm 7000
 if [ $mID -eq 05 ] ; then
 	if [ ! -e /root/platform/kernel/bild ] ; then
