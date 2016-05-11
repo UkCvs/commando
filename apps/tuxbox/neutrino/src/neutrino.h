@@ -243,6 +243,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 #ifdef HAVE_DBOX_HARDWARE
 		bool ucodes_available(void);
 #endif
+		void resetPassword();
 		void firstChannel();
 		void setupNetwork( bool force= false );
 		void setupNFS();

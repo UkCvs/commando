@@ -728,6 +728,8 @@ mainsettings.misc Extended Settings
 mainsettings.network Network
 mainsettings.osd OSD
 mainsettings.recording Recording
+mainsettings.resetpassword Access Recovery
+mainsettings.resetpassword_hint Restoring locked out access using\ndefault root password, please wait..
 mainsettings.savesettingsnow save settings now
 mainsettings.savesettingsnow_hint Saving settings,\nplease wait...
 mainsettings.streaming Movie Player

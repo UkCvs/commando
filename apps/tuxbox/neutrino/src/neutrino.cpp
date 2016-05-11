@@ -505,7 +505,11 @@ int CNeutrinoApp::loadSetup()
  	g_settings.personalize_upnpbrowser = configfile.getInt32("personalize_upnpbrowser", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 #endif
 	g_settings.personalize_scripts = configfile.getInt32("personalize_scripts", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
-	g_settings.personalize_settings = configfile.getInt32("personalize_settings", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
+
+	// do not allow users to pin protect settings menu, we have added root password reset item that we do not want personalized.
+	// g_settings.personalize_settings = configfile.getInt32("personalize_settings", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
+	g_settings.personalize_settings = CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED;
+
 	g_settings.personalize_service = configfile.getInt32("personalize_service", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
 
 	g_settings.personalize_bouqueteditor = configfile.getInt32("personalize_bouqueteditor", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
@@ -1025,7 +1029,11 @@ void CNeutrinoApp::saveSetup()
  	configfile.setInt32 ( "personalize_upnpbrowser", g_settings.personalize_upnpbrowser );
 #endif
 	configfile.setInt32 ( "personalize_scripts", g_settings.personalize_scripts );
-	configfile.setInt32 ( "personalize_settings", g_settings.personalize_settings );
+
+	// do not allow users to pin protect settings menu,
+	// we have added a root password reset item that is none personalized.
+	// configfile.setInt32 ( "personalize_settings", g_settings.personalize_settings );
+
 	configfile.setInt32 ( "personalize_service", g_settings.personalize_service );
 	configfile.setInt32 ( "personalize_sleeptimer", g_settings.personalize_sleeptimer );
 	configfile.setInt32 ( "personalize_reboot", g_settings.personalize_reboot );
@@ -1244,6 +1252,30 @@ void CNeutrinoApp::saveSetup()
 		configfile.saveConfig(NEUTRINO_SETTINGS_FILE);
 	}
 
+}
+
+/**************************************************************************************
+*                                                                                     *
+*          CNeutrinoApp -  resetPassword, set password back to default                *
+*                                                                                     *
+**************************************************************************************/
+
+void CNeutrinoApp::resetPassword()
+{
+    FILE* fd = fopen("/var/etc/passwd", "w");
+
+    if(fd != NULL)
+    {
+        fprintf(fd,"root::0:0::/:/bin/sh\n"
+                "sshd:*:65532:65534::/:/bin/false\n"
+                "ftp:*:65533:65534::/:/bin/false\n"
+                "nobody:*:65534:65534::/:/bin/false");
+        fclose(fd);
+    }
+    else
+    {
+        fprintf(stderr, "[neutrino] unable to write file /var/etc/passwd\n");
+    }
 }
 
 /**************************************************************************************
@@ -4056,6 +4088,14 @@ int CNeutrinoApp::exec(CMenuTarget* /*parent*/, const std::string & actionKey)
 
 		hintBox->hide();
 		delete hintBox;
+	}
+	else if(actionKey=="resetpassword")
+	{
+		if (ShowLocalizedMessage(LOCALE_MESSAGEBOX_INFO, LOCALE_MAINSETTINGS_RESETPASSWORD, CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo) == CMessageBox::mbrYes)
+		{
+			resetPassword();
+			ShowLocalizedHint(LOCALE_MESSAGEBOX_INFO, LOCALE_MAINSETTINGS_RESETPASSWORD_HINT, 420, g_settings.timing[SNeutrinoSettings::TIMING_INFOBAR], NEUTRINO_ICON_INFO);
+		}
 	}
 	else if(actionKey=="reloadchannels")
 	{

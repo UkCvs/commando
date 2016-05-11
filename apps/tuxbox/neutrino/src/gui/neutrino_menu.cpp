@@ -222,6 +222,8 @@ void CNeutrinoApp::InitMenuMain()
 	personalize->addSeparator(MENU_MAIN, NONEXISTANT_LOCALE, CPersonalizeGui::PERSONALIZE_SHOW_NO); //don't show this separator in personal menu
 #endif
 
+	// NOTE: we now manually override the g_settings.personalize_settings for this menu item in neutrino.cpp for box access lockout reasons!
+	//       we do not allow users to pin protect settings menu, as we have added root password reset item that we do not want personalized.
 	// settings, also as pin protected option in personalize menu, as a result of parameter value CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION
 	personalize->addItem(MENU_MAIN, new CMenuForwarder(LOCALE_MAINMENU_SETTINGS, true, NULL, &personalize->getWidget(MENU_SETTINGS)/**settings**/), &g_settings.personalize_settings, false, CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION);
 
@@ -283,6 +285,9 @@ void CNeutrinoApp::InitMenuSettings()
 	//10. -- only 10 shortcuts (1-9, 0), the next could be the last also!(10. => 0)
 	//keybindings
 	personalize->addItem(MENU_SETTINGS, new CMenuForwarder(LOCALE_MAINSETTINGS_KEYBINDING, true, NULL, new CKeybindSetup(LOCALE_MAINMENU_SETTINGS)), &g_settings.personalize_keybinding);
+
+	//resetpassword
+	personalize->addItem(MENU_SETTINGS, new CMenuForwarder(LOCALE_MAINSETTINGS_RESETPASSWORD, true, NULL, this, "resetpassword", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP), NULL, false, CPersonalizeGui::PERSONALIZE_SHOW_NO);
 
 #ifdef ENABLE_DRIVE_GUI
 	// ide, hdd, mmc setup

@@ -755,6 +755,8 @@ const char * locale_real_names[] =
 	"mainsettings.network",
 	"mainsettings.osd",
 	"mainsettings.recording",
+	"mainsettings.resetpassword",
+	"mainsettings.resetpassword_hint",
 	"mainsettings.savesettingsnow",
 	"mainsettings.savesettingsnow_hint",
 	"mainsettings.streaming",
