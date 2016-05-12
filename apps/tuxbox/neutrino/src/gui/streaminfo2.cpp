@@ -296,7 +296,11 @@ void CStreamInfo2::paint_pig(int _x, int _y, int w, int h)
 #else
 	frameBuffer->paintBoxRel(_x, _y, w, h, COL_BLACK); //black
 #endif
+#if defined BOXMODEL_DM500 || defined HAVE_IPBOX_HARDWARE
+	pig->show (_x-6, _y+3, w, h);
+#else
 	pig->show(_x, _y, w, h);
+#endif
 }
 
 void CStreamInfo2::paint_signal_fe_box(int _x, int _y, int w, int h)

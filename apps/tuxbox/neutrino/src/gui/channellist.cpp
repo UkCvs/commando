@@ -1583,10 +1583,13 @@ void CChannelList::paint()
 #if defined BOXMODEL_DM500 || defined HAVE_IPBOX_HARDWARE
 			// the dm500 seems to like only half / quarter resolution...
 			paint_pig(x+width+4, y+theight+4, 180, 144);
+		}
+		frameBuffer->paintBackgroundBoxRel(x+width+4, y+theight+4, 180, 144);
 #else
 			paint_pig(x+width+4, y+theight+4, 206, 190);
-#endif
 		}
+		frameBuffer->paintBackgroundBoxRel(x+width+4, y+theight+4, 206, 190);
+#endif
 	}
 
 	for(unsigned int count = 0; count < listmaxshow; count++)
@@ -1602,7 +1605,11 @@ void CChannelList::paint_pig (int _x, int _y, int w, int h)
 #else
 	frameBuffer->paintBoxRel(_x, _y, w, h, COL_MENUCONTENT_PLUS_0);
 #endif
+#if defined BOXMODEL_DM500 || defined HAVE_IPBOX_HARDWARE
+	pig->show (_x-6, _y+3, w, h);
+#else
 	pig->show (_x, _y, w, h);
+#endif
 }
 
 void CChannelList::paint_events(int index)

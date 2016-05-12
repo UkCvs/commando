@@ -197,7 +197,12 @@ void CImageInfo::paint_pig(int xPig, int yPig, int w, int h)
 #else
 	frameBuffer->paintBoxRel(xPig, yPig, w, h, COL_MENUCONTENT_PLUS_0);
 #endif
+#if defined BOXMODEL_DM500 || defined HAVE_IPBOX_HARDWARE
+	pig->show (xPig-6, yPig+3, w, h);
+#else
 	pig->show (xPig, yPig, w, h);
+#endif
+
 }
 
 void CImageInfo::paintLine(int xp, int font, const char* text, uint8_t color = COL_MENUCONTENT )
