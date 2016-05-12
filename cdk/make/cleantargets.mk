@@ -17,6 +17,9 @@ ide-apps-depsclean:
 contrib-apps-depsclean:
 	$(CONTRIB_DEPSCLEANUP)
 
+neutrinoclean: flash-clean
+	-$(MAKE) -C $(appsdir)/tuxbox/neutrino clean
+
 mostlyclean-local: flash-clean cdk-clean
 
 # Clean tuxbox source directories
@@ -139,5 +142,5 @@ flash-mostlyclean: flash-semiclean
 flash-clean: flash-mostlyclean
 	rm -f $(flashprefix)/*.img*
 
-.PHONY: depsclean mostlyclean-local cdk-clean distclean-local flash-semiclean \
+.PHONY: depsclean neutrinoclean mostlyclean-local cdk-clean distclean-local flash-semiclean \
 flash-mostlyclean flash-clean
