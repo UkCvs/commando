@@ -1,0 +1,5 @@
+oscam=
+mgcamd=
+evocamd=
+newcamd=
+CCcam=

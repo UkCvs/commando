@@ -218,6 +218,27 @@ bouqueteditor.switchmode TV/Radio
 bouquetlist.bouquetselect Bouquet select
 bouquetlist.head Bouquets
 cablesetup.provider cable provider
+camdmenu.camddetect_hint Detecting SoftCams...
+camdmenu.camdmenu Softcam Menu
+camdmenu.camdreset Camd Reset
+camdmenu.camdreset_hint Please wait, Softcam is restarting...
+camdmenu.camdversion Softcam Version
+camdmenu.cccam CCcam
+camdmenu.cccamstart CCcam Start
+camdmenu.cccamstop CCcam Stop
+camdmenu.evocamd Evocamd
+camdmenu.evocamdstart Evocamd Start
+camdmenu.evocamdstop Evocamd Stop
+camdmenu.info Camd Status
+camdmenu.mgcamd MgCamd
+camdmenu.mgcamdstart MgCamd Start
+camdmenu.mgcamdstop MgCamd Stop
+camdmenu.newcamd NewCamd
+camdmenu.newcamdstart NewCamd Start
+camdmenu.newcamdstop NewCamd Stop
+camdmenu.oscam OSCam
+camdmenu.oscamstart OSCam Start
+camdmenu.oscamstop OSCam Stop
 channellist.additional Additional informations
 channellist.additional_off off
 channellist.additional_on on
@@ -700,6 +721,7 @@ listscroll.exit exit
 listscroll.up up
 mainmenu.audioplayer Audioplayer
 mainmenu.clearsectionsd Clear EPG Cache
+mainmenu.extrasmenu Extras Menu
 mainmenu.games Games
 mainmenu.head Main Menu
 mainmenu.movieplayer Movie Player
@@ -1424,6 +1446,11 @@ streamingserver.noconnect No connection to streamingserver.\nRecording canceled.
 stringinput.caps caps / no caps
 stringinput.clear clear all
 subtitles.head Subtitles
+systeminfo.cpu CPU/Filesystem
+systeminfo.menu System Information
+systeminfo.messages Messages
+systeminfo.performance Performance
+systeminfo.process Memory/Processes
 timer.eventrecord.msg The event is scheduled for recording.\nTo edit the schedule open the timer list.
 timer.eventrecord.title Schedule Record
 timer.eventtimed.msg The event is scheduled.\nThe dbox2 will power on and \nswitch to this channel at the given time.
@@ -1562,6 +1589,7 @@ word.from from
 word.hours_short hr.
 word.milliseconds_short ms
 word.minutes_short min.
+zapit.rezap Resyncronizing audio and video- please wait...
 zapit.scantype scan for services
 zapit.scantype.all all services
 zapit.scantype.radio only radio

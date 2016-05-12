@@ -87,6 +87,7 @@
 #include "gui/widget/hintbox.h"
 #include "gui/widget/icons.h"
 #include "gui/widget/messagebox.h"
+#include "gui/camdmenu.h"
 
 #ifdef ENABLE_AUDIOPLAYER
 #include "gui/audioplayer.h"
@@ -2428,6 +2429,12 @@ void CNeutrinoApp::RealRun(CMenuWidget &menu)
 				{
 					tvMode();
 				}
+				else if (ShowLocalizedMessage(LOCALE_MESSAGEBOX_INFO, LOCALE_CAMDMENU_CAMDRESET,
+					CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo) == CMessageBox::mbrYes) {
+					CamdAuswahl * Camd = new CamdAuswahl();
+					Camd->CamdReset();
+					delete Camd;
+				}
 			}
 			else if( msg == CRCInput::RC_radio )
 			{
@@ -2447,7 +2454,11 @@ void CNeutrinoApp::RealRun(CMenuWidget &menu)
 			else if( msg == CRCInput::RC_audio )
 			{
 				// audio channel selection
-				showUserMenu(SNeutrinoSettings::BUTTON_GREEN);
+				// showUserMenu(SNeutrinoSettings::BUTTON_GREEN);
+
+				// audio button function changed to rezap for audio resync
+				ShowLocalizedHint(LOCALE_MESSAGEBOX_INFO, LOCALE_ZAPIT_REZAP, 420, 1, NEUTRINO_ICON_INFO);
+				channelList->ReZap();
 			}
 			else if( msg == CRCInput::RC_video )
 			{

@@ -180,6 +180,9 @@ class CChannelList
 
 		int handleMsg(const neutrino_msg_t msg, neutrino_msg_data_t data);
 
+		//ExtrasMenu
+		void ReZap();
+
 		bool isEmpty() const;
 		int getSize() const;
 		int getSelectedChannelIndex() const;

@@ -23,6 +23,7 @@ libneutrino_gui_a_SOURCES = \
 	audio_setup.cpp \
 	bookmarkmanager.cpp \
 	bouquetlist.cpp \
+	camdmenu.cpp \
 	channellist.cpp \
 	color.cpp \
 	driver_boot_setup.cpp \
@@ -35,6 +36,7 @@ libneutrino_gui_a_SOURCES = \
 	infoviewer.cpp \
 	keybind_setup.cpp \
 	lcd_setup.cpp \
+	mainmenu.cpp \
 	miscsettings_menu.cpp \
 	neutrino_menu.cpp \
 	network_setup.cpp \
@@ -54,6 +56,7 @@ libneutrino_gui_a_SOURCES = \
 	software_update.cpp \
 	streaminfo2.cpp \
 	subchannel_select.cpp \
+	systeminfo.cpp \
 	themes.cpp \
 	timeosd.cpp \
 	update.cpp \

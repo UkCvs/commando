@@ -1,7 +1,7 @@
 SUBDIRS = network init.d
 
 FILES_FLASH_RO = \
-	group hostname hosts passwd smb.conf
+	emu_versions.txt group hostname hosts passwd smb.conf
 
 DIR = /var_init/etc
 

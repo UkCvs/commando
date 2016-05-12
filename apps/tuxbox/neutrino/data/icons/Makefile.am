@@ -14,7 +14,7 @@ install_DATA = \
 	info.raw \
 	keybinding.raw \
 	language.raw lcd.raw left.raw lock.raw \
-	mainmenue.raw minus.raw	mounted.raw mp3.raw mute.raw mute_small.raw \
+	mainmenue.raw menu.raw minus.raw	mounted.raw mp3.raw mute.raw mute_small.raw \
 	not_mounted.raw numericpad.raw \
 	ok.raw \
 	pause.raw play.raw plus.raw power.raw protecting.raw \
