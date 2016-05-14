@@ -42,23 +42,17 @@ $(DEPDIR)/libcommoncplusplus: bootstrap libxml2 @DEPENDS_libcommoncplusplus@
 	@CLEANUP_libcommoncplusplus@
 	touch $@
 
-$(DEPDIR)/libcrypto: bootstrap libz @DEPENDS_libcrypto@
+$(DEPDIR)/libcrypto: bootstrap @DEPENDS_libcrypto@
 	@PREPARE_libcrypto@
 	cd @DIR_libcrypto@ && \
 		sed -e 's|__TUXBOX_CC__|$(target)-gcc|' -e 's|__TUXBOX_CFLAGS__|$(TARGET_CFLAGS)|' ./Configure > ./Configure.tuxbox && \
 		$(BUILDENV) \
-		sh ./Configure.tuxbox \
-			-DOPENSSL_SMALL_FOOTPRINT \
-			shared no-ec no-err no-engine no-hw zlib-dynamic \
-			no-idea no-md2 no-mdc2 no-rc5 no-sha0 no-smime \
-			no-rmd160 no-aes192 no-ripemd no-camellia no-ans1 no-krb5 \
-			linux-ppc --prefix=/ --openssldir=/ && \
-		$(MAKE) depend MAKEDEPPROG=$(target)-gcc ZLIB_INCLUDE="-I$(targetprefix)/include" && \
-		$(MAKE) -j1 all && \
+		sh ./Configure.tuxbox shared no-hw no-idea no-md2 $(OPENVPN_NOMD4) no-mdc2 no-rc2 no-rc5 tuxbox --prefix=/ --openssldir=/ && \
+		$(MAKE) depend && \
+		$(MAKE) all && \
 		@INSTALL_libcrypto@
+	rm -f $(targetprefix)/lib/pkgconfig/openssl.pc && \
 	sed -e "s,^prefix=,prefix=$(targetprefix)," < @DIR_libcrypto@/openssl.pc > $(targetprefix)/lib/pkgconfig/openssl.pc && \
-	sed -e "s,^prefix=,prefix=$(targetprefix)," < @DIR_libcrypto@/libcrypto.pc > $(targetprefix)/lib/pkgconfig/libcrypto.pc && \
-	sed -e "s,^prefix=,prefix=$(targetprefix)," < @DIR_libcrypto@/libssl.pc > $(targetprefix)/lib/pkgconfig/libssl.pc && \
 	@CLEANUP_libcrypto@
 	chmod 0755 $(targetprefix)/lib/libcrypto.so.* $(targetprefix)/lib/libssl.so.*
 	touch $@

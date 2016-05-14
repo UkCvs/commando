@@ -25,8 +25,8 @@ flashprefix/bin/inadyn-mt
 flashprefix/bin/smbmount
 flashprefix/bin/smbmnt
 flashprefix/sbin/openvpn
-flashprefix/lib/libssl.so.0.9.8
-flashprefix/lib/libcrypto.so.0.9.8
+flashprefix/lib/libssl.so.0.9.7
+flashprefix/lib/libcrypto.so.0.9.7
 flashprefix/lib/tuxbox/plugins/mosaic.so
 flashprefix/lib/tuxbox/plugins/mosaic.cfg
 flashprefix/lib/tuxbox/plugins/dvbsub.so

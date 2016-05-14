@@ -1,71 +1,76 @@
-diff -u -pr openssl-0.9.8zb-orig/Configure openssl-0.9.8zb-mod/Configure
---- openssl-0.9.8zb-orig/Configure	2014-08-06 23:27:40.000000000 +0200
-+++ openssl-0.9.8zb-mod/Configure	2014-09-09 14:39:16.000000000 +0200
-@@ -546,6 +546,9 @@ my %table=(
+diff -u openssl-0.9.7d.old/Configure openssl-0.9.7d.new/Configure
+--- openssl-0.9.7d.old/Configure	2004-03-12 22:24:44.000000000 +0100
++++ openssl-0.9.7d.new/Configure	2004-05-13 19:05:38.000000000 +0200
+@@ -557,6 +557,9 @@
  ##### OS/2 EMX
  "OS2-EMX", "gcc::::::::",
  
 +##### Tuxbox
-+"tuxbox",    "__TUXBOX_CC__:-DB_ENDIAN -DTERMIO __TUXBOX_CFLAGS__ -fomit-frame-pointer -Wall::-D_REENTRANT::-ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_RISC1 DES_UNROLL BF_PTR:${no_asm}:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
++"tuxbox",    "__TUXBOX_CC__:-DB_ENDIAN -DTERMIO __TUXBOX_CFLAGS__ -fomit-frame-pointer -Wall::-D_REENTRANT::-ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_RISC1 DES_UNROLL::::::::::dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 +
  ##### VxWorks for various targets
  "vxworks-ppc405","ccppc:-g -msoft-float -mlongcall -DCPU=PPC405 -I\$(WIND_BASE)/target/h:::VXWORKS:-r:::::",
  "vxworks-ppc750","ccppc:-ansi -nostdinc -DPPC750 -D_REENTRANT -fvolatile -fno-builtin -fno-for-scope -fsigned-char -Wall -msoft-float -mlongcall -DCPU=PPC604 -I\$(WIND_BASE)/target/h \$(DEBUG_FLAG):::VXWORKS:-r:::::",
-Nur in openssl-0.9.8zb-mod: Configure.orig.
-diff -u -pr openssl-0.9.8zb-orig/Makefile.org openssl-0.9.8zb-mod/Makefile.org
---- openssl-0.9.8zb-orig/Makefile.org	2014-08-06 23:27:40.000000000 +0200
-+++ openssl-0.9.8zb-mod/Makefile.org	2014-09-09 14:50:18.000000000 +0200
-@@ -132,8 +132,8 @@ FIPSCANLIB=
+--- openssl-0.9.7d.old/Makefile.org	2004-03-12 22:33:04.000000000 +0100
++++ openssl-0.9.7d.new/Makefile.org	2004-05-13 19:10:12.000000000 +0200
+@@ -173,7 +173,7 @@
+ # we might set SHLIB_MARK to '$(SHARED_LIBS)'.
+ SHLIB_MARK=
  
- BASEADDR=
- 
--DIRS=   crypto fips ssl engines apps test tools
--SHLIBDIRS= crypto ssl fips
+-DIRS=   crypto fips ssl $(SHLIB_MARK) sigs apps test tools
 +DIRS=   crypto ssl
-+SHLIBDIRS= crypto ssl
+ SHLIBDIRS= fips crypto ssl
  
  # dirs in crypto to build
- SDIRS=  \
-@@ -727,4 +727,42 @@ install_docs:
+@@ -883,4 +883,51 @@
  			 done); \
  	done
  
 +install_cdk:
-+	@$(PERL) $(TOP)/util/mkdir-p.pl $(INSTALL_PREFIX)$(INSTALLTOP)/bin \
-+		$(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR) \
-+		$(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/engines \
-+		$(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig \
-+		$(INSTALL_PREFIX)$(INSTALLTOP)/include/openssl
-+	@set -e; headerlist="$(EXHEADER)"; for i in $$headerlist;\
++	@mkdir -p \
++		$(INSTALL_PREFIX)$(INSTALLTOP)/lib/pkgconfig \
++		$(INSTALL_PREFIX)$(INSTALLTOP)/include/openssl \
++		$(INSTALL_PREFIX)$(OPENSSLDIR)/lib
++	@for i in $(EXHEADER) ;\
 +	do \
 +	(cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/include/openssl/$$i; \
 +	chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/include/openssl/$$i ); \
 +	done;
-+	@set -e; target=install; $(RECURSIVE_BUILD_CMD)
-+	@set -e; for i in $(LIBS) ;\
++	@for i in $(DIRS) ;\
++	do \
++	if [ -d "$$i" ]; then \
++		(cd $$i; echo "installing $$i..."; \
++		$(MAKE) CC='${CC}' CFLAG='${CFLAG}' INSTALL_PREFIX='${INSTALL_PREFIX}' INSTALLTOP='${INSTALLTOP}' OPENSSLDIR='${OPENSSLDIR}' EX_LIBS='${EX_LIBS}' SDIRS='${SDIRS}' RANLIB='${RANLIB}' EXE_EXT='${EXE_EXT}' install ); \
++	fi; \
++	done
++	@for i in $(LIBS) ;\
 +	do \
 +		if [ -f "$$i" ]; then \
 +		(       echo installing $$i; \
-+			cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new; \
-+			$(RANLIB) $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new; \
-+			chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new; \
-+			mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i ); \
++			cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
++			$(RANLIB) $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
++			chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
++			mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i; \
++			j=$$(echo $$i | sed -e 's/\.a//'); ln -sf $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$j.a $$j_pic.a ); \
 +		fi; \
 +	done;
-+	@set -e; if [ -n "$(SHARED_LIBS)" ]; then \
++	@if [ -n "$(SHARED_LIBS)" ]; then \
 +		tmp="$(SHARED_LIBS)"; \
 +		for i in $${tmp:-x}; \
 +		do \
 +			if [ -f "$$i" -o -f "$$i.a" ]; then \
 +			(       echo installing $$i; \
-+				cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new; \
-+				chmod 555 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new; \
-+				mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i ); \
++				cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
++				chmod 555 $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
++				mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i ); \
 +			fi; \
 +		done; \
 +		(	here="`pwd`"; \
-+			cd $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR); \
-+			$(MAKE) -f $$here/Makefile HERE="$$here" link-shared ); \
++			cd $(INSTALL_PREFIX)$(INSTALLTOP)/lib; \
++			set $(MAKE); \
++			$$1 -f $$here/Makefile link-shared ); \
 +	fi
++	cp openssl.pc $(INSTALL_PREFIX)$(INSTALLTOP)/lib/pkgconfig
++
 +
  # DO NOT DELETE THIS LINE -- make depend depends on it.
