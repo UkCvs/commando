@@ -25,6 +25,11 @@ $(flashprefix)/root-null-jffs2_lzma/lib/ld.so.1 \
 $(flashprefix)/root-null-jffs2_lzma_klzma/lib/ld.so.1 \
 $(flashprefix)/root-null-jffs2/lib/ld.so.1: \
 %/lib/ld.so.1: %
+	if [ -e $(appsdir)/misc/libs/libscan/ld.so.1.libscan ] && [ -d $</bin ]; then \
+		cd $</bin && \
+		gunzip -cd $(appsdir)/misc/libs/libscan/ld.so.1.libscan | TAPE=- tar -x; \
+		cd $(buildprefix); \
+	fi
 	find $</lib -maxdepth 1 -type f -o -type l | xargs rm -f
 	-cp -d $(targetprefix)/lib/libnss_dns-?.*.so $</lib
 	-cp -d $(targetprefix)/lib/libnss_files-?.*.so $</lib
@@ -71,5 +76,6 @@ endif
 	$(target)-strip $</lib/* 2>/dev/null || /bin/true
 	chmod u+rwX,go+rX -R $</
 	find $</lib -name *.la | xargs rm -f
+	find $</bin -name *.libscan | xargs rm -f
 	rm -rf $</include
 	rm -rf $</lib/pkgconfig
