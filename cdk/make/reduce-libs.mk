@@ -77,5 +77,13 @@ endif
 	chmod u+rwX,go+rX -R $</
 	find $</lib -name *.la | xargs rm -f
 	find $</bin -name *.libscan | xargs rm -f
+	if [ ! -d $</var_init/lib ]; then \
+		$(INSTALL) -d $</var_init/lib ; \
+	fi
+	for i in libcrypto.so.0.9.7 libssl.so.0.9.7; do \
+		if [ -f $</lib/$$i ]; then \
+			cp $</lib/$$i $</var_init/lib/$$i; \
+		fi; \
+	done
 	rm -rf $</include
 	rm -rf $</lib/pkgconfig
