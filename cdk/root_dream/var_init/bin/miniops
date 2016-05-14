@@ -1,0 +1,66 @@
+#!/bin/sh
+# miniops - Based-on-Commando - 14 May 2016
+
+# miniops requests:
+case "$1" in
+
+# Softcam(s) start
+start)
+	if [ -e /var/etc/.oscam ]; then
+		rdate -s time.mit.edu
+		sleep 1
+		oscam &
+		{ sleep 5; pzapit -rz; } &
+	fi
+
+	if [ -e /var/etc/.mgcamd ]; then
+		epg-pause >/dev/null 2>&1
+		{ sleep 5; mgcamd; } &
+	fi
+
+	if [ -e /var/etc/.evocamd ]; then
+		evocamd &
+	fi
+
+	if [ -e /var/etc/.newcamd ]; then
+		newcamd &
+	fi
+
+	if [ -e /var/etc/.cccam ]; then
+		epg-restart >/dev/null 2>&1
+		{ sleep 5; CCcam; } &
+	fi
+	exit 0
+;;
+
+# Softcam(s) stop
+stop)
+	if [ -e /var/etc/.oscam ]; then
+		touch /tmp/oscam.kill
+		killall -9 oscam
+	fi
+	
+	if [ -e /var/etc/.mgcamd ]; then
+		killall -9 mgcamd
+		killall -9 epg-pause
+	fi
+
+	if [ -e /var/etc/.evocamd ]; then
+		kill $( pidof evocamd )
+		killall -9 evocamd
+	fi
+
+	if [ -e /var/etc/.newcamd ]; then
+		kill $( cat /tmp/newcamd.pid )
+		killall -9 newcamd
+	fi
+
+	if [ -e /var/etc/.cccam ]; then
+		killall -9 CCcam
+		killall -9 epg-restart
+	fi
+	exit 0
+;;
+esac
+
+exit 0

@@ -193,6 +193,7 @@ if [ -e /bin/neutrino ] ; then
 	zapit $ZAPIT_OPTS
 	controld
 	nhttpd
+	miniops start
 	until neutrino -f -u ; do
 		echo "Neutrino exited with nonzero exit status, restarting..."
 		pidof sectionsd >/dev/null || sectionsd $SECTIONSD_OPTS

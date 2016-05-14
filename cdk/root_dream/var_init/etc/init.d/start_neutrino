@@ -10,6 +10,7 @@ sectionsd $SECTIONSD
 timerd
 zapit $ZAPIT
 nhttpd
+miniops start
 until neutrino -u ; do
     echo "Neutrino exited with nonzero exit status $?, restarting..."
     pidof sectionsd >/dev/null || sectionsd $SECTIONSD
