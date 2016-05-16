@@ -39,4 +39,4 @@ sectionsd_LDADD = \
 	@CONFIGFILE_LIBS@ \
 	@EVENTSERVER_LIBS@ \
 	@XML_LIBS@ \
-	-lpthread
+	-lpthread -lcurl
