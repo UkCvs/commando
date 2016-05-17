@@ -93,7 +93,6 @@ struct sectionsd
 #endif
 		setSectionsdScanMode,		// commandSetSectionsdScanMode
 		freeMemory,			// commandFreeMemory
-		readSIfromRT,			// commandReadSIfromRT
 		readSIfromXML,			// commandReadSIfromXML
 		writeSI2XML,			// commandWriteSI2XML
  		
