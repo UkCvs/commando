@@ -426,7 +426,7 @@ endif
 		cp $(flashprefix)/dreamfiles/.version $(dreamfilesrootdir); \
 	fi
 # var_init
-	@for i in bin/emu lib log mnt/cf mnt/nfs mnt/usb tuxbox/plugins tuxbox/config ; do \
+	@for i in bin/emu driver lib log mnt/cf mnt/nfs mnt/usb tuxbox/plugins tuxbox/config ; do \
 		$(INSTALL) -d $(dreamfilesrootdir)/var_init/$$i; \
 	done;
 	rm -f  $(dreamfilesrootdir)/var_init/run; ln -s /tmp/run $(dreamfilesrootdir)/var_init/
