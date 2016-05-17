@@ -11,20 +11,14 @@
 </map>
 <map dat="26" name="ITV London"> 
  <channel serviceID="274c" epg_days="8" desc_hours="18" offset_hours="0" tsid="07fc" onid="0002"/>
-</map>
-<map dat="26" name="ITV +1 London"> 
  <channel serviceID="27ab" epg_days="1" desc_hours="0" offset_hours="1" tsid="0805" onid="0002"/>
 </map>
 <map dat="132" name="Channel 4"> 
  <channel serviceID="23fb" epg_days="4" desc_hours="18" offset_hours="0" tsid="07f9" onid="0002"/>
-</map>
-<map dat="132" name="Channel 4 +1"> 
  <channel serviceID="2077" epg_days="1" desc_hours="0" offset_hours="1" tsid="07fa" onid="0002"/>
 </map>
 <map dat="134" name="Channel 5"> 
  <channel serviceID="1e15" epg_days="2" desc_hours="18" offset_hours="0" tsid="0809" onid="0002"/>
-</map>
-<map dat="134" name="Channel 5+1"> 
  <channel serviceID="1e28" epg_days="1" desc_hours="0" offset_hours="1" tsid="0809" onid="0002"/>
 </map>
 <map dat="47" name="BBC Four"> 
@@ -35,44 +29,30 @@
 </map>
 <map dat="185" name="ITV2"> 
  <channel serviceID="2756" epg_days="2" desc_hours="18" offset_hours="0" tsid="07fc" onid="0002"/>
-</map>
-<map dat="185" name="ITV2+1"> 
  <channel serviceID="27b5" epg_days="1" desc_hours="0" offset_hours="1" tsid="0805" onid="0002"/>
 </map>
 <map dat="1859" name="ITV3"> 
  <channel serviceID="2814" epg_days="2" desc_hours="18" offset_hours="0" tsid="0806" onid="0002"/>
-</map>
-<map dat="1859" name="ITV3+1"> 
  <channel serviceID="2815" epg_days="1" desc_hours="0" offset_hours="1" tsid="0806" onid="0002"/>
 </map>
 <map dat="1961" name="ITV4"> 
  <channel serviceID="2758" epg_days="2" desc_hours="18" offset_hours="0" tsid="07fc" onid="0002"/>
-</map>
-<map dat="1961" name="ITV4+1"> 
  <channel serviceID="2759" epg_days="1" desc_hours="0" offset_hours="1" tsid="07fc" onid="0002"/>
 </map>
 <map dat="9975" name="ITVBe"> 
  <channel serviceID="275b" epg_days="1" desc_hours="18" offset_hours="0" tsid="07fc" onid="0002"/>
-</map>
-<map dat="9975" name="ITVBe+1"> 
  <channel serviceID="279b" epg_days="1" desc_hours="0" offset_hours="1" tsid="0805" onid="0002"/>
 </map>
 <map dat="9978" name="ITV Encore"> 
  <channel serviceID="2797" epg_days="1" desc_hours="18" offset_hours="0" tsid="0805" onid="0002"/>
-</map>
-<map dat="9978" name="ITV Encore+1"> 
  <channel serviceID="2819" epg_days="1" desc_hours="0" offset_hours="1" tsid="0806" onid="0002"/>
 </map>
 <map dat="158" name="E4"> 
  <channel serviceID="2071" epg_days="2" desc_hours="18" offset_hours="0" tsid="07fa" onid="0002"/>
-</map>
-<map dat="158" name="E4+1"> 
  <channel serviceID="206c" epg_days="1" desc_hours="0" offset_hours="1" tsid="07fa" onid="0002"/>
 </map>
 <map dat="1959" name="More4"> 
  <channel serviceID="2094" epg_days="2" desc_hours="18" offset_hours="0" tsid="07fa" onid="0002"/>
-</map>
-<map dat="1959" name="More4 +1"> 
  <channel serviceID="240e" epg_days="1" desc_hours="0" offset_hours="1" tsid="07f9" onid="0002"/>
 </map>
 <map dat="2701" name="4seven"> 
@@ -80,8 +60,6 @@
 </map>
 <map dat="248" name="Sky1"> 
  <channel serviceID="1656" epg_days="4" desc_hours="18" offset_hours="0" tsid="07e5" onid="0002"/>
-</map>
-<map dat="248" name="Sky1 +1"> 
  <channel serviceID="057b" epg_days="1" desc_hours="0" offset_hours="1" tsid="07e5" onid="0002"/>
 </map>
 <map dat="922" name="Sky2"> 
@@ -89,20 +67,14 @@
 </map>
 <map dat="2685" name="Sky Atlantic"> 
  <channel serviceID="164f" epg_days="2" desc_hours="18" offset_hours="0" tsid="07e7" onid="0002"/>
-</map>
-<map dat="2685" name="Sky Atlantic+1"> 
  <channel serviceID="0585" epg_days="1" desc_hours="0" offset_hours="1" tsid="07db" onid="0002"/>
 </map>
 <map dat="2189" name="Real Lives"> 
  <channel serviceID="178e" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e9" onid="0002"/>
-</map>
-<map dat="2189" name="Real Lives+1"> 
  <channel serviceID="1789" epg_days="1" desc_hours="0" offset_hours="1" tsid="07d7" onid="0002"/>
 </map>
 <map dat="2115" name="W"> 
  <channel serviceID="1978" epg_days="2" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="2115" name="W +1"> 
  <channel serviceID="1dbf" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 <map dat="1882" name="Really"> 
@@ -110,14 +82,10 @@
 </map>
 <map dat="288" name="GOLD"> 
  <channel serviceID="1968" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="288" name="GOLD +1"> 
  <channel serviceID="1db5" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 <map dat="2050" name="Dave"> 
  <channel serviceID="196a" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="2050" name="Dave ja vu"> 
  <channel serviceID="1dc8" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 <map dat="9997" name="Drama"> 
@@ -125,59 +93,39 @@
 </map>
 <map dat="1061" name="ComedyCentral"> 
  <channel serviceID="1798" epg_days="2" desc_hours="18" offset_hours="0" tsid="07e5" onid="0002"/>
-</map>
-<map dat="1061" name="ComedyCent+1"> 
  <channel serviceID="c78b" epg_days="1" desc_hours="0" offset_hours="1" tsid="0815" onid="0002"/>
 </map>
 <map dat="1201" name="ComedyXtra"> 
  <channel serviceID="1537" epg_days="2" desc_hours="18" offset_hours="0" tsid="07e7" onid="0002"/>
-</map>
-<map dat="1201" name="ComedyXtra+1"> 
  <channel serviceID="c78f" epg_days="1" desc_hours="0" offset_hours="1" tsid="0815" onid="0002"/>
 </map>
 <map dat="180" name="Universal"> 
  <channel serviceID="cc1f" epg_days="2" desc_hours="18" offset_hours="0" tsid="083d" onid="0002"/>
-</map>
-<map dat="180" name="Universal+1"> 
  <channel serviceID="cbfc" epg_days="1" desc_hours="0" offset_hours="1" tsid="083d" onid="0002"/>
 </map>
 <map dat="2212" name="Syfy"> 
  <channel serviceID="cc1a" epg_days="2" desc_hours="18" offset_hours="0" tsid="083d" onid="0002"/>
-</map>
-<map dat="2212" name="Syfy +1"> 
  <channel serviceID="cc38" epg_days="1" desc_hours="0" offset_hours="1" tsid="083d" onid="0002"/>
 </map>
 <map dat="197" name="Sky Living"> 
  <channel serviceID="1653" epg_days="1" desc_hours="18" offset_hours="0" tsid="07ea" onid="0002"/>
-</map>
-<map dat="197" name="Sky Living+1"> 
  <channel serviceID="1650" epg_days="1" desc_hours="0" offset_hours="1" tsid="07e7" onid="0002"/>
 </map>
 <map dat="9992" name="TLC"> 
  <channel serviceID="1859" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d9" onid="0002"/>
-</map>
-<map dat="9992" name="TLC+1"> 
  <channel serviceID="ccde" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
-</map>
-<map dat="9992" name="TLC+2"> 
  <channel serviceID="cce7" epg_days="1" desc_hours="0" offset_hours="2" tsid="0831" onid="0002"/>
 </map>
 <map dat="1461" name="FOX"> 
  <channel serviceID="158b" epg_days="2" desc_hours="18" offset_hours="0" tsid="07e5" onid="0002"/>
-</map>
-<map dat="1461" name="FOX+"> 
  <channel serviceID="151a" epg_days="1" desc_hours="0" offset_hours="1" tsid="07e7" onid="0002"/>
 </map>
 <map dat="292" name="alibi"> 
  <channel serviceID="1979" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="292" name="alibi +1"> 
  <channel serviceID="1dce" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 <map dat="9995" name="MTV"> 
  <channel serviceID="1b59" epg_days="1" desc_hours="18" offset_hours="0" tsid="07da" onid="0002"/>
-</map>
-<map dat="9995" name="MTV+1"> 
  <channel serviceID="1b5d" epg_days="1" desc_hours="0" offset_hours="1" tsid="07da" onid="0002"/>
 </map>
 <map dat="9972" name="Spike"> 
@@ -185,14 +133,10 @@
 </map>
 <map dat="2545" name="DMAX"> 
  <channel serviceID="ccbf" epg_days="1" desc_hours="18" offset_hours="0" tsid="0831" onid="0002"/>
-</map>
-<map dat="2545" name="DMAX+1"> 
  <channel serviceID="ccc4" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
 </map>
 <map dat="131" name="Challenge"> 
  <channel serviceID="178f" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d7" onid="0002"/>
-</map>
-<map dat="131" name="Challenge+1"> 
  <channel serviceID="178a" epg_days="1" desc_hours="0" offset_hours="1" tsid="07d7" onid="0002"/>
 </map>
 <map dat="2178" name="CBS Action"> 
@@ -203,32 +147,22 @@
 </map>
 <map dat="2586" name="CBS Reality"> 
  <channel serviceID="d7ae" epg_days="1" desc_hours="18" offset_hours="0" tsid="0840" onid="0002"/>
-</map>
-<map dat="2586" name="CBS Reality+1"> 
  <channel serviceID="d7b1" epg_days="1" desc_hours="0" offset_hours="1" tsid="0840" onid="0002"/>
 </map>
 <map dat="1963" name="Pick"> 
  <channel serviceID="128f" epg_days="1" desc_hours="18" offset_hours="0" tsid="07ea" onid="0002"/>
-</map>
-<map dat="1963" name="Pick+1"> 
  <channel serviceID="13f3" epg_days="1" desc_hours="0" offset_hours="1" tsid="07ea" onid="0002"/>
 </map>
 <map dat="1421" name="E!"> 
  <channel serviceID="cfdf" epg_days="1" desc_hours="18" offset_hours="0" tsid="0909" onid="0002"/>
-</map>
-<map dat="1421" name="E! +1"> 
  <channel serviceID="d01c" epg_days="1" desc_hours="0" offset_hours="1" tsid="0909" onid="0002"/>
 </map>
 <map dat="9996" name="Lifetime"> 
  <channel serviceID="1654" epg_days="1" desc_hours="18" offset_hours="0" tsid="07ea" onid="0002"/>
-</map>
-<map dat="9996" name="Lifetime+1"> 
  <channel serviceID="d115" epg_days="1" desc_hours="0" offset_hours="1" tsid="090c" onid="0002"/>
 </map>
 <map dat="2702" name="Sony Channel"> 
  <channel serviceID="d361" epg_days="1" desc_hours="18" offset_hours="0" tsid="0830" onid="0002"/>
-</map>
-<map dat="2702" name="Sony Chnl +1"> 
  <channel serviceID="d017" epg_days="1" desc_hours="0" offset_hours="1" tsid="0909" onid="0002"/>
 </map>
 <map dat="9991" name="True Drama"> 
@@ -245,14 +179,10 @@
 </map>
 <map dat="2062" name="5STAR"> 
  <channel serviceID="1e23" epg_days="2" desc_hours="18" offset_hours="0" tsid="0809" onid="0002"/>
-</map>
-<map dat="2062" name="5STAR +1"> 
  <channel serviceID="1e25" epg_days="1" desc_hours="0" offset_hours="1" tsid="0809" onid="0002"/>
 </map>
 <map dat="2008" name="5 USA"> 
  <channel serviceID="1e1e" epg_days="2" desc_hours="18" offset_hours="0" tsid="0809" onid="0002"/>
-</map>
-<map dat="2008" name="5 USA +1"> 
  <channel serviceID="1e1f" epg_days="1" desc_hours="0" offset_hours="1" tsid="0809" onid="0002"/>
 </map>
 <map dat="9998" name="Channel 5+24"> 
@@ -268,8 +198,6 @@
 </map>
 <map dat="2185" name="Food Network"> 
  <channel serviceID="cd14" epg_days="1" desc_hours="18" offset_hours="0" tsid="0844" onid="0002"/>
-</map>
-<map dat="2185" name="Food Netwrk+1"> 
  <channel serviceID="cd1e" epg_days="1" desc_hours="0" offset_hours="1" tsid="0844" onid="0002"/>
 </map>
 <map dat="9977" name="Forces TV"> 
@@ -277,8 +205,6 @@
 </map>
 <map dat="2136" name="Good Food"> 
  <channel serviceID="196c" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="2136" name="Good Food +1"> 
  <channel serviceID="1dca" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 <map dat="9990" name="holiday+cruise"> 
@@ -286,14 +212,10 @@
 </map>
 <map dat="2134" name="Home"> 
  <channel serviceID="1965" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="2134" name="Home+1"> 
  <channel serviceID="1db0" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 <map dat="149" name="Home &amp; Health"> 
  <channel serviceID="1840" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d9" onid="0002"/>
-</map>
-<map dat="149" name="Home&amp;Health+"> 
  <channel serviceID="cce2" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
 </map>
 <map dat="2549" name="Horse &amp; Country"> 
@@ -310,8 +232,6 @@
 </map>
 <map dat="1462" name="Travel Channel"> 
  <channel serviceID="d356" epg_days="1" desc_hours="18" offset_hours="0" tsid="0830" onid="0002"/>
-</map>
-<map dat="1462" name="Travel Ch +1"> 
  <channel serviceID="cb84" epg_days="1" desc_hours="0" offset_hours="1" tsid="083b" onid="0002"/>
 </map>
 
@@ -339,8 +259,6 @@
 </map>
 <map dat="249" name="Sky Premiere"> 
  <channel serviceID="1134" epg_days="7" desc_hours="18" offset_hours="0" tsid="07dc" onid="0002"/>
-</map>
-<map dat="249" name="Sky Prem+1"> 
  <channel serviceID="1135" epg_days="1" desc_hours="18" offset_hours="1" tsid="07dc" onid="0002"/>
 </map>
 <map dat="253" name="Sky Select"> 
@@ -354,20 +272,14 @@
 </map>
 <map dat="160" name="Film4"> 
  <channel serviceID="2404" epg_days="14" desc_hours="18" offset_hours="0" tsid="07f9" onid="0002"/>
-</map>
-<map dat="160" name="Film4 +1"> 
  <channel serviceID="2409" epg_days="1" desc_hours="18" offset_hours="1" tsid="07f9" onid="0002"/>
 </map>
 <map dat="271" name="TCM"> 
  <channel serviceID="1652" epg_days="14" desc_hours="18" offset_hours="0" tsid="07e7" onid="0002"/>
-</map>
-<map dat="271" name="TCM+1"> 
  <channel serviceID="cbcf" epg_days="1" desc_hours="18" offset_hours="1" tsid="083b" onid="0002"/>
 </map>
 <map dat="2476" name="horror channel"> 
  <channel serviceID="d7a2" epg_days="3" desc_hours="18" offset_hours="0" tsid="0840" onid="0002"/>
-</map>
-<map dat="2476" name="horror ch+1"> 
  <channel serviceID="d7b2" epg_days="1" desc_hours="0" offset_hours="1" tsid="0840" onid="0002"/>
 </map>
 <map dat="2059" name="True Movies 1"> 
@@ -381,14 +293,10 @@
 </map>
 <map dat="2705" name="Sony Movies"> 
  <channel serviceID="c7ad" epg_days="3" desc_hours="18" offset_hours="0" tsid="0817" onid="0002"/>
-</map>
-<map dat="2705" name="Sony Movies+1"> 
  <channel serviceID="c7af" epg_days="1" desc_hours="18" offset_hours="1" tsid="0817" onid="0002"/>
 </map>
 <map dat="2058" name="movies4men"> 
  <channel serviceID="c7ac" epg_days="3" desc_hours="18" offset_hours="0" tsid="0817" onid="0002"/>
-</map>
-<map dat="2058" name="mov4men+1"> 
  <channel serviceID="c7ae" epg_days="1" desc_hours="0" offset_hours="1" tsid="0817" onid="0002"/>
 </map>
 <map dat="2704" name="Movies 24"> 
@@ -554,14 +462,10 @@
 <!-- Bouquet07: Factual -->
 <map dat="39" name="Animal Planet"> 
  <channel serviceID="183a" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d9" onid="0002"/>
-</map>
-<map dat="39" name="Animal Plnt+1"> 
  <channel serviceID="ccb5" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
 </map>
 <map dat="2165" name="Crime+Inv"> 
  <channel serviceID="12c2" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e9" onid="0002"/>
-</map>
-<map dat="2165" name="Crime+Inv +1"> 
  <channel serviceID="cd32" epg_days="1" desc_hours="0" offset_hours="1" tsid="0844" onid="0002"/>
 </map>
 <map dat="9977" name="Forces TV"> 
@@ -569,20 +473,14 @@
 </map>
 <map dat="147" name="Discovery"> 
  <channel serviceID="1839" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d9" onid="0002"/>
-</map>
-<map dat="147" name="Discovery+1"> 
  <channel serviceID="183c" epg_days="1" desc_hours="0" offset_hours="1" tsid="07d9" onid="0002"/>
 </map>
 <map dat="2668" name="Disc.History"> 
  <channel serviceID="183f" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d9" onid="0002"/>
-</map>
-<map dat="2668" name="Disc.History+1"> 
  <channel serviceID="ccd3" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
 </map>
 <map dat="153" name="Disc.Science"> 
  <channel serviceID="183e" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d9" onid="0002"/>
-</map>
-<map dat="153" name="Disc.Sci+1"> 
  <channel serviceID="ccba" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
 </map>
 <map dat="155" name="Disc.Turbo"> 
@@ -590,14 +488,10 @@
 </map>
 <map dat="1601" name="Eden"> 
  <channel serviceID="1966" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="1601" name="Eden+1"> 
  <channel serviceID="1dba" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 <map dat="182" name="History"> 
  <channel serviceID="122d" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e9" onid="0002"/>
-</map>
-<map dat="182" name="History +1 hour"> 
  <channel serviceID="138b" epg_days="1" desc_hours="0" offset_hours="1" tsid="07e9" onid="0002"/>
 </map>
 <map dat="2559" name="H2"> 
@@ -605,14 +499,10 @@
 </map>
 <map dat="2570" name="ID"> 
  <channel serviceID="ccb0" epg_days="1" desc_hours="18" offset_hours="0" tsid="0831" onid="0002"/>
-</map>
-<map dat="2570" name="ID+1"> 
  <channel serviceID="ccca" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
 </map>
 <map dat="213" name="Nat Geo"> 
  <channel serviceID="12c5" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e9" onid="0002"/>
-</map>
-<map dat="213" name="Nat Geo+1hr"> 
  <channel serviceID="12c6" epg_days="1" desc_hours="0" offset_hours="1" tsid="07e9" onid="0002"/>
 </map>
 <map dat="22" name="Nat Geo Wild"> 
@@ -623,14 +513,10 @@
 </map>
 <map dat="2179" name="QUEST"> 
  <channel serviceID="1843" epg_days="1" desc_hours="18" offset_hours="0" tsid="07d9" onid="0002"/>
-</map>
-<map dat="2179" name="QUEST+1"> 
  <channel serviceID="ccce" epg_days="1" desc_hours="0" offset_hours="1" tsid="0831" onid="0002"/>
 </map>
 <map dat="801" name="YESTERDAY"> 
  <channel serviceID="1969" epg_days="1" desc_hours="18" offset_hours="0" tsid="07e6" onid="0002"/>
-</map>
-<map dat="801" name="YESTERDAY+1"> 
  <channel serviceID="1de2" epg_days="1" desc_hours="0" offset_hours="1" tsid="082d" onid="0002"/>
 </map>
 
@@ -642,20 +528,14 @@
 <!-- Bouquet09: Kids -->
 <map dat="128" name="Cartoon Netwrk"> 
  <channel serviceID="c418" epg_days="1" desc_hours="18" offset_hours="0" tsid="0813" onid="0002"/>
-</map>
-<map dat="128" name="CN+1"> 
  <channel serviceID="c427" epg_days="1" desc_hours="0" offset_hours="1" tsid="0813" onid="0002"/>
 </map>
 <map dat="1661" name="Boomerang"> 
  <channel serviceID="c41d" epg_days="1" desc_hours="18" offset_hours="0" tsid="0813" onid="0002"/>
-</map>
-<map dat="1661" name="Boomerang +1"> 
  <channel serviceID="c422" epg_days="1" desc_hours="0" offset_hours="1" tsid="0813" onid="0002"/>
 </map>
 <map dat="217" name="Nickelodeon"> 
  <channel serviceID="15b8" epg_days="1" desc_hours="18" offset_hours="0" tsid="07ed" onid="0002"/>
-</map>
-<map dat="217" name="Nickelodeon+1"> 
  <channel serviceID="15b9" epg_days="1" desc_hours="0" offset_hours="1" tsid="07ed" onid="0002"/>
 </map>
 <map dat="664" name="Nicktoons"> 
@@ -663,20 +543,14 @@
 </map>
 <map dat="165" name="Disney XD"> 
  <channel serviceID="238d" epg_days="1" desc_hours="18" offset_hours="0" tsid="07db" onid="0002"/>
-</map>
-<map dat="165" name="Disney XD+1"> 
  <channel serviceID="2390" epg_days="1" desc_hours="0" offset_hours="1" tsid="07db" onid="0002"/>
 </map>
 <map dat="156" name="Disney Chnl"> 
  <channel serviceID="238e" epg_days="1" desc_hours="18" offset_hours="0" tsid="07db" onid="0002"/>
-</map>
-<map dat="156" name="Disney Chnl+1"> 
  <channel serviceID="2391" epg_days="1" desc_hours="0" offset_hours="1" tsid="07db" onid="0002"/>
 </map>
 <map dat="421" name="Disney Junior"> 
  <channel serviceID="238f" epg_days="1" desc_hours="18" offset_hours="0" tsid="07db" onid="0002"/>
-</map>
-<map dat="421" name="Disney Junior+"> 
  <channel serviceID="2392" epg_days="1" desc_hours="0" offset_hours="1" tsid="07db" onid="0002"/>
 </map>
 <map dat="482" name="CBBC"> 
@@ -687,17 +561,14 @@
 </map>
 <map dat="215" name="Nick Jr."> 
  <channel serviceID="15bb" epg_days="1" desc_hours="18" offset_hours="0" tsid="07ed" onid="0002"/>
-</map>
-<map dat="215" name="Nick Jr+1"> 
  <channel serviceID="c792" epg_days="1" desc_hours="0" offset_hours="1" tsid="0815" onid="0002"/>
 </map>
 <map dat="2544" name="POP"> 
  <channel serviceID="d05c" epg_days="1" desc_hours="18" offset_hours="0" tsid="083e" onid="0002"/>
+ <channel serviceID="d07a" epg_days="1" desc_hours="0" offset_hours="1" tsid="083e" onid="0002"/>
 </map>
 <map dat="2543" name="Tiny Pop"> 
  <channel serviceID="d052" epg_days="1" desc_hours="18" offset_hours="0" tsid="083e" onid="0002"/>
-</map>
-<map dat="2543" name="Tiny Pop +1"> 
  <channel serviceID="d061" epg_days="1" desc_hours="0" offset_hours="1" tsid="083e" onid="0002"/>
 </map>
 <map dat="1983" name="Cartoonito"> 
@@ -708,9 +579,6 @@
 </map>
 <map dat="1981" name="CITV"> 
  <channel serviceID="2757" epg_days="1" desc_hours="18" offset_hours="0" tsid="07fc" onid="0002"/>
-</map>
-<map dat="9979" name="POP+1"> 
- <channel serviceID="d07a" epg_days="1" desc_hours="0" offset_hours="1" tsid="083e" onid="0002"/>
 </map>
 <map dat="9979" name="Kix"> 
  <channel serviceID="d066" epg_days="1" desc_hours="18" offset_hours="0" tsid="083e" onid="0002"/>
