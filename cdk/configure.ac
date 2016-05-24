@@ -529,6 +529,11 @@ AC_ARG_ENABLE(aformat,
 	esac],[enable_aformat=no])
 AM_CONDITIONAL(ENABLE_AFORMAT,test "$enable_aformat" = "yes")
 
+AC_ARG_ENABLE(aio-grab,
+	AS_HELP_STRING(--disable-aio-grab,disable aio-grab screenshot),
+	,[enable_aio_grab=yes])
+AM_CONDITIONAL(ENABLE_AIO_GRAB,test "$enable_aio_grab" = "yes")
+
 AC_ARG_ENABLE(cdkVcInfo,
 	AS_HELP_STRING(--enable-cdkVcInfo,include cdkVcInfo in yadds and images),
 	,[enable_cdkVcInfo=no])
@@ -1805,6 +1810,7 @@ OpenSSL:			$enable_ssl $summary_plugins
 German keymaps:			$enable_german_keymaps
 
 aformat				$enable_aformat
+aio-grab			$enable_aio_grab
 cdkVcInfo			$enable_cdkVcInfo
 blockads			$enable_blockads
 clock				$enable_clock

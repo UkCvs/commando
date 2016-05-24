@@ -13,6 +13,13 @@ flash-misc_tools: $(appsdir)/misc/tools/config.status
 	$(MAKE) -C $(appsdir)/misc/tools install prefix=$(flashprefix)/root
 	@FLASHROOTDIR_MODIFIED@
 
+flash-aio-grab: $(flashprefix)/root/bin/grab
+
+$(flashprefix)/root/bin/grab: $(appsdir)/misc/tools/config.status | $(flashprefix)/root
+	$(MAKE) -C $(appsdir)/misc/tools/grab all prefix=$(flashprefix)/root
+	$(MAKE) -C $(appsdir)/misc/tools/grab install prefix=$(flashprefix)/root
+	@FLASHROOTDIR_MODIFIED@
+
 flash-eraseall: $(flashprefix)/root/sbin/eraseall
 
 $(flashprefix)/root/sbin/eraseall: misc_tools | $(flashprefix)/root

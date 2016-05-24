@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = gnu
 
 SUBDIRS = \
-	fbshot mtd devinit dboxshot
+	fbshot grab mtd devinit dboxshot
 if BOXTYPE_DBOX2
 SUBDIRS += rtc makedevices
 endif

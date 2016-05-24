@@ -57,6 +57,9 @@ if BOXTYPE_DREAMBOX
 if ENABLE_IDEMMC
 	$(MAKE) flash-sfdisk
 endif
+if ENABLE_AIO_GRAB
+	$(MAKE) flash-aio-grab
+endif
 endif
 if ENABLE_MOUNT_STANDALONE
 	$(MAKE) flash-mount

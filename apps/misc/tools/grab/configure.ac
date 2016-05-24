@@ -1,0 +1,7 @@
+AC_INIT(main.c)
+AM_INIT_AUTOMAKE(grab,1.0)
+
+AC_PROG_CC
+AC_OPENMP()
+
+AC_OUTPUT(Makefile)

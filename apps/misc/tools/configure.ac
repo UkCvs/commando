@@ -16,6 +16,7 @@ AC_OUTPUT([
 Makefile
 etherwake/Makefile
 fbshot/Makefile
+grab/Makefile
 mtd/Makefile
 rtc/Makefile
 devinit/Makefile
