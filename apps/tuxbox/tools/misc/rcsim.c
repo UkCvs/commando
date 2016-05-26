@@ -98,6 +98,12 @@ struct key{
 };
 
 static const struct key keyname[] = {
+#ifdef HAVE_DREAMBOX_HARDWARE			// definitions for additional buttons on DM500 remote
+	{"KEY_TV", 		KEY_TV},	/* /include/linux/input.h: #define KEY_TV	0x179 */
+	{"KEY_RADIO", 		KEY_RADIO},	/* /include/linux/input.h: #define KEY_RADIO	0x181 */
+	{"KEY_TEXT", 		KEY_TEXT},	/* /include/linux/input.h: #define KEY_TEXT	0x184 */
+	{"KEY_AUDIO", 		KEY_AUDIO},	/* /include/linux/input.h: #define KEY_AUDIO	0x188 */
+#endif
 	{"KEY_0", 		KEY_0},
 	{"KEY_1", 		KEY_1},
 	{"KEY_2", 		KEY_2},
@@ -137,7 +143,11 @@ void usage(char *n){
 	unsigned int i;
 	printf ("rcsim v1.1\nUsage: %s <keyname> [<time>] [<repeat>]\n"
 		"       <keyname> is an excerpt of the 'KEY_FOO'-names in <linux/input.h>,\n"
+#ifdef HAVE_DREAMBOX_HARDWARE			
+		"             keys on the dbox2 & dm500 remote control are supported\n"
+#else
 		"             only the keys on the dbox2-remote control are supported\n"
+#endif
 		"       <time> is how long a code is repeatedly sent,\n"
 		"              unit is seconds, default is 0 = sent only once\n"
 		"       <repeat> what time is waited until a new code is sent\n"
