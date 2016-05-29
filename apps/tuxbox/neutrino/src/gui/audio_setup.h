@@ -63,4 +63,13 @@ class CAudioSetupNotifier2 : public CChangeObserver
 		bool changeNotify(const neutrino_locale_t, void *);
 };
 
+class CAudioSetupNotifier3 : public CChangeObserver
+{
+	private:
+		CMenuItem* toDisable[1];
+	public:
+		CAudioSetupNotifier3( CMenuItem* );
+		bool changeNotify(const neutrino_locale_t, void *);
+};
+
 #endif

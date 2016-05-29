@@ -34,6 +34,7 @@
 
 
 #include "gui/audio_setup.h"
+#include "gui/audiopriority.h"
 
 #include <global.h>
 #include <neutrino.h>
@@ -120,6 +121,13 @@ const CMenuOptionChooser::keyval AUDIOMENU_AUDIOCHANNEL_UP_DOWN_ENABLE_OPTIONS[A
 	{ 0, LOCALE_OPTIONS_OFF }
 };
 
+#define AUDIOMENU_AUDIOPRIORITY_OFF_ON_OPTION_COUNT 2
+const CMenuOptionChooser::keyval AUDIOMENU_AUDIOPRIORITY_OFF_ON_OPTIONS[AUDIOMENU_AUDIOPRIORITY_OFF_ON_OPTION_COUNT] =
+{
+	{ 0, LOCALE_OPTIONS_OFF  },
+	{ 1, LOCALE_OPTIONS_ON }
+};
+
 /* audio settings menu */
 int CAudioSetup::showAudioSetup()
 {
@@ -171,6 +179,15 @@ int CAudioSetup::showAudioSetup()
 	iv->setNumberFormat("%d%%");
 	audioSettings->addItem(iv);
 
+	audioSettings->addItem(GenericMenuSeparatorLine);
+
+	// Audio Priority Pids
+	CMenuForwarder *ap = new CMenuForwarder(LOCALE_AUDIOPRIORITY_SETTINGS, g_settings.audio_propids_enabled, NULL, new audioprioritySettingsMenu());
+	CAudioSetupNotifier3 audioSetupNotifier3(ap);
+	oj = new CMenuOptionChooser(LOCALE_AUDIOPRIORITY_ENABLED, &g_settings.audio_propids_enabled, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true, &audioSetupNotifier3);
+	audioSettings->addItem(oj);
+	audioSettings->addItem(ap);
+
 	int res = audioSettings->exec(NULL, "");
 	selected = audioSettings->getSelected();
 	delete audioSettings;
@@ -211,3 +228,17 @@ bool CAudioSetupNotifier2::changeNotify(const neutrino_locale_t, void *)
 									 (CControld::volume_type)g_settings.audio_avs_Control);
 	return false;
 }
+
+CAudioSetupNotifier3::CAudioSetupNotifier3( CMenuItem* i1)
+{
+	toDisable[0]=i1;
+}
+
+bool CAudioSetupNotifier3::changeNotify(const neutrino_locale_t, void *)
+{
+	if (toDisable[0])
+		toDisable[0]->setActive(g_settings.audio_propids_enabled == true);
+
+	return false;
+}
+

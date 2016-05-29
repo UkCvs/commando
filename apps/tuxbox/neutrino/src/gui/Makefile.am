@@ -21,6 +21,7 @@ noinst_LIBRARIES = libtimerlist.a libneutrino_gui.a libneutrino_gui2.a libneutri
 libneutrino_gui_a_SOURCES = \
 	audio_select.cpp \
 	audio_setup.cpp \
+	audiopriority.cpp \
 	bookmarkmanager.cpp \
 	bouquetlist.cpp \
 	camdmenu.cpp \

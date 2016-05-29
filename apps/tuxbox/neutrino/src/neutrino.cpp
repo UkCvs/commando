@@ -423,6 +423,16 @@ int CNeutrinoApp::loadSetup()
 #endif
 	g_settings.audio_PCMOffset      = configfile.getInt32( "audio_PCMOffset", 0 );
 
+	//Audio Priority Pids
+	char audio_propids_key[4];
+	g_settings.audio_propids_enabled = configfile.getBool("audio_propids_enabled", true);
+	strcpy( g_settings.audio_propids_name[0], configfile.getString( "audio_propids_name0", "eng" ).c_str() );
+	for(int i=1 ; i < AUDIO_PRIORITY_NR_OF_ENTRIES ; i++)
+	{
+		sprintf(audio_propids_key, "audio_propids_name%d", i);
+		strcpy( g_settings.audio_propids_name[i], configfile.getString( audio_propids_key, "" ).c_str() );
+	}
+
 	//vcr
 	g_settings.vcr_AutoSwitch		= configfile.getBool("vcr_AutoSwitch"            , true );
 
@@ -970,6 +980,15 @@ void CNeutrinoApp::saveSetup()
 	configfile.setInt32( "audio_avs_Control", g_settings.audio_avs_Control);
 	configfile.setInt32( "audio_PCMOffset" , g_settings.audio_PCMOffset);
 	configfile.setInt32( "audio_step"	, g_settings.audio_step);
+
+	//Audio Priority Pids
+	char audio_propids_key[4];
+	configfile.setBool("audio_propids_enabled", g_settings.audio_propids_enabled);
+	for(int i=0 ; i < AUDIO_PRIORITY_NR_OF_ENTRIES ; i++)
+	{
+		sprintf(audio_propids_key, "audio_propids_name%d", i);
+		configfile.setString(audio_propids_key, g_settings.audio_propids_name[i]);
+	}
 
 	//vcr
 	configfile.setBool("vcr_AutoSwitch"     , g_settings.vcr_AutoSwitch);

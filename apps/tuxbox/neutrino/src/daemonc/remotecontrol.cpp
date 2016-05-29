@@ -382,6 +382,43 @@ void CRemoteControl::processAPIDnames()
 {
 	has_unresolved_ctags= false;
 	has_ac3 = false;
+	int pref_found = -1;
+	int pref_ac3_found = -1;
+	int pref_idx = -1;
+	int pref_ac3_idx = -1;
+	int ac3_found = -1;
+	const char *desc;
+
+	if(g_settings.audio_propids_enabled) {
+		/* first we check prefs to find pid according to pref index */
+		for(int i = 0; i < AUDIO_PRIORITY_NR_OF_ENTRIES; i++) {
+			for(int j = 0; j < (int) current_PIDs.APIDs.size(); j++) {
+				desc = current_PIDs.APIDs[j].desc;
+
+				/* processAPIDnames called multiple times, TODO find better way to detect multiple call */
+				if(strlen( desc ) != 3)
+					continue;
+				if(strlen(g_settings.audio_propids_name[i]) == 0)
+					continue;
+
+				if(strncasecmp(g_settings.audio_propids_name[i], desc,3) == 0) {
+					/* remember first none ac3 pref found index and pid*/
+					if( !current_PIDs.APIDs[j].is_ac3 && (pref_found < 0) ){
+						pref_found = j;
+						pref_idx = i;
+					}
+					/* remember first ac3 pref found index and pid*/
+					if( current_PIDs.APIDs[j].is_ac3 && (pref_ac3_found < 0) ) {
+						pref_ac3_found = j;
+						pref_ac3_idx = i;
+					}
+				}
+			}
+			/* if we have found a pref or pref ac3, there is no need to check lower priority prefs */
+			if (!(pref_found < 0) || !(pref_ac3_found < 0))
+				break;
+		}
+	}
 
 	for(unsigned int count=0; count< current_PIDs.APIDs.size(); count++)
 	{
@@ -411,6 +448,8 @@ void CRemoteControl::processAPIDnames()
 				current_PIDs.APIDs[count].desc[desc_maxlen - 6] = 0;
 				strncat(current_PIDs.APIDs[count].desc, " (AC3)", 6);
 			}
+			if(g_settings.audio_DolbyDigital && (!g_settings.audio_propids_enabled || (pref_idx >= 0)))
+				ac3_found = count;
 			has_ac3 = true;
 		}
 	}
@@ -453,18 +492,27 @@ void CRemoteControl::processAPIDnames()
 		}
 	}
 
-	if (has_ac3 && g_settings.audio_DolbyDigital == 1)
-	{
-		for (unsigned int j = 0; j < current_PIDs.APIDs.size(); j++)
-			if (current_PIDs.APIDs[j].is_ac3)
-			{
-				setAPID(j);
-				break;
-			}
+	/* reset pref ac3, if it has a lower priority */
+	if(!g_settings.audio_DolbyDigital || ((pref_idx >= 0) && (pref_idx < pref_ac3_idx)))
+		ac3_found = pref_ac3_found = -1;
+
+	printf("Neutrino apid: pref %d pref_ac3 %d ac3 %d\n", pref_found, pref_ac3_found, ac3_found);
+
+	if(pref_ac3_found >= 0) {
+		printf("Neutrino apid: set apid name= %s pid= %X\n", current_PIDs.APIDs[pref_ac3_found].desc, current_PIDs.APIDs[pref_ac3_found].pid);
+		setAPID(pref_ac3_found);
 	}
-	else if (current_PIDs.PIDs.selected_apid >= current_PIDs.APIDs.size())
-	{
-		setAPID(0);
+	else if(pref_found >= 0) {
+		printf("Neutrino apid: set apid name= %s pid= %X\n", current_PIDs.APIDs[pref_found].desc, current_PIDs.APIDs[pref_found].pid);
+		setAPID(pref_found);
+	}
+	else if(ac3_found >= 0) {
+		printf("Neutrino apid: set apid name= %s pid= %X\n", current_PIDs.APIDs[ac3_found].desc, current_PIDs.APIDs[ac3_found].pid);
+		setAPID(ac3_found);
+	}
+	else if ( current_PIDs.PIDs.selected_apid >= current_PIDs.APIDs.size() ) {
+		printf("Neutrino apid: set apid name= %s pid= %X\n", current_PIDs.APIDs[0].desc, current_PIDs.APIDs[0].pid);
+		setAPID( 0 );
 	}
 
 	char *p = new char[sizeof(t_channel_id)];

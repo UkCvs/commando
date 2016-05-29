@@ -103,6 +103,11 @@ struct SNeutrinoSettings
 	int audio_step;
 	int audio_PCMOffset;
 
+	//Audio Priority Pids
+#define AUDIO_PRIORITY_NR_OF_ENTRIES 8
+	char audio_propids_name[AUDIO_PRIORITY_NR_OF_ENTRIES][8];
+	int audio_propids_enabled;
+
 	//vcr
 	int vcr_AutoSwitch;
 

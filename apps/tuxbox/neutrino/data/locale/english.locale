@@ -194,6 +194,17 @@ audioplayer.show_playlist Show Playlist
 audioplayer.shuffle shuffle
 audioplayer.stop Stop
 audioplayer.title_artist Title, Artist
+audiopriority.enabled Audio Priority
+audiopriority.help Audio-Priority Help
+audiopriority.help1 Typical user setups (default first):
+audiopriority.help2 L1: eng - English (no narration), L2>8: blank
+audiopriority.help3 (or English AC3 if available & Dolby digital is ON)
+audiopriority.help4 L1: nar - English (narration if available), L2: eng
+audiopriority.help5 L1: ger - German (if available), L2: eng
+audiopriority.help6 Country codes: /share/iso-codes/iso-639.tab
+audiopriority.help7 More info: /var/etc/info/10-Audio-Priority.txt
+audiopriority.pidname Audio Pid name
+audiopriority.settings Audio-Priority Settings
 bookmarkmanager.delete delete
 bookmarkmanager.name bookmarks
 bookmarkmanager.rename rename
