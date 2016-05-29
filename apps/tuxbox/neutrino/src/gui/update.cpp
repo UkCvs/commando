@@ -551,34 +551,36 @@ CFlashExpert::CFlashExpert()
 
 void CFlashExpert::readmtd(int mtd)
 {
-
-	std::string filename = "/tmp/mtd" + to_string(mtd) + ".img"; // US-ASCII (subset of UTF-8 and ISO8859-1)
-	if (mtd == -1)
+	if (ShowLocalizedMessage(LOCALE_MESSAGEBOX_INFO, LOCALE_FLASHUPDATE_READFLASH, CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo) == CMessageBox::mbrYes)
 	{
-		filename = "/tmp/dm500-backup.img"; // US-ASCII (subset of UTF-8 and ISO8859-1)
-		mtd = CMTDInfo::getInstance()->findMTDNumberFromDescription(MTD_TEXT_OF_WHOLE_IMAGE); //MTD_OF_WHOLE_IMAGE;
-	}
-	setTitle(LOCALE_FLASHUPDATE_TITLEREADFLASH);
-	paint();
-	showGlobalStatus(0);
-	showStatusMessageUTF((std::string(g_Locale->getText(LOCALE_FLASHUPDATE_ACTIONREADFLASH)) + " (" + CMTDInfo::getInstance()->getMTDName(mtd) + ')')); // UTF-8
-	CFlashTool ft;
-	ft.setStatusViewer( this );
-	ft.setMTDDevice(CMTDInfo::getInstance()->getMTDFileName(mtd));
-	if(!ft.readFromMTD(filename, 100))
-	{
-		showStatusMessageUTF(ft.getErrorMessage()); // UTF-8
-		sleep(10);
-	}
-	else
-	{
-		showGlobalStatus(100);
-		showStatusMessageUTF(g_Locale->getText(LOCALE_FLASHUPDATE_READY)); // UTF-8
-		char message[500];
-		sprintf(message, g_Locale->getText(LOCALE_FLASHUPDATE_SAVESUCCESS), filename.c_str());
-		sleep(1);
-		hide();
-		ShowHintUTF(LOCALE_MESSAGEBOX_INFO, message);
+		std::string filename = "/tmp/mtd" + to_string(mtd) + ".img"; // US-ASCII (subset of UTF-8 and ISO8859-1)
+		if (mtd == -1)
+		{
+			filename = "/tmp/dm500-backup.img"; // US-ASCII (subset of UTF-8 and ISO8859-1)
+			mtd = CMTDInfo::getInstance()->findMTDNumberFromDescription(MTD_TEXT_OF_WHOLE_IMAGE); //MTD_OF_WHOLE_IMAGE;
+		}
+		setTitle(LOCALE_FLASHUPDATE_TITLEREADFLASH);
+		paint();
+		showGlobalStatus(0);
+		showStatusMessageUTF((std::string(g_Locale->getText(LOCALE_FLASHUPDATE_ACTIONREADFLASH)) + " (" + CMTDInfo::getInstance()->getMTDName(mtd) + ')')); // UTF-8
+		CFlashTool ft;
+		ft.setStatusViewer( this );
+		ft.setMTDDevice(CMTDInfo::getInstance()->getMTDFileName(mtd));
+		if(!ft.readFromMTD(filename, 100))
+		{
+			showStatusMessageUTF(ft.getErrorMessage()); // UTF-8
+			sleep(10);
+		}
+		else
+		{
+			showGlobalStatus(100);
+			showStatusMessageUTF(g_Locale->getText(LOCALE_FLASHUPDATE_READY)); // UTF-8
+			char message[500];
+			sprintf(message, g_Locale->getText(LOCALE_FLASHUPDATE_SAVESUCCESS), filename.c_str());
+			sleep(1);
+			hide();
+			ShowHintUTF(LOCALE_MESSAGEBOX_INFO, message);
+		}
 	}
 }
 
