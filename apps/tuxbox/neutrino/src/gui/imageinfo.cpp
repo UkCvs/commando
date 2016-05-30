@@ -326,7 +326,7 @@ void CImageInfo::paintRevisionInfos(int y_startposition)
 	
 	y_startposition += sheight;
 	paintContent(font_small, xpos, y_startposition, "Squashfs:", COL_MENUCONTENTINACTIVE );
-	paintContent(font_small, xpos+x_offset_large, y_startposition, getSysInfo("squashfs: version ", false).c_str());
+	paintContent(font_small, xpos+x_offset_large, y_startposition, getSysInfo("Squashfs ", false).c_str());
 	
 	y_startposition += sheight;
 	paintContent(font_small, xpos, y_startposition, "Imageinfo:", COL_MENUCONTENTINACTIVE );
