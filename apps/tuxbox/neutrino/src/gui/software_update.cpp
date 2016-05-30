@@ -133,9 +133,9 @@ int CSoftwareUpdate::showSoftwareUpdateExpert()
 
 	CMenuWidget* mtdexpert = new CMenuWidget(LOCALE_SERVICEMENU_UPDATE, NEUTRINO_ICON_UPDATE);
 	mtdexpert->addIntroItems(LOCALE_FLASHUPDATE_EXPERTFUNCTIONS);
-	
-	mtdexpert->addItem(new CMenuForwarder(LOCALE_FLASHUPDATE_READFLASH, true, NULL, fe, "readflash", CRCInput::RC_red));
-	mtdexpert->addItem(new CMenuForwarder(LOCALE_FLASHUPDATE_WRITEFLASH, true, NULL, fe, "writeflash", CRCInput::RC_green));
+
+	mtdexpert->addItem(new CMenuForwarder(LOCALE_FLASHUPDATE_WRITEFLASH, true, NULL, fe, "writeflash", CRCInput::RC_red));
+	mtdexpert->addItem(new CMenuForwarder(LOCALE_FLASHUPDATE_READFLASH, true, NULL, fe, "readflash", CRCInput::RC_green));
 /*
 	mtdexpert->addItem(GenericMenuSeparatorLine);
 
