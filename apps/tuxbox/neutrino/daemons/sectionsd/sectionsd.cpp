@@ -191,6 +191,7 @@ int ntpenable;
 
 static int eit_update_fd = -1;
 static bool update_eit = true;
+static bool audio_ReSync = true;
 
 /* messaging_current_servicekey does probably not need locking, since it is
    changed from one place */
@@ -5034,6 +5035,7 @@ static void commandRestart(int connfd, char * /*data*/, const unsigned /*dataLen
 	SETENVS(ntp_system_cmd);
 	SETENVS(epg_dir);
 	SETENVB(update_eit);
+	SETENVB(audio_ReSync);
 	SETENVB(bTimeCorrect);
 	SETENVB(debug);
 	writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS);
@@ -8654,6 +8656,7 @@ int main(int argc, char **argv)
 				GETENVS(ntp_system_cmd);
 				GETENVS(epg_dir);
 				GETENVB(update_eit);
+				GETENVB(audio_ReSync);
 				GETENVB(bTimeCorrect);
 				GETENVI(debug);
 			}
@@ -8688,6 +8691,7 @@ int main(int argc, char **argv)
 		secondsExtendedTextCache = (atoi(ntp_config.getString("epg_extendedcache_time","6").c_str() ) *60L*60L); //Stunden
 		oldEventsAre = (atoi(ntp_config.getString("epg_old_events","1").c_str() ) *60L*60L); //Stunden
 		max_events= atoi(ntp_config.getString("epg_max_events","6000").c_str() );
+		audio_ReSync = ntp_config.getBool("audio_ReSync", true);
 
 		printf("[sectionsd] Caching max %d events\n", max_events);
 		printf("[sectionsd] Caching %ld days\n", secondsToCache / (24*60*60L));
@@ -8809,6 +8813,9 @@ int main(int argc, char **argv)
 //						messaging_skipped_sections_ID[0].clear();
 //						messaging_sections_max_ID[0] = -1;
 //						messaging_sections_got_all[0] = false;
+						if ((audio_ReSync == true) && (messaging_last_requested != dmxCN.lastChanged)) {
+							xprintf("Audio ReSync: Activate\n");system("pzapit -rz");
+						}
 						messaging_have_CN = 0x00;
 						messaging_got_CN = 0x00;
 						messaging_last_requested = time(NULL);

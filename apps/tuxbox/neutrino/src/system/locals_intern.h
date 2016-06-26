@@ -172,6 +172,7 @@ const char * locale_real_names[] =
 	"audiomenu.monoleft",
 	"audiomenu.monoright",
 	"audiomenu.ost",
+	"audiomenu.resync",
 	"audiomenu.stereo",
 	"audiomenu.volumebar_audiosteps",
 	"audioplayer.add",

@@ -181,6 +181,9 @@ int CAudioSetup::showAudioSetup()
 
 	audioSettings->addItem(GenericMenuSeparatorLine);
 
+	oj = new CMenuOptionChooser(LOCALE_AUDIOMENU_RESYNC, &g_settings.audio_ReSync, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true);
+	audioSettings->addItem(oj);
+
 	// Audio Priority Pids
 	CMenuForwarder *ap = new CMenuForwarder(LOCALE_AUDIOPRIORITY_SETTINGS, g_settings.audio_propids_enabled, NULL, new audioprioritySettingsMenu());
 	CAudioSetupNotifier3 audioSetupNotifier3(ap);

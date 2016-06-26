@@ -145,6 +145,7 @@ audiomenu.lirc lirc
 audiomenu.monoleft mono links
 audiomenu.monoright mono rechts
 audiomenu.ost ost
+audiomenu.resync Synchronisieren
 audiomenu.stereo stereo
 audiomenu.volumebar_audiosteps Lautstärke Schrittweite
 audioplayer.add Hinzufügen
