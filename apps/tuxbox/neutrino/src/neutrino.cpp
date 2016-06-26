@@ -284,10 +284,10 @@ const font_sizes_struct neutrino_font[SNeutrinoSettings::FONT_TYPE_COUNT] =
 	{LOCALE_FONTSIZE_EVENTLIST_DATETIME ,  16, FONT_STYLE_REGULAR, 1},
 	{LOCALE_FONTSIZE_GAMELIST_ITEMLARGE ,  20, FONT_STYLE_BOLD   , 1},
 	{LOCALE_FONTSIZE_GAMELIST_ITEMSMALL ,  16, FONT_STYLE_REGULAR, 1},
-	{LOCALE_FONTSIZE_CHANNELLIST        ,  20, FONT_STYLE_BOLD   , 1},
-	{LOCALE_FONTSIZE_CHANNELLIST_DESCR  ,  20, FONT_STYLE_REGULAR, 1},
-	{LOCALE_FONTSIZE_CHANNELLIST_NUMBER ,  14, FONT_STYLE_BOLD   , 2},
-	{LOCALE_FONTSIZE_CHANNELLIST_EVENT  ,  16, FONT_STYLE_REGULAR, 2},
+	{LOCALE_FONTSIZE_CHANNELLIST        ,  18, FONT_STYLE_BOLD   , 1},
+	{LOCALE_FONTSIZE_CHANNELLIST_DESCR  ,  18, FONT_STYLE_REGULAR, 1},
+	{LOCALE_FONTSIZE_CHANNELLIST_NUMBER ,  12, FONT_STYLE_BOLD   , 2},
+	{LOCALE_FONTSIZE_CHANNELLIST_EVENT  ,  14, FONT_STYLE_REGULAR, 2},
 	{LOCALE_FONTSIZE_CHANNEL_NUM_ZAP    ,  40, FONT_STYLE_BOLD   , 0},
 	{LOCALE_FONTSIZE_INFOBAR_NUMBER     ,  50, FONT_STYLE_BOLD   , 0},
 	{LOCALE_FONTSIZE_INFOBAR_CHANNAME   ,  30, FONT_STYLE_BOLD   , 0},
@@ -340,8 +340,8 @@ int CNeutrinoApp::loadSetup()
 	}
 
 	//video
-	g_settings.video_Format = configfile.getInt32("video_Format", CControldClient::VIDEOFORMAT_4_3);
-	g_settings.video_backgroundFormat = configfile.getInt32("video_backgroundFormat", CControldClient::VIDEOFORMAT_4_3);
+	g_settings.video_Format = configfile.getInt32("video_Format", CControldClient::VIDEOFORMAT_AUTO);
+	g_settings.video_backgroundFormat = configfile.getInt32("video_backgroundFormat", CControldClient::VIDEOFORMAT_16_9);
 
 	g_settings.video_csync = configfile.getInt32( "video_csync", 0 );
 
@@ -350,17 +350,17 @@ int CNeutrinoApp::loadSetup()
 	g_settings.gtx_alpha2 = configfile.getInt32( "gtx_alpha2", 1);
 
 	// EPG-Config
-	g_settings.epg_cache 		= configfile.getString("epg_cache_time", "14");
-	g_settings.epg_extendedcache	= configfile.getString("epg_extendedcache_time", "6");
+	g_settings.epg_cache 		= configfile.getString("epg_cache_time", "7");
+	g_settings.epg_extendedcache	= configfile.getString("epg_extendedcache_time", "18");
 	g_settings.epg_old_events 	= configfile.getString("epg_old_events", "1");
-	g_settings.epg_max_events 	= configfile.getString("epg_max_events", "6000");
+	g_settings.epg_max_events 	= configfile.getString("epg_max_events", "18000");
 	g_settings.epg_dir 		= configfile.getString("epg_dir", "");
 
 	// EPG-View
 	g_settings.bigFonts = configfile.getInt32("bigFonts", 0);
 
 	// NTP-Server for sectionsd
-	g_settings.network_ntpserver	= configfile.getString("network_ntpserver", "130.60.7.42");
+	g_settings.network_ntpserver	= configfile.getString("network_ntpserver", "time.mit.edu");
 	g_settings.network_ntprefresh	= configfile.getString("network_ntprefresh", "30" );
 	g_settings.network_ntpenable 	= configfile.getBool("network_ntpenable", CNetworkSetup::NETWORK_NTP_OFF);
 
@@ -389,25 +389,25 @@ int CNeutrinoApp::loadSetup()
 #ifndef TUXTXT_CFG_STANDALONE
 	g_settings.tuxtxt_cache			= configfile.getBool("tuxtxt_cache"              , false );
 #endif
-	g_settings.virtual_zap_mode		= configfile.getBool("virtual_zap_mode"          , false);
+	g_settings.virtual_zap_mode		= configfile.getBool("virtual_zap_mode"          , true);
 	g_settings.progressbar_color		= configfile.getBool("progressbar_color"         , true );
 	g_settings.infobar_show			= configfile.getInt32("infobar_show"             , CInfoViewer::EPGINFO_NO_MESSAGE);
 	g_settings.show_mute_icon		= configfile.getInt32("show_mute_icon"		, SHOW_MUTE_ICON_YES);
-	g_settings.channellist_additional = configfile.getInt32("channellist_additional", CChannelList::ADDITIONAL_OFF);
+	g_settings.channellist_additional = configfile.getInt32("channellist_additional", CChannelList::ADDITIONAL_MTV);
 	g_settings.channellist_epgtext_align_right		= configfile.getBool("channellist_epgtext_align_right"          , false);
 	g_settings.channellist_extended		= configfile.getBool("channellist_extended"          , false);
 	g_settings.channellist_foot	= configfile.getInt32("channellist_foot"          , CChannelList::FOOT_NEXT);
-	strcpy( g_settings.infobar_channel_logodir, configfile.getString( "infobar_channel_logodir", "/var/share/tuxbox/neutrino/icons/").c_str()); 
+	strcpy( g_settings.infobar_channel_logodir, configfile.getString( "infobar_channel_logodir", "/var/etc/icons/").c_str()); 
 	g_settings.infobar_show_channellogo	= configfile.getInt32("infobar_show_channellogo"		, CInfoViewer::NO_LOGO);
 	g_settings.infobar_channellogo_background		= configfile.getInt32("infobar_channellogo_background"		, CInfoViewer::NO_BACKGROUND);
-	g_settings.startmode			= configfile.getInt32("startmode" , STARTMODE_RESTORE );
+	g_settings.startmode			= configfile.getInt32("startmode" , STARTMODE_TV );
 	g_settings.wzap_time			= configfile.getInt32("wzap_time", 3 );
 	g_settings.radiotext_enable		= configfile.getBool("radiotext_enable"          , false);
 
 	//audio
 	g_settings.audio_AnalogMode 		= configfile.getInt32( "audio_AnalogMode"        , 0 );
 	g_settings.audio_DolbyDigital		= configfile.getBool("audio_DolbyDigital"        , false);
-	g_settings.audio_initial_volume		= configfile.getInt32( "audio_initial_volume"    , 0 );
+	g_settings.audio_initial_volume		= configfile.getInt32( "audio_initial_volume"    , 75 );
 #ifdef HAVE_DBOX_HARDWARE
 	g_settings.audio_avs_Control 		= configfile.getInt32( "audio_avs_Control", CControld::TYPE_AVS );
 	g_settings.audio_step               = configfile.getInt32( "audio_step" , 5 );
@@ -466,10 +466,10 @@ int CNeutrinoApp::loadSetup()
 		g_settings.network_nfs[i].dir            = configfile.getString("network_nfs_dir_" + i_str, "");
 		g_settings.network_nfs[i].local_dir      = configfile.getString("network_nfs_local_dir_" + i_str, "");
 		g_settings.network_nfs[i].automount      = configfile.getInt32 ("network_nfs_automount_" + i_str, 0);
-		g_settings.network_nfs[i].type           = configfile.getInt32 ("network_nfs_type_" + i_str, 0);
+		g_settings.network_nfs[i].type           = configfile.getInt32 ("network_nfs_type_" + i_str, 1);
 		g_settings.network_nfs[i].username       = configfile.getString("network_nfs_username_" + i_str, "");
 		g_settings.network_nfs[i].password       = configfile.getString("network_nfs_password_" + i_str, "");
-		g_settings.network_nfs[i].mount_options1 = configfile.getString("network_nfs_mount_options1_" + i_str, "ro,soft,udp" );
+		g_settings.network_nfs[i].mount_options1 = configfile.getString("network_nfs_mount_options1_" + i_str, "rw,soft,udp" );
 		g_settings.network_nfs[i].mount_options2 = configfile.getString("network_nfs_mount_options2_" + i_str, "nolock,rsize=8192,wsize=8192" );
 		g_settings.network_nfs[i].mac            = configfile.getString("network_nfs_mac_" + i_str, "11:22:33:44:55:66");
 	}
@@ -670,10 +670,10 @@ int CNeutrinoApp::loadSetup()
 	//screen configuration
 	g_settings.screen_xres = configfile.getInt32("screen_xres", 100);
 	g_settings.screen_yres = configfile.getInt32("screen_yres", 100);
-	g_settings.screen_StartX = configfile.getInt32( "screen_StartX", 37 );
-	g_settings.screen_StartY = configfile.getInt32( "screen_StartY", 23 );
-	g_settings.screen_EndX = configfile.getInt32( "screen_EndX", 668 );
-	g_settings.screen_EndY = configfile.getInt32( "screen_EndY", 555 );
+	g_settings.screen_StartX = configfile.getInt32( "screen_StartX", 50 );
+	g_settings.screen_StartY = configfile.getInt32( "screen_StartY", 20 );
+	g_settings.screen_EndX = configfile.getInt32( "screen_EndX", 680 );
+	g_settings.screen_EndY = configfile.getInt32( "screen_EndY", 545 );
 	frameBuffer->setScreenSize(g_settings.screen_StartX, g_settings.screen_StartY, g_settings.screen_EndX, g_settings.screen_EndY);
 
 #ifndef DISABLE_INTERNET_UPDATE
