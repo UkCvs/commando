@@ -122,7 +122,7 @@ CDemux *videoDemux = NULL;
 map<t_channel_id, unsigned short> audio_map;
 
 /* True if we save AudioPIDs between sessions */
-bool save_audioPIDs = false;
+bool save_audioPIDs = true;
 
 /* current zapit mode */
 enum {
@@ -3288,7 +3288,7 @@ int main(int argc, char **argv)
 	/* create bouquet manager */
 	bouquetManager = new CBouquetManager();
 
-	saveLastChannel = config.getBool("saveLastChannel", true);
+	saveLastChannel = config.getBool("saveLastChannel", false);
 	lastChannelRadio = config.getInt32("lastChannelRadio", 0);
 	lastChannelTV    = config.getInt32("lastChannelTV", 0);
 	startChannelRadio = config.getInt32("startChannelRadio", 0);
