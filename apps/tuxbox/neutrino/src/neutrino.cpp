@@ -383,7 +383,7 @@ int CNeutrinoApp::loadSetup()
 	strcpy(g_settings.shutdown_count, configfile.getString("shutdown_count","0").c_str());
 	g_settings.sleeptimer_min		= configfile.getInt32("sleeptimer_min", 0);
 	g_settings.volumebar_disp_pos		= configfile.getInt32("volumebar_disp_pos" , VOLUMEBAR_DISP_POS_DEFAULT_CENTER );
-	g_settings.infobar_sat_display		= configfile.getBool("infobar_sat_display"       , true );
+	g_settings.infobar_sat_display		= configfile.getBool("infobar_sat_display"       , false );
 	g_settings.infobar_subchan_disp_pos	= configfile.getInt32("infobar_subchan_disp_pos" , CInfoViewer::SUBCHAN_DISP_POS_INFOBAR );
 	g_settings.misc_spts			= configfile.getBool("misc_spts"                 , false );
 #ifndef TUXTXT_CFG_STANDALONE
@@ -395,7 +395,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.show_mute_icon		= configfile.getInt32("show_mute_icon"		, SHOW_MUTE_ICON_YES);
 	g_settings.channellist_additional = configfile.getInt32("channellist_additional", CChannelList::ADDITIONAL_MTV);
 	g_settings.channellist_epgtext_align_right		= configfile.getBool("channellist_epgtext_align_right"          , false);
-	g_settings.channellist_extended		= configfile.getBool("channellist_extended"          , false);
+	g_settings.channellist_extended		= configfile.getBool("channellist_extended"          , true);
 	g_settings.channellist_foot	= configfile.getInt32("channellist_foot"          , CChannelList::FOOT_NEXT);
 	strcpy( g_settings.infobar_channel_logodir, configfile.getString( "infobar_channel_logodir", "/var/etc/icons/").c_str()); 
 	g_settings.infobar_show_channellogo	= configfile.getInt32("infobar_show_channellogo"		, CInfoViewer::NO_LOGO);
@@ -407,7 +407,7 @@ int CNeutrinoApp::loadSetup()
 	//audio
 	g_settings.audio_AnalogMode 		= configfile.getInt32( "audio_AnalogMode"        , 0 );
 	g_settings.audio_DolbyDigital		= configfile.getBool("audio_DolbyDigital"        , false);
-	g_settings.audio_initial_volume		= configfile.getInt32( "audio_initial_volume"    , 75 );
+	g_settings.audio_initial_volume		= configfile.getInt32( "audio_initial_volume"    , 100 );
 #ifdef HAVE_DBOX_HARDWARE
 	g_settings.audio_avs_Control 		= configfile.getInt32( "audio_avs_Control", CControld::TYPE_AVS );
 	g_settings.audio_step               = configfile.getInt32( "audio_step" , 5 );
