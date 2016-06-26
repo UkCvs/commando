@@ -533,7 +533,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.personalize_ucodecheck = configfile.getInt32("personalize_ucodecheck", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_imageinfo = configfile.getInt32("personalize_imageinfo", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_update = configfile.getInt32("personalize_update", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
-	g_settings.personalize_chan_epg_stat = configfile.getInt32("personalize_chan_epg_stat", CPersonalizeGui::PERSONALIZE_MODE_NOTVISIBLE);
+	g_settings.personalize_chan_epg_stat = configfile.getInt32("personalize_chan_epg_stat", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 #ifdef ENABLE_DRIVE_GUI
 	g_settings.personalize_drive_setup_stat = configfile.getInt32("personalize_drive_setup_stat", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 #endif
