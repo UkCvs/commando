@@ -62,14 +62,14 @@ void audioprioritySettingsMenu::ShowHelpAPS()
 {
 	Helpbox helpbox;
 	helpbox.addLine(g_Locale->getText(LOCALE_AUDIOPRIORITY_HELP1));
-	helpbox.addLine(g_Locale->getText(LOCALE_PERSONALIZE_HELP_LINE4));
+	helpbox.addLine(g_Locale->getText(LOCALE_GENERIC_EMPTY));
 	helpbox.addLine(g_Locale->getText(LOCALE_AUDIOPRIORITY_HELP2));
 	helpbox.addLine(g_Locale->getText(LOCALE_AUDIOPRIORITY_HELP3));
 	helpbox.addLine(g_Locale->getText(LOCALE_AUDIOPRIORITY_HELP4));
-	helpbox.addLine(g_Locale->getText(LOCALE_PERSONALIZE_HELP_LINE4));
+	helpbox.addLine(g_Locale->getText(LOCALE_GENERIC_EMPTY));
 	helpbox.addLine(g_Locale->getText(LOCALE_AUDIOPRIORITY_HELP5));
 	helpbox.addLine(g_Locale->getText(LOCALE_AUDIOPRIORITY_HELP6));
-	helpbox.addLine(g_Locale->getText(LOCALE_PERSONALIZE_HELP_LINE4));
+	helpbox.addLine(g_Locale->getText(LOCALE_GENERIC_EMPTY));
 	helpbox.addLine(g_Locale->getText(LOCALE_AUDIOPRIORITY_HELP7));
 	hide();
 	helpbox.show(LOCALE_AUDIOPRIORITY_HELP);
