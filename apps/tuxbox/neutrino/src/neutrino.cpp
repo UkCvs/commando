@@ -422,7 +422,7 @@ int CNeutrinoApp::loadSetup()
 #endif
 #endif
 	g_settings.audio_PCMOffset      = configfile.getInt32( "audio_PCMOffset", 0 );
-	g_settings.audio_ReSync		= configfile.getBool( "audio_ReSync"    , true);
+	g_settings.audio_ReSync		= configfile.getInt32( "audio_ReSync"   , 2);
 
 	//Audio Priority Pids
 	char audio_propids_key[4];
@@ -981,7 +981,7 @@ void CNeutrinoApp::saveSetup()
 	configfile.setInt32( "audio_avs_Control", g_settings.audio_avs_Control);
 	configfile.setInt32( "audio_PCMOffset" , g_settings.audio_PCMOffset);
 	configfile.setInt32( "audio_step"	, g_settings.audio_step);
-	configfile.setBool( "audio_ReSync", g_settings.audio_ReSync);
+	configfile.setInt32( "audio_ReSync", g_settings.audio_ReSync);
 
 	//Audio Priority Pids
 	char audio_propids_key[4];

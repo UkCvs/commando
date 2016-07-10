@@ -128,6 +128,14 @@ const CMenuOptionChooser::keyval AUDIOMENU_AUDIOPRIORITY_OFF_ON_OPTIONS[AUDIOMEN
 	{ 1, LOCALE_OPTIONS_ON }
 };
 
+#define AUDIOMENU_RESYNC_OPTION_COUNT 3
+const CMenuOptionChooser::keyval AUDIOMENU_RESYNC_OPTIONS[AUDIOMENU_RESYNC_OPTION_COUNT] =
+{
+	{ 0, LOCALE_AUDIOMENU_RESYNC_OFF },
+	{ 1, LOCALE_AUDIOMENU_RESYNC_ON  },
+	{ 2, LOCALE_AUDIOMENU_RESYNC_REPEAT }
+};
+
 /* audio settings menu */
 int CAudioSetup::showAudioSetup()
 {
@@ -181,7 +189,7 @@ int CAudioSetup::showAudioSetup()
 
 	audioSettings->addItem(GenericMenuSeparatorLine);
 
-	oj = new CMenuOptionChooser(LOCALE_AUDIOMENU_RESYNC, &g_settings.audio_ReSync, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true);
+	oj = new CMenuOptionChooser(LOCALE_AUDIOMENU_RESYNC, &g_settings.audio_ReSync, AUDIOMENU_RESYNC_OPTIONS, AUDIOMENU_RESYNC_OPTION_COUNT, true);
 	audioSettings->addItem(oj);
 
 	// Audio Priority Pids
