@@ -193,6 +193,7 @@ static int eit_update_fd = -1;
 static bool update_eit = true;
 static int audio_ReSync;
 static int audio_ReSync_timer;
+static long audio_ReSync_count = 0;
 
 /* messaging_current_servicekey does probably not need locking, since it is
    changed from one place */
@@ -8286,8 +8287,11 @@ static void *houseKeepingThread(void *)
 
 			readLockEvents();
 			time_t zeit = time(NULL);
-			if ((audio_ReSync > 1) && (zeit > (dmxCN.lastChanged + audio_ReSync_timer))) {
-				xprintf("Audio ReSync: Activate - time diff %i seconds\n", zeit - dmxCN.lastChanged);system("pzapit -rz");
+			if ((audio_ReSync > 1) && ((zeit - audio_ReSync_count) > (dmxCN.lastChanged + audio_ReSync_timer))) {
+				audio_ReSync_count += audio_ReSync_timer;
+				xprintf("Audio ReSync: Activate - count %i, time diff %d seconds\n",
+					(audio_ReSync_count / audio_ReSync_timer), zeit - dmxCN.lastChanged);
+				system("pzapit -rz");
 			}
 			dprintf("Number of sptr events (event-ID): %u\n", mySIeventsOrderUniqueKey.size());
 			dprintf("Number of sptr events (service-id, start time, event-id): %u\n", mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.size());
@@ -8839,7 +8843,9 @@ int main(int argc, char **argv)
 //						messaging_sections_max_ID[0] = -1;
 //						messaging_sections_got_all[0] = false;
 						if ((audio_ReSync > 0) && (messaging_last_requested != dmxCN.lastChanged)) {
-							xprintf("Audio ReSync: Activate\n");system("pzapit -rz");
+							audio_ReSync_count = 0;
+							xprintf("Audio ReSync: Activate\n");
+							system("pzapit -rz");
 						}
 						messaging_have_CN = 0x00;
 						messaging_got_CN = 0x00;
