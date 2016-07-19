@@ -3038,6 +3038,7 @@ static void commandserviceChanged(int connfd, char *data, const unsigned dataLen
 	dprintf("[sectionsd] commandserviceChanged: Service changed to " PRINTF_CHANNEL_ID_TYPE "\n", *uniqueServiceKey);
 
 	messaging_last_requested = time(NULL);
+	audio_ReSync_count = 0;
 
 	if(checkBlacklist(*uniqueServiceKey))
 	{
