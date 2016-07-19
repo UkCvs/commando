@@ -189,8 +189,12 @@ int CAudioSetup::showAudioSetup()
 
 	audioSettings->addItem(GenericMenuSeparatorLine);
 
-	oj = new CMenuOptionChooser(LOCALE_AUDIOMENU_RESYNC, &g_settings.audio_ReSync, AUDIOMENU_RESYNC_OPTIONS, AUDIOMENU_RESYNC_OPTION_COUNT, true);
+	// Audio auto AV ReSync
+	CMenuOptionNumberChooser *rt = new CMenuOptionNumberChooser(LOCALE_AUDIOMENU_RESYNC_TIMER, &g_settings.audio_ReSync_timer, (g_settings.audio_ReSync == 2), 5, 180, 0, 0, NONEXISTANT_LOCALE, NULL, &audioSetupNotifier, CRCInput::RC_nokey, "", true);
+	CAudioSetupNotifier4 audioSetupNotifier4(rt);
+	oj = new CMenuOptionChooser(LOCALE_AUDIOMENU_RESYNC, &g_settings.audio_ReSync, AUDIOMENU_RESYNC_OPTIONS, AUDIOMENU_RESYNC_OPTION_COUNT, true, &audioSetupNotifier4);
 	audioSettings->addItem(oj);
+	audioSettings->addItem(rt);
 
 	// Audio Priority Pids
 	CMenuForwarder *ap = new CMenuForwarder(LOCALE_AUDIOPRIORITY_SETTINGS, g_settings.audio_propids_enabled, NULL, new audioprioritySettingsMenu());
@@ -218,6 +222,10 @@ bool CAudioSetupNotifier::changeNotify(const neutrino_locale_t OptionName, void 
 	else if (ARE_LOCALES_EQUAL(OptionName, LOCALE_AUDIOMENU_ANALOGOUT))
 	{
 		g_Zapit->setAudioMode(g_settings.audio_AnalogMode);
+	}
+	else if (ARE_LOCALES_EQUAL(OptionName, LOCALE_AUDIOMENU_RESYNC_TIMER))
+	{
+		CNeutrinoApp::getInstance()->SendSectionsdConfig();
 	}
 	return false;
 }
@@ -249,6 +257,21 @@ bool CAudioSetupNotifier3::changeNotify(const neutrino_locale_t, void *)
 {
 	if (toDisable[0])
 		toDisable[0]->setActive(g_settings.audio_propids_enabled == true);
+
+	return false;
+}
+
+CAudioSetupNotifier4::CAudioSetupNotifier4( CMenuItem* i1)
+{
+	toDisable[0]=i1;
+}
+
+bool CAudioSetupNotifier4::changeNotify(const neutrino_locale_t, void *)
+{
+	if (toDisable[0])
+		toDisable[0]->setActive(g_settings.audio_ReSync == 2);
+
+	CNeutrinoApp::getInstance()->SendSectionsdConfig();
 
 	return false;
 }

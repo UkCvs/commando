@@ -149,6 +149,7 @@ audiomenu.resync Synchronize
 audiomenu.resync_off off
 audiomenu.resync_on on
 audiomenu.resync_repeat repeat
+audiomenu.resync_timer Synchronize Timer
 audiomenu.stereo stereo
 audiomenu.volumebar_audiosteps Volume Step Size
 audioplayer.add Add

@@ -157,6 +157,8 @@ class CSectionsdClient : private CBasicClient
 		int epg_extendedcache;
 		int epg_old_events;
 		int epg_max_events;
+		int audio_ReSync;
+		int audio_ReSync_timer;
 		int network_ntprefresh;
 		int network_ntpenable;
 		std::string network_ntpserver;

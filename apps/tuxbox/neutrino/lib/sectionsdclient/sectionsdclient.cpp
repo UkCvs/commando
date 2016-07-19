@@ -815,6 +815,8 @@ void CSectionsdClient::setConfig(const epg_config config)
 	msg->epg_extendedcache	= config.epg_extendedcache;
 	msg->epg_old_events	= config.epg_old_events;
 	msg->epg_max_events	= config.epg_max_events;
+	msg->audio_ReSync	= config.audio_ReSync;
+	msg->audio_ReSync_timer	= config.audio_ReSync_timer;
 	msg->network_ntprefresh	= config.network_ntprefresh;
 	msg->network_ntpenable	= config.network_ntpenable;
 //	config.network_ntpserver:

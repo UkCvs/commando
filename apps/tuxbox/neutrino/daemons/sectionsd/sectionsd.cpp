@@ -100,8 +100,8 @@
 //#define MAX_EVENTS 6000
 static unsigned int max_events;
 // sleep 5 minutes
-//#define HOUSEKEEPING_SLEEP (5 * 60)
-#define HOUSEKEEPING_SLEEP (30 * 60) // also used for auto repeat Audio ReSync timediff > 30 mins
+#define HOUSEKEEPING_SLEEP (5 * 60) // also used for auto repeat Audio ReSync timediff > (30 mins default)
+//#define HOUSEKEEPING_SLEEP (30 * 60)
 // meta housekeeping after XX housekeepings - every 24h -
 #define META_HOUSEKEEPING (24 * 60 * 60) / HOUSEKEEPING_SLEEP
 
@@ -191,7 +191,8 @@ int ntpenable;
 
 static int eit_update_fd = -1;
 static bool update_eit = true;
-static int audio_ReSync = 2;
+static int audio_ReSync;
+static int audio_ReSync_timer;
 
 /* messaging_current_servicekey does probably not need locking, since it is
    changed from one place */
@@ -4351,6 +4352,19 @@ static void commandSetConfig(int connfd, char *data, const unsigned /*dataLength
 		unlockEvents();
 	}
 
+	if (audio_ReSync != pmsg->audio_ReSync) {
+		dprintf("new audio_ReSync = %d\n", pmsg->audio_ReSync);
+		writeLockEvents();
+		audio_ReSync = pmsg->audio_ReSync;
+		unlockEvents();
+	}
+	if (audio_ReSync_timer != (int)(pmsg->audio_ReSync_timer)*60) {
+		dprintf("new audio_ReSync_timer = %d\n", (int)(pmsg->audio_ReSync_timer)*60);
+		writeLockEvents();
+		audio_ReSync_timer = (int)(pmsg->audio_ReSync_timer)*60;
+		unlockEvents();
+	}
+
 	if (ntprefresh != pmsg->network_ntprefresh) {
 		dprintf("new network_ntprefresh = %d\n", pmsg->network_ntprefresh);
 		pthread_mutex_lock(&timeThreadSleepMutex);
@@ -5036,6 +5050,7 @@ static void commandRestart(int connfd, char * /*data*/, const unsigned /*dataLen
 	SETENVS(epg_dir);
 	SETENVB(update_eit);
 	SETENVI(audio_ReSync);
+	SETENVI(audio_ReSync_timer);
 	SETENVB(bTimeCorrect);
 	SETENVB(debug);
 	writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS);
@@ -8271,7 +8286,7 @@ static void *houseKeepingThread(void *)
 
 			readLockEvents();
 			time_t zeit = time(NULL);
-			if ((audio_ReSync > 1) && (zeit > (dmxCN.lastChanged + 1800))) { // time diff > 30 mins
+			if ((audio_ReSync > 1) && (zeit > (dmxCN.lastChanged + audio_ReSync_timer))) {
 				xprintf("Audio ReSync: Activate - time diff %i seconds\n", zeit - dmxCN.lastChanged);system("pzapit -rz");
 			}
 			dprintf("Number of sptr events (event-ID): %u\n", mySIeventsOrderUniqueKey.size());
@@ -8661,6 +8676,7 @@ int main(int argc, char **argv)
 				GETENVS(epg_dir);
 				GETENVB(update_eit);
 				GETENVI(audio_ReSync);
+				GETENVI(audio_ReSync_timer);
 				GETENVB(bTimeCorrect);
 				GETENVI(debug);
 			}
@@ -8695,8 +8711,13 @@ int main(int argc, char **argv)
 		secondsExtendedTextCache = (atoi(ntp_config.getString("epg_extendedcache_time","6").c_str() ) *60L*60L); //Stunden
 		oldEventsAre = (atoi(ntp_config.getString("epg_old_events","1").c_str() ) *60L*60L); //Stunden
 		max_events= atoi(ntp_config.getString("epg_max_events","6000").c_str() );
-		audio_ReSync = atoi(ntp_config.getString("audio_ReSync", "2").c_str() );
 
+		//Audio Synchronize Timer loading
+		audio_ReSync = ntp_config.getInt32("audio_ReSync", 2);
+		audio_ReSync_timer = (ntp_config.getInt32("audio_ReSync_timer", 30)*60);
+
+		printf("[sectionsd] Audio Synchronize setting is %d\n", audio_ReSync);
+		printf("[sectionsd] Audio Synchronize Timer setting is %d\n", audio_ReSync_timer);
 		printf("[sectionsd] Caching max %d events\n", max_events);
 		printf("[sectionsd] Caching %ld days\n", secondsToCache / (24*60*60L));
 		printf("[sectionsd] Caching %ld hours Extended Text\n", secondsExtendedTextCache / (60*60L));

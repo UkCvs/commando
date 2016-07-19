@@ -176,6 +176,7 @@ const char * locale_real_names[] =
 	"audiomenu.resync_off",
 	"audiomenu.resync_on",
 	"audiomenu.resync_repeat",
+	"audiomenu.resync_timer",
 	"audiomenu.stereo",
 	"audiomenu.volumebar_audiosteps",
 	"audioplayer.add",

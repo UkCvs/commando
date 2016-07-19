@@ -132,6 +132,8 @@ struct sectionsd
 		int epg_cache;
 		int epg_extendedcache;
 		int epg_old_events;
+		int audio_ReSync;
+		int audio_ReSync_timer;
 		unsigned int epg_max_events;
 		int network_ntprefresh;
 		int network_ntpenable;
@@ -364,6 +366,8 @@ struct sectionsd
 //	int scanMode; 			-> updating of services and bouquets -> saved in auto_scanning
 //	int epg_cache;			-> in days -> saved in secondsToCache
 //	int epg_old_events;		-> in hours -> saved in oldEventsAre
+//	int audio_ReSync;		-> synchronize audio drift enabled -> saved in audio_ReSync
+//	int audio_ReSync_timer;		-> synchronize audio interval timer -> saved in audio_ReSync_timer
 //	unsigned int epg_max_events;	-> #of saved events -> saved in max_events
 //	int network_ntprefresh;		-> time refresh intervall -> saved in ntprefresh
 //	int network_ntpenable;		-> time refresh via ntp server -> saved in ntpenable

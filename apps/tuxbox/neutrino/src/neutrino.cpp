@@ -423,6 +423,7 @@ int CNeutrinoApp::loadSetup()
 #endif
 	g_settings.audio_PCMOffset      = configfile.getInt32( "audio_PCMOffset", 0 );
 	g_settings.audio_ReSync		= configfile.getInt32( "audio_ReSync"   , 2);
+	g_settings.audio_ReSync_timer	= configfile.getInt32( "audio_ReSync_timer" , 30);
 
 	//Audio Priority Pids
 	char audio_propids_key[4];
@@ -981,7 +982,8 @@ void CNeutrinoApp::saveSetup()
 	configfile.setInt32( "audio_avs_Control", g_settings.audio_avs_Control);
 	configfile.setInt32( "audio_PCMOffset" , g_settings.audio_PCMOffset);
 	configfile.setInt32( "audio_step"	, g_settings.audio_step);
-	configfile.setInt32( "audio_ReSync", g_settings.audio_ReSync);
+	configfile.setInt32( "audio_ReSync" , g_settings.audio_ReSync);
+	configfile.setInt32( "audio_ReSync_timer" , g_settings.audio_ReSync_timer);
 
 	//Audio Priority Pids
 	char audio_propids_key[4];
@@ -1926,6 +1928,8 @@ void CNeutrinoApp::SendSectionsdConfig(void)
 	config.epg_old_events 		= atoi(g_settings.epg_old_events.c_str());
 	config.epg_max_events		= atoi(g_settings.epg_max_events.c_str());
 	config.epg_dir			= g_settings.epg_dir;
+	config.audio_ReSync		= g_settings.audio_ReSync;
+	config.audio_ReSync_timer	= g_settings.audio_ReSync_timer;
 	config.network_ntpserver	= g_settings.network_ntpserver;
 	config.network_ntprefresh	= atoi(g_settings.network_ntprefresh.c_str());
 	config.network_ntpenable	= g_settings.network_ntpenable;

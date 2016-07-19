@@ -103,6 +103,7 @@ struct SNeutrinoSettings
 	int audio_step;
 	int audio_PCMOffset;
 	int audio_ReSync;
+	int audio_ReSync_timer;
 
 	//Audio Priority Pids
 #define AUDIO_PRIORITY_NR_OF_ENTRIES 8
