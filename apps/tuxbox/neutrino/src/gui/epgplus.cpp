@@ -119,7 +119,7 @@ static EpgPlus::ColorSetting colorSettingDefaultTable[] =
 
 static EpgPlus::SizeSetting sizeSettingDefaultTable[] =
 {
-	{ EpgPlus::EPGPlus_channelentry_width               , "EPGPlus.channelentry_width"                    , LOCALE_EPGPLUS_CHANNELENTRY_WIDTH               , 100, true},
+	{ EpgPlus::EPGPlus_channelentry_width               , "EPGPlus.channelentry_width"                    , LOCALE_EPGPLUS_CHANNELENTRY_WIDTH               , 150, true},
 	{ EpgPlus::EPGPlus_channelentry_separationlineheight, "EPGPlus.channelentry_separationlineheight"     , LOCALE_EPGPLUS_CHANNELENTRY_SEPARATIONLINEHEIGHT, 2  , true},
 	{ EpgPlus::EPGPlus_slider_width                     , "EPGPlus.slider_width"                          , LOCALE_EPGPLUS_SLIDER_WIDTH                     , 15 , true},
 	{ EpgPlus::EPGPlus_horgap1_height                   , "EPGPlus.horgap1_height"                        , LOCALE_EPGPLUS_HORGAP1_HEIGHT                   , 4  , true},
@@ -155,7 +155,7 @@ EpgPlus::Settings::Settings(bool doInit)
 		for (size_t i = 0; i < NumberOfSizeSettings; ++i)
 			sizeSettings[i] = sizeSettingDefaultTable[i];
 
-		durationSetting = 2 * 60 * 60;
+		durationSetting = 60 * 60;
 
 //		EpgPlus::loadSettings();
 	}
@@ -438,9 +438,7 @@ EpgPlus::ChannelEntry::ChannelEntry(const CChannelList::CChannel* _channel, int 
 
 	if (channel != NULL)
 	{
-		std::stringstream tmpName;
-		tmpName << _index + 1 << " " << channel->getName();
-		displayName = tmpName.str();
+		displayName = channel->getName();
 	}
 
 	index = _index;
@@ -488,7 +486,9 @@ void EpgPlus::ChannelEntry::paint(bool isSelected, time_t selectedTime)
 #endif
 				if ((*bouquet->channelList)[j]->number == channel->number)
 				{
-					footer->setBouquetChannelName(bouquet->channelList->getName(), channel->getName());
+					std::stringstream tmpName;
+					tmpName << channel->number << " : " << channel->getName();
+					footer->setBouquetChannelName(bouquet->channelList->getName(), tmpName.str());
 					bouquet = NULL;
 					break;
 				}
