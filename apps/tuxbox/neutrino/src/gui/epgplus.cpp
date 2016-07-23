@@ -155,7 +155,7 @@ EpgPlus::Settings::Settings(bool doInit)
 		for (size_t i = 0; i < NumberOfSizeSettings; ++i)
 			sizeSettings[i] = sizeSettingDefaultTable[i];
 
-		durationSetting = 60 * 60;
+		durationSetting = 3 * 30 * 60;
 
 //		EpgPlus::loadSettings();
 	}
