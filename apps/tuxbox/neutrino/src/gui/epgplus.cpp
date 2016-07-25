@@ -487,7 +487,7 @@ void EpgPlus::ChannelEntry::paint(bool isSelected, time_t selectedTime)
 				if ((*bouquet->channelList)[j]->number == channel->number)
 				{
 					std::stringstream tmpName;
-					tmpName << channel->number << " : " << channel->getName();
+					tmpName << channel->number << " - " << channel->getName();
 					footer->setBouquetChannelName(bouquet->channelList->getName(), tmpName.str());
 					bouquet = NULL;
 					break;
