@@ -3049,7 +3049,7 @@ static void commandserviceChanged(int connfd, char *data, const unsigned dataLen
 	{
 		if (!channel_is_blacklisted) {
 			channel_is_blacklisted = true;
-			dmxCN.request_pause();
+//Audio ReSync		dmxCN.request_pause();
 			dmxEIT.request_pause();
 #ifdef ENABLE_FREESATEPG
 			if (freesat_enabled)
@@ -3067,7 +3067,7 @@ static void commandserviceChanged(int connfd, char *data, const unsigned dataLen
 	{
 		if (channel_is_blacklisted) {
 			channel_is_blacklisted = false;
-			dmxCN.request_unpause();
+//Audio ReSync		dmxCN.request_unpause();
 			dmxEIT.request_unpause();
 #ifdef ENABLE_FREESATEPG
 			if (freesat_enabled)
@@ -7817,7 +7817,8 @@ static void *cnThread(void *)
 			else {
 #endif
 
-			if (sendToSleepNow && !messaging_need_eit_version || channel_is_blacklisted)
+//Audio ReSync		if (sendToSleepNow && !messaging_need_eit_version || channel_is_blacklisted)
+			if (sendToSleepNow && !messaging_need_eit_version)
 			{
 				sendToSleepNow = false;
 
@@ -7845,14 +7846,14 @@ static void *cnThread(void *)
 				}
 
 				int rs;
-				do {
+//Audio ReSync				do {
 					pthread_mutex_lock( &dmxCN.start_stop_mutex );
-					if (!channel_is_blacklisted)
+//Audio ReSync				if (!channel_is_blacklisted)
 						eit_set_update_filter(&eit_update_fd);
 					rs = pthread_cond_wait(&dmxCN.change_cond, &dmxCN.start_stop_mutex);
 					eit_stop_update_filter(&eit_update_fd);
 					pthread_mutex_unlock(&dmxCN.start_stop_mutex);
-				} while (channel_is_blacklisted);
+//Audio ReSync				} while (channel_is_blacklisted);
 
 				writeLockMessaging();
 				messaging_need_eit_version = false;
