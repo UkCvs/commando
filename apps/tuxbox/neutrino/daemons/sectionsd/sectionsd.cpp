@@ -194,7 +194,9 @@ static bool update_eit = true;
 static int audio_ReSync;
 static int audio_ReSync_timer;
 static long audio_ReSync_count = 0;
-
+#ifdef ENABLE_FREESATEPG
+static bool freesat_enabled = false;
+#endif
 /* messaging_current_servicekey does probably not need locking, since it is
    changed from one place */
 static t_channel_id    messaging_current_servicekey = 0;
@@ -2228,7 +2230,8 @@ static void commandPauseScanning(int connfd, char *data, const unsigned dataLeng
 		dmxCN.request_pause();
 		dmxEIT.request_pause();
 #ifdef ENABLE_FREESATEPG
-		dmxFSEIT.request_pause();
+		if (freesat_enabled)
+			dmxFSEIT.request_pause();
 #endif
 		dmxNIT.request_pause();
 		dmxSDT.request_pause();
@@ -2244,7 +2247,8 @@ static void commandPauseScanning(int connfd, char *data, const unsigned dataLeng
 		dmxSDT.request_unpause();
 		dmxEIT.request_unpause();
 #ifdef ENABLE_FREESATEPG
-		dmxFSEIT.request_unpause();
+		if (freesat_enabled)
+			dmxFSEIT.request_unpause();
 #endif
 #ifdef ENABLE_PPT
 		dmxPPT.request_unpause();
@@ -2275,7 +2279,8 @@ static void commandPauseScanning(int connfd, char *data, const unsigned dataLeng
 		dmxCN.change(0);
 		dmxEIT.change(0);
 #ifdef ENABLE_FREESATEPG
-		dmxFSEIT.change(0);
+		if (freesat_enabled)
+			dmxFSEIT.change(0);
 #endif
 	}
 
@@ -2651,7 +2656,10 @@ static void commandDumpStatusInformation(int connfd, char* /*data*/, const unsig
 
 	snprintf(stati, MAX_SIZE_STATI,
 		"$Id: sectionsd.cpp, v%s\n"
-		"%sCurrent time: %s"
+#ifdef ENABLE_FREESATEPG
+		"FreeSat is %s\n"
+#endif
+		"Current time: %s"
 		"Hours to cache: %ld\n"
 		"Hours to cache extended text: %ld\n"
 		"Events to cache: %u\n"
@@ -2668,11 +2676,8 @@ static void commandDumpStatusInformation(int connfd, char* /*data*/, const unsig
 		"in bytes: %d (%dkb)\n",
 		SECTIONSD_VERSION,
 #ifdef ENABLE_FREESATEPG
-		"FreeSat enabled\n"
-#else
-		""
+		(freesat_enabled) ? "enabled" : "disabled",
 #endif
-		,
 		ctime_r(&zeit, tbuf),
 		secondsToCache / (60*60L), secondsExtendedTextCache / (60*60L), max_events, oldEventsAre / 60, anzServices, anzNVODservices, anzEvents, anzNVODevents, anzMetaServices,
 		//    resourceUsage.ru_maxrss, resourceUsage.ru_ixrss, resourceUsage.ru_idrss, resourceUsage.ru_isrss,
@@ -3046,6 +3051,10 @@ static void commandserviceChanged(int connfd, char *data, const unsigned dataLen
 			channel_is_blacklisted = true;
 			dmxCN.request_pause();
 			dmxEIT.request_pause();
+#ifdef ENABLE_FREESATEPG
+			if (freesat_enabled)
+				dmxFSEIT.request_pause();
+#endif
 			dmxNIT.request_pause();
 			dmxSDT.request_pause();
 #ifdef ENABLE_PPT
@@ -3060,6 +3069,10 @@ static void commandserviceChanged(int connfd, char *data, const unsigned dataLen
 			channel_is_blacklisted = false;
 			dmxCN.request_unpause();
 			dmxEIT.request_unpause();
+#ifdef ENABLE_FREESATEPG
+			if (freesat_enabled)
+				dmxFSEIT.request_unpause();
+#endif
 			dmxNIT.request_unpause();
 			dmxSDT.request_unpause();
 #ifdef ENABLE_PPT
@@ -3114,7 +3127,8 @@ static void commandserviceChanged(int connfd, char *data, const unsigned dataLen
 		dmxCN.setCurrentService(messaging_current_servicekey & 0xffff);
 		dmxEIT.setCurrentService(messaging_current_servicekey & 0xffff);
 #ifdef ENABLE_FREESATEPG
-		dmxFSEIT.setCurrentService(messaging_current_servicekey & 0xffff);
+		if (freesat_enabled)
+			dmxFSEIT.setCurrentService(messaging_current_servicekey & 0xffff);
 #endif
 	}
 	else
@@ -4326,7 +4340,14 @@ static void commandSetConfig(int connfd, char *data, const unsigned /*dataLength
 		auto_scanning = pmsg->scanMode;
 		unlockMessaging();
 	}
-
+#ifdef ENABLE_FREESATEPG
+	if (freesat_enabled != (bool)pmsg->epg_freesat_enabled) {
+		dprintf("new epg_freesat_enabled = %d\n", pmsg->epg_freesat_enabled);
+		writeLockEvents();
+		freesat_enabled = (bool)pmsg->epg_freesat_enabled;
+		unlockEvents();
+	}
+#endif
 	if (secondsToCache != (long)(pmsg->epg_cache)*24*60L*60L) {
 		dprintf("new epg_cache = %d\n", pmsg->epg_cache);
 		writeLockEvents();
@@ -5053,6 +5074,9 @@ static void commandRestart(int connfd, char * /*data*/, const unsigned /*dataLen
 	SETENVB(update_eit);
 	SETENVI(audio_ReSync);
 	SETENVI(audio_ReSync_timer);
+#ifdef ENABLE_FREESATEPG
+	SETENVB(freesat_enabled);
+#endif
 	SETENVB(bTimeCorrect);
 	SETENVB(debug);
 	writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS);
@@ -8636,9 +8660,6 @@ int main(int argc, char **argv)
 	struct sched_param parm;
 
 	printf("$Id: sectionsd.cpp, v%s\n", SECTIONSD_VERSION);
-#ifdef ENABLE_FREESATEPG
-	printf("[sectionsd] FreeSat enabled\n");
-#endif
 
 	SIlanguage::loadLanguages();
 
@@ -8682,6 +8703,9 @@ int main(int argc, char **argv)
 				GETENVB(update_eit);
 				GETENVI(audio_ReSync);
 				GETENVI(audio_ReSync_timer);
+#ifdef ENABLE_FREESATEPG
+				GETENVB(freesat_enabled);
+#endif
 				GETENVB(bTimeCorrect);
 				GETENVI(debug);
 			}
@@ -8721,6 +8745,10 @@ int main(int argc, char **argv)
 		audio_ReSync = ntp_config.getInt32("audio_ReSync", 2);
 		audio_ReSync_timer = (ntp_config.getInt32("audio_ReSync_timer", 30)*60);
 
+#ifdef ENABLE_FREESATEPG
+		freesat_enabled = ntp_config.getBool("epg_freesat_enabled", false);
+		printf("[sectionsd] FreeSat is %s\n", (freesat_enabled) ? "enabled" : "disabled");
+#endif
 		printf("[sectionsd] Audio Synchronize setting is %d\n", audio_ReSync);
 		printf("[sectionsd] Audio Synchronize Timer setting is %d\n", audio_ReSync_timer);
 		printf("[sectionsd] Caching max %d events\n", max_events);
@@ -8781,12 +8809,14 @@ int main(int argc, char **argv)
 		}
 
 #ifdef ENABLE_FREESATEPG
-		// EIT-Thread3 starten
-		rc = pthread_create(&threadFSEIT, 0, fseitThread, 0);
+		if (freesat_enabled) {
+			// EIT-Thread3 starten
+			rc = pthread_create(&threadFSEIT, 0, fseitThread, 0);
 
-		if (rc) {
-			fprintf(stderr, "[sectionsd] failed to create fseit-thread (rc=%d)\n", rc);
-			return EXIT_FAILURE;
+			if (rc) {
+				fprintf(stderr, "[sectionsd] failed to create fseit-thread (rc=%d)\n", rc);
+				return EXIT_FAILURE;
+			}
 		}
 #endif
 

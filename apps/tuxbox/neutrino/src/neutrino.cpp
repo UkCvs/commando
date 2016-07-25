@@ -355,7 +355,9 @@ int CNeutrinoApp::loadSetup()
 	g_settings.epg_old_events 	= configfile.getString("epg_old_events", "1");
 	g_settings.epg_max_events 	= configfile.getString("epg_max_events", "18000");
 	g_settings.epg_dir 		= configfile.getString("epg_dir", "");
-
+#ifdef ENABLE_FREESATEPG
+	g_settings.epg_freesat_enabled	= configfile.getBool( "epg_freesat_enabled", false);
+#endif
 	// EPG-View
 	g_settings.bigFonts = configfile.getInt32("bigFonts", 0);
 
@@ -942,7 +944,9 @@ void CNeutrinoApp::saveSetup()
 	configfile.setString("epg_old_events"          ,g_settings.epg_old_events );
 	configfile.setString("epg_max_events"          ,g_settings.epg_max_events );
 	configfile.setString("epg_dir"                 ,g_settings.epg_dir);
-
+#ifdef ENABLE_FREESATEPG
+	configfile.setBool("epg_freesat_enabled"       ,g_settings.epg_freesat_enabled );
+#endif
 	// EPG-View
 	configfile.setInt32("bigFonts", g_settings.bigFonts);
 
@@ -1933,6 +1937,9 @@ void CNeutrinoApp::SendSectionsdConfig(void)
 	config.network_ntpserver	= g_settings.network_ntpserver;
 	config.network_ntprefresh	= atoi(g_settings.network_ntprefresh.c_str());
 	config.network_ntpenable	= g_settings.network_ntpenable;
+#ifdef ENABLE_FREESATEPG
+	config.epg_freesat_enabled	= g_settings.epg_freesat_enabled;
+#endif
 	g_Sectionsd->setConfig(config);
 }
 

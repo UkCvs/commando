@@ -234,6 +234,10 @@ int CMiscMenue::showMenue()
 	//epg settings
 	misc_menue_epg->addIntroItems(LOCALE_MISCSETTINGS_EPG_HEAD);
 
+#ifdef ENABLE_FREESATEPG
+	//Freesat epg
+	misc_menue_epg->addItem(new CMenuOptionChooser(LOCALE_MISCSETTINGS_EPG_FREESAT, &g_settings.epg_freesat_enabled, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true, this));
+#endif
 	//epg cache ??is this really usefull??
 	CStringInput miscSettings_epg_cache(LOCALE_MISCSETTINGS_EPG_CACHE, &g_settings.epg_cache, 2, false, LOCALE_MISCSETTINGS_EPG_CACHE_HINT1, LOCALE_MISCSETTINGS_EPG_CACHE_HINT2, "0123456789 ", this);
 	misc_menue_epg->addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_EPG_CACHE, true, g_settings.epg_cache, &miscSettings_epg_cache));
@@ -278,6 +282,9 @@ bool CMiscMenue::changeNotify(const neutrino_locale_t OptionName, void *)
 	else if (ARE_LOCALES_EQUAL(OptionName, LOCALE_MISCSETTINGS_EPG_CACHE) ||
 	         ARE_LOCALES_EQUAL(OptionName, LOCALE_MISCSETTINGS_EPG_EXTENDEDCACHE) ||
 	         ARE_LOCALES_EQUAL(OptionName, LOCALE_MISCSETTINGS_EPG_OLD_EVENTS) ||
+#ifdef ENABLE_FREESATEPG
+	         ARE_LOCALES_EQUAL(OptionName, LOCALE_MISCSETTINGS_EPG_FREESAT) ||
+#endif
 	         ARE_LOCALES_EQUAL(OptionName, LOCALE_MISCSETTINGS_EPG_MAX_EVENTS))
 	{
 		CNeutrinoApp::getInstance()->SendSectionsdConfig();

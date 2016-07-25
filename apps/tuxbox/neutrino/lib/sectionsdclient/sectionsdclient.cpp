@@ -819,6 +819,9 @@ void CSectionsdClient::setConfig(const epg_config config)
 	msg->audio_ReSync_timer	= config.audio_ReSync_timer;
 	msg->network_ntprefresh	= config.network_ntprefresh;
 	msg->network_ntpenable	= config.network_ntpenable;
+#ifdef ENABLE_FREESATEPG
+	msg->epg_freesat_enabled = config.epg_freesat_enabled;
+#endif
 //	config.network_ntpserver:
 	strcpy(&pData[sizeof(sectionsd::commandSetConfig)], config.network_ntpserver.c_str());
 //	config.epg_dir:

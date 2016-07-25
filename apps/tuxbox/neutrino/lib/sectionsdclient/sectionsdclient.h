@@ -161,6 +161,9 @@ class CSectionsdClient : private CBasicClient
 		int audio_ReSync_timer;
 		int network_ntprefresh;
 		int network_ntpenable;
+#ifdef ENABLE_FREESATEPG
+		int epg_freesat_enabled;
+#endif
 		std::string network_ntpserver;
 		std::string epg_dir;
 	} epg_config;

@@ -137,6 +137,9 @@ struct sectionsd
 		unsigned int epg_max_events;
 		int network_ntprefresh;
 		int network_ntpenable;
+#ifdef ENABLE_FREESATEPG
+		int epg_freesat_enabled;
+#endif
 //		std::string network_ntpserver;
 //		std::string epg_dir;
 	};
@@ -371,6 +374,7 @@ struct sectionsd
 //	unsigned int epg_max_events;	-> #of saved events -> saved in max_events
 //	int network_ntprefresh;		-> time refresh intervall -> saved in ntprefresh
 //	int network_ntpenable;		-> time refresh via ntp server -> saved in ntpenable
+//	int epg_freesat_enabled		-> updating of freesat epg -> saved in freesat_enabled
 //	std::string network_ntpserver;	-> ntpserver -> saved in ntpserver
 //	std::string epg_dir;		-> epg_dir to im/export the epg xml files -> saved in epg_file
 //   data of response:
