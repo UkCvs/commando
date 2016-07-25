@@ -8744,7 +8744,7 @@ int main(int argc, char **argv)
 
 		//Audio Synchronize Timer loading
 		audio_ReSync = ntp_config.getInt32("audio_ReSync", 2);
-		audio_ReSync_timer = (ntp_config.getInt32("audio_ReSync_timer", 30)*60);
+		audio_ReSync_timer = (ntp_config.getInt32("audio_ReSync_timer", 40)*60);
 
 #ifdef ENABLE_FREESATEPG
 		freesat_enabled = ntp_config.getBool("epg_freesat_enabled", false);

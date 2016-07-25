@@ -425,7 +425,7 @@ int CNeutrinoApp::loadSetup()
 #endif
 	g_settings.audio_PCMOffset      = configfile.getInt32( "audio_PCMOffset", 0 );
 	g_settings.audio_ReSync		= configfile.getInt32( "audio_ReSync"   , 2);
-	g_settings.audio_ReSync_timer	= configfile.getInt32( "audio_ReSync_timer" , 30);
+	g_settings.audio_ReSync_timer	= configfile.getInt32( "audio_ReSync_timer" , 40);
 
 	//Audio Priority Pids
 	char audio_propids_key[4];
