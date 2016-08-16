@@ -116,13 +116,16 @@ class CFrameBuffer
 		fb_pixel_t *mute_save_bg;
 
 		bool checkMute(int xs, int dx, int ys, int dy);
-
+		
 		int screen_StartX;
 		int screen_StartY;
 		int screen_EndX;
 		int screen_EndY;
 
+		int lastsnr, lastsig, lastber, satpos;
+		
 	public:
+		void CFrameBuffer::showSatfind(int, int, int, bool);
 #ifndef FB_USE_PALETTE
 		fb_pixel_t realcolor[256];
 #endif

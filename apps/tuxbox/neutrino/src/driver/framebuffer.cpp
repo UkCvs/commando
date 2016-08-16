@@ -23,6 +23,7 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+#include <global.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -30,6 +31,7 @@
 
 #include <driver/framebuffer.h>
 
+#include <string>
 #include <stdio.h>
 #include <fcntl.h>
 #include <signal.h>
@@ -38,7 +40,21 @@
 #include <sys/mman.h>
 #include <memory.h>
 #include <errno.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <global.h>
+#include <neutrino.h>
 
+#include <algorithm>
+#include <string>
+#include <system/settings.h>
+#include <system/helper.h>
+
+#include <time.h>
+#include <sys/param.h>
+#include <unistd.h>
 #include <linux/kd.h>
 
 #include <stdint.h>
@@ -51,6 +67,12 @@
 #include <gui/widget/icons.h>
 
 #define BACKGROUNDIMAGEWIDTH 720
+
+#define RED_BAR 70
+#define YELLOW_BAR 80
+#define GREEN_BAR 100
+
+#include <gui/widget/progressbar.h>
 
 static uint8_t * virtual_fb = NULL;
 
@@ -1424,4 +1446,83 @@ void CFrameBuffer::ClearFrameBuffer()
 	paletteSetColor(COL_BLACK, 0x000000, 0); 
 
 	paletteSet();
+}
+
+void CFrameBuffer::showSatfind(int x, int y, int x2, bool showsatdetails)
+{
+
+	CProgressBar pbsig(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
+	CProgressBar pbsnr(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
+
+	CZapitClient::responseFESignal s;
+	g_Zapit->getFESignal(s);
+
+	unsigned long ssig = s.sig & 0xFFFF;
+	unsigned long ssnr = s.snr & 0xFFFF;
+	unsigned long sber = (s.ber < 0x3FFFF) ? s.ber : 0x3FFFF;
+
+	char freq[20];
+	char pos[6];
+	std::string percent;
+	int percent_width;
+	int sig;
+	int snr;
+	int ber;
+
+	if (g_info.delivery_system == DVB_S)
+		sig = ssig * 100 / 65535;
+	else
+	{
+		if (ssig >= 65535)
+			sig = 0;
+		else if (ssig > 28671)
+			// UK signal 0x6FFF
+			sig = 100;
+		else
+			sig = ssig * 100 / 28671;
+	}
+
+	snr = ssnr * 100 / 65535;
+	ber = sber / 2621;
+
+	if ((sber > 0) && (sber < 2621))
+		ber = 1;
+
+	// only update if required
+	if ((lastsig != sig) || (lastsnr != snr) || (lastber != ber))
+	{
+		lastsig = sig;
+		lastsnr = snr;
+		lastber = ber;
+
+		CZapitClient::CCurrentServiceInfo si = g_Zapit->getCurrentServiceInfo();
+		if(showsatdetails){
+			if (g_info.delivery_system == DVB_S)
+				sprintf (freq, "%d.%03d MHz (%c)", si.tsfrequency / 1000, si.tsfrequency % 1000, (si.polarisation == HORIZONTAL) ? 'h' : 'v');
+			else
+				sprintf (freq, "%d.%06d MHz", si.tsfrequency / 1000000, si.tsfrequency % 1000000);
+		}
+		this->paintBoxRel(x, y, x2-x, 30, COL_INFOBAR_PLUS_0);
+
+		percent = "sig " + to_string(sig) + "%";
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 10, y+ 25, x2- x- 10, percent, COL_INFOBAR_PLUS_0);
+		percent_width = g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->getRenderWidth(percent);
+		pbsig.paintProgressBar(x+ 10+ percent_width+ 5, y+ 7, 60, 15, sig, 100, 0, 0, COL_INFOBAR_PLUS_0, 0, "", COL_INFOBAR);
+
+		percent = "snr " + to_string(snr) + "%";
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 140, y+ 25, x2- x- 140, percent, COL_INFOBAR_PLUS_0);
+		percent_width = g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->getRenderWidth(percent);
+		pbsnr.paintProgressBar(x+ 140+ percent_width+ 5, y+ 7, 60, 15, snr, 100, 0, 0, COL_INFOBAR_PLUS_0, 0, "", COL_INFOBAR);
+
+		percent = "ber " + to_string(ber); // no unit
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 270, y+ 25, x2- x- 270, percent, COL_INFOBAR_PLUS_0);
+
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 345, y+ 25, x2- x- 345, freq, COL_INFOBAR_PLUS_0);
+
+		if (satpos != 0 && (g_info.delivery_system == DVB_S) && showsatdetails)
+		{
+			sprintf (pos, "%d.%d%c", satpos < 0 ? -satpos / 10 : satpos / 10, satpos < 0 ? -satpos % 10 : satpos % 10, satpos < 0 ? 'W' : 'E');
+			g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x2- 55, y+ 25, 55, pos, COL_INFOBAR_PLUS_0);
+		}
+	}
 }
