@@ -10,11 +10,7 @@ fi
 sectionsd $SECTIONSD
 timerd
 camd2
-ZAPIT=""
-if [ ! -e /var/etc/.no_pmt_update ] ; then
-	ZAPIT=-u
-fi
-zapit $ZAPIT
+zapit
 
 # start nhttpd a bit later, for faster startup
 { sleep 20; nhttpd; } &
@@ -24,7 +20,7 @@ until neutrino -f -u ; do
 	pidof sectionsd	>/dev/null && sectionsdcontrol --nopause || sectionsd $SECTIONSD
 	pidof timerd	>/dev/null || timerd
 	pidof camd2	>/dev/null || camd2
-	pidof zapit	>/dev/null && pzapit -lsb || zapit $ZAPIT
+	pidof zapit	>/dev/null && pzapit -lsb || zapit
 	pidof nhttpd	>/dev/null || nhttpd
 done
 
