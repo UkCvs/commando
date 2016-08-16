@@ -116,7 +116,6 @@ class CInfoViewer
 		unsigned long snr;
 	} signal;
 
-	void showSatfind();
 	void paintBackground(int col_Numbox);
 	void show_Data( bool calledFromEvent = false );
 	void display_Info(const char *current, const char *next, bool UTF8 = true,

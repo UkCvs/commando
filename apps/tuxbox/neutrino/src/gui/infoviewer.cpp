@@ -142,86 +142,6 @@ void CInfoViewer::start()
 		lcdUpdateTimer = g_RCInput->addTimer( LCD_UPDATE_TIME_TV_MODE, false, true );
 }
 
-void CInfoViewer::showSatfind()
-{
- 	if (!g_settings.infobar_sat_display || !is_visible || !showButtonBar)
-		return;
-
-	CProgressBar pbsig(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
-	CProgressBar pbsnr(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
-
-	CZapitClient::responseFESignal s;
-	g_Zapit->getFESignal(s);
-
-	signal.sig = s.sig & 0xFFFF;
-	signal.snr = s.snr & 0xFFFF;
-	signal.ber = (s.ber < 0x3FFFF) ? s.ber : 0x3FFFF;
-
-	char freq[20];
-	char pos[6];
-	std::string percent;
-	int percent_width;
-	int sig;
-	int snr;
-	int ber;
-
-	if (g_info.delivery_system == DVB_S)
-		sig = signal.sig * 100 / 65535;
-	else
-	{
-		if (signal.sig >= 65535)
-			sig = 0;
-		else if (signal.sig > 28671)
-			// UK signal 0x6FFF
-			sig = 100;
-		else
-			sig = signal.sig * 100 / 28671;
-	}
-
-	snr = signal.snr * 100 / 65535;
-	ber = signal.ber / 2621;
-
-	if ((signal.ber > 0) && (signal.ber < 2621))
-		ber = 1;
-
-	// only update if required
-	if ((lastsig != sig) || (lastsnr != snr) || (lastber != ber))
-	{
-		lastsig = sig;
-		lastsnr = snr;
-		lastber = ber;
-
-		CZapitClient::CCurrentServiceInfo si = g_Zapit->getCurrentServiceInfo();
-		if (g_info.delivery_system == DVB_S)
-			sprintf (freq, "%d.%03d MHz (%c)", si.tsfrequency / 1000, si.tsfrequency % 1000, (si.polarisation == HORIZONTAL) ? 'h' : 'v');
-		else
-			sprintf (freq, "%d.%06d MHz", si.tsfrequency / 1000000, si.tsfrequency % 1000000);
-
-		frameBuffer->paintBoxRel(ChanInfoX, BoxEndY, BoxEndX-ChanInfoX, 30, COL_INFOBAR_PLUS_0);
-
-		percent = "sig " + to_string(sig) + "%";
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(ChanInfoX+ 10, BoxEndY+ 25, BoxEndX- ChanInfoX- 10, percent, COL_INFOBAR_PLUS_0);
-		percent_width = g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->getRenderWidth(percent);
-		pbsig.paintProgressBar(ChanInfoX+ 10+ percent_width+ 5, BoxEndY+ 7, 60, 15, sig, 100, 0, 0, COL_INFOBAR_PLUS_0, 0, "", COL_INFOBAR);
-
-		percent = "snr " + to_string(snr) + "%";
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(ChanInfoX+ 140, BoxEndY+ 25, BoxEndX- ChanInfoX- 140, percent, COL_INFOBAR_PLUS_0);
-		percent_width = g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->getRenderWidth(percent);
-		pbsnr.paintProgressBar(ChanInfoX+ 140+ percent_width+ 5, BoxEndY+ 7, 60, 15, snr, 100, 0, 0, COL_INFOBAR_PLUS_0, 0, "", COL_INFOBAR);
-
-		percent = "ber " + to_string(ber); // no unit
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(ChanInfoX+ 270, BoxEndY+ 25, BoxEndX- ChanInfoX- 270, percent, COL_INFOBAR_PLUS_0);
-
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(ChanInfoX+ 345, BoxEndY+ 25, BoxEndX- ChanInfoX- 345, freq, COL_INFOBAR_PLUS_0);
-
-		if (satpos != 0 && (g_info.delivery_system == DVB_S))
-		{
-			sprintf (pos, "%d.%d%c", satpos < 0 ? -satpos / 10 : satpos / 10, satpos < 0 ? -satpos % 10 : satpos % 10, satpos < 0 ? 'W' : 'E');
-			g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(BoxEndX- 55, BoxEndY+ 25, 55, pos, COL_INFOBAR_PLUS_0);
-		}
-	}
-}
-
 void CInfoViewer::paintTime( bool show_dot, bool firstPaint )
 {
 	if (!gotTime)
@@ -588,7 +508,8 @@ void CInfoViewer::showTitle(const int ChanNum, const std::string & Channel, cons
 
 		showButton(SNeutrinoSettings::BUTTON_BLUE); // button blue // USERMENU
 		showInfoIcons();
-		showSatfind();
+		if (g_settings.infobar_sat_display || is_visible || showButtonBar)
+			frameBuffer->showSatfind(ChanInfoX, BoxEndY, BoxEndX, true);
 	}
 
 	g_Sectionsd->getCurrentNextServiceKey(channel_id, info_CurrentNext);
@@ -836,7 +757,8 @@ requests to sectionsd.
 				showRecordIcon(show_dot);
 				show_dot = !show_dot;
 				if (show_dot && !tsmode)
-					showSatfind();
+					if (g_settings.infobar_sat_display || is_visible || showButtonBar)
+						frameBuffer->showSatfind(ChanInfoX, BoxEndY, BoxEndX, true);
 #ifdef ENABLE_RADIOTEXT
 				if ((g_settings.radiotext_enable) && (CNeutrinoApp::getInstance()->getMode() == NeutrinoMessages::mode_radio))
 					showRadiotext();
