@@ -116,7 +116,7 @@ const driver_setting_files_struct_t driver_setting_files[DRIVER_SETTING_FILES_CO
 	{LOCALE_DRIVERSETTINGS_RTC           , "/var/etc/.rtc"           , OPTIONS_OFF0_ON1_OPTIONS },
 #endif
 #endif
-	{LOCALE_DRIVERSETTINGS_PMTUPDATE     , "/var/etc/.no_pmt_update" , OPTIONS_OFF1_ON0_OPTIONS }
+	{LOCALE_DRIVERSETTINGS_PMTUPDATE     , "/var/etc/.pmt_update"    , OPTIONS_OFF0_ON1_OPTIONS }
 };
 
 

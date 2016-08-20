@@ -4,7 +4,7 @@
 
 . /proc/bus/dbox.sh
 
-[ -e /var/etc/.no_pmt_update ] || ZAPIT="-u"
+[ ! -e /var/etc/.pmt_update ] || ZAPIT="-u"
 [ -e /var/etc/neutrino-parameters ] && . /var/etc/neutrino-parameters
 sectionsd $SECTIONSD
 timerd
