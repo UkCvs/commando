@@ -445,7 +445,7 @@ struct {
 #endif /* ENABLE_RTC */
 #endif /* HAVE_DVB_API_VERSION == 1 */
 #else /* HAVE_DBOX_HARDWARE */
-#define DRIVER_SETTING_FILES_COUNT 2
+#define DRIVER_SETTING_FILES_COUNT 1
 #endif
 
 // #define MISC_SETTING_SPTS_MODE 0
