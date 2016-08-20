@@ -4,4 +4,5 @@ buildlog.txt
 root-neutrino-squashfs-ignore-list
 MD5SUM
 commando-*.*
+*~
 
