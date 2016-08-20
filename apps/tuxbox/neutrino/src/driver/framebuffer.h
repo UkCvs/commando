@@ -121,11 +121,9 @@ class CFrameBuffer
 		int screen_StartY;
 		int screen_EndX;
 		int screen_EndY;
-
-		int lastsnr, lastsig, lastber, satpos;
 		
 	public:
-		void CFrameBuffer::showSatfind(int, int, int, bool);
+		void showSatfind(int x, int y, int x2, bool showsatdetails, int lastsnr = -1, int lastsig = -1, int lastber = -1, int satpos = 0);
 #ifndef FB_USE_PALETTE
 		fb_pixel_t realcolor[256];
 #endif

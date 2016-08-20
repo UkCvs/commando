@@ -73,6 +73,7 @@ class CScanTs : public CMenuTarget
 		void paintRadar(void);
 		int handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data);
 		int greater_xpos(int xpos, const neutrino_locale_t txt);
+		int lastsnr, lastsig, lastber;
 
 	public:
 		CScanTs();

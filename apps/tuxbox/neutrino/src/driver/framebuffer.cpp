@@ -1448,9 +1448,8 @@ void CFrameBuffer::ClearFrameBuffer()
 	paletteSet();
 }
 
-void CFrameBuffer::showSatfind(int x, int y, int x2, bool showsatdetails)
+void CFrameBuffer::showSatfind(int x, int y, int x2, bool showsatdetails, int lastsnr, int lastsig, int lastber, int satpos)
 {
-
 	CProgressBar pbsig(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
 	CProgressBar pbsnr(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
 
@@ -1485,6 +1484,8 @@ void CFrameBuffer::showSatfind(int x, int y, int x2, bool showsatdetails)
 	snr = ssnr * 100 / 65535;
 	ber = sber / 2621;
 
+	if (sig >= 100) sig = 99;
+	if (snr >= 100) snr = 99;
 	if ((sber > 0) && (sber < 2621))
 		ber = 1;
 
@@ -1495,13 +1496,15 @@ void CFrameBuffer::showSatfind(int x, int y, int x2, bool showsatdetails)
 		lastsnr = snr;
 		lastber = ber;
 
-		CZapitClient::CCurrentServiceInfo si = g_Zapit->getCurrentServiceInfo();
-		if(showsatdetails){
+		if (showsatdetails)
+		{
+			CZapitClient::CCurrentServiceInfo si = g_Zapit->getCurrentServiceInfo();
 			if (g_info.delivery_system == DVB_S)
 				sprintf (freq, "%d.%03d MHz (%c)", si.tsfrequency / 1000, si.tsfrequency % 1000, (si.polarisation == HORIZONTAL) ? 'h' : 'v');
 			else
 				sprintf (freq, "%d.%06d MHz", si.tsfrequency / 1000000, si.tsfrequency % 1000000);
 		}
+
 		this->paintBoxRel(x, y, x2-x, 30, COL_INFOBAR_PLUS_0);
 
 		percent = "sig " + to_string(sig) + "%";

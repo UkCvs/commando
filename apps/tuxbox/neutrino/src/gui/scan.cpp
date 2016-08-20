@@ -76,7 +76,10 @@ CScanTs::CScanTs()
 	hheight		= g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
 	mheight		= g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
 	width 		= w_max (500, 100);
-	height 		= h_max (hheight + 9 * mheight, 0); //9 lines
+	if (g_settings.infobar_sat_display)
+		height 	= h_max (hheight + 10 * mheight, 0); //10 lines
+	else
+		height 	= h_max (hheight + 9 * mheight, 0); //9 lines
 	x 		= getScreenStartX (width);
 	y 		= getScreenStartY (height);
 	radar = 0;
@@ -263,11 +266,15 @@ int CScanTs::handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data)
 			sprintf(buffer, "%u", data);
 			xpos_frequency = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getRenderWidth(buffer, true);
 			paintLine(xpos2, ypos_frequency, xpos_frequency, buffer);
+			if (g_settings.infobar_sat_display)
+				frameBuffer->showSatfind(x, y+height-mheight-10, x+width, false);
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_REPORT_FREQUENCYP:
 			(data == 0) ? sprintf(buffer, "-H") : sprintf(buffer, "-V");
 			paintLine(xpos2 + xpos_frequency, ypos_frequency, 30, buffer);
+			if (g_settings.infobar_sat_display)
+				frameBuffer->showSatfind(x, y+height-mheight-10, x+width, false, lastsnr, lastsig, lastber);
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_PROVIDER:

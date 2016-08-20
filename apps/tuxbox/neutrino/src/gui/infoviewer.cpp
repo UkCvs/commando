@@ -508,8 +508,9 @@ void CInfoViewer::showTitle(const int ChanNum, const std::string & Channel, cons
 
 		showButton(SNeutrinoSettings::BUTTON_BLUE); // button blue // USERMENU
 		showInfoIcons();
-		if (g_settings.infobar_sat_display || is_visible || showButtonBar)
-			frameBuffer->showSatfind(ChanInfoX, BoxEndY, BoxEndX, true);
+
+		if (g_settings.infobar_sat_display && is_visible)
+			frameBuffer->showSatfind(ChanInfoX, BoxEndY, BoxEndX, true, lastsnr, lastsig, lastber, satpos);
 	}
 
 	g_Sectionsd->getCurrentNextServiceKey(channel_id, info_CurrentNext);
@@ -757,8 +758,10 @@ requests to sectionsd.
 				showRecordIcon(show_dot);
 				show_dot = !show_dot;
 				if (show_dot && !tsmode)
-					if (g_settings.infobar_sat_display || is_visible || showButtonBar)
-						frameBuffer->showSatfind(ChanInfoX, BoxEndY, BoxEndX, true);
+				{
+					if (g_settings.infobar_sat_display && is_visible && showButtonBar)
+						frameBuffer->showSatfind(ChanInfoX, BoxEndY, BoxEndX, true, lastsnr, lastsig, lastber, satpos);
+				}
 #ifdef ENABLE_RADIOTEXT
 				if ((g_settings.radiotext_enable) && (CNeutrinoApp::getInstance()->getMode() == NeutrinoMessages::mode_radio))
 					showRadiotext();
