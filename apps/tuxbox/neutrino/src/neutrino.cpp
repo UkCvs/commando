@@ -513,7 +513,7 @@ int CNeutrinoApp::loadSetup()
 
 	g_settings.personalize_games = configfile.getInt32("personalize_games", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_audioplayer = configfile.getInt32("personalize_audioplayer", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
-	g_settings.personalize_inetradio = configfile.getInt32("personalize_inetradio", CPersonalizeGui::PERSONALIZE_MODE_NOTVISIBLE);
+	g_settings.personalize_inetradio = configfile.getInt32("personalize_inetradio", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_esound = configfile.getInt32("personalize_esound", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_movieplayer = configfile.getInt32("personalize_movieplayer", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_pictureviewer = configfile.getInt32("personalize_pictureviewer", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
@@ -525,8 +525,8 @@ int CNeutrinoApp::loadSetup()
 	// do not allow users to pin protect settings menu, we have added root password reset item that we do not want personalized.
 	// g_settings.personalize_settings = configfile.getInt32("personalize_settings", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
 	g_settings.personalize_settings = CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED;
-
-	g_settings.personalize_service = configfile.getInt32("personalize_service", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
+	// g_settings.personalize_service = configfile.getInt32("personalize_service", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
+	g_settings.personalize_service = CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED;
 
 	g_settings.personalize_bouqueteditor = configfile.getInt32("personalize_bouqueteditor", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_scants = configfile.getInt32("personalize_scants", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
@@ -1063,8 +1063,8 @@ void CNeutrinoApp::saveSetup()
 	// do not allow users to pin protect settings menu,
 	// we have added a root password reset item that is none personalized.
 	// configfile.setInt32 ( "personalize_settings", g_settings.personalize_settings );
+	// configfile.setInt32 ( "personalize_service", g_settings.personalize_service );
 
-	configfile.setInt32 ( "personalize_service", g_settings.personalize_service );
 	configfile.setInt32 ( "personalize_sleeptimer", g_settings.personalize_sleeptimer );
 	configfile.setInt32 ( "personalize_reboot", g_settings.personalize_reboot );
 	configfile.setInt32 ( "personalize_shutdown", g_settings.personalize_shutdown );
