@@ -117,6 +117,7 @@ struct SNeutrinoSettings
 
 	//language
 	char language[25];
+	char timezone[150];
 
 	//timing
 #define TIMING_SETTING_COUNT 10

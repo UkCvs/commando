@@ -442,6 +442,7 @@ int CNeutrinoApp::loadSetup()
 
 	//language
 	strcpy(g_settings.language, configfile.getString("language", "").c_str());
+	strcpy(g_settings.timezone, configfile.getString("timezone", "London, Dublin (GMT)").c_str());
 
 	//widget settings
 	g_settings.widget_fade           	= configfile.getBool("widget_fade"          , true );
@@ -1003,6 +1004,7 @@ void CNeutrinoApp::saveSetup()
 
 	//language
 	configfile.setString("language"         , g_settings.language);
+	configfile.setString("timezone"		, g_settings.timezone);
 
 	//widget settings
 	configfile.setBool("widget_fade"        , g_settings.widget_fade);

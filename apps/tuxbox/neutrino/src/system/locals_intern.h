@@ -1573,6 +1573,8 @@ const char * locale_real_names[] =
 	"timersettings.zapto_safety_time_before",
 	"timersettings.zapto_safety_time_before.hint_1",
 	"timersettings.zapto_safety_time_before.hint_2",
+	"timezonemenu.head",
+	"timezonemenu.option",
 	"timing.chanlist",
 	"timing.epg",
 	"timing.filebrowser",

@@ -77,5 +77,11 @@ class CDVBInfoExec : public CMenuTarget
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
 
+class CTZChangeNotifier : public CChangeObserver
+{
+public:
+        bool changeNotify(const neutrino_locale_t, void * data);
+};
+
 #endif
 

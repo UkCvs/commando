@@ -1517,6 +1517,8 @@ timersettings.separator Timereinstellungen
 timersettings.zapto_safety_time_before Umschaltstart-Korrektur
 timersettings.zapto_safety_time_before.hint_1 Korrekturzeit in Min. (00=aus), die beim Start
 timersettings.zapto_safety_time_before.hint_2 des jeweiligen Timers abgezogen werden
+timezonemenu.head ZeitZonen einstellungen
+timezonemenu.option ZeitZone
 timing.chanlist Kanalliste
 timing.epg EPG
 timing.filebrowser Filebrowser

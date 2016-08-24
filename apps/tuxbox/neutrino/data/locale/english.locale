@@ -1546,6 +1546,8 @@ timersettings.separator Timer settings
 timersettings.zapto_safety_time_before Zapto Start Time Correction
 timersettings.zapto_safety_time_before.hint_1 Correction time in min. (00=off). This time
 timersettings.zapto_safety_time_before.hint_2 will be deducted of every zapto timer.
+timezonemenu.head TimeZone settings
+timezonemenu.option TimeZone
 timing.chanlist Channellist
 timing.epg EPG
 timing.filebrowser Filebrowser

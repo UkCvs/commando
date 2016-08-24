@@ -67,6 +67,7 @@ class COsdSetup : public CMenuTarget, CChangeObserver
 		int showOsdInfobarSetup();
 		int showOsdChannelListSetup();
 		int showOsdFontSizeSetup();
+		void showOsdTimeZoneSetup();
 		void AddFontSettingItem(CMenuWidget *fontSettings, const SNeutrinoSettings::FONT_TYPES number_of_fontsize_entry);
 
 	public:

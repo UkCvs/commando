@@ -51,6 +51,7 @@
 #include <driver/framebuffer.h>
 #include <driver/screen_max.h>
 
+#include <xmltree/xmlinterface.h>
 #include <system/debug.h>
 
 const SNeutrinoSettings::FONT_TYPES channellist_font_sizes[5] =
@@ -198,6 +199,11 @@ int COsdSetup::exec(CMenuTarget* parent, const std::string &actionKey)
 		int res = showOsdFontSizeSetup();
 		return res;
 	}
+	else if (actionKey=="show_timezone_setup")
+	{
+		showOsdTimeZoneSetup();
+		return menu_return::RETURN_REPAINT;
+	}
 	else if(strncmp(actionKey.c_str(), "fontsize.d", 10) == 0)
 	{
 		for (int i = 0; i < 6; i++)
@@ -301,6 +307,8 @@ int COsdSetup::showOsdSetup()
 	CMenuForwarder *osd_infobar_fw = new CMenuForwarder(LOCALE_OSDSETTINGS_INFOBAR, true, NULL, this, "show_infobar_setup", CRCInput::RC_2);
 	//osd channellist setup
 	CMenuForwarder *osd_chanlist_fw = new CMenuForwarder(LOCALE_MISCSETTINGS_CHANNELLIST, true, NULL, this, "show_channellist_setup", CRCInput::RC_3);
+	//osd timezone setup
+	CMenuForwarder *osd_timezone_fw = new CMenuForwarder(LOCALE_TIMEZONEMENU_HEAD, true, NULL, this, "show_timezone_setup", CRCInput::RC_4);
 
 	//osd volumbar position
  	CMenuOptionChooser* osd_volumbarpos_ch = new CMenuOptionChooser(LOCALE_OSDSETTINGS_VOLUMEBAR_DISP_POS, &g_settings.volumebar_disp_pos, VOLUMEBAR_DISP_POS_OPTIONS, VOLUMEBAR_DISP_POS_OPTIONS_COUNT, true);
@@ -330,6 +338,7 @@ int COsdSetup::showOsdSetup()
 	//-------------------------------------------
 	osd_setup->addItem(osd_infobar_fw);	//infobar setup
 	osd_setup->addItem(osd_chanlist_fw);	//channellist setup
+	osd_setup->addItem(osd_timezone_fw);	//timezone setup
 #ifdef HAVE_DBOX_HARDWARE
 	CAlphaSetup* osd_alpha = NULL;
 	if ((g_info.box_Type == CControld::TUXBOX_MAKER_PHILIPS) || (g_info.box_Type == CControld::TUXBOX_MAKER_SAGEM))
@@ -342,7 +351,7 @@ int COsdSetup::showOsdSetup()
 	{
 		//GTX
 		osd_alpha = new CAlphaSetup(LOCALE_OSDSETTINGS_COLORMENU_GTX_ALPHA);
-		osd_setup->addItem(new CMenuForwarder(LOCALE_OSDSETTINGS_COLORMENU_GTX_ALPHA, true, NULL, osd_alpha, NULL, CRCInput::RC_4));
+		osd_setup->addItem(new CMenuForwarder(LOCALE_OSDSETTINGS_COLORMENU_GTX_ALPHA, true, NULL, osd_alpha, NULL, CRCInput::RC_5));
 	}
 #else 	
 	//Dream and TD
@@ -719,6 +728,54 @@ int COsdSetup::showOsdFontSizeSetup()
 		delete toDelete[i];
 
 	return res;
+}
+
+/* timezone settings  */
+void COsdSetup::showOsdTimeZoneSetup()
+{
+	CMenuWidget * timezoneSettings = new CMenuWidget(menue_title, menue_icon, width);
+	CMenuSeparator * timezoneSettings_subhead = new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_TIMEZONEMENU_HEAD);
+
+	timezoneSettings->addItem(timezoneSettings_subhead);
+	timezoneSettings->addItem(GenericMenuSeparator);
+	timezoneSettings->addItem(GenericMenuBack);
+	timezoneSettings->addItem(GenericMenuSeparatorLine);
+
+	xmlDocPtr parser = parseXmlFile("/etc/timezone.xml");
+
+	CMenuOptionStringChooser* tzSelect;
+
+	if (parser != NULL)
+	{
+		tzSelect = new CMenuOptionStringChooser(LOCALE_TIMEZONEMENU_OPTION, g_settings.timezone, true, new CTZChangeNotifier());
+		xmlNodePtr search = xmlDocGetRootElement(parser)->xmlChildrenNode;
+		bool found = false;
+
+		while (search)
+		{
+			if (!strcmp(xmlGetName(search), "zone"))
+			{
+				std::string name = xmlGetAttribute(search, "name");
+				tzSelect->addOption(name.c_str());
+				found = true;
+			}
+			search = search->xmlNextNode;
+		}
+
+		if (found)
+			timezoneSettings->addItem(tzSelect);
+		else
+		{
+			delete tzSelect;
+			tzSelect = NULL;
+		}
+
+		xmlFreeDoc(parser);
+	}
+
+	timezoneSettings->exec(NULL, "");
+	timezoneSettings->hide();
+	delete timezoneSettings;
 }
 
 bool CFontSizeNotifier::changeNotify(const neutrino_locale_t OptionName, void * data)

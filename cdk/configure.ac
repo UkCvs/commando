@@ -1947,6 +1947,7 @@ root_dream/root/platform/kernel/Makefile
 root_dream/share/Makefile
 root_dream/share/tuxbox/Makefile
 root_dream/share/udhcpc/Makefile
+root_dream/share/zoneinfo/Makefile
 root_dream/var_init/Makefile
 root_dream/var_init/bin/Makefile
 root_dream/var_init/bin/emu/Makefile

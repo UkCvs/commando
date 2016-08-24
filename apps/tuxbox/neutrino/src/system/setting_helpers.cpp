@@ -49,6 +49,7 @@
 
 #include <libucodes.h>
 
+#include <xmlinterface.h>
 #include <config.h>
 
 #include <global.h>
@@ -254,5 +255,52 @@ std::string getInterface()
 		netGetIP(ifname, our_ip, our_mask, our_broadcast);
 	
 	return our_ip + "/24";
+}
+
+bool CTZChangeNotifier::changeNotify(const neutrino_locale_t, void * Data)
+{
+	bool found = false;
+	std::string name, zone, tz;
+	printf("CTZChangeNotifier::changeNotify: %s\n", (char *) Data);
+
+	xmlDocPtr parser = parseXmlFile("/etc/timezone.xml");
+	if (parser != NULL)
+	{
+		xmlNodePtr search = xmlDocGetRootElement(parser)->xmlChildrenNode;
+		while (search)
+		{
+			if (!strcmp(xmlGetName(search), "zone"))
+			{
+				name = xmlGetAttribute(search, "name");
+				if(!strcmp(g_settings.timezone, name.c_str()))
+				{
+					zone = xmlGetAttribute(search, "zone");
+					tz = xmlGetAttribute(search, "tz");
+					found = true;
+					break;
+				}
+			}
+			search = search->xmlNextNode;
+		}
+		xmlFreeDoc(parser);
+	}
+
+	if(found)
+	{
+		std::string cmd = "cp /share/zoneinfo/" + zone + " /var/etc/localtime";
+		system(cmd.c_str());
+		setenv("TZ", tz.c_str(), 1);
+		cmd = "export TZ=" + tz;
+		FILE *f = fopen("/var/etc/TZ","w");
+
+		if (f != NULL)
+		{
+			fputs(cmd.c_str(),f);
+			putc('\n',f);
+			fclose(f);
+		}
+	}
+
+	return true;
 }
 
