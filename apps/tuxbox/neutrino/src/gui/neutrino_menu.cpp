@@ -174,7 +174,17 @@ void CNeutrinoApp::InitMenuMain()
 		&g_settings.personalize_games, false, CPersonalizeGui::PERSONALIZE_SHOW_AS_ITEM_OPTION, &menuGamesIsVisible);
 
 	//separator
-	personalize->addSeparator(MENU_MAIN); 
+	personalize->addSeparator(MENU_MAIN);
+
+	// service, also as pin protected option in personalize menu, as a result of parameter value CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION
+	personalize->addItem(MENU_MAIN, new CMenuForwarder(LOCALE_MAINMENU_SERVICE, true, NULL, &personalize->getWidget(MENU_SERVICE)/**service**/), &g_settings.personalize_service, false, CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION);
+
+	// NOTE: we now manually override the g_settings.personalize_settings for this menu item in neutrino.cpp for box access lockout reasons!
+	//       we do not allow users to pin protect settings menu, as we have added root password reset item that we do not want personalized.
+	// settings, also as pin protected option in personalize menu, as a result of parameter value CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION
+	personalize->addItem(MENU_MAIN, new CMenuForwarder(LOCALE_MAINMENU_SETTINGS, true, NULL, &personalize->getWidget(MENU_SETTINGS)/**settings**/), &g_settings.personalize_settings, false, CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION);
+
+	personalize->addSeparator(MENU_MAIN);
 	
 #ifdef ENABLE_AUDIOPLAYER
 	// audioplayer
@@ -221,14 +231,6 @@ void CNeutrinoApp::InitMenuMain()
 #if defined(ENABLE_AUDIOPLAYER) || defined(ENABLE_INTERNETRADIO) || defined(ENABLE_ESD) || defined(ENABLE_MOVIEPLAYER) || defined(ENABLE_PICTUREVIEWER) || defined(ENABLE_UPNP)
 	personalize->addSeparator(MENU_MAIN, NONEXISTANT_LOCALE, CPersonalizeGui::PERSONALIZE_SHOW_NO); //don't show this separator in personal menu
 #endif
-
-	// NOTE: we now manually override the g_settings.personalize_settings for this menu item in neutrino.cpp for box access lockout reasons!
-	//       we do not allow users to pin protect settings menu, as we have added root password reset item that we do not want personalized.
-	// settings, also as pin protected option in personalize menu, as a result of parameter value CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION
-	personalize->addItem(MENU_MAIN, new CMenuForwarder(LOCALE_MAINMENU_SETTINGS, true, NULL, &personalize->getWidget(MENU_SETTINGS)/**settings**/), &g_settings.personalize_settings, false, CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION);
-
-	// service, also as pin protected option in personalize menu, as a result of parameter value CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION
-	personalize->addItem(MENU_MAIN, new CMenuForwarder(LOCALE_MAINMENU_SERVICE, true, NULL, &personalize->getWidget(MENU_SERVICE)/**service**/), &g_settings.personalize_service, false, CPersonalizeGui::PERSONALIZE_SHOW_AS_ACCESS_OPTION);
 
 	personalize->addSeparator(MENU_MAIN);
 
