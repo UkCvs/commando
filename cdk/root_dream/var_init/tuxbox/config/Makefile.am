@@ -1,4 +1,4 @@
-SUBDIRS = enigma
+SUBDIRS = enigma zapit
 
 DIR = /var_init/tuxbox/config/
 

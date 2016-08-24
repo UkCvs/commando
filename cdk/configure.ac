@@ -1962,6 +1962,7 @@ root_dream/var_init/spool/cron/crontabs/Makefile
 root_dream/var_init/tuxbox/Makefile
 root_dream/var_init/tuxbox/config/Makefile
 root_dream/var_init/tuxbox/config/enigma/Makefile
+root_dream/var_init/tuxbox/config/zapit/Makefile
 ])
 	;;
 	*)
