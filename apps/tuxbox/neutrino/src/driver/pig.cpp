@@ -299,10 +299,12 @@ void CPIG::hide (void)
 	}
 #else
 	CZapitClient z;
-	z.setPIG(0, 0, 0, 0, true);
+	z.setPIG(px, py, 0, 0, true);
 	status = HIDE;
 #endif
-	set_coord(0, 0, 0, 0);
+	set_coord(px, py, 0, 0);
+	px = py = pw = ph = 0;
+	usleep(700000);
 }
 
 
