@@ -38,7 +38,7 @@
 
 #include <global.h>
 #include <neutrino.h>
-
+#include <gui/widget/helpbox.h>
 #include <gui/widget/icons.h>
 
 #include <driver/screen_max.h>
@@ -59,11 +59,17 @@ CDriverBootSetup::~CDriverBootSetup()
 
 }
 
-int CDriverBootSetup::exec(CMenuTarget* parent, const std::string &)
+int CDriverBootSetup::exec(CMenuTarget* parent, const std::string & actionKey)
 {
 	dprintf(DEBUG_DEBUG, "init driversettings\n");
 	if(parent != NULL)
 		parent->hide();
+
+	if (actionKey == "dbs_help")
+	{
+		ShowHelpDbs();
+		return menu_return::RETURN_REPAINT;
+	}
 
 	int res = showSetup();
 	
@@ -116,7 +122,14 @@ const driver_setting_files_struct_t driver_setting_files[DRIVER_SETTING_FILES_CO
 	{LOCALE_DRIVERSETTINGS_RTC           , "/var/etc/.rtc"           , OPTIONS_OFF0_ON1_OPTIONS },
 #endif
 #endif
-	{LOCALE_DRIVERSETTINGS_PMTUPDATE     , "/var/etc/.pmt_update"    , OPTIONS_OFF0_ON1_OPTIONS }
+	{LOCALE_DRIVERSETTINGS_PMTUPDATE     , "/var/etc/.pmt_update"    , OPTIONS_OFF0_ON1_OPTIONS },
+	{LOCALE_DRIVERSETTINGS_CROND         , "/var/etc/.crond"         , OPTIONS_OFF0_ON1_OPTIONS },
+	{LOCALE_DRIVERSETTINGS_MP3_BOOT      , "/var/etc/.no-mp3"        , OPTIONS_OFF1_ON0_OPTIONS },
+	{LOCALE_DRIVERSETTINGS_DPICON        , "/var/etc/.dp-yes"        , OPTIONS_OFF0_ON1_OPTIONS },
+	{LOCALE_DRIVERSETTINGS_EMU_SB        , "/var/etc/.emu-sb"        , OPTIONS_OFF0_ON1_OPTIONS },
+	{LOCALE_DRIVERSETTINGS_RADIO_BG      , "/var/etc/.no-radio-bg"   , OPTIONS_OFF1_ON0_OPTIONS },
+	{LOCALE_DRIVERSETTINGS_SCAN_BG       , "/var/etc/.no-scan-bg"    , OPTIONS_OFF1_ON0_OPTIONS },
+	{LOCALE_DRIVERSETTINGS_SMART_SB      , "/var/etc/.smart-sb"      , OPTIONS_OFF0_ON1_OPTIONS }
 };
 
 
@@ -186,6 +199,10 @@ int CDriverBootSetup::showSetup()
 	dbs->addItem(oj_boot_console);
 	dbs->addItem(oj_dbox_duplex);
 #endif
+	//-----------------------------------------
+	dbs->addItem(GenericMenuSeparator);
+	dbs->addItem(GenericMenuSeparatorLine);
+	dbs->addItem(new CMenuForwarder(LOCALE_PERSONALIZE_HELP, true, NULL, this, "dbs_help", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP));
 
 	int res = dbs->exec(NULL, "");
 	selected = dbs->getSelected();
@@ -197,6 +214,17 @@ int CDriverBootSetup::showSetup()
 		delete toDelete[i];
 
 	return res;
+}
+
+void CDriverBootSetup::ShowHelpDbs()
+{
+	Helpbox helpbox;
+	helpbox.addLine(g_Locale->getText(LOCALE_DRIVERSETTINGS_HELP1));
+	helpbox.addLine(g_Locale->getText(LOCALE_DRIVERSETTINGS_HELP2));
+	helpbox.addLine(g_Locale->getText(LOCALE_PERSONALIZE_HELP_LINE4));
+	helpbox.addLine(g_Locale->getText(LOCALE_DRIVERSETTINGS_HELP3));
+	hide();
+	helpbox.show(LOCALE_PERSONALIZE_HELP);
 }
 
 bool CDriverBootSetup::changeNotify(const neutrino_locale_t OptionName, void *)

@@ -404,17 +404,27 @@ drive_setup.reset Zurücksetzen
 drive_setup.savesettings Übernehmen
 drive_setup.select Laufwerk auswählen
 driversettings.bootinfo Infos beim Booten anzeigen
+driversettings.crond Aktivieren Sie Cron Scheduler
+driversettings.dpicon Ändern Sie Standard picon alle 5 Minuten?
 driversettings.driver_boot Treiber- und Bootoptionen
+driversettings.emu_sb Im Standby-Modus ist der softcam
 driversettings.fb_destination EXPERT! Boot-Konsole
 driversettings.fdx_force erzwingen
 driversettings.fdx_load FullDuplex Mode
 driversettings.head Treiber- und Bootoptionen
+driversettings.help1 Die meisten Änderungen treten nach dem nächsten Neustart.
+driversettings.help2 Die letzten vier Optionen haben sofortiger Wirkung.
+driversettings.help3 Option Änderungen werden automatisch gespeichert!
 driversettings.hwsections HW-Sections verwenden
+driversettings.mp3_boot Wiedergabe von MP3-Sound auf der boot
 driversettings.noaviawatchdog AVIA-Watchdog aktivieren
 driversettings.noenxwatchdog eNX-Watchdog aktivieren
 driversettings.philipsrcpatch Philips/Sagem FB Workaround
-driversettings.pmtupdate PMT Update verwenden
+driversettings.pmtupdate PMT Update (zufällige Ausfälle, wenn sie auf)
+driversettings.radio_bg Zeigen Sie den Bildschirm im Radiomodus
 driversettings.rtc RTC aktivieren
+driversettings.scan_bg Zeigen Sie den Bildschirm im Scanmodus
+driversettings.smart_sb Smart Schlaf- Autostart in SB? SB nach!
 driversettings.sptsfix SPTS-Fix AVIA500 aktivieren
 driversettings.sptsmode SPTS-Mode Treiber laden
 driversettings.startbhdriver BH-Mode Treiber laden
@@ -1131,7 +1141,7 @@ personalize.help Hilfe zur Personalisierung
 personalize.help_line1 Die Personalisierung ermöglicht es, die wichtigsten
 personalize.help_line2 Menüs Ihren Bedürfnissen anzupassen. Menüs
 personalize.help_line3 können auf sichtbar, unsichtbar, aktiviert, deaktiviert
-personalize.help_line4 gestellt oder mit PIN gesichert werden.
+personalize.help_line4
 personalize.help_line5 Der Zugang zur Personalisierung selbst kann mit PIN
 personalize.help_line6 gesichert werden. Die PIN ist dann für alle anderen
 personalize.help_line7 Menüs identisch (nicht Jugendschutz-PIN).

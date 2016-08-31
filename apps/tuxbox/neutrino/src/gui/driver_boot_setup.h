@@ -44,7 +44,7 @@ class CDriverBootSetup : public CMenuTarget, CChangeObserver
 		std::string menue_icon;
 
 		int showSetup();
-
+		void ShowHelpDbs();
 	public:
 		CDriverBootSetup(const neutrino_locale_t title = LOCALE_DRIVERSETTINGS_DRIVER_BOOT, const char * const IconName = NEUTRINO_ICON_SETTINGS);
 		~CDriverBootSetup();
