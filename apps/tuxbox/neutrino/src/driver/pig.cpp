@@ -304,7 +304,6 @@ void CPIG::hide (void)
 #endif
 	set_coord(px, py, 0, 0);
 	px = py = pw = ph = 0;
-	usleep(700000);
 }
 
 
