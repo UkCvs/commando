@@ -738,6 +738,7 @@ std::string  CNeutrinoYParser::func_get_current_stream_info(CyhookHandler *hh, s
 		hh->ParamList["polarisation"] = "-";
 	}
 	hh->ParamList["ServiceName"] = NeutrinoAPI->GetServiceName(NeutrinoAPI->Zapit->getCurrentServiceID());
+#ifdef HAVE_DBOX_HARDWARE
 	NeutrinoAPI->GetStreamInfo(bitInfo);
 	
 	hh->ParamList["VideoFormat"] = string_printf("%d x %d", bitInfo[0], bitInfo[1] );
@@ -775,6 +776,7 @@ std::string  CNeutrinoYParser::func_get_current_stream_info(CyhookHandler *hh, s
 			string_printf("%s (%s/%s) %s", modenames[mode],	sampfreqnames[sampfreq],
 				layernames[layer], copy?"c":"");
 	}
+#endif
 	return "";
 }
 //-------------------------------------------------------------------------

@@ -1954,6 +1954,7 @@ root_dream/var_init/bin/emu/Makefile
 root_dream/var_init/etc/Makefile
 root_dream/var_init/etc/init.d/Makefile
 root_dream/var_init/etc/network/Makefile
+root_dream/var_init/httpd/Makefile
 root_dream/var_init/keys/Makefile
 root_dream/var_init/lib/Makefile
 root_dream/var_init/spool/Makefile

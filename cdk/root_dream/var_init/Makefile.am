@@ -1,4 +1,4 @@
-SUBDIRS = bin etc keys lib spool tuxbox
+SUBDIRS = bin etc httpd keys lib spool tuxbox
 
 DIR = /var_init
 
