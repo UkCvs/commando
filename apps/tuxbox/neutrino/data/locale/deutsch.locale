@@ -416,7 +416,6 @@ driversettings.help1 Die meisten Änderungen treten nach dem nächsten Neustart.
 driversettings.help2 Die letzten vier Optionen haben sofortiger Wirkung.
 driversettings.help3 Option Änderungen werden automatisch gespeichert!
 driversettings.hwsections HW-Sections verwenden
-driversettings.mp3_boot Wiedergabe von MP3-Sound auf der boot
 driversettings.noaviawatchdog AVIA-Watchdog aktivieren
 driversettings.noenxwatchdog eNX-Watchdog aktivieren
 driversettings.philipsrcpatch Philips/Sagem FB Workaround

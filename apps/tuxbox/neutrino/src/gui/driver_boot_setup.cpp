@@ -124,7 +124,6 @@ const driver_setting_files_struct_t driver_setting_files[DRIVER_SETTING_FILES_CO
 #endif
 	{LOCALE_DRIVERSETTINGS_PMTUPDATE     , "/var/etc/.pmt_update"    , OPTIONS_OFF0_ON1_OPTIONS },
 	{LOCALE_DRIVERSETTINGS_CROND         , "/var/etc/.crond"         , OPTIONS_OFF0_ON1_OPTIONS },
-	{LOCALE_DRIVERSETTINGS_MP3_BOOT      , "/var/etc/.no-mp3"        , OPTIONS_OFF1_ON0_OPTIONS },
 	{LOCALE_DRIVERSETTINGS_DPICON        , "/var/etc/.dp-yes"        , OPTIONS_OFF0_ON1_OPTIONS },
 	{LOCALE_DRIVERSETTINGS_EMU_SB        , "/var/etc/.emu-sb"        , OPTIONS_OFF0_ON1_OPTIONS },
 	{LOCALE_DRIVERSETTINGS_RADIO_BG      , "/var/etc/.no-radio-bg"   , OPTIONS_OFF1_ON0_OPTIONS },

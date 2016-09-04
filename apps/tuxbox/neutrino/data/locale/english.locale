@@ -427,17 +427,16 @@ drive_setup.select Select drive
 driversettings.bootinfo Show Boot Info
 driversettings.crond Enable crond scheduler
 driversettings.dpicon Change default picon every 5 mins?
-driversettings.driver_boot Driver & Boot Options
+driversettings.driver_boot Boot / Standby
 driversettings.emu_sb In Standby Mode, the softcam is
 driversettings.fb_destination Expert! Boot-Console
 driversettings.fdx_force force
 driversettings.fdx_load FullDuplex Mode
-driversettings.head Driver & Boot Options
+driversettings.head Boot / Standby
 driversettings.help1 Most changes take effect after the next reboot.
 driversettings.help2 The last four options have immediate effect.
 driversettings.help3 Option changes are automatically saved!
 driversettings.hwsections Use hardware sections
-driversettings.mp3_boot Play MP3 sound at boot
 driversettings.noaviawatchdog Enable AVIA watchdog
 driversettings.noenxwatchdog Enable eNX watchdog
 driversettings.philipsrcpatch Philips/Sagem RC workaround
@@ -767,7 +766,7 @@ mainmenu.sleeptimer SleepTimer
 mainmenu.tvmode TV-Mode
 mainmenu.upnpbrowser UPnP Browser
 mainsettings.audio Audio
-mainsettings.driver Driver & Boot
+mainsettings.driver Boot / Standby
 mainsettings.head Settings
 mainsettings.keybinding Keybinding
 mainsettings.language Language
