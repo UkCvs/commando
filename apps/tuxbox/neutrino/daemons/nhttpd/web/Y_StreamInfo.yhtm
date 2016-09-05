@@ -36,9 +36,9 @@
 <TD class="set"> <div align="left">{=AspectRatio=}</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>Bitrate:</B></TD>
+<TD class="set"><B>Buffer(dm500):<BR>Bitrate(dbox2):</B></TD>
 <TD>&nbsp;</TD>
-<TD class="set"> <div align="left">{=BitRate=} bit/sec</div></TD>
+<TD class="set"> <div align="left">{=BitRate=}<BR>bytes(dm500)<BR>bit/sec(dbox2)</div></TD>
 </TR>
 <TR> 
 <TD class="set"><B>{=L:0903=}:</B></TD>

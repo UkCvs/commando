@@ -237,6 +237,9 @@ bool CNeutrinoAPI::GetStreamInfo(int bitInfo[10])
 			value=strtoul(tmpptr,NULL,0);
 			bitInfo[pos]= value;
 			pos++;
+#ifdef HAVE_DREAMBOX_HARDWARE
+			if (pos == 4) break;
+#endif
 		}
 	}
 	fclose(fd);
