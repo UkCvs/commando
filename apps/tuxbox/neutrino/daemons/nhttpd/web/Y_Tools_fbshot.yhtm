@@ -10,7 +10,7 @@ function do_snapshot(){
 function do_snapshot2(){
 	var _shot = document.getElementById("shot");
 	var filename = id("file").value;
-	dbox_exec_tools("fbshot fb -q /tmp/"+filename+".png");
+	dbox_exec_tools("fbshot -o -d -b -p /tmp/"+filename+".png");
 	show_waitbox(false);
 	show_obj("shot", true);
 	_shot.src = "/tmp/"+filename+".png?"+Math.random();
@@ -22,9 +22,9 @@ function do_dboxshot(){
 function do_dboxshot2(){
 	var _shot = document.getElementById("shot");
 	var filename = id("file").value;
-	var res = dbox_exec_tools("fbshot -r -o /tmp/"+filename+".bmp");
+	var res = dbox_exec_tools("fbshot -b /tmp/"+filename+".bmp");
 	if(res != "")
-		dbox_exec_tools("fbshot -o /tmp/"+filename+".bmp");
+		dbox_exec_tools("fbshot /tmp/"+filename+".bmp");
 	show_waitbox(false);
 	show_obj("shot", true);
 	_shot.src = "/tmp/"+filename+".bmp?"+Math.random();
@@ -45,7 +45,7 @@ function do_clearshot2(){
 	{=var-set:help_url=Help-BoxControl-OSD_Screenshot=}{=var-set:menu={=L:0212=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<button name="snapshot" ytype="shot" onclick="do_snapshot()">{=L:0300=}</button>
-		{=var-set:dboxshot={=find-exec:dboxshot=}=}
+		{=var-set:dboxshot={=find-exec:grab=}=}
 		{=if-empty:{=var-get:dboxshot=}~~
 		<button name="dboxshot" ytype="shot" onclick="do_dboxshot()">{=L:0301=}</button>
 		=}

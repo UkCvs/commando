@@ -10,9 +10,9 @@ function do_dboxshot(){
 	window.setTimeout("do_dboxshot2()", 1000);
 }
 function do_dboxshot2(){
-	var res = dbox_exec_tools("fbshot -r -o /tmp/a.bmp");
+	var res = dbox_exec_tools("fbshot -d /tmp/a.bmp");
 	if(res != "")
-		dbox_exec_tools("fbshot -o /tmp/a.bmp");
+		dbox_exec_tools("fbshot /tmp/a.bmp");
 	var _shot = document.getElementById("shot");
 	_shot.src = "/tmp/a.bmp?"+Math.random();
 }
@@ -35,7 +35,7 @@ function do_clearshot2(){
 		<button name="clearshot" ytype="clearshot" onclick="do_clearshot()">{=L:0302=}</button>
 		<table cellpadding="0">
 		<tr>
-			<td>{=include-block:Y_Blocks.txt;remote=}</td>
+			<td>{=include-block:Y_Blocks.txt;remote_dm500=}</td>
 			<td><img id="shot" src="" {=if-empty:{=full=}~style="width:600px"~=}/></td>
 		</tr>
 		</table>

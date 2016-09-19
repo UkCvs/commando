@@ -103,9 +103,8 @@
 0205=Nachrichten
 0206=Webbasierte Fernbedienung
 0207=Fernbedienung
-0209=LCD-Schnappschuss
-0210=LCD-Schnappschuss erstellen
-0211=lcshot nicht installiert in
+0209=Remote for Phone
+0210=Phone-based Remote Control
 0212=OSD-Schnappschuss
 0213=OSD-Schnappschuss erstellen
 0214=fbshot nicht installiert in
@@ -1038,3 +1037,7 @@
 9923=Rechts
 9924=Men&uuml;
 9925=Beenden / Zur&uuml;ck
+9926=Audio / ReSync
+9927=Teletext
+9928=Tv Mode
+9929=Radio Mode

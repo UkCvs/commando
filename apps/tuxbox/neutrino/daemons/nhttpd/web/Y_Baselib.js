@@ -385,7 +385,7 @@ function bt_set_value(_bt_name, _text)
 /*dbox*/
 /*expermental*/
 function dbox_rcsim(_key){
-	loadSyncURL("/control/rcem?" + _key);
+	loadSyncURL("/control/exec?Y_Tools&cmd&/&false&rcsim%20"+_key);
 }
 function dbox_reload_neutrino(){
 	var sc=dbox_exec_tools("restart_neutrino");

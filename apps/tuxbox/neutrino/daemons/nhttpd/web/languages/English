@@ -103,9 +103,8 @@
 0205=Messages
 0206=Web-based Remote Control
 0207=Remote
-0209=LCD Screenshot
-0210=do lcd screenshots
-0211=lcshot not installed at
+0209=Remote for Phone
+0210=Phone-based Remote Control
 0212=OSD Screenshot
 0213=do screenshots from OSD
 0214=fbshot not installed at
@@ -1038,3 +1037,7 @@
 9923=Right
 9924=Menu
 9925=Exit / Back
+9926=Audio / ReSync
+9927=Teletext
+9928=Tv Mode
+9929=Radio Mode

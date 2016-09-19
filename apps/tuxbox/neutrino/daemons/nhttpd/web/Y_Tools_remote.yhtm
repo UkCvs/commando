@@ -1,0 +1,90 @@
+<!-- APP to control C16 remotely from your Android smartphone! APP code by Hotbasws11 
+on UkCvs.net - html R/C design and key-mapping by PaphosAL, (modding Hotbaws' original ideas).
+USEAGE: in your phone's web address bar, tap in your dm500 IP address and app name like this:
+192.168.x.x/Y_Tools_remote.yhtm 
+-->
+
+{=var-set:cancache=yPyes=}
+{=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/prototype.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+function goConfirmUrl(_meld, _url){
+	if (confirm(_meld)==true) goUrl(_url);
+}
+function goUrl(_url){
+	var res = trim(loadSyncURL(_url));
+	switch(res){
+		case "1": res="on"; break;
+		case "0": res="off"; break;
+	}
+}
+//]]>
+</script>
+<style css="text/css">
+body {background-color: black}
+</style>
+</head>
+<body>
+<p>
+<table cellpadding="1" align="center">
+		<tr>
+			<td></td>
+			<td align="center"><input type="button" style="width:120px;height:100px;font-size:45px;color:white" value="Mute" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_MUTE");'/></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td align="center"><input type="button" style="width:120px;height:100px;font-size:45px;color:white;background-color:#FF0000" value="O/I" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_POWER");'/></td>
+			<td></td>
+		</tr>
+</table>
+<p>
+<table cellpadding="1" align="center">
+		<tr>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="1" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_1");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="2" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_2");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="3" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_3");'/></td>
+			</tr>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="4" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_4");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="5" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_5");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="6" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_6");'/></td>
+			</tr>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="7" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_7");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="8" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_8");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="9" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_9");'/></td>
+			</tr>			
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="<" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_VOLUMEDOWN");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="0" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_0");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value=">" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_VOLUMEUP");'/></td>
+			</tr>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Info" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_HELP");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Up" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_UP");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Menu" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_SETUP");'/></td>
+			</tr>
+			<tr>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Left" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_LEFT");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="OK" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_OK");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Right" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RIGHT");'/></td>
+			</tr>
+			<tr>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Audio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_AUDIO");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Down" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_DOWN");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Exit" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_HOME");'/></td>
+			</tr>
+			<tr>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Text" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_TEXT");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Tv" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_TV");'/></td>
+			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Radio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RADIO");'/></td>
+			</tr>
+</table>
+&nbsp;<p>
+<table cellpadding="1" align="center">
+		<tr>
+			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:black;background-color:#FF0000" value="EPG" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RED");'/></td>
+			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:black;background-color:#00FF00" value="Audio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_GREEN");'/></td>
+			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:black;background-color:#FFFF00" value="Guide" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_YELLOW");'/></td>
+			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:white;background-color:#0000FF" value="More" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_BLUE");'/></td>
+		</tr>
+</table>
+</body>
+</html>

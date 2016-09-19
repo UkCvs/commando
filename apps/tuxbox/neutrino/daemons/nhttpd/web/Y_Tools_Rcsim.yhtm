@@ -8,7 +8,7 @@ function rcsim(_key)
 	if(_key == "KEY_POWER")
 		if(confirm("{=L:0413=}") != true)
 			return;
-	loadSyncURL("/control/rcem?"+_key);
+	loadSyncURL("/control/exec?Y_Tools&cmd&/&false&rcsim%20"+_key);
 }
 //]]>
 </script>
@@ -18,7 +18,7 @@ function rcsim(_key)
 	<div class="work_box_head"><div class="work_box_head_h2">
 	{=var-set:help_url==}{=var-set:menu={=L:0207=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-		{=include-block:Y_Blocks.txt;remote=}
+		{=include-block:Y_Blocks.txt;remote_dm500=}
 	</div>
 </div>
 </body>

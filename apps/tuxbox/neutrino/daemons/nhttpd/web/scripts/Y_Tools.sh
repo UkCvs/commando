@@ -489,20 +489,10 @@ do_lcshot()
 # -----------------------------------------------------------
 do_fbshot()
 {
-	if [ "$1" = "fb" ]; then
-		shift 1
-		if [ -e "/var/bin/fbshot" ]; then
-			/var/bin/fbshot $*
-		else
-			fbshot $*
-		fi
+	if [ -e "/var/bin/grab" ]; then
+		/var/bin/grab $*
 	else
-		shift 1
-		if [ -e "/var/bin/dboxshot" ]; then
-			/var/bin/dboxshot $*
-		else
-			dboxshot $*
-		fi
+		/bin/grab $*
 	fi
 }
 # -----------------------------------------------------------

@@ -93,13 +93,13 @@ function do_check()
 	~
 		sLog_addRow(sLog_body, "green", "Programs: lcshot is installed at: {=var-get:lcshot=}. LCD Screenshot is enabled.", "ok");
 	=}
-	{=var-set:fbshot={=find-exec:fbshot=}=}
+	{=var-set:fbshot={=find-exec:grab=}=}
 	{=if-empty:{=var-get:fbshot=}~
 		sLog_addRow(sLog_body, "red", "Programs: fbshot is not installed. OSD Screenshot is disabled. ", "failed");
 	~
 		sLog_addRow(sLog_body, "green", "Programs: fbshot is installed at: {=var-get:fbshot=}. OSD Screenshot is enabled.", "ok");
 	=}
-	{=var-set:dboxshot={=find-exec:dboxshot=}=}
+	{=var-set:dboxshot={=find-exec:grab=}=}
 	{=if-empty:{=var-get:dboxshot=}~
 		sLog_addRow(sLog_body, "red", "Programs: dboxshot is not installed. Remote &amp; OSD is disabled. ", "failed");
 	~
