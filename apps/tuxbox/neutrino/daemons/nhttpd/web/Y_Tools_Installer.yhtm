@@ -41,7 +41,7 @@ function init(){
 		{=var-set:help_url=Help-Tools-yInstaller=}{=var-set:menu={=L:2206=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<form name="f" method="post" enctype="multipart/form-data" action="/control/exec?Y_Tools&amp;installer" target="out">
-			{=L:2207=}:&nbsp;<input type="file" name="filename" size="70" />&nbsp;<br />
+			{=L:2207=}:&nbsp;<input type="file" name="filename" size="70" />&nbsp;<br/><br/>
 			<input type="button" name="su" value="{=L:2208=}" onclick="do_submit()" />
 			<br/><br/>
 		</form>
