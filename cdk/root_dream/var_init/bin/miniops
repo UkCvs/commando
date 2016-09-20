@@ -61,6 +61,12 @@ stop)
 	fi
 	exit 0
 ;;
+
+avsync)
+	pzapit -rz
+	[ -e /var/etc/.logging ] && echo "sync AV ($2):" `date` >>/tmp/avsync.log
+;;
+
 esac
 
 exit 0

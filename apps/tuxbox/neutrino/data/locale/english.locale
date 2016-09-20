@@ -437,6 +437,7 @@ driversettings.help1 Most changes take effect after the next reboot.
 driversettings.help2 The last four options have immediate effect.
 driversettings.help3 Option changes are automatically saved!
 driversettings.hwsections Use hardware sections
+driversettings.logging Enable Debug Logging
 driversettings.noaviawatchdog Enable AVIA watchdog
 driversettings.noenxwatchdog Enable eNX watchdog
 driversettings.philipsrcpatch Philips/Sagem RC workaround

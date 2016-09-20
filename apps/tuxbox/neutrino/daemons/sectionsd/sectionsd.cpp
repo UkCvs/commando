@@ -8591,7 +8591,7 @@ static void *houseKeepingThread(void *)
 				audio_ReSync_count += audio_ReSync_timer;
 				xprintf("Audio ReSync: Activate - count %i, time diff %d seconds\n",
 					(audio_ReSync_count / audio_ReSync_timer), zeit - dmxCN.lastChanged);
-				system("pzapit -rz");
+				system("miniops avsync timer");
 			}
 			dprintf("Number of sptr events (event-ID): %u\n", mySIeventsOrderUniqueKey.size());
 			dprintf("Number of sptr events (service-id, start time, event-id): %u\n", mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.size());
@@ -9151,7 +9151,7 @@ int main(int argc, char **argv)
 						if ((audio_ReSync > 0) && (messaging_last_requested != dmxCN.lastChanged)) {
 							audio_ReSync_count = 0;
 							xprintf("Audio ReSync: Activate\n");
-							system("pzapit -rz");
+							system("miniops avsync start");
 						}
 						messaging_have_CN = 0x00;
 						messaging_got_CN = 0x00;

@@ -464,6 +464,7 @@ const char * locale_real_names[] =
 	"driversettings.help2",
 	"driversettings.help3",
 	"driversettings.hwsections",
+	"driversettings.logging",
 	"driversettings.noaviawatchdog",
 	"driversettings.noenxwatchdog",
 	"driversettings.philipsrcpatch",
