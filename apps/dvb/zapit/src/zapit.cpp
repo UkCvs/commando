@@ -3052,7 +3052,7 @@ void leaveStandby(void)
 
 	switch (frontend->getInfo()->type) {
 		case FE_QPSK:
-			frontend->setCurrentSatellitePosition(config.getInt32("lastSatellitePosition", 192));
+			frontend->setCurrentSatellitePosition(config.getInt32("lastSatellitePosition", 282));
 			frontend->setDiseqcRepeats(config.getInt32("diseqcRepeats", 0));
 			//motorRotationSpeed = scanconfig.getInt32("motorRotationSpeed", 8); // default: 0.8 degrees per second
 			diseqcType = (diseqc_t)config.getInt32("diseqcType", NO_DISEQC);
@@ -3293,7 +3293,7 @@ int main(int argc, char **argv)
 	lastChannelTV    = config.getInt32("lastChannelTV", 0);
 	startChannelRadio = config.getInt32("startChannelRadio", 0);
 	startChannelTV    = config.getInt32("startChannelTV", 0);
-	bouquetManager->remainingChannelsBouquet = config.getBool("makeRemainingChannelsBouquet", true);
+	bouquetManager->remainingChannelsBouquet = config.getBool("makeRemainingChannelsBouquet", false);
 
 	if (config.getInt32("lastChannelMode", 0))
 		setRadioMode();
@@ -3333,7 +3333,7 @@ int main(int argc, char **argv)
 	if (!zapit_server.prepare(ZAPIT_UDS_NAME))
 		return -1;
 
-	save_audioPIDs = config.getBool("saveAudioPIDs", false);
+	save_audioPIDs = config.getBool("saveAudioPIDs", true);
 	if (save_audioPIDs) {
 		FILE *audio_config_file = fopen(AUDIO_CONFIG_FILE, "r");
 		if (audio_config_file) {
