@@ -235,7 +235,7 @@ function do_submit()
 				<td colspan="2" class="y_form_header">{=L:3400=}</td>
 			</tr>
 			<tr>
-				<td rowspan="25">{=include-block:Y_Blocks.txt;remote=}</td>
+				<td rowspan="25">{=include-block:Y_Blocks.txt;remote_dm500=}</td>
 				<td><input type="radio" name="but" onclick="setFocus()" />{=L:3401=}</td>
 				<td><input type="text" name="key_tvradio_mode" id="id100" onclick="setradio(0)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id200" value="{=L:3402=}" onclick="killkey()" /></td>
