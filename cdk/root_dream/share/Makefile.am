@@ -1,4 +1,4 @@
-SUBDIRS = tuxbox udhcpc zoneinfo
+SUBDIRS = udhcpc zoneinfo
 
 DIR = /share/
 

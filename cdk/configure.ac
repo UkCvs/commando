@@ -1945,7 +1945,6 @@ root_dream/root/Makefile
 root_dream/root/platform/Makefile
 root_dream/root/platform/kernel/Makefile
 root_dream/share/Makefile
-root_dream/share/tuxbox/Makefile
 root_dream/share/udhcpc/Makefile
 root_dream/share/zoneinfo/Makefile
 root_dream/var_init/Makefile
