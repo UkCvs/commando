@@ -3417,10 +3417,10 @@ void CNeutrinoApp::ExitRun(const bool write_si)
 			for(int x=0;x<256;x++)
 				frameBuffer->paletteSetColor(x, 0x000000, 0xffff);
 			frameBuffer->paletteSet();
-
+/*
 			frameBuffer->loadPicture2FrameBuffer("shutdown.raw");
 			frameBuffer->loadPal("shutdown.pal");
-
+*/
 			saveSetup();
 
 			if (!g_settings.epg_dir.empty()) {
@@ -3938,13 +3938,15 @@ void CNeutrinoApp::radioMode( bool rezap)
 	mode = mode_radio;
 	tunerMode = mode_radio;
 
+	system("miniops showlogo radio");
+
 	if (g_Controld->getVideoFormat() != g_settings.video_backgroundFormat)
 		g_Controld->setVideoFormat(g_settings.video_backgroundFormat);
-
+/*
 	frameBuffer->loadPal("radiomode.pal", 18, COL_MAXFREE);
 	frameBuffer->useBackground(frameBuffer->loadBackground(NEUTRINO_ICON_RADIOMODE));// set useBackground true or false
 	frameBuffer->paintBackground();
-
+*/
 	g_RemoteControl->radioMode();
 	if( rezap )
 	{

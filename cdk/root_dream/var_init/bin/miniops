@@ -1,5 +1,30 @@
 #!/bin/sh
-# miniops - Based-on-Commando - 14 May 2016
+# miniops - Based-on-Commando - 23rd September 2016
+
+# miniops declarations:
+lock="/tmp/getepg.lock"
+
+# miniops functions:
+fmsg() {
+	wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+
+bgpic() {
+	[ $1 = "true" ] && controldc videoPowerDown 1
+	showframe /root/platform/kernel/logo
+	[ $1 = "true" ] && controldc videoPowerDown 0
+}
+
+popups() {
+	bgpic "true" &
+	sleep 7
+	i=0
+	while [ -e $lock ]; do
+		i=$(($i + 10))
+		fmsg "GetEPG loading, be patient... $i seconds"
+		sleep 10
+	done
+}
 
 # miniops requests:
 case "$1" in
@@ -62,9 +87,37 @@ stop)
 	exit 0
 ;;
 
+# Audio/Video auto re-sync
 avsync)
 	pzapit -rz
 	[ -e /var/etc/.logging ] && echo "sync AV ($2):" `date` >>/tmp/avsync.log
+	exit 0
+;;
+
+# Show background logo [radio|scan]
+showlogo)
+	[ ! -e $etc/.no-$2-bg ] && bgpic "false" &
+;;
+
+# GetEPG prepare (background test function ONLY!)
+getepg)
+	touch $lock
+	pzapit -ra -zi 7d400021038
+	popups &
+	sleep 60
+	pzapit -n "Sky News"
+	rm $lock
+	exit 0
+;;
+
+# AutoBouquets prepare (background test function ONLY!)
+autobouquets)
+	bgpic "true" &
+	fmsg "Starting 28.2E AutoBouquets, hang on..."
+	pzapit -ra -zi 7d400021038
+	sleep 10
+	pzapit -n "Sky News"
+	exit 0
 ;;
 
 esac

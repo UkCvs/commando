@@ -103,9 +103,12 @@ int CScanTs::exec(CMenuTarget* parent, const std::string &)
 		parent->hide();
 	}
 
+	g_Controld->videoPowerDown(true);
+	system("miniops showlogo scan");
+/*
 	frameBuffer->loadPal("scan.pal", 37, COL_MAXFREE);
 	frameBuffer->loadPicture2FrameBuffer("scan.raw");
-
+*/
 printf("[neutrino] TP_scan %d TP_freq %s TP_rate %s TP_fec %d TP_pol %d TP_mod %d TP_diseqc %d\n", get_set.TP_scan, get_set.TP_freq, get_set.TP_rate, get_set.TP_fec, get_set.TP_pol, get_set.TP_mod, (uint8_t)get_set.TP_diseqc);
 
 #ifndef TUXTXT_CFG_STANDALONE
@@ -352,7 +355,8 @@ void CScanTs::paintRadar(void)
 
 void CScanTs::hide()
 {
-	frameBuffer->loadPal("radiomode.pal", 18, COL_MAXFREE);
+	g_Controld->videoPowerDown(false);
+//	frameBuffer->loadPal("radiomode.pal", 18, COL_MAXFREE);
 	frameBuffer->paintBackgroundBoxRel(0, 0, 720, 576);
 }
 
