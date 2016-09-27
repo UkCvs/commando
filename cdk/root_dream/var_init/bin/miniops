@@ -11,6 +11,7 @@ fmsg() {
 
 bgpic() {
 	[ $1 = "true" ] && controldc videoPowerDown 1
+	sleep 1
 	showframe /root/platform/kernel/logo
 	[ $1 = "true" ] && controldc videoPowerDown 0
 }
