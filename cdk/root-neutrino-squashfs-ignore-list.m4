@@ -19,7 +19,7 @@ flashprefix/share/tuxbox/neutrino/icons/radiomode.pal
 flashprefix/bin/dvbsnoop
 flashprefix/bin/input
 flashprefix/bin/msgbox
-flashprefix/bin/shellexec
+#flashprefix/bin/shellexec
 flashprefix/bin/dccamd
 flashprefix/bin/inadyn-mt
 flashprefix/bin/smbmount
@@ -31,8 +31,8 @@ flashprefix/lib/tuxbox/plugins/mosaic.so
 flashprefix/lib/tuxbox/plugins/mosaic.cfg
 flashprefix/lib/tuxbox/plugins/dvbsub.so
 flashprefix/lib/tuxbox/plugins/dvbsub.cfg
-flashprefix/lib/tuxbox/plugins/shellexec.so
-flashprefix/lib/tuxbox/plugins/shellexec.cfg
+#flashprefix/lib/tuxbox/plugins/shellexec.so
+#flashprefix/lib/tuxbox/plugins/shellexec.cfg
 flashprefix/lib/tuxbox/plugins/pip.so
 flashprefix/lib/tuxbox/plugins/pip.cfg
 
