@@ -1,8 +1,8 @@
 EPGMenu.epgplus Eventlist overview
-EPGMenu.eventinfo Event-Info
+EPGMenu.eventinfo Event-Information
 EPGMenu.eventlist Eventlist current program
 EPGMenu.head EPG - Program Information
-EPGMenu.streaminfo technical information
+EPGMenu.streaminfo Stream-Information
 EPGPlus.actions Actions
 EPGPlus.bybouquet_mode by bouquet
 EPGPlus.bypage_mode by page
