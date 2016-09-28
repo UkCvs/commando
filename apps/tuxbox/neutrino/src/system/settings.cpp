@@ -233,7 +233,7 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 			}
 		}
 	}
-	scan_mode = configfile.getInt32("scan_mode", 0);
+	scan_mode = configfile.getInt32("scan_mode", 1);
 	TP_scan = configfile.getInt32("TP_scan", 2);
 	TP_fec = configfile.getInt32("TP_fec", 1);
 	TP_pol = configfile.getInt32("TP_pol", 0);
