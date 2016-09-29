@@ -182,7 +182,7 @@ void CProgressBar::realpaint(const int pos_x, const int pos_y,
 		{
 			// shadow
 			if (shadowbar_col != 0)
-				frameBuffer->paintBoxRel(pos_x + SHADOW_OFFSET, pos_y + SHADOW_OFFSET, width, pb_max_height, shadowbar_col);
+				frameBuffer->paintBoxRel(pos_x -1, pos_y, width +1, pb_max_height + SHADOW_OFFSET, shadowbar_col);
 
 			// background
 			frameBuffer->paintBoxRel(pos_x, pos_y, width, pb_max_height, backgroundbar_col);
