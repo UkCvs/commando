@@ -385,7 +385,7 @@ int CNeutrinoApp::loadSetup()
 	strcpy(g_settings.shutdown_count, configfile.getString("shutdown_count","0").c_str());
 	g_settings.sleeptimer_min		= configfile.getInt32("sleeptimer_min", 0);
 	g_settings.volumebar_disp_pos		= configfile.getInt32("volumebar_disp_pos" , VOLUMEBAR_DISP_POS_DEFAULT_CENTER );
-	g_settings.infobar_sat_display		= configfile.getBool("infobar_sat_display"       , false );
+	g_settings.infobar_sat_display		= configfile.getBool("infobar_sat_display"       , true );
 	g_settings.infobar_subchan_disp_pos	= configfile.getInt32("infobar_subchan_disp_pos" , CInfoViewer::SUBCHAN_DISP_POS_INFOBAR );
 	g_settings.misc_spts			= configfile.getBool("misc_spts"                 , false );
 #ifndef TUXTXT_CFG_STANDALONE
