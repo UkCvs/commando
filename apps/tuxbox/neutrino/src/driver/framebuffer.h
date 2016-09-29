@@ -123,7 +123,7 @@ class CFrameBuffer
 		int screen_EndY;
 		
 	public:
-		void showSatfind(int x, int y, int x2, bool showsatdetails, int lastsnr = -1, int lastsig = -1, int lastber = -1, int satpos = 0);
+		void showSatfind(int pbcolor, int color, int x, int y, int x2, bool showsatdetails, int lastsnr = -1, int lastsig = -1, int lastber = -1, int satpos = 0);
 #ifndef FB_USE_PALETTE
 		fb_pixel_t realcolor[256];
 #endif

@@ -1448,7 +1448,7 @@ void CFrameBuffer::ClearFrameBuffer()
 	paletteSet();
 }
 
-void CFrameBuffer::showSatfind(int x, int y, int x2, bool showsatdetails, int lastsnr, int lastsig, int lastber, int satpos)
+void CFrameBuffer::showSatfind(int pbcolor, int color, int x, int y, int x2, bool showsatdetails, int lastsnr, int lastsig, int lastber, int satpos)
 {
 	CProgressBar pbsig(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
 	CProgressBar pbsnr(true, -1, -1, RED_BAR, GREEN_BAR, YELLOW_BAR, false);
@@ -1505,27 +1505,27 @@ void CFrameBuffer::showSatfind(int x, int y, int x2, bool showsatdetails, int la
 				sprintf (freq, "%d.%06d MHz", si.tsfrequency / 1000000, si.tsfrequency % 1000000);
 		}
 
-		this->paintBoxRel(x, y, x2-x, 30, COL_INFOBAR_PLUS_0);
+		this->paintBoxRel(x, y, x2-x, 30, color);
 
 		percent = "sig " + to_string(sig) + "%";
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 10, y+ 25, x2- x- 10, percent, COL_INFOBAR_PLUS_0);
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 10, y+ 25, x2- x- 10, percent, color);
 		percent_width = g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->getRenderWidth(percent);
-		pbsig.paintProgressBar(x+ 10+ percent_width+ 5, y+ 7, 60, 15, sig, 100, 0, 0, COL_INFOBAR_PLUS_0, 0, "", COL_INFOBAR);
+		pbsig.paintProgressBar(x+ 10+ percent_width+ 5, y+ 7, 60, 15, sig, 100, 0, 0, color, 0, "", pbcolor);
 
 		percent = "snr " + to_string(snr) + "%";
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 140, y+ 25, x2- x- 140, percent, COL_INFOBAR_PLUS_0);
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 140, y+ 25, x2- x- 140, percent, color);
 		percent_width = g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->getRenderWidth(percent);
-		pbsnr.paintProgressBar(x+ 140+ percent_width+ 5, y+ 7, 60, 15, snr, 100, 0, 0, COL_INFOBAR_PLUS_0, 0, "", COL_INFOBAR);
+		pbsnr.paintProgressBar(x+ 140+ percent_width+ 5, y+ 7, 60, 15, snr, 100, 0, 0, color, 0, "", pbcolor);
 
 		percent = "ber " + to_string(ber); // no unit
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 270, y+ 25, x2- x- 270, percent, COL_INFOBAR_PLUS_0);
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 270, y+ 25, x2- x- 270, percent, color);
 
-		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 345, y+ 25, x2- x- 345, freq, COL_INFOBAR_PLUS_0);
+		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x+ 345, y+ 25, x2- x- 345, freq, color);
 
 		if (satpos != 0 && (g_info.delivery_system == DVB_S) && showsatdetails)
 		{
 			sprintf (pos, "%d.%d%c", satpos < 0 ? -satpos / 10 : satpos / 10, satpos < 0 ? -satpos % 10 : satpos % 10, satpos < 0 ? 'W' : 'E');
-			g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x2- 55, y+ 25, 55, pos, COL_INFOBAR_PLUS_0);
+			g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL]->RenderString(x2- 55, y+ 25, 55, pos, color);
 		}
 	}
 }

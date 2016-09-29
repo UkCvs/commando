@@ -270,14 +270,16 @@ int CScanTs::handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data)
 			xpos_frequency = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getRenderWidth(buffer, true);
 			paintLine(xpos2, ypos_frequency, xpos_frequency, buffer);
 			if (g_settings.infobar_sat_display)
-				frameBuffer->showSatfind(x, y+height-mheight-10, x+width, false);
+				frameBuffer->showSatfind(COL_MENUCONTENT, COL_MENUCONTENT_PLUS_0,
+					x, y+height-mheight-10, x+width, false);
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_REPORT_FREQUENCYP:
 			(data == 0) ? sprintf(buffer, "-H") : sprintf(buffer, "-V");
 			paintLine(xpos2 + xpos_frequency, ypos_frequency, 30, buffer);
 			if (g_settings.infobar_sat_display)
-				frameBuffer->showSatfind(x, y+height-mheight-10, x+width, false, lastsnr, lastsig, lastber);
+				frameBuffer->showSatfind(COL_MENUCONTENT, COL_MENUCONTENT_PLUS_0,
+					x, y+height-mheight-10, x+width, false, lastsnr, lastsig, lastber);
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_PROVIDER:
