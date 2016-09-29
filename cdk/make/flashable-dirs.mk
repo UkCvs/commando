@@ -436,6 +436,7 @@ endif
 	$(INSTALL) -d $(dreamfilesrootdir)/var_init/tuxbox/config/zapit;
 	@ln -sf /tmp $(dreamfilesrootdir)/var_init/tmp
 	@ln -sf /proc/mounts $(dreamfilesrootdir)/var_init/etc/mtab
+	@ln -sf /var/bin/emu $(dreamfilesrootdir)/var_init/bin/softcam
 # lib
 if !ENABLE_UCLIBC
 	@for i in ISO8859-1.so ISO8859-2.so ISO8859-7.so UNICODE.so; do \
