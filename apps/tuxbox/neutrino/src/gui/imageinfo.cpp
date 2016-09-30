@@ -187,7 +187,7 @@ void CImageInfo::hide()
 
 void CImageInfo::clearContentBox()
 {
-	frameBuffer->paintBoxRel(startX, y+pigh, width, startY+height-ssheight-(y+pigh), COL_MENUCONTENT_PLUS_0);
+	frameBuffer->paintBoxRel(startX, y+pigh+iheight, width, startY+height-ssheight-iheight-(y+pigh), COL_MENUCONTENT_PLUS_0);
 }
 
 void CImageInfo::paint_pig(int xPig, int yPig, int w, int h)
@@ -231,16 +231,17 @@ void CImageInfo::paintSupport(int y_startposition)
 			paintContent(font_info, xpos, y_startposition,  comment2.c_str());
 			y_startposition += iheight+5; 
 		}
-		
+
+	y_startposition += iheight;
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_SUPPORTHERE), COL_MENUCONTENTINACTIVE);
-	
+	y_startposition += iheight;
 	y_startposition += iheight;	
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_HOMEPAGE), COL_MENUCONTENTINACTIVE);
 	paintContent(font_info, xpos+x_offset_large, y_startposition, homepage.c_str());
 	
 	y_startposition += iheight;
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_DOKUMENTATION), COL_MENUCONTENTINACTIVE);
-	paintContent(font_info, xpos+x_offset_large, y_startposition, "http://wiki.tuxbox.org");
+	paintContent(font_info, xpos+x_offset_large, y_startposition, "https://github.com/UkCvs/commando");
 	
 	y_startposition += iheight;
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_FORUM), COL_MENUCONTENTINACTIVE);
@@ -467,14 +468,14 @@ void CImageInfo::LoadImageInfo(void)
 	CConfigFile config('\t');
 	config.loadConfig(VERSION_FILE);
 	
-	homepage		= config.getString("homepage", "http://www.tuxbox.org");
-	creator		= config.getString("creator", "");
-	imagename		= config.getString("imagename", "self compiled");
+	homepage	= config.getString("homepage", "http://www.ukcvs.net");
+	creator		= config.getString("creator", "public@ukcvs");
+	imagename	= config.getString("imagename", "Based-on-Commando");
 	version		= config.getString("version", "");
-	subversion		= config.getString("subversion", "");
+	subversion	= config.getString("subversion", "");
 	cvstime		= config.getString("cvs", "");
-	comment1		= config.getString("comment1", "");
-	comment2		=config.getString("comment2","");
+	comment1	= config.getString("comment1", "");
+	comment2	= config.getString("comment2","");
 	distribution 	= imagename + " " + subversion;
 	
 	CFlashVersionInfo versionInfo(version); //get from flashtool.cpp

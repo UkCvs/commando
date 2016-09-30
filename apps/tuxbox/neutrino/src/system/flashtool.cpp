@@ -425,7 +425,7 @@ bool CFlashTool::GetVersionInfo(CFlashVersionInfo& versionInfo, std::string file
 
 CFlashVersionInfo::CFlashVersionInfo()
 {
-	load("0200200001010000");
+	load("0160200001010000");
 }
 
 CFlashVersionInfo::CFlashVersionInfo(const std::string & versionString)
@@ -442,18 +442,10 @@ bool CFlashVersionInfo::load(const std::string & versionString)
 
 	// recover release cycle version
 	releaseCycle[0] = versionString[1];
-	releaseCycle[1] = '.';
-	if (versionString[2] == '0')
-	{
-		releaseCycle[2] = versionString[3];
-		releaseCycle[3] = 0;
-	}
-	else
-	{
-		releaseCycle[2] = versionString[2];
-		releaseCycle[3] = versionString[3];
-		releaseCycle[4] = 0;
-	}
+	releaseCycle[1] = versionString[2];
+	releaseCycle[2] = '.';
+	releaseCycle[3] = versionString[3];
+	releaseCycle[4] = 0;
 
 	// recover date
 	date[0] = versionString[10];

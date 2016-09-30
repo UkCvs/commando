@@ -459,7 +459,7 @@ void CNetworkSetup::testNetworkSettings()
 	std::string text, ethID, testsite, offset = "    ";
 
 	//set default testdomain and wiki-IP
-	std::string defaultsite = "www.google.de", wiki_IP = "91.224.67.93", wiki_URL = "wiki.tuxbox.org";
+	std::string defaultsite = "www.ukcvs.net", wiki_IP = "209.85.232.94", wiki_URL = "www.google.co.uk";
 	
 	//set physical adress
 	std::string mac_addr = networkConfig->mac_addr;

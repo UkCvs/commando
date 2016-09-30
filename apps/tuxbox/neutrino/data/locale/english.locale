@@ -611,10 +611,10 @@ gtxalpha.alpha1 Alpha 1
 gtxalpha.alpha2 Alpha 2
 imageinfo.chipset Chipset:
 imageinfo.creator Creator:
-imageinfo.cvslevel CVS-Level:
+imageinfo.cvslevel GIT-Level:
 imageinfo.date Date:
 imageinfo.details revisions
-imageinfo.dokumentation Documentation:
+imageinfo.dokumentation Github:
 imageinfo.exit Exit
 imageinfo.forum Forum:
 imageinfo.head Image Information

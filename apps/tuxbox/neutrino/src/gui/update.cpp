@@ -81,7 +81,7 @@
 
 #define LIST_OF_UPDATES_LOCAL_FILENAME "cramfs.list"
 #define UPDATE_LOCAL_FILENAME          "update.cramfs"
-#define RELEASE_CYCLE                  "2.0"
+#define RELEASE_CYCLE                  "16.0"
 #define FILEBROWSER_UPDATE_FILTER      "cramfs"
 #define FILEBROWSER_UPDATE_FILTER_ALT  "squashfs"
 //#define MTD_OF_WHOLE_IMAGE             4
