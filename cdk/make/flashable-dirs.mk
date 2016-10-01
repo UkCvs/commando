@@ -433,6 +433,24 @@ endif
 	for i in tuxtxt enigma/cable enigma/fonts enigma/pictures enigma/resources enigma/skins enigma/terrestrial; do \
 		$(INSTALL) -d $(dreamfilesrootdir)/var_init/tuxbox/config/$$i; \
 	done;
+	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/shellexec.so ] ; then \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/shellexec.so \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/00-shellexec.so; \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/shellexec.cfg \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/00-shellexec.cfg; \
+	fi
+	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxcom.so ] ; then \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxcom.so \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/01-tuxcom.so; \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxcom.cfg \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/01-tuxcom.cfg; \
+	fi
+	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxtxt.so ] ; then \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxtxt.so \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/04-tuxtxt.so; \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxtxt.cfg \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/04-tuxtxt.cfg; \
+	fi
 	$(INSTALL) -d $(dreamfilesrootdir)/var_init/tuxbox/config/zapit;
 	@ln -sf /tmp $(dreamfilesrootdir)/var_init/tmp
 	@ln -sf /proc/mounts $(dreamfilesrootdir)/var_init/etc/mtab

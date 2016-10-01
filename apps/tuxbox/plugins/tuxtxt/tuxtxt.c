@@ -71,8 +71,8 @@ void gethotlist()
 #endif
 	if (maxhotlist < 0) /* hotlist incorrect or not found */
 	{
-		hotlist[0] = 0x100; /* create one */
-		hotlist[1] = 0x303;
+		hotlist[0] = 0x888; /* create one */
+		hotlist[1] = 0x100;
 		maxhotlist = 1;
 	}
 }
@@ -88,7 +88,7 @@ void savehotlist()
 #if TUXTXT_DEBUG
 	printf("TuxTxt <savehotlist %s", line);
 #endif
-	if (maxhotlist != 1 || hotlist[0] != 0x100 || hotlist[1] != 0x303)
+	if (maxhotlist != 1 || hotlist[0] != 0x888 || hotlist[1] != 0x100)
 	{
 		if ((hl = fopen(line, "wb")) != 0)
 		{
@@ -150,7 +150,7 @@ void plugin_exec(PluginParam *par)
 #if !TUXTXT_CFG_STANDALONE
 	int initialized = tuxtxt_init();
 	if ( initialized )
-		tuxtxt_cache.page = 0x100;
+		tuxtxt_cache.page = 0x888;
 #endif
 
 	/* show versioninfo */
@@ -413,7 +413,7 @@ int Init()
 	tuxtxt_cache.cached_pages  = 0;
 
 	tuxtxt_cache.page_receiving = -1;
-	tuxtxt_cache.page       = 0x100;
+	tuxtxt_cache.page       = 0x888;
 #endif
 	lastpage   = tuxtxt_cache.page;
 	tuxtxt_cache.subpage    = tuxtxt_cache.subpagetable[tuxtxt_cache.page];
@@ -428,8 +428,8 @@ int Init()
 	UpdateLCD();
 
 	/* config defaults */
-	menulanguage = 0;	/* german */
-	tuxtxt_cache.national_subset = 0;/* default */
+	menulanguage = 1;	/* english */
+	tuxtxt_cache.national_subset = 2;/* default */
 	swapupdown      = 0;
 	dumpl25         = 0;
 
@@ -1690,12 +1690,12 @@ void ConfigMenu(int Init)
 								renderinfo.inputcounter = 2;
 
 
-								tuxtxt_cache.page     = 0x100;
-								lastpage = 0x100;
-								renderinfo.prev_100 = 0x100;
-								renderinfo.prev_10  = 0x100;
-								renderinfo.next_100 = 0x100;
-								renderinfo.next_10  = 0x100;
+								tuxtxt_cache.page     = 0x888;
+								lastpage = 0x888;
+								renderinfo.prev_100 = 0x888;
+								renderinfo.prev_10  = 0x888;
+								renderinfo.next_100 = 0x888;
+								renderinfo.next_10  = 0x888;
 								tuxtxt_cache.subpage  = 0;
 
 								tuxtxt_cache.pageupdate = 0;
@@ -1835,7 +1835,7 @@ void PageInput(int Number)
 		temp_page = getIndexOfPageInHotlist(); /* 9 toggles through hotlist */
 
 		if (temp_page<0 || temp_page==maxhotlist) /* from any (other) page go to first page in hotlist */
-			temp_page = (maxhotlist >= 0) ? hotlist[0] : 0x100;
+			temp_page = (maxhotlist >= 0) ? hotlist[0] : 0x888;
 		else
 			temp_page = hotlist[temp_page+1];
 

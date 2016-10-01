@@ -89,7 +89,7 @@ int CAudioSelectMenuHandler::exec(CMenuTarget* parent, const std::string &action
 		{
 			int vtxtpage = 0;
 			iss >> std::hex >> vtxtpage;
-			g_PluginList->startPlugin("tuxtxt", 0, vtxtpage);
+			g_PluginList->startPlugin("04-tuxtxt", 0, vtxtpage);
 		}
 		else if (type == "DVB:")
 		{
@@ -159,7 +159,7 @@ int CAudioSelectMenuHandler::doMenu()
 	{
 		AudioSelector.addItem(new CMenuSeparator(CMenuSeparator::LINE | CMenuSeparator::STRING, LOCALE_SUBTITLES_HEAD));
 
-		bool hasTuxtxtPlugin = g_PluginList->hasPlugin("tuxtxt");
+		bool hasTuxtxtPlugin = g_PluginList->hasPlugin("04-tuxtxt");
 		bool hasDvbsubPlugin = g_PluginList->hasPlugin("dvbsub");
 
 		std::string text = "";

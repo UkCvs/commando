@@ -2479,7 +2479,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &menu)
 			}
 			else if( msg == CRCInput::RC_text )
 			{
-				g_PluginList->startPlugin("tuxtxt");
+				g_PluginList->startPlugin("04-tuxtxt");
 			}
 			else if(msg == CRCInput::RC_timer)
 			{
