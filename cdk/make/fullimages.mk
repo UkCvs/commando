@@ -268,6 +268,8 @@ $(flashprefix)/root-neutrino-squashfs.img: \
 		rm -f $(flashprefix)/root-neutrino-squashfs.img.too-big 2> /dev/null || /bin/true; \
 		mv $@ $(flashprefix)/root-neutrino-squashfs.img.too-big; \
 		exit 1; \
+	else \
+		echo "SUCCESS: SquashFS part has $$(( 3276800 - `stat -c %s $@`)) compressed bytes available"; \
 	fi
 
 $(flashprefix)/cramfs-squashfs-neutrino.img: \
