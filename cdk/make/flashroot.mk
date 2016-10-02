@@ -60,6 +60,9 @@ endif
 if ENABLE_AIO_GRAB
 	$(MAKE) flash-aio-grab
 endif
+if ENABLE_AUTOBOUQUETS
+	$(MAKE) flash-autobouquets
+endif
 endif
 if ENABLE_MOUNT_STANDALONE
 	$(MAKE) flash-mount

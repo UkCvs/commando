@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# fork script for 'AutoBouquets 28.2E NOW' plugin
+
+miniops autobouquets &
+
+exit 0

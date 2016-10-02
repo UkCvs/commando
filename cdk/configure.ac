@@ -534,6 +534,11 @@ AC_ARG_ENABLE(aio-grab,
 	,[enable_aio_grab=yes])
 AM_CONDITIONAL(ENABLE_AIO_GRAB,test "$enable_aio_grab" = "yes")
 
+AC_ARG_ENABLE(autobouquets,
+	AS_HELP_STRING(--disable-autobouquets,disable autobouquets downloader),
+	,[enable_autobouquets=yes])
+AM_CONDITIONAL(ENABLE_AUTOBOUQUETS,test "$enable_autobouquets" = "yes")
+
 AC_ARG_ENABLE(cdkVcInfo,
 	AS_HELP_STRING(--enable-cdkVcInfo,include cdkVcInfo in yadds and images),
 	,[enable_cdkVcInfo=no])
@@ -1811,6 +1816,7 @@ German keymaps:			$enable_german_keymaps
 
 aformat				$enable_aformat
 aio-grab			$enable_aio_grab
+autobouquets			$enable_autobouquets
 cdkVcInfo			$enable_cdkVcInfo
 blockads			$enable_blockads
 clock				$enable_clock

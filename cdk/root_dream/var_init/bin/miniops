@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - Based-on-Commando - 23rd September 2016
+# miniops - Based-on-Commando - 02rd October 2016
 
 # miniops declarations:
 lock="/tmp/getepg.lock"
@@ -116,7 +116,11 @@ autobouquets)
 	bgpic "true" &
 	fmsg "Starting 28.2E AutoBouquets, hang on..."
 	pzapit -ra -zi 7d400021038
-	sleep 10
+	if [ -e /bin/autobouquets ]; then
+		autobouquets
+	else
+		sleep 10
+	fi
 	pzapit -n "Sky News"
 	exit 0
 ;;

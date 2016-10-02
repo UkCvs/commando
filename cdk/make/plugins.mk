@@ -5,7 +5,7 @@ $(appsdir)/tuxbox/plugins/config.status: bootstrap libfreetype libcurl libz libs
 
 plugins: neutrino-plugins enigma-plugins
 
-neutrino-plugins: $(targetprefix)/include/tuxbox/plugin.h tuxmail tuxtxt tuxcom tuxcal vncviewer dvbsub shellexec tuxwetter sysinfo clock logomask blockads
+neutrino-plugins: $(targetprefix)/include/tuxbox/plugin.h autobouquets tuxmail tuxtxt tuxcom tuxcal vncviewer dvbsub shellexec tuxwetter sysinfo clock logomask blockads
 
 enigma-plugins: @LIBGETTEXT@ $(appsdir)/tuxbox/plugins/config.status $(targetprefix)/include/tuxbox/plugin.h
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/enigma all
@@ -16,6 +16,15 @@ $(targetprefix)/lib/pkgconfig/tuxbox-plugins.pc: $(appsdir)/tuxbox/plugins/confi
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/include all
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/include install
 	cp $(appsdir)/tuxbox/plugins/tuxbox-plugins.pc $(targetprefix)/lib/pkgconfig/tuxbox-plugins.pc
+
+autobouquets: $(appsdir)/tuxbox/plugins/config.status
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/autobouquets all
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/autobouquets install
+
+flash-autobouquets: $(appsdir)/tuxbox/plugins/config.status | $(flashprefix)/root
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/autobouquets all prefix=$(flashprefix)/root
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/autobouquets install prefix=$(flashprefix)/root
+	@FLASHROOTDIR_MODIFIED@
 
 tuxmail: libcrypto $(appsdir)/tuxbox/plugins/config.status
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/tuxmail all

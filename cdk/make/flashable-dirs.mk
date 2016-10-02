@@ -445,6 +445,12 @@ endif
 		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxcom.cfg \
 		$(dreamfilesrootdir)/var_init/tuxbox/plugins/01-tuxcom.cfg; \
 	fi
+	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/autobouquets.so ] ; then \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/autobouquets.so \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/02-autobouquets.so; \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/autobouquets.cfg \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/02-autobouquets.cfg; \
+	fi
 	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxtxt.so ] ; then \
 		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxtxt.so \
 		$(dreamfilesrootdir)/var_init/tuxbox/plugins/04-tuxtxt.so; \
