@@ -97,7 +97,7 @@ avsync)
 
 # Show background logo [radio|scan]
 showlogo)
-	[ ! -e $etc/.no-$2-bg ] && bgpic "false" &
+	[ ! -e /var/etc/.no-$2-bg ] && bgpic "false" &
 ;;
 
 # GetEPG prepare (background test function ONLY!)
