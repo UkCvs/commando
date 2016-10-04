@@ -400,7 +400,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.channellist_extended		= configfile.getBool("channellist_extended"          , true);
 	g_settings.channellist_foot	= configfile.getInt32("channellist_foot"          , CChannelList::FOOT_NEXT);
 	strcpy( g_settings.infobar_channel_logodir, configfile.getString( "infobar_channel_logodir", "/var/etc/icons/").c_str()); 
-	g_settings.infobar_show_channellogo	= configfile.getInt32("infobar_show_channellogo"		, CInfoViewer::NO_LOGO);
+	g_settings.infobar_show_channellogo	= configfile.getInt32("infobar_show_channellogo"		, CInfoViewer::LOGO_AS_CHANNELNUM);
 	g_settings.infobar_channellogo_background		= configfile.getInt32("infobar_channellogo_background"		, CInfoViewer::NO_BACKGROUND);
 	g_settings.startmode			= configfile.getInt32("startmode" , STARTMODE_TV );
 	g_settings.wzap_time			= configfile.getInt32("wzap_time", 3 );
