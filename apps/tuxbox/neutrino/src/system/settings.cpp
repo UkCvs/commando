@@ -36,7 +36,7 @@ CScanSettings::CScanSettings(void)
 	: configfile('\t')
 {
 	delivery_system = DVB_S;
-	bouquetMode	= CZapitClient::BM_UPDATEBOUQUETS;
+	bouquetMode	= CZapitClient::BM_CREATESATELLITEBOUQUET;
 	scanType	= CZapitClient::ST_ALL;
 	strcpy(satNameNoDiseqc, "none");
 
