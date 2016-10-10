@@ -827,6 +827,7 @@ const char * locale_real_names[] =
 	"miscsettings.epg_cache_hint1",
 	"miscsettings.epg_cache_hint2",
 	"miscsettings.epg_dir",
+	"miscsettings.epg_dir_onoff",
 	"miscsettings.epg_extendedcache",
 	"miscsettings.epg_extendedcache_hint1",
 	"miscsettings.epg_extendedcache_hint2",

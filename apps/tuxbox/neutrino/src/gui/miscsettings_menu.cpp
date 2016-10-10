@@ -250,8 +250,15 @@ int CMiscMenue::showMenue()
 	//max epg events
 	CStringInput miscSettings_epg_max_events(LOCALE_MISCSETTINGS_EPG_MAX_EVENTS, &g_settings.epg_max_events, 5, false, LOCALE_MISCSETTINGS_EPG_MAX_EVENTS_HINT1, LOCALE_MISCSETTINGS_EPG_MAX_EVENTS_HINT2, "0123456789 ", this);
 	misc_menue_epg->addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_EPG_MAX_EVENTS, true, g_settings.epg_max_events, &miscSettings_epg_max_events));
-	misc_menue_epg->addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_EPG_DIR, true, g_settings.epg_dir, this, "epgdir"));
 
+	//epg dir
+	CMenuForwarder *e1 = new CMenuForwarder(LOCALE_MISCSETTINGS_EPG_DIR, !g_settings.epg_dir_onoff, g_settings.epg_dir, this, "epgdir");
+	COnOffNotifier epgNotifier(1);
+	epgNotifier.addItem(e1);
+	CMenuOptionChooser *e2 = new CMenuOptionChooser(LOCALE_MISCSETTINGS_EPG_DIR_ONOFF, &g_settings.epg_dir_onoff, OPTIONS_OFF1_ON0_OPTIONS, OPTIONS_OFF1_ON0_OPTION_COUNT, true, &epgNotifier);
+	misc_menue_epg->addItem(GenericMenuSeparatorLine);
+	misc_menue_epg->addItem(e1);
+	misc_menue_epg->addItem(e2);
 
 	//filebrowser
 	misc_menue_filebrowser->addIntroItems(LOCALE_FILEBROWSER_HEAD);

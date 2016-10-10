@@ -84,6 +84,7 @@ struct SNeutrinoSettings
 	std::string epg_old_events;
 	std::string epg_max_events;
 	std::string epg_dir;
+	int epg_dir_onoff;
 #ifdef ENABLE_FREESATEPG
 	int epg_freesat_enabled;
 #endif

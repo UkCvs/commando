@@ -355,6 +355,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.epg_old_events 	= configfile.getString("epg_old_events", "1");
 	g_settings.epg_max_events 	= configfile.getString("epg_max_events", "18000");
 	g_settings.epg_dir 		= configfile.getString("epg_dir", "");
+	g_settings.epg_dir_onoff 	= configfile.getBool("epg_dir_onoff", true);
 #ifdef ENABLE_FREESATEPG
 	g_settings.epg_freesat_enabled	= configfile.getBool( "epg_freesat_enabled", false);
 #endif
@@ -945,6 +946,7 @@ void CNeutrinoApp::saveSetup()
 	configfile.setString("epg_old_events"          ,g_settings.epg_old_events );
 	configfile.setString("epg_max_events"          ,g_settings.epg_max_events );
 	configfile.setString("epg_dir"                 ,g_settings.epg_dir);
+	configfile.setBool("epg_dir_onoff"             ,g_settings.epg_dir_onoff);
 #ifdef ENABLE_FREESATEPG
 	configfile.setBool("epg_freesat_enabled"       ,g_settings.epg_freesat_enabled );
 #endif
@@ -1959,7 +1961,7 @@ void CNeutrinoApp::InitZapper()
 	// EPG-Config
 	SendSectionsdConfig();
 
-	if (!g_settings.epg_dir.empty())
+	if (!g_settings.epg_dir.empty() && !g_settings.epg_dir_onoff)
 		g_Sectionsd->readSIfromXML(g_settings.epg_dir.c_str());
 
 #ifndef TUXTXT_CFG_STANDALONE
@@ -3423,7 +3425,7 @@ void CNeutrinoApp::ExitRun(const bool write_si)
 */
 			saveSetup();
 
-			if (!g_settings.epg_dir.empty()) {
+			if (!g_settings.epg_dir.empty() && !g_settings.epg_dir_onoff) {
 				waitforshutdown = true;
 				AudioMute(true);
 				g_Sectionsd->setPauseScanning(true);
