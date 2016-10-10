@@ -346,9 +346,9 @@ void CThemes::getColors(CConfigFile &configfile)
 	g_settings.menu_Content_inactive_green = configfile.getInt32( "menu_Content_inactive_green", 0x0F );
 	g_settings.menu_Content_inactive_blue = configfile.getInt32( "menu_Content_inactive_blue", 0x1E );
 	g_settings.menu_Content_inactive_Text_alpha = configfile.getInt32( "menu_Content_inactive_Text_alpha", 0x00 );
-	g_settings.menu_Content_inactive_Text_red = configfile.getInt32( "menu_Content_inactive_Text_red", 0x64 );
-	g_settings.menu_Content_inactive_Text_green = configfile.getInt32( "menu_Content_inactive_Text_green", 0x64 );
-	g_settings.menu_Content_inactive_Text_blue = configfile.getInt32( "menu_Content_inactive_Text_blue", 0x64 );
+	g_settings.menu_Content_inactive_Text_red = configfile.getInt32( "menu_Content_inactive_Text_red", 0x5F );
+	g_settings.menu_Content_inactive_Text_green = configfile.getInt32( "menu_Content_inactive_Text_green", 0x46 );
+	g_settings.menu_Content_inactive_Text_blue = configfile.getInt32( "menu_Content_inactive_Text_blue", 0x28 );
 	g_settings.infobar_alpha = configfile.getInt32( "infobar_alpha", 0x00 );
 	g_settings.infobar_red = configfile.getInt32( "infobar_red", 0x00 );
 	g_settings.infobar_green = configfile.getInt32( "infobar_green", 0x00 );
