@@ -840,6 +840,13 @@ start-block~neutrino_form-data_diverse
 				<td><input type="text" name="epg_dir" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;epg_dir~cache=}" />&nbsp;e.g. /mnt/mmc/epg/</td>
 			</tr>
 			<tr>
+				<td>{=L:4273=}</td>
+				<td>
+					<input type="radio" name="epg_dir_onoff" value="true" />{=L:0032=}&nbsp;
+					<input type="radio" name="epg_dir_onoff" value="false" />{=L:0031=}
+				</td>
+			</tr>
+			<tr>
 				<td colspan="2" width="35%" class="y_form_header">Zapit ({=L:0070=}: {=L:4272=})</td>
 			</tr>
 				<tr>
@@ -945,6 +952,7 @@ function form_init()
 
 	obj_set_radio_value('epgtext_align_right', "{=ini-get:/var/tuxbox/config/neutrino.conf;channellist_epgtext_align_right;false~cache=}");
 	obj_set_radio_value('channellist_extended', "{=ini-get:/var/tuxbox/config/neutrino.conf;channellist_extended;false~cache=}");
+	obj_set_radio_value('epg_dir_onoff', "{=ini-get:/var/tuxbox/config/neutrino.conf;epg_dir_onoff;true~cache=}");
 
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;standby_off_with;0=}";
 		document.f.standby_off_with.selectedIndex = val;
@@ -979,6 +987,7 @@ start-block~neutrino_diverse_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;channellist_extended;{=channellist_extended=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_cache_time;{=epg_cache_time=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_dir;{=epg_dir=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;epg_dir_onoff;{=epg_dir_onoff=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_extendedcache_time;{=epg_extendedcache_time=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_max_events;{=epg_max_events=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_old_events;{=epg_old_events=}~cache=}
