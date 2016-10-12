@@ -888,6 +888,13 @@
 4115=FullDuplex Mode
 4116=Diverses
 4117=Show Boot Menu
+4118=Enable Debug Logging
+4119=Enable crond scheduler
+4120=Change default picon every 5 mins?
+4121=In Standby Mode, the softcam is
+4122=Display splash screen in Radio Mode
+4123=Display splash screen in Scan Mode
+4124=Smartsleep- autoboot in SB? SB after!
 
 #========= Extended
 4200=Various Settings
