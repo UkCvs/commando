@@ -1029,6 +1029,9 @@ start-block~neutrino_form-data_bootoptions
 	<div class="work_box_body">
 	<form name="f" class="y_form" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
+
+<!-- hide dbox2 settings
+
 			<tr>
 				<td width="35%">{=L:4101=}</td>
 				<td>
@@ -1085,6 +1088,9 @@ start-block~neutrino_form-data_bootoptions
 					<input type="radio" name="rtc" value="1" />{=L:0031=}
 				</td>
 			</tr>
+
+hide dbox2 settings -->
+
 			<tr>
 				<td>{=L:4118=}</td>
 				<td>
