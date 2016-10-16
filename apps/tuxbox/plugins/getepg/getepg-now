@@ -1,0 +1,11 @@
+#!/bin/sh
+
+#conditional 'GetEPG now!' plugin fork script - updated 18 Jun 2016
+
+if grep -q -m 1 'Astra 28.2E' /var/tuxbox/config/zapit/services.xml; then
+	miniops getepg &
+	exit 0
+else
+	echo "Sorry, GetEPG for 28.2E is impossible!"
+	exit 1
+fi

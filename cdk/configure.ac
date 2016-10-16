@@ -602,6 +602,11 @@ AC_ARG_ENABLE(gdbserver,
 	,[enable_gdbserver=no])
 AM_CONDITIONAL(ENABLE_GDBSERVER,test "$enable_gdbserver" = "yes")
 
+AC_ARG_ENABLE(getepg,
+	AS_HELP_STRING(--disable-getepg,disable getepg downloader),
+	,[enable_getepg=yes])
+AM_CONDITIONAL(ENABLE_GETEPG,test "$enable_getepg" = "yes")
+
 AC_ARG_ENABLE(getrc,
 	AS_HELP_STRING(--enable-getrc,enable getrc),
 	,[enable_getrc=no])
@@ -1829,6 +1834,7 @@ Esound support:			$enable_esd
 ether-wake			$enable_etherwake
 fbshot				$enable_fbshot
 gdbserver			$enable_gdbserver
+getepg				$enable_getepg
 getrc				$enable_getrc
 hddtemp				$enable_hddtemp
 htop				$enable_htop

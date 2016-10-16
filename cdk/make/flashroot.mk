@@ -63,6 +63,9 @@ endif
 if ENABLE_AUTOBOUQUETS
 	$(MAKE) flash-autobouquets
 endif
+if ENABLE_GETEPG
+	$(MAKE) flash-getepg
+endif
 endif
 if ENABLE_MOUNT_STANDALONE
 	$(MAKE) flash-mount

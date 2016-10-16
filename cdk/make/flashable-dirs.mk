@@ -451,6 +451,12 @@ endif
 		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/autobouquets.cfg \
 		$(dreamfilesrootdir)/var_init/tuxbox/plugins/02-autobouquets.cfg; \
 	fi
+	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/getepg.so ] ; then \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/getepg.so \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/03-getepg.so; \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/getepg.cfg \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/03-getepg.cfg; \
+	fi
 	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxtxt.so ] ; then \
 		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/tuxtxt.so \
 		$(dreamfilesrootdir)/var_init/tuxbox/plugins/04-tuxtxt.so; \
