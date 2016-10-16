@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# reload crond scheduler
+
+killall crond
+sleep 1
+crond &
+
+exit 0

@@ -1,4 +1,6 @@
-#sbin_SCRIPTS = init_hdd.sh
+sbin_SCRIPTS = cron wakevol
+
+#sbin_SCRIPTS += init_hdd.sh
 
 bin_PROGRAMS = fbclear
 if BOXTYPE_DBOX2

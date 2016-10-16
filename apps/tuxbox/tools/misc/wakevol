@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Volume script- Commando 12 dBox2 - LraiZer; 08 Jan 2010
+# resurrected 08 Mar 2013 for C14.7 updates - PaphosAL
+# re-resurrected 13 Sep 2016 for C16 tarballs
+
+etc="/var/etc"
+
+sed -i '/controldc setVolume/ c\
+controldc setVolume '$1'
+' $etc/v-level
+rm $etc/.w-vol*
+touch $etc/.w-vol$1
+
+exit 0

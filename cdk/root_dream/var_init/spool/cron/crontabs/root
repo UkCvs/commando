@@ -1,2 +1,39 @@
+# crond cronjobs for C15 - Dec 2013 - PaphosAL - ukcvs.net
+# updated for C15.1f 16 Jun 2016 with lincsat's suggested conditional cronjobs
+# Added to C16 tarball 13 Sep 2016 (so the shell menu works now)
+
+#SYNTAX: (note the space between the fields prior to the script command)
+
+ #################################################
+ #                                               #
+ # * * * * * command to be executed              #
+ # ^ ^ ^ ^ ^                                     #
+ # | | | | |                                     #
+ # | | | | ----- Day of week (0 - 6) (Sunday=0)  #
+ # | | | ------- Month (1 - 12)                  #
+ # | | --------- Day of month (1 - 31)           #
+ # | ----------- Hour (0 - 23)                   #
+ # |------------ Minute (0 - 59)                 #
+ #                                               #
+ #################################################
+
 0 0 1 1 * wget http://localhost/control/message?nmsg="Happy%20New%20Year%20from%20www.ukcvs.net" >/dev/null 2>&1
+
+# The * wildcard character = ALL
+# with the # comment removed, your script below will run at 06:30 every day
+
+#30 6 * * * /var/bin/myscript.sh
+
+# If adding a new cronjob in here, either reboot the box so crond loads it
+# into memory, or telnet in and type "cron" (without the quotes), or use 
+# the YELLOW key in page 2 of the BLUE > BLUE > YELLOW 'Utilities Menu'.
+
+# crond is disabled by default; enable it in the 'Boot / Standby Options' menu
+# with: Menu > Settings > GREEN and toggle the 3rd option down to ON, or...
+
+# other recent 'smart' cron options in the menues will also auto-enable crond:
+#0 6 * * * /var/bin/miniops autobouquets
+#15 6 * * * /var/bin/miniops getepg
+
+# ;)
 
