@@ -870,7 +870,7 @@
 4016=Directory Permissions (UNIX octals)
 
 #========= driver & boot
-4100=Driver &amp; Boot Options
+4100=Boot &amp; Standby Options
 4101=Use SPTS Mode
 4102=Show Boot Info
 4103=Use HW-Sections
