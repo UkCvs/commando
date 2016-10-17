@@ -433,6 +433,10 @@ endif
 	for i in tuxtxt enigma/cable enigma/fonts enigma/pictures enigma/resources enigma/skins enigma/terrestrial; do \
 		$(INSTALL) -d $(dreamfilesrootdir)/var_init/tuxbox/config/$$i; \
 	done;
+	for i in ab-fast logging parent w-vol; do \
+		touch $(dreamfilesrootdir)/var_init/etc/.$$i; \
+		chmod 0644 $(dreamfilesrootdir)/var_init/etc/.$$i; \
+	done;
 	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/shellexec.so ] ; then \
 		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/shellexec.so \
 		$(dreamfilesrootdir)/var_init/tuxbox/plugins/00-shellexec.so; \
