@@ -1,0 +1,5 @@
+# custom_sort_5.txt # 28.2E stream order initially, but customiZable after!
+
+# Channel names cannot be used in here, sorry! For clarity, please x-ref with the
+# /var/etc/channels.cfg file. Do NOT manually edit this file any more! Use Bouquet
+# Editor (in Services or yWeb), as AutoBouquets is now 100% compatible with this!
