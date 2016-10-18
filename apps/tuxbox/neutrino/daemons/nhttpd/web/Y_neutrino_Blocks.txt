@@ -1197,7 +1197,8 @@ function form_init()
 	var sel = 0;
 	if(val=="ttyS0") sel=1;
 	if(val=="tty") sel=2;
-		document.f.console.selectedIndex = sel;
+// hide dbox2 settings
+//		document.f.console.selectedIndex = sel;
 	
 	obj_set_radio_value('dbox_duplex', "{=ini-get:/var/tuxbox/boot/boot.conf;dbox_duplex~cache=}");
 	obj_set_radio_value('misc_spts', "{=ini-get:/var/tuxbox/config/neutrino.conf;misc_spts~open=}");
