@@ -426,7 +426,7 @@ endif
 		cp $(flashprefix)/dreamfiles/.version $(dreamfilesrootdir); \
 	fi
 # var_init
-	@for i in bin/emu driver lib log mnt/cf mnt/nfs mnt/usb tuxbox/plugins tuxbox/config ; do \
+	@for i in bin/emu driver lib log tuxbox/plugins tuxbox/config ; do \
 		$(INSTALL) -d $(dreamfilesrootdir)/var_init/$$i; \
 	done;
 	rm -f  $(dreamfilesrootdir)/var_init/run; ln -s /tmp/run $(dreamfilesrootdir)/var_init/
@@ -491,7 +491,7 @@ else
 	@ln -sf tuxbox/satellites.xml $(dreamfilesrootdir)/share;
 endif
 # misc
-	@ln -sf /var/mnt $(dreamfilesrootdir)/mnt
+	$(INSTALL) -d $(dreamfilesrootdir)/mount
 if !BOXMODEL_DM500
 	@for i in cables.xml terrestrial.xml; do \
 		if [ -f $(dreamfilesrootdir)/share/tuxbox/$$i ]; then \
