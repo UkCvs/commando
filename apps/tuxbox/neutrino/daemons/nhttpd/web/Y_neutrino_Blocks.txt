@@ -1147,6 +1147,9 @@ hide dbox2 settings -->
 					<input type="radio" name="smart_sb" value="1" />{=L:0031=}
 				</td>
 			</tr>
+
+<!-- hide dbox2 settings
+
 			<tr>
 				<td>{=L:4110=}</td>
 				<td>
@@ -1174,6 +1177,9 @@ hide dbox2 settings -->
 					<input type="radio" name="bootmenu" value="1" />{=L:0031=}
 				</td>
 			</tr>
+
+hide dbox2 settings -->
+
 		</table>
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
