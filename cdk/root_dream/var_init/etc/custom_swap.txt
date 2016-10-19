@@ -1,0 +1,22 @@
+# IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (freeware)
+
+###################################################
+#                                                 #
+#  AutoBouquets N1 - custom service swap manager  #
+#                                                 #
+#  service data can be found in autobouquets.csv  #
+#                                                 #
+###################################################
+
+# This option is un-menued and switched ON by default in C16
+
+# Please read the footnotes in the s2-AutoBouquets N1.txt
+# helpfile for more info about this LraiZer tool
+
+# fix RoI & UK optional Sky bouquet issues- AL- 21 Mar 2016
+# (where 'dead' channels in the 101-999 range are omitted from the
+# OSD bouquets, meaning the last channel number is less than 1000)
+974=1155
+975=1248
+990=1015
+991=1247
