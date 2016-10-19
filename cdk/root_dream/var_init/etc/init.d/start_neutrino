@@ -4,18 +4,54 @@
 
 . /proc/bus/dbox.sh
 
-[ ! -e /var/etc/.pmt_update ] || ZAPIT="-u"
-[ -e /var/etc/neutrino-parameters ] && . /var/etc/neutrino-parameters
+etc="/var/etc"
+zap="/var/tuxbox/config/zapit/zapit.conf"
+[ ! -e $etc/.pmt_update ] || ZAPIT="-u"
+[ -e $etc/neutrino-parameters ] && . /var/etc/neutrino-parameters
+
+if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
+	int1=`grep "startChannelTV" $zap|cut -d "=" -f2`
+	int2=`grep "lastChannelTV" $zap|cut -d "=" -f2`
+
+	if [ -e $etc/.101 ]; then
+		if [ "$int1" -lt "1000" ]; then
+			sed -i "/startChannelTV/cstartChannelTV=$(($int1 + 1000))" $zap
+		fi
+		if [ "$int2" -lt "1000" ]; then
+			sed -i "/lastChannelTV/clastChannelTV=$(($int2 + 900))" $zap
+		fi
+	else
+		if [ "$int1" -ge "1000" ]; then
+			sed -i "/startChannelTV/cstartChannelTV=$(($int1 - 1000))" $zap
+		fi
+		if [ "$int2" -ge "1000" ]; then
+			sed -i "/lastChannelTV/clastChannelTV=$(($int2 - 1000))" $zap
+		fi
+	fi
+
+	if [ -e $etc/.epg-boot ]; then
+		{ sleep 60; miniops getepg >/dev/null; } &
+	fi
+
+	if [ -e $etc/.sleep ]; then
+		rm -f $etc/.sleep
+		{ sleep 10; wget http://localhost/control/standby?on >/dev/null 2>&1; } &
+	fi
+fi
+
 sectionsd $SECTIONSD
 timerd
 zapit $ZAPIT
 nhttpd
 miniops start
+[ -e $etc/.crond ] && crond &
+[ -e $etc/.dp-yes ] && { sleep 300; miniops def-icon; } &
+
 until neutrino -u ; do
     echo "Neutrino exited with nonzero exit status $?, restarting..."
     pidof sectionsd >/dev/null || sectionsd $SECTIONSD
     pidof timerd    >/dev/null || timerd
-    pidof zapit     >/dev/null || zapit     $ZAPIT
+    pidof zapit     >/dev/null || zapit $ZAPIT
     pidof nhttpd    >/dev/null || nhttpd
 done
 
