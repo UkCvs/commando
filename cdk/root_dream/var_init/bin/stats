@@ -1,0 +1,69 @@
+#!/bin/sh
+# AL (for LraiZers C16 public dev) updated Mon 17 Oct 2016
+
+epgs="/tmp/epgstats.dat"
+lock="/tmp/getepg.lock"
+conf="/var/tuxbox/config/neutrino.conf"
+epgcache=`grep -m1 "^epg_dir=" $conf|cut -d "=" -f2`
+mntoff=`grep -m1 "_onoff=" $conf|cut -d "=" -f2`
+
+if [ "$mntoff" = "true" ] || [ "$epgcache" = "" ]; then
+	ecache="None (or disabled)"
+else
+	chk="$epgcache/0.xml"
+	touch $chk
+	if [ -e $chk ];then
+		[ -e $lock ] && echo $epgcache >/tmp/clip3
+		ecache="$epgcache (Active!)"
+		rm $chk
+	else
+		ecache="$epgcache (NOT mounted!)"
+	fi
+fi
+
+sectionsdcontrol --statistics >$epgs
+mem1=`grep "malloc:" $epgs|cut -d " " -f6|sed 's/(//;s/kb)//'`
+mem2=`echo "$mem1 1024"|awk '{printf("%.2f",$1 / $2)}'`"MB"
+mem3=`grep "bytes:" $epgs|cut -d " " -f4|sed 's/(//;s/kb)//'`
+mem4=`echo "$mem3 1024"|awk '{printf("%.2f",$1 / $2)}'`"MB"
+days=`grep "pg_c" $conf|cut -d "=" -f2`
+ehrs=`echo "$days 24"|awk '{printf($1 * $2)}'`
+etxt=`grep "pg_e" $conf|cut -d "=" -f2`
+
+sed -i "
+s/statistics/EPG statistics/
+/cpp/c\$Id: sectionsdcontrol.cpp v1.10 29/8/2012 rhabarber1848
+3iModded for C16 28.2E GetEPG Sep 2016 LraiZer@ukcvs.net
+s/is disabled/EPG is disabled (wise choice!)/
+s/is enabled/EPG is enabled (dumb choice...)/
+/Current/s/  / /
+5iEpg Cache Mount folder: $ecache
+s/rs to cache:.*$/rs to cache: $ehrs/
+s/ text:.*$/ text: $etxt/
+s/ts to cache:/ts to cache (max):/
+s/are old/expire/
+/ces:/d
+/d-e/d
+/a-s/d
+/size/d
+/handed out/cMemory currently occupied by GetEPG: $mem2
+/sbrk/d
+/in bytes:/cMemory allocated when GetEPG loaded: $mem4
+" $epgs
+
+free=`sed -n "/Free/"p $epgs`
+sed -i '/^Free/d' $epgs
+echo $free >>$epgs
+
+if [ -e $lock ]; then
+	clip1=`grep " events:" $epgs|cut -d " " -f5`
+	echo $clip1 >/tmp/clip1
+	echo $mem4 >/tmp/clip2
+	{ sleep 60; rm /tmp/clip*; mv $epgs /var/log; } &
+else
+	stat=`cat $epgs`
+	echo "$stat"
+	rm $epgs
+fi
+
+exit 0

@@ -1,0 +1,135 @@
+#!/bin/sh
+# epgusermaps script for C16- PaphosAL (imported from C15.1f Oct 2016)
+# Automatically keeps your custom_epg.txt usermap file bang up to date
+# with any channel name changes diffed in old and new channels.cfg (for
+# GetEPG) IF found when AutoBouquets last ran! User-friendly or what?
+
+# updated Thu 06 Oct 2016: refix cond keep R/C locked during this 40 sec b/g job
+
+etc="/var/etc"
+cfg="/var/tuxbox/config"
+zap="$cfg/zapit"
+als="$etc/.dev"
+svr="/var/server/share"
+bqs="$zap/bouquets.xml"
+bb="/tmp/box.busy"
+cl="/tmp/tv-channels.ref"
+tbq="/tmp/bouquets.xml"
+map="$etc/channels.cfg"
+tmap="/tmp/channels.cfg"
+epg="$etc/custom_epg.txt"
+tepg="/tmp/custom_epg.txt"
+ecsv="$etc/autobouquets.csv"
+tcsv="/tmp/autobouquets.csv"
+log="/tmp/epgusermaps.log"
+chlist="/tmp/chlist"
+pc=1
+[ -e $etc/.pr0n ] && pc=0
+
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+
+gstart=`date +%s`
+start=`date +%s`
+fmsg "Background updating, so no RC for 40secs- sorry..."
+echo "starting epgusermaps:" `date`
+echo "# epgusermaps.log started:" `date` >$log
+echo "
+# epgusermaps - runs in background (after AutoBouquets) IF service changes were
+# detected and/or user edits to bouquets.xml were found. PaphosAL 14 Sep 2016
+
+writing your custom_epg.txt usermap file for GetEPG..." >>$log
+[ ! -e $tbq ] && cat $bqs >$tbq
+[ ! -e $tmap ] && cat $map >$tmap
+[ ! -e $tcsv ] && cat $ecsv >/$tcsv
+cat $etc/headers/custom_epg.txt >$tepg
+
+sed -i "
+/# epg/d
+/^$/d
+s/:0002:/:0002;/
+s/;000;/;00;/
+s/;018;/;18;/
+s/\&amp;/\&/
+s/\&apos;/'/
+s/\&gt;/>/
+" $tmap
+
+while read ln; do
+ case $ln in
+ *"#Bouquet"*)
+	echo -e "\n$ln" >>$tepg
+ ;;
+ *":0002;"*)
+	echo $ln | awk -F ";" '{printf "%s:%s:%s:%s:%s\n",$6,$1,$5,$4,$7}' >>$tepg
+ ;;
+ esac 
+done < $tmap
+
+echo "# AutoBouquets custom_epg.txt usermap auto-generated on:" `date` >>$tepg
+sed -i '1h;1d;$!H;$!d;G' $tepg
+[ -e $als ] && cp -f $tepg $svr
+mv -f $tepg $etc
+rm -f $tmap
+stop=$(expr `date +%s` - $start)
+echo "+ Your new GetEPG usermap file was built in $stop secs!
+" >>$log
+sed -n '/serviceID=/'p $bqs >$cl
+sed -i 's/^.*name="//
+s/" tsid.*$//
+/BBC R1/,/$p/d' $cl
+if [ -e $als ]; then
+	ch99=`sed -n '99'p $cl`
+	echo -e "Channel 99 allocation is currently: [$ch99]\n" >>$log
+	cp $cl $svr
+fi
+mv -f $cl $zap
+echo "Checking bouquets.xml for any missing channels..." >>$log
+start=`date +%s`
+sed -i -e 's/,/~/g' $tcsv
+sed -n '/^101~/,/^999~/'p $tcsv >$chlist
+sed -n '/^50~/,/^87~/'p $tcsv >>$chlist
+[ $pc = 1 ] && sed -i '/^862/,/^950/d' $chlist
+edit=1
+while read ln; do
+chn=`echo "$ln"|cut -d~ -f7`
+if grep -q -m 1 "name=$chn tsid" $tbq; then
+	continue
+else
+	if grep -q -m 1 "name=$chn serv" $zap/services.xml; then
+		IFS="~"; set $ln; num=$1; sid=$4; tsid=$5
+		echo "+ Ch Name=[$chn] Slot=$num Sid=$sid TSid=$tsid" >>$log
+		edit=0
+	fi
+fi
+done < $chlist
+
+stop=$(expr `date +%s` - $start)
+echo -e "+ Channels orphaned from bouquets checking took $stop secs\n" >>$log
+
+if [ $edit = 0 ]; then
+	echo -e "+ The above orphan channels were NOT found in bouquets.xml\nYou can use Bouquet Editor to add them, and run\nAutoBouquets again to update your changes!" >>$log
+else
+	echo -e "+ Great! All user-allowed channels are included in your bouquets!" >>$log
+fi
+
+if [ $pc = 1 ]; then
+	echo "+ Absolutely NO adult content is present in your bouquets or services!" >>$log
+else
+	echo "+ WARNING: adult content is ACTIVE! Do kiddies have access to this box???" >>$log
+fi
+
+gstop=$(expr `date +%s` - $gstart)
+echo -e "\n+ Total epgusermaps processing took $gstop secs\n" >>$log
+rm -f $bb $chlist $tbq $tcsv
+now=`date|sed 's/  / /'`
+emsg="epgusermaps updated on: $now"
+echo "$emsg"
+echo "# $emsg" >>$log
+mv -f $log /var/log
+wget http://localhost/control/rc?unlock 2>/dev/null
+rcsim KEY_HOME >/dev/null
+fmsg "Sorry for the $gstop secs wait- your RC is now active again!"
+
+exit 0

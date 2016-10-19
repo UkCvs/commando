@@ -1,130 +1,573 @@
 #!/bin/sh
-# miniops - Based-on-Commando - 02rd October 2016
+# miniops - DM500S C16.0 - 15 Oct 2016 15h53- LraiZer and PaphosAL
 
-# miniops declarations:
+etc="/var/etc"
+logd="/var/log"
+elog="/tmp/epgstats.dat"
+als="$etc/.dev"
+mnt="/var/server"
+svr="$mnt/share"
+cfg="/var/tuxbox/config"
+conf="$cfg/neutrino.conf"
+scan="$cfg/scan.conf"
+sld="$etc/sml.dat"
+map="$etc/channels.cfg"
+tmap="/tmp/channels.cfg"
+cfgn="/tmp/channels.new"
+tb="/tmp/bouquet"
+tbq="/tmp/bouquets.xml"
+zap="$cfg/zapit"
+bqs="$zap/bouquets.xml"
+bqref="$etc/bq-list"
+tbref="/tmp/bqs.list"
+clip="/tmp/clipboard"
+svc="$zap/services.xml"
+tsv="/tmp/services.xml"
+tcsv="/tmp/autobouquets.csv"
+sdc=sectionsdcontrol
+bb="/tmp/box.busy"
+bref="/tmp/bqs.ref"
+sref="/tmp/svc.ref"
+acs="$etc/bq_0f.ref"
+cronsrc="var/spool/cron/crontabs/root"
 lock="/tmp/getepg.lock"
+nop="/dev/null"
+now=`date`
+mode=`pzapit -gm|cut -d " " -f2`
+zdat=`pzapit -gi|cut -d "(" -f1`
 
-# miniops functions:
-fmsg() {
-	wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+#procs
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >$nop 2>&1
 }
-
+rc_lock(){
+wget http://localhost/control/rc?lock 2>$nop; rcsim KEY_OK >$nop
+}
+rc_unlock(){
+wget http://localhost/control/rc?unlock 2>$nop; rcsim KEY_OK >$nop
+}
+zapnew(){
+pzapit -c
+sleep 4
+pzapit -rz
+}
+dsq_chk(){
+if ! grep -q "qcMode=0" $scan; then
+	sat=`sed -n "/SatName.*28.2E/"p $scan`
+	num=`echo "$sat"|cut -d "=" -f1|sed 's/SatName//'`
+	dsq=`sed -n "/sat.*28.2E/"p $svc`
+	dsq1=`echo "$dsq"|sed 's/^.*qc="//|sed 's/">$//'`
+	ln=`sed -n "/satDiseqc$num/"p $scan`
+	grep -q "qcMode=5" $scan && grep -q "XX=1" $scan && ln=`sed -n "/satMotorPos$num/"p $scan`
+	dsq2=`echo "$ln"|cut -d "=" -f2`
+	[ "$dsq1" != "$dsq2" ] && sed -i '/28\.2E/s/diseqc\=".*"/diseqc\="'"$dsq2"'"/' $svc && zapnew
+fi
+}
+edrc_zap(){
+pzapit -ra -zi 7d400021038
+sleep 2
+echo `pzapit -gsi`|grep -q "sid = 0x1038"; ezap=$?
+}
 bgpic() {
-	[ $1 = "true" ] && controldc videoPowerDown 1
-	sleep 1
-	showframe /root/platform/kernel/logo
-	[ $1 = "true" ] && controldc videoPowerDown 0
+[ $1 = "true" ] && controldc videoPowerDown 1
+sleep 1
+showframe /root/platform/kernel/logo
+[ $1 = "true" ] && controldc videoPowerDown 0
+}
+popups(){
+bgpic "true" &
+sleep 2
+i=0
+while [ -e $lock ]; do
+ i=$(($i + 1))
+ fmsg "GetEPG loading in progress... $((i*10)) seconds"
+ sleep 10
+done
+}
+zapback(){
+[ $mode = 1 ] && pzapit -zi "$zdat"
+[ $mode = 2 ] && pzapit -ra -zi "$zdat"
+}
+valid_chk(){
+echo `pzapit -gsi`|grep -q "onid = 0x0002";reto=$?
+}
+zap_wait(){
+i=0
+valid_chk
+until [ $reto = 0 ]; do
+if [ "$i" = "30" ]; then
+	break
+fi
+sleep 2
+valid_chk
+i=$(($i + 1))
+done
+}
+loc_cs(){
+[ ! -e $sld ] && echo "4097|01" >$sld
+sml=`cat $sld`
+area=`echo "$sml"|cut -d "|" -f1`
+regn=`echo "$sml"|cut -d "|" -f2`
+cs=0
+[ -e $etc/.parent ] && cs=1
+[ -e $etc/.plus1 ] && cs=3
+[ -e $etc/.sky ] && cs=5
+if grep -q '4100|50' $sld; then
+	[ -e $etc/.parent ] && cs=2
+	[ -e $etc/.plus1 ] && cs=4
+fi
+csx="custom_sort_$cs.txt"
+cse="$etc/$csx"
+cst="/tmp/$csx"
+}
+blue(){
+rcsim KEY_BLUE
+rcsim KEY_BLUE
+}
+cronchk(){
+count=`grep "^0\|^1\|^2\|^3\|^4\|^5" -c $cronsrc`
+if [ $count = 0 ]; then
+	killall crond
+	rm $etc/.crond
+else
+	cron
+fi
 }
 
-popups() {
-	bgpic "true" &
-	sleep 7
-	i=0
-	while [ -e $lock ]; do
-		i=$(($i + 10))
-		fmsg "GetEPG loading, be patient... $i seconds"
-		sleep 10
-	done
-}
-
-# miniops requests:
 case "$1" in
 
-# Softcam(s) start
-start)
-	if [ -e /var/etc/.oscam ]; then
-		rdate -s time.mit.edu
-		sleep 1
-		oscam &
-		{ sleep 5; pzapit -rz; } &
-	fi
-
-	if [ -e /var/etc/.mgcamd ]; then
-		epg-pause >/dev/null 2>&1
-		{ sleep 5; mgcamd; } &
-	fi
-
-	if [ -e /var/etc/.evocamd ]; then
-		evocamd &
-	fi
-
-	if [ -e /var/etc/.newcamd ]; then
-		newcamd &
-	fi
-
-	if [ -e /var/etc/.cccam ]; then
-		epg-restart >/dev/null 2>&1
-		{ sleep 5; CCcam; } &
-	fi
-	exit 0
-;;
-
-# Softcam(s) stop
-stop)
-	if [ -e /var/etc/.oscam ]; then
-		touch /tmp/oscam.kill
-		killall -9 oscam
-	fi
-	
-	if [ -e /var/etc/.mgcamd ]; then
-		killall -9 mgcamd
-		killall -9 epg-pause
-	fi
-
-	if [ -e /var/etc/.evocamd ]; then
-		kill $( pidof evocamd )
-		killall -9 evocamd
-	fi
-
-	if [ -e /var/etc/.newcamd ]; then
-		kill $( cat /tmp/newcamd.pid )
-		killall -9 newcamd
-	fi
-
-	if [ -e /var/etc/.cccam ]; then
-		killall -9 CCcam
-		killall -9 epg-restart
-	fi
-	exit 0
-;;
-
-# Audio/Video auto re-sync
-avsync)
-	pzapit -rz
-	[ -e /var/etc/.logging ] && echo "sync AV ($2):" `date` >>/tmp/avsync.log
-	exit 0
-;;
-
-# Show background logo [radio|scan]
-showlogo)
-	[ ! -e /var/etc/.no-$2-bg ] && bgpic "false" &
-;;
-
-# GetEPG prepare (background test function ONLY!)
-getepg)
-	touch $lock
-	pzapit -ra -zi 7d400021038
-	popups &
-	sleep 60
-	pzapit -n "Sky News"
-	rm $lock
-	exit 0
-;;
-
-# AutoBouquets prepare (background test function ONLY!)
 autobouquets)
-	bgpic "true" &
-	fmsg "Starting 28.2E AutoBouquets, hang on..."
-	pzapit -ra -zi 7d400021038
-	if [ -e /bin/autobouquets ]; then
-		autobouquets
-	else
-		sleep 10
+loc_cs
+! grep -q '0001' $bqref && cat $etc/bq-list.bak >$bqref
+#parental?
+pc=1
+[ -e $etc/.pr0n ] && pc=0
+#FTA only?
+fta=0
+[ -e $etc/.fta ] && rm -f $etc/.fta-bq && fta=1
+#sky 101-999 bq?
+ph=0
+[ -e $etc/.101 ] && ph=1
+#28.2E sat A-Z bq?
+if grep -q -m 1 '28.2E' $svc; then
+	sky=true
+	sed -n '/" 28.2E"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.21
+fi
+#other sat(s)?
+if grep -q -m 1 '_id="0000" n' $bqs; then
+	sed -n '/Bouquet type/'p $bqs >$bqref
+	touch $etc/.sats
+	cat $bqs >$bref
+	cat $svc >$sref
+fi
+#favorites?
+sed -n '/_id="0023"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.23
+# user bouquets edits?
+if [ $bqs -nt $svc ] && [ $cs != 0 ] && [ $sky = true ]; then
+	. /var/etc/custom_sort.new
+fi
+#fastmode?
+fastmode=1
+[ -e $etc/.ab-fast ] && fastmode=0
+# set default 28.2E fallback service
+defsvc='-n "Sky News"'
+[ $fastmode = 0 ] && defsvc='-ra -zi 7d400021038'
+dsq_chk
+valid_chk
+if [ $reto != 0 ]; then
+	fmsg "Invalid service! Trying 28.2E, hang on..."
+	pzapit $defsvc
+	sleep 2
+	zap_wait
+	if [ $reto != 0 ]; then
+		fmsg "Sorry, cannot find the 28.2E satellite! Please\ncheck your dish setup! Autobouquets aborting..."
+		zapback
+		exit 0
 	fi
-	pzapit -n "Sky News"
+fi
+touch $bb
+rc_lock
+[ $fastmode = 0 ] && edrc_zap && [ $ezap = 0 ] && bgpic "true" &
+fmsg "Starting 28.2E AutoBouquets, hang on..."
+cd $etc
+start_time=`date +%s`
+autobouquets $area $regn 1 $cs $pc 1 $fta $ph
+if [ $? != 0 ] || [ ! -s $tb.10 ]; then
+	rc_unlock
+	rm $bb $tcsv $tb.* $tmap $tsv
+	touch $logd/abs.err
+	cd /
+	err="No data found! Try AutoBouquets again later?"
+	echo $err
+	fmsg "$err"
+	[ $ezap = 0 ] && zapback
 	exit 0
+fi
+[ $pc = 1 ] && sed -i '1,$d' $tb.0f
+if [ ! -e $etc/.other ]; then
+	sed -i '1,$d' $tb.10
+else
+	sed -i '/"3e"\|"A\|"B\|"C\|"D\|"E\|"e\|"G\|"H\|"I/d
+	/"l\|"M\|"N\|"O\|"P\|"R\|"S\|"T\|"U\|"W/d' $tb.10
+fi
+sed -i 's/ 409.//' $tb.18
+[ ! -e $etc/.fta-bq ] && sed -i '1,$d' $tb.19
+echo "<?xml version="'"1.0"'" encoding="'"UTF-8"'"?>
+<!-- created by AutoBouquets N1 on:" $now >$tbq
+echo "<zapit>" >>$tbq
+sed -i "2s/$/ -->/" $tbq
+while read ln; do
+ bqid=`echo "$ln"|cut -d "\"" -f4|sed 's/^00//'`
+ [ $bqid = 00 ] && continue
+ echo "$ln" >>$tbq
+ cat $tb.$bqid >>$tbq
+ echo '</Bouquet>' >>$tbq
+done < $bqref
+echo '</zapit>' >>$tbq
+sed -i 's/	//' $tbq
+cd /
+stop_time=$(expr `date +%s` - $start_time)
+dur="AutoBouquets finished in just $stop_time secs!"
+echo -e "$dur\n"
+fmsg "$dur"
+zapback
+sed -i '
+s/0x//g
+s/"NDS"/Y/
+s/"FTA"/N/
+/^3...,/d
+/^0,\|,1f,\|,4,\|,19,\|,8.,\|,9.,\|,b.,\|,c.,/d
+' $tcsv
+sed -i 's/ /;/' $tmap
+cat $etc/headers/channels.cfg >$clip
+cat $bqref >$tbref
+sed -i 's/_id="00/_id="/;/"00"\|"10"\|"18"\|"20"\|"21"\|"22"/d' $tbref
+while read ln; do
+IFS="\""; set $ln; bqid=$4; bqn=$6
+[ ! -s $tb.$bqid ] && continue
+echo -e '\n#Bouquet '"$bqid"': "'"$bqn"'"' >>$clip
+LC=`sed -n '$p' $tb.$bqid|cut -d "\"" -f4`
+lines=`grep "$" -c $tb.$bqid`
+if [ $lines = 1 ]; then
+	sed q $tmap >>$clip
+	sed '1d' $tmap >$cfgn
+else
+	sed -n '1,/'";$LC$"'/p' $tmap >>$clip
+	sed "1,/;$LC/d" $tmap >$cfgn
+fi
+mv $cfgn $tmap
+done < $tbref
+mv $clip $tmap
+rm $tbref $tb.*
+if [ -e $etc/.sats ]; then
+	while read ln; do
+	sat=`echo "$ln"`
+	sbq="tmp/$sat.bq"
+	if grep -q "$sat" $bref; then
+		sed -n "/$sat/,/\/Bouquet/"p $bref|sed '$d;1d' >$sbq
+		ins=`sed -n "/$sat/=" $tbq`
+		sed -i "$ins r $sbq" $tbq
+		rm $sbq
+		sed -i '$d' $tsv
+		sed -n "/$sat/,/\/sat/"p $sref >>$tsv
+		echo '</zapit>' >>$tsv
+	fi
+	done < $etc/multisat.cat
+	rm $etc/.sats /tmp/*.ref
+fi
+diff -U 0 $map $tmap >$logd/ch_changes.diff
+sed -i '/"00"\|"1f"\|"8."\|"9."\|"b."\|"c."/d' $tsv
+sed -i '/onid=/ {N;/\/transponder/d}' $tsv
+[ -e $als ] && . /var/etc/tpcheck
+cp -f $tbq $zap
+cp -f $tcsv $etc
+cp -f $tmap $etc
+mv $tsv $zap
+mv /tmp/*s.log $logd
+dsq_chk
+grep -q "qcMode=0" $scan && zapnew
+touch $svc
+if [ -s $logd/ch_changes.diff ]; then
+	{ sleep 4; epgusermaps; } &
+else
+	rm $bb $tbq $tcsv $tmap
+	rc_unlock
+	fmsg "Handing your RC back to you..."
+fi
+exit 0
 ;;
 
-esac
+clearsort)
+rm $etc/.plus1 $etc/.parent $etc/.sky
+;;
 
+# Softcam(s) autostart
+start)
+st=1
+[ -e $als ] && [ ! -d $svr ] && st=6
+[ -e $etc/.oscam ] && { sleep $st; oscam; sleep 5; pzapit -rz; } &
+[ -e $etc/.cccam ] && { sleep $st; epg-restart >$nop; sleep 1; CCcam; } &
+[ -e $etc/.mgcamd ] && { sleep $st; epg-pause >$nop; sleep 1; mgcamd; sleep 5; pzapit -rz; } &
+[ -e $etc/.evocamd ] && evocamd &
+[ -e $etc/.newcamd ] && newcamd &
+exit 0
+;;
+
+# Softcam(s) stop:
+stop)
+[ -e $etc/.oscam ] && killall oscam && rm -Rf /tmp/.oscam /tmp/oscam*
+[ -e $etc/.cccam ] && killall CCcam && killall epg-restart
+[ -e $etc/.mgcamd ] && killall mgcamd && killall epg-pause
+[ -e $etc/.evocamd ] && killall evocamd
+[ -e $etc/.newcamd ] && killall newcamd
+;;
+getepg)
+[ -e $bb ] && fmsg "GetEPG cannot load while AutoBouquets is running!" && exit 0
+if [ -e $lock ]; then
+	oops="GetEPG is already running!"
+	echo "$oops"
+	fmsg "$oops"
+	exit 0
+fi
+if [ -e $etc/.sleep ]; then
+	echo "$mode" > /tmp/mode
+	echo "$zdat" > /tmp/zapto
+	touch /tmp/.getepg
+	rm $etc/.emu-sb
+fi
+rm -f /tmp/*.img /tmp/epg*.dat /tmp/epg.err
+udat="/tmp/udat"
+grep "^1;" $map >$tmap
+awk '!x[$0]++' $tmap >$udat
+mv $udat $tmap
+count=`grep "^1;" -c $tmap`
+start_time=`date +%s`
+msg="Loading 28.2E GetEPG for your $count mapped channels"
+echo "$msg"
+fmsg "$msg"
+sleep 4
+edrc_zap
+if [ $ezap != 0 ]; then
+	oops="Oops! Zapto 28.2E EPG Data failed! Transponder
+	\ndown maybe? Try later! GetEPG aborting..."
+	echo -e "$oops"
+	fmsg "$oops"
+	zapback
+	exit 0
+fi
+touch $lock
+$sdc --restart >$nop
+rc_lock
+popups &
+cd /tmp
+map="channels.cfg"
+for i in 0 1 2 3 4 5 6 7; do
+ grep -q ";$i;" $map && grep ";$i;" $map >channels$i.uk
+ if [ -e channels$i.uk ]; then
+	ln -sf channels$i.uk channels.uk
+	d="-n $(($i+1))"; [ "$i" = "7" ] && d="";
+	weekepglog -f -l uk $d -e /tmp
+	mv epg.dat epg$i.dat
+	$sdc --rdepg $i >$nop
+	rm channels*.uk 
+ fi
+done
+$sdc --nopause >$nop 
+rm $map epg.err
+cd /
+stop_time=$(expr `date +%s` - $start_time)
+stats
+events=`cat /tmp/clip1`
+mem=`cat /tmp/clip2`
+rm $lock
+
+if [ ! -e /tmp/clip3 ]; then
+	summ3="EPG is now saved to VRAM! Avoid rebooting..."
+else
+	epgcache=`cat /tmp/clip3`
+	rm $epgcache*
+	$sdc --wepg $epgcache >$nop
+	summ3="Updated your $epgcache EPG Cache mount!"
+fi
+
+dur="$(expr $stop_time / 60) mins $(expr $stop_time % 60) secs"
+summ1="Saved $events events in $count channels ($mem RAM use)"
+summ2="GetEPG loading took: $dur"
+echo "
+$summ1
+$summ2
+$summ3"
+echo "GetEPG load took: $dur for your $count mapped channels" >>$elog
+rc_unlock
+if [ ! -e $etc/.sleep ]; then
+	fmsg "$summ1\n$summ2"
+	sleep 7
+	fmsg "$summ3\nBack to TV now, with your RC reactivated!"
+	sleep 3
+	zapback
+else
+	pzapit -n "TCM"
+fi
+exit 0
+;;
+pc-y)
+loc_cs
+rm $etc/.pr0n
+sed -n '/0f=/,/^$/'p $cse|sed '$d' >$acs
+;;
+pc-n)
+touch $etc/.pr0n
+for i in 1 2 3 4 5; do
+csa="$etc/custom_sort_$i.txt"
+[ ! -e  $csa ] && continue
+sed -i "/^0f=/d;" $csa
+ins=`sed -n "/#0f /=" $csa`
+sed -i "$ins r $acs" $csa
+done
+;;
+swapvol)
+hint="$cfg/menu_volume.conf"
+msg1="Moving VOL keys adjacent to key"
+msg2="VOL keys are now adjacent to key"
+if grep -q '0 key' $hint; then
+	fmsg "$msg1 [0]..."
+	sleep 6
+	sed -i '
+	/y_s/s/114/105/
+	/y_s/s/115/106/
+	/y_v/s/105/114/
+	/y_v/s/106/115/' $conf
+	sed -i "s/0 key/OK key/" $hint
+	fmsg "$msg2 [0]!"
+else
+	fmsg "$msg1 [OK]..."
+	sleep 6
+	sed -i '
+	/y_s/s/105/114/
+	/y_s/s/106/115/
+	/y_v/s/114/105/
+	/y_v/s/115/106/' $conf
+	sed -i "s/OK key/0 key/" $hint
+	fmsg "$msg2 [OK]!"
+fi
+sleep 6
+killall neutrino
+sleep 3
+blue
+;;
+sml)
+loc_cs
+ls="$etc/local_swap"
+rm -f $ls
+echo "$2|$3" >$sld
+if [ $3 = 50 ]; then
+echo -e "
+135=974
+136=975
+137=9202
+138=9137
+139=9231
+171=54
+969=9142" >$ls
+fi
+grep -q '4098' $sld && echo "131=63" >$ls
+fmsg "Your AutoBouquets 28.2E location is saved!"
+sleep 6
+blue
+;;
+def-icon)
+pdir="$etc/icons"
+[ -e $als ] && pdir="$mnt/icons"
+while read ln; do
+ picon=`echo "$ln"|cut -d ";" -f1`
+ cp -f $pdir/$picon $pdir/default.raw
+ sleep 300
+done < $etc/di-list
+{ sleep 2; miniops def-icon; } &
+;;
+net-view)
+. /var/etc/net-open
+rcsim KEY_HELP
+rc_lock
+sleep 6
+rc_unlock
+. /var/etc/net-exit
+;;
+net-boot)
+. /var/etc/net-open
+rcsim KEY_RED
+rcsim KEY_HOME
+rcsim KEY_HOME
+rcsim KEY_HOME
+fmsg "Your DM500 LAN was restarted!"
+sleep 6
+blue
+;;
+net-test)
+. /var/etc/net-open
+rcsim KEY_GREEN
+rc_lock
+sleep 6
+rc_unlock
+. /var/etc/net-exit
+;;
+satellites)
+dload="wget http://www.ukcvs.net/C15/updates"
+fmsg "Installing our latest satellites.xml file..."
+cd $etc
+[ ! -e .282e ] && [ ! -e .eusats ] && $dload/satellites.zip
+[ -e .282e ] && $dload/satellites-28.zip
+[ -e .eusats ] && $dload/satellites-eu.zip
+sleep 10
+if [ -e satellite*.zip ]; then
+	unzip -o satellite*.zip
+	rm satellite*.zip
+	fmsg "Success! A REBOOT is needed for activation.."
+else
+	fmsg "Oops, downloading failed. Try again later?"
+fi
+sleep 7
+cd /
+;;
+epgcron-y)
+touch $etc/.epgauto
+touch $etc/.crond
+if ! grep -q "getepg" $cronsrc; then
+	echo "15 6 * * * /var/bin/miniops getepg" >>$cronsrc
+else
+	sed -i '/getepg/s/^#//' $cronsrc
+fi
+cron
+;;
+epgcron-n)
+rm $etc/.epgauto
+sed -i '/getepg/s/^/#/' $cronsrc
+cronchk
+;;
+abscron-y)
+touch $etc/.absauto
+touch $etc/.crond
+if ! grep -q "autobouquets" $cronsrc; then
+	echo "0 6 * * * /var/bin/miniops autobouquets" >>$cronsrc
+else
+	sed -i '/autobouquets/s/^#//' $cronsrc
+fi
+cron
+;;
+abscron-n)
+rm $etc/.absauto
+sed -i '/autobouquets/s/^/#/' $cronsrc
+cronchk
+;;
+avsync)
+pzapit -rz
+[ -e $etc/.logging ] && echo "autosync AV ($2):" `date` >>/tmp/avsync.log
+;;
+showlogo)
+[ ! -e $etc/.no-$2-bg ] && bgpic "false" &
+;;
+null)
+ps
+;;
+esac
 exit 0
