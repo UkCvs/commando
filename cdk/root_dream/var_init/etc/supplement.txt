@@ -1,0 +1,146 @@
+# IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (freeware)
+
+###################################################
+#                                                 #
+#  AutoBouquets N1 - supplement service manager   #
+#                                                 #
+#  service data x-ref: /var/etc/autobouquets.csv  #
+#                                                 #
+###################################################
+#                                                 #
+#  KEYCODE                                        #
+#  1:2:3:4:5:6:7:8:9                              #
+#                                                 #
+#  1=channel number  [decimal]        (optional)* #
+#  2=channel epg id  [decimal]        (required)  #
+#  3=service type    [1=tv;2=radio]   (optional)* #
+#  4=service id      [hex]            (optional)* #
+#  5=transponder id  [hex]            (optional)* #
+#  6=28.2E namespace [11a0000]        (optional)* #
+#  7=provider name   [BSkyB]          (optional)* #
+#  8=encryption      [FTA/NDS]        (optional)* #
+#  9=channel name    [text string]    (optional)* #
+#                                                 #
+#  ADD A NEW CHANNEL - OVERRIDE ALL CURRENT DATA  #
+#  9990:1628:1:2071:7fa:11a0000:BSkyB:FTA:E4      #
+#  *(ALL fields are required for this option!)    #
+#                                                 #
+#  CHANGE CURRENT DATA - OVERRIDE CHANNEL NAME    #
+#  :6325:::::::STV +1                             #
+#                                                 #
+#  CHANGE CURRENT DATA - OVERRIDE ENCRYPTION      #
+#  :3358::::::NDS:                                #
+#                                                 #
+###################################################
+
+#This line is VITAL for ABs and GetEPG etc. Do NOT touch it, PLEASE!!!
+1010:9500:2:1038:7d4:11a0000:BSkyB:FTA:EPG Background Audio.
+#Thanks- TC ;)
+
+#General
+:2002:::::::BBC One London
+:2004:::::::BBC One Scotland
+:2006:::::::BBC Two England
+:2016:::::::BBC Two Scotland
+:1401:::::::Sky1
+:1807:::::::Sky ScFi-Horror
+:1329:1::::::TC test Ch
+:3141:::::::BT Sport-ESPN
+:3142:::::::BT Sport-ESPN
+:3213:::::::Russia Today
+:1850:1::::::Chl Line-up
+:1097:::::::Sky Sports 5 IRL
+:1312:::::::Sky Sports 5 IRL
+1179:1255:1:1298:7e5:11a0000:BSkyB:NDS:TV3
+1180:1430:1:af7:7ed:11a0000:BSkyB:NDS:Oireachtas TV
+
+#BT Sport Interactive
+:5030:1::::::BT Sport Mosaic
+:5031:1::::::BT Sport Extra 1
+:5381:1::::::BT Sport Mosaic Extra
+:5382:1::::::BT Sport Extra 2
+:5383:1::::::BT Sport Extra 3
+:5384:1::::::BT Sport Extra 4
+:5385:1::::::BT Sport Extra 5
+:5386:1::::::BT Sport Extra 6
+
+#BBC Interactive
+980:2051:1:18f6:7fd:11a0000:BSkyB:FTA:BBC Red Button 1
+
+#Sky BOx Office
+:1699:1::::::Sky Box Office Review UK
+:1690:1::::::Sky Box Office Review IR
+:1501:1::::::Sky Box Office 1
+:1502:1::::::Sky Box Office 2
+:1503:1::::::Sky Box Office 3
+:1504:1::::::Sky Box Office 4
+:1505:1::::::Sky Box Office 5
+:1506:1::::::Sky Box Office 6
+:1507:1::::::Sky Box Office 7
+:1508:1::::::Sky Box Office 8
+:1509:1::::::Sky Box Office 9
+:1510:1::::::Sky Box Office 10
+:1511:1::::::Sky Box Office 11
+:1512:1::::::Sky Box Office 12
+:1513:1::::::Sky Box Office 13
+:1514:1::::::Sky Box Office 14
+:1515:1::::::Sky Box Office 15
+:1516:1::::::Sky Box Office 16
+:1517:1::::::Sky Box Office 17
+:1518:1::::::Sky Box Office 18
+:1519:1::::::Sky Box Office 19
+:1539:1::::::Sky Box Office 20
+
+#Sky Sport Interactive
+:1471:1::::::Sky Sports Active 1
+:1472:1::::::Sky Sports Active 2
+:1473:1::::::Sky Sports Active 3
+:1474:1::::::Sky Sports Active 4
+:1475:1::::::Sky Sports Active 5
+:1476:1::::::Sky Sports Active 6
+:1477:1::::::Sky Sports Active 7
+:1478:1::::::Sky Sports Active 8
+:1479:1::::::Sky Sports Active 9
+
+#Sky Anytime
+:4094:1::::::Sky Anytime 1
+:4095:1::::::Sky Anytime 2
+:4096:1::::::Sky Anytime 3
+:4098:1::::::Sky Anytime 4
+
+#thanks to Abu Baniaz for his original help getting our ITV regional names back!!!
+#(updated 07 Aug 2016 after Sly added loadsa ITV stuff in here. Thanks, LraiZer!)
+
+#ITV regional renames
+:1020:::::::ITV Border Scotland
+:6000:::::::ITV London
+:6011:::::::ITV Central East
+:6030:::::::ITV West
+:6040:::::::ITV West Country
+:6089:::::::ITV Anglia East
+:6130:::::::ITV Granada
+:6140:::::::ITV Meridian South
+:6142:::::::ITV Meridian SE
+:6143:::::::ITV Meridian North
+:6160:::::::ITV Yorkshire West
+:6161:::::::ITV Yorkshire East
+:6200:::::::ITV Channel Isles
+:6210:::::::STV Grampian
+:6220:::::::STV Scottish West
+:6300:::::::ITV Central West
+:6325:::::::STV North East
+:6371:::::::STV Scottish East
+:6381:::::::ITV Anglia West
+:6390:::::::ITV Tyne Tees
+
+#ITV +1 regional renames
+:6012:::::::ITV +1 Wales
+:6065:::::::ITV +1 Yorkshire
+:6125:::::::ITV +1 West Country
+:6126:::::::ITV +1 Tyne Tees
+:6127:::::::ITV +1 West
+:6128:::::::ITV +1 Anglia
+:6145:::::::ITV +1 Central
+:6155:::::::ITV +1 London
+:6355:::::::ITV +1 Granada
+:6365:::::::ITV +1 Meridian SE
