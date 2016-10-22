@@ -491,7 +491,9 @@ else
 	@ln -sf tuxbox/satellites.xml $(dreamfilesrootdir)/share;
 endif
 # misc
-	$(INSTALL) -d $(dreamfilesrootdir)/mount
+	@for i in cifs epg hdd nfs smbfs usb; do \
+		$(INSTALL) -d $(dreamfilesrootdir)/mount/$$i; \
+	done;
 if !BOXMODEL_DM500
 	@for i in cables.xml terrestrial.xml; do \
 		if [ -f $(dreamfilesrootdir)/share/tuxbox/$$i ]; then \
