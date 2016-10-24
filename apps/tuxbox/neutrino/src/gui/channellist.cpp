@@ -1738,12 +1738,14 @@ void CChannelList::showdescription(int index)
 	g_Sectionsd->getEPGidShort(p_event->eventID, &epgData);
 
 #warning fixme sectionsd should deliver data in UTF-8 format
-	if (!(epgData.info2.empty()))
-		processTextToArray(Latin1_to_UTF8(epgData.info2));
-	else if (!(epgData.info1.empty()))
-		processTextToArray(Latin1_to_UTF8(epgData.info1));
-	else
+	if ((epgData.info1.empty()) && (epgData.info2.empty()))
 		processTextToArray(g_Locale->getText(LOCALE_EPGVIEWER_NODETAILED)); // UTF-8
+	else if (!(epgData.info1.empty()) && (epgData.info2.empty()))
+		processTextToArray(Latin1_to_UTF8(epgData.info1));
+	else if ((epgData.info1.empty()) && !(epgData.info2.empty()))
+		processTextToArray(Latin1_to_UTF8(epgData.info2));
+	else
+		processTextToArray(Latin1_to_UTF8(epgData.info1 + "\n" + epgData.info2));
 
 	frameBuffer->paintBoxRel(x+ width,y+ theight+pig_height, infozone_width, infozone_height,COL_MENUCONTENT_PLUS_0);
 	for (int i = 1; (i < (int)epgText.size()+1) && ((y+ theight+ pig_height + i*ffheight) < (y+ theight+ pig_height + infozone_height)); i++)
