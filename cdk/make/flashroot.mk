@@ -66,6 +66,9 @@ endif
 if ENABLE_GETEPG
 	$(MAKE) flash-getepg
 endif
+if ENABLE_MADPLAY
+	$(MAKE) flash-madplay
+endif
 endif
 if ENABLE_MOUNT_STANDALONE
 	$(MAKE) flash-mount

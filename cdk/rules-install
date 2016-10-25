@@ -134,6 +134,7 @@ htop;make:install:DESTDIR=TARGET
 netio;remove:TARGET/bin/netio;install:-m755:netio:TARGET/bin
 netio_host;remove:HOST/bin/netio;install:-m755:netio:HOST/bin
 inadyn_mt;remove:TARGET/bin/inadyn-mt;install:-m755:src/inadyn-mt:TARGET/bin
+madplay;make:install:DESTDIR=TARGET
 
 #
 # msttf

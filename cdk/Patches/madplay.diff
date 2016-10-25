@@ -1,0 +1,29 @@
+diff -uNr madplay-0.15.2b.org/configure madplay-0.15.2b/configure
+--- madplay-0.15.2b.org/configure	2004-02-23 21:36:21.000000000 +0000
++++ madplay-0.15.2b/configure	2016-10-25 13:58:06.735755666 +0100
+@@ -19073,24 +19073,7 @@
+ 
+ if test "$GCC" = yes
+ then
+-    if test -z "$arch"
+-    then
+-	case "$host" in
+-	    i386-*)           ;;
+-	    i?86-*)           arch="-march=i486" ;;
+-	    arm*-empeg-*)     arch="-march=armv4 -mtune=strongarm1100" ;;
+-	    armv4*-*)         arch="-march=armv4 -mtune=strongarm" ;;
+-	    powerpc-*)        ;;
+-	    mips*-agenda-*)   arch="-mcpu=vr4100" ;;
+-	    mips*-luxsonor-*) arch="-mips1 -mcpu=r3000 -Wa,-m4010" ;;
+-	esac
+-    fi
+-
+-    if test -n "$optimize"
+-    then
+-	: #? optimize="$optimize -funroll-loops"
+-	: #? optimize="$optimize -finline-functions"
+-    fi
++    optimize="-Os"
+ fi
+ 
+ 

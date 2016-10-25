@@ -138,6 +138,7 @@ htop;0.9;htop-0.9;htop-0.9.tar.gz;extract:htop-0.9.tar.gz
 netio;1.3.1;netio-1.3.1;netio131.zip;extract:netio131.zip:netio-1.3.1
 netio_host;1.3.1;netio-1.3.1;netio131.zip;extract:netio131.zip:netio-1.3.1
 inadyn_mt;02.24.44;inadyn-mt.v.02.24.44;inadyn-mt.v.02.24.44.tar.gz;extract:inadyn-mt.v.02.24.44.tar.gz
+madplay;0.15.2b;madplay-0.15.2b;madplay-0.15.2b.tar.gz;extract:madplay-0.15.2b.tar.gz;patch:madplay.diff
 
 #
 # ide/hdd apps

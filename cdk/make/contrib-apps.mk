@@ -3,9 +3,9 @@
 #   contrib apps
 #
 
-contrib_apps: bzip2 console_data kbd fbset lirc lsof dropbear ssh tcpdump bonnie @LUFS@ kermit wget ncftp screen lzma lzma_host ntpd ntpclient links links_g esound python ser2net ipkg openvpn htop netio netio_host
+contrib_apps: bzip2 console_data kbd fbset lirc lsof dropbear ssh tcpdump bonnie @LUFS@ kermit wget ncftp screen lzma lzma_host ntpd ntpclient links links_g esound python ser2net ipkg openvpn htop netio netio_host madplay
 
-CONTRIB_DEPSCLEANUP = rm -f .deps/bzip2 .deps/console_data .deps/kbd .deps/directfb_examples .deps/fbset .deps/lirc .deps/lsof .deps/ssh .deps/tcpdump .deps/bonnie .deps/vdr .deps/lufs .deps/dropbear .deps/kermit .deps/wget .deps/ncftp .deps/screen .deps/lzma .deps/lzma_host .deps/ntpd .deps/ntpclient .deps/links .deps/links_g .deps/esound .deps/openntpd .deps/python .deps/ser2net .deps/ipkg .deps/openvpn .deps/htop .deps/netio .deps/netio_host
+CONTRIB_DEPSCLEANUP = rm -f .deps/bzip2 .deps/console_data .deps/kbd .deps/directfb_examples .deps/fbset .deps/lirc .deps/lsof .deps/ssh .deps/tcpdump .deps/bonnie .deps/vdr .deps/lufs .deps/dropbear .deps/kermit .deps/wget .deps/ncftp .deps/screen .deps/lzma .deps/lzma_host .deps/ntpd .deps/ntpclient .deps/links .deps/links_g .deps/esound .deps/openntpd .deps/python .deps/ser2net .deps/ipkg .deps/openvpn .deps/htop .deps/netio .deps/netio_host .deps/madplay
 
 if ENABLE_SSL
 SSL_DEPS=libcrypto
@@ -16,6 +16,26 @@ SSL_DEPS=
 SSL_WGET_OPTS=--without-ssl
 SSL_LINKS_OPTS=--without-ssl
 endif
+
+#madplay
+$(DEPDIR)/madplay: bootstrap libmad libid3tag @DEPENDS_madplay@
+	@PREPARE_madplay@
+	cd @DIR_madplay@ && \
+		$(BUILDENV_BIN) \
+		./configure \
+			--build=$(build) \
+			--host=$(target) \
+			--prefix= \
+		$(MAKE) all && \
+		@INSTALL_madplay@
+	@CLEANUP_madplay@
+	touch $@
+
+flash-madplay: $(flashprefix)/root/bin/madplay
+
+$(flashprefix)/root/bin/madplay: $(DEPDIR)/madplay | $(flashprefix)/root
+	$(INSTALL) $(targetprefix)/bin/madplay $(flashprefix)/root/bin
+	@FLASHROOTDIR_MODIFIED@
 
 #bzip2
 $(DEPDIR)/bzip2: bootstrap @DEPENDS_bzip2@

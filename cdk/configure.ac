@@ -681,6 +681,11 @@ AC_ARG_ENABLE(logomask,
 	,[enable_logomask=no])
 AM_CONDITIONAL(ENABLE_LOGOMASK,test "$enable_logomask" = "yes")
 
+AC_ARG_ENABLE(madplay,
+	AS_HELP_STRING(--enable-madplay,enable madplay),
+	,[enable_madplay=no])
+AM_CONDITIONAL(ENABLE_MADPLAY,test "$enable_madplay" = "yes")
+
 AC_ARG_ENABLE(msgbox,
 	AS_HELP_STRING(--enable-msgbox,enable msgbox),
 	,[enable_msgbox=no])
@@ -1595,6 +1600,7 @@ TUXBOX_RULES_MAKE(htop)
 TUXBOX_RULES_MAKE(netio)
 TUXBOX_RULES_MAKE(netio_host)
 TUXBOX_RULES_MAKE(inadyn_mt)
+TUXBOX_RULES_MAKE(madplay)
 
 #
 # ide apps
@@ -1847,6 +1853,7 @@ lcshot				$enable_lcshot
 links text mode browser		$enable_links
 links graphics mode browser	$enable_links_g
 logomask			$enable_logomask
+madplay				$enable_madplay
 msgbox				$enable_msgbox
 netio				$enable_netio
 openntpd			$enable_openntpd

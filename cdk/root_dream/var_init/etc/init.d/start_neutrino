@@ -6,6 +6,17 @@
 
 etc="/var/etc"
 zap="/var/tuxbox/config/zapit/zapit.conf"
+
+if [ -e /bin/madplay ]; then
+	if [ ! -e $etc/.no-mp3 ]; then
+		if [ -e $etc/custom.mp3 ]; then
+			madplay $etc/custom.mp3
+		else
+			madplay /share/gun.mp3 /share/commando.mp3
+		fi
+	fi
+fi
+
 [ ! -e $etc/.pmt_update ] || ZAPIT="-u"
 [ -e $etc/neutrino-parameters ] && . /var/etc/neutrino-parameters
 
