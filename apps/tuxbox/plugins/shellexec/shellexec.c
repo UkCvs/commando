@@ -344,7 +344,7 @@ int res=1;
 	}
 	if(cmd && res)
 	{
-		ShowMessage("System-Aktualisierung", "Bitte warten", 0);
+		ShowMessage("System-Updating", "Please wait", 0);
 		system(cmd);
 		ClearKeys();
 	}
@@ -1212,7 +1212,7 @@ FSTRUCT fstr;
 
 	if(showwait && menu.headerwait[menu.act_header] && menu.headertxt[menu.act_header])
 	{
-		ShowMessage(menu.headertxt[menu.act_header],"Bitte warten ...",0);
+		ShowMessage(menu.headertxt[menu.act_header],"Please wait ...",0);
 	}
 	Clear_List(&menu,1);
 	if((fstr.fh[0]=fopen(CFG_FILE,"r"))!=NULL)
@@ -1896,7 +1896,7 @@ PLISTENTRY pl;
 									}
 									else
 									{
-										ShowMessage(tstr, "Bitte warten", 0);
+										ShowMessage(tstr, "Please wait", 0);
 									}
 								}
 								else
