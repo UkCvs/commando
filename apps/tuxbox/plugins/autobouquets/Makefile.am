@@ -16,7 +16,6 @@ autobouquets_la_SOURCES = start_autobouquets.c
 
 install-exec-local:
 	install -d $(DESTDIR)$(PLUGINDIR)
-	install -d $(DESTDIR)$(CONFIGDIR)
 	$(LIBTOOL) --mode=install install autobouquets.la $(DESTDIR)$(PLUGINDIR)
 	install -m 0644 $(srcdir)/autobouquets.cfg $(DESTDIR)$(PLUGINDIR)
 

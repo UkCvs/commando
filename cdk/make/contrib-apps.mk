@@ -34,6 +34,7 @@ $(DEPDIR)/madplay: bootstrap libmad libid3tag @DEPENDS_madplay@
 flash-madplay: $(flashprefix)/root/bin/madplay
 
 $(flashprefix)/root/bin/madplay: $(DEPDIR)/madplay | $(flashprefix)/root
+	$(INSTALL) -d $(flashprefix)/root/bin
 	$(INSTALL) $(targetprefix)/bin/madplay $(flashprefix)/root/bin
 	@FLASHROOTDIR_MODIFIED@
 

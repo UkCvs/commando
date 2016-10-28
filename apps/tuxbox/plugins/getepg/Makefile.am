@@ -12,7 +12,7 @@ getepg_la_SOURCES = start_getepg.c
 
 install-exec-local:
 	install -d $(DESTDIR)$(bindir)
-	install -d $(DESTDIR)$(CONFIGDIR)
+	install -d $(DESTDIR)$(PLUGINDIR)
 	$(LIBTOOL) --mode=install install getepg.la $(DESTDIR)$(PLUGINDIR)
 	install -m 0644 $(srcdir)/getepg.cfg $(DESTDIR)$(PLUGINDIR)
 	install -m 0755 $(srcdir)/weekepglog $(DESTDIR)$(bindir)
