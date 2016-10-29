@@ -39,6 +39,12 @@ if ENABLE_PROCPS
 		chmod +w $</lib/libproc-*.so; \
 	fi
 endif
+	if [ ! -d $</var/bin ]; then \
+		$(INSTALL) -d $</var/bin ; \
+	fi
+	if [ ! -d $</var_init/bin ]; then \
+		$(INSTALL) -d $</var_init/bin ; \
+	fi
 	$(MKLIBS) --target $(target) --libc-extras-dir \
 		$(targetprefix)/lib/libc_pic \
 		-d $</lib \
@@ -46,6 +52,7 @@ endif
 		--root $< \
 		`find $</bin/ -path "*bin/?*" -type f` \
 		`find $</var/bin/ -path "*bin/?*" -type f` \
+		`find $</var_init/bin/ -path "*bin/?*" -type f` \
 		`find $</lib/ -name "libnss_*" -type f` \
 		`find $</lib/ -name "libsqlite3*" -type f` \
 		`find $</lib/ -name "*.so" -type f` \
