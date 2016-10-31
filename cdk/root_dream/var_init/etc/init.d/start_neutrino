@@ -20,6 +20,10 @@ fi
 [ ! -e $etc/.pmt_update ] || ZAPIT="-u"
 [ -e $etc/neutrino-parameters ] && . /var/etc/neutrino-parameters
 
+dt=`date -r /bin/saa|sed 's/....\(...\).\(..\).\(........\).....\(....\)/\4-\1-\2 \3/;s/- /-/g;\
+s/Jan/1/;s/Feb/2/;s/Mar/3/;s/Apr/4/;s/May/5/;s/Jun/6/;s/Jul/7/;s/Aug/8/;s/Sep/9/;s/Oct/10/;s/Nov/11/;s/Dec/12/'`
+date -s "$dt"; touch $(ls); [ ! -e /var/tuxbox/config/neutrino.conf ] && find /var -exec touch {}
+
 if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 	int1=`grep "startChannelTV" $zap|cut -d "=" -f2`
 	int2=`grep "lastChannelTV" $zap|cut -d "=" -f2`
