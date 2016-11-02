@@ -1,25 +1,41 @@
 #!/bin/sh
-# AL (for LraiZers C16 public dev) updated Mon 17 Oct 2016
+# AL (for LraiZers C16 public dev) updated Wed 02 Nov 2016
 
 epgs="/tmp/epgstats.dat"
 lock="/tmp/getepg.lock"
+udat="/tmp/udat"
+map="/var/etc/channels.cfg"
+tmap="/tmp/channels.cfg"
 conf="/var/tuxbox/config/neutrino.conf"
 epgcache=`grep -m1 "^epg_dir=" $conf|cut -d "=" -f2`
 mntoff=`grep -m1 "_onoff=" $conf|cut -d "=" -f2`
 
-if [ "$mntoff" = "true" ] || [ "$epgcache" = "" ]; then
+clip(){
+[ -e $lock ] && echo $epgcache >/tmp/clip3
+}
+
+if [ "$epgcache" = "" ] || [ "$mntoff" = "true" ]; then
 	ecache="None (or disabled)"
 else
-	chk="$epgcache/0.xml"
-	touch $chk
-	if [ -e $chk ];then
-		[ -e $lock ] && echo $epgcache >/tmp/clip3
-		ecache="$epgcache (Active!)"
-		rm $chk
+	if [ `ls -l $epgcache|wc -l` -eq 0 ];then
+		touch $epgcache/0.xml
+		if [ -e $epgcache/0.xml ]; then
+			clip
+			ecache="$epgcache (Empty but writeable)"
+		else 
+			ecache="$epgcache (Unmounted!)"
+		fi
 	else
-		ecache="$epgcache (NOT mounted!)"
+		clip
+		ecache="$epgcache (R/W access!)"
 	fi
 fi
+
+grep "^1;" $map >$tmap
+awk '!x[$0]++' $tmap >$udat
+mv $udat $tmap
+count=`grep "^1;" -c $tmap`
+rm $tmap
 
 sectionsdcontrol --statistics >$epgs
 mem1=`grep "malloc:" $epgs|cut -d " " -f6|sed 's/(//;s/kb)//'`
@@ -27,43 +43,49 @@ mem2=`echo "$mem1 1024"|awk '{printf("%.2f",$1 / $2)}'`"MB"
 mem3=`grep "bytes:" $epgs|cut -d " " -f4|sed 's/(//;s/kb)//'`
 mem4=`echo "$mem3 1024"|awk '{printf("%.2f",$1 / $2)}'`"MB"
 days=`grep "pg_c" $conf|cut -d "=" -f2`
-ehrs=`echo "$days 24"|awk '{printf($1 * $2)}'`
-etxt=`grep "pg_e" $conf|cut -d "=" -f2`
+summ=`grep "pg_e" $conf|cut -d "=" -f2`
 
 sed -i "
-s/statistics/EPG statistics/
-/cpp/c\$Id: sectionsdcontrol.cpp v1.10 29/8/2012 rhabarber1848
-3iModded for C16 28.2E GetEPG Sep 2016 LraiZer@ukcvs.net
+s/statistics:/GetEPG status on: `date`/
+/cpp/c\$Id: sectionsdcontrol v1.10 29/8/2012 rhabarber1848
+3iC16 28.2E GetEPG mods by LraiZer@ukcvs.net Sep 2016
 s/is disabled/EPG is disabled (wise choice!)/
 s/is enabled/EPG is enabled (dumb choice...)/
-/Current/s/  / /
-5iEpg Cache Mount folder: $ecache
-s/rs to cache:.*$/rs to cache: $ehrs/
-s/ text:.*$/ text: $etxt/
+/Current/d
+5iEpg Cache Mount: $ecache
+5iNumber of channels mapped for GetEPG: $count
+s/Hours to cache:.*$/Days (max) to cache events for: $days/
+s/ extended text.*$/ more info: $summ/
 s/ts to cache:/ts to cache (max):/
 s/are old/expire/
+s/after their end time/after ending/ 
 /ces:/d
 /d-e/d
 /a-s/d
 /size/d
-/handed out/cMemory currently occupied by GetEPG: $mem2
+/handed out/cRAM now used by GetEPG: $mem2
 /sbrk/d
-/in bytes:/cMemory allocated when GetEPG loaded: $mem4
+/in bytes:/cRAM when GetEPG loaded: $mem4
+/on:/s/  / /
 " $epgs
 
 free=`sed -n "/Free/"p $epgs`
 sed -i '/^Free/d' $epgs
 echo $free >>$epgs
 
-if [ -e $lock ]; then
-	clip1=`grep " events:" $epgs|cut -d " " -f5`
-	echo $clip1 >/tmp/clip1
-	echo $mem4 >/tmp/clip2
-	{ sleep 60; rm /tmp/clip*; mv $epgs /var/log; } &
-else
+if [ ! -e /tmp/osd ] && [ ! -e $lock ]; then
 	stat=`cat $epgs`
 	echo "$stat"
 	rm $epgs
+fi
+if [ -e /tmp/osd ]; then
+	{ sleep 300; mv $epgs /var/log; rm /tmp/osd; } &
+fi
+if [ -e $lock ]; then
+	clip1=`grep " events:" $epgs|cut -d " " -f5`
+	echo $clip1 >/tmp/clip1
+	echo $mem2 >/tmp/clip2
+	{ sleep 20; rm /tmp/clip*; } &
 fi
 
 exit 0

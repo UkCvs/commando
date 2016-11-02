@@ -1,11 +1,11 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 15 Oct 2016 15h53- LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 01 Nov 2016 - LraiZer and PaphosAL
 
 etc="/var/etc"
 logd="/var/log"
-elog="/tmp/epgstats.dat"
+epgs="/tmp/epgstats.dat"
 als="$etc/.dev"
-mnt="/var/server"
+mnt="/mount"
 svr="$mnt/share"
 cfg="/var/tuxbox/config"
 conf="$cfg/neutrino.conf"
@@ -29,14 +29,14 @@ bb="/tmp/box.busy"
 bref="/tmp/bqs.ref"
 sref="/tmp/svc.ref"
 acs="$etc/bq_0f.ref"
-cronsrc="var/spool/cron/crontabs/root"
+csrc="var/spool/cron/crontabs/root"
 lock="/tmp/getepg.lock"
 nop="/dev/null"
 now=`date`
 mode=`pzapit -gm|cut -d " " -f2`
 zdat=`pzapit -gi|cut -d "(" -f1`
 
-#procs
+#processes
 fmsg(){
 wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >$nop 2>&1
 }
@@ -76,11 +76,11 @@ showframe /root/platform/kernel/logo
 }
 popups(){
 bgpic "true" &
-sleep 2
+sleep 4
 i=0
 while [ -e $lock ]; do
  i=$(($i + 1))
- fmsg "GetEPG loading in progress... $((i*10)) seconds"
+ fmsg "GetEPG is loading... $((i*10)) seconds"
  sleep 10
 done
 }
@@ -123,15 +123,6 @@ cst="/tmp/$csx"
 blue(){
 rcsim KEY_BLUE
 rcsim KEY_BLUE
-}
-cronchk(){
-count=`grep "^0\|^1\|^2\|^3\|^4\|^5" -c $cronsrc`
-if [ $count = 0 ]; then
-	killall crond
-	rm $etc/.crond
-else
-	cron
-fi
 }
 
 case "$1" in
@@ -323,12 +314,7 @@ stop)
 ;;
 getepg)
 [ -e $bb ] && fmsg "GetEPG cannot load while AutoBouquets is running!" && exit 0
-if [ -e $lock ]; then
-	oops="GetEPG is already running!"
-	echo "$oops"
-	fmsg "$oops"
-	exit 0
-fi
+[ -e $lock ] && oops="GetEPG is already running!" && echo "$oops" && fmsg "$oops" && exit 0
 if [ -e $etc/.sleep ]; then
 	echo "$mode" > /tmp/mode
 	echo "$zdat" > /tmp/zapto
@@ -341,23 +327,23 @@ grep "^1;" $map >$tmap
 awk '!x[$0]++' $tmap >$udat
 mv $udat $tmap
 count=`grep "^1;" -c $tmap`
-start_time=`date +%s`
-msg="Loading 28.2E GetEPG for your $count mapped channels"
+msg="Loading 28.2E GetEPG for $count mapped channels..."
 echo "$msg"
+rc_lock
 fmsg "$msg"
-sleep 4
+sleep 3
 edrc_zap
 if [ $ezap != 0 ]; then
-	oops="Oops! Zapto 28.2E EPG Data failed! Transponder
-	\ndown maybe? Try later! GetEPG aborting..."
-	echo -e "$oops"
+	oops="28.2E EPG data N/A! Try later? Aborting..."
+	echo "$oops"
+	rc_unlock
 	fmsg "$oops"
 	zapback
 	exit 0
 fi
 touch $lock
+start_time=`date +%s`
 $sdc --restart >$nop
-rc_lock
 popups &
 cd /tmp
 map="channels.cfg"
@@ -372,6 +358,9 @@ for i in 0 1 2 3 4 5 6 7; do
 	rm channels*.uk 
  fi
 done
+while [ -e rdepg.lock ]; do
+	sleep 1
+done
 $sdc --nopause >$nop 
 rm $map epg.err
 cd /
@@ -381,28 +370,30 @@ events=`cat /tmp/clip1`
 mem=`cat /tmp/clip2`
 rm $lock
 
-if [ ! -e /tmp/clip3 ]; then
-	summ3="EPG is now saved to VRAM! Avoid rebooting..."
-else
+if [ -e /tmp/clip3 ]; then
 	epgcache=`cat /tmp/clip3`
-	rm $epgcache*
+	rm $epgcache* 
 	$sdc --wepg $epgcache >$nop
 	summ3="Updated your $epgcache EPG Cache mount!"
+else
+	summ3="EPG is now saved to VRAM! Avoid rebooting..."
 fi
 
 dur="$(expr $stop_time / 60) mins $(expr $stop_time % 60) secs"
 summ1="Saved $events events in $count channels ($mem RAM use)"
 summ2="GetEPG loading took: $dur"
+echo "Last $summ2" >>$epgs
 echo "
 $summ1
 $summ2
-$summ3"
-echo "GetEPG load took: $dur for your $count mapped channels" >>$elog
+$summ3
+"
 rc_unlock
+mv $epgs $logd
 if [ ! -e $etc/.sleep ]; then
-	fmsg "$summ1\n$summ2"
+	fmsg "$summ1\n\n$summ2"
 	sleep 7
-	fmsg "$summ3\nBack to TV now, with your RC reactivated!"
+	fmsg "$summ3\n\nBack to TV now (with an active RC)..."
 	sleep 3
 	zapback
 else
@@ -511,6 +502,10 @@ sleep 6
 rc_unlock
 . /var/etc/net-exit
 ;;
+net-epgc)
+sed -i '/epg_dir=/cepg_dir=' $conf
+killall neutrino
+;;
 satellites)
 dload="wget http://www.ukcvs.net/C15/updates"
 fmsg "Installing our latest satellites.xml file..."
@@ -524,40 +519,26 @@ if [ -e satellite*.zip ]; then
 	rm satellite*.zip
 	fmsg "Success! A REBOOT is needed for activation.."
 else
-	fmsg "Oops, downloading failed. Try again later?"
+	fmsg "Oops, download failed. Try again later?"
 fi
 sleep 7
 cd /
 ;;
 epgcron-y)
 touch $etc/.epgauto
-touch $etc/.crond
-if ! grep -q "getepg" $cronsrc; then
-	echo "15 6 * * * /var/bin/miniops getepg" >>$cronsrc
-else
-	sed -i '/getepg/s/^#//' $cronsrc
-fi
-cron
+grep -q "getepg" $csrc && sed -i '/getepg/s/^#//' $csrc; cron
 ;;
 epgcron-n)
 rm $etc/.epgauto
-sed -i '/getepg/s/^/#/' $cronsrc
-cronchk
+sed -i '/getepg/s/^/#/' $csrc; cron
 ;;
 abscron-y)
 touch $etc/.absauto
-touch $etc/.crond
-if ! grep -q "autobouquets" $cronsrc; then
-	echo "0 6 * * * /var/bin/miniops autobouquets" >>$cronsrc
-else
-	sed -i '/autobouquets/s/^#//' $cronsrc
-fi
-cron
+grep -q "autobouquets" $csrc && sed -i '/autobouquets/s/^#//' $csrc; cron
 ;;
 abscron-n)
 rm $etc/.absauto
-sed -i '/autobouquets/s/^/#/' $cronsrc
-cronchk
+sed -i '/autobouquets/s/^/#/' $csrc; cron
 ;;
 avsync)
 pzapit -rz
@@ -565,6 +546,15 @@ pzapit -rz
 ;;
 showlogo)
 [ ! -e $etc/.no-$2-bg ] && bgpic "false" &
+;;
+epginf)
+touch /tmp/osd
+stats
+while read line; do
+einf="$einf%0A$line"
+done < $epgs
+wget http://localhost/control/message?nmsg="$einf"
+exit 0
 ;;
 null)
 ps

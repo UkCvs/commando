@@ -20,9 +20,7 @@
 #   on the day GetEPG is loaded. Memory-friendly!   #
 #                                                   #
 # **HOT TIP: to save memory, make 4=0 hrs for +1    #
-#   and crap channels, or 4=18 for premium stuff!   #
-#   (nb: 28.2E only does long description hours up  #
-#   to midnight on the same day that GetEPG loads)  #
+#   and naff channels, or 4=18 for premium stuff!   #
 #                                                   #
 #####################################################
 
