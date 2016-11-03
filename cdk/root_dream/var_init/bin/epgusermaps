@@ -4,7 +4,7 @@
 # with any channel name changes diffed in old and new channels.cfg (for
 # GetEPG) IF found when AutoBouquets last ran! User-friendly or what?
 
-# updated Thu 06 Oct 2016: refix cond keep R/C locked during this 40 sec b/g job
+# updated Thu 03 Nov 2016: Long Desc now user-definable 000>168hrs range
 
 etc="/var/etc"
 cfg="/var/tuxbox/config"
@@ -49,8 +49,6 @@ sed -i "
 /# epg/d
 /^$/d
 s/:0002:/:0002;/
-s/;000;/;00;/
-s/;018;/;18;/
 s/\&amp;/\&/
 s/\&apos;/'/
 s/\&gt;/>/

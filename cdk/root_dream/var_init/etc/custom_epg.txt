@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Tue Nov 1 13:10:11 GMT 2016
+# AutoBouquets custom_epg.txt usermap auto-generated on: Thu Nov 4 13:04:11 GMT 2016
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -13,562 +13,561 @@
 #  1=[slot]    sky ch no. (required- do not edit!)  #
 #  2=[0/1]     ch epg off/on (required- toggle*)    #
 #  3=[0-7]     ch epg days (required- editable*)    #
-#  4=[0 or 18] epg desc hours (required- toggle**)  #
+#  4=[000>168] epg description hours (required**)   #
 #  5=[Ch Name] Optional (but now 100% automated)    #
 #####################################################
 #                                                   #
-#  *HOT TIP: 2=1 and 3=0 gives epg until midnight   #
-#   on the day GetEPG is loaded. Memory-friendly!   #
+#  *HOT TIP: 2=1 and 3=1 gives epg for 24hrs ahead  #
+#   from when GetEPG is loaded. Memory-friendly!    #
 #                                                   #
-# **HOT TIP: to save memory, make 4=0 hrs for +1    #
-#   and naff channels, or 4=18 for premium stuff!   #
+# **HOT TIP: to save memory, make 4=000 hrs for +1  #
+#   and naff channels, or 4=024 for premium progs!  #
 #                                                   #
 #####################################################
 
-
 #Bouquet 01: "Entertainment"
-101:1:1:18:BBC One London
-102:1:1:18:BBC Two England
-103:1:1:18:ITV London
-131:1:1:00:ITV +1 London
-104:1:1:18:Channel 4
-135:1:1:00:Channel 4 +1
-105:1:1:18:Channel 5
-177:1:1:00:Channel 5+1
-116:1:1:18:BBC Four
-118:1:1:18:ITV2
-180:1:1:00:ITV2+1
-119:1:1:18:ITV3
-193:1:1:00:ITV3+1
-120:1:1:18:ITV4
-206:1:1:00:ITV4+1
-179:1:1:18:ITVBe
-207:1:1:00:ITVBe+1
-123:1:1:18:ITV Encore
-208:1:1:00:ITV Encore+1
-136:1:1:18:E4
-137:1:1:00:E4+1
-138:1:1:18:More4
-139:1:1:00:More4 +1
-140:1:1:18:4seven
-106:1:1:18:Sky1
-130:1:1:00:Sky1 +1
-129:1:1:18:Sky2
-108:1:1:18:Sky Atlantic
-170:1:1:00:Sky Atlantic+1
-172:1:1:18:Real Lives
-173:1:1:00:Real Lives+1
-109:1:1:18:W
-213:1:1:00:W +1
-155:1:1:18:Really
-110:1:1:18:GOLD
-166:1:1:00:GOLD +1
-111:1:1:18:Dave
-214:1:1:00:Dave ja vu
-158:1:1:18:Drama
-112:1:1:18:ComedyCentral
-127:1:1:00:ComedyCent+1
-128:1:1:18:ComedyXtra
-159:1:1:00:ComedyXtra+1
-113:1:1:18:Universal
-150:1:1:00:Universal+1
-114:1:1:18:Syfy
-194:1:1:00:Syfy +1
-107:1:1:18:Sky Living
-122:1:1:00:Sky Living+1
-125:1:1:18:TLC
-154:1:1:00:TLC+1
-200:1:1:00:TLC+2
-124:1:1:18:FOX
-165:1:1:00:FOX+
-132:1:1:18:alibi
-226:1:1:00:alibi +1
-126:1:1:18:MTV
-270:1:1:00:MTV+1
-160:1:1:18:Spike
-167:1:1:18:DMAX
-233:1:1:00:DMAX+1
-145:1:1:18:Challenge
-164:1:1:00:Challenge+1
-148:1:1:18:CBS Action
-149:1:1:18:CBS Drama
-146:1:1:18:CBS Reality
-147:1:1:00:CBS Reality+1
-152:1:1:18:Pick
-153:1:1:00:VICELAND
-151:1:1:18:E!
-229:1:1:00:E! +1
-156:1:1:18:Lifetime
-197:1:1:00:Lifetime+1
-157:1:1:18:Sony Channel
-181:1:1:00:Sony Chnl +1
-185:1:1:18:True Crime
-186:1:1:00:True Crime +1
-183:1:1:18:True Ent
-184:1:1:18:True Ent +1
-212:1:1:18:Showcase
-261:1:1:18:Showcase 3
-266:1:1:18:ShowBiz TV
-282:0:0:00:ShowBiz TV+1
-192:1:1:18:AMC from BT
-176:1:1:18:5STAR
-190:1:1:00:5STAR +1
-174:1:1:18:5 USA
-219:1:1:00:5 USA +1
-175:1:1:18:My5
-187:0:0:00:BET:BlackEntTv
+101:1:1:024:BBC One London
+102:1:1:024:BBC Two England
+103:1:1:024:ITV London
+131:1:1:000:ITV +1 London
+104:1:1:024:Channel 4
+135:1:1:000:Channel 4 +1
+105:1:1:024:Channel 5
+177:1:1:000:Channel 5+1
+116:1:1:024:BBC Four
+118:1:1:024:ITV2
+180:1:1:000:ITV2+1
+119:1:1:024:ITV3
+193:1:1:000:ITV3+1
+120:1:1:024:ITV4
+206:1:1:000:ITV4+1
+179:1:1:024:ITVBe
+207:1:1:000:ITVBe+1
+123:1:1:024:ITV Encore
+208:1:1:000:ITV Encore+1
+136:1:1:024:E4
+137:1:1:000:E4+1
+138:1:1:024:More4
+139:1:1:000:More4 +1
+140:1:1:024:4seven
+106:1:1:024:Sky1
+130:1:1:000:Sky1 +1
+129:1:1:024:Sky2
+108:1:1:024:Sky Atlantic
+170:1:1:000:Sky Atlantic+1
+172:1:1:024:Real Lives
+173:1:1:000:Real Lives+1
+109:1:1:024:W
+213:1:1:000:W +1
+155:1:1:024:Really
+110:1:1:024:GOLD
+166:1:1:000:GOLD +1
+111:1:1:024:Dave
+214:1:1:000:Dave ja vu
+158:1:1:024:Drama
+112:1:1:024:ComedyCentral
+127:1:1:000:ComedyCent+1
+128:1:1:024:ComedyXtra
+159:1:1:000:ComedyXtra+1
+113:1:1:024:Universal
+150:1:1:000:Universal+1
+114:1:1:024:Syfy
+194:1:1:000:Syfy +1
+107:1:1:024:Sky Living
+122:1:1:000:Sky Living+1
+125:1:1:024:TLC
+154:1:1:000:TLC+1
+200:1:1:000:TLC+2
+124:1:1:024:FOX
+165:1:1:000:FOX+
+132:1:1:024:alibi
+226:1:1:000:alibi +1
+126:1:1:024:MTV
+270:1:1:000:MTV+1
+160:1:1:024:Spike
+167:1:1:024:DMAX
+233:1:1:000:DMAX+1
+145:1:1:024:Challenge
+164:1:1:000:Challenge+1
+148:1:1:024:CBS Action
+149:1:1:024:CBS Drama
+146:1:1:024:CBS Reality
+147:1:1:000:CBS Reality+1
+152:1:1:024:Pick
+153:1:1:000:VICELAND
+151:1:1:024:E!
+229:1:1:000:E! +1
+156:1:1:024:Lifetime
+197:1:1:000:Lifetime+1
+157:1:1:024:Sony Channel
+181:1:1:000:Sony Chnl +1
+185:1:1:024:True Crime
+186:1:1:000:True Crime +1
+183:1:1:024:True Ent
+184:1:1:024:True Ent +1
+212:1:1:024:Showcase
+261:1:1:024:Showcase 3
+266:1:1:024:ShowBiz TV
+282:0:0:000:ShowBiz TV+1
+192:1:1:024:AMC from BT
+176:1:1:024:5STAR
+190:1:1:000:5STAR +1
+174:1:1:024:5 USA
+219:1:1:000:5 USA +1
+175:1:1:024:My5
+187:0:0:000:BET:BlackEntTv
 
 #Bouquet 02: "Lifestyle-Culture"
-539:1:1:18:Community
-242:1:1:18:Discovery Shed
-257:1:1:18:Fashion One
-248:1:1:18:Food Network
-250:1:1:00:Food Netwrk+1
-264:1:1:18:Forces TV
-133:1:1:18:Good Food
-243:1:1:00:Good Food +1
-256:1:1:18:holiday+cruise
-196:1:1:18:Home
-244:1:1:00:Home+1
-240:1:1:18:Home & Health
-241:1:1:00:Home&Health+
-237:1:1:18:Home & Leisure
-253:1:1:18:Horse & Country
-203:1:1:18:My Channel
-238:1:1:18:Property Show
-155:1:1:18:Really
-121:1:1:18:Sky Arts
-249:1:1:18:Travel Channel
-251:1:1:00:Travel Ch +1
-198:1:1:18:tru TV
-271:1:1:00:tru TV+1
-252:1:1:18:Wellbeing
+539:1:1:024:Community
+242:1:1:024:Discovery Shed
+257:1:1:024:Fashion One
+248:1:1:024:Food Network
+250:1:1:000:Food Netwrk+1
+264:1:1:024:Forces TV
+133:1:1:024:Good Food
+243:1:1:000:Good Food +1
+256:1:1:024:holiday+cruise
+196:1:1:024:Home
+244:1:1:000:Home+1
+240:1:1:024:Home & Health
+241:1:1:000:Home&Health+
+237:1:1:024:Home & Leisure
+253:1:1:024:Horse & Country
+203:1:1:024:My Channel
+238:1:1:024:Property Show
+155:1:1:024:Really
+121:1:1:024:Sky Arts
+249:1:1:024:Travel Channel
+251:1:1:000:Travel Ch +1
+198:1:1:024:tru TV
+271:1:1:000:tru TV+1
+252:1:1:024:Wellbeing
 
 #Bouquet 03: "Movies"
-307:1:1:18:Sky Action
-308:1:1:18:Sky Comedy
-305:1:1:18:Sky Disney
-310:1:1:18:SkyDramaRom
-306:1:1:18:Sky Pixar
-304:1:1:18:Sky Musicals
-303:1:1:18:Sky Hits
-301:1:1:18:Sky Premiere
-302:1:1:00:Sky Prem+1
-312:1:1:18:Sky Select
-311:1:1:18:Sky ScFi-Horror
-309:1:1:18:Sky Thriller
-315:1:1:18:Film4
-316:1:1:00:Film4 +1
-317:1:1:18:TCM
-318:1:1:00:TCM+1
-319:1:1:18:horror channel
-320:1:1:00:horror ch+1
-321:1:1:18:True Christmas
-322:1:1:18:TrueChrstms+1
-343:1:1:18:TalkingPictures
-323:1:1:18:Sony Movies
-324:1:1:00:Sony Movies+1
-325:1:1:18:movies4men
-326:1:1:00:mov4men+1
-327:1:1:18:Christmas 24
-328:1:1:18:Christmas 24+
+307:1:1:024:Sky Action
+308:1:1:024:Sky Comedy
+305:1:1:024:Sky Disney
+310:1:1:024:SkyDramaRom
+306:1:1:024:Sky Pixar
+304:1:1:024:Sky Musicals
+303:1:1:024:Sky Hits
+301:1:1:024:Sky Premiere
+302:1:1:000:Sky Prem+1
+312:1:1:024:Sky Select
+311:1:1:024:Sky ScFi-Horror
+309:1:1:024:Sky Thriller
+315:1:1:024:Film4
+316:1:1:000:Film4 +1
+317:1:1:024:TCM
+318:1:1:000:TCM+1
+319:1:1:024:horror channel
+320:1:1:000:horror ch+1
+321:1:1:024:True Christmas
+322:1:1:024:TrueChrstms+1
+343:1:1:024:TalkingPictures
+323:1:1:024:Sony Movies
+324:1:1:000:Sony Movies+1
+325:1:1:024:movies4men
+326:1:1:000:mov4men+1
+327:1:1:024:Christmas 24
+328:1:1:024:Christmas 24+
 
 #Bouquet 04: "Music"
-350:1:1:18:MTV MUSIC
-351:1:1:18:MTV BASE
-352:1:1:18:MTV HITS
-353:1:1:18:VIVA
-354:1:1:18:MTV DANCE
-355:1:1:18:MTV ROCKS
-356:1:1:18:MTV CLASSIC
-357:1:1:18:VH1
-358:1:1:00:MTV Music +1
-359:1:1:18:Box Upfront
-360:1:1:18:The Box
-361:1:1:18:Box Hits
-362:1:1:18:4Music
-363:1:1:18:KISS
-364:1:1:18:Magic
-365:1:1:18:Chart Show TV
-366:1:1:18:The Vault
-367:1:1:18:Scuzz
-368:1:1:18:Kerrang!
-369:1:1:18:Vintage TV
-370:1:1:18:Chilled TV
-371:1:1:18:Starz TV
-372:1:1:18:Chartshow Hits
-374:1:1:18:Flava
-378:1:1:18:NOW Music
-383:1:1:18:Clubland TV
-385:1:1:18:Channel AKA
-387:1:1:18:Heart Xmas
-388:1:1:18:CAPITAL TV
-389:1:1:18:Keep It Country
+350:1:1:024:MTV MUSIC
+351:1:1:024:MTV BASE
+352:1:1:024:MTV HITS
+353:1:1:024:VIVA
+354:1:1:024:MTV DANCE
+355:1:1:024:MTV ROCKS
+356:1:1:024:MTV CLASSIC
+357:1:1:024:VH1
+358:1:1:000:MTV Music +1
+359:1:1:024:Box Upfront
+360:1:1:024:The Box
+361:1:1:024:Box Hits
+362:1:1:024:4Music
+363:1:1:024:KISS
+364:1:1:024:Magic
+365:1:1:024:Chart Show TV
+366:1:1:024:The Vault
+367:1:1:024:Scuzz
+368:1:1:024:Kerrang!
+369:1:1:024:Vintage TV
+370:1:1:024:Chilled TV
+371:1:1:024:Starz TV
+372:1:1:024:Chartshow Hits
+374:1:1:024:Flava
+378:1:1:024:NOW Music
+383:1:1:024:Clubland TV
+385:1:1:024:Channel AKA
+387:1:1:024:Heart Xmas
+388:1:1:024:CAPITAL TV
+389:1:1:024:Keep It Country
 
 #Bouquet 05: "Sport"
-401:1:1:18:Sky Sports 1
-402:1:1:18:Sky Sports 2
-403:1:1:18:Sky Sports 3
-404:1:1:18:Sky Sports 4
-405:1:1:18:Sky Sports 5
-1009:1:1:18:Sky Sports 5 IRL
-407:1:1:18:Sky Sports Mix
-408:1:1:18:Sky Sports F1
-406:1:1:18:Sky Sp NewsHQ
-491:1:1:18:SkySpBoxOff
-410:1:1:18:Eurosport 1
-411:1:1:18:Eurosport 2
-413:1:1:18:BT Sport 1
-417:1:1:18:BT Sport 3
-414:1:1:18:BT Sport 2
-426:1:1:18:BT Sport-ESPN
-421:1:1:18:Chelsea TV
-429:1:1:18:LFCTV
-418:1:1:18:MUTV
-423:1:1:18:eir Sport 1
-424:1:1:18:eir Sport 2
-428:1:1:18:Premier Sports
-415:1:1:18:At The Races
-432:1:1:18:Racing UK
-437:1:1:18:BoxNation
-464:1:1:18:Bike
-468:1:1:18:FrontRunner
-470:1:1:18:GINXeSportsTV
-447:1:1:18:MOTORS TV UK
+401:1:1:024:Sky Sports 1
+402:1:1:024:Sky Sports 2
+403:1:1:024:Sky Sports 3
+404:1:1:024:Sky Sports 4
+405:1:1:024:Sky Sports 5
+1009:1:1:024:Sky Sports 5 IRL
+407:1:1:024:Sky Sports Mix
+408:1:1:024:Sky Sports F1
+406:1:1:024:Sky Sp NewsHQ
+491:1:1:024:SkySpBoxOff
+410:1:1:024:Eurosport 1
+411:1:1:024:Eurosport 2
+413:1:1:024:BT Sport 1
+417:1:1:024:BT Sport 3
+414:1:1:024:BT Sport 2
+426:1:1:024:BT Sport-ESPN
+421:1:1:024:Chelsea TV
+429:1:1:024:LFCTV
+418:1:1:024:MUTV
+423:1:1:024:eir Sport 1
+424:1:1:024:eir Sport 2
+428:1:1:024:Premier Sports
+415:1:1:024:At The Races
+432:1:1:024:Racing UK
+437:1:1:024:BoxNation
+464:1:1:024:Bike
+468:1:1:024:FrontRunner
+470:1:1:024:GINXeSportsTV
+447:1:1:024:MOTORS TV UK
 
 #Bouquet 06: "News"
-501:1:1:00:Sky News
-502:1:1:00:Bloomberg
-503:1:1:00:BBC NEWS
-504:1:1:00:BBC Parliament
-505:1:1:00:CNBC
-506:1:1:00:CNN
-508:1:1:00:Euronews
-509:1:1:00:FOX News
-510:0:0:00:CCTV News
-511:0:0:00:NDTV 24x7
-512:1:1:00:Russia Today
-513:1:1:00:FRANCE Eng
-1174:1:1:00:RTÉ News Now
+501:1:1:000:Sky News
+502:1:1:000:Bloomberg
+503:1:1:000:BBC NEWS
+504:1:1:000:BBC Parliament
+505:1:1:000:CNBC
+506:1:1:000:CNN
+508:1:1:000:Euronews
+509:1:1:000:FOX News
+510:0:0:000:CCTV News
+511:0:0:000:NDTV 24x7
+512:1:1:000:Russia Today
+513:1:1:000:FRANCE Eng
+1174:1:1:000:RTÉ News Now
 
 #Bouquet 07: "Factual"
-523:1:1:18:Animal Planet
-549:1:1:00:Animal Plnt+1
-553:1:1:18:Crime+Inv
-554:1:1:00:Crime+Inv +1
-539:1:1:18:Community
-264:1:1:18:Forces TV
-520:1:1:18:Discovery
-521:1:1:00:Discovery+1
-535:1:1:18:Disc.History
-536:1:1:00:Disc.History+1
-525:1:1:18:Disc.Science
-557:1:1:00:Disc.Sci+1
-524:1:1:18:Disc.Turbo
-532:1:1:18:Eden
-533:1:1:00:Eden+1
-529:1:1:18:History
-530:1:1:00:History +1 hour
-531:1:1:18:H2
-522:1:1:18:ID
-551:1:1:00:ID+1
-526:1:1:18:Nat Geo
-527:1:1:00:Nat Geo+1hr
-528:1:1:18:Nat Geo Wild
-534:1:1:18:PBS America
-144:1:1:18:QUEST
-195:1:1:00:QUEST+1
-537:1:1:18:YESTERDAY
-538:1:1:00:YESTERDAY+1
+523:1:1:024:Animal Planet
+549:1:1:000:Animal Plnt+1
+553:1:1:024:Crime+Inv
+554:1:1:000:Crime+Inv +1
+539:1:1:024:Community
+264:1:1:024:Forces TV
+520:1:1:024:Discovery
+521:1:1:000:Discovery+1
+535:1:1:024:Disc.History
+536:1:1:000:Disc.History+1
+525:1:1:024:Disc.Science
+557:1:1:000:Disc.Sci+1
+524:1:1:024:Disc.Turbo
+532:1:1:024:Eden
+533:1:1:000:Eden+1
+529:1:1:024:History
+530:1:1:000:History +1 hour
+531:1:1:024:H2
+522:1:1:024:ID
+551:1:1:000:ID+1
+526:1:1:024:Nat Geo
+527:1:1:000:Nat Geo+1hr
+528:1:1:024:Nat Geo Wild
+534:1:1:024:PBS America
+144:1:1:024:QUEST
+195:1:1:000:QUEST+1
+537:1:1:024:YESTERDAY
+538:1:1:000:YESTERDAY+1
 
 #Bouquet 08: "Religious"
-580:1:1:00:GOD Channel
-581:1:1:00:revelation
-582:1:1:00:TBN UK
-585:1:1:00:Inspiration
-586:1:1:00:LOVEWORLD TV
-587:1:1:00:Gospel Channel
-588:1:1:00:Word Network
-589:1:1:00:EWTN Catholic
-590:1:1:00:Faith World TV
-591:1:1:00:KICC TV
-592:1:1:00:Believe TV
-593:1:1:00:Olive TV
-594:1:1:00:SonLife
-595:1:1:00:Flow TV
-199:0:0:00:YourTV
-597:1:1:00:Hillsong
+580:1:1:000:GOD Channel
+581:1:1:000:revelation
+582:1:1:000:TBN UK
+585:1:1:000:Inspiration
+586:1:1:000:LOVEWORLD TV
+587:1:1:000:Gospel Channel
+588:1:1:000:Word Network
+589:1:1:000:EWTN Catholic
+590:1:1:000:Faith World TV
+591:1:1:000:KICC TV
+592:1:1:000:Believe TV
+593:1:1:000:Olive TV
+594:1:1:000:SonLife
+595:1:1:000:Flow TV
+199:0:0:000:YourTV
+597:1:1:000:Hillsong
 
 #Bouquet 09: "Kids"
-601:1:1:18:Cartoon Netwrk
-602:1:1:00:CN+1
-603:1:1:18:Boomerang
-618:1:1:00:Boomerang +1
-604:1:1:18:Nickelodeon
-605:1:1:00:Nickelodeon+1
-606:1:1:18:Nicktoons
-607:1:1:18:Disney XD
-608:1:1:00:Disney XD+1
-609:1:1:18:Disney Chnl
-610:1:1:00:Disney Chnl+1
-611:1:1:18:Disney Junior
-612:1:1:00:Disney Junior+
-613:1:1:18:CBBC
-614:1:1:18:CBeebies
-615:1:1:18:Nick Jr.
-630:1:1:00:Nick Jr+1
-616:1:1:18:POP
-629:1:1:00:Kix+1
-617:1:1:18:Tiny Pop
-625:1:1:00:POP MAX
-619:1:1:18:Cartoonito
-620:1:1:18:Nick Jr Too
-621:1:1:18:CITV
-623:1:1:18:BabyTV
-626:1:1:00:POP+1
-627:1:1:18:Kix
-635:1:1:18:RTÉjr
+601:1:1:024:Cartoon Netwrk
+602:1:1:000:CN+1
+603:1:1:024:Boomerang
+618:1:1:000:Boomerang +1
+604:1:1:024:Nickelodeon
+605:1:1:000:Nickelodeon+1
+606:1:1:024:Nicktoons
+607:1:1:024:Disney XD
+608:1:1:000:Disney XD+1
+609:1:1:024:Disney Chnl
+610:1:1:000:Disney Chnl+1
+611:1:1:024:Disney Junior
+612:1:1:000:Disney Junior+
+613:1:1:024:CBBC
+614:1:1:024:CBeebies
+615:1:1:024:Nick Jr.
+630:1:1:000:Nick Jr+1
+616:1:1:024:POP
+629:1:1:000:Kix+1
+617:1:1:024:Tiny Pop
+625:1:1:000:POP MAX
+619:1:1:024:Cartoonito
+620:1:1:024:Nick Jr Too
+621:1:1:024:CITV
+623:1:1:024:BabyTV
+626:1:1:000:POP+1
+627:1:1:024:Kix
+635:1:1:024:RTÉjr
 
 #Bouquet 16: "BBC Interactive"
-980:1:1:18:BBC Red Button 1
+980:1:1:024:BBC Red Button 1
 
 #Bouquet 0d: "BT Sport Interactive"
-5381:0:0:00:BT Sport Mosaic Extra
-5031:0:0:00:BT Sport Extra 1
-5382:0:0:00:BT Sport Extra 2
-5383:0:0:00:BT Sport Extra 3
-5384:0:0:00:BT Sport Extra 4
-5385:0:0:00:BT Sport Extra 5
-5386:0:0:00:BT Sport Extra 6
+5381:0:0:000:BT Sport Mosaic Extra
+5031:0:0:000:BT Sport Extra 1
+5382:0:0:000:BT Sport Extra 2
+5383:0:0:000:BT Sport Extra 3
+5384:0:0:000:BT Sport Extra 4
+5385:0:0:000:BT Sport Extra 5
+5386:0:0:000:BT Sport Extra 6
 
 #Bouquet 17: "Sky Sports Interactive"
-1471:0:0:00:Sky Sports Active 1
-1472:0:0:00:Sky Sports Active 2
-1473:0:0:00:Sky Sports Active 3
-1474:0:0:00:Sky Sports Active 4
-1475:0:0:00:Sky Sports Active 5
-1476:0:0:00:Sky Sports Active 6
-1477:0:0:00:Sky Sports Active 7
-1478:0:0:00:Sky Sports Active 8
-1479:0:0:00:Sky Sports Active 9
+1471:0:0:000:Sky Sports Active 1
+1472:0:0:000:Sky Sports Active 2
+1473:0:0:000:Sky Sports Active 3
+1474:0:0:000:Sky Sports Active 4
+1475:0:0:000:Sky Sports Active 5
+1476:0:0:000:Sky Sports Active 6
+1477:0:0:000:Sky Sports Active 7
+1478:0:0:000:Sky Sports Active 8
+1479:0:0:000:Sky Sports Active 9
 
 #Bouquet 0a: "Shopping"
-650:0:0:00:QVC
-651:0:0:00:JML Direct
-652:0:0:00:TJC
-653:0:0:00:GR SHOP
-654:0:0:00:Ideal World
-655:0:0:00:Gems TV
-656:0:0:00:Tristar
-657:0:0:00:Retail TV
-658:0:0:00:High Street TV
-659:0:0:00:Best Direct
-660:0:0:00:TJC Choice
-661:0:0:00:Ideal Extra
-662:0:0:00:High Street TV 2
-663:0:0:00:Hochanda
-665:0:0:00:Jewelry Maker
-666:0:0:00:High Street TV 3
-667:0:0:00:TV Warehouse
-668:0:0:00:QVC Beauty
-669:0:0:00:PaversShoes.tv
-670:0:0:00:Thane
-671:0:0:00:V Channel
-672:0:0:00:Rocks & Co 1
-673:0:0:00:QVC Christmas
-674:0:0:00:Create & Craft
-675:0:0:00:Craft Extra
-676:0:0:00:The Dept Store
-677:0:0:00:The Mall
-678:0:0:00:QVC Style
-679:0:0:00:Craft Channel
+650:0:0:000:QVC
+651:0:0:000:JML Direct
+652:0:0:000:TJC
+653:0:0:000:GR SHOP
+654:0:0:000:Ideal World
+655:0:0:000:Gems TV
+656:0:0:000:Tristar
+657:0:0:000:Retail TV
+658:0:0:000:High Street TV
+659:0:0:000:Best Direct
+660:0:0:000:TJC Choice
+661:0:0:000:Ideal Extra
+662:0:0:000:High Street TV 2
+663:0:0:000:Hochanda
+665:0:0:000:Jewelry Maker
+666:0:0:000:High Street TV 3
+667:0:0:000:TV Warehouse
+668:0:0:000:QVC Beauty
+669:0:0:000:PaversShoes.tv
+670:0:0:000:Thane
+671:0:0:000:V Channel
+672:0:0:000:Rocks & Co 1
+673:0:0:000:QVC Christmas
+674:0:0:000:Create & Craft
+675:0:0:000:Craft Extra
+676:0:0:000:The Dept Store
+677:0:0:000:The Mall
+678:0:0:000:QVC Style
+679:0:0:000:Craft Channel
 
 #Bouquet 0b: "Sky Box Office"
-700:0:0:00:Sky Box Office Review UK
-701:0:0:00:Sky Box Office 1
-702:0:0:00:Sky Box Office 2
-703:0:0:00:Sky Box Office 3
-704:0:0:00:Sky Box Office 4
-705:0:0:00:Sky Box Office 5
-706:0:0:00:Sky Box Office 6
-707:0:0:00:Sky Box Office 7
-708:0:0:00:Sky Box Office 8
-709:0:0:00:Sky Box Office 9
-710:0:0:00:Sky Box Office 10
-711:0:0:00:Sky Box Office 11
-712:0:0:00:Sky Box Office 12
-713:0:0:00:Sky Box Office 13
-714:0:0:00:Sky Box Office 14
-715:0:0:00:Sky Box Office 15
-743:0:0:00:Sky Box Office Review IR
-744:0:0:00:Sky Box Office 20
+700:0:0:000:Sky Box Office Review UK
+701:0:0:000:Sky Box Office 1
+702:0:0:000:Sky Box Office 2
+703:0:0:000:Sky Box Office 3
+704:0:0:000:Sky Box Office 4
+705:0:0:000:Sky Box Office 5
+706:0:0:000:Sky Box Office 6
+707:0:0:000:Sky Box Office 7
+708:0:0:000:Sky Box Office 8
+709:0:0:000:Sky Box Office 9
+710:0:0:000:Sky Box Office 10
+711:0:0:000:Sky Box Office 11
+712:0:0:000:Sky Box Office 12
+713:0:0:000:Sky Box Office 13
+714:0:0:000:Sky Box Office 14
+715:0:0:000:Sky Box Office 15
+743:0:0:000:Sky Box Office Review IR
+744:0:0:000:Sky Box Office 20
 
 #Bouquet 0c: "International"
-795:0:0:00:&TV
-818:0:0:00:AAJ TAK
-837:0:0:00:Aastha
-235:0:0:00:ABN TV
-811:0:0:00:ABP News
-794:0:0:00:Abu Dhabi TV
-826:0:0:00:Ahlebait TV
-831:0:0:00:Ahlulbayt TV
-232:0:0:00:AIT Int'l
-843:0:0:00:Akaal Channel
-855:0:0:00:Al Arabiya
-514:0:0:00:Al Jazeera Eng
-791:0:0:00:ARY Digital
-802:0:0:00:ARY News
-804:0:0:00:ARY QTV
-827:0:0:00:ATN Bangla UK
-780:0:0:00:B4U Movies
-781:0:0:00:B4U Music
-821:0:0:00:Bangla TV
-182:0:0:00:BEN
-187:0:0:00:BET:BlackEntTv
-824:0:0:00:Brit Asia TV
-845:0:0:00:British Muslim
-510:0:0:00:CCTV News
-833:0:0:00:Channel i
-575:0:0:00:Channels 24
-814:0:0:00:CHSTV
-515:0:0:00:CNC World
-786:0:0:00:COLORS
-799:0:0:00:DM Plus TV
-850:0:0:00:Dunya News
-857:0:0:00:Eman Channel
-817:0:0:00:GEO News
-816:0:0:00:GEO TEZ
-807:0:0:00:GEO TV
-823:0:0:00:Glory TV
-800:0:0:00:Hidayat TV
-844:0:0:00:HUM EUROPE
-825:0:0:00:IQRA BANGLA
-819:0:0:00:IQRA TV
-806:0:0:00:Islam Channel
-851:0:0:00:Islam Ch Urdu
-828:0:0:00:Madani Chnl
-793:0:0:00:MATV National
-787:0:0:00:mta-muslim tv
-854:0:0:00:Channel 44
-511:0:0:00:NDTV 24x7
-577:0:0:00:News18
-329:0:0:00:Nollywood
-812:0:0:00:Noor TV
-838:0:0:00:NTV
-199:0:0:00:YourTV
-785:0:0:00:PCNE Chinese
-813:0:0:00:Peace TV
-830:0:0:00:Peace TV Urdu
-189:0:0:00:propeller
-815:0:0:00:PTC PUNJABI
-803:0:0:00:PTV Global
-792:0:0:00:PTV Prime
-822:0:0:00:Rishtey
-847:0:0:00:Safeer TV
-832:0:0:00:Samaa
-836:0:0:00:Sangat
-829:0:0:00:Sikh Channel
-840:0:0:00:SkyNws Arabia
-798:0:0:00:SONY MAX
-810:0:0:00:SONY SAB
-782:0:0:00:SONY TV Asia
-809:0:0:00:Star GOLD
-808:0:0:00:Star Utsav
-783:0:0:00:Star Life OK
-784:0:0:00:Star Plus
-834:0:0:00:Takbeer TV
-576:0:0:00:Times Now
-796:0:0:00:TV5 MONDE
-842:0:0:00:TV 99
-849:0:0:00:TV One
-517:0:0:00:TVC News
-572:0:0:00:TVC News +1
-820:0:0:00:Ummah CH
-797:0:0:00:RishteyCine
-805:0:0:00:Venus TV
-218:0:0:00:Vox Africa
-790:0:0:00:Zee Cinema
-835:0:0:00:Zee Punjabi
-788:0:0:00:Zee TV
-789:0:0:00:Zing
+795:0:0:000:&TV
+818:0:0:000:AAJ TAK
+837:0:0:000:Aastha
+235:0:0:000:ABN TV
+811:0:0:000:ABP News
+794:0:0:000:Abu Dhabi TV
+826:0:0:000:Ahlebait TV
+831:0:0:000:Ahlulbayt TV
+232:0:0:000:AIT Int'l
+843:0:0:000:Akaal Channel
+855:0:0:000:Al Arabiya
+514:0:0:000:Al Jazeera Eng
+791:0:0:000:ARY Digital
+802:0:0:000:ARY News
+804:0:0:000:ARY QTV
+827:0:0:000:ATN Bangla UK
+780:0:0:000:B4U Movies
+781:0:0:000:B4U Music
+821:0:0:000:Bangla TV
+182:0:0:000:BEN
+187:0:0:000:BET:BlackEntTv
+824:0:0:000:Brit Asia TV
+845:0:0:000:British Muslim
+510:0:0:000:CCTV News
+833:0:0:000:Channel i
+575:0:0:000:Channels 24
+814:0:0:000:CHSTV
+515:0:0:000:CNC World
+786:0:0:000:COLORS
+799:0:0:000:DM Plus TV
+850:0:0:000:Dunya News
+857:0:0:000:Eman Channel
+817:0:0:000:GEO News
+816:0:0:000:GEO TEZ
+807:0:0:000:GEO TV
+823:0:0:000:Glory TV
+800:0:0:000:Hidayat TV
+844:0:0:000:HUM EUROPE
+825:0:0:000:IQRA BANGLA
+819:0:0:000:IQRA TV
+806:0:0:000:Islam Channel
+851:0:0:000:Islam Ch Urdu
+828:0:0:000:Madani Chnl
+793:0:0:000:MATV National
+787:0:0:000:mta-muslim tv
+854:0:0:000:Channel 44
+511:0:0:000:NDTV 24x7
+577:0:0:000:News18
+329:0:0:000:Nollywood
+812:0:0:000:Noor TV
+838:0:0:000:NTV
+199:0:0:000:YourTV
+785:0:0:000:PCNE Chinese
+813:0:0:000:Peace TV
+830:0:0:000:Peace TV Urdu
+189:0:0:000:propeller
+815:0:0:000:PTC PUNJABI
+803:0:0:000:PTV Global
+792:0:0:000:PTV Prime
+822:0:0:000:Rishtey
+847:0:0:000:Safeer TV
+832:0:0:000:Samaa
+836:0:0:000:Sangat
+829:0:0:000:Sikh Channel
+840:0:0:000:SkyNws Arabia
+798:0:0:000:SONY MAX
+810:0:0:000:SONY SAB
+782:0:0:000:SONY TV Asia
+809:0:0:000:Star GOLD
+808:0:0:000:Star Utsav
+783:0:0:000:Star Life OK
+784:0:0:000:Star Plus
+834:0:0:000:Takbeer TV
+576:0:0:000:Times Now
+796:0:0:000:TV5 MONDE
+842:0:0:000:TV 99
+849:0:0:000:TV One
+517:0:0:000:TVC News
+572:0:0:000:TVC News +1
+820:0:0:000:Ummah CH
+797:0:0:000:RishteyCine
+805:0:0:000:Venus TV
+218:0:0:000:Vox Africa
+790:0:0:000:Zee Cinema
+835:0:0:000:Zee Punjabi
+788:0:0:000:Zee TV
+789:0:0:000:Zing
 
 #Bouquet 0e: "Specialist"
-886:0:0:00:Psychic Today
-998:0:0:00:Sky Intro
-999:0:0:00:Sky
-1010:0:0:00:EPG Background Audio.
+886:0:0:000:Psychic Today
+998:0:0:000:Sky Intro
+999:0:0:000:Sky
+1010:0:0:000:EPG Background Audio.
 
 #Bouquet 14: "Regional"
-101:1:1:18:BBC One London
-968:0:0:00:BBC One CI
-960:0:0:00:BBC One E Mid
-961:0:0:00:BBC One East E
-962:0:0:00:BBC One East W
-958:0:0:00:BBC One N West
-955:0:0:00:BBC One NE&C
-953:0:0:00:BBC One NI
-965:0:0:00:BBC One Oxford
-963:0:0:00:BBC One S East
-967:0:0:00:BBC One S West
-951:0:0:00:BBC One Scotland
-964:0:0:00:BBC One South
-959:0:0:00:BBC One W Mid
-952:0:0:00:BBC One Wales
-966:0:0:00:BBC One West
-957:0:0:00:BBC One Yk&Li
-956:0:0:00:BBC One Yorks
-102:1:1:18:BBC Two England
-970:0:0:00:BBC Two Scotland
-971:0:0:00:BBC Two Wales
-972:0:0:00:BBC Two NI
-142:0:0:00:BBC ALBA
-103:1:1:18:ITV London
-88:0:0:00:ITV Anglia East
-75:0:0:00:ITV Anglia West
-76:0:0:00:ITV Border
-77:0:0:00:ITV Border Scotland
-87:0:0:00:ITV Central East
-86:0:0:00:ITV Central West
-82:0:0:00:ITV Channel Isles
-78:0:0:00:ITV Granada
-91:0:0:00:ITV Meridian North
-90:0:0:00:ITV Meridian SE
-79:0:0:00:ITV Meridian South
-80:0:0:00:ITV Tyne Tees
-94:0:0:00:ITV Wales
-73:0:0:00:ITV West
-74:0:0:00:ITV West Country
-93:0:0:00:ITV Yorkshire East
-81:0:0:00:ITV Yorkshire West
-131:1:1:00:ITV +1 London
-65:0:0:00:ITV +1 Anglia
-66:0:0:00:ITV +1 Central
-67:0:0:00:ITV +1 Granada
-68:0:0:00:ITV +1 Meridian SE
-63:0:0:00:ITV +1 Tyne Tees
-61:0:0:00:ITV +1 Wales
-62:0:0:00:ITV +1 West Country
-64:0:0:00:ITV +1 West
-70:0:0:00:ITV +1 Yorkshire
-117:1:1:18:London Live
-1054:0:0:00:Made In Bristol
-1053:0:0:00:Made In Cardiff
-1052:0:0:00:Made In Leeds
-1055:0:0:00:Made In Tn&Wr
-1057:0:0:00:Notts TV
-1056:0:0:00:STV Edinburgh
-1051:0:0:00:STV Glasgow
-83:0:0:00:STV Grampian
-92:0:0:00:STV North East
-89:0:0:00:STV Scottish East
-6220:0:0:00:STV Scottish West
-85:0:0:00:UTV
-134:0:0:00:S4C
-161:0:0:00:RTÉ One
-162:0:0:00:RTÉ2
-1179:0:0:00:TV3
-1130:0:0:00:TV3+1
-163:0:0:00:Pick+1
-1116:0:0:00:3e
-191:0:0:00:Irish TV
-1180:0:0:00:Oireachtas TV
+101:1:1:024:BBC One London
+968:0:0:000:BBC One CI
+960:0:0:000:BBC One E Mid
+961:0:0:000:BBC One East E
+962:0:0:000:BBC One East W
+958:0:0:000:BBC One N West
+955:0:0:000:BBC One NE&C
+953:0:0:000:BBC One NI
+965:0:0:000:BBC One Oxford
+963:0:0:000:BBC One S East
+967:0:0:000:BBC One S West
+951:0:0:000:BBC One Scotland
+964:0:0:000:BBC One South
+959:0:0:000:BBC One W Mid
+952:0:0:000:BBC One Wales
+966:0:0:000:BBC One West
+957:0:0:000:BBC One Yk&Li
+956:0:0:000:BBC One Yorks
+102:1:1:024:BBC Two England
+970:0:0:000:BBC Two Scotland
+971:0:0:000:BBC Two Wales
+972:0:0:000:BBC Two NI
+142:0:0:000:BBC ALBA
+103:1:1:024:ITV London
+88:0:0:000:ITV Anglia East
+75:0:0:000:ITV Anglia West
+76:0:0:000:ITV Border
+77:0:0:000:ITV Border Scotland
+87:0:0:000:ITV Central East
+86:0:0:000:ITV Central West
+82:0:0:000:ITV Channel Isles
+78:0:0:000:ITV Granada
+91:0:0:000:ITV Meridian North
+90:0:0:000:ITV Meridian SE
+79:0:0:000:ITV Meridian South
+80:0:0:000:ITV Tyne Tees
+94:0:0:000:ITV Wales
+73:0:0:000:ITV West
+74:0:0:000:ITV West Country
+93:0:0:000:ITV Yorkshire East
+81:0:0:000:ITV Yorkshire West
+131:1:1:000:ITV +1 London
+65:0:0:000:ITV +1 Anglia
+66:0:0:000:ITV +1 Central
+67:0:0:000:ITV +1 Granada
+68:0:0:000:ITV +1 Meridian SE
+63:0:0:000:ITV +1 Tyne Tees
+61:0:0:000:ITV +1 Wales
+62:0:0:000:ITV +1 West Country
+64:0:0:000:ITV +1 West
+70:0:0:000:ITV +1 Yorkshire
+117:1:1:024:London Live
+1054:0:0:000:Made In Bristol
+1053:0:0:000:Made In Cardiff
+1052:0:0:000:Made In Leeds
+1055:0:0:000:Made In Tn&Wr
+1057:0:0:000:Notts TV
+1056:0:0:000:STV Edinburgh
+1051:0:0:000:STV Glasgow
+83:0:0:000:STV Grampian
+92:0:0:000:STV North East
+89:0:0:000:STV Scottish East
+6220:0:0:000:STV Scottish West
+85:0:0:000:UTV
+134:0:0:000:S4C
+161:0:0:000:RTÉ One
+162:0:0:000:RTÉ2
+1179:0:0:000:TV3
+1130:0:0:000:TV3+1
+163:0:0:000:Pick+1
+1116:0:0:000:3e
+191:0:0:000:Irish TV
+1180:0:0:000:Oireachtas TV

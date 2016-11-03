@@ -12,15 +12,14 @@
 #  1=[slot]    sky ch no. (required- do not edit!)  #
 #  2=[0/1]     ch epg off/on (required- toggle*)    #
 #  3=[0-7]     ch epg days (required- editable*)    #
-#  4=[0 or 18] epg desc hours (required- toggle**)  #
+#  4=[000>168] epg description hours (required**)   #
 #  5=[Ch Name] Optional (but now 100% automated)    #
 #####################################################
 #                                                   #
-#  *HOT TIP: 2=1 and 3=0 gives epg until midnight   #
-#   on the day GetEPG is loaded. Memory-friendly!   #
+#  *HOT TIP: 2=1 and 3=1 gives epg for 24hrs ahead  #
+#   from when GetEPG is loaded. Memory-friendly!    #
 #                                                   #
-# **HOT TIP: to save memory, make 4=0 hrs for +1    #
-#   and naff channels, or 4=18 for premium stuff!   #
+# **HOT TIP: to save memory, make 4=000 hrs for +1  #
+#   and naff channels, or 4=024 for premium progs!  #
 #                                                   #
 #####################################################
-

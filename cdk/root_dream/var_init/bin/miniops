@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 01 Nov 2016 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 02 Nov 2016 17h52- LraiZer and PaphosAL
 
 etc="/var/etc"
 logd="/var/log"
@@ -32,7 +32,6 @@ acs="$etc/bq_0f.ref"
 csrc="var/spool/cron/crontabs/root"
 lock="/tmp/getepg.lock"
 nop="/dev/null"
-now=`date`
 mode=`pzapit -gm|cut -d " " -f2`
 zdat=`pzapit -gi|cut -d "(" -f1`
 
@@ -204,7 +203,7 @@ fi
 sed -i 's/ 409.//' $tb.18
 [ ! -e $etc/.fta-bq ] && sed -i '1,$d' $tb.19
 echo "<?xml version="'"1.0"'" encoding="'"UTF-8"'"?>
-<!-- created by AutoBouquets N1 on:" $now >$tbq
+<!-- created by AutoBouquets N1 on:" `date +%a%t%d%t%b%t%Y%t%T%t%Z` >$tbq
 echo "<zapit>" >>$tbq
 sed -i "2s/$/ -->/" $tbq
 while read ln; do
@@ -376,7 +375,7 @@ if [ -e /tmp/clip3 ]; then
 	$sdc --wepg $epgcache >$nop
 	summ3="Updated your $epgcache EPG Cache mount!"
 else
-	summ3="EPG is now saved to VRAM! Avoid rebooting..."
+	summ3="EPG is now saved in VRAM! Avoid rebooting..."
 fi
 
 dur="$(expr $stop_time / 60) mins $(expr $stop_time % 60) secs"
@@ -517,9 +516,9 @@ sleep 10
 if [ -e satellite*.zip ]; then
 	unzip -o satellite*.zip
 	rm satellite*.zip
-	fmsg "Success! A REBOOT is needed for activation.."
+	fmsg "Success! REBOOT to activate it!"
 else
-	fmsg "Oops, download failed. Try again later?"
+	fmsg "Oops, download failed. Try later?"
 fi
 sleep 7
 cd /
