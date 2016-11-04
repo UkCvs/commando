@@ -351,7 +351,7 @@ int CNeutrinoApp::loadSetup()
 
 	// EPG-Config
 	g_settings.epg_cache 		= configfile.getString("epg_cache_time", "2");
-	g_settings.epg_extendedcache	= configfile.getString("epg_extendedcache_time", "18");
+	g_settings.epg_extendedcache	= configfile.getString("epg_extendedcache_time", "24");
 	g_settings.epg_old_events 	= configfile.getString("epg_old_events", "1");
 	g_settings.epg_max_events 	= configfile.getString("epg_max_events", "18000");
 	g_settings.epg_dir 		= configfile.getString("epg_dir", "");

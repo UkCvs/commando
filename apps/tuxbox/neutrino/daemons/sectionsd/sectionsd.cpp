@@ -9005,16 +9005,16 @@ int main(int argc, char **argv)
 			printf("[sectionsd] %s not found\n", CONF_FILE);
 		}
 
-		ntpserver = ntp_config.getString("network_ntpserver", "de.pool.ntp.org");
+		ntpserver = ntp_config.getString("network_ntpserver", "time.mit.edu");
 		ntprefresh = atoi(ntp_config.getString("network_ntprefresh","30").c_str() );
 		ntpenable = ntp_config.getBool("network_ntpenable", false);
 		ntp_system_cmd = ntp_system_cmd_prefix + ntpserver;
 
 		//EPG Einstellungen laden
-		secondsToCache = (atoi(ntp_config.getString("epg_cache_time","14").c_str() ) *24*60L*60L); //Tage
-		secondsExtendedTextCache = (atoi(ntp_config.getString("epg_extendedcache_time","6").c_str() ) *60L*60L); //Stunden
+		secondsToCache = (atoi(ntp_config.getString("epg_cache_time","2").c_str() ) *24*60L*60L); //Tage
+		secondsExtendedTextCache = (atoi(ntp_config.getString("epg_extendedcache_time","24").c_str() ) *60L*60L); //Stunden
 		oldEventsAre = (atoi(ntp_config.getString("epg_old_events","1").c_str() ) *60L*60L); //Stunden
-		max_events= atoi(ntp_config.getString("epg_max_events","6000").c_str() );
+		max_events= atoi(ntp_config.getString("epg_max_events","18000").c_str() );
 
 		//Audio Synchronize Timer loading
 		audio_ReSync = ntp_config.getInt32("audio_ReSync", 2);
