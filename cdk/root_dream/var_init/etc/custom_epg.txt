@@ -1,12 +1,11 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Thu Nov 4 13:04:11 GMT 2016
+# AutoBouquets custom_epg.txt usermap auto-generated on: Sun 06 Nov 4 2016 16:47:09
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
 
 #####################################################
 #                                                   #
-#  AutoBouquets N1 - custom channel GetEPG manager  #
-#  Welcome to your user-friendly custom_epg.txt     #
+#  AutoBouquets N1 - custom_epg.txt GetEPG manager  #
 #                                                   #
 #####################################################
 #  KEYCODE:- 1:2:3:4:5                              #
@@ -23,6 +22,7 @@
 # **HOT TIP: to save memory, make 4=000 hrs for +1  #
 #   and naff channels, or 4=024 for premium progs!  #
 #                                                   #
+# Duped channels: LAST iteration ONLY needs editing #
 #####################################################
 
 #Bouquet 01: "Entertainment"

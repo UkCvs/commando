@@ -5,6 +5,7 @@
 # GetEPG) IF found when AutoBouquets last ran! User-friendly or what?
 
 # updated Thu 03 Nov 2016: Long Desc now user-definable 000>168hrs range
+# updated Sat 05 Nov 2016: Now have ALL datestamps as we want them
 
 etc="/var/etc"
 cfg="/var/tuxbox/config"
@@ -23,6 +24,8 @@ ecsv="$etc/autobouquets.csv"
 tcsv="/tmp/autobouquets.csv"
 log="/tmp/epgusermaps.log"
 chlist="/tmp/chlist"
+now="%a %d %b %Y %T"
+
 pc=1
 [ -e $etc/.pr0n ] && pc=0
 
@@ -33,8 +36,8 @@ wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g
 gstart=`date +%s`
 start=`date +%s`
 fmsg "Background updating, so no RC for 40secs- sorry..."
-echo "starting epgusermaps:" `date`
-echo "# epgusermaps.log started:" `date` >$log
+echo "starting epgusermaps:" `date +"$now"`
+echo "# epgusermaps.log started:" `date +"$now"` >$log
 echo "
 # epgusermaps - runs in background (after AutoBouquets) IF service changes were
 # detected and/or user edits to bouquets.xml were found. PaphosAL 14 Sep 2016
@@ -65,7 +68,7 @@ while read ln; do
  esac 
 done < $tmap
 
-echo "# AutoBouquets custom_epg.txt usermap auto-generated on:" `date` >>$tepg
+echo "# AutoBouquets custom_epg.txt usermap auto-generated on:" `date +"$now"` >>$tepg
 sed -i '1h;1d;$!H;$!d;G' $tepg
 [ -e $als ] && cp -f $tepg $svr
 mv -f $tepg $etc
@@ -121,8 +124,7 @@ fi
 gstop=$(expr `date +%s` - $gstart)
 echo -e "\n+ Total epgusermaps processing took $gstop secs\n" >>$log
 rm -f $bb $chlist $tbq $tcsv
-now=`date|sed 's/  / /'`
-emsg="epgusermaps updated on: $now"
+emsg="epgusermaps updated on: `date +"$now"`"
 echo "$emsg"
 echo "# $emsg" >>$log
 mv -f $log /var/log
