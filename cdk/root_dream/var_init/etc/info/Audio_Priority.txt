@@ -1,4 +1,4 @@
-Audio-Priority Menu for Commando 15.0 - 29 Jan 2014
+Audio-Priority Menu for Commando - 29 Jan 2014
 ===================================================
 
 HISTORY: originally by LraiZer for dBox2 Commando in July 2009, This allowed
@@ -30,7 +30,7 @@ couple of other files needed modding to suit, so the original 'English (AC3)'
 now became 'AC3 Dolby (English)' and Audio-Priority now gives 'English' as the
 default audio on Sky Movies, not AC3. Happy days!
 
-USEAGE:
+USAGE:
 =======
 
 Default is 'English (no narration). So only 'eng' is required in the A-P menu
