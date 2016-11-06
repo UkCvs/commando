@@ -707,8 +707,8 @@ void plugin_exec(PluginParam *par)
 	textuppercase = 0;
 	screenmode=0;
 	filesize_in_byte = BTN_NO; // show human readable filesize
-	langselect = BTN_AUTO; // automatic
-	autosave = BTN_ASK; // ask on exit
+	langselect = BTN_ENGLISH; // english, not automatic
+	autosave = BTN_YES; // yes, dont ask on exit
 
 	commandsize =sysconf(_SC_ARG_MAX )-100;
 	szClipboard[0] = 0x00;
@@ -4874,6 +4874,8 @@ void ReadSettings()
 
 	printf("tuxcom: reading settings \n");
 
+	strcpy(finfo[LEFTFRAME].path, "/var/etc/info/");
+	strcpy(finfo[RIGHTFRAME].path, "/var/log/");
 	finfo[LEFTFRAME].sort = SORT_UP;
 	finfo[RIGHTFRAME].sort = SORT_UP;
 
