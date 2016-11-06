@@ -1971,6 +1971,7 @@ root_dream/var_init/bin/Makefile
 root_dream/var_init/bin/emu/Makefile
 root_dream/var_init/etc/Makefile
 root_dream/var_init/etc/headers/Makefile
+root_dream/var_init/etc/info/Makefile
 root_dream/var_init/etc/init.d/Makefile
 root_dream/var_init/etc/network/Makefile
 root_dream/var_init/httpd/Makefile
