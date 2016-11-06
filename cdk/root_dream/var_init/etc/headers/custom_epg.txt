@@ -4,8 +4,7 @@
 
 #####################################################
 #                                                   #
-#  AutoBouquets N1 - custom channel GetEPG manager  #
-#  Welcome to your user-friendly custom_epg.txt     #
+#  AutoBouquets N1 - custom_epg.txt GetEPG manager  #
 #                                                   #
 #####################################################
 #  KEYCODE:- 1:2:3:4:5                              #
@@ -22,4 +21,5 @@
 # **HOT TIP: to save memory, make 4=000 hrs for +1  #
 #   and naff channels, or 4=024 for premium progs!  #
 #                                                   #
+# Duped channels: LAST iteration ONLY needs editing #
 #####################################################
