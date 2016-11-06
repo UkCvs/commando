@@ -1,4 +1,4 @@
-SUBDIRS = headers network init.d
+SUBDIRS = headers info init.d network
 
 FILES_FLASH_RO = \
 	emu_versions.txt group hostname hosts localtime passwd smb.conf TZ \

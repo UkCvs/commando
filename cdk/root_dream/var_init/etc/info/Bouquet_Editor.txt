@@ -1,0 +1,49 @@
+Bouquets Editor - Commando 15.0c - 30 April 2014
+================================================
+
+Since LraiZer's 28.2E AutoBouquets inception for Commando DM500, we've screamed
+at you NOT to use Bouquet Editor, as any changes saved in there would only be
+undone the next time AutoBouquets is run. A shame to be unable to use such a
+useful neutrino GUI and yWeb resource, when Bouquet Editor is so user-friendly
+and fast and intuitive to use...
+
+Well, in the dev stages of C15.0c release and online update, we had a rather
+radical thought: "Who wags the dog's tail? The dog, or it's master?". So we took
+a totally different approach for Autobouquets scripting, starting afresh from a
+blank sheet of paper (and continual step by step testing)
+
+From C15.0c onwards, you structure your Bouquets names and ordering, Bouquets
+Hide/Show, Bouquets Lock/Unlock, Channels Add / Remove / Ordering within bouquets
+ALL with Bouquet Editor, either the MENU > Services OSD version with your remote,
+and/or the yWeb Bouquet Editor interface from your PC, which some consider easier.
+
+WHY? Well, when you launch the OSD Bouquet Editor, you'll see your full bouquet
+list, even the empty ones (that don't show in zapit). At the bottom is this:
+
+[red] Delete [green] Add [yellow] Move [blue] [M] Rename
+
+It's that last [blue] button function that is NOT intuitive, sadly. Press the [MENU]
+button once, and the 'Rename' caption toggles to 'Hide'. Press [MENU] again and 'Hide'
+toggles to 'Lock'. Press [MENU] again, and you've gone full circle back to 'Rename'!
+So pressing [blue] will action whichever one of the three captions is showing.
+
+Play with it, it's easy once you get the hang of it, honest! The 'Hide' and 'Lock'
+functions simply toggle the status of these switches for the highlighted bouquet from
+Show to Hide, and/or Lock to Unlock. The icons on the left make it crystal clear!
+
+Please note that if you are running a "My Favourites" bouquet, that this name is
+FIXED by the zapit binary. Do NOT try and rename it, please!!!
+
+Ensure you SAVE any changes in Bouquet Editor when you exit! Changes will be instant
+on your tv in the current session, like always. But now, more importantly, we've made
+AutoBouquets OBEY these changes (rather than blitz them) when it next runs, by making
+a brand new custom_sort_x.txt from the saved bouquets.xml in order for it to build a
+new one! Now the dog is wagging it's tail, and Autobouquets is slave, not master! No
+more manual editing of custom_sort or bouquet list files, finally!
+
+It's why TC code-named this project 'Mission Impossible' during C15.0c dev. Coz some
+devs said it WAS impossible. Thinking 'outside of the box' hopefully did the trick...
+
+=================================================================================
+
+

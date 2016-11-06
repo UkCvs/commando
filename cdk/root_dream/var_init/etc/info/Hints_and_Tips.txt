@@ -1,0 +1,173 @@
+Commando 15.0 General Hints and Tips - Jan 2014
+========================================================================
+
+Here is where we provide more information on the kind of things we see new users 
+struggling with, based on feedback we read both here on UkCvs.net and on other 
+Forums where our work is freely shared. 
+
+All this info remains pertinent to the new 15.0 release. However, new features
+and enhancements for 15.0 are covered in detail in the respective documents.
+
+Language / Sprache
+******************
+
+German language: By popular request from our German freunde, we have added 
+Deutsch sprache support, including all the Extra code that Commando contains. 
+But please remember, we have a 4.0MB JFFS2 var partition, which leaves no room 
+for the usual /var_init folder normally found in the E1 root SquashFS.
+
+Our release is by default a 7.75MB mtd3 Flash w/o Bootloader format for the UK and 
+Eire, meaning that you will not see the LANGUAGE prompt at first boot, like you may
+expect to see. 
+
+To switch Language to Deutsch: Menu > Settings > OSD > Language > deutsch
+
+And for you UK users that find yourself in German and don't know how to get back to 
+English (I did this long ago in 2004 in dBox2 Zg0re Balu from Polish, LOL!): 
+
+Menu > 3 > 6 > Red > english
+
+Sorry, but our Blue > Blue EPG shell menu for 28.2E is in English only. But there is
+nothing stopping users from making their own translations if they wish. You'll find
+all the menu conf files in the /var/tuxbox/config folder
+
+Softcam
+*******
+This topic now has a new Softcams_educational.txt helpfile additional to the info
+below.
+
+Commando for DM500S is FTA, always has been, and always will be. However, we do 
+carry a useful and highly intelligent Softcam Menu in the Commando Extras Menu-
+
+BLUE > Menu > RED
+
+Some people like to mess around with LAN Multi-Room setups, but struggle on where to 
+place the added files necessary for testing and educational use. /var/bin/emu/CCcam is 
+where the cam itself goes, and that is EXACTLY what it needs to be named, otherwise the
+Softcam menu will not recognize it. (Linux filenames are cAsE sensitive, remember!) It 
+does not need to be set to chmod 755 as the menu hard coding does this for you. You'll 
+also need /var/etc/CCcam.cfg (again correctly named, as shown).
+
+Some users wish to run oscam AND CCcam together, but need oscam to always load first, 
+in order that it grabs priority over CCcam for the CardReader. Your wish is our command! 
+LraiZer has tweaked Mohoush's original softcam nenu code logic so that this cam start 
+order should now (in theory) be obeyed. Feedback awaited please...
+
+For mgcamd and oscam users: ALL lib files required for testing purposes are included in
+the image. Thanks to lincsat, we have also provided 'vanilla' cfg files for these cams..
+
+Timers
+******
+
+New converts from E1 Enigma sometimes struggle to find the Timers Menu in Neutrino. 
+It's dead easy really! BLUE > YELLOW! You'll find that Neutrino Timer 'Types' offer far 
+more flexibility than the 3 timer types found in Enigma, because there are more of them 
+at your disposal. Enter / Leave Standby, launch Plugins, reboot, for example.
+
+Plugins
+********
+
+A major change in the 15.0 release now sees the (rather large) dvbsnoop binary replaced 
+in the SquausFS root partition by LraiZer's new autobouquetsreader binary. This has
+freed up valuable space in root (for libcrypto and librt). Result? More space in the var
+partition, which still has over 3MB of Free Space available in our world-beating 4.0MB
+JFFS2 VAR partition!
+
+TimeZones
+*********
+
+Users in the UK and Eire can skip this section. But for our new-found friends in 
+Europe, USA, Canada and even Australia, LraiZer has ported in the Timezone menu 
+from NeutrinoHD so you can set your local time zone! Where is it? 
+
+Settings > OSD > Timezone selection
+
+The actual 72 timezones set in use are based on the E1 OpenPLi offering, so should be 
+100% reliable in practice. Scroll down through the list using the OK key, and when you 
+have your own timezone showing, just press the Exit key twice to go back to Settings
+and then RED to Save Settings. And that's it- no restart neutrino, no reboot- it all 
+works totally on the fly!!
+
+Infobar Picons
+**************
+
+These are no longer regularly maintained in Online Updates, but do get updated in new
+releases. We are currently running 373 'solid' picons, plus 46 'symlinked' picons
+(linking two 'solids' to the regional BBC and ITV names). Total 419 picons, mostly
+thanks to the hard work and sharing by humforce, LraiZer, and Ronan Collins.
+
+And (thanks to Abu Baniaz) we now have our proper ITV regional channel names back! it
+is amazing what LraiZer's new AutoBouquets N1 can do, when asked...
+
+Keymapping- R/C Volume Keys
+***************************
+
+Most clone DM500 remotes seem to use the < / > arrow keys either side of the 0 key for 
+Volume Up/Dn functions, not the < / > keys by the OK button (which are actually marked 
+as Vol- and Vol+).
+
+This doesn't bother most users, who in any case prefer to leave the dm500 at 100% 
+volume and to use the TV R/C for Volume and Mute control. 
+
+However, to satisfy the users who insist on remapping the Volume keys on the remote, 
+Satsearching tweaked the Settings > Keybinding Menu code to add the facility to remap 
+the Volume Keys. It's a bit tedious changing these settings in the Keymapping Menu,
+so we've come up with a new script in Utilities menu that does this for you 'on the
+fly' in seconds! The script is 'hot-swapping' to enable the volume keys to be put
+back to our default positions. Utilities: BLUE > BLUE > YELLOW and then YELLOW for
+the Volume Control menu, and RED to swap the Volume keys. Not as bad as it sounds!
+
+Note that when the volume keys are remapped to be adjacent to the OK key, Virtual Zap
+still works. First bring up the Infobar with the Info or Help button, then use the
+Vol- and Vol+ keys to virtual zap back and forward. Press OK to zap or Exit to quit.
+
+=====================================================================================
+
+LATE BREAKING NEWS
+==================
+
+Some users like to include an 'all channels' bouquet in their Bouquets line-up, and
+there have been numerouus requests to have this in A-Z order. LraiZer to the rescue!
+
+FIRST TIME USEAGE: (NOT for DM500C cable, note!!!)
+Go into the Scan menu and press the YELLOW key once, to change the default mode from
+Bouquet > update to Bouquet > Satellite Bouquet (There is no need to SAVE settings)
+
+Press BLUE to start the Scan. It takes about five minutes, and after, you'll have a
+new bouquet named 'Astra 28.2E' appended to the existing bouquets, with all it's 
+entries sorted into A-Z order, making it much easier to navigate to what you want to
+find than before, with the old random BskyB ordering. 
+
+FOLLOW-ON USEAGE:
+IMPORTANT! When doing subsequent scans with this mode, you must first DELETE the
+existing Astra 28.2E bouquet in Bouquet Editor (and SAVE). If you don't, then only 
+CHANGES will be applied and it won't get A-Z sorted properly.
+
+NEW in Commando 15.0 is that AutoBouquets now detects the presence of your Astra A-Z
+bouquet and saves it! When AutoBouquets has finished, it patches your A-Z bouquet 
+back onto the end of your newly-created autobouquets! How cool is that? Previously,
+AutoBouquets simply nuked this bouquet, but not any longer).
+
+PLEASE BE AWARE that if you have AutoBouquets 'Parental Control' set to 'ON' then the
+Astra A-Z bouquet generated by this scan may initially contain adult services... In
+theory, a subsequent run of AutoBouquets (in Parental Control mode) should then block
+the adult content appearing onscreen, as they will not exist in the newly-created 
+services.xml file. Feedback on this theory would be appreciated, please.
+
+The online download option for an A-Z Astra bouquet has been dropped for C15.0 and 
+updating it for users still on C14.7 has now ceased as of the last version on our
+servers dated 27 Jan 2014. 
+
+==================================================
+NEW in the C15.0b update on 14 Feb 2014 - PASSWORD
+
+On the contentious C15.0 password front, Lincsat came up with a cool idea, and 
+Lraizer has helped us hard-code it deep inside the heart of the neutrino binary.
+The passwd file is now back in /var/etc and is still 'unpassworded' by default.
+If a user sets a password for user root via the Telnet passwd command, but then
+afterwards forgets what it is (for Telnet / FTP / remote access), they now have
+a new 'Settings' menu option: "Reset root password". This returns to the C15.0b
+'no password' default instantly, to win back your Telnet and FTP access!
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+

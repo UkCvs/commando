@@ -1,0 +1,41 @@
+Info for testing and educational purposes only, as permitted under EU Law
+
+Softcams:
+
+Must be in the /var/bin/emu/ folder (don't worry about chmod stuff)
+
+For DM500C(or)S boxes, google or bling search your choice of the following
+recommended binaries for C15:
+
+CCcam 2.2.1 (do NOT go later than this!)
+mgcamd 1.35a
+oscam 1.20
+
+In each case, you should find a rar or a zip download for different types
+of box architecture. You want the PPC version, OK? Download to PC
+
+Unzip / Unrar your download and save 'as' the relevant one of the following:
+
+CCcam
+mgcamd
+oscam
+
+This is Linux/Unix, so filenames are cAse sEnsiTive remember! Copy your
+softcam binary to the target folder indicated above, using your favourite
+FTP program.
+
+In C15.1d and higher, 'vanilla' versions of the config files for the above
+softcam tests will be found in:
+
+/var/etc/CCcam.cfg 
+/var/keys/mg_cfg (AND with cccam.list and/or newcamd.list as appropriate) 
+/var/tuxbox/config/oscam.* (4 files)
+
+You need to tinker with the related cfg file(s) to do your tests! Use
+notepad++ text Editor for this, as it is Linux friendly! (and FREEWARE!)
+
+Happy testing and learning! After that, please revert to FTA and be safe..
+
+Author: Unknown
+Source: Google
+Advice: Use at your own risk, as theft of encrypted pay channels is a no no!

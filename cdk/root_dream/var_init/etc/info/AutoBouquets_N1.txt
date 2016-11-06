@@ -1,0 +1,167 @@
+AutoBouquets N1 for C15.0 - by LraiZer - 29 Jan 2014 (updated 10 Mar 2016)
+==========================================================================
+
+WHAT'S NEW? LraiZer has created a new 'autobouquetsreader' binary (or daemon, as these
+executable files are referred to in Linux). This is super-fast and reads the current
+NIT, BAT, and SDT data directly from the 28.2E stream.
+
+So no more five minute Service scan, and no more issues when certain transponders are
+temporarily shut down! His binary is also half the size of dvbsnoop, previously used
+for finding stream EPG IDs, freeing-up useful space in the SquashFS root partition.
+
+When the new AutoBouquets is running, you can carry on watching telly normally. It
+will create a new set of services and bouquets in exact accordance with your custom
+settings (more on this below) AND autogenerate a new and bang-up-to-date GetEPG map.
+All in an astonishing 45 to 55 seconds!!! 
+
+After two months of intensive beta-testing, we have had no problems at all with it!
+Such a major leap forward is what made TC decide to release this terrific work in a
+brand new image release and do it justice. We have also designed a new AutoBouquets
+Wizard GUI menu (nice and intuitive and user-friendly) in order to encompass all of
+the new features and user options LraiZer has included for us in AutoBouquets N1.
+
+WHERE IS IT?  
+The Autobouquets Wizard is in the BLUE button 'Commando Toolbox' menu. Hit [2] to run
+the "AutoBouquets NOW" plugin, or move on with a BLUE > GREEN to browse through all
+the AutoBouquets Wizard menu options we've provided for you in the new 30 Jan 2014 
+Commando 15.0 release! 
+
+Autobouquets navigation Options from this point on are as follows:
+
+28.2E Area / Region: default is London (as determined by BSkyB)
+change location with RED (for the user-friendly 28.2E Set My Location menu)
+changes overwrite /var/etc/sml.dat
+
+Custom sort default = 1 (or 2) all +1 channels are below their parent
+change this in GREEN > YELLOW menu:
+GREEN = 3 (or 4)= all +1 channels (except movies) in their own bouquet
+YELLOW = 5 = stream ordering initially, user may change sort order
+The custom_sort_n.txt files are in the /var/etc folder, where 'n' is the
+number above. 1 and 3 are UK, while 2 and 4 are specially for ROI users
+========
+# 0 - 28.2E stream order, 1 and up (coded fallback if custom sort files lost)
+# 1 - radiotimes, +1 channels follow parents (default), 1 and up
+# 2 - same as above, but for users in the Republic of Ireland
+# 3 - all +1 channels (except movies) in own bouquet, 1 and up
+# 4 - same as above, but for users in the Republic of Ireland
+# 5 - 28.2E stream order, then user defineable sorting, 1 and up
+#	- (or 1001 and up in all cases if bskyb bouquet option is active)
+========
+
+Parental Control = 1 (all adult and gambling services are totally nuked.
+Commando is a child-friendly image by default!!! 
+User can opt in to load adult content with GREEN > GREEN > RED
+
+FTA channels only =0 (OFF / NO)
+change with GREEN > GREEN > YELLOW if you want free to air services only
+
+Sky bouquet.= 0 (OFF / NO) - change to 1 = ON / YES create this bouquet:
+GREEN > RED > RED
+
+This bouquet replicates Sky channel numbering from 101 to 999 including
+empty placeholders, for those users who run a sky box in the house and
+are used to the numbers for their favourite channels.
+
+With this option active, the normal bouquets will start 1001 and upwards
+from BBC1 in 'Entertainment'.
+
+#########################################
+
+Run Autobouquets: via the Plugin- BLUE > 2 (can also be set as a daily Timer)
+or from BLUE > BLUE > GREEN > YELLOW AutoBouquets Wizard
+or telnet command: autobouquets
+
+=============================================
+
+*****  NEW for the C15.0c update of 30 April 2014  *****
+
+This has taken us a couple of months to accomplish, coz LraiZer has gone AWOL again!
+Never mind, 'impossible' is NOT a word in TC's vocabulary, so when we get a bright
+idea or three, we aim to see them through, without blitzing the existing user setup
+in your current C15.0 or C15.0b image! It's quite a radical transformation...
+
+1. The AutoBouquets scripting has been totally recoded from a blank sheet of paper
+2. NO MORE manual editing of the custom_user_x.txt files for channels ordering!
+3. NO MORE manual editing of a bqx-ref file for bouquet names and ordering!
+4. YOU now control all this stuff with BOUQUET EDITOR (via OSD and/or yWeb)!!!
+5. The C15.0c update reads your existing channels sort order and keeps them!
+6. AND your existing AutBouquets settings for parental control, Location, etc!
+7. A 'My Favourites' bouquet created via the BLUE button is now preserved!
+8. AutoBouquets now keeps 'multisat' bouquets AND in your preferred order too!
+9. AND it keeps your 'Astra 28.2E' A-Z bouquet (if existing), in order, too!
+
+Autobouquets N1 is now your slave, NOT your master. NOTHING is impossible, eh?
+
+Change things how you like in Bouquet Editor, including hiding and/or locking
+Bouquets, renaming them, and re-ordering them. (The new 03-Bouquet Editor.txt
+helpfile explains how to work the [MENU] button toggle for the Rename > Hide >
+Lock functions in the OSD Bouquet Editor). You can click any Bouquet and then
+Add or Remove channels, and reshuffle the channel ordering, if you wish.
+
+When you SAVE your changes in the Bouquet Editor, zapit tells AutoBouquets that
+it has some housekeeping work to carry out the next time it runs, to mirror the
+changes in the new bouquets.xml file. It will create a new custom_sort file for
+you, not to mention a new bq-list reference file for it to read from!!!
+
+And then, if you're on RT-EPG and such changes were detected from Bouquet Editor
+and/or if AutoBouquets itself found changes in the channels line-up, then it will
+now conditionally launch RT-EPG Auto-Mapping to update that in no time at all...
+
+NOTE:
+=====
+You might have noticed that when your box restarted following the online update,
+AutoBouquets kicked-in automatically a minute later and that this then put the
+Bouquet names and ordering back to standard.
+
+We're really sorry about this apparent 'control-freak' operation, but it really
+was a VITAL first step to take in order to create a new bouquets.xml file, before
+letting you run loose with Bouquet Editor and so on.
+
+The newly-created bouquets.xml now contains all the unique bouquet_id reference
+numbers that are the key to the ways that AutoBouquets (and RT-EPG mapping) now
+functions. Before, these were all in a vanilla bouquet_id="0000" format, which
+would have caused chaos if Bouquet Editor or Scan ran before AutoBouquets!
+
+Rest assured this was just a necessary one-off task and that it won't keep on
+doing this after subsequent reboots. And it was only cosmetic, wasn't it?
+
+===========================================================================
+
+*****  NEW in AutoBouquets for the C15.0d update of 27 October 2014  *****
+
+Very little has been needed in the AutoBouquets engine itself, as this is now
+just about as perfect as we can make it. It's all been about listening to your
+feedback (and that of our trusted band of beta testers) in order to add yet
+more layers of insulation, robustness and disaster recovery to this superb 
+program that LraiZer created for us all...
+
+So the objective has been to make AutoBouquets virtually bomb-proof from the
+possible breakages caused by external processes, standalone Scanning mainly.
+And in particular, multi-Sat scenarios.
+
+============================================================================
+
+Update 10 March 2016: Doh, we have neglected this helpfile a bit, haven't we?
+
+A new feature, discovered purely by accident during ABs testing, was that if
+the current channel happens to be the special radio "EPG Data" channel (as
+used for GetEPG) when ABs is launched, then ABs does the job in HALF the time
+compared to watching TV normally. Typically, 28 secs versus 55 secs!
+
+So we've added this option to the ABs Menu for you as follows:
+--------------------------------------------------------------
+
+It's called "AutoBouquets Fast Mode" but is OFF by default. You can switch it
+ON in the BLUE > BLUE > GREEN > GREEN menu, by pressing BLUE. Give it a try?
+
+It will allow you run ABs in the OSD at the end of a BBC program and get you
+back to the same BBC channel, before the next program starts! Cool, or what?
+
+If using ABs manually in fast mode, you'll also get to see the amazing screen
+backdrop now in use for DM500S C15.1d (used in Radio Mode and GetEPG as well)
+
+Also, and thanks to LraiZer, his autobouquetsreader binary has been updated
+to support special accent characters in Channel Names, like RTÉ for example.
+Previously, these appeared corrupted in the OSD, but not any more...
+
+Enjoy! TC ;)
