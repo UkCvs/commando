@@ -1,0 +1,71 @@
+Audio-Priority Menu for Commando 15.0 - 29 Jan 2014
+===================================================
+
+HISTORY: originally by LraiZer for dBox2 Commando in July 2009, This allowed
+'NAR' (narration for the visually impaired) to be switched off globally, by
+making the default audio 'eng' (the 3 digit ISO_639 code for 'English') in
+the Audio-Priority Settings menu.
+
+For the Commando 14.7 release of 27 January 2013, we included a new shellmenu
+item for 'Audio Selection' - giving the options of ENG (default), NAR, and AC3.
+This seems to work fine, but now that Commando for DM500 is International with
+usals and multi-Satellite support, we felt that a more 'global' approach to
+audio Language settings would be more appropriate for users.
+
+LraiZer did suggest we try his old Audio-Priority diff some months ago, and 
+for that very reason. We have now accomplished this, but it certainly was not
+an easy adaptation! The main obstacle confronting us was BSkyB's ignoring the
+International DVB Standards, by having TWO audio streams for English! One for
+AC3 and the second for normal English without narration.
+
+Since both of these audio streams began with 'eng' - Audio-Priority had no way
+of differentiating between the two. So whilst all the channels with English 
+and NAR as their audio selections worked fine, Sky Movies didn't. The default
+stream audio for those 12 channels is 'English (AC3)' and that's the way they
+stayed! We spotted in a dvbsnoop log from a PMTpid scan that AC3 did in fact
+have it's own audio pid 0x6a code (whereas English and NAR are 'undefined'). 
+
+So we tested a tweak whereby if 0x6a is present, it's description is 'ac3'. A
+couple of other files needed modding to suit, so the original 'English (AC3)'
+now became 'AC3 Dolby (English)' and Audio-Priority now gives 'English' as the
+default audio on Sky Movies, not AC3. Happy days!
+
+USEAGE:
+=======
+
+Default is 'English (no narration). So only 'eng' is required in the A-P menu
+(found with Settings > Audio where you'd expect).
+
+If you want 'NAR' (for the poor-sighted) change 'eng' to 'nar' on the first
+line, and add 'eng' to the second line (to allow for channels that don't have
+NAR). SAVE settings on the way out, then restart neutrino in the Services Menu
+
+For 'AC3 Dolby (English)' as your default audio (where available), change 'eng'
+to 'ac3' on the first line, and add 'eng' to the second line (to allow for 
+channels that don't have AC3). SAVE settings on the way out, then restart 
+neutrino in the Services Menu.
+
+OTHER LANGUAGES:
+================
+
+Nearly 500 of them! View the file /share/iso-codes/iso-639.tab via FTP or in
+the OSD via Tuxbox Commander to find YOUR country code(s).
+
+A fun test to prove how well this works: Zap to "Euronews" and press AUDIO and
+you will see that Audio = English. Also notice that 9 other languages are
+carried on this channel.
+
+In the A-P menu, make 'ger' the first priority ('deu' will not work) and 'eng' 
+the second. SAVE and restart neutrino, then zap to "BBC1". Press AUDIO and you 
+have English and not German (coz it isn't available) and not NAR, neither! 
+
+Now zap to "Euronews" and see what lingo you have? Yup- German! How cool is
+that? Undo your changes in A-P so that you only have 'eng' on the top line.
+==============================================================================
+
+With thanks to LraiZer for an amazing piece of work on his part!
+
+29 Jan 2014: All carried over from C14.7 to C15.0 intact, so should work fine!
+
+===============================================================================
+

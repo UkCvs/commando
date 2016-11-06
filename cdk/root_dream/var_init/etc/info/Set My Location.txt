@@ -1,0 +1,40 @@
+SET MY LOCATION for DM500S Commando 16.0 - LraiZer & AL - 20 October 2016
+=========================================================================
+
+WHAT IS IT?  It's for UK and ROI users on Astra 28.2E to quickly and easily set their 
+correct regional channels and related GetEPG / RT-EPG mapping, totally automatically.
+
+WHERE IS IT? BLUE > BLUE > GREEN >RED
+SML has undergone two major overhauls since C14.6 - firstly, a far more user-friendly,
+easy to navigate and intuitive GUI menu..
+
+Secondly, and thanks to Abu Baniaz, the regional ITV and ITV+1 channel names are 
+back! With picon symlinks re-instated for your local ITV and ITV+1 too, woo!
+
+SML allocates the correct Area and Region codes for your local regional channels and
+this data is then read by AutoBouquets each time it runs
+
+HOW DOES IT WORK? First choose your region- England, Scotland, Wales, NI, or ROI. Users
+in the latter three regions are then finished after just one key press! Some users in
+England and Scotland will then be asked to choose their regional ITV name and whoosh- 
+they are now done with only two key presses!
+
+The majority of users in England will finally be asked for their preferred BBC1 channel,
+so that's a maximum of 3 key presses and a few seconds well-spent! It autosaves all the 
+new settings, with a new (in Commando 15) popup confirmation 'Saved' message.
+
+Behind the scenes, LraiZer has really done us proud. Without you realizing it, he also
+sets your correct local ITV1 +1, Channel 4, Channel 4 +1, Channel 5 and Channel 5 +1 
+services, as well as the correct GetEPG and RT-EPG mapping for all these channels!
+
+Finally, users who selected Republic of Ireland not only get their RTE One, RTE Two and
+TV3 channels, but the TG4 and 3e channels in slots 1 to 5, followd by N Ireland BBC1, 
+BBC2 and UTV ones too! Not to mention a load of UK FTA channels following on behind,
+(with ££ not Euros in the adverts. And we thought it was Rip-Off Britain...
+
+So you can now proceed to AutoBouqets, which will build a brand-new and up to date 
+set of Bouquets for you specific to YOUR exact location. 
+
+See the 02-AutoBouquets.txt helpfile for further details on this...
+
+============================================================================

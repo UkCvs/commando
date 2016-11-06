@@ -1,0 +1,141 @@
+GetEPG by LraiZer - for Commando 15.0 - 29 Jan 2014
+===========================================================
+
+WHAT IS IT? 
+Up to 7 Days EPG direct from the Astra 28.2E sat stream, so it works even if your 
+box isn't online. This stays the default EPG mode, as it looks like the future for 
+RadioTimes online EPG still remains in doubt, sadly...
+
+You can easily change the EPG source to RT-EPG with a BLUE > BLUE > RED > GREEN 
+key press sequence.  GetEPG is fully-compatible (according to LraiZer) with the 
+DreamboxUK Database and the SgtFlipFlop services, if you first load them and then 
+carry out an Update Scan. But to be frank, LraiZer's latest AutoBouquets feature 
+blows the other services and bouquets providers clear out of the water, in terms 
+of speed and guaranteed up to date accuracy!  No offence intended...
+
+GetEPG Plugin
+=============
+The GetEPG Plugin is on BLUE > 3 which means you can now execute a manual EPG 
+load with just two key presses! Do this during the Ads break though, as it does take 
+about 3 minutes.  During loading, your box is actually in Radio Mode, with a splash 
+screen and 10 sec popup progress  messages. When loading is complete, it zaps back 
+to the original channel you were viewing, after popping up a summary detailing the
+number of Events stored, memory useage, and so on. (See also /var/log for info)
+
+Another benefit of having the GetEPG Plugin is that it opens up the possibility of
+loading GetEPG on a Daily Timer at a time to suit you. Of course, the other options 
+of having GetEPG automatically load 60 seconds after a reboot and/or after the box 
+wakes up from Standby are still available in the menu, but these are switched off by 
+default. Both these options (Reboot / Standby) can also be set as Daily Timers, too.
+
+See the Q&A section of the AutoBouquets doc for specific help and advice on this, as
+it is possible now to do the whole lot with just ONE AutoBouquets daily timer! :)
+
+GetEPG User Customization
+=========================
+
+GetEPG is highly (and very easily) customizeable in terms of the number of days EPG
+(0 to 7) for individual channels, number of hours for Long Descriptions, etc. 
+
+As always- please heed this advice: Use Notepad++ (Freeware) for editing and NOT your
+FTP internal editor, nor Windoze notepad /wordpad. You have been warned!  Your target 
+file for editing is NEW: /var/etc/custom_epg.txt and the syntax of this is simple:
+
+#####################################################
+#													#
+#	AutoBouquets N1 - custom channel epg manager	#
+#	Welcome to your user-friendly custom_epg.txt	#
+#		(for GetEPG and NOT RT-EPG please note)		#
+#													#
+#####################################################
+#													#
+#	KEYCODE											#
+#	1:2:3:4:5										#
+#													#
+#	1=[101-999]	sky ch no. (required- do not edit!)	#
+#	2=[0/1]		ch epg off/on (required- toggle)	#
+#	3=[0-7]		ch epg days (required- editable)	#
+#	4=[0 or 18]	epg desc hours (required- toggle*)	#
+#	5=[Ch Name]	Optional (but now 100% automatic)	#
+#													#
+#	* HOT TIP: to save memory, make 4=0 hrs for +1	#
+#	and crap channels, or 18 hrs for premium stuff	#
+#####################################################
+
+Sorry that tab format doesn't work in the TuxCom OSD, making it look a bit ragged...
+
+OK, the second field is 1 = EPG ON or 0 = EPG OFF. Easy one this. ON for prime channels, 
+but OFF for the naff ones, like those in News, Shopping, etc. Why waste memory?
+
+The third field lets you set the number of days (0 to 7) that you want EPG for.
+Be sensible, and break it down into nice chunks. For example, 7 days for prime Movies 
+and Sport, 4 days on quality Entertainment, Factual etc. 2 days for Kids and Music. 1 day 
+for reasonable channels you seldom watch, and 0 days for the rubbish stuff, of course.
+
+The fourth field is the number of hours you want Long Descriptions for. 18 hours is a
+an optimal setting for the 'good' channels, as this means that if you load GetEPG at 6am
+daily, you'll have Long Descriptions through to midnight. 0 hours for rubbish channels!
+
+Unlike C14.7 where a syntax-perfect channel name was required in the usermap, LraiZer's
+new scheme doesn't even need a channel name. So when editing custom_epg.txt it is a
+good idea to cross-refer to the latest /var/etc/channels.cfg file (automatically created
+by the last run of AutoBouquets) in order to relate channel number to channel name.
+
+Please BE SURE not to accidentally delete any the ':' column markers when editing! And
+that's it! When you next run the fantastic new AutoBouquets that LraiZer has created for
+us, your brand-new and bang-up-to-date GetEPG mapfile is automatically created, ready
+for you to load GetEPG!
+
+Enjoy!
+
+=====================================================================================
+
+UPDATE: Not only are all the channel names now included in custom_epg.txt - but these
+are automatically system-maintained, too! (If AutoBouquets detected any changes, it also
+creates a NEW custom_epg.txt usermap file in the background for you, with the changed
+channel names, in under 15 secs!)
+
+AutoBouquets uses your custom_epg.txt file to write its new channels.cfg file, which is
+the file that GetEPG reads. Much more user-friendly, and no longer any need to x-ref with
+another file like before! For C15.1c 25 Nov 2015 onwards
+
+=================================================================================
+
+LATEST UPDATE for Commando 15.1f release late June, 2016
+
+With RT-EPG nuked from the BBC server as of 17 June 2016 - TC have spent a fortnight of
+daily optimizing and testing to provide C15.1f 28.2E users with a much faster and more
+efficient makeover of the default GetEPG settings, to get them going again afresh!
+
+We now map 295 channels, with SM and SS1 set at 1:7:18 (12 channels- 7 Days)
+180 channels are set at 1:0:18 (now until midnight same day with full summaries)
+103 channels are set at 1:0:00 (now until midnight same day with no summaries)
+
+This takes less than two minutes to load, and if set for the new cronjob daily load, it
+will do you proud. Maximum memory usage with this map if loaded at 06:15 will be around
+5MB, well within your DM500S stability zone.
+
+For the night owls who need EPG from midnight thru to brekky time, simply edit your
+/var/etc/custom_epg.txt usermap file with the FREEWARE Notepad++ linux-friendly Editor
+and in the channels you like to watch at silly o'clock, change instances of:
+
+xxx:1:0:yy:chname
+to
+xxx:1:1:24:chname
+
+on the channels you need overnight epg for. Dead simple, and it will give you nocturnal
+peeps full 24 hour EPG Events coverage for your preferred wee hours channels from the
+time that GetEPG last ran! Please be sensible and balance things out, by switching an
+equal number of channels that you NEVER watch to NO epg, by changing:
+
+xxx:1:0:18:chname
+to
+xxx:0:0:00:chname
+
+Have fun! TC - 24 June 2016 ;)
+
+===================================================================
+
+
+
+

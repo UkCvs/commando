@@ -1,0 +1,106 @@
+DiSEQc DISH SETTINGS IN COMMANDO 15.0d - 27 October 2014
+________________________________________________________
+
+Section 1: DiSEQc 1.2 Motorized dish setup
+Initial settings via the menus GUI
+==================================
+
+main menu > service > service scan > diseqc = diseqc 1.2
+motor settings > use gotoxx = on
+enter your current location
+ 
+if not using gotoxx then you need to set the stored positions on your 
+motor against the sat list in the motor settings menu.
+ 
+e.g.
+if Astra 28.2E is stored in position 1 on your motor then set 
+Astra 28.2 = 1
+if Thor 2/3 0.8W is stored in position 8 on your motor then set 
+Thor 2/3 0.8W = 8
+
+Another setup method using FTP remotely
+=======================================
+
+ftp download /var/tuxbox/config/scan.conf
+ 
+if using usals/gotoxx edit these settings in scan.conf using a unix compatible
+editor (like freeware notepad++), adding your dish lat-long:
+ 
+diseqcMode=5
+gotoXXLatitude=51.48738
+gotoXXLongitude=0.327157
+useGotoXX=1
+ 
+OR
+ 
+if using stored sat positions in the motor instead of usals/gotoxx just edit:
+diseqcMode=5
+ 
+then as an example look for SatName[] for Astra 28.2E, this is currently
+SatName20 insert the relevant position stored on motor for this sat eg.
+satMotorPos20=3
+ 
+ftp edited scan.conf back to box and reboot your box
+
+Finally, for users who aren't 100% sure where they live:
+=======================================================
+
+Let's try just using the usals ONLY option to start with. First set DiSEqc= 1.2 
+then turn OFF all the sat lists changed in both lists so we know we are starting 
+clean. If your motor has been setup correctly then this is your easiest option.
+ 
+goto "google maps" in your web browser, zoom into your house where your dish is 
+mounted. Right-click on your dish postition and select "Whats Here?" Now hover 
+over the new green arrow and make a note of the lat/long position. Ignore any 
+minus sign in longitude. Enter these latitude longitude co-ordinates in the 
+gotoxx settings and turn gotoxx=on.
+ 
+scanning and zapping should now auto move to correct satellite  location without 
+needing to enter any other settings.
+
+### Our thanks to LraiZer for the above instructions ###
+========================================================
+
+Section 2: DiSEQc 1.0 / 1.1 multi-LNB Fixed dish setup
+______________________________________________________
+
+Abu Banaiz has written a superb illustrated user-guide in pdf format covering
+this subject. You can dowmload using this link:
+
+http://www.ukcvs.net/C15/C15-diseqc-guide.pdf
+
+Thanks for taking the time to do that, Abu, and for sharing your work! Also, one
+our beta testers <doink 1955> gave this excellent feedback:
+
+O.k. Heres the techy stuff. Popped image on as is from the mothership link. No 
+messing with anything in the utillities menu. 
+menu>services>scan>bouquets mode: add satellite bouquet.
+Dish setup: Diseqc 1.0
+Diseqc settings: 28.2 = 1, 19.2 = 2, 13.0 = 4
+>Back>save settings.
+Reboot box for settings to take affect.
+
+After reboot back to Menu>scan mode>one sat>astra 19.2E>back>start scan.
+Heres where the weird thing starts. It doesn't scan one sat, it scans all sats. At
+completion the new sats are not in the bouquet menu. I then repeated this but
+after selecting one sat, i then saved that setting. Previously this was not required.
+
+Start scan. Once again it scannes all sats not just the one. But this time after
+completion, the satellite bouquets are now in the bouquet menu. I then decided
+to check and make sure that AB's would not break these. So in service menu
+changed bouquets mode back to "do not modify". Then blue button>AB's now.
+
+50 seconds later AB's complete. O.K.>menu. All bouquets intact including  the
+euro ones. populated and working.
+
+
+Sorry if this is a bit drawn out mate, but am trying to be as cocise as possible as
+to the results and how i arrived at them.
+======================================================================
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+Recording to a mounted network drive with C15.0 Jan 2014
+========================================================
+Here's an excellent tutorial written by mickb82 over on www.digital-kaos.co.uk/forums
+--------------------------------------------------------------------------------------
+
+Its pretty easy to setup recording on Commando 15.0 But before you start you will need 
+to setup and get some information from your PC.
+
+Firstly you need to decide what drive you want to use for your recordings, I use a 32gb
+USB stick plugged driectly into my router but you can also use a shared network drive 
+on your PC. Note down the following link for advice on setting up sharing on your PC: 
+
++++ http://windows.microsoft.com/en-GB/windows7/Share-files-with-someone +++
+
+Also to make sure that commando re-connects to your shared drive automatically it would
+be best to assign your PC a static IP address. This is not needed if your using a USB 
+plugged into your router like I am as this uses your router IP address. You will need 
+to consult your router instructions or google to find out how to do this.
+
+Before you set things up on commando you need the following information:
+
+1. Your PC or router IP address. (On windows 7 open network & sharing centre, click on
+ change adaptor settings and double click on your network connection. Then click details
+ and the PC IP address is shown as IPv4 Address and your router IP Address is shown as 
+ IPv4 Default gateway)
+
+2. Your PC or router MAC address. (On windows 7 open network & sharing centre, click on 
+ change adaptor settings and double click on your network connection. Then click details 
+ and the MAC address is shown as physical address. To get your router MAC address you 
+ would need to login to your router)
+ 
+(In XP: open a DOS command console with Start > Run > command <enter> and type in:
+ ipconfig -all 
+and you will see the IP and MAC addresses for your PC)
+
+3. The exact name you have chosen for your shared folder or drive.
+
+4. The login information for your router (usually username:admin password:admin)
+
+Right now to set things up on Commando!
+
+Firstly go into settings/network and press blue (mount edit network shares) then press 
+red to mount a network volume.
+
+Select the first slot and you will have a list of items that you need to enter 
+information into:
+Type: CIFS
+Server IP: (Your router or PC IP address)
+Directory/Share: (The exact name of your shared folder or drive)
+Local Directory: (I chose mmt/cf)
+Mount On Startup: Yes
+Mount Options: Change the ro to rw
+Mount Options: Leave this as it is
+Username: (Your router username. I didnt have a PC username so I used my router one 
+and it worked)
+Password: (Your router password. I didnt have a PC password so I used my router one 
+and it worked)
+MAC Address: Enter your PC or Router MAC Address
+Mount Now: Press OK
+
+To make sure it has been mounted, press green to unmount your network volume (but 
+don't actually unmount it). If its been setup correctly it should be listed in the 
+unmount menu. Now exit back to settings.
+
+Next select recording in settings, then change the recording device to direct (file)
+then press green to enter direct recording settings. I used the following settings:
+
+Recording directory: (same name used earlier when setting up the network drive)
+Choose directory on recording: off
+Directory Permissions: 755
+Ringbuffer Size: 8MB
+Maximum File Size: (This depends on how your drive is formatted as to what the maximum
+filesize can be, I use 2048mb)
+Write Sync (O_SYNC): off
+Write Sync (fdatasync): off
+Record VideoText: off
+Record Subtitles: off
+
+I have set long filenames on and the filenmame template to %T_%d but you can set this 
+up however you want.
+
+Once all the settings are entered exit and press red to activate changes.
+
+Recording is now set up!!!
+
+To record the channel you are watching press blue and press red to start recording then
+press red to stop the recording. (Works in Commando 14.7 so should it in C15.0)
+
+To schedule a recording you can either manually enter the times and channels by 
+pressing blue, then yellow then green and entering all the details or you can navigate 
+the epg to find the program you want to record then press info and press red to schedule
+a record. (I can't get recordings done by this method to playback on C14.7 due to it
+somehow defaulting to NAR audio rather than English, but this method works fine on the 
+old C14.3 image. Team Commando are investigating this issue at the time of writing).
+
+To playback a recording press blue then green then navigate to the folder you chose 
+earlier (mnt/cf)
+
+I have set mine up using all the above information and I have Timer recording working 
+perfectly on C14.3!
+
+mickb82 - 11th February 2013 - www.digital-kaos.co.uk/forums
+
+=========================================================================================
+
+14 March 2013 Update:
+
+Our new combination of Audio-Priority with FastZap now set to ON not only results
+in perfect lip syncronization in AV, not to mention even faster channel zapping
+than before- testing shows that TS Recordings now play back perfectly, too! Now 
+THAT'S what we call a 'three for the price of one' bargain! Happy days! :)
+
+29 January 2014: All carried over to Commando 15.0 so no reason for it not to work!
+
+===================================================================================
