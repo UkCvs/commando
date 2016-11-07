@@ -149,6 +149,9 @@ CVCRControl::CDevice * recordingdevice = NULL;
 #define NEUTRINO_RECORDING_END_SCRIPT CONFIGDIR "/recording.end"
 #define NEUTRINO_ENTER_STANDBY_SCRIPT   CONFIGDIR "/standby.on"
 #define NEUTRINO_LEAVE_STANDBY_SCRIPT   CONFIGDIR "/standby.off"
+#define NEUTRINO_PICONS_INSTALL_SCRIPT   CONFIGDIR "/picons.install"
+#define NEUTRINO_PICONS_REMOVE_SCRIPT   CONFIGDIR "/picons.remove"
+#define NEUTRINO_PICONS_INSTALL_FILE	"/var/etc/icons/icons.zip"
 #define NEUTRINO_INIT_END_SCRIPT	CONFIGDIR "/init.end"
 #define NEUTRINO_SCAN_SETTINGS_FILE     CONFIGDIR "/scan.conf"
 #define NEUTRINO_DEFAULTLOCALE_FILE     CONFIGDIR "/defaultlocale"
@@ -2259,6 +2262,23 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Timerd->registerEvent(CTimerdClient::EVT_ANNOUNCE_SLEEPTIMER, 222, NEUTRINO_UDS_NAME);
 	g_Timerd->registerEvent(CTimerdClient::EVT_REMIND, 222, NEUTRINO_UDS_NAME);
 	g_Timerd->registerEvent(CTimerdClient::EVT_EXEC_PLUGIN, 222, NEUTRINO_UDS_NAME);
+
+	if (file_exists(NEUTRINO_PICONS_INSTALL_FILE))
+	{
+		if (ShowLocalizedMessage(LOCALE_MESSAGEBOX_INFO, LOCALE_PICONS_INSTALL,
+			CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo, NEUTRINO_ICON_QUESTION, 450,
+			g_settings.timing[SNeutrinoSettings::TIMING_MENU], true) == CMessageBox::mbrYes) {
+			puts("[neutrino.cpp] executing " NEUTRINO_PICONS_INSTALL_SCRIPT ".");
+			if (my_system(NEUTRINO_PICONS_INSTALL_SCRIPT) != 0)
+				perror(NEUTRINO_PICONS_INSTALL_SCRIPT " failed");
+		}
+		else
+		{
+			puts("[neutrino.cpp] executing " NEUTRINO_PICONS_REMOVE_SCRIPT ".");
+			if (my_system(NEUTRINO_PICONS_REMOVE_SCRIPT) != 0)
+				perror(NEUTRINO_PICONS_REMOVE_SCRIPT " failed");
+		}
+	}
 
 	//show language settings, if no language is configured
 	if (display_language_selection)

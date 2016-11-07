@@ -1209,6 +1209,7 @@ const char * locale_real_names[] =
 	"personalize.pinstatus",
 	"personalize.setupmenuwithpin",
 	"personalize.visible",
+	"picons.install",
 	"pictureviewer.decode_server_ip",
 	"pictureviewer.decode_server_port",
 	"pictureviewer.defdir",

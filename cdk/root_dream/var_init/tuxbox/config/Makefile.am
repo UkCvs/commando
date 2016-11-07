@@ -16,7 +16,8 @@ FILES_FLASH_RO = \
 	menu_volume.conf
 
 FILES_FLASH_RO_EXEC = \
-	standby.on standby.off
+	standby.on standby.off \
+	picons.install picons.remove
 
 DIR = /var_init/tuxbox/config/
 

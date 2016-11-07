@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rm -fr /var/etc/icons/*.*
+
+exit 0
+
