@@ -151,7 +151,7 @@ CVCRControl::CDevice * recordingdevice = NULL;
 #define NEUTRINO_LEAVE_STANDBY_SCRIPT   CONFIGDIR "/standby.off"
 #define NEUTRINO_PICONS_INSTALL_SCRIPT   CONFIGDIR "/picons.install"
 #define NEUTRINO_PICONS_REMOVE_SCRIPT   CONFIGDIR "/picons.remove"
-#define NEUTRINO_PICONS_INSTALL_FILE	"/var/etc/icons/icons.zip"
+#define NEUTRINO_PICONS_INSTALL_FILE	"/tmp/icons.zip"
 #define NEUTRINO_INIT_END_SCRIPT	CONFIGDIR "/init.end"
 #define NEUTRINO_SCAN_SETTINGS_FILE     CONFIGDIR "/scan.conf"
 #define NEUTRINO_DEFAULTLOCALE_FILE     CONFIGDIR "/defaultlocale"
@@ -2262,6 +2262,18 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Timerd->registerEvent(CTimerdClient::EVT_ANNOUNCE_SLEEPTIMER, 222, NEUTRINO_UDS_NAME);
 	g_Timerd->registerEvent(CTimerdClient::EVT_REMIND, 222, NEUTRINO_UDS_NAME);
 	g_Timerd->registerEvent(CTimerdClient::EVT_EXEC_PLUGIN, 222, NEUTRINO_UDS_NAME);
+
+	std::string zip = "icons.zip";
+	const char *logodir = g_settings.infobar_channel_logodir;
+	std::string zipfile = logodir + zip;
+
+	if (file_exists(zipfile.c_str()))
+	{
+		std::string cmd = "mv " + zipfile + " " + NEUTRINO_PICONS_INSTALL_FILE;
+		printf("[neutrino] moving: %s\n", cmd.c_str());
+		if (system(cmd.c_str()) != 0)
+			perror("move failed");
+	}
 
 	if (file_exists(NEUTRINO_PICONS_INSTALL_FILE))
 	{
