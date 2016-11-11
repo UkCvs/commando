@@ -5,7 +5,7 @@
 # GetEPG) IF found when AutoBouquets last ran! User-friendly or what?
 
 # updated Thu 03 Nov 2016: Long Desc now user-definable 000>168hrs range
-# updated Sat 05 Nov 2016: Now have ALL datestamps as we want them
+# updated Fri 11 Nov 2016: Now have ALL datestamps as we want them
 
 etc="/var/etc"
 cfg="/var/tuxbox/config"
@@ -127,6 +127,7 @@ rm -f $bb $chlist $tbq $tcsv
 emsg="epgusermaps updated on: `date +"$now"`"
 echo "$emsg"
 echo "# $emsg" >>$log
+[ -e $als ] && cp -f $log $svr
 mv -f $log /var/log
 wget http://localhost/control/rc?unlock 2>/dev/null
 rcsim KEY_HOME >/dev/null

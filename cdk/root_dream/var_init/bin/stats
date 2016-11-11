@@ -1,5 +1,5 @@
 #!/bin/sh
-# AL (for LraiZers C16 public dev) updated Sat 05 Nov 2016
+# AL (for LraiZers C16 public dev) updated Fri 11 Nov 2016
 
 epgs="/tmp/epgstats.dat"
 lock="/tmp/getepg.lock"
@@ -84,7 +84,6 @@ if [ -e $lock ]; then
 	clip1=`grep " events:" $epgs|cut -d " " -f5`
 	echo $clip1 >/tmp/clip1
 	echo $mem2 >/tmp/clip2
-	{ sleep 20; rm /tmp/clip*; } &
 fi
 
 exit 0

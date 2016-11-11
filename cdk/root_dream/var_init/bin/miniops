@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 05 Nov 2016 11h44- LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 11 Nov 2016 - LraiZer and PaphosAL
 
 etc="/var/etc"
 logd="/var/log"
@@ -274,7 +274,6 @@ cp -f $tbq $zap
 cp -f $tcsv $etc
 cp -f $tmap $etc
 mv $tsv $zap
-mv /tmp/*s.log $logd
 dsq_chk
 grep -q "qcMode=0" $scan && zapnew
 touch $svc
@@ -378,17 +377,15 @@ if [ -e /tmp/clip3 ]; then
 else
 	summ3="EPG is now saved in VRAM! Avoid rebooting..."
 fi
-
 dur="$(expr $stop_time / 60) mins $(expr $stop_time % 60) secs"
 summ1="Saved $events events in $count channels ($mem RAM use)"
 summ2="GetEPG loading took: $dur"
-echo "Last $summ2" >>$epgs
 echo "
 $summ1
 $summ2
 $summ3
 "
-rc_unlock
+echo "Last $summ2" >>$epgs
 mv $epgs $logd
 if [ ! -e $etc/.sleep ]; then
 	fmsg "$summ1\n\n$summ2"
@@ -399,6 +396,14 @@ if [ ! -e $etc/.sleep ]; then
 else
 	pzapit -n "TCM"
 fi
+# thnx daverave-
+if [ -e /tmp/clip3 ]; then
+    until [ -e $epgcache/index.xml ]; do
+    sleep 1
+    done
+fi
+rm /tmp/clip*
+rc_unlock
 exit 0
 ;;
 pc-y)

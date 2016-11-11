@@ -1,43 +1,12 @@
-Welcome to C16 test image! On first boot, it will then tell you that it's loading
-the default neutrino settings. This message will not appear on subsequent starts.
+Welcome to the Commando 16 test image! On first boot, it will ask if you want to
+install the Infobar Channel Icons. This is currently a one-time YES or NO option.
+It will then tell you that it's loading the default neutrino settings. Neither
+message will appear again on subsequent starts.
 
-Install method 1:
-=================
-As suggested by LraiZer, and tests out perfectly, thanks! After flashing the
-latest C16 snapshot test image, just download the C16-public-shell_adds.tar.gz
-tarball to your PC.
+================================================
 
-Then go into the yWeb I/F and click the Tools tab, then yInstaller
-Browse to the tarball on your PC, then click the 'Upload/Install' button.
-After about 30secs, you'll see a "job done" message!
-But please READ further down as regards your next sequential steps!!
--------------------------------------------------------------------------
-
-Install method 2 (for the FTP/Telnet aficionados):
-==================================================
-
-Use WinRAR to extract the install.sh script from the tarball
-FTP that and the C16-public-shell_adds.tar.gz tarball to /tmp
-
-Telnet:
-==============
-
-login: root <enter>
-
-~ > cd tmp <enter>
-
-/tmp > chmod 755 install.sh <enter>
-
-/tmp > tar -xzf C16-public-shell_adds.tar.gz <enter>
-
-/tmp > ./install.sh <enter>
-
-Update done! Now exit Telnet
-===================================
-
-NEXT- FOR WHICHEVER INSTALL METHOD:
------------------------------------
-If you're NOT in London, go BLUE > BLUE > RED to SML and set your location.
+NEXT-
+If you're NOT in London, go BLUE > BLUE > GREEN > RED to SML and set your location.
 
 Default +1 sorting is 'with parent channel'. Change this to '+1 bouquet' or
 'stream order' (if desired) in BLUE > BLUE > GREEN > GREEN > YELLOW menu.
@@ -79,4 +48,4 @@ In this way, you only need one mount PER external device. This advice is based o
 VITAL test feedback from LraiZer, TC and daverave! Ignore it at your peril...
 
 HAVE FUN!
-TC- 19 Oct 2016
+TC- 11 Nov 2016

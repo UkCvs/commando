@@ -1,7 +1,7 @@
 FILES_FLASH_RO = \
 	Audio_Priority.txt \
 	Set_my_Location.txt \
-	Install_Commando.txt \
+	Commando_welcome.txt \
 	GetEPG.txt \
 	Hints_and_Tips.txt \
 	Softcams_educational.txt \
