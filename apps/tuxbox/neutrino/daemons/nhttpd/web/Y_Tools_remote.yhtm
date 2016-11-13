@@ -27,63 +27,55 @@ body {background-color: black}
 </style>
 </head>
 <body>
-<p>
-<table cellpadding="1" align="center">
+<table cellpadding="20" align="center">
 		<tr>
-			<td></td>
-			<td align="center"><input type="button" style="width:120px;height:100px;font-size:45px;color:white" value="Mute" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_MUTE");'/></td>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td align="center"><input type="button" style="width:120px;height:100px;font-size:45px;color:white;background-color:#FF0000" value="O/I" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_POWER");'/></td>
-			<td></td>
-		</tr>
-</table>
-<p>
-<table cellpadding="1" align="center">
-		<tr>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="1" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_1");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="2" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_2");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="3" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_3");'/></td>
+			<td align="center" style="width:200px" rowspan="2"><input type="button" style="width:130px;height:100px;font-size:45px;color:white;background-color:#FF0000" value="O/I" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_POWER");'/></td>
+			<td align="center" style="width:100px"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="1" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_1");'/><br><font size="5" color="white">.,:!?</font></td>
+			<td align="center" style="width:100px"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="2" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_2");'/><br><font size="5" color="white">abc</font></td>
+			<td align="center" style="width:100px"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="3" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_3");'/><br><font size="5" color="white">def</font></td>
 			</tr>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="4" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_4");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="5" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_5");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="6" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_6");'/></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="4" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_4");'/><br><font size="5" color="white">ghi</font></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="5" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_5");'/><br><font size="5" color="white">jkl</font></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="6" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_6");'/><br><font size="5" color="white">mno</font></td>
 			</tr>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="7" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_7");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="8" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_8");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="9" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_9");'/></td>
+			<td align="center" rowspan="2"><input type="button" style="width:130px;height:100px;font-size:45px;color:white" value="Mute" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_MUTE");'/></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="7" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_7");'/><br><font size="5" color="white">pqrs</font></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="8" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_8");'/><br><font size="5" color="white">tuv</font></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="9" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_9");'/><br><font size="5" color="white">wxyz</font></td>
 			</tr>			
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="<" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_VOLUMEDOWN");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value="0" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_0");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:50px;color:white" value=">" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_VOLUMEUP");'/></td>
-			</tr>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Info" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_HELP");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Up" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_UP");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Menu" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_SETUP");'/></td>
-			</tr>
-			<tr>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Left" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_LEFT");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="OK" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_OK");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Right" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RIGHT");'/></td>
-			</tr>
-			<tr>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Audio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_AUDIO");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Down" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_DOWN");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Exit" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_HOME");'/></td>
-			</tr>
-			<tr>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Text" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_TEXT");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Tv" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_TV");'/></td>
-			<td align="center"><input type="button" style="width:200px;height:100px;font-size:45px;color:white" value="Radio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RADIO");'/></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="<" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_VOLUMEDOWN");'/><br>&nbsp;</td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value="0" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_0");'/><br><font size="5" color="white">- /_</font></td>
+			<td align="center"><input type="button" style="width:80px;height:80px;font-size:50px;color:white" value=">" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_VOLUMEUP");'/><br>&nbsp;</td>
 			</tr>
 </table>
-&nbsp;<p>
-<table cellpadding="1" align="center">
+<table cellpadding="20" align="center">
 		<tr>
-			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:black;background-color:#FF0000" value="EPG" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RED");'/></td>
-			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:black;background-color:#00FF00" value="Audio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_GREEN");'/></td>
-			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:black;background-color:#FFFF00" value="Guide" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_YELLOW");'/></td>
-			<td align="center"><input type="button" style="width:149px;height:100px;font-size:45px;color:white;background-color:#0000FF" value="More" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_BLUE");'/></td>
+			<td align="center" style="width:200px"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Info" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_HELP");'/></td>
+			<td align="center" style="width:200px"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Up" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_UP");'/></td>
+			<td align="center" style="width:200px"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Menu" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_SETUP");'/></td>
+			</tr>
+			<tr>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Left" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_LEFT");'/></td>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="OK" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_OK");'/></td>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Right" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RIGHT");'/></td>
+			</tr>
+			<tr>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Audio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_AUDIO");'/></td>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Down" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_DOWN");'/></td>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Exit" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_HOME");'/></td>
+			</tr>
+			<tr>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Text" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_TEXT");'/></td>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Tv" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_TV");'/></td>
+			<td align="center"><input type="button" style="width:150px;height:80px;font-size:45px;color:white" value="Radio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RADIO");'/></td>
+			</tr>
+</table>
+<table cellpadding="20" align="center">
+		<tr>
+			<td align="center" style="width:130px"><input type="button" style="width:100px;height:80px;font-size:25px;color:black;background-color:#FF0000" value="EPG" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_RED");'/></td>
+			<td align="center" style="width:130px"><input type="button" style="width:100px;height:80px;font-size:25px;color:black;background-color:#00FF00" value="Audio" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_GREEN");'/></td>
+			<td align="center" style="width:130px"><input type="button" style="width:100px;height:80px;font-size:25px;color:black;background-color:#FFFF00" value="Guide" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_YELLOW");'/></td>
+			<td align="center" style="width:130px"><input type="button" style="width:100px;height:80px;font-size:25px;color:white;background-color:#0000FF" value="More" onclick='goUrl("/control/exec?Y_Tools&cmd&/&false&rcsim%20KEY_BLUE");'/></td>
 		</tr>
 </table>
 </body>
