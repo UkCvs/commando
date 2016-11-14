@@ -1,11 +1,5 @@
 #!/bin/sh
 
-etc="/var/etc"
-
-if [ -e $etc/.smart-sb ]; then
-	touch $etc/.sleep
-fi
-
-[ ! -e $etc/.emu-sb ] && miniops stop
+[ ! -e /var/etc/.emu-sb ] && miniops stop
 
 exit 0

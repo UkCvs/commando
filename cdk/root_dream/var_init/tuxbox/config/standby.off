@@ -2,25 +2,13 @@
 
 etc="/var/etc"
 
-# see if GetEPG was auto-loaded during a current smart-sleep Standby session
-if [ -e /tmp/.getepg ]; then
-	mode=`cat /tmp/mode`
-	zdat=`cat /tmp/zapto`
-	if [ "$mode" = "1" ]; then
-		pzapit -zi "$zdat"
-	else
-		pzapit -ra -zi "$zdat"
-	fi
-	rm -f /tmp/mode /tmp/zapto /tmp/.getepg
-fi
-
 # conditional EPG load 60 secs after wakeup
 if [ -e $etc/.epg-sb ]; then
 	{ sleep 60; miniops getepg >/dev/null; } &
 fi
 
 [ -e $etc/.smart-sb ] && rm -f $etc/.sleep
-. $etc/v-level
+. $etc/v-level	
 [ ! -e $etc/.emu-sb ] && miniops start
 
 # mgcamd or oscam standby/wakeup issue (kick up arse needed)
