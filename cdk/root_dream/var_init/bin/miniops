@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 15 Nov 2016 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 16 Nov 2016 17:50- LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -33,7 +33,6 @@ acs="$etc/bq_0f.ref"
 csrc="var/spool/cron/crontabs/root"
 lock="/tmp/getepg.lock"
 nop="/dev/null"
-noOP="Snop 2>&1"
 now="%a %d %b %Y %T"
 mode=`pzapit -gm|cut -d " " -f2`
 zdat=`pzapit -gi|cut -d "(" -f1`
@@ -355,13 +354,13 @@ for i in 0 1 2 3 4 5 6 7; do
 	weekepglog -f -l uk $d -e /tmp
 	mv epg.dat epg$i.dat
 	$sdc --rdepg $i >$nop
-	rm channels*.uk 
+	rm channels*.uk
  fi
 done
 while [ -e rdepg.lock ]; do
 	sleep 1
 done
-$sdc --nopause >$nop 
+$sdc --nopause >$nop
 rm $map epg.err
 cd /
 stop_time=$(expr `date +%s` - $start_time)
@@ -372,7 +371,7 @@ rm $lock
 
 if [ -e /tmp/clip3 ]; then
 	epgcache=`cat /tmp/clip3`
-	rm $epgcache* 
+	rm $epgcache*
 	$sdc --wepg $epgcache >$nop
 	summ3="Updated your $epgcache EPG Cache mount!"
 else
@@ -399,8 +398,8 @@ if [ -e /tmp/clip3 ]; then
     until [ -e $epgcache/index.xml ]; do
     sleep 1
     done
-fi  
-rm /tmp/clip* 
+fi
+rm /tmp/clip*
 rc_unlock
 exit 0
 ;;
