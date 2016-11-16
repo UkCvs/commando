@@ -1,6 +1,7 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 11 Nov 2016 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 15 Nov 2016 - LraiZer and PaphosAL
 
+web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
 logd="/var/log"
 epgs="/tmp/epgstats.dat"
@@ -32,6 +33,7 @@ acs="$etc/bq_0f.ref"
 csrc="var/spool/cron/crontabs/root"
 lock="/tmp/getepg.lock"
 nop="/dev/null"
+noOP="Snop 2>&1"
 now="%a %d %b %Y %T"
 mode=`pzapit -gm|cut -d " " -f2`
 zdat=`pzapit -gi|cut -d "(" -f1`
@@ -313,12 +315,11 @@ stop)
 ;;
 getepg)
 [ -e $bb ] && fmsg "GetEPG cannot load while AutoBouquets is running!" && exit 0
-[ -e $lock ] && oops="GetEPG is already running!" && echo "$oops" && fmsg "$oops" && exit 0
-if [ -e $etc/.sleep ]; then
-	echo "$mode" > /tmp/mode
-	echo "$zdat" > /tmp/zapto
-	touch /tmp/.getepg
-	rm $etc/.emu-sb
+if [ -e $lock ]; then
+	oops="GetEPG is already running!"
+	echo "$oops"
+	fmsg "$oops"
+	exit 0
 fi
 rm -f /tmp/*.img /tmp/epg*.dat /tmp/epg.err
 udat="/tmp/udat"
@@ -387,22 +388,19 @@ $summ3
 "
 echo "Last $summ2" >>$epgs
 mv $epgs $logd
-if [ ! -e $etc/.sleep ]; then
-	fmsg "$summ1\n\n$summ2"
-	sleep 7
-	fmsg "$summ3\n\nBack to TV now (with an active RC)..."
-	sleep 3
-	zapback
-else
-	pzapit -n "TCM"
-fi
+fmsg "$summ1\n\n$summ2"
+sleep 7
+fmsg "$summ3\n\nBack to TV now (with an active RC)..."
+sleep 3
+zapback
+
 # thnx daverave-
 if [ -e /tmp/clip3 ]; then
     until [ -e $epgcache/index.xml ]; do
     sleep 1
     done
-fi
-rm /tmp/clip*
+fi  
+rm /tmp/clip* 
 rc_unlock
 exit 0
 ;;
@@ -511,21 +509,37 @@ net-epgc)
 sed -i '/epg_dir=/cepg_dir=' $conf
 killall neutrino
 ;;
-satellites)
-dload="wget http://www.ukcvs.net/C15/updates"
-fmsg "Installing our latest satellites.xml file..."
-cd $etc
-[ ! -e .282e ] && [ ! -e .eusats ] && $dload/satellites.zip
-[ -e .282e ] && $dload/satellites-28.zip
-[ -e .eusats ] && $dload/satellites-eu.zip
-sleep 10
-if [ -e satellite*.zip ]; then
-	unzip -o satellite*.zip
-	rm satellite*.zip
-	fmsg "Success! REBOOT to activate it!"
+picons)
+pz="icons.zip"
+fmsg "Downloading $pz - hang on..."
+cd /tmp
+$web/$pz
+sleep 6
+if [ -e $pz ]; then
+	fmsg "Download success! Preparing installation..."
+	sleep 3
+	killall neutrino
 else
-	fmsg "Oops, download failed. Try later?"
+	fmsg "Oops, download failed! Check your LAN?"
 fi
+rm -f mess*
+cd /
+;;
+satellites)
+sz="satellites"
+fmsg "Downloading our latest $sz.xml file..."
+cd $etc
+[ ! -e .282e ] && [ ! -e .eusats ] && $web/$sz.zip
+[ -e .282e ] && $web/$sz-28.zip
+[ -e .eusats ] && $web/$sz-eu.zip
+sleep 6
+if [ -e $sz*.zip ]; then
+	unzip -o $sz*.zip
+	fmsg "Download and install was a success!\nA reboot is needed to activate it..."
+else
+	fmsg "Oops, download failed! Check your LAN?"
+fi
+rm -f *.zip mess*
 sleep 7
 cd /
 ;;
