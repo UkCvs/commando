@@ -7,13 +7,11 @@
 etc="/var/etc"
 zap="/var/tuxbox/config/zapit/zapit.conf"
 
-if [ -e /bin/madplay ]; then
-	if [ ! -e $etc/.no-mp3 ]; then
-		if [ -e $etc/custom.mp3 ]; then
-			madplay $etc/custom.mp3
-		else
-			madplay /share/gun.mp3 /share/commando.mp3
-		fi
+if [ ! -e $etc/.no-mp3 ]; then
+	if [ -e $etc/custom.mp3 ]; then
+		madplay $etc/custom.mp3
+	else
+		madplay /share/gun.mp3 /share/commando.mp3
 	fi
 fi
 
@@ -46,11 +44,6 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 
 	if [ -e $etc/.epg-boot ]; then
 		{ sleep 60; miniops getepg >/dev/null; } &
-	fi
-
-	if [ -e $etc/.sleep ]; then
-		rm -f $etc/.sleep
-		{ sleep 10; wget http://localhost/control/standby?on >/dev/null 2>&1; } &
 	fi
 fi
 
