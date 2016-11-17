@@ -1092,17 +1092,17 @@ start-block~neutrino_form-data_bootoptions
 hide dbox2 settings -->
 
 			<tr>
-				<td>{=L:4118=}</td>
-				<td>
-					<input type="radio" name="logging" value="0" />{=L:0032=}&nbsp;
-					<input type="radio" name="logging" value="1" />{=L:0031=}
-				</td>
-			</tr>
-			<tr>
 				<td>{=L:4109=}</td>
 				<td>
 					<input type="radio" name="pmt_update" value="0" />{=L:0032=}&nbsp;
 					<input type="radio" name="pmt_update" value="1" />{=L:0031=}
+				</td>
+			</tr>
+			<tr>
+				<td>{=L:4124=}</td>
+				<td>
+					<input type="radio" name="mp3-boot" value="0" />{=L:0032=}&nbsp;
+					<input type="radio" name="mp3-boot" value="1" />{=L:0031=}
 				</td>
 			</tr>
 			<tr>
@@ -1141,10 +1141,10 @@ hide dbox2 settings -->
 				</td>
 			</tr>
 			<tr>
-				<td>{=L:4124=}</td>
+				<td>{=L:4118=}</td>
 				<td>
-					<input type="radio" name="smart_sb" value="0" />{=L:0032=}&nbsp;
-					<input type="radio" name="smart_sb" value="1" />{=L:0031=}
+					<input type="radio" name="logging" value="0" />{=L:0032=}&nbsp;
+					<input type="radio" name="logging" value="1" />{=L:0031=}
 				</td>
 			</tr>
 
@@ -1210,14 +1210,14 @@ function form_init()
 	obj_set_radio_value('philips_rc_patch', "{=if-file-exists:/var/etc/.philips_rc_patch~1~0=}");
 	obj_set_radio_value('sptsfix', "{=if-file-exists:/var/etc/.sptsfix~1~0=}");
 	obj_set_radio_value('rtc', "{=if-file-exists:/var/etc/.rtc~1~0=}");
-	obj_set_radio_value('logging', "{=if-file-exists:/var/etc/.logging~1~0=}");
 	obj_set_radio_value('pmt_update', "{=if-file-exists:/var/etc/.pmt_update~1~0=}");
+	obj_set_radio_value('mp3-boot', "{=if-file-exists:/var/etc/.no-mp3~0~1=}");
 	obj_set_radio_value('crond', "{=if-file-exists:/var/etc/.crond~1~0=}");
 	obj_set_radio_value('dp_yes', "{=if-file-exists:/var/etc/.dp-yes~1~0=}");
 	obj_set_radio_value('emu_sb', "{=if-file-exists:/var/etc/.emu-sb~1~0=}");
 	obj_set_radio_value('no_radio_bg', "{=if-file-exists:/var/etc/.no-radio-bg~0~1=}");
 	obj_set_radio_value('no_scan_bg', "{=if-file-exists:/var/etc/.no-scan-bg~0~1=}");
-	obj_set_radio_value('smart_sb', "{=if-file-exists:/var/etc/.smart-sb~1~0=}");
+	obj_set_radio_value('logging', "{=if-file-exists:/var/etc/.logging~1~0=}");
 }
 
 function do_submit()
