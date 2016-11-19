@@ -417,6 +417,7 @@ driversettings.help2 Die letzten vier Optionen haben sofortiger Wirkung.
 driversettings.help3 Option Änderungen werden automatisch gespeichert!
 driversettings.hwsections HW-Sections verwenden
 driversettings.logging Aktivieren Sie Notizen
+driversettings.mp3_boot Abspielen von mp3 beim Booten
 driversettings.noaviawatchdog AVIA-Watchdog aktivieren
 driversettings.noenxwatchdog eNX-Watchdog aktivieren
 driversettings.philipsrcpatch Philips/Sagem FB Workaround
@@ -424,7 +425,6 @@ driversettings.pmtupdate PMT Update (zufällige Ausfälle, wenn sie auf)
 driversettings.radio_bg Zeigen Sie den Bildschirm im Radiomodus
 driversettings.rtc RTC aktivieren
 driversettings.scan_bg Zeigen Sie den Bildschirm im Scanmodus
-driversettings.smart_sb Smart Schlaf- Autostart in SB? SB nach!
 driversettings.sptsfix SPTS-Fix AVIA500 aktivieren
 driversettings.sptsmode SPTS-Mode Treiber laden
 driversettings.startbhdriver BH-Mode Treiber laden

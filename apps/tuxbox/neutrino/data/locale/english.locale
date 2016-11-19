@@ -438,6 +438,7 @@ driversettings.help2 The last four options have immediate effect.
 driversettings.help3 Option changes are automatically saved!
 driversettings.hwsections Use hardware sections
 driversettings.logging Enable Debug Logging
+driversettings.mp3_boot Play MP3 sounds at boot
 driversettings.noaviawatchdog Enable AVIA watchdog
 driversettings.noenxwatchdog Enable eNX watchdog
 driversettings.philipsrcpatch Philips/Sagem RC workaround
@@ -445,7 +446,6 @@ driversettings.pmtupdate PMT Update (random blackouts if on)
 driversettings.radio_bg Display splash screen in Radio Mode
 driversettings.rtc Activate RTC
 driversettings.scan_bg Display splash screen in Scan Mode
-driversettings.smart_sb Smartsleep- autoboot in SB? SB after!
 driversettings.sptsfix Use spts mode fix AVIA500
 driversettings.sptsmode Use spts mode
 driversettings.startbhdriver Load BH-Mode drivers

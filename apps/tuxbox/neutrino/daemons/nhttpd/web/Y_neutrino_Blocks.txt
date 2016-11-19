@@ -1101,8 +1101,8 @@ hide dbox2 settings -->
 			<tr>
 				<td>{=L:4124=}</td>
 				<td>
-					<input type="radio" name="mp3-boot" value="0" />{=L:0032=}&nbsp;
-					<input type="radio" name="mp3-boot" value="1" />{=L:0031=}
+					<input type="radio" name="mp3_boot" value="0" />{=L:0032=}&nbsp;
+					<input type="radio" name="mp3_boot" value="1" />{=L:0031=}
 				</td>
 			</tr>
 			<tr>
@@ -1211,7 +1211,7 @@ function form_init()
 	obj_set_radio_value('sptsfix', "{=if-file-exists:/var/etc/.sptsfix~1~0=}");
 	obj_set_radio_value('rtc', "{=if-file-exists:/var/etc/.rtc~1~0=}");
 	obj_set_radio_value('pmt_update', "{=if-file-exists:/var/etc/.pmt_update~1~0=}");
-	obj_set_radio_value('mp3-boot', "{=if-file-exists:/var/etc/.no-mp3~0~1=}");
+	obj_set_radio_value('mp3_boot', "{=if-file-exists:/var/etc/.no-mp3~0~1=}");
 	obj_set_radio_value('crond', "{=if-file-exists:/var/etc/.crond~1~0=}");
 	obj_set_radio_value('dp_yes', "{=if-file-exists:/var/etc/.dp-yes~1~0=}");
 	obj_set_radio_value('emu_sb', "{=if-file-exists:/var/etc/.emu-sb~1~0=}");
@@ -1241,14 +1241,14 @@ start-block~neutrino_bootoptions_save_settings
 {=file-action:/var/etc/.philips_rc_patch;{=if-equal:{=philips_rc_patch=}~1~add~delete=}=}
 {=file-action:/var/etc/.sptsfix;{=if-equal:{=sptsfix=}~1~add~delete=}=}
 {=file-action:/var/etc/.rtc;{=if-equal:{=rtc=}~1~add~delete=}=}
-{=file-action:/var/etc/.logging;{=if-equal:{=logging=}~1~add~delete=}=}
 {=file-action:/var/etc/.pmt_update;{=if-equal:{=pmt_update=}~1~add~delete=}=}
+{=file-action:/var/etc/.no-mp3;{=if-equal:{=mp3_boot=}~0~add~delete=}=}
 {=file-action:/var/etc/.crond;{=if-equal:{=crond=}~1~add~delete=}=}
 {=file-action:/var/etc/.dp-yes;{=if-equal:{=dp_yes=}~1~add~delete=}=}
 {=file-action:/var/etc/.emu-sb;{=if-equal:{=emu_sb=}~1~add~delete=}=}
 {=file-action:/var/etc/.no-radio-bg;{=if-equal:{=no_radio_bg=}~0~add~delete=}=}
 {=file-action:/var/etc/.no-scan-bg;{=if-equal:{=no_scan_bg=}~0~add~delete=}=}
-{=file-action:/var/etc/.smart-sb;{=if-equal:{=smart_sb=}~1~add~delete=}=}
+{=file-action:/var/etc/.logging;{=if-equal:{=logging=}~1~add~delete=}=}
 {=ini-set:/var/tuxbox/boot/boot.conf;console;{=console=}=}
 {=ini-set:/var/tuxbox/boot/boot.conf;dbox_duplex;{=dbox_duplex=}=}
 end-block~neutrino_bootoptions_save_settings
