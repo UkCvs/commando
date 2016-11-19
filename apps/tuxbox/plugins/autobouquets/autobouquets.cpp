@@ -903,9 +903,15 @@ int main (int argc, char *argv[]) {
 		unsigned int pre, index, skyid;
 		string dat_line, epg_id;
 		bool is_skyid, is_epgid, is_type, is_sid, is_tsid, is_nspace, is_provider, is_ca, is_name, is_complete;
-
+		bool logging = false;
 		ofstream autobouquets_log;
-		autobouquets_log.open ("/tmp/autobouquets.log");
+
+		if (FILE *file = fopen("/var/etc/.logging", "r"))
+		{
+			fclose(file);
+			logging = true;
+			autobouquets_log.open("/tmp/autobouquets.log");
+		}
 
 		while (!supplement_file.eof() && getline(supplement_file, dat_line))
 		{
@@ -959,37 +965,40 @@ int main (int argc, char *argv[]) {
 
 				if (is_complete)
 				{
-					autobouquets_log << "NEW CHANNEL: ";
+					if (logging) autobouquets_log << "NEW CHANNEL: ";
 
 					if ((skyid > 100) && (skyid < 1000))
 					{
 						TV[channel.skyid] = channel;
 						TV[channel.skyid].skyid = epg_id;
-						autobouquets_log << "TV" << endl;
+						if (logging) autobouquets_log << "TV" << endl;
 					}
 					else if ((skyid > 3100) && (skyid < 4000))
 					{
 						RADIO[channel.skyid] = channel;
 						RADIO[channel.skyid].skyid = epg_id;
-						autobouquets_log << "RADIO" << endl;
+						if (logging) autobouquets_log << "RADIO" << endl;
 					}
 					else if (skyid == 0xffff)
 					{
 						DATA[epg_id] = channel;
-						autobouquets_log << "DATA" << endl;
+						if (logging) autobouquets_log << "DATA" << endl;
 					}
 					else
 					{
 						TEST[channel.skyid] = channel;
 						TEST[channel.skyid].skyid = epg_id;
-						autobouquets_log << "TEST" << endl;
+						if (logging) autobouquets_log << "TEST" << endl;
 					}
 
 					SDT[channel.sid] = channel;
 
-					autobouquets_log << channel.skyid << ":" << epg_id << ":" << channel.type << ":"
-					<< channel.sid << ":" << channel.tsid << ":" << channel.nspace << ":"
-					<< channel.provider << ":" << channel.ca << ":" << channel.name << endl << endl;
+					if (logging)
+					{
+						autobouquets_log << channel.skyid << ":" << epg_id << ":" << channel.type << ":"
+						<< channel.sid << ":" << channel.tsid << ":" << channel.nspace << ":"
+						<< channel.provider << ":" << channel.ca << ":" << channel.name << endl << endl;
+					}
 				}
 				else if (is_epgid)
 				{
@@ -997,9 +1006,12 @@ int main (int argc, char *argv[]) {
 					{
 						if ((*i).second.skyid == epg_id)
 						{
-							autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
-							<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
-							<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl;
+							if (logging)
+							{
+								autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
+								<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
+								<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl;
+							}
 
 							if (is_sid)
 								(*i).second.sid = channel.sid;
@@ -1013,18 +1025,24 @@ int main (int argc, char *argv[]) {
 							if (is_provider) (*i).second.provider = channel.provider;
 							if (is_ca)       (*i).second.ca = channel.ca;
 
-							autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
-							<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
-							<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl << endl;
+							if (logging)
+							{
+								autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
+								<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
+								<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl << endl;
+							}
 						}
 					}
 					for( map<string, channel_t>::iterator i = TEST.begin(); i != TEST.end(); ++i )
 					{
 						if ((*i).second.skyid == epg_id)
 						{
-							autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
-							<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
-							<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl;
+							if (logging)
+							{
+								autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
+								<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
+								<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl;
+							}
 
 							if (is_sid)
 								(*i).second.sid = channel.sid;
@@ -1038,16 +1056,22 @@ int main (int argc, char *argv[]) {
 							if (is_provider) (*i).second.provider = channel.provider;
 							if (is_ca)       (*i).second.ca = channel.ca;
 
-							autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
-							<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
-							<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl << endl;
+							if (logging)
+							{
+								autobouquets_log << (*i).first  << ":" << (*i).second.skyid << ":" << (*i).second.type << ":"
+								<< (*i).second.sid << ":" << (*i).second.tsid << ":" << (*i).second.nspace << ":"
+								<< (*i).second.provider << ":" << (*i).second.ca << ":" << (*i).second.name << endl << endl;
+							}
 						}
 					}
 					if (DATA.find(epg_id) != DATA.end())
 					{
-						autobouquets_log << DATA[epg_id].skyid << ":" << epg_id << ":" << DATA[epg_id].type << ":"
-						<< DATA[epg_id].sid << ":" << DATA[epg_id].tsid << ":" << DATA[epg_id].nspace << ":"
-						<< DATA[epg_id].provider << ":" << DATA[epg_id].ca << ":" << DATA[epg_id].name << endl;
+						if (logging)
+						{
+							autobouquets_log << DATA[epg_id].skyid << ":" << epg_id << ":" << DATA[epg_id].type << ":"
+							<< DATA[epg_id].sid << ":" << DATA[epg_id].tsid << ":" << DATA[epg_id].nspace << ":"
+							<< DATA[epg_id].provider << ":" << DATA[epg_id].ca << ":" << DATA[epg_id].name << endl;
+						}
 
 						if (is_sid)
 							DATA[epg_id].sid = channel.sid;
@@ -1061,14 +1085,17 @@ int main (int argc, char *argv[]) {
 						if (is_provider) DATA[epg_id].provider = channel.provider;
 						if (is_ca)       DATA[epg_id].ca = channel.ca;
 
-						autobouquets_log << DATA[epg_id].skyid << ":" << epg_id << ":" << DATA[epg_id].type << ":"
-						<< DATA[epg_id].sid << ":" << DATA[epg_id].tsid << ":" << DATA[epg_id].nspace << ":"
-						<< DATA[epg_id].provider << ":" << DATA[epg_id].ca << ":" << DATA[epg_id].name << endl << endl;
+						if (logging)
+						{
+							autobouquets_log << DATA[epg_id].skyid << ":" << epg_id << ":" << DATA[epg_id].type << ":"
+							<< DATA[epg_id].sid << ":" << DATA[epg_id].tsid << ":" << DATA[epg_id].nspace << ":"
+							<< DATA[epg_id].provider << ":" << DATA[epg_id].ca << ":" << DATA[epg_id].name << endl << endl;
+						}
 					}
 				}
 			}
 		}
-		autobouquets_log.close();
+		if (logging) autobouquets_log.close();
 	}
 	supplement_file.close();
 
