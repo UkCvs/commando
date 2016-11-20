@@ -17,7 +17,6 @@ rm -fr $icl/*.*
 cd $icl
 unzip $tiz
 rm -f $tiz
-cd $icl
 dos2unix icons.sh
 chmod 755 icons.sh
 . icons.sh
