@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 20 Nov 2016 12:35- LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 20 Nov 2016 15:18 - LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -33,6 +33,8 @@ acs="$etc/bq_0f.ref"
 csrc="var/spool/cron/crontabs/root"
 lock="/tmp/getepg.lock"
 nop="/dev/null"
+ka="killall"
+kn="$ka neutrino"
 now="%a %d %b %Y %T"
 mode=`pzapit -gm|cut -d " " -f2`
 zdat=`pzapit -gi|cut -d "(" -f1`
@@ -306,11 +308,11 @@ exit 0
 
 # Softcam(s) stop:
 stop)
-[ -e $etc/.oscam ] && killall oscam && rm -Rf /tmp/.oscam /tmp/oscam*
-[ -e $etc/.cccam ] && killall CCcam && killall epg-restart
-[ -e $etc/.mgcamd ] && killall mgcamd && killall epg-pause
-[ -e $etc/.evocamd ] && killall evocamd
-[ -e $etc/.newcamd ] && killall newcamd
+[ -e $etc/.oscam ] && $ka oscam && rm -Rf /tmp/.oscam /tmp/oscam*
+[ -e $etc/.cccam ] && $ka CCcam && $ka epg-restart
+[ -e $etc/.mgcamd ] && $ka mgcamd && $ka epg-pause
+[ -e $etc/.evocamd ] && $ka evocamd
+[ -e $etc/.newcamd ] && $ka newcamd
 ;;
 getepg)
 [ -e $bb ] && fmsg "GetEPG cannot load while AutoBouquets is running!" && exit 0
@@ -386,13 +388,13 @@ $summ2
 $summ3
 "
 echo "Last $summ2" >>$epgs
+cp $epgs $svr
 mv $epgs $logd
 fmsg "$summ1\n\n$summ2"
 sleep 7
 fmsg "$summ3\n\nBack to TV now (with an active RC)..."
 sleep 3
 zapback
-
 # thnx daverave-
 if [ -e /tmp/clip3 ]; then
     until [ -e $epgcache/index.xml ]; do
@@ -444,7 +446,7 @@ else
 	fmsg "$msg2 [OK]!"
 fi
 sleep 6
-killall neutrino
+$kn
 sleep 3
 blue
 ;;
@@ -469,14 +471,15 @@ sleep 6
 blue
 ;;
 def-icon)
-pdir="$etc/icons"
-[ -e $als ] && pdir="$mnt/icons"
-while read ln; do
- picon=`echo "$ln"|cut -d ";" -f1`
- cp -f $pdir/$picon $pdir/default.raw
- sleep 300
-done < $etc/di-list
-{ sleep 2; miniops def-icon; } &
+pf=`cat /tmp/picons.path`
+if [ $pf != "" ]; then
+	while read ln; do
+	 dp=`echo "$ln"|cut -d ";" -f1`
+	 cp -f $pf/$dp $pf/default.raw
+	 sleep 300
+	done < $etc/di-list
+	{ sleep 2; miniops def-icon; } &
+fi
 ;;
 net-view)
 . /var/etc/net-open
@@ -506,7 +509,7 @@ rc_unlock
 ;;
 net-epgc)
 sed -i '/epg_dir=/cepg_dir=' $conf
-killall neutrino
+$kn
 ;;
 satellites)
 sz="satellites"
