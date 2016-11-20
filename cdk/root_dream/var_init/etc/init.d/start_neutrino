@@ -5,7 +5,10 @@
 . /proc/bus/dbox.sh
 
 etc="/var/etc"
-zap="/var/tuxbox/config/zapit/zapit.conf"
+cfg="/var/tuxbox/config"
+conf="$cfg/neutrino.conf"
+zap="$cfg/zapit/zapit.conf"
+pf=`grep -m1 "logodir=" $conf|cut -d "=" -f2`
 
 if [ ! -e $etc/.no-mp3 ]; then
 	if [ -e $etc/custom.mp3 ]; then
@@ -20,7 +23,7 @@ fi
 
 dt=`date -r /bin/saa|sed 's/....\(...\).\(..\).\(........\).....\(....\)/\4-\1-\2 \3/;s/- /-/g;\
 s/Jan/1/;s/Feb/2/;s/Mar/3/;s/Apr/4/;s/May/5/;s/Jun/6/;s/Jul/7/;s/Aug/8/;s/Sep/9/;s/Oct/10/;s/Nov/11/;s/Dec/12/'`
-date -s "$dt"; touch $(ls); [ ! -e /var/tuxbox/config/neutrino.conf ] && find /var -exec touch {}
+date -s "$dt"; touch $(ls); [ ! -e $conf ] && find /var -exec touch {}
 
 if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 	int1=`grep "startChannelTV" $zap|cut -d "=" -f2`
@@ -51,9 +54,10 @@ sectionsd $SECTIONSD
 timerd
 zapit $ZAPIT
 nhttpd
+echo "$pf" >/tmp/picons.path
 miniops start
 [ -e $etc/.crond ] && crond &
-[ -e $etc/.dp-yes ] && { sleep 300; miniops def-icon; } &
+[ -e $etc/.dp-yes ] && [ $pf != "" ] && { sleep 300; miniops def-icon; } &
 
 until neutrino -u ; do
     echo "Neutrino exited with nonzero exit status $?, restarting..."
