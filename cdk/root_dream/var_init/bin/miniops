@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 16 Nov 2016 17:50- LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 20 Nov 2016 12:35- LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -507,22 +507,6 @@ rc_unlock
 net-epgc)
 sed -i '/epg_dir=/cepg_dir=' $conf
 killall neutrino
-;;
-picons)
-pz="icons.zip"
-fmsg "Downloading $pz - hang on..."
-cd /tmp
-$web/$pz
-sleep 6
-if [ -e $pz ]; then
-	fmsg "Download success! Preparing installation..."
-	sleep 3
-	killall neutrino
-else
-	fmsg "Oops, download failed! Check your LAN?"
-fi
-rm -f mess*
-cd /
 ;;
 satellites)
 sz="satellites"

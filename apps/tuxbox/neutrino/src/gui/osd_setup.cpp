@@ -53,6 +53,10 @@
 
 #include <xmltree/xmlinterface.h>
 #include <system/debug.h>
+#include <system/helper.h>
+#include <system/httptool.h>
+
+#define NEUTRINO_PICONS_REMOVE_SCRIPT CONFIGDIR "/picons.remove"
 
 const SNeutrinoSettings::FONT_TYPES channellist_font_sizes[5] =
 {
@@ -236,7 +240,35 @@ int COsdSetup::exec(CMenuTarget* parent, const std::string &actionKey)
 		CNeutrinoApp::getInstance()->SetupTiming();
 		return menu_return::RETURN_REPAINT;
 	}
+	else if(actionKey=="update_logo")
+	{
+		CConfigFile config('\t');
+		config.loadConfig("/.version");
+		const std::string updateURL = config.getString("update",  "http://www.ukcvs.net/C16/");
 
+		CHTTPTool httpTool;
+		if (httpTool.downloadFile(updateURL + "icons.zip", "/tmp/icons.zip", 100))
+		{
+			CHintBox * hintBox = new CHintBox(LOCALE_MESSAGEBOX_INFO, g_Locale->getText(LOCALE_SERVICEMENU_RESTART_HINT));
+			hintBox->paint();
+			CNeutrinoApp::getInstance()->exec(NULL, "restart");
+			DisplayErrorMessage(g_Locale->getText(LOCALE_SERVICEMENU_RESTART_FAILED));
+			hintBox->hide();
+			delete hintBox;
+		}
+		return menu_return::RETURN_REPAINT;
+	}
+	else if(actionKey=="uninstall_logo")
+	{
+		if (ShowLocalizedMessage(LOCALE_MESSAGEBOX_INFO, LOCALE_OSDSETTINGS_INFOBAR_CHANNELLOGO_UNINSTALL,
+			CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo, NEUTRINO_ICON_QUESTION, 450,
+			g_settings.timing[SNeutrinoSettings::TIMING_MENU], true) == CMessageBox::mbrYes) {
+			puts("[osd_setup.cpp] executing " NEUTRINO_PICONS_REMOVE_SCRIPT ".");
+			if (my_system(NEUTRINO_PICONS_REMOVE_SCRIPT) != 0)
+				perror(NEUTRINO_PICONS_REMOVE_SCRIPT " failed");
+		}
+		return menu_return::RETURN_REPAINT;
+	}
 	int res = showOsdSetup();
 	
 	return res;
@@ -526,10 +558,14 @@ int COsdSetup::showOsdInfobarSetup()
 	bool activ_logo_opts = g_settings.infobar_show_channellogo != CInfoViewer::NO_LOGO ? true : false;
 	CMenuForwarder 	   *oibs_chanlogo_fw 	= new CMenuForwarder(LOCALE_OSDSETTINGS_INFOBAR_CHANNELLOGO_LOGODIR, activ_logo_opts, g_settings.infobar_channel_logodir, this, "channel_logodir");
 	CMenuOptionChooser *oibs_chanlogo_bg_ch = new CMenuOptionChooser(LOCALE_OSDSETTINGS_INFOBAR_CHANNELLOGO_BACKGROUND, &g_settings.infobar_channellogo_background, INFOBAR_CHANNELLOGO_BACKGROUND_SHOW_OPTIONS, INFOBAR_CHANNELLOGO_BACKGROUND_SHOW_OPTIONS_COUNT, activ_logo_opts);
+	CMenuForwarder 	   *oibs_updatelogo_fw = new CMenuForwarder(LOCALE_OSDSETTINGS_INFOBAR_CHANNELLOGO_UPDATE, activ_logo_opts, NULL, this, "update_logo");
+	CMenuForwarder 	   *oibs_uninstalllogo_fw = new CMenuForwarder(LOCALE_OSDSETTINGS_INFOBAR_CHANNELLOGO_UNINSTALL, activ_logo_opts, NULL, this, "uninstall_logo");
 
 	COnOffNotifier channelLogoNotifier;
 	channelLogoNotifier.addItem(oibs_chanlogo_fw);
 	channelLogoNotifier.addItem(oibs_chanlogo_bg_ch);
+	channelLogoNotifier.addItem(oibs_updatelogo_fw);
+	channelLogoNotifier.addItem(oibs_uninstalllogo_fw);
 	CMenuOptionChooser *oibs_chanlogo_ch 	= new CMenuOptionChooser(LOCALE_OSDSETTINGS_INFOBAR_CHANNELLOGO_SHOW, &g_settings.infobar_show_channellogo, INFOBAR_CHANNELLOGO_SHOW_OPTIONS, INFOBAR_CHANNELLOGO_SHOW_OPTIONS_COUNT, true, &channelLogoNotifier);
 	
 
@@ -549,6 +585,8 @@ int COsdSetup::showOsdInfobarSetup()
 	oibs->addItem(oibs_chanlogo_ch);
 	oibs->addItem(oibs_chanlogo_fw);
 	oibs->addItem(oibs_chanlogo_bg_ch);
+	oibs->addItem(oibs_updatelogo_fw);
+	oibs->addItem(oibs_uninstalllogo_fw);
 
 	int res = oibs->exec(NULL, "");
 	delete oibs;

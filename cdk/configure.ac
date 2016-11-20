@@ -1101,7 +1101,7 @@ AC_ARG_WITH(updatehttpprefix,
 	[  --with-updatehttpprefix=URL  
                           optional URL containing the URL of a directory with update images
                           "disable" completely disables internet update code [[NONE]]],
-	[updatehttpprefix="$with_updatehttpprefix"],[updatehttpprefix=disable])
+	[updatehttpprefix="$with_updatehttpprefix"],[updatehttpprefix="http://www.commando.org.uk/"])
 
 AC_ARG_WITH(busybox_conf,
 	[  --with-busybox-conf=M4_FILE 

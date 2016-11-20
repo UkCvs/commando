@@ -1,6 +1,9 @@
 #!/bin/sh
 
-rm -fr /var/etc/icons/*.*
+icl=`grep "^infobar_channel_logodir=" /var/tuxbox/config/neutrino.conf|cut -d "=" -f2|sed 's/\/$//'`
+[ "$icl" = "" ] && icl="/var/etc/icons"
+
+rm -fr $icl/*.*
 
 exit 0
 

@@ -1,14 +1,26 @@
 #!/bin/sh
 
-mv /var/etc/icons/icons.zip /tmp/icons.zip
-rm -fr /var/etc/icons/*.*
-cd /var/etc
-unzip /tmp/icons.zip
-rm -f /tmp/icons.zip
-cd /var/etc/icons
-dos2unix /var/etc/icons/icons.sh
-chmod 755 /var/etc/icons/icons.sh
-. /var/etc/icons/icons.sh
+icl=`grep "^infobar_channel_logodir=" /var/tuxbox/config/neutrino.conf|cut -d "=" -f2|sed 's/\/$//'`
+[ "$icl" = "" ] && icl="/var/etc/icons"
+mkdir -p $icl
+
+tiz=/tmp/icons.zip
+mv $icl/icons.zip $tiz
+
+#download failed check
+if [ ! -s $tiz ]; then
+ rm -f $tiz
+ exit 1
+fi
+
+rm -fr $icl/*.*
+cd $icl
+unzip $tiz
+rm -f $tiz
+cd $icl
+dos2unix icons.sh
+chmod 755 icons.sh
+. icons.sh
 
 exit 0
 

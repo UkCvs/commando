@@ -1158,6 +1158,8 @@ const char * locale_real_names[] =
 	"osdsettings.infobar_channellogo_background",
 	"osdsettings.infobar_channellogo_logodir",
 	"osdsettings.infobar_channellogo_show",
+	"osdsettings.infobar_channellogo_uninstall",
+	"osdsettings.infobar_channellogo_update",
 	"osdsettings.infobar_sat_display",
 	"osdsettings.infobar_show",
 	"osdsettings.infobar_virtual_zap_mode",

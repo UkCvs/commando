@@ -150,7 +150,6 @@ CVCRControl::CDevice * recordingdevice = NULL;
 #define NEUTRINO_ENTER_STANDBY_SCRIPT   CONFIGDIR "/standby.on"
 #define NEUTRINO_LEAVE_STANDBY_SCRIPT   CONFIGDIR "/standby.off"
 #define NEUTRINO_PICONS_INSTALL_SCRIPT   CONFIGDIR "/picons.install"
-#define NEUTRINO_PICONS_REMOVE_SCRIPT   CONFIGDIR "/picons.remove"
 #define NEUTRINO_PICONS_INSTALL_FILE	"/tmp/icons.zip"
 #define NEUTRINO_INIT_END_SCRIPT	CONFIGDIR "/init.end"
 #define NEUTRINO_SCAN_SETTINGS_FILE     CONFIGDIR "/scan.conf"
@@ -2283,12 +2282,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 			puts("[neutrino.cpp] executing " NEUTRINO_PICONS_INSTALL_SCRIPT ".");
 			if (my_system(NEUTRINO_PICONS_INSTALL_SCRIPT) != 0)
 				perror(NEUTRINO_PICONS_INSTALL_SCRIPT " failed");
-		}
-		else
-		{
-			puts("[neutrino.cpp] executing " NEUTRINO_PICONS_REMOVE_SCRIPT ".");
-			if (my_system(NEUTRINO_PICONS_REMOVE_SCRIPT) != 0)
-				perror(NEUTRINO_PICONS_REMOVE_SCRIPT " failed");
 		}
 	}
 

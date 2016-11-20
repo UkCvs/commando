@@ -1107,6 +1107,8 @@ osdsettings.infobar_channellogo Senderlogo
 osdsettings.infobar_channellogo_background Hintergrund
 osdsettings.infobar_channellogo_logodir Logoverzeichnis
 osdsettings.infobar_channellogo_show Anzeige
+osdsettings.infobar_channellogo_uninstall Deinstallieren Logos
+osdsettings.infobar_channellogo_update Aktualisieren / Installieren
 osdsettings.infobar_sat_display Satellitenanzeige
 osdsettings.infobar_show Info bei EPG Änderung
 osdsettings.infobar_virtual_zap_mode Virtual Zap

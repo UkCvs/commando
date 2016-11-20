@@ -11,6 +11,7 @@ echo "cvs=$GITLEVEL1-$REVISION2" >> $VERSION_FILE
 echo "creator=public@ukcvs" >> $VERSION_FILE
 echo "imagename=Commando" >> $VERSION_FILE
 echo "homepage=http://www.ukcvs.net" >> $VERSION_FILE
+echo "update=http://www.ukcvs.net/C16/" >> $VERSION_FILE
 echo "comment1=$REVISION1" >> $VERSION_FILE
 echo "comment2=commit $GITLEVEL1 - $GITLEVEL2" >> $VERSION_FILE
 

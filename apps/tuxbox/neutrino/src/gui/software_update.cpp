@@ -142,12 +142,13 @@ int CSoftwareUpdate::showSoftwareUpdateExpert()
 	mtdexpert->addItem(new CMenuForwarder(LOCALE_FLASHUPDATE_READFLASHMTD, true, NULL, fe, "readflashmtd", CRCInput::RC_yellow));
 	mtdexpert->addItem(new CMenuForwarder(LOCALE_FLASHUPDATE_WRITEFLASHMTD, true, NULL, fe, "writeflashmtd", CRCInput::RC_blue));
 */
+#if 0
 #ifndef DISABLE_INTERNET_UPDATE
 	mtdexpert->addItem(GenericMenuSeparatorLine);
 	CStringInputSMS softUpdate_url_file(LOCALE_FLASHUPDATE_URL_FILE, &g_settings.softupdate_url_file, 30, false, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "abcdefghijklmnopqrstuvwxyz0123456789!""$%&/()=?-. ");
 	mtdexpert->addItem(new CMenuForwarder(LOCALE_FLASHUPDATE_URL_FILE, true, g_settings.softupdate_url_file, &softUpdate_url_file));
 #endif /*DISABLE_INTERNET_UPDATE*/
-
+#endif
 	/*show current version */
 	showSoftwareUpdateImageinfo(mtdexpert);
 
