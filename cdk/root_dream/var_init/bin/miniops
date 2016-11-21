@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 20 Nov 2016 15:18 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 21 Nov 2016 16:56 - LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -388,7 +388,7 @@ $summ2
 $summ3
 "
 echo "Last $summ2" >>$epgs
-cp $epgs $svr
+[ -e $als ] && cp $epgs $svr
 mv $epgs $logd
 fmsg "$summ1\n\n$summ2"
 sleep 7
@@ -471,7 +471,7 @@ sleep 6
 blue
 ;;
 def-icon)
-pf=`cat /tmp/picons.path`
+pf=`grep -m1 "logodir=" $conf|cut -d "=" -f2`
 if [ $pf != "" ]; then
 	while read ln; do
 	 dp=`echo "$ln"|cut -d ";" -f1`
