@@ -8,7 +8,6 @@ etc="/var/etc"
 cfg="/var/tuxbox/config"
 conf="$cfg/neutrino.conf"
 zap="$cfg/zapit/zapit.conf"
-pf=`grep -m1 "logodir=" $conf|cut -d "=" -f2`
 
 if [ ! -e $etc/.no-mp3 ]; then
 	if [ -e $etc/custom.mp3 ]; then
@@ -54,10 +53,9 @@ sectionsd $SECTIONSD
 timerd
 zapit $ZAPIT
 nhttpd
-echo "$pf" >/tmp/picons.path
 miniops start
 [ -e $etc/.crond ] && crond &
-[ -e $etc/.dp-yes ] && [ $pf != "" ] && { sleep 300; miniops def-icon; } &
+[ -e $etc/.dp-yes ] && { sleep 300; miniops def-icon; } &
 
 until neutrino -u ; do
     echo "Neutrino exited with nonzero exit status $?, restarting..."
