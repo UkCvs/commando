@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Sun 06 Nov 4 2016 16:47:09
+# AutoBouquets custom_epg.txt usermap auto-generated on: Tue 22 Nov 2016 10:42:25
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -60,8 +60,8 @@
 109:1:1:024:W
 213:1:1:000:W +1
 155:1:1:024:Really
-110:1:1:024:GOLD
-166:1:1:000:GOLD +1
+110:1:1:024:ChristmasGOLD
+166:1:1:000:Xmas GOLD +1
 111:1:1:024:Dave
 214:1:1:000:Dave ja vu
 158:1:1:024:Drama
@@ -147,10 +147,10 @@
 307:1:1:024:Sky Action
 308:1:1:024:Sky Comedy
 305:1:1:024:Sky Disney
-310:1:1:024:SkyDramaRom
-306:1:1:024:Sky Pixar
-304:1:1:024:Sky Musicals
-303:1:1:024:Sky Hits
+310:1:1:024:Sky Hits
+306:1:1:024:Sky Family
+304:1:1:024:Sky Greats
+303:1:1:024:Sky Christmas
 301:1:1:024:Sky Premiere
 302:1:1:000:Sky Prem+1
 312:1:1:024:Sky Select
@@ -179,7 +179,7 @@
 353:1:1:024:VIVA
 354:1:1:024:MTV DANCE
 355:1:1:024:MTV ROCKS
-356:1:1:024:MTV CLASSIC
+356:1:1:024:MTV XMAS
 357:1:1:024:VH1
 358:1:1:000:MTV Music +1
 359:1:1:024:Box Upfront
@@ -193,11 +193,11 @@
 367:1:1:024:Scuzz
 368:1:1:024:Kerrang!
 369:1:1:024:Vintage TV
-370:1:1:024:Chilled TV
+370:1:1:024:Chilled Xmas
 371:1:1:024:Starz TV
 372:1:1:024:Chartshow Hits
 374:1:1:024:Flava
-378:1:1:024:NOW Music
+378:1:1:024:NOW XMAS
 383:1:1:024:Clubland TV
 385:1:1:024:Channel AKA
 387:1:1:024:Heart Xmas
