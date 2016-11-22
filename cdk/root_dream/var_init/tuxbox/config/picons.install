@@ -13,13 +13,14 @@ if [ ! -s $tiz ]; then
  exit 1
 fi
 
-rm -fr $icl/*.*
+rm -f $icl/*.raw
 cd $icl
 unzip $tiz
 rm -f $tiz
 dos2unix icons.sh
 chmod 755 icons.sh
 . icons.sh
+rm -f icons.sh
 
 exit 0
 
