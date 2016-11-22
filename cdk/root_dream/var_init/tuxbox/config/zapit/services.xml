@@ -52,7 +52,7 @@
 			<channel service_id="1b5d" name="MTV+1" service_type="01"/>
 			<channel service_id="1b5e" name="MTV HITS" service_type="01"/>
 			<channel service_id="1b5f" name="MTV BASE" service_type="01"/>
-			<channel service_id="1b60" name="MTV CLASSIC" service_type="01"/>
+			<channel service_id="1b60" name="MTV XMAS" service_type="01"/>
 			<channel service_id="1b61" name="VIVA" service_type="01"/>
 			<channel service_id="1b62" name="MTV" service_type="01"/>
 			<channel service_id="1b64" name="MTV MUSIC" service_type="01"/>
@@ -80,12 +80,12 @@
 			<channel service_id="10d0" name="Sky ScFi-Horror" service_type="01"/>
 			<channel service_id="10d2" name="Sky Select" service_type="01"/>
 			<channel service_id="10d4" name="Sky Disney " service_type="01"/>
-			<channel service_id="1133" name="Sky Pixar" service_type="01"/>
+			<channel service_id="1133" name="Sky Family" service_type="01"/>
 			<channel service_id="1134" name="Sky Premiere" service_type="01"/>
 			<channel service_id="1135" name="Sky Prem+1" service_type="01"/>
 			<channel service_id="1136" name="Sky Thriller" service_type="01"/>
-			<channel service_id="157e" name="SkyDramaRom" service_type="01"/>
-			<channel service_id="1612" name="Sky Musicals" service_type="01"/>
+			<channel service_id="157e" name="Sky Christmas" service_type="01"/>
+			<channel service_id="1612" name="Sky Greats" service_type="01"/>
 			<channel service_id="b798" name="___4109" service_type="01"/>
 			<channel service_id="bb80" name="___4110" service_type="01"/>
 			<channel service_id="bf68" name=" (sub b +1000)" service_type="01"/>
@@ -128,13 +128,13 @@
 			<channel service_id="1794" name="Sky Living" service_type="01"/>
 			<channel service_id="1798" name="ComedyCentral" service_type="01"/>
 			<channel service_id="051a" name="Sky Sports F1" service_type="01"/>
-			<channel service_id="051b" name="Sky Spts F1" service_type="01"/>
+			<channel service_id="051b" name="Sky Sports F1" service_type="01"/>
 			<channel service_id="057b" name="Sky1 +1" service_type="01"/>
 		</transponder>
 		<transponder id="07e6" onid="0002" frequency="12129000" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="1">
 			<channel service_id="1965" name="Home" service_type="01"/>
 			<channel service_id="1966" name="Eden" service_type="01"/>
-			<channel service_id="1968" name="GOLD" service_type="01"/>
+			<channel service_id="1968" name="ChristmasGOLD" service_type="01"/>
 			<channel service_id="1969" name="YESTERDAY" service_type="01"/>
 			<channel service_id="196a" name="Dave" service_type="01"/>
 			<channel service_id="196c" name="Good Food" service_type="01"/>
@@ -250,10 +250,12 @@
 			<channel service_id="0f37" name="Sky Anytime 2" service_type="01"/>
 		</transponder>
 		<transponder id="07ef" onid="0002" frequency="12304000" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="0">
+			<channel service_id="2ee0" name="12000" service_type="01"/>
 			<channel service_id="2ee5" name="The Box" service_type="01"/>
 			<channel service_id="2eea" name="KISS" service_type="01"/>
 			<channel service_id="2eef" name="Kerrang!" service_type="01"/>
 			<channel service_id="2ef4" name="Box Hits" service_type="01"/>
+			<channel service_id="2ef9" name="12025" service_type="01"/>
 			<channel service_id="2efe" name="More4" service_type="01"/>
 			<channel service_id="2f03" name="Channel 4" service_type="01"/>
 			<channel service_id="2f08" name="Channel 4 +1" service_type="01"/>
@@ -488,6 +490,7 @@
 		</transponder>
 		<transponder id="0829" onid="0002" frequency="11464250" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="d3c2" name="ROK" service_type="01"/>
+			<channel service_id="d3c3" name="Bangla TV" service_type="01"/>
 			<channel service_id="d3c4" name="PTV Prime" service_type="01"/>
 			<channel service_id="d3c5" name="ARISE News" service_type="01"/>
 			<channel service_id="d3c6" name="Notts TV" service_type="01"/>
@@ -528,13 +531,12 @@
 			<channel service_id="571f" name="22303" service_type="01"/>
 		</transponder>
 		<transponder id="082c" onid="0002" frequency="11508500" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="1">
-			<channel service_id="d7eb" name="Bangla TV" service_type="01"/>
 			<channel service_id="d7ee" name="Peace TV" service_type="01"/>
 			<channel service_id="d7ef" name="Peace TV Urdu" service_type="01"/>
 		</transponder>
 		<transponder id="082d" onid="0002" frequency="11523250" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="1db0" name="Home+1" service_type="01"/>
-			<channel service_id="1db5" name="GOLD +1" service_type="01"/>
+			<channel service_id="1db5" name="Xmas GOLD +1" service_type="01"/>
 			<channel service_id="1dba" name="Eden+1" service_type="01"/>
 			<channel service_id="1dbf" name="W +1" service_type="01"/>
 			<channel service_id="1dc4" name="Dave" service_type="01"/>
@@ -554,6 +556,8 @@
 			<channel service_id="584f" name="Faith World TV" service_type="01"/>
 			<channel service_id="5850" name="KICC TV" service_type="01"/>
 			<channel service_id="5852" name="Wellbeing" service_type="01"/>
+			<channel service_id="5853" name="22611" service_type="01"/>
+			<channel service_id="5854" name="22612" service_type="01"/>
 		</transponder>
 		<transponder id="082f" onid="0002" frequency="11552750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="253b" name="GR SHOP" service_type="01"/>
@@ -569,12 +573,13 @@
 			<channel service_id="2567" name="Planet Rock" service_type="02"/>
 			<channel service_id="d73e" name="High Street TV" service_type="01"/>
 			<channel service_id="d740" name="High Street TV 3" service_type="01"/>
+			<channel service_id="d741" name="55105" service_type="01"/>
 			<channel service_id="d745" name="Noor TV" service_type="01"/>
 			<channel service_id="d746" name="Aastha" service_type="01"/>
 			<channel service_id="d747" name="Heart Xmas" service_type="01"/>
 			<channel service_id="d748" name="CAPITAL TV" service_type="01"/>
 			<channel service_id="d749" name="Clubland TV" service_type="01"/>
-			<channel service_id="d74a" name="Chilled TV" service_type="01"/>
+			<channel service_id="d74a" name="Chilled Xmas" service_type="01"/>
 			<channel service_id="d74b" name="GEO TEZ" service_type="01"/>
 			<channel service_id="d74c" name="NDTV 24x7" service_type="01"/>
 			<channel service_id="d74d" name="PTC PUNJABI" service_type="01"/>
@@ -673,11 +678,11 @@
 			<channel service_id="cb25" name="Ideal Extra" service_type="01"/>
 			<channel service_id="cb26" name="FrontRunner" service_type="01"/>
 			<channel service_id="cb27" name="RishteyCine" service_type="01"/>
-			<channel service_id="cb2a" name="NOW Music" service_type="01"/>
+			<channel service_id="cb2a" name="NOW XMAS" service_type="01"/>
 			<channel service_id="cb3c" name="BFBS Radio" service_type="02"/>
 			<channel service_id="cb3d" name="LBC" service_type="02"/>
 			<channel service_id="cb3e" name="Heart" service_type="02"/>
-			<channel service_id="cb3f" name="Heart extra" service_type="02"/>
+			<channel service_id="cb3f" name="Heart Xmas" service_type="02"/>
 			<channel service_id="cb40" name="Absolute" service_type="02"/>
 			<channel service_id="cb41" name="Absolute 80s" service_type="02"/>
 			<channel service_id="cb42" name="Absolute 90s" service_type="02"/>
@@ -690,7 +695,6 @@
 			<channel service_id="cb66" name="TJC Choice" service_type="01"/>
 			<channel service_id="cb70" name="Ahlulbayt TV" service_type="01"/>
 			<channel service_id="cb80" name="Craft Channel" service_type="01"/>
-			<channel service_id="d7e6" name="52060" service_type="01"/>
 		</transponder>
 		<transponder id="083b" onid="0002" frequency="11263500" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="0">
 			<channel service_id="cb84" name="Travel Ch +1" service_type="01"/>
@@ -767,6 +771,7 @@
 			<channel service_id="d002" name="BT Sport Extra 5" service_type="01"/>
 			<channel service_id="d00c" name="BT Sport Extra 6" service_type="01"/>
 			<channel service_id="d017" name="Sony Chnl +1" service_type="01"/>
+			<channel service_id="d01c" name="53276" service_type="01"/>
 			<channel service_id="d020" name="BT Sport 2" service_type="01"/>
 			<channel service_id="d021" name="BT Sport 2" service_type="01"/>
 			<channel service_id="d025" name="BT Sport-ESPN" service_type="01"/>
@@ -793,6 +798,7 @@
 			<channel service_id="d7dc" name="BT Sport 3" service_type="01"/>
 			<channel service_id="d7dd" name="50342" service_type="01"/>
 			<channel service_id="d7de" name="50343" service_type="01"/>
+			<channel service_id="d7e6" name="55270" service_type="01"/>
 			<channel service_id="d7ff" name="S4C" service_type="01"/>
 		</transponder>
 		<transponder id="0844" onid="0002" frequency="11426500" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="1">

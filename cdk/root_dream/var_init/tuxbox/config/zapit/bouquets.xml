@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- created by AutoBouquets N1 on: Tue Nov 1 13:09:19 GMT 2016 -->
+<!-- created by AutoBouquets N1 on: Tue 22 Nov 2016 10:41:56 -->
 <zapit>
 <Bouquet type="0" bouquet_id="0022" name="Sky 28.2E Bouquet" hidden="0" locked="0">
 </Bouquet>
@@ -38,8 +38,8 @@
 	<channel serviceID="1978" name="W" tsid="07e6" onid="0002" sat="282"/>
 	<channel serviceID="1dbf" name="W +1" tsid="082d" onid="0002" sat="282"/>
 	<channel serviceID="197b" name="Really" tsid="07e6" onid="0002" sat="282"/>
-	<channel serviceID="1968" name="GOLD" tsid="07e6" onid="0002" sat="282"/>
-	<channel serviceID="1db5" name="GOLD +1" tsid="082d" onid="0002" sat="282"/>
+	<channel serviceID="1968" name="ChristmasGOLD" tsid="07e6" onid="0002" sat="282"/>
+	<channel serviceID="1db5" name="Xmas GOLD +1" tsid="082d" onid="0002" sat="282"/>
 	<channel serviceID="196a" name="Dave" tsid="07e6" onid="0002" sat="282"/>
 	<channel serviceID="1dc8" name="Dave ja vu" tsid="082d" onid="0002" sat="282"/>
 	<channel serviceID="197a" name="Drama" tsid="07e6" onid="0002" sat="282"/>
@@ -125,10 +125,10 @@
 	<channel serviceID="10ce" name="Sky Action" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="10cf" name="Sky Comedy" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="10d4" name="Sky Disney " tsid="07dc" onid="0002" sat="282"/>
-	<channel serviceID="157e" name="SkyDramaRom" tsid="07dc" onid="0002" sat="282"/>
-	<channel serviceID="1133" name="Sky Pixar" tsid="07dc" onid="0002" sat="282"/>
-	<channel serviceID="1612" name="Sky Musicals" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1658" name="Sky Hits" tsid="07e5" onid="0002" sat="282"/>
+	<channel serviceID="1133" name="Sky Family" tsid="07dc" onid="0002" sat="282"/>
+	<channel serviceID="1612" name="Sky Greats" tsid="07dc" onid="0002" sat="282"/>
+	<channel serviceID="157e" name="Sky Christmas" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1134" name="Sky Premiere" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1135" name="Sky Prem+1" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="10d2" name="Sky Select" tsid="07dc" onid="0002" sat="282"/>
@@ -157,7 +157,7 @@
 	<channel serviceID="1b61" name="VIVA" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1b66" name="MTV DANCE" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1b5b" name="MTV ROCKS" tsid="07da" onid="0002" sat="282"/>
-	<channel serviceID="1b60" name="MTV CLASSIC" tsid="07da" onid="0002" sat="282"/>
+	<channel serviceID="1b60" name="MTV XMAS" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1b5a" name="VH1" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1b65" name="MTV Music +1" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="cd46" name="Box Upfront" tsid="0844" onid="0002" sat="282"/>
@@ -171,11 +171,11 @@
 	<channel serviceID="d03e" name="Scuzz" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="2eef" name="Kerrang!" tsid="07ef" onid="0002" sat="282"/>
 	<channel serviceID="cbd4" name="Vintage TV" tsid="083b" onid="0002" sat="282"/>
-	<channel serviceID="d74a" name="Chilled TV" tsid="082f" onid="0002" sat="282"/>
+	<channel serviceID="d74a" name="Chilled Xmas" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="d057" name="Starz TV" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d043" name="Chartshow Hits" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d034" name="Flava" tsid="083e" onid="0002" sat="282"/>
-	<channel serviceID="cb2a" name="NOW Music" tsid="0839" onid="0002" sat="282"/>
+	<channel serviceID="cb2a" name="NOW XMAS" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="d749" name="Clubland TV" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="cb8b" name="Channel AKA" tsid="083b" onid="0002" sat="282"/>
 	<channel serviceID="d747" name="Heart Xmas" tsid="082f" onid="0002" sat="282"/>
@@ -399,7 +399,7 @@
 	<channel serviceID="5849" name="ATN Bangla UK" tsid="082e" onid="0002" sat="282"/>
 	<channel serviceID="c6d0" name="B4U Movies" tsid="082a" onid="0002" sat="282"/>
 	<channel serviceID="c6ca" name="B4U Music" tsid="082a" onid="0002" sat="282"/>
-	<channel serviceID="d7eb" name="Bangla TV" tsid="082c" onid="0002" sat="282"/>
+	<channel serviceID="d3c3" name="Bangla TV" tsid="0829" onid="0002" sat="282"/>
 	<channel serviceID="d3cf" name="BEN" tsid="0829" onid="0002" sat="282"/>
 	<channel serviceID="c789" name="BET:BlackEntTv" tsid="0815" onid="0002" sat="282"/>
 	<channel serviceID="d154" name="Brit Asia TV" tsid="0832" onid="0002" sat="282"/>
@@ -582,7 +582,7 @@
 	<channel serviceID="2558" name="Capital" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="2567" name="Planet Rock" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="cb3e" name="Heart" tsid="0839" onid="0002" sat="282"/>
-	<channel serviceID="cb3f" name="Heart extra" tsid="0839" onid="0002" sat="282"/>
+	<channel serviceID="cb3f" name="Heart Xmas" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="2557" name="Radio X" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="254d" name="Capital XTRA" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="2891" name="BBC WS" tsid="07fe" onid="0002" sat="282"/>
