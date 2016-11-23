@@ -203,7 +203,8 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 	diseqcRepeat = configfile.getInt32("diseqcRepeat", 0);
 	uni_qrg = configfile.getInt32("uni_qrg", 1210);
 	uni_scr = configfile.getInt32("uni_scr", 0);
-	bouquetMode = (CZapitClient::bouquetMode) configfile.getInt32("bouquetMode", bouquetMode);
+	bouquetMode = (CZapitClient::bouquetMode) configfile.getInt32("bouquetMode",
+		(delivery_system == DVB_S) ? CZapitClient::BM_CREATESATELLITEBOUQUET : CZapitClient::BM_CREATEBOUQUETS);
 	scanType=(CZapitClient::scanType) configfile.getInt32("scanType", scanType);
 	strcpy(satNameNoDiseqc, configfile.getString("satNameNoDiseqc", satNameNoDiseqc).c_str());
 
@@ -234,7 +235,7 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 		}
 	}
 	scan_mode = configfile.getInt32("scan_mode", 1);
-	TP_scan = configfile.getInt32("TP_scan", 2);
+	TP_scan = configfile.getInt32("TP_scan", (delivery_system == DVB_S) ? 2 : 0);
 	TP_fec = configfile.getInt32("TP_fec", 1);
 	TP_pol = configfile.getInt32("TP_pol", 0);
 #ifdef HAVE_TRIPLEDRAGON
