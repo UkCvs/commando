@@ -10,10 +10,9 @@ USEAGE: in your phone's web address bar, tap in your dm500 IP address and app na
 <script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function goConfirmUrl(_meld, _url){
-	if (confirm(_meld)==true) goUrl(_url);
-}
+var supportsVibrate = "vibrate" in navigator;
 function goUrl(_url){
+	if (supportsVibrate) navigator.vibrate(50);
 	var res = trim(loadSyncURL(_url));
 	switch(res){
 		case "1": res="on"; break;
