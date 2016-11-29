@@ -1844,6 +1844,7 @@ int CInfoViewer::showChannelLogo( const t_channel_id logo_channel_id  )
 			strLogoName = ChannelName + "." + mimetype,
 			strAbsIconChIDPath = (std::string)g_settings.infobar_channel_logodir +"/"+ strLogoIDName,
 			strAbsIconChNamePath = (std::string)g_settings.infobar_channel_logodir +"/"+ strLogoName,
+			strAbsIconChNoNamePath = (std::string)g_settings.infobar_channel_logodir +"/default" + "." + mimetype,
 			strAbsIconPath,
 			strErrText= "[infoviewer] error while painting channel logo\n -> channel logo too large...use maximal %2dpx%2dpx or change display mode\n -> current logo size: %2dpx%2dpx\n -> current mode: %d\n";	
 
@@ -1867,7 +1868,12 @@ int CInfoViewer::showChannelLogo( const t_channel_id logo_channel_id  )
 			strAbsIconPath = strAbsIconChNamePath; // strLogoName;
 			logo_available = true;
 		}
-		
+		else if (access(strAbsIconChNoNamePath.c_str(), 0) != -1)
+		{
+			strAbsIconPath = strAbsIconChNoNamePath;
+			logo_available = true;
+		}
+
 		if (logo_available)
 		{
 			// get logo sizes
