@@ -1,26 +1,70 @@
 #!/bin/sh
 
-icl=`grep "^infobar_channel_logodir=" /var/tuxbox/config/neutrino.conf|cut -d "=" -f2|sed 's/\/$//'`
-[ "$icl" = "" ] && icl="/var/etc/icons"
-mkdir -p $icl
+rcsim KEY_SETUP
+rcsim KEY_HOME
 
-tiz=/tmp/icons.zip
-mv $icl/icons.zip $tiz
+is="icons.sh"
+iz="icons.zip"
+tiz=/tmp/$iz
+conf="/var/tuxbox/config/neutrino.conf"
+pdir="infobar_channel_logodir="
+icl=`grep "^$pdir" $conf|cut -d "=" -f2|sed 's/\/$//'`
+pim="Installed new picons in the $icl folder!"
+
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+nced(){
+sed -i "/$npd/c$npd$icl\/" $conf
+}
+default(){
+icl="/var/etc/icons"
+nced
+mkdir -p $icl
+}
+
+if [ "$icl" = "" ]; then
+	icl=`find -name "W.raw"|sed '2,$d;s/^.//;s/\/W.raw//'`
+	if [ "$icl" = "" ]; then
+		default
+		fmsg "$pim"
+		sleep 6
+	else
+		nced
+		fmsg "$pim"
+		sleep 6
+	fi
+else
+	touch $icl/rw.raw
+	if [ -e $icl/rw.raw ]; then
+		fmsg "A valid Infobar picons folder was found!\n$pim"
+		sleep 6
+	else
+		default
+		fmsg "Infobar picons folder found, but is R/O!\n$pim"
+		sleep 6
+	fi
+fi
 
 #download failed check
 if [ ! -s $tiz ]; then
- rm -f $tiz
- exit 1
+	rm -f $tiz
+	fmsg "Oops- zip download failed! Check web connection?"
+	sleep 6
+	exit 1
 fi
 
 rm -f $icl/*.raw
 cd $icl
 unzip $tiz
 rm -f $tiz
-dos2unix icons.sh
-chmod 755 icons.sh
-. icons.sh
-rm -f icons.sh
+mv RT*One.raw "RTÉ One.raw"
+mv RT*2.raw RTÉ2.raw
+dos2unix $is
+chmod 755 $is
+. $is
+rm -f $is
+
 
 exit 0
 

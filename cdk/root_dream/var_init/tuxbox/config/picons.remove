@@ -1,9 +1,40 @@
 #!/bin/sh
 
-icl=`grep "^infobar_channel_logodir=" /var/tuxbox/config/neutrino.conf|cut -d "=" -f2|sed 's/\/$//'`
-[ "$icl" = "" ] && icl="/var/etc/icons"
+rcsim KEY_SETUP	#kill osd menu return!
 
-rm -f $icl/*.raw
+conf="/var/tuxbox/config/neutrino.conf"
+npd="infobar_channel_logodir="
+icl=`grep "^$npd" $conf|cut -d "=" -f2`
+new="Just select Update/Install to grab them!"
+prm="Picons removed! You can undo this at any time!\n$new"
+
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+nced(){
+sed -i "/$npd/c$npd$icl\/" $conf
+}
+
+if [ "$icl" = "" ]; then
+	icl=`find -name "W.raw"|sed '2,$d;s/^.//;s/\/W.raw//'`
+	if [ "$icl" = "" ]; then
+		icl="/var/etc/icons"
+		mkdir -p $icl
+		nced
+		fmsg "No picons were found for removal, sorry..
+		\nNew picons path is now set: $icl
+		\n\n$new"
+		sleep 6
+#		killall neutrino
+	else
+		rm -f $icl/*.raw
+		nced
+		fmsg "$prm"
+	fi
+else
+	rm -f $icl/*.raw
+	fmsg "$prm"
+	sleep 6
+fi
 
 exit 0
-
