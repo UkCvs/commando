@@ -268,7 +268,7 @@ channellist.foot_next next Event
 channellist.foot_off off
 channellist.head All Services
 channellist.history Channel history
-channellist.nonefound No channels were found!\nPlease execute a scan\n(dbox-key -> service)
+channellist.nonefound No channels were found!\nPlease execute a scan\n(menu-key -> service)
 channellist.since since %02d:%02d
 channellist.start starts %02d:%02d
 colorchooser.alpha alpha
@@ -528,7 +528,7 @@ flashupdate.experimentalimage The image you have selected is an untested version
 flashupdate.expertfunctions Flash without Bootloader
 flashupdate.fileis0bytes the filesize is 0 Bytes
 flashupdate.fileselector File-Selector
-flashupdate.flashreadyreboot The image was successfully flashed.\nThe DBox will be rebooted now.
+flashupdate.flashreadyreboot The image was flashed successfully!\nCommando 16 restarting, hang on...
 flashupdate.getinfofile getting versioninfo
 flashupdate.getinfofileerror can't get versioninfo
 flashupdate.getupdatefile getting update
@@ -1227,10 +1227,10 @@ ping.unreachable is unreachable
 pinprotection.head Enter PIN code
 pinprotection.wrongcode PIN-Code was wrong! Try again.
 plugins.result plugin output
-rclock.lockmsg Your DBOX2 remote control will be locked.\nTo unlock it, press <RED>\nand <DBOX> on your remote control.
-rclock.menueadd Lock RC
-rclock.title Lock Remote Control
-rclock.unlockmsg Remote control reactivated.
+rclock.lockmsg This action disables your remote control.\nTo unlock it, press <RED> and <MENU> or\n<DBOX> on the keypad. Or <HOME> to cancel
+rclock.menueadd Disable Remote Control
+rclock.title Disable Remote Control
+rclock.unlockmsg Remote control reactivated!
 recdirchooser.free %3d GB free
 recdirchooser.not_mounted NOT MOUNTED
 recdirchooser.server_down SERVER DOWN
@@ -1484,7 +1484,7 @@ systeminfo.performance Performance
 systeminfo.process Memory/Processes
 timer.eventrecord.msg The event is scheduled for recording.\nTo edit the schedule open the timer list.
 timer.eventrecord.title Schedule Record
-timer.eventtimed.msg The event is scheduled.\nThe dbox2 will power on and \nswitch to this channel at the given time.
+timer.eventtimed.msg Event scheduled! Leave box in Standby\nat least, do NOT cut mains supply!
 timer.eventtimed.title Schedule Event
 timerbar.channelswitch Schedule
 timerbar.recordevent Record
@@ -1637,4 +1637,4 @@ zapitconfig.start_tv TV start channel
 zapitconfig.uncommitted_switch Uncommitted Switch
 zapitconfig.uncommitted_switch_mode1 Mode 1
 zapitconfig.uncommitted_switch_mode2 Mode 2
-zaptotimer.announce Zapto timer in one minute
+zaptotimer.announce Zapto timer in one minute...

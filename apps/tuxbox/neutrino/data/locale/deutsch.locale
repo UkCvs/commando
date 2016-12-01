@@ -611,8 +611,8 @@ infoviewer.channellogo_background_framed gerahmt
 infoviewer.channellogo_background_off ohne
 infoviewer.channellogo_background_shaded schattiert
 infoviewer.channellogo_off nein
-infoviewer.channellogo_show_as_channelname anstelle Sendername
-infoviewer.channellogo_show_beside_channelname neben Sendername
+infoviewer.channellogo_show_as_channelname anstelle Kanalname
+infoviewer.channellogo_show_beside_channelname neben Kanalname
 infoviewer.channellogo_show_in_numberbox anstelle Kanalnummer
 infoviewer.epginfo_expensive_message Infobar einblenden
 infoviewer.epginfo_simple_message Popup
@@ -1103,15 +1103,15 @@ osdsettings.colormenu.textcolor Textfarbe
 osdsettings.colormenu.textcolor_head Textfarbe
 osdsettings.colormenu.timing Timeouts
 osdsettings.infobar Infobar
-osdsettings.infobar_channellogo Senderlogo
+osdsettings.infobar_channellogo Kanal-logos
 osdsettings.infobar_channellogo_background Hintergrund
-osdsettings.infobar_channellogo_logodir Logoverzeichnis
+osdsettings.infobar_channellogo_logodir Logos-Verzeichnis
 osdsettings.infobar_channellogo_show Anzeige
 osdsettings.infobar_channellogo_uninstall Deinstallieren Logos
-osdsettings.infobar_channellogo_update Aktualisieren / Installieren
+osdsettings.infobar_channellogo_update Aktualisieren / Installieren Logos
 osdsettings.infobar_sat_display Satellitenanzeige
 osdsettings.infobar_show Info bei EPG Änderung
-osdsettings.infobar_virtual_zap_mode Virtual Zap
+osdsettings.infobar_virtual_zap_mode Virtuelle Zap
 osdsettings.infoviewer.radiotext Radiotext
 osdsettings.infoviewer.subchan_disp_pos Unterkanalanzeige
 osdsettings.menu_numbers_as_icons Menü-Zahlen als Icons
