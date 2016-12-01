@@ -1127,12 +1127,12 @@ osdsettings.colormenu.textcolor Textcolor
 osdsettings.colormenu.textcolor_head Textcolor
 osdsettings.colormenu.timing Timing
 osdsettings.infobar Infobar
-osdsettings.infobar_channellogo Channellogo
+osdsettings.infobar_channellogo Channel Logos
 osdsettings.infobar_channellogo_background Background
-osdsettings.infobar_channellogo_logodir Logo directory
+osdsettings.infobar_channellogo_logodir Logos folder
 osdsettings.infobar_channellogo_show Show
 osdsettings.infobar_channellogo_uninstall Uninstall Logos
-osdsettings.infobar_channellogo_update Update / Install
+osdsettings.infobar_channellogo_update Update / Install Logos
 osdsettings.infobar_sat_display Satellite display
 osdsettings.infobar_show EPG Info
 osdsettings.infobar_virtual_zap_mode Virtual Zap
