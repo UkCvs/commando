@@ -1184,7 +1184,7 @@ personalize.pinprotect Yes
 personalize.pinstatus Require PIN
 personalize.setupmenuwithpin Settings Menu with PIN
 personalize.visible Visible
-picons.install Would you like to install Program Icons?
+picons.install Do you wish to install Infobar Channel Logos?
 pictureviewer.decode_server_ip decode server ip
 pictureviewer.decode_server_port decode server port
 pictureviewer.defdir start dir.
