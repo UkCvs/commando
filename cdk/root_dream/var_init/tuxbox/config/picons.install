@@ -1,58 +1,36 @@
 #!/bin/sh
 
-rcsim KEY_SETUP
-rcsim KEY_HOME
+# updated PaphosAL Sat 03 Dec 2016 - simpler + first boot allowed for!
 
 is="icons.sh"
 iz="icons.zip"
 tiz=/tmp/$iz
 conf="/var/tuxbox/config/neutrino.conf"
-pdir="infobar_channel_logodir="
-icl=`grep "^$pdir" $conf|cut -d "=" -f2|sed 's/\/$//'`
-pim="Installed new picons in the $icl folder!"
+ncpd="infobar_channel_logodir="
 
-fmsg(){
-wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
-}
-nced(){
-sed -i "/$npd/c$npd$icl\/" $conf
-}
 default(){
 icl="/var/etc/icons"
-nced
+}
+nced(){
 mkdir -p $icl
+sed -i "/$ncpd/c$ncpd$icl\/" $conf
 }
 
-if [ "$icl" = "" ]; then
-	icl=`find -name "W.raw"|sed '2,$d;s/^.//;s/\/W.raw//'`
+if [ -e $conf ]; then
+	icl=`grep "^$ncpd" $conf|cut -d "=" -f2|sed 's/\/$//'`
 	if [ "$icl" = "" ]; then
 		default
-		fmsg "$pim"
-		sleep 6
-	else
 		nced
-		fmsg "$pim"
-		sleep 6
+	else
+		touch $icl/rw.raw
+		[ ! -e $icl/rw.raw ] && default && nced
 	fi
 else
-	touch $icl/rw.raw
-	if [ -e $icl/rw.raw ]; then
-		fmsg "A valid Infobar picons folder was found!\n$pim"
-		sleep 6
-	else
-		default
-		fmsg "Infobar picons folder found, but is R/O!\n$pim"
-		sleep 6
-	fi
+	default
 fi
 
 #download failed check
-if [ ! -s $tiz ]; then
-	rm -f $tiz
-	fmsg "Oops- zip download failed! Check web connection?"
-	sleep 6
-	exit 1
-fi
+[ ! -s $tiz ] && rm -f $tiz && exit 1
 
 rm -f $icl/*.raw
 cd $icl
@@ -65,6 +43,4 @@ chmod 755 $is
 . $is
 rm -f $is
 
-
 exit 0
-
