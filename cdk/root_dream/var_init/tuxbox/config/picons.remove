@@ -1,18 +1,16 @@
 #!/bin/sh
 
-rcsim KEY_SETUP	#kill osd menu return!
-
 conf="/var/tuxbox/config/neutrino.conf"
-npd="infobar_channel_logodir="
-icl=`grep "^$npd" $conf|cut -d "=" -f2`
-new="Just select Update/Install to grab them!"
-prm="Picons removed! You can undo this at any time!\n$new"
+ncpd="infobar_channel_logodir="
+icl=`grep "^$ncpd" $conf|cut -d "=" -f2`
+new="Just select Update/Install Logos to grab them!"
+prm="Picons removed! You can undo this at any time..\n$new"
 
 fmsg(){
 wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
 }
 nced(){
-sed -i "/$npd/c$npd$icl\/" $conf
+sed -i "/$ncpd/c$ncpd$icl\/" $conf
 }
 
 if [ "$icl" = "" ]; then
@@ -25,7 +23,6 @@ if [ "$icl" = "" ]; then
 		\nNew picons path is now set: $icl
 		\n\n$new"
 		sleep 6
-#		killall neutrino
 	else
 		rm -f $icl/*.raw
 		nced
