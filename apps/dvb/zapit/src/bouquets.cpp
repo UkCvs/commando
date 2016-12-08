@@ -288,6 +288,15 @@ void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode)
 */	
 //	printf("[zapit] b mode sat \n");
 
+	if ((Bouquets.size() > 0) && (bouquetMode == CZapitClient::BM_CREATESATELLITEBOUQUET))
+	{
+		for (BouquetList::const_iterator it = Bouquets.begin(); it != Bouquets.end(); it++)
+		{
+			sort((*it)->tvChannels.begin(), (*it)->tvChannels.end(), CmpChannelByChName());
+			sort((*it)->radioChannels.begin(), (*it)->radioChannels.end(), CmpChannelByChName());
+		}
+	}
+
 	if ((bouquetMode == CZapitClient::BM_UPDATEBOUQUETS) || (bouquetMode == CZapitClient::BM_CREATESATELLITEBOUQUET))
 	{
 		BouquetList storedBouquets;
