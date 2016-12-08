@@ -2,6 +2,7 @@ SUBDIRS = enigma zapit
 
 FILES_FLASH_RO = \
 	shellexec.conf \
+	scan.conf \
 	menu_about.conf \
 	menu_abs-xtras.conf \
 	menu_autobouquet.conf \
@@ -16,6 +17,7 @@ FILES_FLASH_RO = \
 	menu_volume.conf
 
 FILES_FLASH_RO_EXEC = \
+	scan.end scan.start \
 	standby.on standby.off \
 	picons.install picons.remove
 
