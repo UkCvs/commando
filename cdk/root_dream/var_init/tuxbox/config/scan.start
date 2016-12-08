@@ -1,0 +1,33 @@
+#!/bin/sh
+# added layers of protection if user launches a standalone Service Scan
+# enhanced 21 Mar 2016 to keep interactive bouquets content
+
+etc="/var/etc/"
+zap="/var/tuxbox/config/zapit"
+bqs="$zap/bouquets.xml"
+svc="$zap/services.xml"
+tb="/tmp/bouquet"
+
+touch /tmp/box.busy
+pzapit -gi|cut -d " " -f1 >/tmp/zapbak
+cp -f $bqs /tmp/bqs.bak
+cp -f $svc /tmp/svc.bak
+
+if grep -q 'Bouquet=true' $zap/zapit.conf; then
+	touch $etc/.zapit_others
+else
+	rm -f $etc/.zapit_others
+fi
+
+if grep -q -m 1 'a 1\|e 1' $bqs; then
+	sed -n '/_id="0016"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.16
+	cat $tb.16 >$tb.int
+	sed -n '/_id="000d"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.0d
+	cat $tb.0d >>$tb.int
+	sed -n '/_id="0017"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.17
+	cat $tb.17 >>$tb.int
+	sed -n '/_id="0018"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.18
+	cat $tb.18 >>$tb.int
+fi
+
+exit 0

@@ -1,0 +1,154 @@
+#!/bin/sh
+# conditional tidy up after a standalone Service Scan - updated Tue 19 Apr 2016
+
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+
+etc="/var/etc"
+cfg="/var/tuxbox/config"
+zap="$cfg/zapit"
+bqs="$zap/bouquets.xml"
+svc="$zap/services.xml"
+tsv="/tmp/services.xml"
+tbq="/tmp/bouquets.xml"
+csv="$etc/autobouquets.csv"
+tb="/tmp/bouquet"
+lcl="/tmp/locals"
+
+if [ -e /tmp/scanAbort ]; then
+	pzapit -c
+	sleep 3
+	pzapit -rz
+	rm -f $tb.* /tmp/box.busy /tmp/*bak /tmp/scanAbort
+	exit 0
+fi
+
+# 28.2E Sat-specific repair ops
+if grep -q -m 1 '28.2E' $svc; then
+	if ! grep -q 'Bouquet type' $bqs; then
+		mv -f /tmp/bqs.bak $bqs
+		mv -f /tmp/svc.bak $svc
+		rm -f /tmp/box.busy
+		pzapit -c
+		sleep 3
+		killall neutrino
+		sleep 3
+		rcsim KEY_HOME 2
+		fmsg "Oh come on now! WHY were you scanning for CABLE
+		\nbouquets on your SATELLITE box? It's disastrous!"
+		sleep 7
+		fmsg "Indeed, WHY mess in the Scan Menu at all, when
+		\n28.2E AutoBouquets is so much faster and better?"
+		sleep 7
+		fmsg "We've restored your previous setup to undo this
+		\nbizarre Scan choice! Now please enjoy TV again..."
+		sleep 7
+		exit 0
+	fi
+	cp -f $bqs $tbq
+	cp -f $svc $tsv
+	sed -i '
+	/HD\|3D/d
+	/"04"/d
+	s/"82"/"01"/
+	s/"85"/"01"/
+	s/Sport\/\/ESPN/Sport-ESPN/
+	s/ScFi\/Horror/ScFi-Horror/
+	' $tsv
+	sed -i '
+	/HD\|3D/d
+	s/Sport\/\/ESPN/Sport-ESPN/
+	s/ScFi\/Horror/ScFi-Horror/
+	s/sat="0"/sat="282"/
+	' $tbq
+
+	# and if "Astra 28.2E" or Update bouquet mess was created
+	count=`grep -c '"ITV"' $tbq`
+	if [ "$count" -gt "10" ]; then
+		killall neutrino
+		sleep 3
+		rcsim KEY_HOME 1
+		# nuke crap bouquets
+		sed -i '/"Astra 28.2E"/s/"0000"/"0021"/
+		/_id="0000" name="Other" h/,/\/Bouquet>/d
+		/BSkyB/,/\/Bouquet>/d
+		/Unknown Provider/,/\/Bouquet>/d
+		/Freesat/,/\/Bouquet>/d
+		/Arqiv/,/\/Bouquet>/d' $tbq
+		[ ! -e $etc/.other ] && sed -i '/_id="0010" name="Other" h/,/\/Bouquet>/{/serviceID/d}' $tbq
+
+		fmsg "Updating all ITV, SBO, RTE and Interactive channel names.
+		\nThis only takes a minute, so patience please..."
+		sed -i 's/name="" h/name=" " h/' $tbq
+		sed -n '/^101,/,/^103,/'p $csv >$lcl
+		sed -n '/^131,/'p $csv >>$lcl
+		sed -n '/^61,/,/^94,/'p $csv >>$lcl
+		sed -n '/^700,/,/^744,/'p $csv >>$lcl
+		while read ln; do
+			sid=`echo "$ln"|cut -d "," -f4`
+			chn=`echo "$ln"|cut -d "," -f7`
+			sed -i "/$sid/s/name=.*tsid/name=$chn tsid/" $tbq
+			sed -i "/$sid/s/name=.*serv/name=$chn serv/" $tsv
+		done < $lcl
+		sed -i '
+		s/"RT"/"Russia Today"/
+		s/T L/TÉ L/
+		s/T N/TÉ N/
+		s/T O/TÉ O/
+		s/T R/TÉ R/
+		s/T2/TÉ2/
+		s/T 2/TÉ 2/
+		s/Tj/TÉj/
+		' $tbq $tsv 
+		sed -i "
+		/0016/,/\/Bouquet>/{/serviceID/d}
+		/0018/,/\/Bouquet>/{/serviceID/d}
+		" $tbq
+		ins=`sed -n '/"0016"/=' $tbq`
+		sed -i "$ins r $tb.16" $tbq
+		ins=`sed -n '/"000d"/=' $tbq`
+		sed -i "$ins r $tb.0d" $tbq
+		ins=`sed -n '/"0017"/=' $tbq`
+		sed -i "$ins r $tb.17" $tbq
+		ins=`sed -n '/"0018"/=' $tbq`
+		sed -i "$ins r $tb.18" $tbq
+		# and mirror in services.xml - for correct OSD lists
+		while read ln; do
+			chl=`echo "$ln"|cut -d "\"" -f4`
+			sid=`echo "$ln"|cut -d "\"" -f2`
+			sed -i "/$sid/s/name=.*serv/name=\"$chl\" serv/" $tsv
+		done < $tb.int
+		# conditionally nuke adult content in services
+		if [ ! -e $etc/.pr0n ]; then
+			fmsg "Child safety is set as active, so now we'll nuke
+			\nALL adult stuff just added by your 28.2E Scan..."
+			sed -n '/^872,/,/^886,/'p $csv >$lcl
+			sed -n '/^900,/,/^950,/'p $csv >>$lcl
+			while read ln; do
+				chn=`echo "$ln"|cut -d "," -f7`
+				sed -i "/$chn/d" $tbq $tsv
+			done < $lcl
+			sed -i '/"XXX /d' $tbq $tsv
+			fmsg "All done - and everything is now squeaky clean!"
+		else
+			fmsg "Child safety is NOT set as active, so the Adult
+			\nservices that Scan just added will remain...\n
+			\nBe careful if kiddies have access to this box!"
+			sleep 7
+		fi
+	fi
+	rm -f $lcl
+	mv -f $tbq $bqs
+	mv -f $tsv $svc
+fi
+
+pzapit -c
+sleep 3
+zapbak=`cat /tmp/zapbak`
+pzapit -zi $zapbak
+rm -f $tb.* $lcl /tmp/*bak /tmp/box.busy
+killall neutrino
+sleep 3
+
+exit 0
