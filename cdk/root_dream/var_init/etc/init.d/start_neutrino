@@ -47,6 +47,16 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 	if [ -e $etc/.epg-boot ]; then
 		{ sleep 60; miniops getepg >/dev/null; } &
 	fi
+	# nuke cable stuff
+	rm -f $etc/cables.xml
+	rm -f $cfg/scan.conf-c
+	rm -f $cfg/zapit/zapit.conf-c
+else
+	# Cable! IF first boot, nuke 28.2E kit and apply cable settings
+	if [ ! -e $conf ]; then
+		. /var/etc/cable_1st.boot
+		rm -f $etc/*.boot
+	fi
 fi
 
 sectionsd $SECTIONSD
