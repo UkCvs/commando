@@ -1,0 +1,56 @@
+#!/bin/sh
+# miniops scripts toolkit for DM500C C16.0 - 11 Dec 2016 (LraiZer & PaphosAL)
+
+#set global variables
+dload="wget http://www.ukcvs.net/C16"
+etc="/var/etc"
+nit="nitscan.zip"
+now="%a %d %b %Y %T"
+
+case "$1" in
+
+# Softcam(s) autostart
+start)
+[ -e $etc/.oscam ] && { oscam; sleep 5; pzapit -rz; } &
+[ -e $etc/.cccam ] && { epg-restart >/dev/null 2>&1; sleep 1; CCcam; } &
+[ -e $etc/.mgcamd ] && { epg-pause >/dev/null 2>&1; sleep 1; mgcamd; sleep 5; pzapit -rz; } &
+[ -e $etc/.evocamd ] && evocamd &
+[ -e $etc/.newcamd ] && newcamd &
+exit 0
+;;
+
+# Softcam(s) stop:
+stop)
+[ -e $etc/.oscam ] && killall oscam && rm -Rf /tmp/.oscam /tmp/oscam*
+[ -e $etc/.cccam ] && killall CCcam && killall epg-restart
+[ -e $etc/.mgcamd ] && killall mgcamd && killall epg-pause
+[ -e $etc/.evocamd ] && killall evocamd
+[ -e $etc/.newcamd ] && killall newcamd
+;;
+
+nit_scan)
+echo `date +"$now"`
+cd /tmp
+$dload/$nit
+if [ -e $nit ]; then
+	echo "processing nitscan, please wait..."
+	unzip $nit
+	chmod 755 dvbsnoop
+	. /tmp/nitscan
+	reboot
+else
+	echo "NIT Scan check failed, as NO web connection was
+found! Please fix this issue, then try again.."
+fi
+cd /
+;;
+
+avsync)
+echo "autosync AV ($2):" `date +"$now"` >>/tmp/autosync.log
+;;
+
+null)
+exit
+;;
+esac
+exit 0

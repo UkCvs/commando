@@ -1,7 +1,7 @@
 SUBDIRS = emu
 
 FILES_FLASH_RO_EXEC = \
-	miniops epgusermaps stats
+	miniops miniops-c epgusermaps stats
 
 DIR = /var_init/bin/
 
