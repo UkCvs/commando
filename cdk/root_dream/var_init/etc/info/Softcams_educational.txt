@@ -9,7 +9,7 @@ recommended binaries for C15:
 
 CCcam 2.2.1 (do NOT go later than this!)
 mgcamd 1.35a
-oscam 1.20
+oscam 1.20 powerpc-tuxbox-old
 
 In each case, you should find a rar or a zip download for different types
 of box architecture. You want the PPC version, OK? Download to PC
@@ -24,8 +24,7 @@ This is Linux/Unix, so filenames are cAse sEnsiTive remember! Copy your
 softcam binary to the target folder indicated above, using your favourite
 FTP program.
 
-In C15.1d and higher, 'vanilla' versions of the config files for the above
-softcam tests will be found in:
+Config files for the above softcams go in following locations:
 
 /var/etc/CCcam.cfg 
 /var/keys/mg_cfg (AND with cccam.list and/or newcamd.list as appropriate) 
@@ -33,6 +32,12 @@ softcam tests will be found in:
 
 You need to tinker with the related cfg file(s) to do your tests! Use
 notepad++ text Editor for this, as it is Linux friendly! (and FREEWARE!)
+
+You will need to start the cam after transferring and configuring
+
+BLUE > MENU > RED
+(Blue > Extras menu > Softcam Menu)  
+Select the Cam and start it
 
 Happy testing and learning! After that, please revert to FTA and be safe..
 
