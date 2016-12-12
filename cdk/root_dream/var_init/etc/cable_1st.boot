@@ -1,5 +1,7 @@
 cd /var/bin
 rm -f epg* stats
+mv -f miniops-c miniops
+chmod 755 miniops
 cd $etc
 rm -fr headers info
 rm -f .ab-fast .parent a*.csv bq* ch* cu* dic* mult* net* sat* sml* sup* the*
