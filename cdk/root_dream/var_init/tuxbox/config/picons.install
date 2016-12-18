@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # updated PaphosAL Sat 03 Dec 2016 - simpler + first boot allowed for!
+# updated Sun 18 Dec 2016 - cond sat/cable special chr handling
 
 is="icons.sh"
 iz="icons.zip"
@@ -36,8 +37,14 @@ rm -f $icl/*.raw
 cd $icl
 unzip $tiz
 rm -f $tiz
-mv RT*One.raw "RTÉ One.raw"
-mv RT*2.raw RTÉ2.raw
+if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then	# DM500S
+	mv RT*One.raw "RTÉ One.raw"
+	mv RT*2.raw RTÉ2.raw
+	rm -f "BET +1.raw"
+else # DM500C
+	mv RT*One.raw "RTE One.raw"
+	mv RT*2.raw RTE2.raw
+fi
 dos2unix $is
 chmod 755 $is
 . $is
