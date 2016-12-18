@@ -42,6 +42,7 @@
 :2004:::::::BBC One Scotland
 :2006:::::::BBC Two England
 :2016:::::::BBC Two Scotland
+:3719:::::::BET
 :1401:::::::Sky1
 :1807:::::::Sky ScFi-Horror
 :1329:1::::::TC test Ch
