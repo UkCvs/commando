@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 21 Nov 2016 16:56 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 19 Dec 2016 16:37 - LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -145,7 +145,7 @@ ph=0
 #28.2E sat A-Z bq?
 if grep -q -m 1 '28.2E' $svc; then
 	sky=true
-	sed -n '/" 28.2E"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.21
+	sed -n '/"Astra 28.2E"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.21
 fi
 #other sat(s)?
 if grep -q -m 1 '_id="0000" n' $bqs; then
@@ -298,7 +298,7 @@ rm $etc/.plus1 $etc/.parent $etc/.sky
 start)
 st=1
 [ -e $als ] && [ ! -d $svr ] && st=6
-[ -e $etc/.oscam ] && { sleep $st; oscam; sleep 5; pzapit -rz; } &
+[ -e $etc/.oscam ] && { sleep $st; oscam; sleep 5; pzapit -rz; killall miniops; } &
 [ -e $etc/.cccam ] && { sleep $st; epg-restart >$nop; sleep 1; CCcam; } &
 [ -e $etc/.mgcamd ] && { sleep $st; epg-pause >$nop; sleep 1; mgcamd; sleep 5; pzapit -rz; } &
 [ -e $etc/.evocamd ] && evocamd &
@@ -395,7 +395,6 @@ sleep 7
 fmsg "$summ3\n\nBack to TV now (with an active RC)..."
 sleep 3
 zapback
-# thnx daverave-
 if [ -e /tmp/clip3 ]; then
     until [ -e $epgcache/index.xml ]; do
     sleep 1
