@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- created by AutoBouquets N1 on: Tue 22 Nov 2016 10:41:56 -->
+<!-- created by AutoBouquets N1 on: Mon 19 Dec 2016 15:24:17 -->
 <zapit>
 <Bouquet type="0" bouquet_id="0022" name="Sky 28.2E Bouquet" hidden="0" locked="0">
 </Bouquet>
@@ -93,17 +93,16 @@
 	<channel serviceID="1e1e" name="5 USA" tsid="0809" onid="0002" sat="282"/>
 	<channel serviceID="1e1f" name="5 USA +1" tsid="0809" onid="0002" sat="282"/>
 	<channel serviceID="1e24" name="My5" tsid="0809" onid="0002" sat="282"/>
-	<channel serviceID="c789" name="BET:BlackEntTv" tsid="0815" onid="0002" sat="282"/>
+	<channel serviceID="c789" name="BET" tsid="0815" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="0002" name="Lifestyle-Culture" hidden="0" locked="0">
 	<channel serviceID="1291" name="Community" tsid="07ea" onid="0002" sat="282"/>
 	<channel serviceID="ccd8" name="Discovery Shed" tsid="0831" onid="0002" sat="282"/>
-	<channel serviceID="d863" name="Fashion One" tsid="0838" onid="0002" sat="282"/>
 	<channel serviceID="cd14" name="Food Network" tsid="0844" onid="0002" sat="282"/>
 	<channel serviceID="cd1e" name="Food Netwrk+1" tsid="0844" onid="0002" sat="282"/>
 	<channel serviceID="1791" name="Forces TV" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="196c" name="Good Food" tsid="07e6" onid="0002" sat="282"/>
-	<channel serviceID="1dca" name="Good Food +1" tsid="082d" onid="0002" sat="282"/>
+	<channel serviceID="196c" name="Christmas Food" tsid="07e6" onid="0002" sat="282"/>
+	<channel serviceID="1dca" name="Xmas Food +1" tsid="082d" onid="0002" sat="282"/>
 	<channel serviceID="d328" name="holiday+cruise" tsid="0836" onid="0002" sat="282"/>
 	<channel serviceID="1965" name="Home" tsid="07e6" onid="0002" sat="282"/>
 	<channel serviceID="1db0" name="Home+1" tsid="082d" onid="0002" sat="282"/>
@@ -119,7 +118,6 @@
 	<channel serviceID="cb84" name="Travel Ch +1" tsid="083b" onid="0002" sat="282"/>
 	<channel serviceID="d355" name="tru TV" tsid="0830" onid="0002" sat="282"/>
 	<channel serviceID="cd2d" name="tru TV+1" tsid="0844" onid="0002" sat="282"/>
-	<channel serviceID="5852" name="Wellbeing" tsid="082e" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="0003" name="Movies" hidden="0" locked="0">
 	<channel serviceID="10ce" name="Sky Action" tsid="07dc" onid="0002" sat="282"/>
@@ -160,12 +158,12 @@
 	<channel serviceID="1b60" name="MTV XMAS" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1b5a" name="VH1" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1b65" name="MTV Music +1" tsid="07da" onid="0002" sat="282"/>
-	<channel serviceID="cd46" name="Box Upfront" tsid="0844" onid="0002" sat="282"/>
+	<channel serviceID="2ef9" name="Box Upfront" tsid="07ef" onid="0002" sat="282"/>
 	<channel serviceID="2ee5" name="The Box" tsid="07ef" onid="0002" sat="282"/>
 	<channel serviceID="2ef4" name="Box Hits" tsid="07ef" onid="0002" sat="282"/>
 	<channel serviceID="2418" name="4Music" tsid="07f9" onid="0002" sat="282"/>
 	<channel serviceID="2eea" name="KISS" tsid="07ef" onid="0002" sat="282"/>
-	<channel serviceID="cd4c" name="Magic" tsid="0844" onid="0002" sat="282"/>
+	<channel serviceID="2ee0" name="Magic" tsid="07ef" onid="0002" sat="282"/>
 	<channel serviceID="d075" name="Chart Show TV" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d06b" name="The Vault" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d03e" name="Scuzz" tsid="083e" onid="0002" sat="282"/>
@@ -185,7 +183,7 @@
 <Bouquet type="0" bouquet_id="0005" name="Sport" hidden="0" locked="0">
 	<channel serviceID="1076" name="Sky Sports 1" tsid="07e5" onid="0002" sat="282"/>
 	<channel serviceID="1581" name="Sky Sports 2" tsid="07ea" onid="0002" sat="282"/>
-	<channel serviceID="107b" name="Sky Sports 3" tsid="07e5" onid="0002" sat="282"/>
+	<channel serviceID="107b" name="Sky Spts Darts" tsid="07e5" onid="0002" sat="282"/>
 	<channel serviceID="1519" name="Sky Sports 4" tsid="07e7" onid="0002" sat="282"/>
 	<channel serviceID="0517" name="Sky Sports 5" tsid="07db" onid="0002" sat="282"/>
 	<channel serviceID="0fff" name="Sky Sports 5 IRL" tsid="07ea" onid="0002" sat="282"/>
@@ -211,11 +209,11 @@
 	<channel serviceID="cc42" name="Bike" tsid="083d" onid="0002" sat="282"/>
 	<channel serviceID="cb26" name="FrontRunner" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="1400" name="GINXeSportsTV" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="c495" name="MOTORS TV UK" tsid="0811" onid="0002" sat="282"/>
+	<channel serviceID="d01c" name="MOTORS TV UK" tsid="083f" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="0006" name="News" hidden="0" locked="0">
 	<channel serviceID="1260" name="Sky News" tsid="07ea" onid="0002" sat="282"/>
-	<channel serviceID="d804" name="Bloomberg" tsid="0838" onid="0002" sat="282"/>
+	<channel serviceID="c48c" name="Bloomberg" tsid="0811" onid="0002" sat="282"/>
 	<channel serviceID="2876" name="BBC NEWS" tsid="0800" onid="0002" sat="282"/>
 	<channel serviceID="2843" name="BBC Parliament" tsid="07fe" onid="0002" sat="282"/>
 	<channel serviceID="c6c2" name="CNBC" tsid="082a" onid="0002" sat="282"/>
@@ -262,7 +260,7 @@
 	<channel serviceID="cb9e" name="GOD Channel" tsid="083c" onid="0002" sat="282"/>
 	<channel serviceID="cb9f" name="revelation" tsid="083c" onid="0002" sat="282"/>
 	<channel serviceID="cb9c" name="TBN UK" tsid="083c" onid="0002" sat="282"/>
-	<channel serviceID="c4d6" name="Inspiration" tsid="0811" onid="0002" sat="282"/>
+	<channel serviceID="c4d6" name="Inspiration TV" tsid="0811" onid="0002" sat="282"/>
 	<channel serviceID="c4a4" name="LOVEWORLD TV" tsid="0811" onid="0002" sat="282"/>
 	<channel serviceID="cb22" name="Gospel Channel" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="cb89" name="Word Network" tsid="083b" onid="0002" sat="282"/>
@@ -297,7 +295,7 @@
 	<channel serviceID="d05c" name="POP" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d070" name="Kix+1" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d052" name="Tiny Pop" tsid="083e" onid="0002" sat="282"/>
-	<channel serviceID="d061" name="POP MAX" tsid="083e" onid="0002" sat="282"/>
+	<channel serviceID="d061" name="Tiny Pop+1" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="1591" name="Cartoonito" tsid="07e5" onid="0002" sat="282"/>
 	<channel serviceID="c791" name="Nick Jr Too" tsid="0815" onid="0002" sat="282"/>
 	<channel serviceID="2757" name="CITV" tsid="07fc" onid="0002" sat="282"/>
@@ -401,7 +399,7 @@
 	<channel serviceID="c6ca" name="B4U Music" tsid="082a" onid="0002" sat="282"/>
 	<channel serviceID="d3c3" name="Bangla TV" tsid="0829" onid="0002" sat="282"/>
 	<channel serviceID="d3cf" name="BEN" tsid="0829" onid="0002" sat="282"/>
-	<channel serviceID="c789" name="BET:BlackEntTv" tsid="0815" onid="0002" sat="282"/>
+	<channel serviceID="c789" name="BET" tsid="0815" onid="0002" sat="282"/>
 	<channel serviceID="d154" name="Brit Asia TV" tsid="0832" onid="0002" sat="282"/>
 	<channel serviceID="d3d1" name="British Muslim" tsid="0829" onid="0002" sat="282"/>
 	<channel serviceID="d3c8" name="CCTV News" tsid="0829" onid="0002" sat="282"/>
@@ -448,7 +446,7 @@
 	<channel serviceID="1225" name="SkyNws Arabia" tsid="07ed" onid="0002" sat="282"/>
 	<channel serviceID="cb21" name="SONY MAX" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="d35b" name="SONY SAB" tsid="0830" onid="0002" sat="282"/>
-	<channel serviceID="1bee" name="SONY TV Asia" tsid="07e2" onid="0002" sat="282"/>
+	<channel serviceID="1bee" name="SONY TV" tsid="07e2" onid="0002" sat="282"/>
 	<channel serviceID="cb91" name="Star GOLD" tsid="083b" onid="0002" sat="282"/>
 	<channel serviceID="cb90" name="Star Utsav" tsid="083b" onid="0002" sat="282"/>
 	<channel serviceID="cbd9" name="Star Life OK" tsid="083b" onid="0002" sat="282"/>
@@ -545,7 +543,7 @@
 	<channel serviceID="2f85" name="ITV +1 Yorkshire" tsid="080b" onid="0002" sat="282"/>
 	<channel serviceID="c6cc" name="London Live" tsid="082a" onid="0002" sat="282"/>
 	<channel serviceID="cd32" name="Made In Bristol" tsid="0844" onid="0002" sat="282"/>
-	<channel serviceID="c48c" name="Made In Cardiff" tsid="0811" onid="0002" sat="282"/>
+	<channel serviceID="d7e6" name="Made In Cardiff" tsid="0840" onid="0002" sat="282"/>
 	<channel serviceID="cd4a" name="Made In Leeds" tsid="0844" onid="0002" sat="282"/>
 	<channel serviceID="c4fe" name="Made In Tn&amp;Wr" tsid="0837" onid="0002" sat="282"/>
 	<channel serviceID="d3c6" name="Notts TV" tsid="0829" onid="0002" sat="282"/>
