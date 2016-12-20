@@ -49,6 +49,7 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 	fi
 	# nuke cable stuff
 	rm -f $etc/cable*
+	rm -f $etc/issue.net-c
 	rm -f $cfg/scan.conf-c
 	rm -f /var/bin/miniops-c
 else
