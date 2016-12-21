@@ -125,8 +125,10 @@ class CInfoViewer
 			  bool update_current = true, bool update_next = true);
 	void paintTime( bool show_dot, bool firstPaint );
 	void infobarLoop(bool calledFromNumZap, bool fadeIn);
-	
-    void showButton(const int button, const bool calledFromMPlayer = false, const int mode = TS_MODE) const;
+
+	std::string serviceNamePicon(const char * s);
+
+	void showButton(const int button, const bool calledFromMPlayer = false, const int mode = TS_MODE) const;
 	
 	void showIcon_16_9() const;
 	void showIcon_CA_Status() const;

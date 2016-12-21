@@ -1835,6 +1835,30 @@ void CInfoViewer::Set_CA_Status(int Status)
 		showIcon_CA_Status();
 }
 
+std::string CInfoViewer::serviceNamePicon(const char * s)
+{
+	string r;
+	while ((*s) != 0)
+	{
+		switch (*s)
+		{
+			case '&':
+				r += "and";
+				break;
+			case '+':
+				r += "plus";
+				break;
+			case '*':
+				r += "star";
+				break;
+			default:
+				if (isalnum(*s)) r += tolower(*s);
+		}
+		s++;
+	}
+	return r;
+}
+
 int CInfoViewer::showChannelLogo( const t_channel_id logo_channel_id  )
 {
 	char strChanId[16];
@@ -1843,6 +1867,7 @@ int CInfoViewer::showChannelLogo( const t_channel_id logo_channel_id  )
 			strLogoIDName = (std::string)strChanId + "." + mimetype,
 			strLogoName = ChannelName + "." + mimetype,
 			strAbsIconChIDPath = (std::string)g_settings.infobar_channel_logodir +"/"+ strLogoIDName,
+			strAbsIconSnpPath = (std::string)g_settings.infobar_channel_logodir +"/"+ serviceNamePicon(ChannelName.c_str()) + "." + mimetype,
 			strAbsIconChNamePath = (std::string)g_settings.infobar_channel_logodir +"/"+ strLogoName,
 			strAbsIconChNoNamePath = (std::string)g_settings.infobar_channel_logodir +"/default" + "." + mimetype,
 			strAbsIconPath,
@@ -1861,6 +1886,11 @@ int CInfoViewer::showChannelLogo( const t_channel_id logo_channel_id  )
 		if (access(strAbsIconChIDPath.c_str(), 0) != -1)
 		{
 			strAbsIconPath = strAbsIconChIDPath;
+			logo_available = true;
+		}
+		else if (access(strAbsIconSnpPath.c_str(), 0) != -1)
+		{
+			strAbsIconPath = strAbsIconSnpPath; // Service Name Picon > SNP truncation
 			logo_available = true;
 		}
 		else if (access(strAbsIconChNamePath.c_str(), 0) != -1)
