@@ -42,21 +42,21 @@
 :2004:::::::BBC One Scotland
 :2006:::::::BBC Two England
 :2016:::::::BBC Two Scotland
-:3719:::::::BET
 :1401:::::::Sky1
-:1807:::::::Sky ScFi-Horror
 :1329:1::::::TC test Ch
-:3141:::::::BT Sport-ESPN
-:3142:::::::BT Sport-ESPN
 :3213:::::::Russia Today
 :1850:1::::::Chl Line-up
+:1251:::::::RTE One
+:1252:::::::RTE2
+:1256:::::::RTEjr
+:2804:::::::RTE News Now
+:2808:::::::RTE One +1
 :1097:::::::Sky Sports 5 IRL
 :1312:::::::Sky Sports 5 IRL
 1179:1255:1:1298:7e5:11a0000:BSkyB:NDS:TV3
 1180:1430:1:af7:7ed:11a0000:BSkyB:NDS:Oireachtas TV
 
 #BT Sport Interactive
-:5030:1::::::BT Sport Mosaic
 :5031:1::::::BT Sport Extra 1
 :5381:1::::::BT Sport Mosaic Extra
 :5382:1::::::BT Sport Extra 2
