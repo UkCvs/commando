@@ -6,7 +6,8 @@ SUBDIRS = \
 	default \
 	eicta.org \
 	nordig.org \
-	premiere.de 
+	premiere.de \
+	bskyb.uk
 
 noinst_LIBRARIES = libprivate.a
 

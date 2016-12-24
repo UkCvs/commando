@@ -43,6 +43,7 @@ src/private/default/Makefile
 src/private/eicta.org/Makefile
 src/private/nordig.org/Makefile
 src/private/premiere.de/Makefile
+src/private/bskyb.uk/Makefile
 src/net_ip/Makefile
 ])
 
