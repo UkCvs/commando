@@ -64,11 +64,13 @@ typedef struct _PRIVATE_PROVIDER_FUNC {
 #include "eicta.org/eicta_org.h"
 #include "nordig.org/nordig_org.h"
 #include "premiere.de/premiere_de.h"
+#include "bskyb.uk/bskyb_uk.h"
 
 static PRIV_PROVIDER_FUNC ppf[] = {
 	{ "eicta.org",		getPrivate_EictaORG },
 	{ "nordig.org",		getPrivate_NordigORG },
 	{ "premiere.de",	getPrivate_PremiereDE },
+	{ "bskyb.uk",		getPrivate_BskybUK },
 	{ NULL,			NULL }
 };
 
