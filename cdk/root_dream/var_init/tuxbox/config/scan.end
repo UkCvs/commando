@@ -1,5 +1,5 @@
 #!/bin/sh
-# conditional tidy up after a standalone Service Scan - updated Tue 19 Apr 2016
+# conditional tidy ups after a standalone Service Scan - updated Thu 29 Dec 2016
 
 fmsg(){
 wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
@@ -53,13 +53,9 @@ if grep -q -m 1 '28.2E' $svc; then
 	/"04"/d
 	s/"82"/"01"/
 	s/"85"/"01"/
-	s/Sport\/\/ESPN/Sport-ESPN/
-	s/ScFi\/Horror/ScFi-Horror/
 	' $tsv
 	sed -i '
 	/HD\|3D/d
-	s/Sport\/\/ESPN/Sport-ESPN/
-	s/ScFi\/Horror/ScFi-Horror/
 	s/sat="0"/sat="282"/
 	' $tbq
 
@@ -77,7 +73,6 @@ if grep -q -m 1 '28.2E' $svc; then
 		/Freesat/,/\/Bouquet>/d
 		/Arqiv/,/\/Bouquet>/d' $tbq
 		[ ! -e $etc/.other ] && sed -i '/_id="0010" name="Other" h/,/\/Bouquet>/{/serviceID/d}' $tbq
-
 		fmsg "Updating all ITV, SBO, RTE and Interactive channel names.
 		\nThis only takes a minute, so patience please..."
 		sed -i 's/name="" h/name=" " h/' $tbq
@@ -93,13 +88,13 @@ if grep -q -m 1 '28.2E' $svc; then
 		done < $lcl
 		sed -i '
 		s/"RT"/"Russia Today"/
-		s/T L/TÉ L/
-		s/T N/TÉ N/
-		s/T O/TÉ O/
-		s/T R/TÉ R/
-		s/T2/TÉ2/
-		s/T 2/TÉ 2/
-		s/Tj/TÉj/
+		s/T L/TE L/
+		s/T N/TE N/
+		s/T O/TE O/
+		s/T R/TE R/
+		s/T2/TE2/
+		s/T 2/TE 2/
+		s/Tj/TEj/
 		' $tbq $tsv 
 		sed -i "
 		/0016/,/\/Bouquet>/{/serviceID/d}
