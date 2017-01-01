@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # $Id: start_neutrino,v 1.2 2009/04/30 19:51:00 seife Exp $
+# updated: Sun 01 Jan 2017 PaphosAL (for conditional cable nitscan plugin)
 
 . /proc/bus/dbox.sh
 
@@ -52,6 +53,7 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 	rm -f $etc/issue.net-c
 	rm -f $cfg/scan.conf-c
 	rm -f /var/bin/miniops-c
+	rm -f /var/tuxbox/plugins/02-nitscan*
 else
 	# Cable! IF first boot, nuke 28.2E kit and apply cable settings
 	if [ ! -e $conf ]; then
