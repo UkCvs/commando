@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops scripts toolkit for DM500C C16.0 - 11 Dec 2016 (LraiZer & PaphosAL)
+# miniops scripts toolkit for DM500C C16.0 - 01 Jan 2017 (LraiZer & PaphosAL)
 
 #set global variables
 dload="wget http://www.ukcvs.net/C16"
@@ -7,11 +7,15 @@ etc="/var/etc"
 nit="nitscan.zip"
 now="%a %d %b %Y %T"
 
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+
 case "$1" in
 
 # Softcam(s) autostart
 start)
-[ -e $etc/.oscam ] && { oscam; sleep 5; pzapit -rz; } &
+[ -e $etc/.oscam ] && { oscam; sleep 5; pzapit -rz; killall miniops; } &
 [ -e $etc/.cccam ] && { epg-restart >/dev/null 2>&1; sleep 1; CCcam; } &
 [ -e $etc/.mgcamd ] && { epg-pause >/dev/null 2>&1; sleep 1; mgcamd; sleep 5; pzapit -rz; } &
 [ -e $etc/.evocamd ] && evocamd &
@@ -30,17 +34,23 @@ stop)
 
 nit_scan)
 echo `date +"$now"`
+msg="downloading cable nitscan, please wait..."
+echo "$msg"
+fmsg "$msg"
+
 cd /tmp
 $dload/$nit
 if [ -e $nit ]; then
-	echo "processing nitscan, please wait..."
-	unzip $nit
+	unzip -o $nit
 	chmod 755 dvbsnoop
 	. /tmp/nitscan
 	reboot
 else
-	echo "NIT Scan check failed, as NO web connection was
-found! Please fix this issue, then try again.."
+	msg1="cable NIT Scan failed, as NO web connection was"
+	msg2="found! Please fix this issue, then try again.."
+	msg3="$msg1\n$msg2"
+	echo -e "$msg3"
+	fmsg "$msg3"
 fi
 cd /
 ;;
