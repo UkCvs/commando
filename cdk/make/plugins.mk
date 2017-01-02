@@ -5,7 +5,7 @@ $(appsdir)/tuxbox/plugins/config.status: bootstrap libfreetype libcurl libz libs
 
 plugins: neutrino-plugins enigma-plugins
 
-neutrino-plugins: $(targetprefix)/include/tuxbox/plugin.h autobouquets getepg tuxmail tuxtxt tuxcom tuxcal vncviewer dvbsub shellexec tuxwetter sysinfo clock logomask blockads
+neutrino-plugins: $(targetprefix)/include/tuxbox/plugin.h autobouquets getepg nitscan tuxmail tuxtxt tuxcom tuxcal vncviewer dvbsub shellexec tuxwetter sysinfo clock logomask blockads
 
 enigma-plugins: @LIBGETTEXT@ $(appsdir)/tuxbox/plugins/config.status $(targetprefix)/include/tuxbox/plugin.h
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/enigma all
@@ -35,7 +35,16 @@ flash-getepg: $(appsdir)/tuxbox/plugins/config.status | $(flashprefix)/root
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/getepg install prefix=$(flashprefix)/root
 	@FLASHROOTDIR_MODIFIED@
 
-tuxmail: libcrypto $(appsdir)/tuxbox/plugins/config.status
+nitscan: $(appsdir)/tuxbox/plugins/config.status
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/nitscan all
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/nitscan install
+
+flash-nitscan: $(appsdir)/tuxbox/plugins/config.status | $(flashprefix)/root
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/nitscan all prefix=$(flashprefix)/root
+	$(MAKE) -C $(appsdir)/tuxbox/plugins/nitscan install prefix=$(flashprefix)/root
+	@FLASHROOTDIR_MODIFIED@
+
+	tuxmail: libcrypto $(appsdir)/tuxbox/plugins/config.status
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/tuxmail all
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/tuxmail install
 
@@ -218,4 +227,4 @@ $(DEPDIR)/links-plugin: $(appsdir)/tuxbox/plugins/config.status
 flash-links-plugin: $(appsdir)/tuxbox/plugins/config.status | $(flashprefix)/root
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/links all prefix=$(flashprefix)/root
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/links install prefix=$(flashprefix)/root
-	@FLASHROOTDIR_MODIFIED@
+@FLASHROOTDIR_MODIFIED@
