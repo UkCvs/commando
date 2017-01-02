@@ -1,7 +1,7 @@
 /*
  * $Id: start.c,v 1.4 2010/09/27 19:40:10 rhabarber1848 Exp $
  *
- * getepg - d-box2 linux project
+ * nitscan - d-box2 linux project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,3 +52,4 @@ void plugin_exec()
 	if (WIFEXITED(status))
 		fprintf(stderr, "[%s.so] child returned with status %d\n", SCRIPT, WEXITSTATUS(status));
 }
+

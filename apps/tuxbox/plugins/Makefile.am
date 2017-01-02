@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = gnu
 
 SUBDIRS = \
-	autobouquets getepg include tuxmail tuxcom tuxcal tuxclock fx2 vncviewer enigma shellexec tuxwetter sysinfo clock logomask blockads links
+	autobouquets getepg nitscan include tuxmail tuxcom tuxcal tuxclock fx2 vncviewer enigma shellexec tuxwetter sysinfo clock logomask blockads links
 
 if ENABLE_TUXTXT
 SUBDIRS += tuxtxt

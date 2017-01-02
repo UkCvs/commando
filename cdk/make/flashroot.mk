@@ -324,4 +324,5 @@ endif
 	$(MAKE) flash-defaultlocale
 	$(MAKE) flash-version
 	@FLASHROOTDIR_MODIFIED@
-@TUXBOX_CUSTOMIZE@
+	@TUXBOX_CUSTOMIZE@
+

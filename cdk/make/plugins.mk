@@ -44,7 +44,7 @@ flash-nitscan: $(appsdir)/tuxbox/plugins/config.status | $(flashprefix)/root
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/nitscan install prefix=$(flashprefix)/root
 	@FLASHROOTDIR_MODIFIED@
 
-	tuxmail: libcrypto $(appsdir)/tuxbox/plugins/config.status
+tuxmail: libcrypto $(appsdir)/tuxbox/plugins/config.status
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/tuxmail all
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/tuxmail install
 
@@ -227,4 +227,5 @@ $(DEPDIR)/links-plugin: $(appsdir)/tuxbox/plugins/config.status
 flash-links-plugin: $(appsdir)/tuxbox/plugins/config.status | $(flashprefix)/root
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/links all prefix=$(flashprefix)/root
 	$(MAKE) -C $(appsdir)/tuxbox/plugins/links install prefix=$(flashprefix)/root
-@FLASHROOTDIR_MODIFIED@
+	@FLASHROOTDIR_MODIFIED@
+
