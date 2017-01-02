@@ -455,6 +455,12 @@ endif
 		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/autobouquets.cfg \
 		$(dreamfilesrootdir)/var_init/tuxbox/plugins/02-autobouquets.cfg; \
 	fi
+	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/nitscan.so ] ; then \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/nitscan.so \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/02-nitscan.so; \
+		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/nitscan.cfg \
+		$(dreamfilesrootdir)/var_init/tuxbox/plugins/02-nitscan.cfg; \
+	fi
 	if [ -e $(dreamfilesrootdir)/lib/tuxbox/plugins/getepg.so ] ; then \
 		mv $(dreamfilesrootdir)/lib/tuxbox/plugins/getepg.so \
 		$(dreamfilesrootdir)/var_init/tuxbox/plugins/03-getepg.so; \
