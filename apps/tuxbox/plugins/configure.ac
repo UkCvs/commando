@@ -79,6 +79,7 @@ fx2/c64emu/Makefile
 fx2/sudoku/Makefile
 autobouquets/Makefile
 getepg/Makefile
+nitscan/Makefile
 tuxmail/Makefile
 tuxmail/daemon/Makefile
 tuxcal/Makefile
