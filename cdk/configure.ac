@@ -1,3 +1,33 @@
+
+Skip to content
+This repository
+
+    Pull requests
+    Issues
+    Gist
+
+    @PaphosAL
+
+5
+1
+
+    3
+
+UkCvs/commando
+Code
+Issues 0
+Pull requests 0
+Projects 0
+Wiki
+Pulse
+Graphs
+Settings
+commando/cdk/configure.ac
+73e0e30 on 20 Nov 2016
+@LraiZer LraiZer add OSD program icon menu items [Update / Install], [Uninstall]
+@LraiZer
+@AbuBaniaz
+2005 lines (1760 sloc) 60.6 KB
 AC_INIT([tuxbox-cdk],[0])
 AC_PREREQ(2.57a)
 
@@ -606,6 +636,11 @@ AC_ARG_ENABLE(getepg,
 	AS_HELP_STRING(--disable-getepg,disable getepg downloader),
 	,[enable_getepg=yes])
 AM_CONDITIONAL(ENABLE_GETEPG,test "$enable_getepg" = "yes")
+
+AC_ARG_ENABLE(nitscan,
+	AS_HELP_STRING(--disable-nitscan,disable nitscan downloader),
+	,[enable_nitscan=yes])
+AM_CONDITIONAL(ENABLE_NITSCAN,test "$enable_nitscan" = "yes")
 
 AC_ARG_ENABLE(getrc,
 	AS_HELP_STRING(--enable-getrc,enable getrc),
@@ -1841,6 +1876,7 @@ ether-wake			$enable_etherwake
 fbshot				$enable_fbshot
 gdbserver			$enable_gdbserver
 getepg				$enable_getepg
+nitscan				$enable_nitscan
 getrc				$enable_getrc
 hddtemp				$enable_hddtemp
 htop				$enable_htop
