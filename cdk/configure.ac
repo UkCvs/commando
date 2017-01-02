@@ -1,33 +1,3 @@
-
-Skip to content
-This repository
-
-    Pull requests
-    Issues
-    Gist
-
-    @PaphosAL
-
-5
-1
-
-    3
-
-UkCvs/commando
-Code
-Issues 0
-Pull requests 0
-Projects 0
-Wiki
-Pulse
-Graphs
-Settings
-commando/cdk/configure.ac
-73e0e30 on 20 Nov 2016
-@LraiZer LraiZer add OSD program icon menu items [Update / Install], [Uninstall]
-@LraiZer
-@AbuBaniaz
-2005 lines (1760 sloc) 60.6 KB
 AC_INIT([tuxbox-cdk],[0])
 AC_PREREQ(2.57a)
 
