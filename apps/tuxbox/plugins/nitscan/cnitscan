@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# fork script for the [Create 'CableUK MyLocal' cables.xml] Plugin
+# PaphosAL Sun 01 Jan 2017 for C16 DM500C (conditional for boxtype)
+
+miniops nit_scan &
+
+exit 0
