@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # $Id: start_neutrino,v 1.2 2009/04/30 19:51:00 seife Exp $
-# updated: Sun 01 Jan 2017 PaphosAL (for conditional cable nitscan plugin)
+# C16 changelog for this boot script:
+# Sun 01 Jan 2017: prep for conditional cable nitscan plugin- AL
+# Mon 02 Jan 2017: only nuke cable stuff on 1st boot (else ignore)- AL
 
 . /proc/bus/dbox.sh
 
@@ -48,12 +50,14 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 	if [ -e $etc/.epg-boot ]; then
 		{ sleep 60; miniops getepg >/dev/null; } &
 	fi
-	# nuke cable stuff
-	rm -f $etc/cable*
-	rm -f $etc/issue.net-c
-	rm -f $cfg/scan.conf-c
-	rm -f /var/bin/miniops-c
-	rm -f /var/tuxbox/plugins/02-nitscan*
+	# nuke cable stuff IF first boot
+	if [ ! -e $conf ]; then
+		rm -f $etc/cable*
+		rm -f $etc/issue.net-c
+		rm -f $cfg/scan.conf-c
+		rm -f /var/bin/miniops-c
+		rm -f /var/tuxbox/plugins/02-nitscan*
+	fi
 else
 	# Cable! IF first boot, nuke 28.2E kit and apply cable settings
 	if [ ! -e $conf ]; then
