@@ -66,6 +66,9 @@ endif
 if ENABLE_GETEPG
 	$(MAKE) flash-getepg
 endif
+if ENABLE_NITSCAN
+	$(MAKE) flash-nitscan
+endif
 if ENABLE_MADPLAY
 	$(MAKE) flash-madplay
 endif
@@ -321,4 +324,4 @@ endif
 	$(MAKE) flash-defaultlocale
 	$(MAKE) flash-version
 	@FLASHROOTDIR_MODIFIED@
-	@TUXBOX_CUSTOMIZE@
+@TUXBOX_CUSTOMIZE@
