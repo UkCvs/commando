@@ -1,3 +1,6 @@
+# changelog for C16 cable
+# Wed 04 Jan 2017: add default services and bouquets (Luton- bandit area)- AL ;)
+
 cd /var/bin
 rm -f epg* stats
 mv -f miniops-c miniops
@@ -11,7 +14,12 @@ rm -f 00-shell* 02-auto* 03-get*
 cd $cfg
 rm -fr enigma
 mv -f scan.conf-c scan.conf
-rm -f menu_* scan.end scan.start shell*
+# WIP...
+# mv -f scan.end-c scan.end
+# mv -f scan.start-c scan.start
+rm -f menu_* shell*
 cd $cfg/zapit
-rm -f *.xml tv* *.pid
+mv -f bouquets-c.xml bouquets.xml
+mv -f services-c.xml services.xml
+rm -f tv* *.pid
 cd /
