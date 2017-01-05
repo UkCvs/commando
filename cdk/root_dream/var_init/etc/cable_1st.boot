@@ -17,7 +17,8 @@ mv -f scan.conf-c scan.conf
 # WIP...
 # mv -f scan.end-c scan.end
 # mv -f scan.start-c scan.start
-rm -f menu_* shell*
+# rm -f menu_* shell*
+rm -f menu_* scan.end scan.start shell*
 cd $cfg/zapit
 mv -f bouquets-c.xml bouquets.xml
 mv -f services-c.xml services.xml
