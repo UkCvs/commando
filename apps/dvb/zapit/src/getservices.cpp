@@ -176,7 +176,8 @@ void ParseChannels(xmlNodePtr node, const t_transport_stream_id transport_stream
 							service_type,
 							DiSEqC, 
 							satellitePosition,
-							zfrequency
+							zfrequency,
+							0
 						)
 					)
 				);

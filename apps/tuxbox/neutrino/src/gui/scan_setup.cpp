@@ -202,6 +202,14 @@ const CMenuOptionChooser::keyval OPTIONS_EAST0_WEST1_OPTIONS[OPTIONS_EAST0_WEST1
 	{ 1, LOCALE_SATSETUP_WEST }
 };
 
+#define SCANTP_RATE_OPTION_COUNT 3
+const CMenuOptionChooser::keyval SCANTP_RATE_OPTIONS[SCANTP_RATE_OPTION_COUNT] =
+{
+	{ 6887,	LOCALE_SCANTP_RATE_6887 },
+	{ 6952,	LOCALE_SCANTP_RATE_6952 },
+	{ 6875,	LOCALE_SCANTP_RATE_6875 }
+};
+
 int CScanSetup::showScanService()
 {
 	dprintf(DEBUG_DEBUG, "init scansettings\n");
@@ -395,7 +403,8 @@ int CScanSetup::showScanService()
 	scansetup->addItem(fw_scanmode); 
 
 	//show scan mode (fast->on/off)
-	scansetup->addItem(onoff_mode);
+	//if(g_info.delivery_system != DVB_C)
+		scansetup->addItem(onoff_mode);
 
 	//prepare auto scan
 	CMenuOptionChooser* onoffscanSectionsd = ( new CMenuOptionChooser(LOCALE_SECTIONSD_SCANMODE, (int *)&scanSettings.scanSectionsd, SECTIONSD_SCAN_OPTIONS, SECTIONSD_SCAN_OPTIONS_COUNT, true, this));
@@ -432,6 +441,12 @@ int CScanSetup::showScanModeMenue()
 	//prepare input signal rate
 	CStringInput rate(LOCALE_SCANTP_RATE, (char *) scanSettings.TP_rate, 8, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "0123456789 ");
 
+	//prepare input netid
+	CStringInput* netid = new CStringInput(LOCALE_SCANTP_NETID, (char *) scanSettings.netid, 5, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "0123456789 ");
+
+	//prepare symrate select
+	CMenuOptionChooser* symrate = new CMenuOptionChooser(LOCALE_SCANTP_RATE, (int *)&scanSettings.symrate, SCANTP_RATE_OPTIONS, SCANTP_RATE_OPTION_COUNT, scanSettings.TP_scan == 1);
+
 	//prepare fec select
 	CMenuOptionChooser* fec = new CMenuOptionChooser(LOCALE_SCANTP_FEC, (int *)&scanSettings.TP_fec, SATSETUP_SCANTP_FEC, SATSETUP_SCANTP_FEC_COUNT, scanSettings.TP_scan == 1);
 
@@ -446,13 +461,14 @@ int CScanSetup::showScanModeMenue()
 	} 
 	else // cable
 	{
-		freq = new CStringInput(LOCALE_SCANTP_FREQ, (char *) scanSettings.TP_freq, 9, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "0123456789 ");
+		freq = new CStringInput(LOCALE_SCANTP_FREQ, (char *) scanSettings.TP_freq, 6, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "0123456789 ");
 		pol_mod = new CMenuOptionChooser(LOCALE_SCANTP_MOD, (int *)&scanSettings.TP_mod, CABLESETUP_SCANTP_MOD, CABLESETUP_SCANTP_MOD_COUNT, scanSettings.TP_scan == 1);
 	}
 
-		//prepare forwarders rate/freq
+	//prepare forwarders rate/freq/netid
 	CMenuForwarder *Rate = new CMenuForwarder(LOCALE_SCANTP_RATE, scanSettings.TP_scan == 1, scanSettings.TP_rate, &rate);
 	CMenuForwarder *Freq = new CMenuForwarder(LOCALE_SCANTP_FREQ, scanSettings.TP_scan == 1, scanSettings.TP_freq, freq);
+	CMenuForwarder *Netid = new CMenuForwarder(LOCALE_SCANTP_NETID, scanSettings.TP_scan == 1, scanSettings.netid, netid);
 
 	//sat-lnb-settings
 	CMenuOptionStringChooser* TP_SatSelectMenu = NULL;
@@ -484,7 +500,7 @@ int CScanSetup::showScanModeMenue()
 		}
 	}
 
-	CTP_scanNotifier TP_scanNotifier(fec, pol_mod, Freq, Rate, TP_SatSelectMenu, scan_mode_string);
+	CTP_scanNotifier TP_scanNotifier(fec, pol_mod, symrate, Netid, Freq, Rate, TP_SatSelectMenu, scan_mode_string);
 	CMenuOptionChooser* scan;
 	if(g_info.delivery_system == DVB_S) {
 		scan = new CMenuOptionChooser(LOCALE_SCANTP_SCAN, (int *)&scanSettings.TP_scan, SCANTS_SCAN_OPTIONS, SCANTS_SCAN_OPTION_COUNT, true/*(g_info.delivery_system == DVB_S)*/, &TP_scanNotifier);
@@ -498,11 +514,24 @@ int CScanSetup::showScanModeMenue()
 	if(g_info.delivery_system == DVB_S) {
 		scanmode->addItem(TP_SatSelectMenu);
 	}
+	else
+	{
+		scanmode->addItem(GenericMenuSeparatorLine);
+		scanmode->addItem(Netid);
+	}
+
 	//show items for scanmode submenue
 	scanmode->addItem(Freq);
-	scanmode->addItem(pol_mod);
-	scanmode->addItem(Rate);
-	scanmode->addItem(fec);
+	if(g_info.delivery_system == DVB_C)
+	{
+		scanmode->addItem(symrate);
+	}
+	else
+	{
+		scanmode->addItem(pol_mod);
+		scanmode->addItem(Rate);
+		scanmode->addItem(fec);
+	}
 
 	int res = scanmode->exec(NULL, "");
 	delete scanmode;
@@ -614,13 +643,15 @@ bool CSatDiseqcNotifier::changeNotify(const neutrino_locale_t, void * Data)
 	return false;
 }
 
-CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuForwarder* i3, CMenuForwarder* i4, CMenuOptionStringChooser* i5, std::string &s)
+CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuOptionChooser* i3, CMenuForwarder* i4, CMenuForwarder* i5, CMenuForwarder* i6, CMenuOptionStringChooser* i7, std::string &s)
 {
 	toDisable1[0]=i1;
 	toDisable1[1]=i2;
-	toDisable2[0]=i3;
-	toDisable2[1]=i4;
-	toDisable3[0]=i5;
+	toDisable1[2]=i3;
+	toDisable2[0]=i4;
+	toDisable2[1]=i5;
+	toDisable2[2]=i6;
+	toDisable3[0]=i7;
 	scan_mode_string = &s;
 }
 
@@ -632,7 +663,7 @@ bool CTP_scanNotifier::changeNotify(const neutrino_locale_t, void *Data)
 	if ((*((int*) Data) == CScanTs::SCAN_COMPLETE) || (*((int*) Data) == CScanTs::SCAN_ONE_SAT))
 		set_true_false = false;
 
-	for (int i=0; i<2; i++)
+	for (int i=0; i<3; i++)
 	{
 		if (toDisable1[i]) toDisable1[i]->setActive(set_true_false);
 		if (toDisable2[i]) toDisable2[i]->setActive(set_true_false);

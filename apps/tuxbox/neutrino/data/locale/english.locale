@@ -1350,10 +1350,14 @@ scantp.mod_qam_32 QAM_32
 scantp.mod_qam_64 QAM_64
 scantp.mod_qam_auto QAM_AUTO
 scantp.mod_qpsk QPSK
+scantp.netid Network ID
 scantp.pol Polarization
 scantp.pol_h H
 scantp.pol_v V
 scantp.rate Symbol rate
+scantp.rate_6875 6875
+scantp.rate_6887 6887
+scantp.rate_6952 6952
 scantp.scan Scan Mode
 scantp.scan_all_sats All Sat
 scantp.scan_complete Complete
@@ -1368,7 +1372,7 @@ scants.bouquet Bouquet
 scants.bouquet_create create new
 scants.bouquet_erase erase all
 scants.bouquet_leave leave current
-scants.bouquet_satellite Satellite-Bouquet
+scants.bouquet_satellite Provider-Bouquet
 scants.bouquet_update update
 scants.channel Channel:
 scants.failed Transponderscan failed!

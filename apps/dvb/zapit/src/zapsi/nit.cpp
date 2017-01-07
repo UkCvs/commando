@@ -33,7 +33,7 @@
 
 extern transponder_list_t transponders; //  defined in zapit.cpp
 
-int parse_nit(const t_satellite_position satellite_position, const unsigned char DiSEqC)
+int parse_nit(const t_satellite_position satellite_position, const unsigned char DiSEqC, const unsigned int netid)
 {
 	CDemux dmx;
 
@@ -50,7 +50,9 @@ int parse_nit(const t_satellite_position satellite_position, const unsigned char
 	unsigned short transport_stream_loop_length;
 	t_transport_stream_id transport_stream_id;
 	t_original_network_id original_network_id;
-//	unsigned short network_id;
+	unsigned short network_id;
+	unsigned short section_number = 0;
+	unsigned short last_section_number = 1;
 
 	transponder_id_t transponder_id;
 
@@ -70,8 +72,15 @@ int parse_nit(const t_satellite_position satellite_position, const unsigned char
 			return -1;
 
 		section_length = ((buffer[1] & 0x0F) << 8) + buffer[2];
-//		network_id = ((buffer[3] << 8)| buffer [4]);
+		network_id = ((buffer[3] << 8)| buffer [4]);
 		network_descriptors_length = ((buffer[8] & 0x0F) << 8) | buffer[9];
+
+		if ((netid) && (netid != network_id))
+			continue;
+
+		section_number = buffer[6];
+		last_section_number = buffer[7];
+		filter[4]++;
 
 		for (pos = 10; pos < network_descriptors_length + 10; pos += buffer[pos + 1] + 2)
 		{
@@ -170,7 +179,7 @@ int parse_nit(const t_satellite_position satellite_position, const unsigned char
 				}
 			}
 		}
-	} while (filter[4]++ != buffer[7]);
+	} while (section_number != last_section_number);
 
 	return 0;
 }

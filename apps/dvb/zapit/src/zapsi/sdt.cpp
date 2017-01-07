@@ -149,7 +149,9 @@ int parse_sdt(const t_satellite_position satellite_position, const t_transport_s
 	unsigned short service_id;
 	unsigned short descriptors_loop_length;
 //	unsigned short running_status;
-
+	unsigned short channel_number;
+	unsigned short bouquet_id = 99;
+	unsigned short name_length = 0;
 //	bool EIT_schedule_flag;
 //	bool EIT_present_following_flag;
 //	bool free_CA_mode;
@@ -192,6 +194,7 @@ int parse_sdt(const t_satellite_position satellite_position, const t_transport_s
 //			running_status = buffer [pos + 3] & 0xE0;
 //			free_CA_mode = buffer [pos + 3] & 0x10;
 			descriptors_loop_length = ((buffer[pos + 3] & 0x0F) << 8) | buffer[pos + 4];
+			channel_number = 0;
 
 			for (pos2 = pos + 5; pos2 < pos + descriptors_loop_length + 5; pos2 += buffer[pos2 + 1] + 2) {
 				switch (buffer[pos2]) {
@@ -212,7 +215,7 @@ int parse_sdt(const t_satellite_position satellite_position, const t_transport_s
 					break;
 
 				case 0x48:
-					service_descriptor(buffer + pos2, service_id, transport_stream_id, original_network_id, satellite_position, DiSEqC, frequency, sat_provider);
+					service_descriptor(buffer + pos2, service_id, transport_stream_id, original_network_id, satellite_position, DiSEqC, frequency, sat_provider, channel_number, bouquet_id);
 					break;
 
 				case 0x49:
@@ -229,6 +232,7 @@ int parse_sdt(const t_satellite_position satellite_position, const t_transport_s
 
 				case 0x4C:
 					time_shifted_service_descriptor(buffer + pos2);
+					//time_shifted_service_descriptor(service_id, transport_stream_id, original_network_id, satellite_position, frequency);
 					break;
 
 				case 0x51:
@@ -266,7 +270,22 @@ int parse_sdt(const t_satellite_position satellite_position, const t_transport_s
 				case 0xB2: /* unknown, Eutelsat 13.0E */
 					break;
 
-				case 0xC0: /* unknown, Eutelsat 13.0E */
+				case 0xC0: /* unknown, Eutelsat 13.0E */ /* CABLE UK (0xf020) */
+					if (original_network_id == 0xf020)
+					{
+						channel_number = (buffer[pos2 + 2] << 8) | buffer[pos2 + 3];
+						name_length = buffer[pos2 + 4];
+						bouquet_id = buffer[pos2 + 4 + name_length + 1];
+					}
+					break;
+
+				case 0xCA: /* CABLE UK (0xf020) */
+					if (original_network_id == 0xf020)
+					{
+						channel_number = (buffer[pos2 + 2] << 8) | buffer[pos2 + 3];
+						name_length = buffer[pos2 + 4];
+						bouquet_id = buffer[pos2 + 4 + name_length + 1];
+					}
 					break;
 
 				case 0xE4: /* unknown, Astra 19.2E */

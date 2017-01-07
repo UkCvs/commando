@@ -963,7 +963,8 @@ int zapit(const t_channel_id channel_id, bool in_nvod, transponder_id_t transpon
 						1,
 						frontend->getDiseqcPosition(),
 						cc->getSatellitePosition(),
-						GET_FREQUENCY_FROM_TRANSPONDER_ID(transponder_id)
+						GET_FREQUENCY_FROM_TRANSPONDER_ID(transponder_id),
+						cc->getChannelNumber()
 						);
 	}
 
@@ -2330,7 +2331,8 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					    cc->getDiSEqC(),
 					    cc->getSatellitePosition(),
 //					    channel->getFrequency()
-					    frequency
+					    frequency,
+					    0
 					)
 				)
 			);

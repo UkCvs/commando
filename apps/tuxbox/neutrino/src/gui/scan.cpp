@@ -56,6 +56,10 @@
 #ifdef HAVE_TRIPLEDRAGON
 #elif HAVE_DVB_API_VERSION >= 3
 #else
+#define frequency Frequency
+#define symbol_rate SymbolRate
+#define fec_inner FEC_inner
+#define modulation QAM
 #include <ost/frontend.h>
 #include <ost/sec.h>
 #endif
@@ -123,9 +127,16 @@ printf("[neutrino] TP_scan %d TP_freq %s TP_rate %s TP_fec %d TP_pol %d TP_mod %
 		TP.feparams.symbolrate = atoi(get_set.TP_rate);
 		TP.feparams.fec = get_set.TP_fec;
 #elif HAVE_DVB_API_VERSION < 3
-		TP.feparams.Frequency = atoi(get_set.TP_freq);
-		TP.feparams.u.qpsk.SymbolRate = atoi(get_set.TP_rate);
-		TP.feparams.u.qpsk.FEC_inner = (CodeRate)get_set.TP_fec;
+		if(g_info.delivery_system == DVB_S) {
+			TP.feparams.frequency = atoi(get_set.TP_freq);
+			TP.feparams.u.qpsk.SymbolRate = atoi(get_set.TP_rate);
+			TP.feparams.u.qpsk.FEC_inner = (CodeRate)get_set.TP_fec;
+		} else {
+			TP.feparams.frequency = (atoi(get_set.TP_freq) * 1000);
+			TP.feparams.u.qam.symbol_rate = (get_set.symrate * 1000);
+			TP.feparams.u.qam.fec_inner = (fe_code_rate_t) 3;
+			TP.feparams.u.qam.modulation = (fe_modulation_t) 3;
+		}
 #else
 		TP.feparams.frequency = atoi(get_set.TP_freq);
 		if(g_info.delivery_system == DVB_S) {
@@ -188,7 +199,10 @@ printf("[neutrino] TP_scan %d TP_freq %s TP_rate %s TP_fec %d TP_pol %d TP_mod %
 	/* go */
 	if (get_set.TP_scan == CScanTs::SCAN_ONE_TP)
 	{
-		success = g_Zapit->scan_TP(TP);
+		if (g_info.delivery_system == DVB_C)
+			success = g_Zapit->startScan(false, -1, TP, atoi(get_set.netid));
+		else
+			success = g_Zapit->scan_TP(TP);
 	}
 	else if (get_set.TP_scan == CScanTs::SCAN_ONE_SAT)
 	{
@@ -196,7 +210,10 @@ printf("[neutrino] TP_scan %d TP_freq %s TP_rate %s TP_fec %d TP_pol %d TP_mod %
 	}
 	else	// CScanTs::SCAN_COMPLETE
 	{
-		success = g_Zapit->startScan(get_set.scan_mode);
+		if (g_info.delivery_system == DVB_C)
+			success = g_Zapit->startScan(true);
+		else
+			success = g_Zapit->startScan(get_set.scan_mode);
 	}
 	start_time = time(NULL);
 	paint();

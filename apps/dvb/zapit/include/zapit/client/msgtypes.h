@@ -376,6 +376,8 @@ class CZapitMessages
 	{
 		bool    scan_mode;
 		int8_t  diseqc;
+		uint16_t netid;
+		TP_params TP;
 	};
 
 	struct startChannel

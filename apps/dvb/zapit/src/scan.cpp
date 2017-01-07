@@ -47,6 +47,8 @@ uint processed_transponders;
 uint32_t actual_freq;
 uint actual_polarisation;
 bool scan_mode = false;
+uint16_t netid;
+TP_params TP;
 bool one_flag;
 int one_tpid, one_onid;
 static bool scan_should_be_aborted;
@@ -262,7 +264,7 @@ int get_nits(dvb_frontend_parameters *feparams, uint8_t polarization, const t_sa
 	if (frontend->setParameters(feparams, polarization, DiSEqC) < 0)
 		return -1;
 
-	if ((status = parse_nit(satellite_position, DiSEqC)) <= -2) /* nit unavailable */
+	if ((status = parse_nit(satellite_position, DiSEqC, netid)) <= -2) /* nit unavailable */
 	{
 		uint32_t tsid_onid = get_sdt_TsidOnid();
 	
@@ -529,7 +531,7 @@ bool write_provider(FILE *fd, const char * const frontendType, const char * cons
 
 	return transponders_found;
 }
-
+#if 0
 int scan_transponder(xmlNodePtr transponder, const t_satellite_position satellite_position, uint8_t diseqc_pos)
 {
 	uint8_t polarization = 0;
@@ -594,6 +596,85 @@ int scan_transponder(xmlNodePtr transponder, const t_satellite_position satellit
 
 	return 0;
 }
+#endif
+
+int scan_transponder(xmlNodePtr transponder, const t_satellite_position satellite_position, uint8_t diseqc_pos)
+{
+	uint8_t polarization = 0;
+#ifndef HAVE_TRIPLEDRAGON
+	dvb_frontend_parameters feparams;
+	memset(&feparams, 0x00, sizeof(dvb_frontend_parameters));
+
+	feparams.inversion = INVERSION_AUTO;
+
+	/* cable */
+	if (frontend->getInfo()->type == FE_QAM)
+	{
+		diseqc_pos = 0;
+		if (scan_mode)
+		{
+			feparams.frequency = xmlGetNumericAttribute(transponder, "frequency", 0);
+			feparams.u.qam.symbol_rate = xmlGetNumericAttribute(transponder, "symbol_rate", 0);
+			feparams.u.qam.fec_inner = CFrontend::xml2FEC(xmlGetNumericAttribute(transponder, "fec_inner", 0));
+			feparams.u.qam.modulation = CFrontend::getModulation(xmlGetNumericAttribute(transponder, "modulation", 0));
+		}
+		else
+		{
+			feparams.frequency = TP.feparams.frequency;
+			feparams.u.qam.symbol_rate = TP.feparams.u.qam.symbol_rate;
+			feparams.u.qam.fec_inner = TP.feparams.u.qam.fec_inner;
+			feparams.u.qam.modulation = TP.feparams.u.qam.modulation;
+		}
+
+	}
+
+	/* satellite */
+	else if (frontend->getInfo()->type == FE_QPSK)
+	{
+		feparams.u.qpsk.symbol_rate = xmlGetNumericAttribute(transponder, "symbol_rate", 0);
+		feparams.u.qpsk.fec_inner = CFrontend::xml2FEC(xmlGetNumericAttribute(transponder, "fec_inner", 0));
+		polarization = xmlGetNumericAttribute(transponder, "polarization", 0);
+	}
+
+	/* terrestrial */
+	else if (frontend->getInfo()->type == FE_OFDM)
+	{
+#if HAVE_DVB_API_VERSION < 3
+		// those are not tested at all, since i have no terrestrial dreambox! -- seife
+		feparams.u.ofdm.bandWidth = (fe_bandwidth_t) xmlGetNumericAttribute(transponder, "bandwidth", 0);
+		feparams.u.ofdm.HP_CodeRate = FEC_AUTO;
+		feparams.u.ofdm.LP_CodeRate = FEC_AUTO;
+		feparams.u.ofdm.Constellation = QPSK;
+		feparams.u.ofdm.TransmissionMode = TRANSMISSION_MODE_2K;
+		feparams.u.ofdm.guardInterval = GUARD_INTERVAL_1_32;
+		feparams.u.ofdm.HierarchyInformation = HIERARCHY_NONE;
+#else
+		/* TODO: xmlinterface.cpp does not allow an easy check for "not present" attributes, so there
+		   are no defaults / fallbacks yet. Suitable fallbacks would be the various AUTO parameters */
+		feparams.u.ofdm.bandwidth = (fe_bandwidth_t) xmlGetNumericAttribute(transponder, "bandwidth", 0);
+		feparams.u.ofdm.code_rate_HP = (fe_code_rate_t) xmlGetNumericAttribute(transponder, "code_rate_HP", 0);
+		feparams.u.ofdm.code_rate_LP = (fe_code_rate_t) xmlGetNumericAttribute(transponder, "code_rate_LP", 0);
+		feparams.u.ofdm.constellation = (fe_modulation_t) xmlGetNumericAttribute(transponder, "constellation", 0);
+		feparams.u.ofdm.transmission_mode = (fe_transmit_mode_t) xmlGetNumericAttribute(transponder, "transmission_mode", 0);
+		feparams.u.ofdm.guard_interval = (fe_guard_interval_t) xmlGetNumericAttribute(transponder, "guard_interval", 0);
+		feparams.u.ofdm.hierarchy_information = HIERARCHY_AUTO;
+#endif
+	}
+#else
+	tunersetup feparams;
+	memset(&feparams, 0, sizeof(tunersetup));
+	feparams.symbolrate = xmlGetNumericAttribute(transponder, "symbol_rate", 0) / 1000;
+	feparams.fec = CFrontend::xml2FEC(xmlGetNumericAttribute(transponder, "fec_inner", 0));
+	polarization = xmlGetNumericAttribute(transponder, "polarization", 0);
+	feparams.polarity = polarization;
+#endif
+	if (frontend->getInfo()->type != FE_QAM)
+		feparams.frequency = xmlGetNumericAttribute(transponder, "frequency", 0);
+		/* read network information table */
+	status = get_nits(&feparams, polarization, satellite_position, diseqc_pos);
+
+	return 0;
+}
 
 void scan_provider(xmlNodePtr search, const char * const providerName, uint8_t diseqc_pos, const char * const frontendType)
 {
@@ -627,18 +708,24 @@ void scan_provider(xmlNodePtr search, const char * const providerName, uint8_t d
 
 	/* send sat name to client */
 	eventServer->sendEvent(CZapitClient::EVT_SCAN_SATELLITE, CEventServer::INITID_ZAPIT, providerName, strlen(providerName) + 1);
-	transponder = search->xmlChildrenNode;
 
-	/* read all transponders */
-	while ((transponder = xmlGetNextOccurence(transponder, "transponder")) != NULL)
+	if ((frontend->getInfo()->type == FE_QAM) && (!scan_mode))
+		scan_transponder(NULL, satellite_position, diseqc_pos);
+	else
 	{
-		if (scan_should_be_aborted)
-			return;
-		scan_transponder(transponder, satellite_position, diseqc_pos);
-		DBG("after scan_transponder, found_transponders: %d", found_transponders);
+		transponder = search->xmlChildrenNode;
 
-		/* next transponder */
-		transponder = transponder->xmlNextNode;
+		/* read all transponders */
+		while ((transponder = xmlGetNextOccurence(transponder, "transponder")) != NULL)
+		{
+			if (scan_should_be_aborted)
+				return;
+			scan_transponder(transponder, satellite_position, diseqc_pos);
+			DBG("after scan_transponder, found_transponders: %d", found_transponders);
+
+			/* next transponder */
+			transponder = transponder->xmlNextNode;
+		}
 	}
 
 	/*
@@ -693,6 +780,8 @@ void *start_scanthread(void *imsg)
 	/* copy the message contents, since it will get freed in the calling function... */
 	scan_mode = msg->scan_mode;
 	int8_t diseqc = msg->diseqc;
+	netid = msg->netid;
+	TP = msg->TP;
 	FILE * fd;
 	char providerName[32] = "";
 	const char * frontendType;

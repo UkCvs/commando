@@ -37,16 +37,31 @@ typedef vector<CZapitChannel*> ChannelList;
 struct CmpChannelByChName: public binary_function <const CZapitChannel * const, const CZapitChannel * const, bool>
 {
 	static bool comparetolower(const char a, const char b)
-		{
-			return tolower(a) < tolower(b);
-		};
+	{
+		return tolower(a) < tolower(b);
+	};
 	
 	bool operator() (const CZapitChannel * const c1, const CZapitChannel * const c2)
-		{
-			return std::lexicographical_compare(c1->getName().begin(), c1->getName().end(), c2->getName().begin(), c2->getName().end(), comparetolower);
-		};
+	{
+		return std::lexicographical_compare(c1->getName().begin(), c1->getName().end(), c2->getName().begin(), c2->getName().end(), comparetolower);
+	};
 };
 
+struct CmpChannelByChNum: public binary_function <const CZapitChannel * const, const CZapitChannel * const, bool>
+{
+	bool operator() (const CZapitChannel * const c1, const CZapitChannel * const c2)
+	{
+		return (c1->getChannelNumber() < c2->getChannelNumber());
+	};
+};
+
+typedef struct vbouq_t
+{
+	std::string name;
+	uint16_t min;
+	uint16_t max;
+	uint8_t pos;
+};
 
 class CBouquet
 {
@@ -120,7 +135,7 @@ class CBouquetManager
 		void deleteBouquet(const unsigned int id);
 		void deleteBouquet(const CBouquet* bouquet);
 		int  existsBouquet(char const * const name);
-		void moveBouquet(const unsigned int oldId, const unsigned int newId);
+		bool moveBouquet(const unsigned int oldId, const unsigned int newId);
 		bool existsChannelInBouquet(unsigned int bq_id, const t_channel_id channel_id);
 
 		void clearAll();

@@ -288,12 +288,23 @@ void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode)
 */	
 //	printf("[zapit] b mode sat \n");
 
-	if ((Bouquets.size() > 0) && (bouquetMode == CZapitClient::BM_CREATESATELLITEBOUQUET))
+	if (Bouquets.size() > 0)
 	{
-		for (BouquetList::const_iterator it = Bouquets.begin(); it != Bouquets.end(); it++)
+		if (bouquetMode == CZapitClient::BM_CREATESATELLITEBOUQUET)
 		{
-			sort((*it)->tvChannels.begin(), (*it)->tvChannels.end(), CmpChannelByChName());
-			sort((*it)->radioChannels.begin(), (*it)->radioChannels.end(), CmpChannelByChName());
+			for (BouquetList::const_iterator it = Bouquets.begin(); it != Bouquets.end(); it++)
+			{
+				sort((*it)->tvChannels.begin(), (*it)->tvChannels.end(), CmpChannelByChName());
+				sort((*it)->radioChannels.begin(), (*it)->radioChannels.end(), CmpChannelByChName());
+			}
+		}
+		else if (bouquetMode == CZapitClient::BM_CREATEBOUQUETS)
+		{
+			for (BouquetList::const_iterator it = Bouquets.begin(); it != Bouquets.end(); it++)
+			{
+				sort((*it)->tvChannels.begin(), (*it)->tvChannels.end(), CmpChannelByChNum());
+				sort((*it)->radioChannels.begin(), (*it)->radioChannels.end(), CmpChannelByChNum());
+			}
 		}
 	}
 
@@ -621,7 +632,7 @@ bool CBouquetManager::existsChannelInBouquet( unsigned int bq_id, const t_channe
 }
 
 
-void CBouquetManager::moveBouquet(const unsigned int oldId, const unsigned int newId)
+bool CBouquetManager::moveBouquet(const unsigned int oldId, const unsigned int newId)
 {
 	if ((oldId < Bouquets.size()) && (newId < Bouquets.size()))
 	{
@@ -634,7 +645,10 @@ void CBouquetManager::moveBouquet(const unsigned int oldId, const unsigned int n
 		it = Bouquets.begin();
 		advance(it, newId);
 		Bouquets.insert(it, tmp);
+
+		return true;
 	}
+	return false;
 }
 
 void CBouquetManager::clearAll()

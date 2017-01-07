@@ -75,12 +75,12 @@ class CSatDiseqcNotifier : public CChangeObserver
 class CTP_scanNotifier : public CChangeObserver
 {
 	private:
-		CMenuOptionChooser* toDisable1[2];
-		CMenuForwarder* toDisable2[2];
+		CMenuOptionChooser* toDisable1[3];
+		CMenuForwarder* toDisable2[3];
 		CMenuOptionStringChooser* toDisable3[1];		
 		std::string* scan_mode_string;
 	public:
-		CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuForwarder* i3, CMenuForwarder* i4, CMenuOptionStringChooser* i5, std::string &s);
+		CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuOptionChooser* i3, CMenuForwarder* i4, CMenuForwarder* i5, CMenuForwarder* i6, CMenuOptionStringChooser* i7, std::string &s);
 		bool changeNotify(const neutrino_locale_t, void *);
 };
 

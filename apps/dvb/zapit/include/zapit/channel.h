@@ -121,6 +121,7 @@ class CZapitChannel
 		t_satellite_position		satellitePosition;
 		/* used for Eutelsat 13e dup transponders */
 		frequency_kHz_t			frequency;
+		uint16_t			channel_number;
 
 		/* read/write properties (write possibility needed by scan) */
 		unsigned char			serviceType;
@@ -130,7 +131,7 @@ class CZapitChannel
 
 	public:
 		/* constructor, desctructor */
-		CZapitChannel(const std::string & p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC, t_satellite_position p_satellite_position, frequency_kHz_t frequency);
+		CZapitChannel(const std::string & p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC, t_satellite_position p_satellite_position, frequency_kHz_t p_frequency, uint16_t p_channel_number);
 		~CZapitChannel(void);
 
 		/* get methods - read only variables */
@@ -147,6 +148,7 @@ class CZapitChannel
 		const std::string	getName(void)			const { return name; }
 		t_satellite_position	getSatellitePosition(void)	const { return satellitePosition; }
 		frequency_kHz_t		getFrequency(void)       	const { return frequency; }
+		uint16_t		getChannelNumber(void)		const { return channel_number; }
 		unsigned char 		getAudioChannelCount(void)	{ return audioChannels.size(); }
 		unsigned short		getPcrPid(void)			{ return pcrPid; }
 		unsigned short		getPmtPid(void)			{ return pmtPid; }

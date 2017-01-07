@@ -1326,10 +1326,14 @@ scantp.mod_qam_32 QAM_32
 scantp.mod_qam_64 QAM_64
 scantp.mod_qam_auto QAM_AUTO
 scantp.mod_qpsk QPSK
+scantp.netid Network ID
 scantp.pol Polarisation
 scantp.pol_h H
 scantp.pol_v V
 scantp.rate Symbolrate
+scantp.rate_6875 6875
+scantp.rate_6887 6887
+scantp.rate_6952 6952
 scantp.scan Scan-Modus
 scantp.scan_all_sats Alle Sats
 scantp.scan_complete Komplett
@@ -1344,7 +1348,7 @@ scants.bouquet Bouquets
 scants.bouquet_create neu erstellen
 scants.bouquet_erase löschen
 scants.bouquet_leave nicht ändern
-scants.bouquet_satellite Satelliten-Bouquet
+scants.bouquet_satellite Anbieter-Bouquet
 scants.bouquet_update erneuern
 scants.channel Kanal:
 scants.failed Kanalsuche fehlgeschlagen!

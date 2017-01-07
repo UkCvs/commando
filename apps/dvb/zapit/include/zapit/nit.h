@@ -22,6 +22,6 @@
 #ifndef __zapit_nit_h__
 #define __zapit_nit_h__
 
-int parse_nit(const t_satellite_position satellite_position, const unsigned char diseqc);
+int parse_nit(const t_satellite_position satellite_position, const unsigned char diseqc, const unsigned int netid);
 
 #endif /* __zapit_nit_h__ */

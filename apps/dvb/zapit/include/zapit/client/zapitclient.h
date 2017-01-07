@@ -388,7 +388,7 @@ class CZapitClient:public CBasicClient
 	/*					*/
 	/****************************************/
 	/* start TS-Scan */
-	bool startScan( bool scan_mode, int8_t diseqc = -1);
+	bool startScan( bool scan_mode, int8_t diseqc = -1, TP_params TP = TP_params(), uint16_t netid = 0);
 	bool stopScan();
 	/* start manual scan */
 	bool scan_TP(TP_params TP);
