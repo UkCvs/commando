@@ -241,6 +241,12 @@ uint32_t CFrontend::getFrequency(void) const
 			return currentTransponder.feparams.frequency + lnbOffsetsHigh[currentTransponder.diseqc];
 
 	case FE_QAM:
+#if HAVE_DVB_API_VERSION < 3
+/* the dreambox cable driver likes to get the frequency in kHz */
+		return currentTransponder.feparams.frequency * 1000;
+#else
+		return currentTransponder.feparams.frequency;
+#endif
 	case FE_OFDM:
 	default:
 		return currentTransponder.feparams.frequency;
