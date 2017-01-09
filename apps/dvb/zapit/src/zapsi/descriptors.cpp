@@ -449,13 +449,13 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 	
 	uint8_t service_type = buffer[2];
 	uint8_t service_provider_name_length = buffer[3];
-#if 0
-	if (service_type == 0x05)
+
+	if ((original_network_id == 0xf020) && (service_type == 0x05))
 	{
 		time_shifted_service_descriptor(service_id, transport_stream_id, original_network_id, satellite_position, frequency);
 		return;
 	}
-#endif
+
 	std::string providerName((const char*)&(buffer[4]), service_provider_name_length);
 	std::string serviceName;
 
@@ -502,6 +502,12 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 	{
 		providerName = CDVBString((const char*)&(buffer[4]), service_provider_name_length).getContent();
 		serviceName  = CDVBString((const char*)&(buffer[4 + service_provider_name_length + 1]), (2 + buffer[1]) - (4 + service_provider_name_length + 1)).getContent();
+	}
+
+	if (serviceName.length() > 2)
+	{
+		if (serviceName.substr(serviceName.length() - 2) == "HD")
+			return;
 	}
 
 	found_channels++;
@@ -581,20 +587,20 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 
 		uint8_t bouquetpos = 0;
 
-		vbouq_t ent, fact, life, music, movie, adult, sport, news, kids, shop, inter, radio, other;
+		vbouq_t ent, fact, life, music, movie, sport, news, kids, shop, inter, radio, adult, other;
 
-		ent.name   = "Entertainment"; ent.min = 101; ent.max = 205; ent.pos = 0;
-		fact.name  = "Factual"; fact.min = 206; fact.max = 259; fact.pos = 1;
-		life.name  = "Lifestyle"; life.min = 260; life.max = 299; life.pos = 2;
+		ent.name   = "Entertainment"; ent.min = 101; ent.max = 244; ent.pos = 0;
+		fact.name  = "Factual"; fact.min = 245; fact.max = 277; fact.pos = 1;
+		life.name  = "Lifestyle"; life.min = 278; life.max = 299; life.pos = 2;
 		music.name = "Music"; music.min = 301; music.max = 399; music.pos = 3;
-		movie.name = "Movies"; movie.min = 401; movie.max = 469; movie.pos = 4;
-		adult.name = "Adult"; adult.min = 470; adult.max = 499; adult.pos = 5;
-		sport.name = "Sport"; sport.min = 500; sport.max = 599; sport.pos = 6;
-		news.name  = "News"; news.min = 600; news.max = 699; news.pos = 7;
-		kids.name  = "Kids"; kids.min = 700; kids.max = 739; kids.pos = 8;
-		shop.name  = "Shopping"; shop.min = 740; shop.max = 799; shop.pos = 9;
-		inter.name = "International"; inter.min = 800; inter.max = 849; inter.pos = 10;
-		radio.name = "Radio"; radio.min = 900; radio.max = 979; radio.pos = 11;
+		movie.name = "Movies"; movie.min = 401; movie.max = 499; movie.pos = 4;
+		sport.name = "Sport"; sport.min = 500; sport.max = 599; sport.pos = 5;
+		news.name  = "News"; news.min = 600; news.max = 699; news.pos = 6;
+		kids.name  = "Kids"; kids.min = 700; kids.max = 739; kids.pos = 7;
+		shop.name  = "Shopping"; shop.min = 740; shop.max = 799; shop.pos = 8;
+		inter.name = "International"; inter.min = 800; inter.max = 849; inter.pos = 9;
+		radio.name = "Radio"; radio.min = 900; radio.max = 968; radio.pos = 10;
+		adult.name = "Adult"; adult.min = 969; adult.max = 981; adult.pos = 11;
 		other.name = "Other"; other.pos = 12;
 
 		typedef std::map<uint8_t, vbouq_t> virginBouquets;
@@ -616,12 +622,6 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		vb[0x0d] = shop;
 		vb[0x0e] = other;
 		vb[0x0f] = other;
-
-		if (serviceName.length() > 2)
-		{
-			if (serviceName.substr(serviceName.length() - 2) == "HD")
-				bouquet_id = 0x00;
-		}
 
 		virginBouquets::iterator it = vb.find(bouquet_id);
 
@@ -654,6 +654,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
  		lastServiceName = serviceName;
  		eventServer->sendEvent(CZapitClient::EVT_SCAN_SERVICENAME, CEventServer::INITID_ZAPIT, (void *) lastServiceName.c_str(), lastServiceName.length() + 1);
 
+//		printf("0x%02x, %03d, 0x%02x, 0x%04x %s\n", bouquet_id, channel_number, service_type, service_id, serviceName.c_str());
 //		bouquet->addService(new CZapitChannel(serviceName, service_id, transport_stream_id, original_network_id, service_type, 0, satellite_position));
 		bouquet->addService(new CZapitChannel(serviceName, service_id, transport_stream_id, original_network_id, service_type, 0, satellite_position, zfrequency, channel_number));
 
@@ -707,7 +708,6 @@ void time_shifted_service_descriptor(const unsigned char * const)
 {
 }
 
-#if 0
 void time_shifted_service_descriptor(const t_service_id service_id, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const t_satellite_position satellite_position, const uint32_t frequency)
 {
 	frequency_kHz_t zfrequency;
@@ -723,21 +723,57 @@ void time_shifted_service_descriptor(const t_service_id service_id, const t_tran
 
 	if (service_id == 0x05e6)
 	{
-		serviceName = "Television X Nightly";
+		serviceName = "Television X";
 		providerName = "Adult";
-		ch_num = 473;
+		ch_num = 970;
 	}
-	else if (service_id == 0x057d)
+	else if (service_id == 0x019f)
 	{
-		serviceName = "Live Events Channel";
+		serviceName = "XXX Brits";
+		providerName = "Adult";
+		ch_num = 973;
+	}
+	else if (service_id == 0x05e4)
+	{
+		serviceName = "Filth XXX";
+		providerName = "Adult";
+		ch_num = 974;
+	}
+	else if (service_id == 0x05df)
+	{
+		serviceName = "Redhot XXX";
+		providerName = "Adult";
+		ch_num = 975;
+	}
+	else if (service_id == 0x05dd)
+	{
+		serviceName = "Wives XXX";
+		providerName = "Adult";
+		ch_num = 976;
+	}
+	else if (service_id == 0x04c2)
+	{
+		serviceName = "Playboy TV";
+		providerName = "Adult";
+		ch_num = 979;
+	}
+	else if (service_id == 0x04c1)
+	{
+		serviceName = "Adult Channel";
+		providerName = "Adult";
+		ch_num = 980;
+	}
+	else if (service_id == 0x02c9)
+	{
+		serviceName = "Sky Events";
 		providerName = "Sport";
 		ch_num = 598;
 	}
 	else if (service_id == 0x07d9)
 	{
-		serviceName = "pay per view";
-		providerName = "Other";
-		ch_num = 0;
+		serviceName = "Prime Events";
+		providerName = "Sport";
+		ch_num = 599;
 	}
 
 	found_channels++;
@@ -795,7 +831,6 @@ void time_shifted_service_descriptor(const t_service_id service_id, const t_tran
 
 	bouquet->addService(new CZapitChannel(serviceName, service_id, transport_stream_id, original_network_id, service_type, 0, satellite_position, zfrequency, ch_num));
 }
-#endif
 
 /* 0x4D */
 void short_event_descriptor(const unsigned char * const)

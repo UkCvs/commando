@@ -65,7 +65,7 @@ void country_availability_descriptor(const unsigned char * const buffer);
 void linkage_descriptor(const unsigned char * const buffer);
 int NVOD_reference_descriptor(const unsigned char * const buffer, const unsigned int num, t_transport_stream_id * const, t_original_network_id * const, t_service_id * const);
 void time_shifted_service_descriptor(const unsigned char * const buffer);
-//void time_shifted_service_descriptor(const t_service_id service_id, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const t_satellite_position satellite_position, const uint32_t frequency);
+void time_shifted_service_descriptor(const t_service_id service_id, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const t_satellite_position satellite_position, const uint32_t frequency);
 void short_event_descriptor(const unsigned char * const buffer);
 void extended_event_descriptor(const unsigned char * const buffer);
 void time_shifted_event_descriptor(const unsigned char * const buffer);
