@@ -1,5 +1,8 @@
 #!/bin/sh
 # miniops scripts toolkit for DM500C C16.0 - 01 Jan 2017 (LraiZer & PaphosAL)
+# changelog:
+# Tue 03 Jan 2017: prep case for planned vmautobouquets plugin
+# Tue 10 Jan 2017: add code for splashscreen radio and scan modes
 
 #set global variables
 dload="wget http://www.ukcvs.net/C16"
@@ -9,6 +12,12 @@ now="%a %d %b %Y %T"
 
 fmsg(){
 wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+bgpic() {
+[ $1 = "true" ] && controldc videoPowerDown 1
+sleep 1
+showframe /root/platform/kernel/logo
+[ $1 = "true" ] && controldc videoPowerDown 0
 }
 
 case "$1" in
@@ -30,6 +39,10 @@ stop)
 [ -e $etc/.mgcamd ] && killall mgcamd && killall epg-pause
 [ -e $etc/.evocamd ] && killall evocamd
 [ -e $etc/.newcamd ] && killall newcamd
+;;
+
+autobouquets)
+# WIP- replicate last C15.1f dm500c kit, for starters?
 ;;
 
 nit_scan)
@@ -57,6 +70,10 @@ cd /
 
 avsync)
 echo "autosync AV ($2):" `date +"$now"` >>/tmp/autosync.log
+;;
+
+showlogo)
+[ ! -e $etc/.no-$2-bg ] && bgpic "false" &
 ;;
 
 null)
