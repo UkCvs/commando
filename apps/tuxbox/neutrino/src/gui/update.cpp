@@ -546,7 +546,7 @@ CFlashExpert::CFlashExpert()
 	:CProgressWindow()
 {
 	selectedMTD = -1;
-	width = w_max (500, 100);
+	width = w_max (710, 50);
 }
 
 void CFlashExpert::readmtd(int mtd)
