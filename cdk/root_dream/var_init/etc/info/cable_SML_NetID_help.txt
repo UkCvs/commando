@@ -1,0 +1,171 @@
+# Commando 16 for DM500C - 10-12 Jan 2017 (thanks deejay and Abu Baniaz!)
+# Set My Location for FastScan helpfile assistant
+
+How to FIND your NetID:
+-----------------------
+Go into your VM rental box "Techy stuff" menu and you'll find it in there!
+If you are not subbed, then consider yourself frowned upon... Try a nearby
+mate or neighbour who DOES have a subbed box and ask them to help you?
+
+Now on your dm500c box, using C16 from 08 Jan 2017 or later, go into the SCAN
+menu and manually enter your 5 digit NetID, your 6 digit Frequency, and 
+then toggle your Symrate to 6875, 6887, or 6952 (there can only be one!). You
+do this by highlighting the <Scan-Modes One Transponder> line then click OK
+and then enter YOUR local data in the required fields. Then SAVE settings!
+
+Do NOT change anything else! Just press BLUE to scan. In under 3 mins, you
+should finish and when you Exit, you will now have a reasonable set of VM
+local bouquets, thanks to LraiZer! If not, wrong details entered, doh...
+
+Columns guide:
+NetID City/Town/Area Frequency SymRate
+
+NetIDS 00001 to 00025 (ntl Pure areas)
+--------------------------------------
+00001 West Yorkshire:	643000 6887
+00002 Glasgow:			643000 6887
+00003 Farnborough:		643000 6887
+00004 Bridgend:			643000 6887
+00005 Luton:			643000 6887
+00006 Swindon:			643000 6887
+00007 Port Talbot:		643000 6887
+00008 Nottingham:		643000 6887
+00009 Cambridge:		643000 6887
+00010 Teesside:			643000 6887
+00011 Ipswich:			643000 6887
+00012 Leicester:		643000 6887
+00013 Reading:			643000 6887
+00014 Salisbury:		643000 6887
+00015 Lichfield:		643000 6887
+00016 Warwick:			643000 6887
+00017 Hemel:			643000 6887
+00018 Northampton:		643000 6887
+00019 Coventry:			643000 6887
+00020 Oxford:			643000 6887
+00021 Belfast:			643000 6887
+00022 Grimsby:			643000 6887
+00023 Derry:			643000 6952
+
+NetIDS 40961 to 40999 (ex-C&W and TeleWest areas)
+-------------------------------------------------
+40961 Barnsley:			595000 6952
+40962 Barnsley:			595000 6952
+40963 Sheffield:		595000 6952
+40964 Sheffield:		595000 6952
+40965 Knowsley:			595000 6952
+40966 Knowsley:			595000 6952
+40967 Preston:			595000 6952
+40968 Preston:			595000 6952
+40969 Gateshead:		571000 6952
+40970 Bristol:			651000 6952
+40971 Bristol:			651000 6952
+40973 Wolverhampton:	595000 6952
+40974 Wolverhampton:	595000 6952
+40975 Basildon:			411000 6952
+40976 Basildon:			411000 6952
+40977 Basildon:			411000 6952
+40978 Basildon:			411000 6952
+40979 Croydon:			411000 6952
+40980 Hayes:			539000 6952
+40981 Edinburgh:		619000 6952
+40982 Dundee:			619000 6952
+40983 Knowsley:			539000 6952
+40984 Uddingston:		619000 6952
+40985 Haringey:			603000 6952
+40986 Knowsley:			595000 6952
+40987 Exeter:			643000 6952
+40988 Plymouth:			643000 6952
+40990 Barnsley:			595000 6952
+40995 Wolverhampton:	595000 6952
+40998 Barnsley:			595000 6952
+40999 Perth:			619000 6952
+41003 Carlisle:			619000 6952
+41008 Liverpool:		595000 6952
+41009 Falkirk:			619000 6952
+41011 Birmingham:		643000 6952
+41013 Knowsley:			595000 6952
+41015 Birmingham:		595000 6952
+41016 Liverpool:		595000 6952
+41018 Preston:			595000 6952
+41020 Crawley:			411000 6952
+41026 Southport:		595000 6952
+41040 Leeds:			666750 6952
+41041 Bromley:			666750 6952
+41042 Portsmouth:		666750 6952
+41043 Poole:			666750 6952
+41044 Brighton:			666750 6952
+41045 Hersham:			666750 6952
+41046 Derby:			666750 6952
+41048 Manchester:		666750 6952
+41049 Peterborough:		666750 6952
+41050 Seven Kings:		666750 6952
+41051 Watford:			666750 6952
+41052 Ashford:			666750 6952
+41053 Leeds:			666750 6952
+41054 Wearside:			666750 6952
+41055 Norwich:			666750 6952
+41056 Bromley:			666750 6952
+41059 Brighton:			666750 6952
+41060 Manchester:		666750 6952
+41063 Stoke:			666750 6952
+41064 York:				666750 6952
+41065 Portsmouth:		666750 6952
+41066 Manchester:		666750 6952
+41067 Bromley:			666750 6952
+41068 Manchester:		666750 6952
+41069 Lewisham:			666750 6952
+41071 Southampton:		666750 6952
+
+NetIDS 42001 and above (Éire)
+-----------------------------
+42753 Dublin:			643000 6887
+42754 Waterford:		643000 6887
+42757 Waterford:		643000 6887
+43216 Cork:				291000 6887
+43217 Dublin:			299000 6887
+43218 Galway City:		291000 6887
+43219 WatUPC:			291000 6887
+43220 Lim_UPC:			291000 6887
+43226 Meath:			340000 6875
+
+### STILL no idea of your NetID? Don't despair! ###
+===================================================
+C16 now has the 'NitScan' Plugin on the BLUE button! It only takes 30 secs
+and will create a new cables.scan file for YOUR locality. It does an auto
+reboot after (to read the new settings into memory), but that's no big deal
+if you have no telly to start with, LOL!
+
+# after restart, try <Scan-Modes Complete> (once known as UK BruteForce)
+Thanks to LraiZer's recent C16 dev, you'll now see a decent set of bouquets!
+Then it's time to get to work with a 30min tidy up, LOL! Mainly with the 1-5
+regional channels... Do this in MENU > Services> Bouquet Editor (pleeZe)
+
+Click on "Entertainment" and you'll see lots of "BBC One" channels, yeah?
+Okay, CAREFULLY highlight each one (starting from the top and working down)
+and press [OK] to zap to it. If you see a black background and hear no audio
+then it's NOT for your region! Press RED to DELETE it!
+
+When you DO get a picture and sound, BINGO! That's your local BBC One taken
+care of, woooo! So bypass that one (KEEP it, by NOT deleting it) and move on
+through the rest. There's usually another working BBC One for an adjacent
+area that works as well. Keep it for now, as you can later move that one to
+another bouquet...
+
+Now repeat this exercise for the vanilla-named "ITV" channels. Same applies
+as above. You might get one or two working ones?
+
+Then find your working "ITV +1", "Channel 4" and "Channel 5" regionals and
+nuke the non-working ones! 
+
+SAVE whenever prompted, if you're happy with your edits to Bouquets!!!
+
+You should now have a good set of Bouquets on which to tinker with further.
+Remember! BACK UP your new /var/tuxbox/zapit/bouquets.xml file from DM500C
+to a safe place on your PC via FTP using a folder or filename that you'll
+recogniZe later, pleaZe! As a subsequent Scan will OVERWRITE it on your
+DM500C box, doh...
+
+With tested and working backups, you can easily recover, if necessary!
+
+All good fun... ;)
+
