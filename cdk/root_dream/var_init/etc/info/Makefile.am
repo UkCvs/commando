@@ -1,4 +1,5 @@
-FILES_FLASH_RO = \
+
+include $(top_srcdir)/root/Makefile.incFILES_FLASH_RO = \
 	Audio_Priority.txt \
 	Set_my_Location.txt \
 	Commando_welcome.txt \
@@ -12,3 +13,5 @@ FILES_FLASH_RO = \
 	cable_SML_NetID_help.txt
 
 DIR = /var_init/etc/info/
+
+include $(top_srcdir)/root/Makefile.inc
