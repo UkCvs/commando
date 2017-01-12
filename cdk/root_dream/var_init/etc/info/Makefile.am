@@ -8,7 +8,7 @@ FILES_FLASH_RO = \
 	AutoBouquets_N1.txt \
 	MultiSat_Dish_Setup.txt \
 	Bouquet_Editor.txt \
-	Recording_to_a_hdd_mount.txt
+	Recording_to_a_hdd_mount.txt \
 	cable_SML_NetID_help.txt
 
 DIR = /var_init/etc/info/
