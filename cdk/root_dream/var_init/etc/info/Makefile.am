@@ -1,5 +1,5 @@
 
-include $(top_srcdir)/root/Makefile.incFILES_FLASH_RO = \
+FILES_FLASH_RO = \
 	Audio_Priority.txt \
 	Set_my_Location.txt \
 	Commando_welcome.txt \
