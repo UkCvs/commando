@@ -131,11 +131,12 @@ NetIDS 42001 and above (Éire)
 ### STILL no idea of your NetID? Don't despair! ###
 ===================================================
 C16 now has the 'NitScan' Plugin on the BLUE button! It only takes 30 secs
-and will create a new cables.scan file for YOUR locality. It does an auto
+and will create a new cables.xml scanfile for YOUR locality. It does an auto
 reboot after (to read the new settings into memory), but that's no big deal
 if you have no telly to start with, LOL!
 
 # after restart, try <Scan-Modes Complete> (once known as UK BruteForce)
+
 Thanks to LraiZer's recent C16 dev, you'll now see a decent set of bouquets!
 Then it's time to get to work with a 30min tidy up, LOL! Mainly with the 1-5
 regional channels... Do this in MENU > Services> Bouquet Editor (pleeZe)
@@ -163,9 +164,9 @@ You should now have a good set of Bouquets on which to tinker with further.
 Remember! BACK UP your new /var/tuxbox/zapit/bouquets.xml file from DM500C
 to a safe place on your PC via FTP using a folder or filename that you'll
 recogniZe later, pleaZe! As a subsequent Scan will OVERWRITE it on your
-DM500C box, doh...
+DM500C box... You've been warned!
 
-With tested and working backups, you can easily recover, if necessary!
+With a tested and working backup, you can easily recover, if necessary!
 
 All good fun... ;)
 
