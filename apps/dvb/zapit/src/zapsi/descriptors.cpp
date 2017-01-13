@@ -649,7 +649,22 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		bouquetId = scanBouquetManager->existsBouquet(providerName.c_str());
 
 		if (bouquetId == -1)
+		{
 			bouquet = scanBouquetManager->addBouquet(providerName);
+			if (original_network_id == 0xf020)
+			{
+				if (bouquetpos == 11)
+				{
+					bouquet->bHidden = true;
+					bouquet->bLocked = true;
+				}
+				else if (bouquetpos == 12)
+				{
+					bouquet->bHidden = true;
+				}
+				bouquet->bouquet_id = bouquetpos;
+			}
+		}
 		else if ((it != vb.end()) && (original_network_id == 0xf020))
 		{
 			bool success = scanBouquetManager->moveBouquet(bouquetId, bouquetpos);
