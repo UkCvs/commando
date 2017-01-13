@@ -4,7 +4,8 @@
 # C16 changelog for this boot script:
 # Sun 01 Jan 2017: prep for conditional cable nitscan plugin- AL
 # Mon 02 Jan 2017: only nuke cable stuff on 1st boot (else ignore)- AL
-# Tue 03 Jan 2017: prep for conditional vmautoscan plugin- AL
+# Tue 03 Jan 2017: prep for conditional vmautoscan plugin ??- AL
+# Thu 12 Jan 2017: keep some helpfiles for cable + add SML VM help- AL
 
 . /proc/bus/dbox.sh
 
@@ -54,6 +55,7 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 	# nuke cable stuff IF first boot
 	if [ ! -e $conf ]; then
 		rm -f $etc/cable*
+		rm -f $etc/info/cable*
 		rm -f $etc/issue.net-c
 		rm -f $cfg/scan.conf-c
 #		rm -f $cfg/scan.end-c (WIP)
