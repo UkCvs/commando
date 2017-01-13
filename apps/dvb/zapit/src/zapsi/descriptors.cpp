@@ -586,6 +586,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		int bouquetId;
 
 		uint8_t bouquetpos = 0;
+		uint16_t channelnumber = channel_number;
 
 		vbouq_t ent, fact, life, music, movie, sport, news, kids, shop, inter, radio, adult, other;
 
@@ -593,7 +594,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		fact.name  = "Factual"; fact.min = 245; fact.max = 277; fact.pos = 1;
 		life.name  = "Lifestyle"; life.min = 278; life.max = 299; life.pos = 2;
 		music.name = "Music"; music.min = 301; music.max = 399; music.pos = 3;
-		movie.name = "Movies"; movie.min = 401; movie.max = 499; movie.pos = 4;
+		movie.name = "Movies"; movie.min = 400; movie.max = 499; movie.pos = 4;
 		sport.name = "Sport"; sport.min = 500; sport.max = 599; sport.pos = 5;
 		news.name  = "News"; news.min = 600; news.max = 699; news.pos = 6;
 		kids.name  = "Kids"; kids.min = 700; kids.max = 739; kids.pos = 7;
@@ -631,6 +632,12 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 			{
 				providerName = it->second.name;
 				bouquetpos = it->second.pos;
+				if ((bouquet_id = 0x07) && (channel_number > 430))
+				{	// ugly hack to move SD into HD positions
+					std::size_t found = serviceName.find("Sky");
+					if (found != std::string::npos)
+						channelnumber = (channel_number - 30);
+				}
 			}
 			else
 			{
@@ -656,7 +663,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 
 //		printf("0x%02x, %03d, 0x%02x, 0x%04x %s\n", bouquet_id, channel_number, service_type, service_id, serviceName.c_str());
 //		bouquet->addService(new CZapitChannel(serviceName, service_id, transport_stream_id, original_network_id, service_type, 0, satellite_position));
-		bouquet->addService(new CZapitChannel(serviceName, service_id, transport_stream_id, original_network_id, service_type, 0, satellite_position, zfrequency, channel_number));
+		bouquet->addService(new CZapitChannel(serviceName, service_id, transport_stream_id, original_network_id, service_type, 0, satellite_position, zfrequency, channelnumber));
 
  // thegoodguy schau dir das hier mal an
  //		scaninfo  test;
