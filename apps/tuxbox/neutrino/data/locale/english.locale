@@ -233,6 +233,7 @@ bouqueteditor.switch_to_channel Switch to channel
 bouqueteditor.switchmode TV/Radio
 bouquetlist.bouquetselect Bouquet select
 bouquetlist.head Bouquets
+cableregion.option Region
 cablesetup.provider cable provider
 camdmenu.camddetect_hint Detecting SoftCams...
 camdmenu.camdmenu Softcam Menu

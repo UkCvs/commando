@@ -635,6 +635,7 @@ class CScanSettings
 	char		TP_rate[9];
 	char		TP_satname[30];
 	int		TP_diseqc;
+	char		cable_region[40];
 	char		netid[6];
 	int		symrate;
 

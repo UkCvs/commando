@@ -233,6 +233,7 @@ bouqueteditor.switch_to_channel auf Kanal schalten
 bouqueteditor.switchmode TV/Radio
 bouquetlist.bouquetselect Bouquet auswählen
 bouquetlist.head Bouquets
+cableregion.option Gegend
 cablesetup.provider Kabelanbieter
 channellist.additional Zusatzinformationen
 channellist.additional_off aus

@@ -1,8 +1,8 @@
-TP_fec=1
+TP_fec=3
 TP_freq=595000
 TP_mod=5
 TP_pol=0
-TP_rate=6875000
+TP_rate=6952000
 TP_satname=
 TP_scan=1
 bouquetMode=0

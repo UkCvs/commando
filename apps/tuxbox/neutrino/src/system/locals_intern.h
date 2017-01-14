@@ -260,6 +260,7 @@ const char * locale_real_names[] =
 	"bouqueteditor.switchmode",
 	"bouquetlist.bouquetselect",
 	"bouquetlist.head",
+	"cableregion.option",
 	"cablesetup.provider",
 	"camdmenu.camddetect_hint",
 	"camdmenu.camdmenu",

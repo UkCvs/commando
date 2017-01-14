@@ -237,7 +237,7 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 	}
 	scan_mode = configfile.getInt32("scan_mode", 1);
 	TP_scan = configfile.getInt32("TP_scan", (delivery_system == DVB_S) ? 2 : 0);
-	TP_fec = configfile.getInt32("TP_fec", 1);
+	TP_fec = configfile.getInt32("TP_fec", 3);
 	TP_pol = configfile.getInt32("TP_pol", 0);
 #ifdef HAVE_TRIPLEDRAGON
 	TP_mod = configfile.getInt32("TP_mod", 0); // dummy
@@ -253,8 +253,9 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 		strcpy(TP_rate, configfile.getString("TP_rate", "27500000").c_str());
 	} else {
 
-		strcpy(TP_freq, configfile.getString("TP_freq", "595000000").c_str());
+		strcpy(TP_freq, configfile.getString("TP_freq", "595000").c_str());
 		strcpy(TP_rate, configfile.getString("TP_rate", "6952000").c_str());
+		strncpy(cable_region, configfile.getString("cable_region", "40965 Knowsley 1").c_str(), 40);
 		strcpy(netid, configfile.getString("netid", "40965").c_str());
 		symrate = configfile.getInt32("symrate", 6952);
 	}
@@ -324,6 +325,7 @@ bool CScanSettings::saveSettings(const char * const fileName)
 	configfile.setString("TP_freq", TP_freq);
 	configfile.setString("TP_rate", TP_rate);
 	configfile.setString("TP_satname", TP_satname);
+	configfile.setString("cable_region", cable_region);
 	configfile.setString("netid", netid);
 	configfile.setInt32("symrate", symrate);
 	configfile.setInt32("scanSectionsd",scanSectionsd );
