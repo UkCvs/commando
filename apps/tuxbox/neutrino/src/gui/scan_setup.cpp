@@ -476,7 +476,7 @@ int CScanSetup::showScanModeMenue()
 	CMenuOptionStringChooser * CableRegion = NULL;
 	if(g_info.delivery_system == DVB_C)
 	{
-		CableRegion = new CMenuOptionStringChooser(LOCALE_CABLEREGION_OPTION, (char*)&scanSettings.cable_region, scanSettings.TP_scan == 1, new CCableRegionNotifier(), CRCInput::RC_nokey, "", true, true);
+		CableRegion = new CMenuOptionStringChooser(LOCALE_CABLEREGION_OPTION, (char*)&scanSettings.cable_region, true, new CCableRegionNotifier(), CRCInput::RC_nokey, "", true, true);
 		xmlDocPtr parser = parseXmlFile(CABLES_LOCALE);
 		if (parser != NULL)
 		{
@@ -532,7 +532,7 @@ int CScanSetup::showScanModeMenue()
 		}
 	}
 
-	CTP_scanNotifier TP_scanNotifier(fec, pol_mod, symrate, Netid, Freq, Rate, TP_SatSelectMenu, CableRegion, scan_mode_string);
+	CTP_scanNotifier TP_scanNotifier(fec, pol_mod, symrate, Netid, Freq, Rate, TP_SatSelectMenu, scan_mode_string);
 	CMenuOptionChooser* scan;
 	if(g_info.delivery_system == DVB_S) {
 		scan = new CMenuOptionChooser(LOCALE_SCANTP_SCAN, (int *)&scanSettings.TP_scan, SCANTS_SCAN_OPTIONS, SCANTS_SCAN_OPTION_COUNT, true/*(g_info.delivery_system == DVB_S)*/, &TP_scanNotifier);
@@ -723,7 +723,7 @@ bool CSatDiseqcNotifier::changeNotify(const neutrino_locale_t, void * Data)
 	return false;
 }
 
-CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuOptionChooser* i3, CMenuForwarder* i4, CMenuForwarder* i5, CMenuForwarder* i6, CMenuOptionStringChooser* i7, CMenuOptionStringChooser* i8, std::string &s)
+CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuOptionChooser* i3, CMenuForwarder* i4, CMenuForwarder* i5, CMenuForwarder* i6, CMenuOptionStringChooser* i7, std::string &s)
 {
 	toDisable1[0]=i1;
 	toDisable1[1]=i2;
@@ -732,7 +732,6 @@ CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i
 	toDisable2[1]=i5;
 	toDisable2[2]=i6;
 	toDisable3[0]=i7;
-	toDisable3[1]=i8;
 	scan_mode_string = &s;
 }
 
@@ -750,14 +749,11 @@ bool CTP_scanNotifier::changeNotify(const neutrino_locale_t, void *Data)
 		if (toDisable2[i]) toDisable2[i]->setActive(set_true_false);
 	}
 
-	for (int i=0; i<2; i++)
-	{
-		if (toDisable3[i]) {
-			if (*((int*) Data) == CScanTs::SCAN_COMPLETE)
-				toDisable3[i]->setActive(false);
-			else
-				toDisable3[i]->setActive(true);
-		}
+	if (toDisable3[0]) {
+		if (*((int*) Data) == CScanTs::SCAN_COMPLETE)
+			toDisable3[0]->setActive(false);
+		else
+			toDisable3[0]->setActive(true);
 	}
 
 	if (g_info.delivery_system == DVB_S)
