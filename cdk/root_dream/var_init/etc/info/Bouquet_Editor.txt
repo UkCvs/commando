@@ -1,5 +1,7 @@
 Bouquets Editor - Commando 15.0c - 30 April 2014
 ================================================
+updated 16 Jan 2017: C16 DM500C cable users- please read footnotes!
+C16 DM500S 28.2E users: pleaZe read on...
 
 Since LraiZer's 28.2E AutoBouquets inception for Commando DM500, we've screamed
 at you NOT to use Bouquet Editor, as any changes saved in there would only be
@@ -31,7 +33,7 @@ Play with it, it's easy once you get the hang of it, honest! The 'Hide' and 'Loc
 functions simply toggle the status of these switches for the highlighted bouquet from
 Show to Hide, and/or Lock to Unlock. The icons on the left make it crystal clear!
 
-Please note that if you are running a "My Favourites" bouquet, that this name is
+Please note that if you are running a "My Favorites" bouquet, that this name is
 FIXED by the zapit binary. Do NOT try and rename it, please!!!
 
 Ensure you SAVE any changes in Bouquet Editor when you exit! Changes will be instant
@@ -42,8 +44,17 @@ new one! Now the dog is wagging it's tail, and Autobouquets is slave, not master
 more manual editing of custom_sort or bouquet list files, finally!
 
 It's why TC code-named this project 'Mission Impossible' during C15.0c dev. Coz some
-devs said it WAS impossible. Thinking 'outside of the box' hopefully did the trick...
+devs said it WAS impossible. Thinking 'outside of the box' finally did the trick...
 
 =================================================================================
 
+IMPORTANT info for C16 DM500C cable users!
+--------------------------------------
+Don't go anywhere near Bouquet Editor, please! The Bouquet names, ordering (and Hide
++Lock for "Adult") are HARD coded into the system by LraiZer, so any changes you make
+in Bouquet Editor will be LOST the next time you run a Scan, including any channels
+you might have added to "My Favorites"!!! (But we're working on this one!)
 
+Yes, follow the above instructions to 'unhide and show' "Adult", if you must... Just
+remember that the next Scan you do, it'll be 'hidden and locked' again, yes?
+Just so we understand each other? LOL!
