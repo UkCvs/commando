@@ -1,8 +1,14 @@
-# Commando 16 for DM500C - 10-12 Jan 2017 (thanks deejay and Abu Baniaz!)
+# Commando 16 for DM500C - 10-16 Jan 2017 (thanks deejay and Abu Baniaz!)
 # Set My Location for FastScan helpfile assistant
 
-How to FIND your NetID:
------------------------
+# STOP PRESS! Sun 15 Jan 2017, LraiZer committed SML to the C16 build!
+Go into the Scan Menu (MENU > Services > Green)
+Arrow down to hilite '1 Scan-Modes' and click OK
+Now select 'Region' and find YOUR cable headend. Press OK
+Back out with the left key and press RED to SAVE, then BLUE to Scan!
+
+Still no idea of your REGION?:
+---------------------------
 Go into your VM rental box "Techy stuff" menu and you'll find it in there!
 If you are not subbed, then consider yourself frowned upon... Try a nearby
 mate or neighbour who DOES have a subbed box and ask them to help you?
