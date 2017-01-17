@@ -288,7 +288,7 @@ int CScanTs::handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data)
 			paintLine(xpos2, ypos_frequency, xpos_frequency, buffer);
 			if (g_settings.infobar_sat_display)
 				frameBuffer->showSatfind(COL_MENUCONTENT, COL_MENUCONTENT_PLUS_0,
-					x, y+height-mheight-10, x+width, false);
+					x, y+height-mheight-10, x+5*72, false);
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_REPORT_FREQUENCYP:
@@ -296,7 +296,7 @@ int CScanTs::handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data)
 			paintLine(xpos2 + xpos_frequency, ypos_frequency, 30, buffer);
 			if (g_settings.infobar_sat_display)
 				frameBuffer->showSatfind(COL_MENUCONTENT, COL_MENUCONTENT_PLUS_0,
-					x, y+height-mheight-10, x+width, false, lastsnr, lastsig, lastber);
+					x, y+height-mheight-10, x+5*72, false, lastsnr, lastsig, lastber);
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_PROVIDER:
@@ -309,7 +309,7 @@ int CScanTs::handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data)
 
 		case NeutrinoMessages::EVT_SCAN_NUM_CHANNELS:
 			sprintf(buffer, " = %d", data);
-			paintLine(xpos1 + 3 * 72, ypos_service_numbers + mheight, width - 3 * 72 - 10, buffer);
+			paintLine(xpos1 + 3 * 72, ypos_service_numbers + mheight, width - 5 * 72 - 10, buffer);
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_FOUND_TV_CHAN:
@@ -334,8 +334,8 @@ int CScanTs::handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data)
 			msg = CRCInput::RC_timeout;
 			break;
 		case CRCInput::RC_home:
-			if (get_set.TP_scan == CScanTs::SCAN_ONE_TP) // only if we scan a whole sat...
-				break;
+			//if (get_set.TP_scan == CScanTs::SCAN_ONE_TP) // only if we scan a whole sat...
+			//	break;
 
 			if (ShowLocalizedMessage(LOCALE_SCANTS_ABORT_HEADER, LOCALE_SCANTS_ABORT_BODY, CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo) == CMessageBox::mbrYes)
 			{
@@ -445,7 +445,11 @@ void CScanTs::paint()
 	ypos_service_numbers = ypos; paintLineLocale(xpos1         , &ypos, 72                 , LOCALE_SCANTS_NUMBEROFTVSERVICES   );
 	ypos = ypos_service_numbers; paintLineLocale(xpos1 +     72, &ypos, 72                 , LOCALE_SCANTS_NUMBEROFRADIOSERVICES);
 	ypos = ypos_service_numbers; paintLineLocale(xpos1 + 2 * 72, &ypos, 72                 , LOCALE_SCANTS_NUMBEROFDATASERVICES );
-	ypos = ypos_service_numbers; paintLineLocale(xpos1 + 3 * 72, &ypos, width - 3 * 72 - 10, LOCALE_SCANTS_NUMBEROFTOTALSERVICES);
+	ypos = ypos_service_numbers; paintLineLocale(xpos1 + 3 * 72, &ypos, 72                 , LOCALE_SCANTS_NUMBEROFTOTALSERVICES);
+
+	frameBuffer->paintIcon(NEUTRINO_ICON_BUTTON_HOME, xpos1 + 5 * 72, y+height-mheight-5);
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(xpos1 + 5 * 72 + 20,  y+height-10, width - 5 * 72 - 10,
+	g_Locale->getText(LOCALE_IMAGEINFO_EXIT), COL_MENUCONTENTINACTIVE, 0, true); // UTF-8
 }
 
 int CScanTs::greater_xpos(int xpos, const neutrino_locale_t txt)
