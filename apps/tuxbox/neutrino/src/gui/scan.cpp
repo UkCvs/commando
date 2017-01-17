@@ -449,7 +449,7 @@ void CScanTs::paint()
 
 	frameBuffer->paintIcon(NEUTRINO_ICON_BUTTON_HOME, xpos1 + 5 * 72, y+height-mheight-5);
 	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(xpos1 + 5 * 72 + 20,  y+height-10, width - 5 * 72 - 10,
-	g_Locale->getText(LOCALE_IMAGEINFO_EXIT), COL_MENUCONTENTINACTIVE, 0, true); // UTF-8
+	g_Locale->getText(LOCALE_MENU_CANCEL), COL_MENUCONTENTINACTIVE, 0, true); // UTF-8
 }
 
 int CScanTs::greater_xpos(int xpos, const neutrino_locale_t txt)

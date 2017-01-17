@@ -755,6 +755,8 @@ mainsettings.misc Erweiterte Einstellungen
 mainsettings.network Netzwerk
 mainsettings.osd OSD
 mainsettings.recording Aufnahme
+mainsettings.resetpassword Zugriff Wiederherstellung
+mainsettings.resetpassword_hint Wiederherstellen gesperrten Zugriff\nmit Standard-Root-Passwort, bitte warten ..
 mainsettings.savesettingsnow Einstellungen jetzt speichern
 mainsettings.savesettingsnow_hint Einstellungen werden jetzt gespeichert,\nbitte warten...
 mainsettings.streaming Movieplayer
