@@ -1502,7 +1502,7 @@ void CFrameBuffer::showSatfind(int pbcolor, int color, int x, int y, int x2, boo
 			if (g_info.delivery_system == DVB_S)
 				sprintf (freq, "%d.%03d MHz (%c)", si.tsfrequency / 1000, si.tsfrequency % 1000, (si.polarisation == HORIZONTAL) ? 'h' : 'v');
 			else
-				sprintf (freq, "%d.%06d MHz", si.tsfrequency / 1000000, si.tsfrequency % 1000000);
+				sprintf (freq, "%d.%03d MHz", si.tsfrequency / 1000000, si.tsfrequency % 1000000);
 		}
 
 		this->paintBoxRel(x, y, x2-x, 30, color);
