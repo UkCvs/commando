@@ -149,7 +149,7 @@ audiomenu.resync Synchronisieren
 audiomenu.resync_off aus
 audiomenu.resync_on ein
 audiomenu.resync_repeat wiederholung
-audiomenu.rysync_timer Synchronisieren Timer
+audiomenu.resync_timer Synchronisieren Timer
 audiomenu.stereo stereo
 audiomenu.volumebar_audiosteps Lautstärke Schrittweite
 audioplayer.add Hinzufügen
