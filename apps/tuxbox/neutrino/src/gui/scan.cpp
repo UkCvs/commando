@@ -283,10 +283,7 @@ int CScanTs::handleMsg(neutrino_msg_t msg, neutrino_msg_data_t data)
 			break;
 
 		case NeutrinoMessages::EVT_SCAN_REPORT_FREQUENCY:
-			if (g_info.delivery_system == DVB_C)
-				sprintf(buffer, "%d.%03d", data / 1000000);
-			else
-				sprintf(buffer, "%u", data);
+			sprintf(buffer, "%u", data);
 			xpos_frequency = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getRenderWidth(buffer, true);
 			paintLine(xpos2, ypos_frequency, xpos_frequency, buffer);
 			if (g_settings.infobar_sat_display)
