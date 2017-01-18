@@ -14,9 +14,6 @@
 			<channel service_id="1038" name="EPG Background Audio." service_type="02"/>
 		</transponder>
 		<transponder id="07d7" onid="0002" frequency="11836500" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="0">
-			<channel service_id="10e9" name="Sky Box Office 4" service_type="01"/>
-			<channel service_id="11b1" name="Sky Box Office 14" service_type="01"/>
-			<channel service_id="13a5" name="Sky Box Office 20" service_type="01"/>
 			<channel service_id="13fb" name="VICELAND" service_type="01"/>
 			<channel service_id="1400" name="GINXeSportsTV" service_type="01"/>
 			<channel service_id="14ab" name="Sky Box Office Review UK" service_type="01"/>
@@ -28,6 +25,22 @@
 			<channel service_id="1790" name="Challenge" service_type="01"/>
 			<channel service_id="1791" name="Forces TV" service_type="01"/>
 			<channel service_id="2584" name="TV3+1" service_type="01"/>
+			<channel service_id="0672" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0673" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0674" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0675" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0676" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0677" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0678" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0679" name="Sky Box Office" service_type="01"/>
+			<channel service_id="067a" name="Sky Box Office" service_type="01"/>
+			<channel service_id="067b" name="Sky Box Office" service_type="01"/>
+			<channel service_id="067c" name="Sky Box Office" service_type="01"/>
+			<channel service_id="067d" name="Sky Box Office" service_type="01"/>
+			<channel service_id="067e" name="Sky Box Office" service_type="01"/>
+			<channel service_id="067f" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0680" name="Sky Box Office" service_type="01"/>
+			<channel service_id="0681" name="Sky Box Office" service_type="01"/>
 			<channel service_id="0e1f" name="3e" service_type="01"/>
 			<channel service_id="0f06" name="LFCTV" service_type="01"/>
 		</transponder>
@@ -52,7 +65,7 @@
 			<channel service_id="1b5d" name="MTV+1" service_type="01"/>
 			<channel service_id="1b5e" name="MTV HITS" service_type="01"/>
 			<channel service_id="1b5f" name="MTV BASE" service_type="01"/>
-			<channel service_id="1b60" name="MTV XMAS" service_type="01"/>
+			<channel service_id="1b60" name="MTV CLASSIC" service_type="01"/>
 			<channel service_id="1b61" name="VIVA" service_type="01"/>
 			<channel service_id="1b62" name="MTV" service_type="01"/>
 			<channel service_id="1b64" name="MTV MUSIC" service_type="01"/>
@@ -60,7 +73,7 @@
 			<channel service_id="1b66" name="MTV DANCE" service_type="01"/>
 		</transponder>
 		<transponder id="07db" onid="0002" frequency="11914500" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="0">
-			<channel service_id="107c" name="Sky Spts Darts" service_type="01"/>
+			<channel service_id="107c" name="Sky Sports 3" service_type="01"/>
 			<channel service_id="13f5" name="Pick" service_type="01"/>
 			<channel service_id="151b" name="Sky Sports 4" service_type="01"/>
 			<channel service_id="164d" name="Sky2" service_type="01"/>
@@ -77,22 +90,27 @@
 		<transponder id="07dc" onid="0002" frequency="11934000" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="1">
 			<channel service_id="10ce" name="Sky Action" service_type="01"/>
 			<channel service_id="10cf" name="Sky Comedy" service_type="01"/>
-			<channel service_id="10d0" name="Sky ScFi-Horror" service_type="01"/>
+			<channel service_id="10d0" name="Sky ScFi/Horror" service_type="01"/>
 			<channel service_id="10d2" name="Sky Select" service_type="01"/>
-			<channel service_id="10d4" name="Sky Disney " service_type="01"/>
+			<channel service_id="10d4" name="Sky Disney" service_type="01"/>
 			<channel service_id="1133" name="Sky Family" service_type="01"/>
 			<channel service_id="1134" name="Sky Premiere" service_type="01"/>
 			<channel service_id="1135" name="Sky Prem+1" service_type="01"/>
 			<channel service_id="1136" name="Sky Thriller" service_type="01"/>
-			<channel service_id="157e" name="Sky Christmas" service_type="01"/>
-			<channel service_id="1612" name="Sky Greats" service_type="01"/>
+			<channel service_id="1199" name="Sky" service_type="01"/>
+			<channel service_id="11a3" name="Sky Intro" service_type="01"/>
+			<channel service_id="11ad" name="Sky Intro" service_type="01"/>
+			<channel service_id="138c" name="Sky Intro" service_type="01"/>
+			<channel service_id="138f" name="Chl Line-up" service_type="01"/>
+			<channel service_id="157e" name="Sky DramaRom" service_type="01"/>
+			<channel service_id="1612" name="Sky Superhero" service_type="01"/>
 			<channel service_id="b798" name="___4109" service_type="01"/>
 			<channel service_id="bb80" name="___4110" service_type="01"/>
 			<channel service_id="bf68" name=" (sub b +1000)" service_type="01"/>
 		</transponder>
 		<transponder id="07dd" onid="0002" frequency="11953500" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="0">
 			<channel service_id="19c8" name="QVC" service_type="01"/>
-			<channel service_id="19c9" name="QVC Christmas" service_type="01"/>
+			<channel service_id="19c9" name="QVC EXTRA" service_type="01"/>
 			<channel service_id="19ca" name="QVC Style" service_type="01"/>
 			<channel service_id="19cb" name="QVC Beauty" service_type="01"/>
 		</transponder>
@@ -114,10 +132,10 @@
 			<channel service_id="1070" name="Sky Sports 2" service_type="01"/>
 			<channel service_id="1076" name="Sky Sports 1" service_type="01"/>
 			<channel service_id="1078" name="Sky Sports 1" service_type="01"/>
-			<channel service_id="107b" name="Sky Spts Darts" service_type="01"/>
+			<channel service_id="107b" name="Sky Sports 3" service_type="01"/>
 			<channel service_id="107d" name="Sky Sports 1" service_type="01"/>
-			<channel service_id="119f" name="Sky Spts Darts" service_type="01"/>
-			<channel service_id="11a1" name="Sky Spts Darts" service_type="01"/>
+			<channel service_id="119f" name="Sky Sports 3" service_type="01"/>
+			<channel service_id="11a1" name="Sky Sports 3" service_type="01"/>
 			<channel service_id="125d" name="Sky1" service_type="01"/>
 			<channel service_id="1298" name="TV3" service_type="01"/>
 			<channel service_id="158b" name="FOX" service_type="01"/>
@@ -134,10 +152,10 @@
 		<transponder id="07e6" onid="0002" frequency="12129000" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="1">
 			<channel service_id="1965" name="Home" service_type="01"/>
 			<channel service_id="1966" name="Eden" service_type="01"/>
-			<channel service_id="1968" name="ChristmasGOLD" service_type="01"/>
+			<channel service_id="1968" name="GOLD" service_type="01"/>
 			<channel service_id="1969" name="YESTERDAY" service_type="01"/>
 			<channel service_id="196a" name="Dave" service_type="01"/>
-			<channel service_id="196c" name="Christmas Food" service_type="01"/>
+			<channel service_id="196c" name="Good Food" service_type="01"/>
 			<channel service_id="1978" name="W" service_type="01"/>
 			<channel service_id="1979" name="alibi" service_type="01"/>
 			<channel service_id="197a" name="Drama" service_type="01"/>
@@ -163,11 +181,8 @@
 			<channel service_id="1650" name="Sky Living+1" service_type="01"/>
 			<channel service_id="1651" name="Eurosport 1" service_type="01"/>
 			<channel service_id="1652" name="TCM" service_type="01"/>
-			<channel service_id="040a" name="Sky Box Office Review IR" service_type="01"/>
 		</transponder>
 		<transponder id="07e9" onid="0002" frequency="12187500" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="0">
-			<channel service_id="10e7" name="Sky Box Office 2" service_type="01"/>
-			<channel service_id="10ea" name="Sky Box Office 5" service_type="01"/>
 			<channel service_id="122d" name="History" service_type="01"/>
 			<channel service_id="12c1" name="FOX News" service_type="01"/>
 			<channel service_id="12c2" name="Crime+Inv" service_type="01"/>
@@ -180,7 +195,9 @@
 			<channel service_id="1659" name="H2" service_type="01"/>
 			<channel service_id="178e" name="Real Lives" service_type="01"/>
 			<channel service_id="2463" name="At The Races" service_type="01"/>
-			<channel service_id="0b01" name="2817" service_type="01"/>
+			<channel service_id="0b01" name="be3" service_type="01"/>
+			<channel service_id="0f36" name="Sky Anytime 1" service_type="01"/>
+			<channel service_id="0f37" name="Sky Anytime 2" service_type="01"/>
 			<channel service_id="0fac" name="UTV Ireland" service_type="01"/>
 		</transponder>
 		<transponder id="07ea" onid="0002" frequency="12207000" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="1">
@@ -189,7 +206,7 @@
 			<channel service_id="11d8" name="4568" service_type="01"/>
 			<channel service_id="1202" name="Sky Sports 4" service_type="01"/>
 			<channel service_id="1204" name="Sky Sports 2" service_type="01"/>
-			<channel service_id="1205" name="Sky Spts Darts" service_type="01"/>
+			<channel service_id="1205" name="Sky Sports 3" service_type="01"/>
 			<channel service_id="1260" name="Sky News" service_type="01"/>
 			<channel service_id="1262" name="Sky News" service_type="01"/>
 			<channel service_id="128e" name="Sky1" service_type="01"/>
@@ -216,39 +233,19 @@
 			<channel service_id="15bb" name="Nick Jr." service_type="01"/>
 			<channel service_id="15bc" name="BabyTV" service_type="01"/>
 			<channel service_id="15be" name="Sky Living+1" service_type="01"/>
-			<channel service_id="0af1" name="RTÉ One" service_type="01"/>
-			<channel service_id="0af2" name="RTÉ2" service_type="01"/>
+			<channel service_id="0af1" name="RTE One" service_type="01"/>
+			<channel service_id="0af2" name="RTE2" service_type="01"/>
 			<channel service_id="0af3" name="TG4" service_type="01"/>
-			<channel service_id="0af4" name="RTÉ News Now" service_type="01"/>
-			<channel service_id="0af6" name="RTÉjr" service_type="01"/>
+			<channel service_id="0af4" name="RTE News Now" service_type="01"/>
+			<channel service_id="0af6" name="RTEjr" service_type="01"/>
 			<channel service_id="0af7" name="Oireachtas TV" service_type="01"/>
-			<channel service_id="0af8" name="RTÉ One +1" service_type="01"/>
+			<channel service_id="0af8" name="RTE One +1" service_type="01"/>
 			<channel service_id="0afb" name="RTÉ Radio 1" service_type="02"/>
 			<channel service_id="0afc" name="RTÉ 2FM" service_type="02"/>
 			<channel service_id="0afd" name="RTÉ R na G" service_type="02"/>
 			<channel service_id="0afe" name="RTÉ Lyric fm" service_type="02"/>
 			<channel service_id="0ffb" name="Sky Sports Mix" service_type="01"/>
 			<channel service_id="0ffd" name="Sky Sports Mix" service_type="01"/>
-		</transponder>
-		<transponder id="07ee" onid="0002" frequency="12285000" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="1">
-			<channel service_id="10e6" name="Sky Box Office 1" service_type="01"/>
-			<channel service_id="10e8" name="Sky Box Office 3" service_type="01"/>
-			<channel service_id="114a" name="Sky Box Office 6" service_type="01"/>
-			<channel service_id="114b" name="Sky Box Office 7" service_type="01"/>
-			<channel service_id="114c" name="Sky Box Office 8" service_type="01"/>
-			<channel service_id="114d" name="Sky Box Office 9" service_type="01"/>
-			<channel service_id="114e" name="Sky Box Office 10" service_type="01"/>
-			<channel service_id="1199" name="Sky" service_type="01"/>
-			<channel service_id="11a3" name="Sky Intro" service_type="01"/>
-			<channel service_id="11ad" name="Sky Intro" service_type="01"/>
-			<channel service_id="11ae" name="Sky Box Office 11" service_type="01"/>
-			<channel service_id="11af" name="Sky Box Office 12" service_type="01"/>
-			<channel service_id="11b0" name="Sky Box Office 13" service_type="01"/>
-			<channel service_id="11b2" name="Sky Box Office 15" service_type="01"/>
-			<channel service_id="138c" name="Sky Intro" service_type="01"/>
-			<channel service_id="138f" name="Chl Line-up" service_type="01"/>
-			<channel service_id="0f36" name="Sky Anytime 1" service_type="01"/>
-			<channel service_id="0f37" name="Sky Anytime 2" service_type="01"/>
 		</transponder>
 		<transponder id="07ef" onid="0002" frequency="12304000" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="0">
 			<channel service_id="2ee0" name="Magic" service_type="01"/>
@@ -318,7 +315,6 @@
 			<channel service_id="18c5" name="BBC One West" service_type="01"/>
 			<channel service_id="18cf" name="BBC One East W" service_type="01"/>
 			<channel service_id="18d9" name="BBC One CI" service_type="01"/>
-			<channel service_id="18ed" name="BBC R C Mwy" service_type="02"/>
 			<channel service_id="18f6" name="BBC Red Button 1" service_type="01"/>
 			<channel service_id="18f7" name="6391" service_type="01"/>
 		</transponder>
@@ -414,8 +410,6 @@
 			<channel service_id="1e25" name="5STAR +1" service_type="01"/>
 			<channel service_id="1e28" name="Channel 5+1" service_type="01"/>
 			<channel service_id="1e32" name="Spike" service_type="01"/>
-			<channel service_id="1e51" name="7761" service_type="01"/>
-			<channel service_id="1e52" name="7762" service_type="01"/>
 		</transponder>
 		<transponder id="080b" onid="0002" frequency="10993750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="2f45" name="ITV Meridian North" service_type="01"/>
@@ -444,7 +438,6 @@
 			<channel service_id="c4ae" name="BLAZE" service_type="01"/>
 			<channel service_id="c4d6" name="Inspiration TV" service_type="01"/>
 			<channel service_id="c4db" name="Al Jazeera Eng" service_type="01"/>
-			<channel service_id="d804" name="50316" service_type="01"/>
 		</transponder>
 		<transponder id="0813" onid="0002" frequency="11111750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="c418" name="Cartoon Netwrk" service_type="01"/>
@@ -457,7 +450,7 @@
 			<channel service_id="5302" name="4seven" service_type="01"/>
 		</transponder>
 		<transponder id="0815" onid="0002" frequency="11141250" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
-			<channel service_id="c789" name="BET" service_type="01"/>
+			<channel service_id="c789" name="BET:BlackEntTv" service_type="01"/>
 			<channel service_id="c78a" name="Nicktoons" service_type="01"/>
 			<channel service_id="c78b" name="ComedyCent+1" service_type="01"/>
 			<channel service_id="c78c" name="ComedyCentral" service_type="01"/>
@@ -481,7 +474,7 @@
 			<channel service_id="c7ae" name="mov4men+1" service_type="01"/>
 			<channel service_id="c7af" name="Sony Movies+1" service_type="01"/>
 			<channel service_id="c7b0" name="Racing UK" service_type="01"/>
-			<channel service_id="c7b1" name="51121" service_type="01"/>
+			<channel service_id="c7b1" name="Peace TV Urdu" service_type="01"/>
 			<channel service_id="c7b2" name="eir Sport 1" service_type="01"/>
 			<channel service_id="c7b3" name="eir Sport 2" service_type="01"/>
 			<channel service_id="c7b5" name="51125" service_type="01"/>
@@ -491,12 +484,11 @@
 			<channel service_id="d3c2" name="ROK" service_type="01"/>
 			<channel service_id="d3c3" name="Bangla TV" service_type="01"/>
 			<channel service_id="d3c4" name="PTV Prime" service_type="01"/>
-			<channel service_id="d3c5" name="ARISE News" service_type="01"/>
 			<channel service_id="d3c6" name="Notts TV" service_type="01"/>
 			<channel service_id="d3c7" name="Akaal Channel" service_type="01"/>
 			<channel service_id="d3c8" name="CCTV News" service_type="01"/>
 			<channel service_id="d3c9" name="Nollywood" service_type="01"/>
-			<channel service_id="d3ca" name="UMP Movies" service_type="01"/>
+			<channel service_id="d3ca" name="TVC News +1" service_type="01"/>
 			<channel service_id="d3cb" name="DM Plus TV" service_type="01"/>
 			<channel service_id="d3cc" name="AIT Int&apos;l" service_type="01"/>
 			<channel service_id="d3cd" name="NTV" service_type="01"/>
@@ -508,7 +500,7 @@
 		</transponder>
 		<transponder id="082a" onid="0002" frequency="11479000" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="1">
 			<channel service_id="c6c0" name="STV Edinburgh" service_type="01"/>
-			<channel service_id="c6c1" name="TVC News +1" service_type="01"/>
+			<channel service_id="c6c1" name="50881" service_type="01"/>
 			<channel service_id="c6c2" name="CNBC" service_type="01"/>
 			<channel service_id="c6c3" name="PTV Global" service_type="01"/>
 			<channel service_id="c6c4" name="Venus TV" service_type="01"/>
@@ -529,18 +521,14 @@
 			<channel service_id="571e" name="22302" service_type="01"/>
 			<channel service_id="571f" name="22303" service_type="01"/>
 		</transponder>
-		<transponder id="082c" onid="0002" frequency="11508500" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="1">
-			<channel service_id="d7ee" name="Peace TV" service_type="01"/>
-			<channel service_id="d7ef" name="Peace TV Urdu" service_type="01"/>
-		</transponder>
 		<transponder id="082d" onid="0002" frequency="11523250" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="1db0" name="Home+1" service_type="01"/>
-			<channel service_id="1db5" name="Xmas GOLD +1" service_type="01"/>
+			<channel service_id="1db5" name="GOLD +1" service_type="01"/>
 			<channel service_id="1dba" name="Eden+1" service_type="01"/>
 			<channel service_id="1dbf" name="W +1" service_type="01"/>
 			<channel service_id="1dc4" name="Dave" service_type="01"/>
 			<channel service_id="1dc8" name="Dave ja vu" service_type="01"/>
-			<channel service_id="1dca" name="Xmas Food +1" service_type="01"/>
+			<channel service_id="1dca" name="Good Food +1" service_type="01"/>
 			<channel service_id="1dce" name="alibi +1" service_type="01"/>
 			<channel service_id="1de2" name="YESTERDAY+1" service_type="01"/>
 			<channel service_id="1de7" name="GOLD" service_type="01"/>
@@ -554,9 +542,8 @@
 			<channel service_id="584e" name="TalkingPictures" service_type="01"/>
 			<channel service_id="584f" name="Faith World TV" service_type="01"/>
 			<channel service_id="5850" name="KICC TV" service_type="01"/>
-			<channel service_id="5852" name="Wellbeing" service_type="01"/>
-			<channel service_id="5853" name="22611" service_type="01"/>
-			<channel service_id="5854" name="22612" service_type="01"/>
+			<channel service_id="5853" name="Made in Bham" service_type="01"/>
+			<channel service_id="5854" name="Made in L&apos;Pool" service_type="01"/>
 			<channel service_id="5855" name="22613" service_type="01"/>
 		</transponder>
 		<transponder id="082f" onid="0002" frequency="11552750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
@@ -576,10 +563,10 @@
 			<channel service_id="d741" name="KTV" service_type="01"/>
 			<channel service_id="d745" name="Noor TV" service_type="01"/>
 			<channel service_id="d746" name="Aastha" service_type="01"/>
-			<channel service_id="d747" name="Heart Xmas" service_type="01"/>
+			<channel service_id="d747" name="Heart TV" service_type="01"/>
 			<channel service_id="d748" name="CAPITAL TV" service_type="01"/>
 			<channel service_id="d749" name="Clubland TV" service_type="01"/>
-			<channel service_id="d74a" name="Chilled Xmas" service_type="01"/>
+			<channel service_id="d74a" name="Chilled TV" service_type="01"/>
 			<channel service_id="d74b" name="GEO TEZ" service_type="01"/>
 			<channel service_id="d74c" name="NDTV 24x7" service_type="01"/>
 			<channel service_id="d74d" name="PTC PUNJABI" service_type="01"/>
@@ -618,7 +605,7 @@
 			<channel service_id="ccd3" name="Disc.History+1" service_type="01"/>
 			<channel service_id="ccd8" name="Discovery Shed" service_type="01"/>
 			<channel service_id="ccde" name="TLC+1" service_type="01"/>
-			<channel service_id="cce2" name="Home&amp;Health+" service_type="01"/>
+			<channel service_id="cce2" name="HomeHealth+1" service_type="01"/>
 			<channel service_id="cce7" name="TLC+2" service_type="01"/>
 		</transponder>
 		<transponder id="0832" onid="0002" frequency="11597000" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="1">
@@ -676,11 +663,11 @@
 			<channel service_id="cb25" name="Ideal Extra" service_type="01"/>
 			<channel service_id="cb26" name="FrontRunner" service_type="01"/>
 			<channel service_id="cb27" name="RishteyCine" service_type="01"/>
-			<channel service_id="cb2a" name="NOW XMAS" service_type="01"/>
+			<channel service_id="cb2a" name="NOW 80s" service_type="01"/>
 			<channel service_id="cb3c" name="BFBS Radio" service_type="02"/>
 			<channel service_id="cb3d" name="LBC" service_type="02"/>
 			<channel service_id="cb3e" name="Heart" service_type="02"/>
-			<channel service_id="cb3f" name="Heart Xmas" service_type="02"/>
+			<channel service_id="cb3f" name="Heart extra" service_type="02"/>
 			<channel service_id="cb40" name="Absolute" service_type="02"/>
 			<channel service_id="cb41" name="Absolute 80s" service_type="02"/>
 			<channel service_id="cb42" name="Absolute 90s" service_type="02"/>
@@ -722,7 +709,7 @@
 			<channel service_id="cb9c" name="TBN UK" service_type="01"/>
 			<channel service_id="cb9e" name="GOD Channel" service_type="01"/>
 			<channel service_id="cb9f" name="revelation" service_type="01"/>
-			<channel service_id="cba7" name="52135" service_type="01"/>
+			<channel service_id="cba7" name="Peace TV" service_type="01"/>
 			<channel service_id="cba8" name="EWTN Catholic" service_type="01"/>
 			<channel service_id="cba9" name="EWTN" service_type="02"/>
 			<channel service_id="cbaa" name="DBN" service_type="01"/>
@@ -735,8 +722,8 @@
 			<channel service_id="cc1a" name="Syfy" service_type="01"/>
 			<channel service_id="cc1f" name="Universal" service_type="01"/>
 			<channel service_id="cc24" name="Universal" service_type="01"/>
-			<channel service_id="cc29" name="Christmas 24" service_type="01"/>
-			<channel service_id="cc2e" name="Christmas 24+" service_type="01"/>
+			<channel service_id="cc29" name="Movies 24" service_type="01"/>
+			<channel service_id="cc2e" name="Movies24+" service_type="01"/>
 			<channel service_id="cc38" name="Syfy +1" service_type="01"/>
 			<channel service_id="cc42" name="Bike" service_type="01"/>
 		</transponder>
@@ -745,8 +732,8 @@
 			<channel service_id="d039" name="True Crime +1" service_type="01"/>
 			<channel service_id="d03e" name="Scuzz" service_type="01"/>
 			<channel service_id="d043" name="Chartshow Hits" service_type="01"/>
-			<channel service_id="d048" name="True Christmas" service_type="01"/>
-			<channel service_id="d04d" name="TrueChrstms+1" service_type="01"/>
+			<channel service_id="d048" name="True Movies" service_type="01"/>
+			<channel service_id="d04d" name="True Movies+1" service_type="01"/>
 			<channel service_id="d052" name="Tiny Pop" service_type="01"/>
 			<channel service_id="d057" name="Starz TV" service_type="01"/>
 			<channel service_id="d05c" name="POP" service_type="01"/>
@@ -772,8 +759,8 @@
 			<channel service_id="d01c" name="MOTORS TV UK" service_type="01"/>
 			<channel service_id="d020" name="BT Sport 2" service_type="01"/>
 			<channel service_id="d021" name="BT Sport 2" service_type="01"/>
-			<channel service_id="d025" name="BT Sport-ESPN" service_type="01"/>
-			<channel service_id="d026" name="BT Sport-ESPN" service_type="01"/>
+			<channel service_id="d025" name="BT Sport//ESPN" service_type="01"/>
+			<channel service_id="d026" name="BT Sport//ESPN" service_type="01"/>
 			<channel service_id="d031" name="BT Sport Mosaic Extra" service_type="01"/>
 		</transponder>
 		<transponder id="0840" onid="0002" frequency="11343000" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="1">
@@ -788,7 +775,6 @@
 			<channel service_id="d7af" name="BT Sport Extra 1" service_type="01"/>
 			<channel service_id="d7b1" name="CBS Reality+1" service_type="01"/>
 			<channel service_id="d7b2" name="horror ch+1" service_type="01"/>
-			<channel service_id="d7b3" name="BT Sport Mosaic" service_type="01"/>
 			<channel service_id="d7ba" name="Psychic Today" service_type="01"/>
 			<channel service_id="d7d2" name="BT Sport 1" service_type="01"/>
 			<channel service_id="d7d3" name="55251" service_type="01"/>
@@ -811,7 +797,9 @@
 			<channel service_id="cd3c" name="YourTV" service_type="01"/>
 			<channel service_id="cd3f" name="At The Races" service_type="01"/>
 			<channel service_id="cd41" name="True Crime" service_type="01"/>
+			<channel service_id="cd46" name="52550" service_type="01"/>
 			<channel service_id="cd4a" name="Made In Leeds" service_type="01"/>
+			<channel service_id="cd4c" name="52556" service_type="01"/>
 			<channel service_id="cd4e" name="Craft Extra" service_type="01"/>
 			<channel service_id="cd5a" name="FRANCE Eng" service_type="01"/>
 			<channel service_id="cd5f" name="TV5 MONDE" service_type="01"/>
