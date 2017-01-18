@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Mon 19 Dec 2016 15:24:45
+# AutoBouquets custom_epg.txt usermap auto-generated on: Wed 18 Jan 2017 10:58:42
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -60,8 +60,8 @@
 109:1:1:024:W
 213:1:1:000:W +1
 155:1:1:024:Really
-110:1:1:024:ChristmasGOLD
-166:1:1:000:Xmas GOLD +1
+110:1:1:024:GOLD
+166:1:1:000:GOLD +1
 111:1:1:024:Dave
 214:1:1:000:Dave ja vu
 158:1:1:024:Drama
@@ -108,28 +108,27 @@
 212:1:1:024:Showcase
 261:1:1:024:Showcase 3
 266:1:1:024:ShowBiz TV
-282:0:0:000:ShowBiz TV+1
 192:1:1:024:AMC from BT
 176:1:1:024:5STAR
 190:1:1:000:5STAR +1
 174:1:1:024:5 USA
 219:1:1:000:5 USA +1
 175:1:1:024:My5
-187:0:0:000:BET
+187:0:0:000:BET:BlackEntTv
 
 #Bouquet 02: "Lifestyle-Culture"
 539:1:1:024:Community
-242:1:1:024:Discovery Shed
+161:0:0:000:Discovery Shed
 248:1:1:024:Food Network
 250:1:1:000:Food Netwrk+1
 264:1:1:024:Forces TV
-133:1:1:024:Christmas Food
-243:1:1:000:Xmas Food +1
+133:1:1:024:Good Food
+243:1:1:000:Good Food +1
 256:1:1:024:holiday+cruise
 196:1:1:024:Home
 244:1:1:000:Home+1
-240:1:1:024:Home & Health
-241:1:1:000:Home&Health+
+162:0:0:000:Home & Health
+240:1:1:024:HomeHealth+1
 237:1:1:024:Home & Leisure
 253:1:1:024:Horse & Country
 203:1:1:024:My Channel
@@ -139,20 +138,19 @@
 249:1:1:024:Travel Channel
 251:1:1:000:Travel Ch +1
 198:1:1:024:tru TV
-271:1:1:000:tru TV+1
 
 #Bouquet 03: "Movies"
 307:1:1:024:Sky Action
 308:1:1:024:Sky Comedy
 305:1:1:024:Sky Disney
-310:1:1:024:Sky Hits
+310:1:1:024:Sky DramaRom
 306:1:1:024:Sky Family
-304:1:1:024:Sky Greats
-303:1:1:024:Sky Christmas
+304:1:1:024:Sky Superhero
+303:1:1:024:Sky Hits
 301:1:1:024:Sky Premiere
 302:1:1:000:Sky Prem+1
 312:1:1:024:Sky Select
-311:1:1:024:Sky ScFi-Horror
+311:1:1:024:Sky ScFi/Horror
 309:1:1:024:Sky Thriller
 315:1:1:024:Film4
 316:1:1:000:Film4 +1
@@ -160,15 +158,15 @@
 318:1:1:000:TCM+1
 319:1:1:024:horror channel
 320:1:1:000:horror ch+1
-321:1:1:024:True Christmas
-322:1:1:024:TrueChrstms+1
+321:1:1:024:True Movies
+322:1:1:024:True Movies+1
 343:1:1:024:TalkingPictures
 323:1:1:024:Sony Movies
 324:1:1:000:Sony Movies+1
 325:1:1:024:movies4men
 326:1:1:000:mov4men+1
-327:1:1:024:Christmas 24
-328:1:1:024:Christmas 24+
+327:1:1:024:Movies 24
+328:1:1:024:Movies24+
 
 #Bouquet 04: "Music"
 350:1:1:024:MTV MUSIC
@@ -177,7 +175,7 @@
 353:1:1:024:VIVA
 354:1:1:024:MTV DANCE
 355:1:1:024:MTV ROCKS
-356:1:1:024:MTV XMAS
+356:1:1:024:MTV CLASSIC
 357:1:1:024:VH1
 358:1:1:000:MTV Music +1
 359:1:1:024:Box Upfront
@@ -191,21 +189,21 @@
 367:1:1:024:Scuzz
 368:1:1:024:Kerrang!
 369:1:1:024:Vintage TV
-370:1:1:024:Chilled Xmas
+370:1:1:024:Chilled TV
 371:1:1:024:Starz TV
 372:1:1:024:Chartshow Hits
 374:1:1:024:Flava
-378:1:1:024:NOW XMAS
+378:1:1:024:NOW 80s
 383:1:1:024:Clubland TV
 385:1:1:024:Channel AKA
-387:1:1:024:Heart Xmas
+387:1:1:024:Heart TV
 388:1:1:024:CAPITAL TV
 389:1:1:024:Keep It Country
 
 #Bouquet 05: "Sport"
 401:1:1:024:Sky Sports 1
 402:1:1:024:Sky Sports 2
-403:1:1:024:Sky Spts Darts
+403:1:1:024:Sky Sports 3
 404:1:1:024:Sky Sports 4
 405:1:1:024:Sky Sports 5
 1009:1:1:024:Sky Sports 5 IRL
@@ -218,7 +216,7 @@
 413:1:1:024:BT Sport 1
 417:1:1:024:BT Sport 3
 414:1:1:024:BT Sport 2
-426:1:1:024:BT Sport-ESPN
+426:1:1:024:BT Sport//ESPN
 421:1:1:024:Chelsea TV
 429:1:1:024:LFCTV
 418:1:1:024:MUTV
@@ -246,7 +244,7 @@
 511:0:0:000:NDTV 24x7
 512:1:1:000:Russia Today
 513:1:1:000:FRANCE Eng
-1174:1:1:000:RTÉ News Now
+1174:1:1:000:RTE News Now
 
 #Bouquet 07: "Factual"
 523:1:1:024:Animal Planet
@@ -324,7 +322,7 @@
 623:1:1:024:BabyTV
 626:1:1:000:POP+1
 627:1:1:024:Kix
-635:1:1:024:RTÉjr
+635:1:1:024:RTEjr
 
 #Bouquet 16: "BBC Interactive"
 980:1:1:024:BBC Red Button 1
@@ -372,7 +370,7 @@
 670:0:0:000:Thane
 671:0:0:000:V Channel
 672:0:0:000:Rocks & Co 1
-673:0:0:000:QVC Christmas
+673:0:0:000:QVC EXTRA
 674:0:0:000:Create & Craft
 675:0:0:000:Craft Extra
 676:0:0:000:The Dept Store
@@ -382,25 +380,24 @@
 
 #Bouquet 0b: "Sky Box Office"
 700:0:0:000:Sky Box Office Review UK
-701:0:0:000:Sky Box Office 1
-702:0:0:000:Sky Box Office 2
-703:0:0:000:Sky Box Office 3
-704:0:0:000:Sky Box Office 4
-705:0:0:000:Sky Box Office 5
-706:0:0:000:Sky Box Office 6
-707:0:0:000:Sky Box Office 7
-708:0:0:000:Sky Box Office 8
-709:0:0:000:Sky Box Office 9
-710:0:0:000:Sky Box Office 10
-711:0:0:000:Sky Box Office 11
-712:0:0:000:Sky Box Office 12
-713:0:0:000:Sky Box Office 13
-714:0:0:000:Sky Box Office 14
-715:0:0:000:Sky Box Office 15
-743:0:0:000:Sky Box Office Review IR
-744:0:0:000:Sky Box Office 20
+701:0:0:000:Sky Box Office
 
 #Bouquet 0c: "International"
+702:0:0:000:Sky Box Office
+703:0:0:000:Sky Box Office
+704:0:0:000:Sky Box Office
+705:0:0:000:Sky Box Office
+706:0:0:000:Sky Box Office
+707:0:0:000:Sky Box Office
+708:0:0:000:Sky Box Office
+709:0:0:000:Sky Box Office
+710:0:0:000:Sky Box Office
+711:0:0:000:Sky Box Office
+712:0:0:000:Sky Box Office
+713:0:0:000:Sky Box Office
+714:0:0:000:Sky Box Office
+715:0:0:000:Sky Box Office
+744:0:0:000:Sky Box Office
 795:0:0:000:&TV
 818:0:0:000:AAJ TAK
 837:0:0:000:Aastha
@@ -419,20 +416,19 @@
 827:0:0:000:ATN Bangla UK
 780:0:0:000:B4U Movies
 781:0:0:000:B4U Music
-821:0:0:000:Bangla TV
+786:0:0:000:COLORS
 182:0:0:000:BEN
-187:0:0:000:BET
+187:0:0:000:BET:BlackEntTv
 824:0:0:000:Brit Asia TV
 845:0:0:000:British Muslim
 510:0:0:000:CCTV News
+385:1:1:024:Channel AKA
 833:0:0:000:Channel i
 575:0:0:000:Channels 24
 814:0:0:000:CHSTV
 515:0:0:000:CNC World
-786:0:0:000:COLORS
-799:0:0:000:DM Plus TV
+821:0:0:000:Bangla TV
 850:0:0:000:Dunya News
-857:0:0:000:Eman Channel
 817:0:0:000:GEO News
 816:0:0:000:GEO TEZ
 807:0:0:000:GEO TV
@@ -443,6 +439,7 @@
 819:0:0:000:IQRA TV
 806:0:0:000:Islam Channel
 851:0:0:000:Islam Ch Urdu
+849:0:0:000:TV One
 828:0:0:000:Madani Chnl
 793:0:0:000:MATV National
 787:0:0:000:mta-muslim tv
@@ -461,6 +458,7 @@
 803:0:0:000:PTV Global
 792:0:0:000:PTV Prime
 822:0:0:000:Rishtey
+512:1:1:000:Russia Today
 847:0:0:000:Safeer TV
 832:0:0:000:Samaa
 836:0:0:000:Sangat
@@ -477,7 +475,6 @@
 576:0:0:000:Times Now
 796:0:0:000:TV5 MONDE
 842:0:0:000:TV 99
-849:0:0:000:TV One
 517:0:0:000:TVC News
 572:0:0:000:TVC News +1
 820:0:0:000:Ummah CH
@@ -490,7 +487,6 @@
 789:0:0:000:Zing
 
 #Bouquet 0e: "Specialist"
-886:0:0:000:Psychic Today
 998:0:0:000:Sky Intro
 999:0:0:000:Sky
 1010:0:0:000:EPG Background Audio.
@@ -561,8 +557,9 @@
 6220:0:0:000:STV Scottish West
 85:0:0:000:UTV
 134:0:0:000:S4C
-161:0:0:000:RTÉ One
-162:0:0:000:RTÉ2
+1113:0:0:000:RTE One
+1178:0:0:000:RTE One +1
+1132:0:0:000:RTE2
 1179:0:0:000:TV3
 1130:0:0:000:TV3+1
 163:0:0:000:Pick+1
