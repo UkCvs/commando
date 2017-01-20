@@ -43,6 +43,7 @@ class CScanSetup : public CMenuTarget, CChangeObserver
 
 		std::string scan_mode_string;
 
+		int parentalcontrol;
 		int showScanService();
 		int showScanModeMenue();
 

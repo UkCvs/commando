@@ -1379,6 +1379,7 @@ const char * locale_real_names[] =
 	"scantp.mod_qam_auto",
 	"scantp.mod_qpsk",
 	"scantp.netid",
+	"scantp.parental_control",
 	"scantp.pol",
 	"scantp.pol_h",
 	"scantp.pol_v",

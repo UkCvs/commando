@@ -306,6 +306,10 @@ class CZapitClient:public CBasicClient
 	void setRemainingChannelsBouquet(bool save=true);
 	bool getRemainingChannelsBouquet();
 
+	/* parental control */
+	void setParentalControl(bool save=true);
+	bool getParentalControl();
+
 	/* audiochan set */
 	void setAudioChannel(const unsigned int channel);
 

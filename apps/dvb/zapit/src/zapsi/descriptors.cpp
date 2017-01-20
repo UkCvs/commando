@@ -42,6 +42,7 @@
 #endif
 extern tallchans allchans;              //  defined in zapit.cpp
 extern transponder_list_t transponders; //  defined in zapit.cpp
+extern bool parentalcontrol;		//  defined in zapit.cpp
 std::string curr_chan_name;
 uint32_t found_transponders;
 uint32_t found_channels;
@@ -434,6 +435,9 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 
 	if (original_network_id == 0xf020)
 	{
+		if ((bouquet_id == 0x0c ) && parentalcontrol)
+			return;
+
 		if (service_types.size())
 		{
 			std::map <t_channel_id, uint8_t>::iterator stI = service_types.find(CREATE_CHANNEL_ID);
@@ -797,6 +801,9 @@ void time_shifted_service_descriptor(const t_service_id service_id, const t_tran
 		providerName = "Sport";
 		ch_num = 599;
 	}
+
+	if ((providerName == "Adult") && parentalcontrol)
+		return;
 
 	found_channels++;
 

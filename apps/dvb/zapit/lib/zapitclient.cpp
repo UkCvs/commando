@@ -784,6 +784,25 @@ void CZapitClient::getUnicableParam(int &scr, int &qrg)
 	close_connection();
 }
 
+void CZapitClient::setParentalControl(const bool save)
+{
+	CZapitMessages::commandBoolean msg;
+	msg.truefalse = save;
+	send(CZapitMessages::CMD_SET_PARENTAL_CONTROL, (char*)&msg, sizeof(msg));
+	close_connection();
+}
+
+bool CZapitClient::getParentalControl(void)
+{
+	send(CZapitMessages::CMD_GET_PARENTAL_CONTROL);
+
+	CZapitMessages::commandBoolean msg;
+	CBasicClient::receive_data((char *)&msg, sizeof(msg));
+
+	close_connection();
+	return msg.truefalse;
+}
+
 /* set diseqcRepeat*/
 void CZapitClient::setScanBouquetMode(const bouquetMode mode)
 {

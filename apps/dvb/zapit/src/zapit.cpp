@@ -197,6 +197,7 @@ uint32_t lastChannelTV;
 uint32_t startChannelRadio;
 uint32_t startChannelTV;
 bool saveLastChannel = true;
+bool parentalcontrol = true;
 
 //stolen from scan.cpp - check how to include
 void cpy(const char *from, const char *to)
@@ -729,7 +730,7 @@ void saveSettings(bool write)
 		}
 		config.setBool("saveAudioPIDs", save_audioPIDs);
 		config.setBool("makeRemainingChannelsBouquet", bouquetManager->remainingChannelsBouquet);
-
+		config.setBool("parentalcontrol", parentalcontrol);
 
 		switch (frontend->getInfo()->type) {
 			case FE_QPSK:
@@ -2475,6 +2476,21 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CBasicServer::send_data(connfd, &p, sizeof(p));
 		break;
 	}
+	case CZapitMessages::CMD_SET_PARENTAL_CONTROL:
+	{
+		CZapitMessages::commandBoolean msg;
+		CBasicServer::receive_data(connfd, &msg, sizeof(msg));
+		parentalcontrol = msg.truefalse;
+		break;
+	}
+
+	case CZapitMessages::CMD_GET_PARENTAL_CONTROL:
+	{
+		CZapitMessages::commandBoolean msg;
+		msg.truefalse = parentalcontrol;
+		CBasicServer::send_data(connfd, &msg, sizeof(msg));
+		break;
+	}
 
 #ifdef HAVE_DBOX_HARDWARE
 	case CZapitMessages::CMD_SET_AE_IEC_ON:
@@ -3296,6 +3312,7 @@ int main(int argc, char **argv)
 	startChannelRadio = config.getInt32("startChannelRadio", 0);
 	startChannelTV    = config.getInt32("startChannelTV", 0);
 	bouquetManager->remainingChannelsBouquet = config.getBool("makeRemainingChannelsBouquet", false);
+	parentalcontrol = config.getBool("parentalcontrol", true);
 
 	if (config.getInt32("lastChannelMode", 0))
 		setRadioMode();

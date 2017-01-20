@@ -69,6 +69,7 @@ CScanSetup::CScanSetup()
 	selected = -1;
 	sat_list_size = 0;
 	provider_list_size = 0;
+	parentalcontrol = 1;
 }
 
 CScanSetup::~CScanSetup()
@@ -452,6 +453,10 @@ int CScanSetup::showScanModeMenue()
 	//prepare fec select
 	CMenuOptionChooser* fec = new CMenuOptionChooser(LOCALE_SCANTP_FEC, (int *)&scanSettings.TP_fec, SATSETUP_SCANTP_FEC, SATSETUP_SCANTP_FEC_COUNT, scanSettings.TP_scan == 1);
 
+	//parental control
+	parentalcontrol = g_Zapit->getParentalControl() ? 1 : 0;
+	CMenuOptionChooser *pc = new CMenuOptionChooser(LOCALE_SCANTP_PARENTAL_CONTROL, &parentalcontrol, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT,true, this);
+
 	//prepare frequency input, polarisation
 	CStringInput* freq;
 	CMenuOptionChooser* pol_mod;
@@ -548,6 +553,7 @@ int CScanSetup::showScanModeMenue()
 	}
 	else
 	{
+		scanmode->addItem(pc);
 		scanmode->addItem(GenericMenuSeparatorLine);
 		scanmode->addItem(CableRegion);
 		scanmode->addItem(Netid);
@@ -683,6 +689,10 @@ bool CScanSetup::changeNotify(const neutrino_locale_t OptionName, void * Data)
 	else if (ARE_LOCALES_EQUAL(OptionName, LOCALE_SECTIONSD_SCANMODE))
 	{
 		CNeutrinoApp::getInstance()->SendSectionsdConfig();
+	}
+	else if (ARE_LOCALES_EQUAL(OptionName, LOCALE_SCANTP_PARENTAL_CONTROL))
+	{
+		g_Zapit->setParentalControl((*((int *)Data)) != 0);
 	}
 	return false;
 }
