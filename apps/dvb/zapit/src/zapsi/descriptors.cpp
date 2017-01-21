@@ -662,10 +662,6 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 					bouquet->bHidden = true;
 					bouquet->bLocked = true;
 				}
-				else if (bouquetpos == 12)
-				{
-					bouquet->bHidden = true;
-				}
 				bouquet->bouquet_id = bouquetpos;
 			}
 		}
