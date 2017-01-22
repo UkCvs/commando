@@ -1,0 +1,36 @@
+#!/bin/sh
+# added layers of recovery if user launches AutoBouquets VM with wrong SML settings
+# or does a standalone Service Scan using an incompatible bouquet mode for DM500C
+# changelog:
+# Sun 15 Jan 2017: save user "My Favorites" bouquet and patch back in after Scan
+
+# $hortcuts
+etc="/var/etc/"
+zap="/var/tuxbox/config/zapit"
+bqs="$zap/bouquets.xml"
+tbq="/tmp/bouquets.xml"
+svc="$zap/services.xml"
+tsv="/tmp/services.xml"
+log="/var/log/scan.log"
+
+touch /tmp/box.busy
+pzapit -gi|cut -d " " -f1 >/tmp/zapbak
+cp -f $bqs $tbq
+cp -f $svc $tsv
+
+if grep -q 'My Favorites' $bqs; then
+	sed -n '/"My Favorites"/,/\/Bouquet>/'p $tbq >tmp/myfavs.bq
+	sed -i 's/t_id="0000"/t_id="0018"/' tmp/myfavs.bq
+fi
+
+if grep -q 'Bouquet=true' $zap/zapit.conf; then
+	touch $etc/.zapit_others
+else
+	rm -f $etc/.zapit_others
+fi
+
+echo "unixtime: `date +%s` 
+Your SCAN began on: `date`
+" >$log
+
+exit 0

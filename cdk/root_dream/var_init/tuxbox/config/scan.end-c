@@ -1,0 +1,546 @@
+#!/bin/sh
+# scan.end script for DVB-C VM Bouquets (by PaphosAL - original: 15 Oct 2014)
+# updated for C15.1e DM500C 23 Apr 2016: create /var/log/scan.log
+# updated 01 Jun 2016: make all +1 channels follow parent (sod VM order, LOL!)
+# updated 25 Aug 2016: move more orphaned channels from 'Other' & add date
+# humungerous overhauls 21 Jan 2017, keeping pace with latest C16 Laz dev...
+
+# set $hortcuts
+etc="/var/etc"
+cfg="/var/tuxbox/config"
+zap="$cfg/zapit"
+scf="$cfg/scan.conf"
+bqs="$zap/bouquets.xml"
+tbq="/tmp/bouquets.xml"
+svc="$zap/services.xml"
+tsv="/tmp/services.xml"
+src="/tmp/other.bq"
+sex="/tmp/adult.bq"
+btrb="/tmp/btrb.bq"
+log="/var/log/scan.log"
+zapbak=`cat /tmp/zapbak`
+now="%a %d %b %Y %T"
+
+# calculate Scan duration
+start_time=`grep "unixtime:" $log|cut -d " " -f2`
+stop_time=$(expr `date +%s` - $start_time)
+
+# define functions
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+grab(){
+si=`sed -n "/$ch/"p $tbq`
+}
+bdel(){
+sed -i "/$ch/d" $tbq
+}
+copy(){
+si=`sed -n "/$ch/"p $src`
+}
+cdel(){
+grep -q -m 1 "$ch" $tbq && sed -i "/$ch/d" $src
+}
+bqhead(){
+echo '	<Bouquet type="0" bouquet_id="0000" name="'"$bqn"'" hidden="0" locked="0">' >>$tbq
+}
+bqtail(){
+echo "	</Bouquet>" >>$tbq
+}
+restore(){
+fmsg "ERROR! Restoring backup services and bouquets!
+Why? Further info follows, please wait..."
+sed -i "
+/bouquetMode/cbouquetMode=0
+/scanType/cscanType=0
+/TP_scan/cTP_scan=1
+/netid=.*/cnetid=
+" $scf
+mv -f $tbq $bqs
+mv -f $tsv $svc
+rm -f /tmp/box.busy
+pzapit -c
+sleep 3
+pzapit -zi $zapbak
+killall neutrino
+sleep 3
+rcsim KEY_HOME 2
+}
+
+# firstly, let's see if SML is correct? (else no services...)
+if ! grep "<cable " $svc; then
+	restore
+	sleep 3
+	fmsg "Oops! You seem to have chosen a wrong cable area in
+	\nSML? Please try again with a nearby alternative.."
+	sleep 7
+	fmsg "If the VM Scan takes 3 mins, you've cracked it!
+	\nBut if it fails after a few secs, try try again"
+	sleep 7
+	echo "`date +"$now"` Scan failed:
+	wrong SML is the most likely cause" >$log
+	exit 0
+fi
+
+if [ -e /tmp/scanAbort ]; then
+	pzapit -c
+	sleep 3
+	pzapit -rz
+	rm -f $tbq $tsv /tmp/box.busy /tmp/scanAbort
+	killall neutrino
+	sleep 3
+	rcsim KEY_HOME 2
+	echo "`date +"$now"`
+	Scan aborted by user" >$log
+	exit 0
+fi
+
+if [ ! -e $bqs ] && [ ! -e $etc/.zapit_others ]; then
+	restore
+	fmsg "Oops! What happened there, then? Let's explain..."
+	sleep 7
+	fmsg "Well, your [Eraseall Bouquets] Scan MUST have
+	\n[Bouquet Others] = ON in the Zapit setup menu!"
+	sleep 7
+	fmsg "You'll find it here:+++Menu > 2 > Yellow > Yellow"
+	sleep 7
+	fmsg "An <eraseall> Scan will then create a single
+	\n[All Channels A-Z] Bouquet in memory (RAM)"
+	sleep 7
+	echo "`date +"$now"` Scan failed:
+	cannot Eraseall bouquets with 'Other=off'!" >$log
+	exit 0
+fi
+
+if grep -q 'CableUK' $bqs; then
+	restore
+	fmsg "Er, WHY were you trying to scan for a SATELLITE
+	\nbouquet on your CABLE box? It makes a HUGE mess!"
+	sleep 7
+	echo "`date +"$now"` Scan failed:
+	cannot create SAT bouquet on cable box!" >$log
+	exit 0
+fi
+
+# process new Scan stuff in memory, not flash, as much faster!
+proc_start=`date +%s`
+cp -f $bqs $tbq
+cp -f $svc $tsv
+
+# count total transponders Scan found
+TS1=`grep " onid=" -c $tsv`
+# count total number of channels Scan found
+count=`grep "<channel " -c $tsv`
+# what scan type was used?
+type="Fastscan VM"
+if grep -q 'TP_scan=0' $scf; then
+	type="UK Bruteforce"
+fi
+sed -i "1d;s/SCAN/$type Scan/" $log
+
+echo "Scan results log started: `date +"$now"`
+Transponders found by this Scan: $TS1
+Total number of channels found: $count
+Scan duration was: $(expr $stop_time / 60) mins $(expr $stop_time % 60) secs
+" >>$log
+
+# global edits
+sed -i '
+/HD\|3D\|YouTube\|VM \|PIN\|oved\|Tier\|Olympics\|Arts 2\|Extreme\|INTACC\|THREE/d
+/Three\|VoD l\|hayu\|Hidden\|Off \|Netflix\|iD\|a Previews\|albahid\|PVR_EPG/d
+/"0773"\|"019f"\|"0845"\|"04c1"\|"04c2"\|"05dd"\|"05df\|"05e4"/d
+s/ETVS10/BBC Red Button 0/
+s/BBC RB /BBC Red Button /
+s/SptsETV0/Sky Sports Active /
+s/Events Channel/Events Previews/
+s/"Prime Events"/"Sky Sports Events"/
+s/"Sky Events"/"SkySpBoxOff"/
+' $tbq $tsv
+
+# pre-prep bq files in /tmp
+sed -n '/t_id="000a"/,/\/Bouquet>/'p $tbq >/tmp/radio.bq
+sed -i 's/t_id="000a"/t_id="0017"/' tmp/radio.bq
+pc=1
+if grep -q 'Adult' $bqs; then
+	sed -n '/t_id="000b"/,/\/Bouquet>/'p $tbq >$sex
+	sed -i 's/t_id="000b"/t_id="0015"/' $sex
+	pc=0
+fi
+sed -n '/t_id="000c"/,/\/Bouquet>/'p $tbq >$src
+sed -i 's/t_id="000c"/t_id="0016"/' $src
+for i in 0 1 2 3 4 5 6; do
+	sed -n '/ Extra '"$i"'/'p $src >>$btrb
+done
+sed -i '
+/"Radio"/,/\/Bouquet>/d
+/"Other"/,/\/Bouquet>/d
+/"Adult"/,/\/Bouquet>/d
+$d' $tbq
+sed -i '/ Extra /d' $src
+
+# shuffle channel ordering in existing bouquets
+ch="ITV +1"
+grab
+bdel
+sed -i '
+/"Channel 4" t/ i\
+'"$si"'' $tbq
+
+ch="Channel 4 +1"
+grab
+bdel
+sed -i '
+/"Channel 5" t/ i\
+'"$si"'' $tbq
+
+ch="Channel 5+1"
+grab
+bdel
+sed -i '
+/"BBC FOUR" t/ i\
+'"$si"'' $tbq
+
+ch="Sky2"
+grab
+bdel
+sed -i '
+/"Sky Living" t/ i\
+'"$si"'' $tbq
+
+ch="Sky Arts"
+grab
+bdel
+sed -i '
+/"Sky Living" t/ i\
+'"$si"'' $tbq
+
+ch="Sky Living+1"
+grab
+bdel
+sed -i '
+/"ITV2" t/ i\
+'"$si"'' $tbq
+
+ch="ITV3 +1"
+grab
+bdel
+sed -i '
+/"ITV4" t/ i\
+'"$si"'' $tbq
+
+ch="ITV4 +1"
+grab
+bdel
+sed -i '
+/"ITVBe" t/ i\
+'"$si"'' $tbq
+
+ch="GOLD+1"
+grab
+bdel
+sed -i '
+/"W" t/ i\
+'"$si"'' $tbq
+
+ch="W +1"
+grab
+bdel
+sed -i '
+/"alibi" t/ i\
+'"$si"'' $tbq
+
+ch="alibi +1"
+grab
+bdel
+sed -i '
+/"Dave" t/ i\
+'"$si"'' $tbq
+
+ch="Dave ja vu"
+grab
+bdel
+sed -i '
+/"Drama" t/ i\
+'"$si"'' $tbq
+
+ch="Challenge +1"
+grab
+bdel
+sed -i '
+/"4Seven" t/ i\
+'"$si"'' $tbq
+
+ch="More 4 +1"
+grab
+bdel
+sed -i '
+/"CBS Reality" t/ i\
+'"$si"'' $tbq
+
+ch="CBS Action"
+grab
+bdel
+sed -i '
+/"CBS Reality" t/ i\
+'"$si"'' $tbq
+
+ch="CBS Drama"
+grab
+bdel
+sed -i '
+/"CBS Reality" t/ i\
+'"$si"'' $tbq
+
+ch="CBS Reality +1"
+grab
+bdel
+sed -i '
+/"horror channel" t/ i\
+'"$si"'' $tbq
+
+ch="horror channel +1"
+grab
+bdel
+sed -i '
+/"5STAR" t/ i\
+'"$si"'' $tbq
+
+ch="5STAR +1"
+grab
+bdel
+sed -i '
+/"My5" t/ i\
+'"$si"'' $tbq
+
+ch="5 USA +1"
+grab
+bdel
+sed -i '
+/"Spike" t/ i\
+'"$si"'' $tbq
+
+ch="Real Lives+1"
+grab
+bdel
+sed -i '
+/"BBC ALBA" t/ i\
+'"$si"'' $tbq
+
+ch="Lifetime"
+grab
+bdel
+sed -i '
+/"Forces TV" t/ i\
+'"$si"'' $tbq
+
+ch="truTV"
+grab
+bdel
+sed -i '
+/"Travel Channel" t/ i\
+'"$si"'' $tbq
+
+ch="BT Sport Show"
+grab
+bdel
+sed -i '
+/"At The Races" t/ i\
+'"$si"'' $tbq
+
+ch="GINX"
+grab
+bdel
+sed -i '
+/"Bike" t/ i\
+'"$si"'' $tbq
+
+# special handling:
+iq="/tmp/iq.bq"
+sed -n "/I\.D\./"p $tbq >>$iq
+sed -n "/Quest/"p $tbq >>$iq
+sed -i "/I\.D\.\|Quest/d" $tbq
+ins=`sed -n "/H2/=" $tbq`
+sed -i "$ins r $iq" $tbq
+dh="Discovery History"
+sed -n "/$dh +1/"p $src >$iq
+sed -i "/$dh +1/d" $src
+ins=`sed -n "/$dh/=" $tbq`
+sed -i "$ins r $iq" $tbq
+
+# move orphans in "Other" to correct bouquets
+ch="Really"
+copy
+sed -i '
+/"Food Network" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="Animal Planet +1"
+copy
+sed -i '
+/"Discovery Science" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="Discovery Science +1"
+copy
+sed -i '
+/"Discovery Turbo" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="HISTORY +1"
+copy
+sed -i '
+/"H2" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="BT Sport 3"
+copy
+sed -i '
+/"BT Sport ESPN" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="Live Events Previews"
+copy
+sed -i '
+/"Sky Sports Events" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="SONY SAB"
+copy
+sed -i '
+/"Zee TV" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="MTV MUSIC"
+copy
+sed -i '
+/"MTV HITS" t/ i\
+'"$si"'' $tbq
+cdel
+
+ch="BET"
+copy
+sed -i '
+/"True Entertainment" t/ i\
+'"$si"'' $tbq
+cdel
+
+# copy and store new bouquets contents as variables in memory
+brb=`sed -n '/"BBC Red Button ."/'p $src`
+ssi=`sed -n '/"Sky Sports Active ."/'p $src`
+nar1=`sed -n '/AD/'p $src`
+nar2=`sed -n '/Desc/'p $src`
+locl=`sed -n '/"S4C Audio Desc"/,/"BBC Red Button ."/'p $src`
+loc=`echo "$locl"|sed '$d;1d'`
+
+# and remove those channels in 'Other'
+sed -i '/BBC \|ITV \|Sky Sports Active\|AD\|Desc\|=""/d' $src
+
+# create and append new bouquets
+bqn="BBC Red Button"
+bqhead
+sed -i '$s/t_id="0000"/t_id="0010"/' $tbq
+echo "$brb" >>$tbq
+bqtail
+
+bqn="Sky Sports Interactive"
+bqhead
+sed -i '$s/t_id="0000"/t_id="0011"/' $tbq
+echo "$ssi" >>$tbq
+bqtail
+
+bqn="BT Sport Interactive"
+btsi=`cat $btrb`
+bqhead
+sed -i '$s/t_id="0000"/t_id="0012"/' $tbq
+echo "$btsi" >>$tbq
+bqtail
+
+bqn="Audio Description"
+bqhead
+sed -i '$s/t_id="0000"/t_id="0013"/' $tbq
+echo "$nar1" >>$tbq
+echo "$nar2" >>$tbq
+bqtail
+
+bqn="BBC/ITV choices"
+bqhead
+sed -i '$s/t_id="0000"/t_id="0014"/' $tbq
+echo "$loc" >>$tbq
+bqtail
+
+if [ $pc = 0 ]; then
+	adult=`cat $sex`
+	echo "$adult" >>$tbq
+fi
+other=`cat $src`
+echo "$other" >>$tbq
+radio=`cat /tmp/radio.bq`
+echo "$radio" >>$tbq
+if [ -e /tmp/myfavs.bq ]; then
+	favs=`cat /tmp/myfavs.bq`
+	echo "$favs" >>$tbq
+fi
+echo "</zapit>" >>$tbq
+sed -i -e "2i\<!-- Autobouquets-VM generated on: `date +"$now"` -->" $tbq
+
+# tidy up and commit updates
+rm -f /tmp/*.bq /tmp/box.busy /tmp/zapbak
+# remove empty transponders in services
+sed -i '/ onid=/ {N;/\/transponder/d}' $tsv
+proc_stop=$(expr `date +%s` - $proc_start)
+count=`grep "<channel " -c $tsv`
+tvc=`grep '_type="01"/>' -c $tsv`
+rac=`grep '_type="02"/>' -c $tsv`
+
+# count populated transponders left
+TS2=`grep " onid=" -c $tsv`
+# calc number of empty transponders removed
+TS3=$(expr $TS1 - $TS2)
+bgc=0
+if ! grep -q "Sectionsd=0" $scf; then
+	bgc=1
+fi
+
+echo "After scan clean-up took: $proc_stop secs
+Populated transponders in use: $TS2
+Empty transponders removed: $TS3
+Final channels count: Total = $count ($tvc TV + $rac Radio)
+" >>$log
+if [ $bgc = 0 ]; then
+	echo "Background scanning status: OFF
+Cool, this is the recommended option!" >>$log
+else
+	echo "Background scanning status: ON
+Best NOT to use this option! Please disable it with
+Menu > Services > Green > Background Scan >> off" >>$log
+fi
+if [ $pc = 1 ]; then
+	echo "Parental Control status = ON
+Absolutely NO adult content is present in your bouquets or services!" >>$log
+[ $bgc = 1 ] && echo "BUT not for long, with Background Scan switched ON, doh!
+" >>$log
+else
+	echo "Parental Control status = OFF
+WARNING: adult content is ACTIVE! Do kiddies have access to this box???" >>$log
+fi
+echo "
+Scan Log finished: `date +"$now"`" >>$log
+mv -f $tbq $bqs
+mv -f $tsv $svc
+
+# reload channels
+pzapit -c
+sleep 3
+rcsim KEY_HOME
+rcsim KEY_HOME
+rcsim KEY_HOME
+pzapit -rz
+
+exit 0
