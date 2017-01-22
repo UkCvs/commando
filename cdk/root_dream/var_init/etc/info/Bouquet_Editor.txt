@@ -1,6 +1,7 @@
-Bouquets Editor - Commando 15.0c - 30 April 2014
-================================================
-updated 16 Jan 2017: C16 DM500C cable users- please read footnotes!
+Bouquets Editor - Commando 16  
+=============================
+#### updated 22 Jan 2017: C16 DM500C cable users- please read footnotes! ####
+
 C16 DM500S 28.2E users: pleaZe read on...
 
 Since LraiZer's 28.2E AutoBouquets inception for Commando DM500, we've screamed
@@ -52,9 +53,11 @@ IMPORTANT info for C16 DM500C cable users!
 --------------------------------------
 Don't go anywhere near Bouquet Editor, please! The Bouquet names, ordering (and Hide
 +Lock for "Adult") are HARD coded into the system by LraiZer, so any changes you make
-in Bouquet Editor will be LOST the next time you run a Scan, including any channels
-you might have added to "My Favorites"!!! (But we're working on this one!)
+in Bouquet Editor will be LOST the next time you run a Scan!
+
+Any channels you might have added to a "My Favorites" bouquet WILL now be saved after
+a Scan, thanks to our new scan.end and scan.start smart scripts!
 
 Yes, follow the above instructions to 'unhide and show' "Adult", if you must... Just
-remember that the next Scan you do, it'll be 'hidden and locked' again, yes?
-Just so we understand each other? LOL!
+remember that the next Scan you run, it'll be 'hidden and locked' again, yes?
+Just so we understand each other? LOL! Oh, BTW- watching such stuff makes you blind...

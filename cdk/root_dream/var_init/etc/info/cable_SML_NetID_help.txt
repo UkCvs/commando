@@ -1,16 +1,22 @@
 # Commando 16 for DM500C - 10-16 Jan 2017 (thanks deejay and Abu Baniaz!)
 # Set My Location for FastScan helpfile assistant
 
-# STOP PRESS! Sun 15 Jan 2017, LraiZer committed SML to the C16 build!
+# STOP PRESS! Sun 15 Jan 2017, LraiZer committed Set My Location to the C16 build!
+Then a few days later (fed up with being nagged) he added Parental Control for Scan!
+
 Go into the Scan Menu (MENU > Services > Green)
 Arrow down to hilite '1 Scan-Modes' and click OK
-Now select 'Region' and find YOUR cable headend. Press OK
-Back out with the left key and press RED to SAVE, then BLUE to Scan!
+Here, you'll find the new Parental Control feature, which is ON by default, meaning
+NO "Adult" bouquet and NO adult content in services after a Scan! Squeaky-clean! If
+you require adult, just toggle this item to OFF (but it'll make you go blind...)
+
+Now select 'Region' and find and hilite YOUR local VM cable headend. Press OK to
+select. Back out with the left key and press RED to SAVE, then BLUE to Scan!
 
 Still no idea of your REGION?:
 ---------------------------
-Go into your VM rental box "Techy stuff" menu and you'll find it in there!
-If you are not subbed, then consider yourself frowned upon... Try a nearby
+Go into your VM rental box "Techy stuff" menu and you'll find it in there! If you
+are not subbed, then consider yourself naughty and frowned upon... Try a nearby
 mate or neighbour who DOES have a subbed box and ask them to help you?
 
 Now on your dm500c box, using C16 from 08 Jan 2017 or later, go into the SCAN
@@ -19,9 +25,17 @@ then toggle your Symrate to 6875, 6887, or 6952 (there can only be one!). You
 do this by highlighting the <Scan-Modes One Transponder> line then click OK
 and then enter YOUR local data in the required fields. Then SAVE settings!
 
-Do NOT change anything else! Just press BLUE to scan. In under 3 mins, you
-should finish and when you Exit, you will now have a reasonable set of VM
-local bouquets, thanks to LraiZer! If not, wrong details entered, doh...
+Do NOT change anything else! Just press BLUE to scan. In 3-4 mins, you
+should finish and when you Exit, you will now have an excellent set of VM
+local bouquets, thanks to LraiZer, (plus the new Scan start/end scripts that
+were committed to the C16 GitHub build on 22 Jan 2017)! If the Scan ends after
+a few seconds with "No Channels Found!", it means the wrong SML details were
+entered. The system will recover to it's pre-Scan state (NEW feature!)
+
+If the Scan is halfway through and you can see zilch TV and Radio services
+being picked up, just press the [EXIT] key to cancel the Scan, lick your
+wounds, make a cuppa, and ponder where you've gone wrong... Again, it's
+wrong SML details the likely culprit! Try another nearby location???
 
 Columns guide:
 NetID City/Town/Area Frequency SymRate
