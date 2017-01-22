@@ -6,6 +6,7 @@
 # Mon 02 Jan 2017: only nuke cable stuff on 1st boot (else ignore)- AL
 # Tue 03 Jan 2017: prep for conditional vmautoscan plugin ??- AL
 # Thu 12 Jan 2017: keep some helpfiles for cable + add SML VM help- AL
+# Sun 22 Jan 2017: nuke new cable Scan scripts if Sat box- AL
 
 . /proc/bus/dbox.sh
 
@@ -57,13 +58,11 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 		rm -f $etc/cable*
 		rm -f $etc/info/cable*
 		rm -f $etc/issue.net-c
-		rm -f $cfg/scan.conf-c
-#		rm -f $cfg/scan.end-c (WIP)
-#		rm -f $cfg/scan.start-c (WIP)
+		rm -f $cfg/scan.end-c
+		rm -f $cfg/scan.start-c
 		rm -f $cfg/zapit/*-c.xml
 		rm -f /var/bin/miniops-c
 		rm -f /var/tuxbox/plugins/02-nitscan*
-#		rm -f /var/tuxbox/plugins/03-vmautoscan* (WIP)
 	fi
 else
 	# Cable! IF first boot, nuke 28.2E kit and apply cable settings
