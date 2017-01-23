@@ -436,7 +436,18 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 	if (original_network_id == 0xf020)
 	{
 		if ((bouquet_id == 0x0c ) && parentalcontrol)
+		{
+			int bouquetId = scanBouquetManager->existsBouquet("Adult");
+			if (bouquetId == -1)
+			{
+				CBouquet* bouquet = scanBouquetManager->addBouquet("Adult");
+				bouquet->bouquet_id = 11;
+				bouquet->bHidden = true;
+				bouquet->bLocked = true;
+				scanBouquetManager->moveBouquet(bouquetId, 11);
+			}
 			return;
+		}
 
 		if (service_types.size())
 		{
@@ -847,7 +858,22 @@ void time_shifted_service_descriptor(const t_service_id service_id, const t_tran
 	bouquetId = scanBouquetManager->existsBouquet(providerName.c_str());
 
 	if (bouquetId == -1)
+	{
 		bouquet = scanBouquetManager->addBouquet(providerName);
+
+		if (providerName == "Adult")
+		{
+			bouquet->bouquet_id = 11;
+			bouquet->bHidden = true;
+			bouquet->bLocked = true;
+		}
+		else if (providerName == "Sport")
+			bouquet->bouquet_id = 5;
+		else
+			bouquet->bouquet_id = 12;
+
+		scanBouquetManager->moveBouquet(bouquetId, bouquet->bouquet_id);
+	}
 	else
 		bouquet = scanBouquetManager->Bouquets[bouquetId];
 
