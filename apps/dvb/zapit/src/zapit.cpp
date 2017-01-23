@@ -3174,8 +3174,8 @@ void loadScanSettings(void)
 
 	motorRotationSpeed = scanconfig.getInt32("motorRotationSpeed", 8);
 	useGotoXX = scanconfig.getInt32("useGotoXX", 0);
-	gotoXXLatitude = strtod(scanconfig.getString("gotoXXLatitude", "00.000000").c_str(), NULL);
-	gotoXXLongitude = strtod(scanconfig.getString("gotoXXLongitude", "00.000000").c_str(), NULL);
+	gotoXXLatitude = strtod(scanconfig.getString("gotoXXLatitude", "64.754699").c_str(), NULL);
+	gotoXXLongitude = strtod(scanconfig.getString("gotoXXLongitude", "147.343030").c_str(), NULL);
 	gotoXXLaDirection = scanconfig.getInt32("gotoXXLaDirection", 1);
 	gotoXXLoDirection = scanconfig.getInt32("gotoXXLoDirection", 1);
 	printf("[zapit] Load ScanSetup Setting: %d %f %f %d %d %d \n", useGotoXX, gotoXXLatitude, gotoXXLongitude, gotoXXLaDirection, gotoXXLoDirection, motorRotationSpeed);

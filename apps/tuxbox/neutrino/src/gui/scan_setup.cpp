@@ -306,8 +306,8 @@ int CScanSetup::showScanService()
 		//gotoxx settings
 		extMotorSettings->addItem(new CMenuOptionChooser(LOCALE_SATSETUP_USEGOTOXX,  (int *)&scanSettings.useGotoXX, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true));
 
-		sprintf(zapit_lat, "%02.6f", scanSettings.gotoXXLatitude);
-		sprintf(zapit_long, "%02.6f", scanSettings.gotoXXLongitude);
+		sprintf(zapit_lat, "%3.6f", scanSettings.gotoXXLatitude);
+		sprintf(zapit_long, "%3.6f", scanSettings.gotoXXLongitude);
 
 		extMotorSettings->addItem(new CMenuOptionChooser(LOCALE_SATSETUP_LADIR,  (int *)&scanSettings.gotoXXLaDirection, OPTIONS_SOUTH0_NORTH1_OPTIONS, OPTIONS_SOUTH0_NORTH1_OPTION_COUNT, true));
 		toff_lat = new CStringInput(LOCALE_SATSETUP_LAT, (char *) zapit_lat, 10, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "0123456789.");

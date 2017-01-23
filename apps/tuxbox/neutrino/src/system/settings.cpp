@@ -211,8 +211,8 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 
 	motorRotationSpeed = configfile.getInt32("motorRotationSpeed", 8);
 	useGotoXX = configfile.getInt32("useGotoXX", 0);
-	gotoXXLatitude = strtod(configfile.getString("gotoXXLatitude", "0.0").c_str(), NULL);
-	gotoXXLongitude = strtod(configfile.getString("gotoXXLongitude", "0.0").c_str(), NULL);
+	gotoXXLatitude = strtod(configfile.getString("gotoXXLatitude", "64.754699").c_str(), NULL);
+	gotoXXLongitude = strtod(configfile.getString("gotoXXLongitude", "147.343030").c_str(), NULL);
 	gotoXXLaDirection = configfile.getInt32("gotoXXLaDirection", 1);
 	gotoXXLoDirection = configfile.getInt32("gotoXXLoDirection", 1);
 
@@ -285,9 +285,9 @@ bool CScanSettings::saveSettings(const char * const fileName)
 	char tempd[12];
 	configfile.setInt32("motorRotationSpeed", motorRotationSpeed);
 	configfile.setInt32("useGotoXX", useGotoXX);
-	sprintf(tempd, "%02.6f", gotoXXLatitude);
+	sprintf(tempd, "%03.6f", gotoXXLatitude);
 	configfile.setString("gotoXXLatitude", tempd);
-	sprintf(tempd, "%02.6f", gotoXXLongitude);
+	sprintf(tempd, "%03.6f", gotoXXLongitude);
 	configfile.setString("gotoXXLongitude", tempd);
 	configfile.setInt32("gotoXXLaDirection", gotoXXLaDirection);
 	configfile.setInt32("gotoXXLoDirection", gotoXXLoDirection);
