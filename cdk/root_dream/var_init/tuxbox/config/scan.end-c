@@ -150,7 +150,6 @@ Scan duration was: $(expr $stop_time / 60) mins $(expr $stop_time % 60) secs
 sed -i '
 /HD\|3D\|YouTube\|VM \|PIN\|oved\|Tier\|Olympics\|Arts 2\|Extreme\|INTACC\|THREE/d
 /Three\|VoD l\|hayu\|Hidden\|Off \|Netflix\|iD\|a Previews\|albahid\|PVR_EPG/d
-/"0773"\|"019f"\|"0845"\|"04c1"\|"04c2"\|"05dd"\|"05df\|"05e4"/d
 s/ETVS10/BBC Red Button 0/
 s/BBC RB /BBC Red Button /
 s/SptsETV0/Sky Sports Active /
