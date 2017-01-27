@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- created by AutoBouquets N1 on: Wed 18 Jan 2017 10:58:14 -->
+<!-- created by AutoBouquets N1 on: Fri 27 Jan 2017 11:20:14 -->
 <zapit>
 <Bouquet type="0" bouquet_id="0022" name="Sky 28.2E Bouquet" hidden="0" locked="0">
 </Bouquet>
@@ -355,25 +355,6 @@
 	<channel serviceID="d329" name="The Mall" tsid="0836" onid="0002" sat="282"/>
 	<channel serviceID="19ca" name="QVC Style" tsid="07dd" onid="0002" sat="282"/>
 	<channel serviceID="cb80" name="Craft Channel" tsid="0839" onid="0002" sat="282"/>
-</Bouquet>
-<Bouquet type="0" bouquet_id="000b" name="Sky Box Office" hidden="0" locked="0">
-	<channel serviceID="14ab" name="Sky Box Office Review UK" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0672" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0673" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0674" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0675" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0676" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0677" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0678" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0679" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="067a" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="067b" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="067c" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="067d" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="067e" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="067f" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0680" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="0681" name="Sky Box Office" tsid="07d7" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="000c" name="International" hidden="0" locked="0">
 	<channel serviceID="c530" name="&amp;TV" tsid="0837" onid="0002" sat="282"/>

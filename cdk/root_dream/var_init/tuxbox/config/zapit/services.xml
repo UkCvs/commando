@@ -16,7 +16,6 @@
 		<transponder id="07d7" onid="0002" frequency="11836500" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="0">
 			<channel service_id="13fb" name="VICELAND" service_type="01"/>
 			<channel service_id="1400" name="GINXeSportsTV" service_type="01"/>
-			<channel service_id="14ab" name="Sky Box Office Review UK" service_type="01"/>
 			<channel service_id="177a" name="Lifetime+1" service_type="01"/>
 			<channel service_id="177b" name="Crime+Inv +1" service_type="01"/>
 			<channel service_id="1789" name="Real Lives+1" service_type="01"/>
@@ -25,22 +24,6 @@
 			<channel service_id="1790" name="Challenge" service_type="01"/>
 			<channel service_id="1791" name="Forces TV" service_type="01"/>
 			<channel service_id="2584" name="TV3+1" service_type="01"/>
-			<channel service_id="0672" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0673" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0674" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0675" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0676" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0677" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0678" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0679" name="Sky Box Office" service_type="01"/>
-			<channel service_id="067a" name="Sky Box Office" service_type="01"/>
-			<channel service_id="067b" name="Sky Box Office" service_type="01"/>
-			<channel service_id="067c" name="Sky Box Office" service_type="01"/>
-			<channel service_id="067d" name="Sky Box Office" service_type="01"/>
-			<channel service_id="067e" name="Sky Box Office" service_type="01"/>
-			<channel service_id="067f" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0680" name="Sky Box Office" service_type="01"/>
-			<channel service_id="0681" name="Sky Box Office" service_type="01"/>
 			<channel service_id="0e1f" name="3e" service_type="01"/>
 			<channel service_id="0f06" name="LFCTV" service_type="01"/>
 		</transponder>
