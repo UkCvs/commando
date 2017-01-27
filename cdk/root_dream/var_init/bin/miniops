@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 19 Dec 2016 16:37 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 27 Jan 2017 10:56 - LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -231,6 +231,7 @@ s/"NDS"/Y/
 s/"FTA"/N/
 /^3...,/d
 /^0,\|,1f,\|,4,\|,19,\|,8.,\|,9.,\|,b.,\|,c.,/d
+/"Sky Box Office"/d
 ' $tcsv
 sed -i 's/ /;/' $tmap
 cat $etc/headers/channels.cfg >$clip
@@ -270,7 +271,7 @@ if [ -e $etc/.sats ]; then
 	rm $etc/.sats /tmp/*.ref
 fi
 diff -U 0 $map $tmap >$logd/ch_changes.diff
-sed -i '/"00"\|"1f"\|"8."\|"9."\|"b."\|"c."/d' $tsv
+sed -i '/"00"\|"1f"\|"8."\|"9."\|"b."\|"c."\| Office/d' $tsv
 sed -i '/onid=/ {N;/\/transponder/d}' $tsv
 [ -e $als ] && . /var/etc/tpcheck
 cp -f $tbq $zap
