@@ -68,30 +68,6 @@
 #BBC Interactive
 980:2051:1:18f6:7fd:11a0000:BSkyB:FTA:BBC Red Button 1
 
-#Sky BOx Office
-:1699:1::::::Sky Box Office Review UK
-:1690:1::::::Sky Box Office Review IR
-:1501:1::::::Sky Box Office 1
-:1502:1::::::Sky Box Office 2
-:1503:1::::::Sky Box Office 3
-:1504:1::::::Sky Box Office 4
-:1505:1::::::Sky Box Office 5
-:1506:1::::::Sky Box Office 6
-:1507:1::::::Sky Box Office 7
-:1508:1::::::Sky Box Office 8
-:1509:1::::::Sky Box Office 9
-:1510:1::::::Sky Box Office 10
-:1511:1::::::Sky Box Office 11
-:1512:1::::::Sky Box Office 12
-:1513:1::::::Sky Box Office 13
-:1514:1::::::Sky Box Office 14
-:1515:1::::::Sky Box Office 15
-:1516:1::::::Sky Box Office 16
-:1517:1::::::Sky Box Office 17
-:1518:1::::::Sky Box Office 18
-:1519:1::::::Sky Box Office 19
-:1539:1::::::Sky Box Office 20
-
 #Sky Sport Interactive
 :1471:1::::::Sky Sports Active 1
 :1472:1::::::Sky Sports Active 2

@@ -12,10 +12,9 @@
 	<Bouquet type="0" bouquet_id="000d" name="BT Sport Interactive" hidden="0" locked="0">
 	<Bouquet type="0" bouquet_id="0017" name="Sky Sports Interactive" hidden="0" locked="0">
 	<Bouquet type="0" bouquet_id="000a" name="Shopping" hidden="0" locked="0">
-	<Bouquet type="0" bouquet_id="000b" name="Sky Box Office" hidden="0" locked="0">
 	<Bouquet type="0" bouquet_id="000c" name="International" hidden="0" locked="0">
 	<Bouquet type="0" bouquet_id="000e" name="Specialist" hidden="0" locked="0">
-	<Bouquet type="0" bouquet_id="000f" name="Adults only!" hidden="0" locked="0">
+	<Bouquet type="0" bouquet_id="000f" name="Adults only!" hidden="1" locked="1">
 	<Bouquet type="0" bouquet_id="0010" name="Other" hidden="0" locked="0">
 	<Bouquet type="0" bouquet_id="0011" name="My Bouquet 1" hidden="0" locked="0">
 	<Bouquet type="0" bouquet_id="0012" name="My Bouquet 2" hidden="0" locked="0">

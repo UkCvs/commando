@@ -1,5 +1,5 @@
-# custom_sort_5.txt - updated Fri 06 Jan 2017
-# 28.2E stream sort order - now compatible with RT-EPG
+# custom_sort_5.txt - updated Fri 27 Jan 2017
+# 28.2E stream sort order
 
 # Channel names cannot be used in here, sorry! For clarity, please x-ref with the
 # /var/etc/channels.cfg file. Do NOT manually edit this file any more! Use Bouquet
@@ -687,30 +687,6 @@
 0a=697
 0a=698
 0a=699
-
-#0b - Sky Box Office
-0b=700
-0b=701
-0b=702
-0b=703
-0b=704
-0b=705
-0b=706
-0b=707
-0b=708
-0b=709
-0b=710
-0b=711
-0b=712
-0b=713
-0b=714
-0b=715
-0b=716
-0b=717
-0b=718
-0b=719
-0b=743
-0b=744
 
 #0c - International
 0c=795

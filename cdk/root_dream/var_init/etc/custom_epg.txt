@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Wed 18 Jan 2017 10:58:42
+# AutoBouquets custom_epg.txt usermap auto-generated on: Fri 27 Jan 2017 11:10:42
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -378,26 +378,7 @@
 678:0:0:000:QVC Style
 679:0:0:000:Craft Channel
 
-#Bouquet 0b: "Sky Box Office"
-700:0:0:000:Sky Box Office Review UK
-701:0:0:000:Sky Box Office
-
 #Bouquet 0c: "International"
-702:0:0:000:Sky Box Office
-703:0:0:000:Sky Box Office
-704:0:0:000:Sky Box Office
-705:0:0:000:Sky Box Office
-706:0:0:000:Sky Box Office
-707:0:0:000:Sky Box Office
-708:0:0:000:Sky Box Office
-709:0:0:000:Sky Box Office
-710:0:0:000:Sky Box Office
-711:0:0:000:Sky Box Office
-712:0:0:000:Sky Box Office
-713:0:0:000:Sky Box Office
-714:0:0:000:Sky Box Office
-715:0:0:000:Sky Box Office
-744:0:0:000:Sky Box Office
 795:0:0:000:&TV
 818:0:0:000:AAJ TAK
 837:0:0:000:Aastha
