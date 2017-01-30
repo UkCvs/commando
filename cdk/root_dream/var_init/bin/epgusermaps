@@ -5,7 +5,8 @@
 # GetEPG) IF found when AutoBouquets last ran! User-friendly or what?
 
 # updated Thu 03 Nov 2016: Long Desc now user-definable 000>168hrs range
-# updated Fri 11 Nov 2016: Now have ALL datestamps as we want them
+# updated Sat 05 Nov 2016: Now have ALL datestamps as we want them
+# updated Mon 30 Jan 2017: Read new bouquets from dram not flash- faster!
 
 etc="/var/etc"
 cfg="/var/tuxbox/config"
@@ -76,7 +77,7 @@ rm -f $tmap
 stop=$(expr `date +%s` - $start)
 echo "+ Your new GetEPG usermap file was built in $stop secs!
 " >>$log
-sed -n '/serviceID=/'p $bqs >$cl
+sed -n '/serviceID=/'p $tbq >$cl
 sed -i 's/^.*name="//
 s/" tsid.*$//
 /BBC R1/,/$p/d' $cl
@@ -107,18 +108,18 @@ fi
 done < $chlist
 
 stop=$(expr `date +%s` - $start)
-echo -e "+ Channels orphaned from bouquets checking took $stop secs\n" >>$log
+echo -e "Channels orphaned from bouquets checking took $stop secs\n" >>$log
 
 if [ $edit = 0 ]; then
-	echo -e "+ The above orphan channels were NOT found in bouquets.xml\nYou can use Bouquet Editor to add them, and run\nAutoBouquets again to update your changes!" >>$log
+	echo -e "The above channels are unallocated in your bouquets.xml\n# You can use Bouquet Editor to add and SAVE them, then\n# run AutoBouquets again to update your changes!" >>$log
 else
-	echo -e "+ Great! All user-allowed channels are included in your bouquets!" >>$log
+	echo -e "Great! All user-allowed channels are included in your bouquets!\n" >>$log
 fi
 
 if [ $pc = 1 ]; then
-	echo "+ Absolutely NO adult content is present in your bouquets or services!" >>$log
+	echo -e "Parent Control status: ON\n# Absolutely NO adult content is present in your bouquets or services!" >>$log
 else
-	echo "+ WARNING: adult content is ACTIVE! Do kiddies have access to this box???" >>$log
+	echo -e "Parent Control status: OFF\n# WARNING: adult content is ACTIVE! Do kiddies have access to this box???" >>$log
 fi
 
 gstop=$(expr `date +%s` - $gstart)
@@ -127,7 +128,6 @@ rm -f $bb $chlist $tbq $tcsv
 emsg="epgusermaps updated on: `date +"$now"`"
 echo "$emsg"
 echo "# $emsg" >>$log
-[ -e $als ] && cp -f $log $svr
 mv -f $log /var/log
 wget http://localhost/control/rc?unlock 2>/dev/null
 rcsim KEY_HOME >/dev/null
