@@ -128,6 +128,7 @@ rm -f $bb $chlist $tbq $tcsv
 emsg="epgusermaps updated on: `date +"$now"`"
 echo "$emsg"
 echo "# $emsg" >>$log
+[ -e $als ] && cp -f $log $svr
 mv -f $log /var/log
 wget http://localhost/control/rc?unlock 2>/dev/null
 rcsim KEY_HOME >/dev/null
