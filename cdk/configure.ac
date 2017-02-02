@@ -1965,6 +1965,7 @@ case "${BOXTYPE}" in
 root_dream/Makefile
 root_dream/bin/Makefile
 root_dream/etc/Makefile
+root_dream/etc/headers/Makefile
 root_dream/etc/init.d/Makefile
 root_dream/root/Makefile
 root_dream/root/platform/Makefile
@@ -1976,7 +1977,6 @@ root_dream/var_init/Makefile
 root_dream/var_init/bin/Makefile
 root_dream/var_init/bin/emu/Makefile
 root_dream/var_init/etc/Makefile
-root_dream/var_init/etc/headers/Makefile
 root_dream/var_init/etc/icons/Makefile
 root_dream/var_init/etc/info/Makefile
 root_dream/var_init/etc/init.d/Makefile
