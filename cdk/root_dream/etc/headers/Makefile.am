@@ -7,6 +7,6 @@ FILES_FLASH_RO = \
 	custom_sort_4.txt \
 	custom_sort_5.txt
 
-DIR = /var_init/etc/headers
+DIR = /etc/headers
 
 include $(top_srcdir)/root/Makefile.inc
