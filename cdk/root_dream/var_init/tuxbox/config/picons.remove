@@ -14,7 +14,7 @@ sed -i "/$ncpd/c$ncpd$icl\/" $conf
 }
 
 if [ "$icl" = "" ]; then
-	icl=`find -name "W.raw"|sed '2,$d;s/^.//;s/\/W.raw//'`
+	icl=`find -name "w.raw"|sed '2,$d;s/^.//;s/\/w.raw//'`
 	if [ "$icl" = "" ]; then
 		icl="/var/etc/icons"
 		mkdir -p $icl
