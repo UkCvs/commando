@@ -1,5 +1,5 @@
 # create new custom_sort_n.txt file if ABs N1 finds bouquets.xml has been edited!
-# (conditional ext script call from miniops autobouquets) - PaphosAL 12 Sep 2016
+# (conditional ext script call from miniops autobouquets) - PaphosAL 21 Oct 2016
 
 bqlist="/tmp/bqlist"
 chlist="/tmp/chlist"
@@ -9,7 +9,7 @@ bqsave="Channel line-up changes found, so AutoBouquets must first\ncreate a new 
 fmsg "$bqsave"
 echo -e "\n$bqsave\n"
 bq_start=`date +%s`
-cat $etc/headers/$csx >$cst
+cat /etc/headers/$csx >$cst
 cat $etc/autobouquets.csv >$tcsv
 sed -i '/^#/d' $tcsv
 sed -i '
@@ -21,8 +21,8 @@ while read bqln; do
 	echo "Sorting: 00$bqid [$bqname] bouquet"
 	sed -n '/ name="'"$bqname"'" hid/,/<\/Bouquet/'p $bqs|sed '1d' >$chlist
 	if grep -q -m 1 "<channel " $chlist; then
-		sed -i '$d' $chlist
-	fi
+		sed -i '$d' $chlist 
+	fi 
 	while read chln; do
 		case $chln in
 		*"</Bouquet>"*)
