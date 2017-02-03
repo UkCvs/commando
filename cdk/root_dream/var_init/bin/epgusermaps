@@ -47,7 +47,7 @@ writing your custom_epg.txt usermap file for GetEPG..." >>$log
 [ ! -e $tbq ] && cat $bqs >$tbq
 [ ! -e $tmap ] && cat $map >$tmap
 [ ! -e $tcsv ] && cat $ecsv >/$tcsv
-cat $etc/headers/custom_epg.txt >$tepg
+cat /etc/headers/custom_epg.txt >$tepg
 
 sed -i "
 /# epg/d

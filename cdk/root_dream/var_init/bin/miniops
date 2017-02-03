@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 27 Jan 2017 10:56 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 02 Feb 2017 10:16 - LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -234,7 +234,7 @@ s/"FTA"/N/
 /"Sky Box Office"/d
 ' $tcsv
 sed -i 's/ /;/' $tmap
-cat $etc/headers/channels.cfg >$clip
+cat /etc/headers/channels.cfg >$clip
 cat $bqref >$tbref
 sed -i 's/_id="00/_id="/;/"00"\|"10"\|"18"\|"20"\|"21"\|"22"/d' $tbref
 while read ln; do
