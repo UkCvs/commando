@@ -1,5 +1,5 @@
 # create new custom_sort_n.txt file if ABs N1 finds bouquets.xml has been edited!
-# (conditional ext script call from miniops autobouquets) - PaphosAL 21 Oct 2016
+# (conditional ext script call from miniops autobouquets) - PaphosAL 03 Feb 2017
 
 bqlist="/tmp/bqlist"
 chlist="/tmp/chlist"
@@ -21,8 +21,8 @@ while read bqln; do
 	echo "Sorting: 00$bqid [$bqname] bouquet"
 	sed -n '/ name="'"$bqname"'" hid/,/<\/Bouquet/'p $bqs|sed '1d' >$chlist
 	if grep -q -m 1 "<channel " $chlist; then
-		sed -i '$d' $chlist 
-	fi 
+		sed -i '$d' $chlist
+	fi
 	while read chln; do
 		case $chln in
 		*"</Bouquet>"*)
