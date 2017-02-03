@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 02 Feb 2017 10:16 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 03 Feb 2017 10:16 - LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -132,7 +132,13 @@ case "$1" in
 
 autobouquets)
 loc_cs
-! grep -q '0001' $bqref && cat $etc/bq-list.bak >$bqref
+if ! grep -q '0001' $bqref; then
+	if [ -e $als ]; then
+		cat $etc/bq-list.bak >$bqref
+	else
+		cat /etc/bq-list.bak >$bqref
+	fi
+fi
 #parental?
 pc=1
 [ -e $etc/.pr0n ] && pc=0
