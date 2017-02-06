@@ -1,5 +1,5 @@
 #!/bin/sh
-# conditional tidy ups after a standalone Service Scan - updated Thu 29 Dec 2016
+# conditional tidy ups after a standalone Service Scan - updated Mon 05 Feb 2017
 
 fmsg(){
 wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
@@ -51,8 +51,10 @@ if grep -q -m 1 '28.2E' $svc; then
 	sed -i '
 	/HD\|3D/d
 	/"04"/d
+	/"EPG B/s/_type="82"/_type="02"/
 	s/"82"/"01"/
 	s/"85"/"01"/
+	/"00"\|"19"\|"1f"\|"8."\|"9."\|"b."\|"c."/d
 	' $tsv
 	sed -i '
 	/HD\|3D/d
@@ -73,7 +75,7 @@ if grep -q -m 1 '28.2E' $svc; then
 		/Freesat/,/\/Bouquet>/d
 		/Arqiv/,/\/Bouquet>/d' $tbq
 		[ ! -e $etc/.other ] && sed -i '/_id="0010" name="Other" h/,/\/Bouquet>/{/serviceID/d}' $tbq
-		fmsg "Updating all ITV, SBO, RTE and Interactive channel names.
+		fmsg "Updating all ITV, RTE and Interactive channel names.
 		\nThis only takes a minute, so patience please..."
 		sed -i 's/name="" h/name=" " h/' $tbq
 		sed -n '/^101,/,/^103,/'p $csv >$lcl
@@ -87,7 +89,10 @@ if grep -q -m 1 '28.2E' $svc; then
 			sed -i "/$sid/s/name=.*serv/name=$chn serv/" $tsv
 		done < $lcl
 		sed -i '
+		s/ Eng"/ England"/
+		s/ Lon"/ London"/
 		s/"RT"/"Russia Today"/
+		s/ Scot"/ Scotland"/
 		s/T L/TE L/
 		s/T N/TE N/
 		s/T O/TE O/
