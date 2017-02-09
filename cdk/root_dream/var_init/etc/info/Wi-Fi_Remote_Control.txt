@@ -1,0 +1,28 @@
+C16 DM500 Remote Control via Smart Phone or Tablet - by daverave 09 Feb 2017
+============================================================================
+
+This new yWeb feature gives you the abilty to control your DM500 via your smartphone
+or tablet via your home LAN network. It replaces the previous (android-only) version
+by hotbaws11 in C15 with a tasty-looking and colourful 3D effect keypad.
+
+In order to use your phone or tablet as a 'virtual' remote control, you will need:
+1. A smart phone/tablet with a web browser and wifi access
+2. An internet connection to your DM500 cable or satellite box.
+
+First check that your DM500 is connected to your home network and make a note of
+its I.P. address (Menu > Settings > Network > Show Active Network Settings)
+
+Then, on your phone or tablet web browser enter {I.P. box}/rc.yhtm
+( eg: 192.168.1.120/rc.yhtm ) Save it as a bookmark in your browser!
+
+And that's it! You now have access to your dreambox via your phone or tablet!
+
+Please test it out and give me any feedback regarding any bugs found, or any
+enhancements you think might improve this handy tool:
+
+http://www.ukcvs.net/forum/showthread.php?30587-UkCvs-DM500-C16-Snapshot
+
+When leaving feedback, please include details of the browser used, the phone/tablet
+used and the operating system. (e.g. Chrome, Samsung Galaxy Note 3, Android 5.0 )
+
+Thanks, and ENJOY! Daverave- for UkCvs.net 09 Feb 2017
