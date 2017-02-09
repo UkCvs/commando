@@ -10,7 +10,8 @@ FILES_FLASH_RO = \
 	MultiSat_Dish_Setup.txt \
 	Bouquet_Editor.txt \
 	Recording_to_a_hdd_mount.txt \
-	cable_SML_NetID_help.txt
+	cable_SML_NetID_help.txt \
+	Wi-Fi_Remote_Control.txt
 
 DIR = /var_init/etc/info/
 
