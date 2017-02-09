@@ -149,7 +149,7 @@ function get_data(){
 				<li><a target="work" title="{=L:0202=}" href="Y_Tools_Boxcontrol.yhtm">{=L:0203=}</a></li>
 				<li><a target="work" title="{=L:0204=}" href="Y_Boxcontrol_Messages.yhtm">{=L:0205=}</a></li>
 				<li><a target="work" title="{=L:0206=}" href="Y_Tools_Rcsim.yhtm">{=L:0207=}</a></li>
-				<li><a target="_top" title="{=L:0210=}" href="Y_Tools_remote.yhtm">{=L:0209=}</a></li>
+				<li><a target="_top" title="{=L:0210=}" href="rc.yhtm">{=L:0209=}</a></li>
 				{=if-empty:{=var-get:fbshot=}~
 				<li class="disabled" title="{=L:0214=} /bin:/var/bin">{=L:0212=}</li>
 				~
