@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Fri 27 Jan 2017 11:10:42
+# AutoBouquets custom_epg.txt usermap auto-generated on: Thu 09 Feb 2017 12:06:55
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -94,7 +94,6 @@
 146:1:1:024:CBS Reality
 147:1:1:000:CBS Reality+1
 152:1:1:024:Pick
-153:1:1:000:VICELAND
 151:1:1:024:E!
 229:1:1:000:E! +1
 156:1:1:024:Lifetime
@@ -119,6 +118,7 @@
 #Bouquet 02: "Lifestyle-Culture"
 539:1:1:024:Community
 161:0:0:000:Discovery Shed
+242:0:0:000:Disc.Shed+1
 248:1:1:024:Food Network
 250:1:1:000:Food Netwrk+1
 264:1:1:024:Forces TV
@@ -129,6 +129,7 @@
 244:1:1:000:Home+1
 162:0:0:000:Home & Health
 240:1:1:024:HomeHealth+1
+241:0:0:000:HomeHealth+2
 237:1:1:024:Home & Leisure
 253:1:1:024:Horse & Country
 203:1:1:024:My Channel
@@ -138,15 +139,16 @@
 249:1:1:024:Travel Channel
 251:1:1:000:Travel Ch +1
 198:1:1:024:tru TV
+153:1:1:000:VICELAND
 
 #Bouquet 03: "Movies"
 307:1:1:024:Sky Action
 308:1:1:024:Sky Comedy
 305:1:1:024:Sky Disney
-310:1:1:024:Sky DramaRom
+310:1:1:024:Sky Hits
 306:1:1:024:Sky Family
-304:1:1:024:Sky Superhero
-303:1:1:024:Sky Hits
+304:1:1:024:Sky Greats
+303:1:1:024:Sky Valentine
 301:1:1:024:Sky Premiere
 302:1:1:000:Sky Prem+1
 312:1:1:024:Sky Select
@@ -222,7 +224,7 @@
 418:1:1:024:MUTV
 423:1:1:024:eir Sport 1
 424:1:1:024:eir Sport 2
-428:1:1:024:Premier Sports
+462:0:0:000:Premier Sports
 415:1:1:024:At The Races
 432:1:1:024:Racing UK
 437:1:1:024:BoxNation
@@ -249,6 +251,7 @@
 #Bouquet 07: "Factual"
 523:1:1:024:Animal Planet
 549:1:1:000:Animal Plnt+1
+565:0:0:000:BLAZE
 553:1:1:024:Crime+Inv
 554:1:1:000:Crime+Inv +1
 539:1:1:024:Community
@@ -315,7 +318,7 @@
 616:1:1:024:POP
 629:1:1:000:Kix+1
 617:1:1:024:Tiny Pop
-625:1:1:000:Tiny Pop+1
+625:1:1:000:POP Max
 619:1:1:024:Cartoonito
 620:1:1:024:Nick Jr Too
 621:1:1:024:CITV
@@ -376,7 +379,6 @@
 676:0:0:000:The Dept Store
 677:0:0:000:The Mall
 678:0:0:000:QVC Style
-679:0:0:000:Craft Channel
 
 #Bouquet 0c: "International"
 795:0:0:000:&TV
@@ -391,9 +393,7 @@
 843:0:0:000:Akaal Channel
 855:0:0:000:Al Arabiya
 514:0:0:000:Al Jazeera Eng
-791:0:0:000:ARY Digital
-802:0:0:000:ARY News
-804:0:0:000:ARY QTV
+859:0:0:000:Aplus TV
 827:0:0:000:ATN Bangla UK
 780:0:0:000:B4U Movies
 781:0:0:000:B4U Music
@@ -497,6 +497,7 @@
 972:0:0:000:BBC Two NI
 142:0:0:000:BBC ALBA
 103:1:1:024:ITV London
+66:0:0:000:ITV +1 Central
 88:0:0:000:ITV Anglia East
 75:0:0:000:ITV Anglia West
 76:0:0:000:ITV Border
@@ -525,9 +526,11 @@
 64:0:0:000:ITV +1 West
 70:0:0:000:ITV +1 Yorkshire
 117:1:1:024:London Live
+1058:0:0:000:Made in Bham
 1054:0:0:000:Made In Bristol
 1053:0:0:000:Made In Cardiff
 1052:0:0:000:Made In Leeds
+1059:0:0:000:Made in L'Pool
 1055:0:0:000:Made In Tn&Wr
 1057:0:0:000:Notts TV
 1056:0:0:000:STV Edinburgh
@@ -545,5 +548,6 @@
 1130:0:0:000:TV3+1
 163:0:0:000:Pick+1
 1116:0:0:000:3e
+1011:0:0:000:be3
 191:0:0:000:Irish TV
 1180:0:0:000:Oireachtas TV
