@@ -85,17 +85,14 @@
 			<channel service_id="11ad" name="Sky Intro" service_type="01"/>
 			<channel service_id="138c" name="Sky Intro" service_type="01"/>
 			<channel service_id="138f" name="Chl Line-up" service_type="01"/>
-			<channel service_id="157e" name="Sky DramaRom" service_type="01"/>
-			<channel service_id="1612" name="Sky Superhero" service_type="01"/>
+			<channel service_id="157e" name="Sky Valentine" service_type="01"/>
+			<channel service_id="1612" name="Sky Greats" service_type="01"/>
 			<channel service_id="b798" name="___4109" service_type="01"/>
 			<channel service_id="bb80" name="___4110" service_type="01"/>
 			<channel service_id="bf68" name=" (sub b +1000)" service_type="01"/>
 		</transponder>
 		<transponder id="07dd" onid="0002" frequency="11953500" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="0">
 			<channel service_id="19c8" name="QVC" service_type="01"/>
-			<channel service_id="19c9" name="QVC EXTRA" service_type="01"/>
-			<channel service_id="19ca" name="QVC Style" service_type="01"/>
-			<channel service_id="19cb" name="QVC Beauty" service_type="01"/>
 		</transponder>
 		<transponder id="07e2" onid="0002" frequency="12051000" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="1">
 			<channel service_id="1bee" name="SONY TV" service_type="01"/>
@@ -230,6 +227,9 @@
 			<channel service_id="0ffb" name="Sky Sports Mix" service_type="01"/>
 			<channel service_id="0ffd" name="Sky Sports Mix" service_type="01"/>
 		</transponder>
+		<transponder id="07ee" onid="0002" frequency="12285000" inversion="2" symbol_rate="29500000" fec_inner="6" polarization="1">
+			<channel service_id="0ed9" name="Sky Anytime 3" service_type="01"/>
+		</transponder>
 		<transponder id="07ef" onid="0002" frequency="12304000" inversion="2" symbol_rate="27500000" fec_inner="4" polarization="0">
 			<channel service_id="2ee0" name="Magic" service_type="01"/>
 			<channel service_id="2ee5" name="The Box" service_type="01"/>
@@ -354,9 +354,6 @@
 			<channel service_id="2898" name="BBC One NI" service_type="01"/>
 			<channel service_id="2899" name="BBC Two NI" service_type="01"/>
 		</transponder>
-		<transponder id="0804" onid="0002" frequency="10876500" inversion="2" symbol_rate="23000000" fec_inner="2" polarization="1">
-			<channel service_id="0ed9" name="Sky Anytime 3" service_type="01"/>
-		</transponder>
 		<transponder id="0805" onid="0002" frequency="10891250" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="2788" name="ITV Border" service_type="01"/>
 			<channel service_id="278d" name="ITV +1 West Country" service_type="01"/>
@@ -393,6 +390,7 @@
 			<channel service_id="1e25" name="5STAR +1" service_type="01"/>
 			<channel service_id="1e28" name="Channel 5+1" service_type="01"/>
 			<channel service_id="1e32" name="Spike" service_type="01"/>
+			<channel service_id="1e50" name="7760" service_type="01"/>
 		</transponder>
 		<transponder id="080b" onid="0002" frequency="10993750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="2f45" name="ITV Meridian North" service_type="01"/>
@@ -414,7 +412,7 @@
 			<channel service_id="c489" name="PaversShoes.tv" service_type="01"/>
 			<channel service_id="c48c" name="Bloomberg" service_type="01"/>
 			<channel service_id="c490" name="ShowBiz TV" service_type="01"/>
-			<channel service_id="c49a" name="Keep It Country" service_type="01"/>
+			<channel service_id="c49b" name="Keep It Country" service_type="01"/>
 			<channel service_id="c49f" name="Sikh Channel" service_type="01"/>
 			<channel service_id="c4a4" name="LOVEWORLD TV" service_type="01"/>
 			<channel service_id="c4a9" name="Hillsong" service_type="01"/>
@@ -465,7 +463,6 @@
 		</transponder>
 		<transponder id="0829" onid="0002" frequency="11464250" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="d3c2" name="ROK" service_type="01"/>
-			<channel service_id="d3c3" name="Bangla TV" service_type="01"/>
 			<channel service_id="d3c4" name="PTV Prime" service_type="01"/>
 			<channel service_id="d3c6" name="Notts TV" service_type="01"/>
 			<channel service_id="d3c7" name="Akaal Channel" service_type="01"/>
@@ -480,6 +477,7 @@
 			<channel service_id="d3d1" name="British Muslim" service_type="01"/>
 			<channel service_id="d3d2" name="TV One" service_type="01"/>
 			<channel service_id="d3d3" name="Abu Dhabi TV" service_type="01"/>
+			<channel service_id="d3d4" name="54228" service_type="01"/>
 		</transponder>
 		<transponder id="082a" onid="0002" frequency="11479000" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="1">
 			<channel service_id="c6c0" name="STV Edinburgh" service_type="01"/>
@@ -500,9 +498,9 @@
 			<channel service_id="c6d0" name="B4U Movies" service_type="01"/>
 		</transponder>
 		<transponder id="082b" onid="0002" frequency="11493750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
-			<channel service_id="571d" name="22301" service_type="01"/>
-			<channel service_id="571e" name="22302" service_type="01"/>
-			<channel service_id="571f" name="22303" service_type="01"/>
+			<channel service_id="571d" name="QVC EXTRA" service_type="01"/>
+			<channel service_id="571e" name="QVC Style" service_type="01"/>
+			<channel service_id="571f" name="QVC Beauty" service_type="01"/>
 		</transponder>
 		<transponder id="082d" onid="0002" frequency="11523250" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="1db0" name="Home+1" service_type="01"/>
@@ -527,7 +525,10 @@
 			<channel service_id="5850" name="KICC TV" service_type="01"/>
 			<channel service_id="5853" name="Made in Bham" service_type="01"/>
 			<channel service_id="5854" name="Made in L&apos;Pool" service_type="01"/>
-			<channel service_id="5855" name="22613" service_type="01"/>
+			<channel service_id="5855" name="Aplus TV" service_type="01"/>
+			<channel service_id="5856" name="TV 99" service_type="01"/>
+			<channel service_id="5857" name="Bangla TV" service_type="01"/>
+			<channel service_id="d3c3" name="22615" service_type="01"/>
 		</transponder>
 		<transponder id="082f" onid="0002" frequency="11552750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
 			<channel service_id="253b" name="GR SHOP" service_type="01"/>
@@ -595,7 +596,6 @@
 			<channel service_id="d101" name="ARY News" service_type="01"/>
 			<channel service_id="d10b" name="Islam Channel" service_type="01"/>
 			<channel service_id="d110" name="TJC" service_type="01"/>
-			<channel service_id="d115" name="TV 99" service_type="01"/>
 			<channel service_id="d11a" name="Thane" service_type="01"/>
 			<channel service_id="d11f" name="Flow TV" service_type="01"/>
 			<channel service_id="d129" name="News18" service_type="01"/>
@@ -720,7 +720,7 @@
 			<channel service_id="d052" name="Tiny Pop" service_type="01"/>
 			<channel service_id="d057" name="Starz TV" service_type="01"/>
 			<channel service_id="d05c" name="POP" service_type="01"/>
-			<channel service_id="d061" name="Tiny Pop+1" service_type="01"/>
+			<channel service_id="d061" name="POP Max" service_type="01"/>
 			<channel service_id="d066" name="Kix" service_type="01"/>
 			<channel service_id="d06b" name="The Vault" service_type="01"/>
 			<channel service_id="d070" name="Kix+1" service_type="01"/>
@@ -780,9 +780,9 @@
 			<channel service_id="cd3c" name="YourTV" service_type="01"/>
 			<channel service_id="cd3f" name="At The Races" service_type="01"/>
 			<channel service_id="cd41" name="True Crime" service_type="01"/>
-			<channel service_id="cd46" name="52550" service_type="01"/>
+			<channel service_id="cd46" name="HomeHealth+2" service_type="01"/>
 			<channel service_id="cd4a" name="Made In Leeds" service_type="01"/>
-			<channel service_id="cd4c" name="52556" service_type="01"/>
+			<channel service_id="cd4c" name="Disc.Shed+1" service_type="01"/>
 			<channel service_id="cd4e" name="Craft Extra" service_type="01"/>
 			<channel service_id="cd5a" name="FRANCE Eng" service_type="01"/>
 			<channel service_id="cd5f" name="TV5 MONDE" service_type="01"/>
