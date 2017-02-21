@@ -1,4 +1,4 @@
-# custom_sort_2.txt - updated Fri 27 Jan 2017
+# custom_sort_2.txt - updated Tue 21 Feb 2017
 # +1 channels follow their parent channels - ROI version
 
 # Channel names cannot be used in here, sorry! For clarity, please x-ref with the
@@ -264,7 +264,6 @@
 07=551
 07=156
 07=197
-07=1050
 07=526
 07=527
 07=528
@@ -556,6 +555,7 @@
 14=68
 14=69
 14=70
+14=1050
 14=1058
 14=1054
 14=1053

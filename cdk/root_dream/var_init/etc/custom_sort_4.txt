@@ -1,4 +1,4 @@
-# custom_sort_4.txt - updated Fri 27 Jan 2017
+# custom_sort_4.txt - updated Tue 21 Feb 2017
 # +1 channels go into seperate +1 bouquet - ROI version
 
 # Channel names cannot be used in here, sorry! For clarity, please x-ref with the
@@ -204,7 +204,6 @@
 07=531
 07=522
 07=156
-07=1050
 07=526
 07=528
 07=534
@@ -482,6 +481,7 @@
 14=68
 14=69
 14=70
+14=1050
 14=1058
 14=1054
 14=1053

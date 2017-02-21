@@ -1,4 +1,5 @@
-# custom_sort_3.txt # +1 channels go into seperate +1 bouquet - UK version
+# custom_sort_3.txt - updated Tue 21 Feb 2017
+# +1 channels go into seperate +1 bouquet - UK version
 
 # Channel names cannot be used in here, sorry! For clarity, please x-ref with the
 # /var/etc/channels.cfg file. Do NOT manually edit this file any more! Use Bouquet
@@ -458,6 +459,7 @@
 14=64
 14=70
 14=117
+14=1050
 14=1058
 14=1054
 14=1053

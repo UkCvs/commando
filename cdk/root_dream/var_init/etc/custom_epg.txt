@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Thu 09 Feb 2017 12:06:55
+# AutoBouquets custom_epg.txt usermap auto-generated on: Tue 21 Feb 2017 14:43:32
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -101,7 +101,7 @@
 157:1:1:024:Sony Channel
 181:1:1:000:Sony Chnl +1
 185:1:1:024:True Crime
-186:1:1:000:True Crime +1
+186:1:1:000:tru TV
 183:1:1:024:True Ent
 184:1:1:024:True Ent +1
 212:1:1:024:Showcase
@@ -138,17 +138,16 @@
 121:1:1:024:Sky Arts
 249:1:1:024:Travel Channel
 251:1:1:000:Travel Ch +1
-198:1:1:024:tru TV
 153:1:1:000:VICELAND
 
 #Bouquet 03: "Movies"
 307:1:1:024:Sky Action
 308:1:1:024:Sky Comedy
 305:1:1:024:Sky Disney
-310:1:1:024:Sky Hits
+310:1:1:024:Sky DramaRom
 306:1:1:024:Sky Family
-304:1:1:024:Sky Greats
-303:1:1:024:Sky Valentine
+304:1:1:024:Sky Oscars
+303:1:1:024:Sky Hits
 301:1:1:024:Sky Premiere
 302:1:1:000:Sky Prem+1
 312:1:1:024:Sky Select
@@ -216,8 +215,8 @@
 410:1:1:024:Eurosport 1
 411:1:1:024:Eurosport 2
 413:1:1:024:BT Sport 1
-417:1:1:024:BT Sport 3
 414:1:1:024:BT Sport 2
+417:1:1:024:BT Sport 3
 426:1:1:024:BT Sport//ESPN
 421:1:1:024:Chelsea TV
 429:1:1:024:LFCTV
@@ -242,7 +241,7 @@
 506:1:1:000:CNN
 508:1:1:000:Euronews
 509:1:1:000:FOX News
-510:0:0:000:CCTV News
+510:0:0:000:CGTN
 511:0:0:000:NDTV 24x7
 512:1:1:000:Russia Today
 513:1:1:000:FRANCE Eng
@@ -402,7 +401,7 @@
 187:0:0:000:BET:BlackEntTv
 824:0:0:000:Brit Asia TV
 845:0:0:000:British Muslim
-510:0:0:000:CCTV News
+510:0:0:000:CGTN
 385:1:1:024:Channel AKA
 833:0:0:000:Channel i
 575:0:0:000:Channels 24

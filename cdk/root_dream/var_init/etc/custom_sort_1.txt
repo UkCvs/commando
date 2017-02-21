@@ -1,4 +1,4 @@
-# custom_sort_1.txt - updated Fri 06 Jan 2017
+# custom_sort_1.txt - updated Tue 21 Feb 2017
 # +1 channels follow their parent channels - UK version
 
 # Channel names cannot be used in here, sorry! For clarity, please x-ref with the
@@ -530,6 +530,7 @@
 14=64
 14=70
 14=117
+14=1050
 14=1058
 14=1054
 14=1053
