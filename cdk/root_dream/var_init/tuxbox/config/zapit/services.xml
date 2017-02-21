@@ -85,8 +85,8 @@
 			<channel service_id="11ad" name="Sky Intro" service_type="01"/>
 			<channel service_id="138c" name="Sky Intro" service_type="01"/>
 			<channel service_id="138f" name="Chl Line-up" service_type="01"/>
-			<channel service_id="157e" name="Sky Valentine" service_type="01"/>
-			<channel service_id="1612" name="Sky Greats" service_type="01"/>
+			<channel service_id="157e" name="Sky DramaRom" service_type="01"/>
+			<channel service_id="1612" name="Sky Oscars" service_type="01"/>
 			<channel service_id="b798" name="___4109" service_type="01"/>
 			<channel service_id="bb80" name="___4110" service_type="01"/>
 			<channel service_id="bf68" name=" (sub b +1000)" service_type="01"/>
@@ -466,7 +466,7 @@
 			<channel service_id="d3c4" name="PTV Prime" service_type="01"/>
 			<channel service_id="d3c6" name="Notts TV" service_type="01"/>
 			<channel service_id="d3c7" name="Akaal Channel" service_type="01"/>
-			<channel service_id="d3c8" name="CCTV News" service_type="01"/>
+			<channel service_id="d3c8" name="CGTN" service_type="01"/>
 			<channel service_id="d3c9" name="Nollywood" service_type="01"/>
 			<channel service_id="d3ca" name="TVC News +1" service_type="01"/>
 			<channel service_id="d3cb" name="DM Plus TV" service_type="01"/>
@@ -528,6 +528,7 @@
 			<channel service_id="5855" name="Aplus TV" service_type="01"/>
 			<channel service_id="5856" name="TV 99" service_type="01"/>
 			<channel service_id="5857" name="Bangla TV" service_type="01"/>
+			<channel service_id="5858" name="22616" service_type="01"/>
 			<channel service_id="d3c3" name="22615" service_type="01"/>
 		</transponder>
 		<transponder id="082f" onid="0002" frequency="11552750" inversion="2" symbol_rate="22000000" fec_inner="4" polarization="0">
@@ -712,7 +713,7 @@
 		</transponder>
 		<transponder id="083e" onid="0002" frequency="11307000" inversion="2" symbol_rate="27500000" fec_inner="2" polarization="1">
 			<channel service_id="d034" name="Flava" service_type="01"/>
-			<channel service_id="d039" name="True Crime +1" service_type="01"/>
+			<channel service_id="d039" name="53305" service_type="01"/>
 			<channel service_id="d03e" name="Scuzz" service_type="01"/>
 			<channel service_id="d043" name="Chartshow Hits" service_type="01"/>
 			<channel service_id="d048" name="True Movies" service_type="01"/>
