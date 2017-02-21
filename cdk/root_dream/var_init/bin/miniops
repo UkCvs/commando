@@ -1,5 +1,5 @@
 #!/bin/sh
-# miniops - DM500S C16.0 - 03 Feb 2017 10:16 - LraiZer and PaphosAL
+# miniops - DM500S C16.0 - 21 Feb 2017 10:22 - LraiZer and PaphosAL
 
 web="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
@@ -237,7 +237,6 @@ s/"NDS"/Y/
 s/"FTA"/N/
 /^3...,/d
 /^0,\|,1f,\|,4,\|,19,\|,8.,\|,9.,\|,b.,\|,c.,/d
-/"Sky Box Office"/d
 ' $tcsv
 sed -i 's/ /;/' $tmap
 cat /etc/headers/channels.cfg >$clip
@@ -277,7 +276,7 @@ if [ -e $etc/.sats ]; then
 	rm $etc/.sats /tmp/*.ref
 fi
 diff -U 0 $map $tmap >$logd/ch_changes.diff
-sed -i '/"00"\|"1f"\|"8."\|"9."\|"b."\|"c."\| Office/d' $tsv
+sed -i '/"00"\|"1f"\|"8."\|"9."\|"b."\|"c."/d' $tsv
 sed -i '/onid=/ {N;/\/transponder/d}' $tsv
 [ -e $als ] && . /var/etc/tpcheck
 cp -f $tbq $zap
@@ -289,6 +288,7 @@ grep -q "qcMode=0" $scan && zapnew
 touch $svc
 if [ -s $logd/ch_changes.diff ]; then
 	{ sleep 4; epgusermaps; } &
+	exit 0
 else
 	rm $bb $tbq $tcsv $tmap
 	rc_unlock
