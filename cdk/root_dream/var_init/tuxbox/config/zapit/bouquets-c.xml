@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Autobouquets-VM generated on: Wed 25 Jan 2017 16:40:39 -->
+<!-- Autobouquets-VM generated on: Tue 21 Feb 2017 11:43:13 -->
 <zapit>
 	<Bouquet type="0" bouquet_id="0000" name="Entertainment" hidden="0" locked="0">
 		<channel serviceID="2775" name="BBC ONE London" tsid="0065" onid="f020"/>
@@ -145,7 +145,7 @@
 		<channel serviceID="0713" name="Sky Premiere" tsid="0012" onid="f020"/>
 		<channel serviceID="0712" name="Sky Premiere 1hr" tsid="0012" onid="f020"/>
 		<channel serviceID="051a" name="Sky Hits" tsid="000d" onid="f020"/>
-		<channel serviceID="0711" name="Sky Superhero" tsid="0012" onid="f020"/>
+		<channel serviceID="0711" name="Sky Oscars" tsid="0012" onid="f020"/>
 		<channel serviceID="070a" name="Sky Disney" tsid="0012" onid="f020"/>
 		<channel serviceID="070d" name="Sky Family" tsid="0012" onid="f020"/>
 		<channel serviceID="0709" name="Sky Action&amp;Adventure" tsid="0012" onid="f020"/>
@@ -244,7 +244,7 @@
 		<channel serviceID="04bc" name="Star Gold" tsid="000c" onid="f020"/>
 		<channel serviceID="04b9" name="Star Plus" tsid="000c" onid="f020"/>
 		<channel serviceID="04bf" name="Star Life OK" tsid="000c" onid="f020"/>
-		<channel serviceID="0714" name="SONY TV Asia" tsid="0012" onid="f020"/>
+		<channel serviceID="0714" name="SONY TV" tsid="0012" onid="f020"/>
 		<channel serviceID="083b" name="SONY MAX" tsid="0015" onid="f020"/>
 		<channel serviceID="0201" name="SONY SAB" tsid="0005" onid="f020"/>
 		<channel serviceID="0452" name="Zee TV" tsid="000b" onid="f020"/>
@@ -327,6 +327,7 @@
 		<channel serviceID="0843" name="Absolute Radio" tsid="0015" onid="f020"/>
 		<channel serviceID="0849" name="Smooth Radio" tsid="0015" onid="f020"/>
 		<channel serviceID="0847" name="RTE Radio" tsid="0015" onid="f020"/>
+		<channel serviceID="0845" name="Heart" tsid="0015" onid="f020"/>
 		<channel serviceID="084c" name="LBC" tsid="0015" onid="f020"/>
 		<channel serviceID="0848" name="World Radio Network" tsid="0015" onid="f020"/>
 		<channel serviceID="084b" name="Heart extra" tsid="0015" onid="f020"/>
@@ -350,5 +351,7 @@
 		<channel serviceID="04c5" name="Kiss FM" tsid="000c" onid="f020"/>
 	</Bouquet>
 	<Bouquet type="0" bouquet_id="0018" name="My Favorites" hidden="0" locked="0">
+		<channel serviceID="0135" name="Discovery Turbo" tsid="0003" onid="f020"/>
+		<channel serviceID="0519" name="Sky Sports F1" tsid="000d" onid="f020"/>
 	</Bouquet>
 </zapit>

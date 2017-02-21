@@ -63,10 +63,10 @@
 			<channel service_id="070e" name="Sky Select" service_type="01"/>
 			<channel service_id="070f" name="Sky ScFi Horror" service_type="01"/>
 			<channel service_id="0710" name="Sky Thriller" service_type="01"/>
-			<channel service_id="0711" name="Sky Superhero" service_type="01"/>
+			<channel service_id="0711" name="Sky Oscars" service_type="01"/>
 			<channel service_id="0712" name="Sky Premiere 1hr" service_type="01"/>
 			<channel service_id="0713" name="Sky Premiere" service_type="01"/>
-			<channel service_id="0714" name="SONY TV Asia" service_type="01"/>
+			<channel service_id="0714" name="SONY TV" service_type="01"/>
 			<channel service_id="0715" name="The Community Channel" service_type="01"/>
 			<channel service_id="0716" name="Lifetime" service_type="01"/>
 			<channel service_id="0717" name="Pick" service_type="01"/>
@@ -257,6 +257,7 @@
 			<channel service_id="0842" name="Classic FM" service_type="02"/>
 			<channel service_id="0843" name="Absolute Radio" service_type="02"/>
 			<channel service_id="0844" name="Planet Rock" service_type="02"/>
+			<channel service_id="0845" name="Heart" service_type="02"/>
 			<channel service_id="0846" name="Radio X" service_type="02"/>
 			<channel service_id="0847" name="RTE Radio" service_type="02"/>
 			<channel service_id="0848" name="World Radio Network" service_type="02"/>
