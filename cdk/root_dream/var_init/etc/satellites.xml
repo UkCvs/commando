@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- www.ukcvs.net updated on 07 Dec 2016 - LraiZer and PaphosAL
+<!-- www.ukcvs.net updated on 25 Feb 2017 - LraiZer and PaphosAL
 with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 <satellites>
 	<sat name="Astra 28.2E" flags="0" position="282">
@@ -226,7 +226,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="12661000" symbol_rate="21500000" polarization="3" fec_inner="2" system="0" modulation="2"/>
 		<transponder frequency="12676000" symbol_rate="21500000" polarization="2" fec_inner="2" system="0" modulation="2"/>
 	</sat>
-	<sat name="AnikF3/D-TV7S/Echo 14 119.0W" flags="0" position="-1190">
+	<sat name="AnikF3/Echo14 119.0W" flags="0" position="-1190">
 		<transponder frequency="11715000" symbol_rate="20000000" polarization="3" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="11728000" symbol_rate="20000000" polarization="2" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="11745000" symbol_rate="20000000" polarization="3" fec_inner="3" system="0" modulation="1"/>
@@ -286,7 +286,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="12501000" symbol_rate="20000000" polarization="2" fec_inner="5" system="0" modulation="1"/>
 		<transponder frequency="12516000" symbol_rate="20000000" polarization="3" fec_inner="5" system="0" modulation="1"/>
 	</sat>
-	<sat name="D-TV5/EchoStar 10/11 110.0W" flags="0" position="-1100">
+	<sat name="DTV5/EchoStar10-11 110.0W" flags="0" position="-1100">
 		<transponder frequency="12224000" symbol_rate="20000000" polarization="3" fec_inner="5" system="0" modulation="1"/>
 		<transponder frequency="12239000" symbol_rate="20000000" polarization="2" fec_inner="5" system="0" modulation="1"/>
 		<transponder frequency="12253000" symbol_rate="20000000" polarization="3" fec_inner="5" system="0" modulation="1"/>
@@ -551,7 +551,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="12729000" symbol_rate="27500000" polarization="0" fec_inner="4" system="0" modulation="1"/>
 		<transponder frequency="12729000" symbol_rate="27500000" polarization="1" fec_inner="4" system="0" modulation="1"/>
 	</sat>
-	<sat name="Nilesat 201/Eutelsat7W A 7.0W" flags="0" position="-70">
+	<sat name="Nilesat/Eutelsat7W 7.0W" flags="0" position="-70">
 		<transponder frequency="10727000" symbol_rate="27500000" polarization="0" fec_inner="4" system="0" modulation="1"/>
 		<transponder frequency="10758000" symbol_rate="27500000" polarization="1" fec_inner="4" system="0" modulation="1"/>
 		<transponder frequency="10777000" symbol_rate="27500000" polarization="0" fec_inner="4" system="0" modulation="1"/>
@@ -644,7 +644,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="11647000" symbol_rate="8518000" polarization="1" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="11658000" symbol_rate="8520000" polarization="1" fec_inner="2" system="0" modulation="1"/>
 	</sat>
-	<sat name="Thor 5/6/7_Intelsat10-02 0.8W" flags="0" position="-8">
+	<sat name="Thor5,6,7/Intelsat10 0.8W" flags="0" position="-8">
 		<transponder frequency="10716000" symbol_rate="24500000" polarization="0" fec_inner="5" system="0" modulation="1"/>
 		<transponder frequency="10809000" symbol_rate="24500000" polarization="0" fec_inner="5" system="0" modulation="1"/>
 		<transponder frequency="10809000" symbol_rate="24500000" polarization="1" fec_inner="5" system="0" modulation="1"/>
@@ -684,7 +684,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="12687000" symbol_rate="27500000" polarization="1" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="12723000" symbol_rate="27500000" polarization="0" fec_inner="3" system="0" modulation="1"/>
 	</sat>
-	<sat name="Eutelsat 3B_Rascom QAF1R 3.0E" flags="0" position="30">
+	<sat name="Eutelsat3B/Rascom 3.0E" flags="0" position="30">
 		<transponder frequency="11468000" symbol_rate="2963000" polarization="0" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="11472000" symbol_rate="2600000" polarization="0" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="11476000" symbol_rate="2600000" polarization="0" fec_inner="3" system="0" modulation="1"/>
@@ -816,7 +816,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="11659000" symbol_rate="1852000" polarization="0" fec_inner="5" system="0" modulation="1"/>
 		<transponder frequency="11678000" symbol_rate="2850000" polarization="1" fec_inner="5" system="0" modulation="1"/>
 	</sat>
-	<sat name="Badr 4/5/6 26.0E" flags="0" position="260">
+	<sat name="Badr 4,5,6 26.0E" flags="0" position="260">
 		<transponder frequency="10730000" symbol_rate="27500000" polarization="0" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="10810000" symbol_rate="27500000" polarization="0" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="10850000" symbol_rate="27500000" polarization="0" fec_inner="4" system="0" modulation="1"/>
@@ -874,10 +874,10 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="12724000" symbol_rate="2220000" polarization="1" fec_inner="3" system="0" modulation="1"/>
 		<transponder frequency="12730000" symbol_rate="2590000" polarization="1" fec_inner="3" system="0" modulation="1"/>
 	</sat>
-	<sat name="Eutelsat33C/Intelsat 28 33.0E" flags="0" position="330">
+	<sat name="Eutel33C/Intelsat28 33.0E" flags="0" position="330">
 		<transponder frequency="11154000" symbol_rate="15710000" polarization="1" fec_inner="1" system="0" modulation="1"/>
 	</sat>
-	<sat name="Eutelsat36B/ExpressAMU1 36.0E" flags="0" position="360">
+	<sat name="Eutelsat36B/Express 36.0E" flags="0" position="360">
 		<transponder frequency="11387000" symbol_rate="28800000" polarization="0" fec_inner="4" system="0" modulation="2"/>
 		<transponder frequency="11474000" symbol_rate="30000000" polarization="1" fec_inner="4" system="0" modulation="1"/>
 		<transponder frequency="11510000" symbol_rate="30000000" polarization="1" fec_inner="4" system="0" modulation="1"/>
