@@ -1,5 +1,5 @@
 #!/bin/sh
-# conditional tidy ups after a standalone Service Scan - updated Mon 05 Feb 2017
+# conditional tidy ups after a standalone Service Scan - updated Sun 26 Feb 2017
 
 fmsg(){
 wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
@@ -24,28 +24,27 @@ if [ -e /tmp/scanAbort ]; then
 	exit 0
 fi
 
+count=`grep -c 'bouquet_id' $bqs`
+if [ "$count" -lt 2 ]; then
+	mv -f /tmp/bqs.bak $bqs
+	mv -f /tmp/svc.bak $svc
+	rm -f /tmp/box.busy
+	pzapit -c
+	sleep 3
+	killall neutrino
+	sleep 3
+	rcsim KEY_HOME 2
+	fmsg "Oops... Bouquet Mode 'Create New' is for
+	\nCABLE boxes! It makes a mess on Satellite!"
+	sleep 7
+	fmsg "We've restored your previous setup to undo this
+	\nbizarre Scan choice! Try 'Provider Bouquet' mode?"
+	sleep 7
+	exit 0
+fi
+
 # 28.2E Sat-specific repair ops
 if grep -q -m 1 '28.2E' $svc; then
-	if ! grep -q 'Bouquet type' $bqs; then
-		mv -f /tmp/bqs.bak $bqs
-		mv -f /tmp/svc.bak $svc
-		rm -f /tmp/box.busy
-		pzapit -c
-		sleep 3
-		killall neutrino
-		sleep 3
-		rcsim KEY_HOME 2
-		fmsg "Oh come on now! WHY were you scanning for CABLE
-		\nbouquets on your SATELLITE box? It's disastrous!"
-		sleep 7
-		fmsg "Indeed, WHY mess in the Scan Menu at all, when
-		\n28.2E AutoBouquets is so much faster and better?"
-		sleep 7
-		fmsg "We've restored your previous setup to undo this
-		\nbizarre Scan choice! Now please enjoy TV again..."
-		sleep 7
-		exit 0
-	fi
 	cp -f $bqs $tbq
 	cp -f $svc $tsv
 	sed -i '
