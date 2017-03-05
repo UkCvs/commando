@@ -126,7 +126,7 @@ if (supportsVibrate) navigator.vibrate(100);
 <div id="wb_Image34" style="position:absolute;left:139px;top:578px;width:160px;height:114px;z-index:51;">
 <img src="images/square.png" id="Image34" alt=""></div>
 <div id="wb_Text26" style="position:absolute;left:149px;top:602px;width:144px;height:56px;text-align:center;z-index:52;">
-<span style="color:#FFFFFF;font-family:Arial;font-size:48px;" onclick="goUrl(&quot;/control/exec?Y_Tools&amp;cmd&amp;/&amp;false&amp;rcsim%20KEY_VOLUMEDOWN&quot;);"><strong>Vol -</strong></span></div>
+<span style="color:#FFFFFF;font-family:Arial;font-size:48px;" onclick="goUrl(&quot;/control/exec?Y_Tools&amp;cmd&amp;/&amp;false&amp;rcsim%20KEY_VOLUMEUP&quot;);"><strong>Vol -</strong></span></div>
 <div id="wb_Image29" style="position:absolute;left:401px;top:578px;width:160px;height:114px;z-index:53;">
 <img src="images/square.png" id="Image29" alt=""></div>
 <div id="wb_Text15" style="position:absolute;left:409px;top:576px;width:144px;height:112px;text-align:center;z-index:54;">
@@ -134,5 +134,5 @@ if (supportsVibrate) navigator.vibrate(100);
 <div id="wb_Image30" style="position:absolute;left:670px;top:577px;width:160px;height:114px;z-index:55;">
 <img src="images/square.png" id="Image30" alt=""></div>
 <div id="wb_Text27" style="position:absolute;left:678px;top:600px;width:144px;height:56px;text-align:center;z-index:56;">
-<span style="color:#FFFFFF;font-family:Arial;font-size:48px;" onclick="goUrl(&quot;/control/exec?Y_Tools&amp;cmd&amp;/&amp;false&amp;rcsim%20KEY_VOLUMEUP&quot;);"><strong>Vol +</strong></span></div>
+<span style="color:#FFFFFF;font-family:Arial;font-size:48px;" onclick="goUrl(&quot;/control/exec?Y_Tools&amp;cmd&amp;/&amp;false&amp;rcsim%20KEY_VOLUMEDOWN&quot;);"><strong>Vol +</strong></span></div>
 </body>
