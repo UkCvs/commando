@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- created by AutoBouquets N1 on: Tue 21 Feb 2017 14:43:05 -->
+<!-- created by AutoBouquets N1 on: Sun 05 Mar 2017 13:50:53 -->
 <zapit>
 <Bouquet type="0" bouquet_id="0022" name="Sky 28.2E Bouquet" hidden="0" locked="0">
 </Bouquet>
@@ -79,7 +79,7 @@
 	<channel serviceID="d361" name="Sony Channel" tsid="0830" onid="0002" sat="282"/>
 	<channel serviceID="d017" name="Sony Chnl +1" tsid="083f" onid="0002" sat="282"/>
 	<channel serviceID="cd41" name="True Crime" tsid="0844" onid="0002" sat="282"/>
-	<channel serviceID="d355" name="tru TV" tsid="0830" onid="0002" sat="282"/>
+	<channel serviceID="d039" name="tru TV" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d07f" name="True Ent" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d084" name="True Ent +1" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d15e" name="Showcase" tsid="0832" onid="0002" sat="282"/>
@@ -208,7 +208,7 @@
 	<channel serviceID="cc42" name="Bike" tsid="083d" onid="0002" sat="282"/>
 	<channel serviceID="cb26" name="FrontRunner" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="1400" name="GINXeSportsTV" tsid="07d7" onid="0002" sat="282"/>
-	<channel serviceID="d01c" name="MOTORS TV UK" tsid="083f" onid="0002" sat="282"/>
+	<channel serviceID="d01c" name="Motorsport TV" tsid="083f" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="0006" name="News" hidden="0" locked="0">
 	<channel serviceID="1260" name="Sky News" tsid="07ea" onid="0002" sat="282"/>
@@ -356,6 +356,7 @@
 	<channel serviceID="d32a" name="The Dept Store" tsid="0836" onid="0002" sat="282"/>
 	<channel serviceID="d329" name="The Mall" tsid="0836" onid="0002" sat="282"/>
 	<channel serviceID="571e" name="QVC Style" tsid="082b" onid="0002" sat="282"/>
+	<channel serviceID="cb80" name="Craft Channel" tsid="0839" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="000c" name="International" hidden="0" locked="0">
 	<channel serviceID="c530" name="&amp;TV" tsid="0837" onid="0002" sat="282"/>
