@@ -1,33 +1,41 @@
 #!/bin/sh
 # added layers of protection if user launches a standalone Service Scan
-# enhanced 21 Mar 2016 to keep interactive bouquets content
+# enhanced 21 Mar 2016: keep interactive bouquets content
+# updated 05 Mar 2017: keep Favorites and Specialist bouquets; test zapit Others=ON?
 
 etc="/var/etc/"
 zap="/var/tuxbox/config/zapit"
 bqs="$zap/bouquets.xml"
+tbq="/tmp/bouquets.xml"
 svc="$zap/services.xml"
+tsv="/tmp/services.xml"
 tb="/tmp/bouquet"
+
+trim(){
+sed '$d;1d'
+}
 
 touch /tmp/box.busy
 pzapit -gi|cut -d " " -f1 >/tmp/zapbak
-cp -f $bqs /tmp/bqs.bak
-cp -f $svc /tmp/svc.bak
+cp -f $bqs $tbq
+cp -f $svc $tsv
 
 if grep -q 'Bouquet=true' $zap/zapit.conf; then
-	touch $etc/.zapit_others
-else
-	rm -f $etc/.zapit_others
+	touch /tmp/.zapit_others
 fi
 
+sed -n '/_id="0023"/,/\/Bouquet/'p $tbq|trim >$tb.23
 if grep -q -m 1 'a 1\|e 1' $bqs; then
-	sed -n '/_id="0016"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.16
+	sed -n '/_id="0016"/,/\/Bouquet/'p $tbq|trim >$tb.16
 	cat $tb.16 >$tb.int
-	sed -n '/_id="000d"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.0d
+	sed -n '/_id="000d"/,/\/Bouquet/'p $tbq|trim >$tb.0d
 	cat $tb.0d >>$tb.int
-	sed -n '/_id="0017"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.17
+	sed -n '/_id="0017"/,/\/Bouquet/'p $tbq|trim >$tb.17
 	cat $tb.17 >>$tb.int
-	sed -n '/_id="0018"/,/\/Bouquet/'p $bqs|sed '$d;1d' >$tb.18
+	sed -n '/_id="0018"/,/\/Bouquet/'p $tbq|trim >$tb.18
 	cat $tb.18 >>$tb.int
+	sed -n '/_id="000e"/,/\/Bouquet/'p $tbq|trim >$tb.0e
+	cat $tb.0e >>$tb.int
 fi
 
 exit 0

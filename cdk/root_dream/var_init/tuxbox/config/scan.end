@@ -1,9 +1,5 @@
 #!/bin/sh
-# conditional tidy ups after a standalone Service Scan - updated Sun 26 Feb 2017
-
-fmsg(){
-wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
-}
+# conditional tidy ups after a standalone Service Scan - updated Sun 05 Mar 2017
 
 etc="/var/etc"
 cfg="/var/tuxbox/config"
@@ -12,34 +8,72 @@ bqs="$zap/bouquets.xml"
 svc="$zap/services.xml"
 tsv="/tmp/services.xml"
 tbq="/tmp/bouquets.xml"
+bb="/tmp/box.busy"
 csv="$etc/autobouquets.csv"
 tb="/tmp/bouquet"
 lcl="/tmp/locals"
+zapbak=`cat /tmp/zapbak`
+errmsg="ERROR! Restoring backup services and bouquets!\nWhy? Further info follows, please wait..."
 
+# define functions
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+restore(){
+mv -f $tbq $bqs
+mv -f $tsv $svc
+pzapit -c
+sleep 3
+pzapit -zi $zapbak
+killall neutrino
+sleep 3
+rcsim KEY_HOME 2
+}
+dump(){
+rm -f $tb.* $bb $tbq $tsv /tmp/zapbak /tmp/scanAbort
+}
+
+# scan aborted?
 if [ -e /tmp/scanAbort ]; then
 	pzapit -c
 	sleep 3
 	pzapit -rz
-	rm -f $tb.* /tmp/box.busy /tmp/*bak /tmp/scanAbort
+	dump
 	exit 0
 fi
 
+# eraseall? (with zapit 'Others' set to no?)
+if [ ! -e $bqs ] && [ ! -e /tmp/.zapit_others ]; then
+	restore
+	fmsg "$errmsg"
+	sleep 7
+	fmsg "Oops! What happened there, then? Let's explain..."
+	sleep 7
+	fmsg "Well, your [Eraseall Bouquets] Scan MUST have
+	\n[Bouquet Others] = ON in the Zapit setup menu!"
+	sleep 7
+	fmsg "You'll find it here:+++Menu > 2 > Yellow > Yellow"
+	sleep 7
+	fmsg "An <eraseall> Scan will then create a single
+	\nrebootable [All Channels A-Z] zapit Bouquet!"
+	sleep 7
+	dump
+	exit 0
+fi
+
+# 'Create new' fiasco?
 count=`grep -c 'bouquet_id' $bqs`
-if [ "$count" -lt 2 ]; then
-	mv -f /tmp/bqs.bak $bqs
-	mv -f /tmp/svc.bak $svc
-	rm -f /tmp/box.busy
-	pzapit -c
-	sleep 3
-	killall neutrino
-	sleep 3
-	rcsim KEY_HOME 2
-	fmsg "Oops... Bouquet Mode 'Create New' is for
-	\nCABLE boxes! It makes a mess on Satellite!"
+if [ "$count" -lt "2" ]; then
+	restore
+	fmsg "$errmsg"
+	sleep 7
+	fmsg "Bouquet Mode 'Create New' Scan is meant for
+	\nCABLE boxes! It creates HAVOC on Satellite!"
 	sleep 7
 	fmsg "We've restored your previous setup to undo this
 	\nbizarre Scan choice! Try 'Provider Bouquet' mode?"
 	sleep 7
+	dump
 	exit 0
 fi
 
@@ -101,17 +135,24 @@ if grep -q -m 1 '28.2E' $svc; then
 		s/Tj/TEj/
 		' $tbq $tsv 
 		sed -i "
+		/000e/,/\/Bouquet>/{/serviceID/d}
 		/0016/,/\/Bouquet>/{/serviceID/d}
 		/0018/,/\/Bouquet>/{/serviceID/d}
+		/0023/,/\/Bouquet>/{/serviceID/d}
 		" $tbq
-		ins=`sed -n '/"0016"/=' $tbq`
-		sed -i "$ins r $tb.16" $tbq
 		ins=`sed -n '/"000d"/=' $tbq`
 		sed -i "$ins r $tb.0d" $tbq
+		ins=`sed -n '/"000e"/=' $tbq`
+		sed -i "$ins r $tb.0e" $tbq
+		ins=`sed -n '/"0016"/=' $tbq`
+		sed -i "$ins r $tb.16" $tbq
 		ins=`sed -n '/"0017"/=' $tbq`
 		sed -i "$ins r $tb.17" $tbq
 		ins=`sed -n '/"0018"/=' $tbq`
 		sed -i "$ins r $tb.18" $tbq
+		ins=`sed -n '/"0023"/=' $tbq`
+		sed -i "$ins r $tb.23" $tbq
+
 		# and mirror in services.xml - for correct OSD lists
 		while read ln; do
 			chl=`echo "$ln"|cut -d "\"" -f4`
@@ -144,9 +185,8 @@ fi
 
 pzapit -c
 sleep 3
-zapbak=`cat /tmp/zapbak`
 pzapit -zi $zapbak
-rm -f $tb.* $lcl /tmp/*bak /tmp/box.busy
+dump
 killall neutrino
 sleep 3
 
