@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Tue 21 Feb 2017 14:43:32
+# AutoBouquets custom_epg.txt usermap auto-generated on: Sun 05 Mar 2017 13:51:20
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -230,7 +230,7 @@
 464:1:1:024:Bike
 468:1:1:024:FrontRunner
 470:1:1:024:GINXeSportsTV
-447:1:1:024:MOTORS TV UK
+447:1:1:024:Motorsport TV
 
 #Bouquet 06: "News"
 501:1:1:000:Sky News
@@ -378,6 +378,7 @@
 676:0:0:000:The Dept Store
 677:0:0:000:The Mall
 678:0:0:000:QVC Style
+679:0:0:000:Craft Channel
 
 #Bouquet 0c: "International"
 795:0:0:000:&TV
@@ -550,3 +551,5 @@
 1011:0:0:000:be3
 191:0:0:000:Irish TV
 1180:0:0:000:Oireachtas TV
+
+#Bouquet 23: "My Favorites"
