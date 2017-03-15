@@ -108,13 +108,13 @@
 0212=OSD Screenshot
 0213=do screenshots from OSD
 0214=fbshot not installed at
-0215=decrease volumen
-0216=increase volumen
-0217=mute volumen
+0215=decrease volume
+0216=increase volume
+0217=mute volume
 0218=switch to TV
 0219=switch to Radio
-0220=Webinterface der SlaveBox
-0221=volumen display
+0220=Webinterface the SlaveBox
+0221=volume display
 0222=dboxshot not installed at
 0223=Switch to
 0224=Signal strength
@@ -129,7 +129,7 @@
 0303=take snapshot
 0304=Options
 0305=Display color
-0306=Zoom modus
+0306=Zoom mode
 0307=File output
 0308=compressed
 0309=Color output
@@ -185,7 +185,7 @@
 0618=Info
 0619=Log
 0620=extention list
-0621=Settings saved. Refreshing Menue now.
+0621=Settings saved. Refreshing Menu now.
 0622=Extensions Settings saved
 0623=minimal yWeb version
 0624=Administration
@@ -273,7 +273,7 @@
 1119=Plugins
 1120=Others
 1121=Boot Logo
-1122=settings for yWeb itselfs
+1122=settings for yWeb itself
 1123=settings for Web Server daemon
 1124=download or upload ucodes
 1125=download or upload Bouquetlist, Channellist, ...
@@ -303,7 +303,7 @@
 1204=Video recorder
 1205=File
 1206=Recording Server IP
-1207=Aufnahmeserver IP (xxx.xxx.xxx.xxx)
+1207=Recording Server IP (xxx.xxx.xxx.xxx)
 1208=Recording Server Port
 1209=Recording Server WOL
 1210=MAC Adress
@@ -402,9 +402,9 @@
 1603=enter description
 1604=Management IPs
 1605=Wake on Lan
-1606=Box Name in Top-Menue.
+1606=Box Name in Top-Menu.
 1607=Box Tag
-1608=Box Name color in Top-Menue. e.g. enter 2188e0 without #
+1608=Box Name color in Top-Menu. e.g. enter 2188e0 without #
 1609=Color
 1610=Start page
 1611=Remote
@@ -504,13 +504,13 @@
 2318=execute shell command
 2319=clear output screen
 2320=Boot Logo
-2321=organize files and directorys
+2321=organize files and folders
 2322=File manager
 2324=yInstaller (for files, plugins, ...)
 2325=collecting information
 2326=ether-wake
 
-#=========== LIVE Menue
+#=========== LIVE Menu
 2400=Live/Timer
 2401=Live
 2402=LiveTV
@@ -528,10 +528,10 @@
 2414=EPG+ (popup)
 2415=EPG Plus
 2416=Timer Sync
-2417=timer synchronisation with web tv-planer
+2417=timer synchronisation with web tv-planner
 
 #=========== LIVE tv/radio
-2500=Getting <br/>Streaming-Informationen.
+2500=Getting <br/>Streaming-Information.
 2501=getting bouquets ...
 2502=getting channels ...
 2503=select resolution
@@ -752,7 +752,7 @@
 3609=Username
 3610=Password
 3611=remote directory. For CIFS do not use a leading slash.
-3612=local directory to by mounted
+3612=local directory to be mounted
 3613=modify
 3614=unmount list
 3615=edit mount settings
@@ -768,9 +768,9 @@
 3700=Access Options
 3701=PIN Code
 3702=Main menu
-3703=TV-Modus
-3704=Radio-Modus
-3705=Scart-Input
+3703=TV Mode
+3704=Radio Mode
+3705=Scart Input
 3706=Games
 3707=Audioplayer
 3708=Internetradio
@@ -795,7 +795,7 @@
 3727=Key Layout
 3728=IDE-Interace HDD/MMC/SD
 3729=Multimedia
-3730=Boot options
+3730=Boot &amp; Standby options
 3731=Extended settings
 3732=Personalize requires PIN
 3733=Service
@@ -806,12 +806,12 @@
 3738=Restart Neutrino
 3739=Restart EPG
 3740=Check Ucodes
-3741=Channel/EPG Statistic
-3742=Image Informationen
+3741=Channel/EPG Statistics
+3742=Image Information
 3743=Software-Update requires PIN
 3744=Color Keys
 3745=Features (blue key)
-3746=EPG/Info (red key)
+3746=EPG Info (red key)
 3747=not visible
 3748=visible
 3749=Pin
@@ -902,8 +902,8 @@
 4202=Start Mode
 4203=Restore Last Mode
 4204=TV-Mode
-4205=Radio-Mode
-4206=Scart-Mode
+4205=Radio Mode
+4206=Scart Mode
 4207=Audioplayer
 4208=Internetradio
 4209=Esound Soundserver
@@ -947,12 +947,12 @@
 4247=Channellist
 4248=Program text align
 4249=Extended Channel list
-4250=EPG-Settings
-4251=EPG-Cache (days)
-4252=EPG long description (hours)
+4250=EPG Settings
+4251=EPG Cache (days)
+4252=EPG long descriptions (hours)
 4253=EPG remove after (hours)
 4254=Max. Events
-4255=EPG Directory
+4255=EPG Cache Directory
 4256=Save last channel
 4257=TV start channel
 4258=Radio start channel
@@ -970,7 +970,7 @@
 4270=angular
 4271=rounded
 4272=before save do pzapit -kill
-4273=EPG Save/Load
+4273=EPG Save/Load (cache)
 
 #========= VNC
 4300=VNC
@@ -986,8 +986,8 @@
 4401=Partition
 4402=Generate Image for download
 4403=Download
-4404=go to Upload Dialog
-4405=Flash ...
+4404=go to Upload Dialogue
+4405=Flash...
 4406=You should reboot the box before flashing.
 4407=Download your image
 4408=The image was created.
@@ -1000,7 +1000,7 @@
 4415=Verifying
 4416=Flash Image
 4417=Partition
-4418=Switch on Demo-Modus. Flashing will be simulated.
+4418=Switch on Demo-Mode. Flashing will be simulated.
 4419=Demo mode
 4420=upload and flash
 4421=fcp is not installed!
@@ -1015,8 +1015,8 @@
 9802=from
 9803=min
 9804=not available
-9805=Unknown TV-Channel
-9806=Unknown Radio-Channel
+9805=Unknown TV Channel
+9806=Unknown Radio Channel
 
 #========= Remote control
 9900=Standby / Shutdown
