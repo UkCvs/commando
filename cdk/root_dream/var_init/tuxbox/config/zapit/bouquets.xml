@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- created by AutoBouquets N1 on: Sun 05 Mar 2017 13:50:53 -->
+<!-- created by AutoBouquets N1 on: Fri 17 Mar 2017 11:28:56 -->
 <zapit>
 <Bouquet type="0" bouquet_id="0022" name="Sky 28.2E Bouquet" hidden="0" locked="0">
 </Bouquet>
@@ -63,8 +63,8 @@
 	<channel serviceID="1b59" name="MTV" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1b5d" name="MTV+1" tsid="07da" onid="0002" sat="282"/>
 	<channel serviceID="1e32" name="Spike" tsid="0809" onid="0002" sat="282"/>
-	<channel serviceID="ccbf" name="DMAX" tsid="0831" onid="0002" sat="282"/>
-	<channel serviceID="ccc4" name="DMAX+1" tsid="0831" onid="0002" sat="282"/>
+	<channel serviceID="cd46" name="Quest Red" tsid="0844" onid="0002" sat="282"/>
+	<channel serviceID="cd4c" name="Quest Red+1" tsid="0844" onid="0002" sat="282"/>
 	<channel serviceID="178f" name="Challenge" tsid="07d7" onid="0002" sat="282"/>
 	<channel serviceID="178a" name="Challenge+1" tsid="07d7" onid="0002" sat="282"/>
 	<channel serviceID="d7a9" name="CBS Action" tsid="0840" onid="0002" sat="282"/>
@@ -96,7 +96,7 @@
 <Bouquet type="0" bouquet_id="0002" name="Lifestyle-Culture" hidden="0" locked="0">
 	<channel serviceID="1291" name="Community" tsid="07ea" onid="0002" sat="282"/>
 	<channel serviceID="ccd8" name="Discovery Shed" tsid="0831" onid="0002" sat="282"/>
-	<channel serviceID="cd4c" name="Disc.Shed+1" tsid="0844" onid="0002" sat="282"/>
+	<channel serviceID="ccc4" name="DMAX+1" tsid="0831" onid="0002" sat="282"/>
 	<channel serviceID="cd14" name="Food Network" tsid="0844" onid="0002" sat="282"/>
 	<channel serviceID="cd1e" name="Food Netwrk+1" tsid="0844" onid="0002" sat="282"/>
 	<channel serviceID="1791" name="Forces TV" tsid="07d7" onid="0002" sat="282"/>
@@ -107,7 +107,7 @@
 	<channel serviceID="1db0" name="Home+1" tsid="082d" onid="0002" sat="282"/>
 	<channel serviceID="1840" name="Home &amp; Health" tsid="07d9" onid="0002" sat="282"/>
 	<channel serviceID="cce2" name="HomeHealth+1" tsid="0831" onid="0002" sat="282"/>
-	<channel serviceID="cd46" name="HomeHealth+2" tsid="0844" onid="0002" sat="282"/>
+	<channel serviceID="ccbf" name="DMAX" tsid="0831" onid="0002" sat="282"/>
 	<channel serviceID="c508" name="Home &amp; Leisure" tsid="0837" onid="0002" sat="282"/>
 	<channel serviceID="d37c" name="Horse &amp; Country" tsid="0830" onid="0002" sat="282"/>
 	<channel serviceID="d74e" name="My Channel" tsid="082f" onid="0002" sat="282"/>
@@ -124,12 +124,12 @@
 	<channel serviceID="10d4" name="Sky Disney" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="157e" name="Sky DramaRom" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1133" name="Sky Family" tsid="07dc" onid="0002" sat="282"/>
-	<channel serviceID="1612" name="Sky Oscars" tsid="07dc" onid="0002" sat="282"/>
+	<channel serviceID="1612" name="Sky Greats" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1658" name="Sky Hits" tsid="07e5" onid="0002" sat="282"/>
 	<channel serviceID="1134" name="Sky Premiere" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1135" name="Sky Prem+1" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="10d2" name="Sky Select" tsid="07dc" onid="0002" sat="282"/>
-	<channel serviceID="10d0" name="Sky ScFi/Horror" tsid="07dc" onid="0002" sat="282"/>
+	<channel serviceID="10d0" name="Sky Monsters" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1136" name="Sky Thriller" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="2404" name="Film4" tsid="07f9" onid="0002" sat="282"/>
 	<channel serviceID="2409" name="Film4 +1" tsid="07f9" onid="0002" sat="282"/>
@@ -511,7 +511,6 @@
 	<channel serviceID="27b0" name="ITV Yorkshire West" tsid="0805" onid="0002" sat="282"/>
 	<channel serviceID="27ab" name="ITV +1 London" tsid="0805" onid="0002" sat="282"/>
 	<channel serviceID="276b" name="ITV +1 Anglia" tsid="07fc" onid="0002" sat="282"/>
-	<channel serviceID="27a1" name="ITV +1 Central" tsid="0805" onid="0002" sat="282"/>
 	<channel serviceID="280f" name="ITV +1 Granada" tsid="0806" onid="0002" sat="282"/>
 	<channel serviceID="2775" name="ITV +1 Meridian SE" tsid="07fc" onid="0002" sat="282"/>
 	<channel serviceID="2f49" name="ITV +1 Tyne Tees" tsid="080b" onid="0002" sat="282"/>
@@ -543,7 +542,6 @@
 	<channel serviceID="13f3" name="Pick+1" tsid="07ea" onid="0002" sat="282"/>
 	<channel serviceID="0e1f" name="3e" tsid="07d7" onid="0002" sat="282"/>
 	<channel serviceID="0b01" name="be3" tsid="07e9" onid="0002" sat="282"/>
-	<channel serviceID="d854" name="Irish TV" tsid="0838" onid="0002" sat="282"/>
 	<channel serviceID="0af7" name="Oireachtas TV" tsid="07ed" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="0015" name="Plus 1hr Channels" hidden="0" locked="0">
@@ -562,7 +560,7 @@
 	<channel serviceID="2558" name="Capital" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="2567" name="Planet Rock" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="cb3e" name="Heart" tsid="0839" onid="0002" sat="282"/>
-	<channel serviceID="cb3f" name="Heart extra" tsid="0839" onid="0002" sat="282"/>
+	<channel serviceID="cb3f" name="Heart 80s" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="2557" name="Radio X" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="254d" name="Capital XTRA" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="2891" name="BBC WS" tsid="07fe" onid="0002" sat="282"/>
