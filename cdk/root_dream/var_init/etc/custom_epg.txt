@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Sun 05 Mar 2017 13:51:20
+# AutoBouquets custom_epg.txt usermap auto-generated on: Fri 17 Mar 2017 11:29:24
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -85,8 +85,8 @@
 126:1:1:024:MTV
 270:1:1:000:MTV+1
 160:1:1:024:Spike
-167:1:1:024:DMAX
-233:1:1:000:DMAX+1
+162:0:0:000:Quest Red
+233:1:1:000:Quest Red+1
 145:1:1:024:Challenge
 164:1:1:000:Challenge+1
 148:1:1:024:CBS Action
@@ -118,7 +118,7 @@
 #Bouquet 02: "Lifestyle-Culture"
 539:1:1:024:Community
 161:0:0:000:Discovery Shed
-242:0:0:000:Disc.Shed+1
+242:0:0:000:DMAX+1
 248:1:1:024:Food Network
 250:1:1:000:Food Netwrk+1
 264:1:1:024:Forces TV
@@ -127,9 +127,9 @@
 256:1:1:024:holiday+cruise
 196:1:1:024:Home
 244:1:1:000:Home+1
-162:0:0:000:Home & Health
+167:1:1:024:Home & Health
 240:1:1:024:HomeHealth+1
-241:0:0:000:HomeHealth+2
+241:0:0:000:DMAX
 237:1:1:024:Home & Leisure
 253:1:1:024:Horse & Country
 203:1:1:024:My Channel
@@ -146,12 +146,12 @@
 305:1:1:024:Sky Disney
 310:1:1:024:Sky DramaRom
 306:1:1:024:Sky Family
-304:1:1:024:Sky Oscars
+304:1:1:024:Sky Greats
 303:1:1:024:Sky Hits
 301:1:1:024:Sky Premiere
 302:1:1:000:Sky Prem+1
 312:1:1:024:Sky Select
-311:1:1:024:Sky ScFi/Horror
+311:1:1:024:Sky Monsters
 309:1:1:024:Sky Thriller
 315:1:1:024:Film4
 316:1:1:000:Film4 +1
@@ -517,7 +517,6 @@
 81:0:0:000:ITV Yorkshire West
 131:1:1:000:ITV +1 London
 65:0:0:000:ITV +1 Anglia
-66:0:0:000:ITV +1 Central
 67:0:0:000:ITV +1 Granada
 68:0:0:000:ITV +1 Meridian SE
 63:0:0:000:ITV +1 Tyne Tees
@@ -549,7 +548,4 @@
 163:0:0:000:Pick+1
 1116:0:0:000:3e
 1011:0:0:000:be3
-191:0:0:000:Irish TV
 1180:0:0:000:Oireachtas TV
-
-#Bouquet 23: "My Favorites"
