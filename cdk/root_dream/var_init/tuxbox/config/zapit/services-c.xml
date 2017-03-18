@@ -25,6 +25,7 @@
 			<channel service_id="064f" name="ITV4 +1" service_type="01"/>
 		</transponder>
 		<transponder id="0009" onid="f020" frequency="395000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
+			<channel service_id="0385" name="Quest Red" service_type="01"/>
 			<channel service_id="0386" name="Bike" service_type="01"/>
 			<channel service_id="0387" name="God Channel" service_type="01"/>
 			<channel service_id="0389" name="Movies 24" service_type="01"/>
@@ -61,9 +62,9 @@
 			<channel service_id="070c" name="Sky Drama &amp; Romance" service_type="01"/>
 			<channel service_id="070d" name="Sky Family" service_type="01"/>
 			<channel service_id="070e" name="Sky Select" service_type="01"/>
-			<channel service_id="070f" name="Sky ScFi Horror" service_type="01"/>
+			<channel service_id="070f" name="Sky Monsters" service_type="01"/>
 			<channel service_id="0710" name="Sky Thriller" service_type="01"/>
-			<channel service_id="0711" name="Sky Oscars" service_type="01"/>
+			<channel service_id="0711" name="Sky Greats" service_type="01"/>
 			<channel service_id="0712" name="Sky Premiere 1hr" service_type="01"/>
 			<channel service_id="0713" name="Sky Premiere" service_type="01"/>
 			<channel service_id="0714" name="SONY TV" service_type="01"/>
@@ -71,6 +72,7 @@
 			<channel service_id="0716" name="Lifetime" service_type="01"/>
 			<channel service_id="0717" name="Pick" service_type="01"/>
 			<channel service_id="0718" name="Sky2" service_type="01"/>
+			<channel service_id="0719" name="Sky News" service_type="01"/>
 		</transponder>
 		<transponder id="0002" onid="f020" frequency="339000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="00c9" name="Dave" service_type="01"/>
@@ -126,7 +128,6 @@
 			<channel service_id="076d" name="BT Sport 1" service_type="01"/>
 			<channel service_id="076e" name="CBS Reality" service_type="01"/>
 			<channel service_id="076f" name="horror channel" service_type="01"/>
-			<channel service_id="0770" name="ARY News UK" service_type="01"/>
 			<channel service_id="0771" name="horror channel +1" service_type="01"/>
 			<channel service_id="0772" name="CBS Reality +1" service_type="01"/>
 			<channel service_id="0774" name="S4C" service_type="01"/>
@@ -136,6 +137,7 @@
 			<channel service_id="0779" name="BT Sport 3" service_type="01"/>
 			<channel service_id="077a" name="BT Sport Extra 1" service_type="01"/>
 			<channel service_id="077c" name="TJC" service_type="01"/>
+			<channel service_id="138c" name="ARY News UK" service_type="01"/>
 		</transponder>
 		<transponder id="0003" onid="f020" frequency="347000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="012d" name="Animal Planet" service_type="01"/>
@@ -171,11 +173,12 @@
 			<channel service_id="0454" name="&amp;TV" service_type="01"/>
 			<channel service_id="0455" name="Zee Punjabi" service_type="01"/>
 			<channel service_id="0456" name="Zee Cinema" service_type="01"/>
-			<channel service_id="0457" name="ARY Digital" service_type="01"/>
+			<channel service_id="0457" name="truTV" service_type="01"/>
 			<channel service_id="0458" name="Tiny Pop" service_type="01"/>
 			<channel service_id="0459" name="True Entertainment" service_type="01"/>
 			<channel service_id="045a" name="True Movies" service_type="01"/>
 			<channel service_id="045b" name="POP" service_type="01"/>
+			<channel service_id="1393" name="ARY Digital" service_type="01"/>
 		</transponder>
 		<transponder id="0014" onid="f020" frequency="747000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="07d1" name="At The Races" service_type="01"/>
@@ -213,7 +216,6 @@
 			<channel service_id="10cd" name="Channel 4 Audio Desc" service_type="01"/>
 			<channel service_id="10ce" name="Boomerang" service_type="01"/>
 			<channel service_id="10cf" name="Boomerang +1" service_type="01"/>
-			<channel service_id="10d0" name="Sky News" service_type="01"/>
 			<channel service_id="10d1" name="More 4 +1" service_type="01"/>
 			<channel service_id="10d2" name="Film4" service_type="01"/>
 			<channel service_id="10d3" name="Film4 +1" service_type="01"/>
@@ -288,7 +290,6 @@
 			<channel service_id="0201" name="SONY SAB" service_type="01"/>
 			<channel service_id="0202" name="Travel Channel" service_type="01"/>
 			<channel service_id="0203" name="Sony Channel" service_type="01"/>
-			<channel service_id="0204" name="truTV" service_type="01"/>
 		</transponder>
 		<transponder id="002c" onid="f020" frequency="627000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="1131" name="Vevo" service_type="01"/>
@@ -330,7 +331,7 @@
 			<channel service_id="057d" name="Sky Living+1" service_type="01"/>
 			<channel service_id="0580" name="Turner Classic Movies" service_type="01"/>
 			<channel service_id="0582" name="Comedy Central Extra" service_type="01"/>
-			<channel service_id="0583" name="FOX+" service_type="01"/>
+			<channel service_id="0583" name="FOX+1" service_type="01"/>
 			<channel service_id="0584" name="Eurosport 2" service_type="01"/>
 			<channel service_id="0585" name="Sky Sports News HQ" service_type="01"/>
 		</transponder>

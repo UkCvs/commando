@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Autobouquets-VM generated on: Tue 21 Feb 2017 11:43:13 -->
+<!-- Autobouquets-VM generated on: Sat 18 Mar 2017 13:56:36 -->
 <zapit>
 	<Bouquet type="0" bouquet_id="0000" name="Entertainment" hidden="0" locked="0">
 		<channel serviceID="2775" name="BBC ONE London" tsid="0065" onid="f020"/>
@@ -62,7 +62,7 @@
 		<channel serviceID="032d" name="Spike" tsid="0008" onid="f020"/>
 		<channel serviceID="0392" name="E! " tsid="0009" onid="f020"/>
 		<channel serviceID="0517" name="FOX" tsid="000d" onid="f020"/>
-		<channel serviceID="0583" name="FOX+" tsid="000e" onid="f020"/>
+		<channel serviceID="0583" name="FOX+1" tsid="000e" onid="f020"/>
 		<channel serviceID="07d4" name="Real Lives" tsid="0014" onid="f020"/>
 		<channel serviceID="044e" name="Real Lives+1" tsid="000b" onid="f020"/>
 		<channel serviceID="0263" name="BBC ALBA" tsid="0006" onid="f020"/>
@@ -75,6 +75,7 @@
 		<channel serviceID="0203" name="Sony Channel" tsid="0005" onid="f020"/>
 		<channel serviceID="01fc" name="DMAX" tsid="0005" onid="f020"/>
 		<channel serviceID="01f8" name="DMAX + 1" tsid="0005" onid="f020"/>
+		<channel serviceID="0385" name="Quest Red" tsid="0009" onid="f020"/>
 	</Bouquet>
 	<Bouquet type="0" bouquet_id="0001" name="Factual" hidden="0" locked="0">
 		<channel serviceID="00cf" name="YESTERDAY" tsid="0002" onid="f020"/>
@@ -117,7 +118,7 @@
 		<channel serviceID="0387" name="God Channel" tsid="0009" onid="f020"/>
 		<channel serviceID="00d3" name="Really" tsid="0002" onid="f020"/>
 		<channel serviceID="084a" name="Food Network" tsid="0015" onid="f020"/>
-		<channel serviceID="0204" name="truTV" tsid="0005" onid="f020"/>
+		<channel serviceID="0457" name="truTV" tsid="000b" onid="f020"/>
 		<channel serviceID="0202" name="Travel Channel" tsid="0005" onid="f020"/>
 		<channel serviceID="0292" name="The Africa Channel" tsid="0006" onid="f020"/>
 	</Bouquet>
@@ -145,14 +146,14 @@
 		<channel serviceID="0713" name="Sky Premiere" tsid="0012" onid="f020"/>
 		<channel serviceID="0712" name="Sky Premiere 1hr" tsid="0012" onid="f020"/>
 		<channel serviceID="051a" name="Sky Hits" tsid="000d" onid="f020"/>
-		<channel serviceID="0711" name="Sky Oscars" tsid="0012" onid="f020"/>
+		<channel serviceID="0711" name="Sky Greats" tsid="0012" onid="f020"/>
 		<channel serviceID="070a" name="Sky Disney" tsid="0012" onid="f020"/>
 		<channel serviceID="070d" name="Sky Family" tsid="0012" onid="f020"/>
 		<channel serviceID="0709" name="Sky Action&amp;Adventure" tsid="0012" onid="f020"/>
 		<channel serviceID="070b" name="Sky Comedy" tsid="0012" onid="f020"/>
 		<channel serviceID="0710" name="Sky Thriller" tsid="0012" onid="f020"/>
 		<channel serviceID="070c" name="Sky Drama &amp; Romance" tsid="0012" onid="f020"/>
-		<channel serviceID="070f" name="Sky ScFi Horror" tsid="0012" onid="f020"/>
+		<channel serviceID="070f" name="Sky Monsters" tsid="0012" onid="f020"/>
 		<channel serviceID="070e" name="Sky Select" tsid="0012" onid="f020"/>
 		<channel serviceID="0580" name="Turner Classic Movies" tsid="000e" onid="f020"/>
 		<channel serviceID="04be" name="TCM +1" tsid="000c" onid="f020"/>
@@ -194,7 +195,7 @@
 		<channel serviceID="07d9" name="Sky Sports Events" tsid="0014" onid="f020"/>
 	</Bouquet>
 	<Bouquet type="0" bouquet_id="0006" name="News" hidden="0" locked="0">
-		<channel serviceID="10d0" name="Sky News" tsid="002b" onid="f020"/>
+		<channel serviceID="0719" name="Sky News" tsid="0012" onid="f020"/>
 		<channel serviceID="03ea" name="BBC NEWS" tsid="000a" onid="f020"/>
 		<channel serviceID="03e9" name="BBC Parliament" tsid="000a" onid="f020"/>
 		<channel serviceID="10d5" name="CNN International" tsid="002b" onid="f020"/>
@@ -254,8 +255,8 @@
 		<channel serviceID="0453" name="Zing" tsid="000b" onid="f020"/>
 		<channel serviceID="0390" name="B4U Movies" tsid="0009" onid="f020"/>
 		<channel serviceID="0391" name="B4U Music" tsid="0009" onid="f020"/>
-		<channel serviceID="0457" name="ARY Digital" tsid="000b" onid="f020"/>
-		<channel serviceID="0770" name="ARY News UK" tsid="0013" onid="f020"/>
+		<channel serviceID="1393" name="ARY Digital" tsid="000b" onid="f020"/>
+		<channel serviceID="138c" name="ARY News UK" tsid="0013" onid="f020"/>
 		<channel serviceID="083d" name="TV5" tsid="0015" onid="f020"/>
 		<channel serviceID="0839" name="COLORS" tsid="0015" onid="f020"/>
 		<channel serviceID="04c0" name="Rishtey Europe" tsid="000c" onid="f020"/>
@@ -351,7 +352,5 @@
 		<channel serviceID="04c5" name="Kiss FM" tsid="000c" onid="f020"/>
 	</Bouquet>
 	<Bouquet type="0" bouquet_id="0018" name="My Favorites" hidden="0" locked="0">
-		<channel serviceID="0135" name="Discovery Turbo" tsid="0003" onid="f020"/>
-		<channel serviceID="0519" name="Sky Sports F1" tsid="000d" onid="f020"/>
 	</Bouquet>
 </zapit>
