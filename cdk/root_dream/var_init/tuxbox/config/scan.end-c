@@ -5,6 +5,7 @@
 # updated 25 Aug 2016: move more orphaned channels from 'Other' & add date
 # humungerous overhauls 21 Jan 2017, keeping pace with latest C16 Laz dev...
 # updated 25 Jan 2017: aligns conditional Adult with LraiZer's new bq maps
+# updated 18 Mar 2017: keep new Quest Red channel in Ent
 
 # set $hortcuts
 etc="/var/etc"
@@ -356,6 +357,7 @@ sed -i '
 
 # special handling:
 iq="/tmp/iq.bq"
+sed -i 's/t Red/T Red/' $tbq
 sed -n "/I\.D\./"p $tbq >>$iq
 sed -n "/Quest/"p $tbq >>$iq
 sed -i "/I\.D\.\|Quest/d" $tbq
@@ -366,6 +368,7 @@ sed -n "/$dh +1/"p $src >$iq
 sed -i "/$dh +1/d" $src
 ins=`sed -n "/$dh/=" $tbq`
 sed -i "$ins r $iq" $tbq
+sed -i 's/T Red/t Red/' $tbq
 
 # move orphans in "Other" to correct bouquets
 ch="Really"
