@@ -1,0 +1,49 @@
+#!/bin/sh
+
+bin="/var/bin"
+etc="/var/etc"
+
+fmsg(){
+wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+
+case "$1" in
+
+vpn-di)
+cd $etc
+fmsg "Downloading the OpenVPN Installer package\n
+from the ukcvs.net server- please wait..."
+wget http://www.ukcvs.net/C16/vpn/update.zip
+sleep 6
+if [ -e $etc/update.zip ] ; then
+	fmsg "Download successful- now rebooting box for
+	\nOpenVPN auto-install and startup, hang on..."
+	sleep 7
+	rm -f message*
+	reboot
+else
+	fmsg "Sorry- the OpenVPN package download failed
+	\nfor some reason. Try again later, please"
+	sleep 6
+	exit 0
+fi
+;;
+
+vpn-u)
+fmsg "Uninstalling OpenVPN from your DM500 box-\n
+this only takes a mo, so hang on please..."
+sleep 6
+$bin/openvpn_script.sh stop
+sleep 1
+rm -f $bin/*vpn* 
+rm -rf $etc/openvpn
+sed -i '/openvpn/d' $etc/init
+[ ! -s $etc/init ] && rm -f $etc/init 
+fmsg "OpenVPN was uninstalled successfully!"
+sleep 6
+rm -f /tmp/message*
+exit 0
+;;
+esac
+
+exit 0
