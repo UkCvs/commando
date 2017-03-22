@@ -2,6 +2,7 @@ SUBDIRS = enigma zapit
 
 FILES_FLASH_RO = \
 	shellexec.conf \
+	shellexec-c.conf \
 	menu_about.conf \
 	menu_abs-xtras.conf \
 	menu_autobouquet.conf \
