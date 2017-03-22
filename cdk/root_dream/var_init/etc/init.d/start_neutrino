@@ -7,6 +7,7 @@
 # Tue 03 Jan 2017: prep for conditional vmautoscan plugin ??- AL
 # Thu 12 Jan 2017: keep some helpfiles for cable + add SML VM help- AL
 # Sun 22 Jan 2017: nuke new cable Scan scripts if Sat box- AL
+# Wed 22 Mar 2017: allow for added cable shellexec menu- AL
 
 . /proc/bus/dbox.sh
 
@@ -60,6 +61,7 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 		rm -f $etc/issue.net-c
 		rm -f $cfg/scan.end-c
 		rm -f $cfg/scan.start-c
+		rm -f $cfg/00-shellexec-c.conf
 		rm -f $cfg/zapit/*-c.xml
 		rm -f /var/bin/miniops-c
 		rm -f /var/tuxbox/plugins/02-nitscan*
