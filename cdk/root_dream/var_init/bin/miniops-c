@@ -3,15 +3,28 @@
 # changelog:
 # Tue 03 Jan 2017: prep case for planned vmautobouquets plugin
 # Tue 10 Jan 2017: add code for splashscreen radio and scan modes
+# Wed 22 Mar 2017: add cable shellexec Utilities support
 
-#set global variables
+# set global variables
 dload="wget http://www.ukcvs.net/C16"
 etc="/var/etc"
+cfg="/var/tuxbox/config"
+conf="$cfg/neutrino.conf"
 nit="nitscan.zip"
+nop="/dev/null"
 now="%a %d %b %Y %T"
+ka="killall"
+kn="$ka neutrino"
 
+# functions
 fmsg(){
 wget http://localhost/control/message?popup=`echo $1|sed 's/\\\n/%0A/g;s/ /%20/g'` >/dev/null 2>&1
+}
+rc_lock(){
+wget http://localhost/control/rc?lock 2>$nop; rcsim KEY_OK >$nop
+}
+rc_unlock(){
+wget http://localhost/control/rc?unlock 2>$nop; rcsim KEY_OK >$nop
 }
 bgpic() {
 [ $1 = "true" ] && controldc videoPowerDown 1
@@ -19,12 +32,16 @@ sleep 1
 showframe /root/platform/kernel/logo
 [ $1 = "true" ] && controldc videoPowerDown 0
 }
+blue(){
+rcsim KEY_BLUE
+rcsim KEY_BLUE
+}
 
 case "$1" in
 
 # Softcam(s) autostart
 start)
-[ -e $etc/.oscam ] && { oscam; sleep 5; pzapit -rz; killall miniops; } &
+[ -e $etc/.oscam ] && { oscam; sleep 5; pzapit -rz; $ka miniops; } &
 [ -e $etc/.cccam ] && { epg-restart >/dev/null 2>&1; sleep 1; CCcam; } &
 [ -e $etc/.mgcamd ] && { epg-pause >/dev/null 2>&1; sleep 1; mgcamd; sleep 5; pzapit -rz; } &
 [ -e $etc/.evocamd ] && evocamd &
@@ -34,15 +51,11 @@ exit 0
 
 # Softcam(s) stop:
 stop)
-[ -e $etc/.oscam ] && killall oscam && rm -Rf /tmp/.oscam /tmp/oscam*
-[ -e $etc/.cccam ] && killall CCcam && killall epg-restart
-[ -e $etc/.mgcamd ] && killall mgcamd && killall epg-pause
-[ -e $etc/.evocamd ] && killall evocamd
-[ -e $etc/.newcamd ] && killall newcamd
-;;
-
-autobouquets)
-# WIP- replicate last C15.1f dm500c kit, for starters?
+[ -e $etc/.oscam ] && $ka oscam && rm -Rf /tmp/.oscam /tmp/oscam*
+[ -e $etc/.cccam ] && $ka CCcam && $ka epg-restart
+[ -e $etc/.mgcamd ] && $ka mgcamd && $ka epg-pause
+[ -e $etc/.evocamd ] && $ka evocamd
+[ -e $etc/.newcamd ] && $ka newcamd
 ;;
 
 nit_scan)
@@ -76,8 +89,87 @@ showlogo)
 [ ! -e $etc/.no-$2-bg ] && bgpic "false" &
 ;;
 
+swapvol)
+hint="$cfg/menu_volume.conf"
+msg1="Moving VOL keys adjacent to key"
+msg2="VOL keys are now adjacent to key"
+if grep -q '0 key' $hint; then
+	fmsg "$msg1 [0]..."
+	sleep 6
+	sed -i '
+	/y_s/s/114/105/
+	/y_s/s/115/106/
+	/y_v/s/105/114/
+	/y_v/s/106/115/' $conf
+	sed -i "s/0 key/OK key/" $hint
+	fmsg "$msg2 [0]!"
+else
+	fmsg "$msg1 [OK]..."
+	sleep 6
+	sed -i '
+	/y_s/s/105/114/
+	/y_s/s/106/115/
+	/y_v/s/114/105/
+	/y_v/s/115/106/' $conf
+	sed -i "s/OK key/0 key/" $hint
+	fmsg "$msg2 [OK]!"
+fi
+sleep 6
+$kn
+sleep 3
+blue
+;;
+
+def-icon)
+pf=`grep -m1 "logodir=" $conf|cut -d "=" -f2`
+if [ $pf != "" ]; then
+	while read ln; do
+	 dp=`echo "$ln"|cut -d ";" -f1`
+	 cp -f $pf/$dp $pf/default.raw
+	 sleep 300
+	done < $etc/di-list
+	{ sleep 2; miniops def-icon; } &
+fi
+;;
+
+net-view)
+. /var/etc/net-open
+rcsim KEY_HELP
+rc_lock
+sleep 6
+rc_unlock
+. /var/etc/net-exit
+;;
+
+net-boot)
+. /var/etc/net-open
+rcsim KEY_RED
+rcsim KEY_HOME
+rcsim KEY_HOME
+rcsim KEY_HOME
+fmsg "Your DM500 LAN was restarted!"
+sleep 6
+blue
+;;
+
+net-test)
+. /var/etc/net-open
+rcsim KEY_GREEN
+rc_lock
+sleep 6
+rc_unlock
+. /var/etc/net-exit
+;;
+
+net-epgc)
+sed -i '/epg_dir=/cepg_dir=' $conf
+$kn
+;;
+
 null)
 exit
 ;;
+
 esac
+
 exit 0

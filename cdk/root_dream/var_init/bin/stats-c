@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# shortcut for dm500c - saves typing 29 chrs :)
+sectionsdcontrol --statistics
+
+exit 0
