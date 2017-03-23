@@ -1,5 +1,5 @@
 FILES_FLASH_RO_EXEC = showframe \
-	cron epg-pause epg-restart vpn
+	epg-pause epg-restart vpn
 
 DIR = /bin
 
