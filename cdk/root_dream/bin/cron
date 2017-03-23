@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# reload crond user script scheduler - C16 22-Mar-2017
-killall crond
-sleep 1
-crond &
-
-exit 0
