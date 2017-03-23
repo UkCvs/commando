@@ -64,6 +64,7 @@ if `cat /proc/bus/dreambox | grep -q 'nimtype=DVB-S'`; then
 		rm -f $cfg/00-shellexec-c.conf
 		rm -f $cfg/zapit/*-c.xml
 		rm -f /var/bin/miniops-c
+		rm -f /var/bin/stats-c
 		rm -f /var/tuxbox/plugins/02-nitscan*
 	fi
 else
