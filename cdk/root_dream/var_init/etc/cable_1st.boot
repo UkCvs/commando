@@ -22,7 +22,7 @@ cd $cfg
 rm -fr enigma
 mv -f scan.end-c scan.end
 mv -f scan.start-c scan.start
-mv -f 00-shellexec-c.conf 00-shellexec.conf
+mv -f shellexec-c.conf shellexec.conf
 rm -f menu_a* menu_b* menu_g* menu_P* menu_S* menu_u*
 cd $cfg/zapit
 mv -f bouquets-c.xml bouquets.xml
