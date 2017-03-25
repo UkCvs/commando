@@ -2,7 +2,7 @@
 
 // Sun 7 August 2016 - This autobouquets.cpp has been modified and supplied by PaphosAL
 // http://www.ukcvs.net/forum/showthread.php?29792-AutoBouquets-N1&p=58678&viewfull=1#post58678
-
+// Sat 25 Mar 2017: modded Adult range to start @ 872 (not 861, now Int)- thnx Abu Baniaz
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -828,7 +828,7 @@ int main (int argc, char *argv[]) {
 			BAT1[(*i).first].nspace   = ((*i).second.tsid == "7e3" ? "11a2f26" : "11a0000");
 		}
 
-		if (parentalcontrol && ((skyid > 860 && skyid < 881) || (skyid > 899 && skyid < 950)))
+		if (parentalcontrol && ((skyid > 871 && skyid < 881) || (skyid > 899 && skyid < 950)))
 			SDT.erase(sid);
 	}
 
@@ -1392,7 +1392,7 @@ int main (int argc, char *argv[]) {
 						{
 							if ((fta == true && channel.ca == "FTA") || fta == false)
 							{
-								if (!(parentalcontrol && ((skyid > 860 && skyid < 881) || (skyid > 899 && skyid < 950))))
+								if (!(parentalcontrol && ((skyid > 871 && skyid < 881) || (skyid > 899 && skyid < 950))))
 								{
 									     if ( sort_bouquet == "01" ) write_bouquet_service(bq_01, channel.sid, channel.name, channel.tsid);
 									else if ( sort_bouquet == "02" ) write_bouquet_service(bq_02, channel.sid, channel.name, channel.tsid);
@@ -1459,7 +1459,7 @@ int main (int argc, char *argv[]) {
 			count = skyid;
 		}
 
-		parentalguidance = (( skyid > 860 && skyid < 881 ) || ( skyid > 899 && skyid < 950 )) ? true : false;
+		parentalguidance = (( skyid > 871 && skyid < 881 ) || ( skyid > 899 && skyid < 950 )) ? true : false;
 
 		if ( atoi((*i).second.type.c_str()) != 19 && atoi((*i).second.type.c_str()) != 87 )
 		{
@@ -1490,7 +1490,7 @@ int main (int argc, char *argv[]) {
 					else if ( skyid > 649 && skyid < 700 ) write_bouquet_service(bq_0a, (*i).second.sid, (*i).second.name, (*i).second.tsid);
 					else if ( skyid > 699 && skyid < 780 ) write_bouquet_service(bq_0b, (*i).second.sid, (*i).second.name, (*i).second.tsid);
 					else if ( skyid > 779 && skyid < 861 ) write_bouquet_service(bq_0c, (*i).second.sid, (*i).second.name, (*i).second.tsid);
-/*					else if ( skyid > 860 && skyid < 881 )
+/*					else if ( skyid > 871 && skyid < 881 )
 					{
 						if (!parentalcontrol)
 							write_bouquet_service(bq_0d, (*i).second.sid, (*i).second.name, (*i).second.tsid);
@@ -1499,7 +1499,7 @@ int main (int argc, char *argv[]) {
 					else if ( skyid > 469 && skyid < 501 ) write_bouquet_service(bq_0d, (*i).second.sid, (*i).second.name, (*i).second.tsid);
 //					else if ( skyid > 880 && skyid < 900 ) write_bouquet_service(bq_0e, (*i).second.sid, (*i).second.name, (*i).second.tsid);
 					else if ( skyid > 985 && skyid < 1000 ) write_bouquet_service(bq_0e, (*i).second.sid, (*i).second.name, (*i).second.tsid);
-					else if ( skyid > 860 && skyid < 950 )
+					else if ( skyid > 871 && skyid < 950 )
 					{
 						if (!parentalcontrol)
 							write_bouquet_service(bq_0f, (*i).second.sid, (*i).second.name, (*i).second.tsid);
