@@ -3,6 +3,7 @@
 # Thu 12 Jan 2017: let's have some helpfiles for cable, too? -AL
 # Sun 22 Jan 2017: added scan.end and scan.start scripts- AL
 # Wed 22 Mar 2017: added shellexec menu support for cable- AL
+# Sun 26 Mar 2017: corrected shellexec menu support for cable (key Blue)- AL
 
 cd /var/bin
 rm -f epg*
@@ -15,9 +16,7 @@ cd $etc/info
 rm -f Auto* Get* Multi* Set*
 cd /var/tuxbox/plugins
 rm -f 02-auto* 03-get*
-sed -i '
-/desc=/cdesc=this is NOT for plugin Timers!!
-s/Toolbox/Utilities/' 00-shellexec.cfg
+sed -i '/desc=/cdesc=this is NOT for plugin Timers!!' 00-shellexec.cfg
 cd $cfg
 rm -fr enigma
 mv -f scan.end-c scan.end
