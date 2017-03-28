@@ -502,7 +502,9 @@ bool CNeutrinoApp::showUserMenu(int button)
 						menu_prev = SNeutrinoSettings::ITEM_PLUGIN;
 						if (StreamFeaturesChanger == NULL)
 							StreamFeaturesChanger = new CStreamFeaturesChangeExec();
-						keyhelper.get(&key, &icon, tmp.find("Commando Toolbox") != std::string::npos ? CRCInput::RC_blue : CRCInput::RC_nokey);
+						// (test by AL 28 Mar 2017)
+						keyhelper.get(&key, &icon, cnt == 0 ? CRCInput::RC_blue : CRCInput::RC_nokey);
+//						keyhelper.get(&key, &icon, tmp.find("Commando Toolbox") != std::string::npos ? CRCInput::RC_blue : CRCInput::RC_nokey);
 						menu_item = new CMenuForwarder(g_PluginList->getName(count), true, NULL, StreamFeaturesChanger, to_string(count).c_str(), key, icon);
 						menu->addItem(menu_item, (cnt == 0));
 						cnt++;
