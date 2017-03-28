@@ -16,7 +16,9 @@ cd $etc/info
 rm -f Auto* Get* Multi* Set*
 cd /var/tuxbox/plugins
 rm -f 02-auto* 03-get*
-sed -i '/desc=/cdesc=this is NOT for plugin Timers!!' 00-shellexec.cfg
+sed -i 's/Toolbox/Utilities/
+/desc=/cdesc=this is NOT for plugin Timers!!
+' 00-shellexec.cfg
 cd $cfg
 rm -fr enigma
 mv -f scan.end-c scan.end
