@@ -62,12 +62,11 @@
 			<channel service_id="070c" name="Sky Drama &amp; Romance" service_type="01"/>
 			<channel service_id="070d" name="Sky Family" service_type="01"/>
 			<channel service_id="070e" name="Sky Select" service_type="01"/>
-			<channel service_id="070f" name="Sky Monsters" service_type="01"/>
+			<channel service_id="070f" name="Sky ScFi Horror" service_type="01"/>
 			<channel service_id="0710" name="Sky Thriller" service_type="01"/>
 			<channel service_id="0711" name="Sky Greats" service_type="01"/>
 			<channel service_id="0712" name="Sky Premiere 1hr" service_type="01"/>
 			<channel service_id="0713" name="Sky Premiere" service_type="01"/>
-			<channel service_id="0714" name="SONY TV" service_type="01"/>
 			<channel service_id="0715" name="The Community Channel" service_type="01"/>
 			<channel service_id="0716" name="Lifetime" service_type="01"/>
 			<channel service_id="0717" name="Pick" service_type="01"/>
@@ -290,6 +289,7 @@
 			<channel service_id="0201" name="SONY SAB" service_type="01"/>
 			<channel service_id="0202" name="Travel Channel" service_type="01"/>
 			<channel service_id="0203" name="Sony Channel" service_type="01"/>
+			<channel service_id="0204" name="SONY TV" service_type="01"/>
 		</transponder>
 		<transponder id="002c" onid="f020" frequency="627000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="1131" name="Vevo" service_type="01"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Autobouquets-VM generated on: Sat 18 Mar 2017 13:56:36 -->
+<!-- Autobouquets-VM generated on: Fri 31 Mar 2017 12:37:53 -->
 <zapit>
 	<Bouquet type="0" bouquet_id="0000" name="Entertainment" hidden="0" locked="0">
 		<channel serviceID="2775" name="BBC ONE London" tsid="0065" onid="f020"/>
@@ -153,7 +153,7 @@
 		<channel serviceID="070b" name="Sky Comedy" tsid="0012" onid="f020"/>
 		<channel serviceID="0710" name="Sky Thriller" tsid="0012" onid="f020"/>
 		<channel serviceID="070c" name="Sky Drama &amp; Romance" tsid="0012" onid="f020"/>
-		<channel serviceID="070f" name="Sky Monsters" tsid="0012" onid="f020"/>
+		<channel serviceID="070f" name="Sky ScFi Horror" tsid="0012" onid="f020"/>
 		<channel serviceID="070e" name="Sky Select" tsid="0012" onid="f020"/>
 		<channel serviceID="0580" name="Turner Classic Movies" tsid="000e" onid="f020"/>
 		<channel serviceID="04be" name="TCM +1" tsid="000c" onid="f020"/>
@@ -245,7 +245,7 @@
 		<channel serviceID="04bc" name="Star Gold" tsid="000c" onid="f020"/>
 		<channel serviceID="04b9" name="Star Plus" tsid="000c" onid="f020"/>
 		<channel serviceID="04bf" name="Star Life OK" tsid="000c" onid="f020"/>
-		<channel serviceID="0714" name="SONY TV" tsid="0012" onid="f020"/>
+		<channel serviceID="0204" name="SONY TV" tsid="0005" onid="f020"/>
 		<channel serviceID="083b" name="SONY MAX" tsid="0015" onid="f020"/>
 		<channel serviceID="0201" name="SONY SAB" tsid="0005" onid="f020"/>
 		<channel serviceID="0452" name="Zee TV" tsid="000b" onid="f020"/>
