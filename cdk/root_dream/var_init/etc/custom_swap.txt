@@ -20,3 +20,8 @@
 975=1248
 990=1015
 991=1247
+
+# fix three of the black screen TSid 07e7 channels- 14 Apr 2017 AL
+404=1104
+406=1086
+122=1123
