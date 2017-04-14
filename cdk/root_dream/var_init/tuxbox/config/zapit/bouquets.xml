@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- created by AutoBouquets N1 on: Fri 17 Mar 2017 11:28:56 -->
+<!-- created by AutoBouquets N1 on: Fri 14 Apr 2017 13:32:50 -->
 <zapit>
 <Bouquet type="0" bouquet_id="0022" name="Sky 28.2E Bouquet" hidden="0" locked="0">
 </Bouquet>
@@ -52,7 +52,7 @@
 	<channel serviceID="cc1a" name="Syfy" tsid="083d" onid="0002" sat="282"/>
 	<channel serviceID="cc38" name="Syfy +1" tsid="083d" onid="0002" sat="282"/>
 	<channel serviceID="1653" name="Sky Living" tsid="07ea" onid="0002" sat="282"/>
-	<channel serviceID="1650" name="Sky Living+1" tsid="07e7" onid="0002" sat="282"/>
+	<channel serviceID="15be" name="Sky Living+1" tsid="07ed" onid="0002" sat="282"/>
 	<channel serviceID="1859" name="TLC" tsid="07d9" onid="0002" sat="282"/>
 	<channel serviceID="ccde" name="TLC+1" tsid="0831" onid="0002" sat="282"/>
 	<channel serviceID="cce7" name="TLC+2" tsid="0831" onid="0002" sat="282"/>
@@ -183,12 +183,12 @@
 	<channel serviceID="1076" name="Sky Sports 1" tsid="07e5" onid="0002" sat="282"/>
 	<channel serviceID="1581" name="Sky Sports 2" tsid="07ea" onid="0002" sat="282"/>
 	<channel serviceID="107b" name="Sky Sports 3" tsid="07e5" onid="0002" sat="282"/>
-	<channel serviceID="1519" name="Sky Sports 4" tsid="07e7" onid="0002" sat="282"/>
+	<channel serviceID="151b" name="Sky Sports 4" tsid="07db" onid="0002" sat="282"/>
 	<channel serviceID="0517" name="Sky Sports 5" tsid="07db" onid="0002" sat="282"/>
 	<channel serviceID="0fff" name="Sky Sports 5 IRL" tsid="07ea" onid="0002" sat="282"/>
 	<channel serviceID="0ffb" name="Sky Sports Mix" tsid="07ed" onid="0002" sat="282"/>
 	<channel serviceID="051a" name="Sky Sports F1" tsid="07e5" onid="0002" sat="282"/>
-	<channel serviceID="132b" name="Sky Sp NewsHQ" tsid="07e7" onid="0002" sat="282"/>
+	<channel serviceID="052d" name="Sky Sp NewsHQ" tsid="07ea" onid="0002" sat="282"/>
 	<channel serviceID="132a" name="SkySpBoxOff" tsid="07e7" onid="0002" sat="282"/>
 	<channel serviceID="1651" name="Eurosport 1" tsid="07e7" onid="0002" sat="282"/>
 	<channel serviceID="1391" name="Eurosport 2" tsid="07e7" onid="0002" sat="282"/>
