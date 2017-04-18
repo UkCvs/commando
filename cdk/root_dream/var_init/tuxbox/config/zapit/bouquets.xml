@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- created by AutoBouquets N1 on: Fri 14 Apr 2017 13:32:50 -->
+<!-- created by AutoBouquets N1 on: Tue 18 Apr 2017 11:39:19 -->
 <zapit>
 <Bouquet type="0" bouquet_id="0022" name="Sky 28.2E Bouquet" hidden="0" locked="0">
 </Bouquet>
@@ -57,7 +57,7 @@
 	<channel serviceID="ccde" name="TLC+1" tsid="0831" onid="0002" sat="282"/>
 	<channel serviceID="cce7" name="TLC+2" tsid="0831" onid="0002" sat="282"/>
 	<channel serviceID="158b" name="FOX" tsid="07e5" onid="0002" sat="282"/>
-	<channel serviceID="151a" name="FOX+" tsid="07e7" onid="0002" sat="282"/>
+	<channel serviceID="151a" name="FOX+1" tsid="07e7" onid="0002" sat="282"/>
 	<channel serviceID="1979" name="alibi" tsid="07e6" onid="0002" sat="282"/>
 	<channel serviceID="1dce" name="alibi +1" tsid="082d" onid="0002" sat="282"/>
 	<channel serviceID="1b59" name="MTV" tsid="07da" onid="0002" sat="282"/>
@@ -84,7 +84,6 @@
 	<channel serviceID="d084" name="True Ent +1" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d15e" name="Showcase" tsid="0832" onid="0002" sat="282"/>
 	<channel serviceID="cfda" name="Showcase 3" tsid="083f" onid="0002" sat="282"/>
-	<channel serviceID="c490" name="ShowBiz TV" tsid="0811" onid="0002" sat="282"/>
 	<channel serviceID="d7a7" name="AMC from BT" tsid="0840" onid="0002" sat="282"/>
 	<channel serviceID="1e23" name="5STAR" tsid="0809" onid="0002" sat="282"/>
 	<channel serviceID="1e25" name="5STAR +1" tsid="0809" onid="0002" sat="282"/>
@@ -111,7 +110,7 @@
 	<channel serviceID="c508" name="Home &amp; Leisure" tsid="0837" onid="0002" sat="282"/>
 	<channel serviceID="d37c" name="Horse &amp; Country" tsid="0830" onid="0002" sat="282"/>
 	<channel serviceID="d74e" name="My Channel" tsid="082f" onid="0002" sat="282"/>
-	<channel serviceID="cfd5" name="Property Show" tsid="083f" onid="0002" sat="282"/>
+	<channel serviceID="cb6b" name="Property Show" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="197b" name="Really" tsid="07e6" onid="0002" sat="282"/>
 	<channel serviceID="1657" name="Sky Arts " tsid="07e5" onid="0002" sat="282"/>
 	<channel serviceID="d356" name="Travel Channel" tsid="0830" onid="0002" sat="282"/>
@@ -129,7 +128,7 @@
 	<channel serviceID="1134" name="Sky Premiere" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1135" name="Sky Prem+1" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="10d2" name="Sky Select" tsid="07dc" onid="0002" sat="282"/>
-	<channel serviceID="10d0" name="Sky Monsters" tsid="07dc" onid="0002" sat="282"/>
+	<channel serviceID="10d0" name="Sky ScFi/Horror" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="1136" name="Sky Thriller" tsid="07dc" onid="0002" sat="282"/>
 	<channel serviceID="2404" name="Film4" tsid="07f9" onid="0002" sat="282"/>
 	<channel serviceID="2409" name="Film4 +1" tsid="07f9" onid="0002" sat="282"/>
@@ -168,7 +167,7 @@
 	<channel serviceID="d03e" name="Scuzz" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="2eef" name="Kerrang!" tsid="07ef" onid="0002" sat="282"/>
 	<channel serviceID="cbd4" name="Vintage TV" tsid="083b" onid="0002" sat="282"/>
-	<channel serviceID="d74a" name="Chilled TV" tsid="082f" onid="0002" sat="282"/>
+	<channel serviceID="d74a" name="Chilled 90s" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="d057" name="Starz TV" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d043" name="Chartshow Hits" tsid="083e" onid="0002" sat="282"/>
 	<channel serviceID="d034" name="Flava" tsid="083e" onid="0002" sat="282"/>
@@ -356,10 +355,9 @@
 	<channel serviceID="d32a" name="The Dept Store" tsid="0836" onid="0002" sat="282"/>
 	<channel serviceID="d329" name="The Mall" tsid="0836" onid="0002" sat="282"/>
 	<channel serviceID="571e" name="QVC Style" tsid="082b" onid="0002" sat="282"/>
-	<channel serviceID="cb80" name="Craft Channel" tsid="0839" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="000c" name="International" hidden="0" locked="0">
-	<channel serviceID="c530" name="&amp;TV" tsid="0837" onid="0002" sat="282"/>
+	<channel serviceID="d32e" name="&amp;TV" tsid="0836" onid="0002" sat="282"/>
 	<channel serviceID="d395" name="AAJ TAK" tsid="0830" onid="0002" sat="282"/>
 	<channel serviceID="d746" name="Aastha" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="cb8f" name="ABN TV" tsid="083b" onid="0002" sat="282"/>
@@ -385,10 +383,9 @@
 	<channel serviceID="c6cb" name="Channel i" tsid="082a" onid="0002" sat="282"/>
 	<channel serviceID="cb86" name="Channels 24" tsid="083b" onid="0002" sat="282"/>
 	<channel serviceID="c47c" name="CHSTV" tsid="0811" onid="0002" sat="282"/>
-	<channel serviceID="d859" name="CNC World" tsid="0838" onid="0002" sat="282"/>
+	<channel serviceID="d15f" name="CNC World" tsid="0832" onid="0002" sat="282"/>
 	<channel serviceID="5857" name="Bangla TV" tsid="082e" onid="0002" sat="282"/>
 	<channel serviceID="cd23" name="Dunya News" tsid="0844" onid="0002" sat="282"/>
-	<channel serviceID="c4e5" name="GEO News" tsid="0837" onid="0002" sat="282"/>
 	<channel serviceID="d74b" name="GEO TEZ" tsid="082f" onid="0002" sat="282"/>
 	<channel serviceID="d3a9" name="GEO TV" tsid="0830" onid="0002" sat="282"/>
 	<channel serviceID="d39a" name="Glory TV" tsid="0830" onid="0002" sat="282"/>
@@ -425,7 +422,7 @@
 	<channel serviceID="1225" name="SkyNws Arabia" tsid="07ed" onid="0002" sat="282"/>
 	<channel serviceID="cb21" name="SONY MAX" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="d35b" name="SONY SAB" tsid="0830" onid="0002" sat="282"/>
-	<channel serviceID="1bee" name="SONY TV" tsid="07e2" onid="0002" sat="282"/>
+	<channel serviceID="d355" name="SONY TV" tsid="0830" onid="0002" sat="282"/>
 	<channel serviceID="cb91" name="Star GOLD" tsid="083b" onid="0002" sat="282"/>
 	<channel serviceID="cb90" name="Star Utsav" tsid="083b" onid="0002" sat="282"/>
 	<channel serviceID="cbd9" name="Star Life OK" tsid="083b" onid="0002" sat="282"/>
@@ -440,10 +437,10 @@
 	<channel serviceID="cb27" name="RishteyCine" tsid="0839" onid="0002" sat="282"/>
 	<channel serviceID="c6c4" name="Venus TV" tsid="082a" onid="0002" sat="282"/>
 	<channel serviceID="c6c8" name="Vox Africa" tsid="082a" onid="0002" sat="282"/>
-	<channel serviceID="c521" name="Zee Cinema" tsid="0837" onid="0002" sat="282"/>
-	<channel serviceID="c52b" name="Zee Punjabi" tsid="0837" onid="0002" sat="282"/>
-	<channel serviceID="c51c" name="Zee TV" tsid="0837" onid="0002" sat="282"/>
-	<channel serviceID="c526" name="Zing" tsid="0837" onid="0002" sat="282"/>
+	<channel serviceID="1772" name="Zee Cinema" tsid="07d7" onid="0002" sat="282"/>
+	<channel serviceID="d32c" name="Zee Punjabi" tsid="0836" onid="0002" sat="282"/>
+	<channel serviceID="d32d" name="Zee TV" tsid="0836" onid="0002" sat="282"/>
+	<channel serviceID="1771" name="Zing" tsid="07d7" onid="0002" sat="282"/>
 </Bouquet>
 <Bouquet type="0" bouquet_id="000e" name="Specialist" hidden="0" locked="0">
 	<channel serviceID="11ad" name="Sky Intro" tsid="07dc" onid="0002" sat="282"/>
