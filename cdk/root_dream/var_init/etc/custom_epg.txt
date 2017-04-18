@@ -1,4 +1,4 @@
-# AutoBouquets custom_epg.txt usermap auto-generated on: Fri 17 Mar 2017 11:29:24
+# AutoBouquets custom_epg.txt usermap auto-generated on: Tue 18 Apr 2017 11:39:47
 
 # IMPORTANT! Editing requires a Linux-compatible editor like NotePad++ (FREEWARE)
 # AutoBouquets reads this file to create a new channels.cfg map for GetEPG to use
@@ -79,7 +79,7 @@
 154:1:1:000:TLC+1
 200:1:1:000:TLC+2
 124:1:1:024:FOX
-165:1:1:000:FOX+
+165:1:1:000:FOX+1
 132:1:1:024:alibi
 226:1:1:000:alibi +1
 126:1:1:024:MTV
@@ -106,7 +106,6 @@
 184:1:1:024:True Ent +1
 212:1:1:024:Showcase
 261:1:1:024:Showcase 3
-266:1:1:024:ShowBiz TV
 192:1:1:024:AMC from BT
 176:1:1:024:5STAR
 190:1:1:000:5STAR +1
@@ -151,7 +150,7 @@
 301:1:1:024:Sky Premiere
 302:1:1:000:Sky Prem+1
 312:1:1:024:Sky Select
-311:1:1:024:Sky Monsters
+311:1:1:024:Sky ScFi/Horror
 309:1:1:024:Sky Thriller
 315:1:1:024:Film4
 316:1:1:000:Film4 +1
@@ -190,7 +189,7 @@
 367:1:1:024:Scuzz
 368:1:1:024:Kerrang!
 369:1:1:024:Vintage TV
-370:1:1:024:Chilled TV
+370:1:1:024:Chilled 90s
 371:1:1:024:Starz TV
 372:1:1:024:Chartshow Hits
 374:1:1:024:Flava
@@ -378,7 +377,6 @@
 676:0:0:000:The Dept Store
 677:0:0:000:The Mall
 678:0:0:000:QVC Style
-679:0:0:000:Craft Channel
 
 #Bouquet 0c: "International"
 795:0:0:000:&TV
@@ -410,8 +408,7 @@
 515:0:0:000:CNC World
 821:0:0:000:Bangla TV
 850:0:0:000:Dunya News
-817:0:0:000:GEO News
-816:0:0:000:GEO TEZ
+817:0:0:000:GEO TEZ
 807:0:0:000:GEO TV
 823:0:0:000:Glory TV
 800:0:0:000:Hidayat TV
