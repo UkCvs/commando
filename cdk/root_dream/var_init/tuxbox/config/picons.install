@@ -32,7 +32,7 @@ fi
 #download failed check
 [ ! -s $tiz ] && rm -f $tiz && exit 1
 
-rm -f $icl/*.raw
+rm $icl/*.raw
 cd $icl
 unzip $tiz
 rm -f $tiz
