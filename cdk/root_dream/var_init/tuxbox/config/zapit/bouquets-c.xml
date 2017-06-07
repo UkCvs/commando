@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Autobouquets-VM generated on: Fri 31 Mar 2017 12:37:53 -->
+<!-- Autobouquets-VM generated on: Wed 07 Jun 2017 12:26:11 -->
 <zapit>
 	<Bouquet type="0" bouquet_id="0000" name="Entertainment" hidden="0" locked="0">
 		<channel serviceID="2775" name="BBC ONE London" tsid="0065" onid="f020"/>
@@ -146,10 +146,10 @@
 		<channel serviceID="0713" name="Sky Premiere" tsid="0012" onid="f020"/>
 		<channel serviceID="0712" name="Sky Premiere 1hr" tsid="0012" onid="f020"/>
 		<channel serviceID="051a" name="Sky Hits" tsid="000d" onid="f020"/>
-		<channel serviceID="0711" name="Sky Greats" tsid="0012" onid="f020"/>
 		<channel serviceID="070a" name="Sky Disney" tsid="0012" onid="f020"/>
 		<channel serviceID="070d" name="Sky Family" tsid="0012" onid="f020"/>
-		<channel serviceID="0709" name="Sky Action&amp;Adventure" tsid="0012" onid="f020"/>
+		<channel serviceID="0711" name="Sky Greats" tsid="0012" onid="f020"/>
+		<channel serviceID="0709" name="Sky Action&amp;Adventure" tsid="0012" onid="f020">
 		<channel serviceID="070b" name="Sky Comedy" tsid="0012" onid="f020"/>
 		<channel serviceID="0710" name="Sky Thriller" tsid="0012" onid="f020"/>
 		<channel serviceID="070c" name="Sky Drama &amp; Romance" tsid="0012" onid="f020"/>
@@ -164,6 +164,7 @@
 		<channel serviceID="00d4" name="Movies 4 Men" tsid="0002" onid="f020"/>
 		<channel serviceID="10d2" name="Film4" tsid="002b" onid="f020"/>
 		<channel serviceID="10d3" name="Film4 +1" tsid="002b" onid="f020"/>
+		<channel serviceID="0321" name="Talking Pictures" tsid="0008" onid="f020"/>
 	</Bouquet>
 	<Bouquet type="0" bouquet_id="0005" name="Sport" hidden="0" locked="0">
 		<channel serviceID="0518" name="Sky Sports 1" tsid="000d" onid="f020"/>
@@ -185,7 +186,7 @@
 		<channel serviceID="07d1" name="At The Races" tsid="0014" onid="f020"/>
 		<channel serviceID="00d6" name="Racing UK" tsid="0002" onid="f020"/>
 		<channel serviceID="0451" name="Liverpool FC TV" tsid="000b" onid="f020"/>
-		<channel serviceID="0642" name="Motors TV" tsid="0010" onid="f020"/>
+		<channel serviceID="0642" name="motorsport.tv" tsid="0010" onid="f020"/>
 		<channel serviceID="0200" name="Box Nation" tsid="0005" onid="f020"/>
 		<channel serviceID="00d5" name="Premier Sports" tsid="0002" onid="f020"/>
 		<channel serviceID="0335" name="GINX" tsid="0008" onid="f020"/>
@@ -207,7 +208,7 @@
 		<channel serviceID="05e2" name="FRANCE24 (ENGLISH)" tsid="000f" onid="f020"/>
 	</Bouquet>
 	<Bouquet type="0" bouquet_id="0007" name="Kids" hidden="0" locked="0">
-		<channel serviceID="1136" name="TIDDLERS TV" tsid="002c" onid="f020"/>
+		<channel serviceID="1136" name="Virgin TV Kids" tsid="002c" onid="f020"/>
 		<channel serviceID="025e" name="CBBC Channel" tsid="0006" onid="f020"/>
 		<channel serviceID="025f" name="CBeebies" tsid="0006" onid="f020"/>
 		<channel serviceID="0138" name="Baby TV" tsid="0003" onid="f020"/>
@@ -248,10 +249,10 @@
 		<channel serviceID="0204" name="SONY TV" tsid="0005" onid="f020"/>
 		<channel serviceID="083b" name="SONY MAX" tsid="0015" onid="f020"/>
 		<channel serviceID="0201" name="SONY SAB" tsid="0005" onid="f020"/>
-		<channel serviceID="0452" name="Zee TV" tsid="000b" onid="f020"/>
+		<channel serviceID="05ea" name="Zee TV" tsid="000f" onid="f020"/>
 		<channel serviceID="0456" name="Zee Cinema" tsid="000b" onid="f020"/>
-		<channel serviceID="0454" name="&amp;TV" tsid="000b" onid="f020"/>
-		<channel serviceID="0455" name="Zee Punjabi" tsid="000b" onid="f020"/>
+		<channel serviceID="05eb" name="&amp;TV" tsid="000f" onid="f020"/>
+		<channel serviceID="07df" name="Zee Punjabi" tsid="0014" onid="f020"/>
 		<channel serviceID="0453" name="Zing" tsid="000b" onid="f020"/>
 		<channel serviceID="0390" name="B4U Movies" tsid="0009" onid="f020"/>
 		<channel serviceID="0391" name="B4U Music" tsid="0009" onid="f020"/>
@@ -268,6 +269,8 @@
 		<channel serviceID="0269" name="Nollywood Movies" tsid="0006" onid="f020"/>
 		<channel serviceID="0407" name="NDTV India" tsid="000a" onid="f020"/>
 		<channel serviceID="0408" name="NDTV Spice" tsid="000a" onid="f020"/>
+		<channel serviceID="0773" name="Islam Channel English" tsid="0013" onid="f020"/>
+		<channel serviceID="0388" name="Islam Channel Urdu" tsid="0009" onid="f020"/>
 	</Bouquet>
 	<Bouquet type="0" bouquet_id="0010" name="BBC Red Button" hidden="0" locked="0">
 		<channel serviceID="0262" name="BBC Red Button 0" tsid="0006" onid="f020"/>
@@ -331,7 +334,7 @@
 		<channel serviceID="0845" name="Heart" tsid="0015" onid="f020"/>
 		<channel serviceID="084c" name="LBC" tsid="0015" onid="f020"/>
 		<channel serviceID="0848" name="World Radio Network" tsid="0015" onid="f020"/>
-		<channel serviceID="084b" name="Heart extra" tsid="0015" onid="f020"/>
+		<channel serviceID="084b" name="Heart 80s" tsid="0015" onid="f020"/>
 		<channel serviceID="0842" name="Classic FM" tsid="0015" onid="f020"/>
 		<channel serviceID="083f" name="Gold" tsid="0015" onid="f020"/>
 		<channel serviceID="0844" name="Planet Rock" tsid="0015" onid="f020"/>

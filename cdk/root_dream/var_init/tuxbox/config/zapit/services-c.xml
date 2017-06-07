@@ -9,7 +9,7 @@
 	<cable name="CableUK MyLocal">
 		<transponder id="0010" onid="f020" frequency="459000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="0641" name="ITVBe" service_type="01"/>
-			<channel service_id="0642" name="Motors TV" service_type="01"/>
+			<channel service_id="0642" name="motorsport.tv" service_type="01"/>
 			<channel service_id="0643" name="BT Sport Extra 0" service_type="01"/>
 			<channel service_id="0644" name="BT Sport Extra 2" service_type="01"/>
 			<channel service_id="0645" name="BT Sport Extra 3" service_type="01"/>
@@ -28,6 +28,7 @@
 			<channel service_id="0385" name="Quest Red" service_type="01"/>
 			<channel service_id="0386" name="Bike" service_type="01"/>
 			<channel service_id="0387" name="God Channel" service_type="01"/>
+			<channel service_id="0388" name="Islam Channel Urdu" service_type="01"/>
 			<channel service_id="0389" name="Movies 24" service_type="01"/>
 			<channel service_id="038a" name="Movies 24 +" service_type="01"/>
 			<channel service_id="038b" name="Universal Channel" service_type="01"/>
@@ -129,6 +130,7 @@
 			<channel service_id="076f" name="horror channel" service_type="01"/>
 			<channel service_id="0771" name="horror channel +1" service_type="01"/>
 			<channel service_id="0772" name="CBS Reality +1" service_type="01"/>
+			<channel service_id="0773" name="Islam Channel English" service_type="01"/>
 			<channel service_id="0774" name="S4C" service_type="01"/>
 			<channel service_id="0775" name="S4C Audio Desc" service_type="01"/>
 			<channel service_id="0776" name="CBS Drama" service_type="01"/>
@@ -167,10 +169,7 @@
 			<channel service_id="044f" name="Challenge" service_type="01"/>
 			<channel service_id="0450" name="Forces TV" service_type="01"/>
 			<channel service_id="0451" name="Liverpool FC TV" service_type="01"/>
-			<channel service_id="0452" name="Zee TV" service_type="01"/>
 			<channel service_id="0453" name="Zing" service_type="01"/>
-			<channel service_id="0454" name="&amp;TV" service_type="01"/>
-			<channel service_id="0455" name="Zee Punjabi" service_type="01"/>
 			<channel service_id="0456" name="Zee Cinema" service_type="01"/>
 			<channel service_id="0457" name="truTV" service_type="01"/>
 			<channel service_id="0458" name="Tiny Pop" service_type="01"/>
@@ -194,6 +193,7 @@
 			<channel service_id="07dc" name="E4 +1" service_type="01"/>
 			<channel service_id="07dd" name="More 4" service_type="01"/>
 			<channel service_id="07de" name="MUTV" service_type="01"/>
+			<channel service_id="07df" name="Zee Punjabi" service_type="01"/>
 		</transponder>
 		<transponder id="0004" onid="f020" frequency="355000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="0191" name="MTV" service_type="01"/>
@@ -264,7 +264,7 @@
 			<channel service_id="0848" name="World Radio Network" service_type="02"/>
 			<channel service_id="0849" name="Smooth Radio" service_type="02"/>
 			<channel service_id="084a" name="Food Network" service_type="01"/>
-			<channel service_id="084b" name="Heart extra" service_type="02"/>
+			<channel service_id="084b" name="Heart 80s" service_type="02"/>
 			<channel service_id="084c" name="LBC" service_type="02"/>
 			<channel service_id="084d" name="PBS America" service_type="01"/>
 			<channel service_id="084e" name="Absolute 80s" service_type="02"/>
@@ -294,7 +294,7 @@
 		<transponder id="002c" onid="f020" frequency="627000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
 			<channel service_id="1131" name="Vevo" service_type="01"/>
 			<channel service_id="1135" name="Kix Power" service_type="01"/>
-			<channel service_id="1136" name="TIDDLERS TV" service_type="01"/>
+			<channel service_id="1136" name="Virgin TV Kids" service_type="01"/>
 			<channel service_id="1141" name="Worldbox" service_type="01"/>
 		</transponder>
 		<transponder id="000d" onid="f020" frequency="435000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
@@ -360,8 +360,11 @@
 			<channel service_id="05e5" name="The Box" service_type="01"/>
 			<channel service_id="05e7" name="Magic" service_type="01"/>
 			<channel service_id="05e8" name="Box Upfront" service_type="01"/>
+			<channel service_id="05ea" name="Zee TV" service_type="01"/>
+			<channel service_id="05eb" name="&amp;TV" service_type="01"/>
 		</transponder>
 		<transponder id="0008" onid="f020" frequency="387000000" inversion="2" symbol_rate="6952000" fec_inner="3" modulation="5">
+			<channel service_id="0321" name="Talking Pictures" service_type="01"/>
 			<channel service_id="0322" name="My5" service_type="01"/>
 			<channel service_id="0323" name="5 USA +1" service_type="01"/>
 			<channel service_id="0324" name="Channel 5+1" service_type="01"/>
