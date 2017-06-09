@@ -149,7 +149,7 @@
 		<channel serviceID="070a" name="Sky Disney" tsid="0012" onid="f020"/>
 		<channel serviceID="070d" name="Sky Family" tsid="0012" onid="f020"/>
 		<channel serviceID="0711" name="Sky Greats" tsid="0012" onid="f020"/>
-		<channel serviceID="0709" name="Sky Action&amp;Adventure" tsid="0012" onid="f020">
+		<channel serviceID="0709" name="Sky Action&amp;Adventure" tsid="0012" onid="f020"/>
 		<channel serviceID="070b" name="Sky Comedy" tsid="0012" onid="f020"/>
 		<channel serviceID="0710" name="Sky Thriller" tsid="0012" onid="f020"/>
 		<channel serviceID="070c" name="Sky Drama &amp; Romance" tsid="0012" onid="f020"/>
