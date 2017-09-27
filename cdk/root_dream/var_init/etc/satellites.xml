@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- www.ukcvs.net updated on 18 Aug 2017 - LraiZer and PaphosAL
+<!-- www.ukcvs.net updated on 27 Sep 2017 - LraiZer and PaphosAL
 with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 <satellites>
 	<sat name="Astra 28.2E" flags="0" position="282">
@@ -52,13 +52,11 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="11739000" system="0" symbol_rate="29500000" fec_inner="6" polarization="1" modulation="1"/>
 		<transponder frequency="11778000" system="0" symbol_rate="27500000" fec_inner="2" polarization="1" modulation="1"/>
 		<transponder frequency="11836500" system="0" symbol_rate="27500000" fec_inner="4" polarization="0" modulation="1"/>
-		<transponder frequency="11875500" system="0" symbol_rate="27500000" fec_inner="2" polarization="0" modulation="1"/>
 		<transponder frequency="11895000" system="0" symbol_rate="27500000" fec_inner="2" polarization="1" modulation="1"/>
 		<transponder frequency="11914500" system="0" symbol_rate="27500000" fec_inner="4" polarization="0" modulation="1"/>
 		<transponder frequency="11934000" system="0" symbol_rate="27500000" fec_inner="4" polarization="1" modulation="1"/>
 		<transponder frequency="11953500" system="0" symbol_rate="27500000" fec_inner="2" polarization="0" modulation="1"/>
 		<transponder frequency="12070500" system="0" symbol_rate="27500000" fec_inner="4" polarization="0" modulation="1"/>
-		<transponder frequency="12090000" system="0" symbol_rate="29500000" fec_inner="6" polarization="1" modulation="1"/>
 		<transponder frequency="12109500" system="0" symbol_rate="27500000" fec_inner="4" polarization="0" modulation="1"/>
 		<transponder frequency="12129000" system="0" symbol_rate="27500000" fec_inner="2" polarization="1" modulation="1"/>
 		<transponder frequency="12148500" system="0" symbol_rate="27500000" fec_inner="4" polarization="0" modulation="1"/>
@@ -67,6 +65,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="12265500" system="0" symbol_rate="29500000" fec_inner="6" polarization="0" modulation="1"/>
 		<transponder frequency="12304000" system="0" symbol_rate="27500000" fec_inner="4" polarization="0" modulation="1"/>
 		<transponder frequency="12343500" system="0" symbol_rate="29500000" fec_inner="6" polarization="0" modulation="1"/>
+		<transponder frequency="12382500" system="0" symbol_rate="27500000" fec_inner="4" polarization="0" modulation="1"/>
 		<transponder frequency="12460500" system="0" symbol_rate="29500000" fec_inner="6" polarization="0" modulation="1"/>
 	</sat>
 	<sat name="Astra 3B 23.5E" flags="0" position="235">
