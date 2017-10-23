@@ -221,7 +221,7 @@ linux-libc-headers-2.6.9.1.tar.bz2;http://ep09.pld-linux.org/~mmazur/linux-libc-
 linux-2.6.9.tar.bz2;ftp://ftp.de.kernel.org/pub/linux/kernel/v2.6;ftp://ftp.kernel.org/pub/linux/kernel/v2.6
 linuxppc-2.6.9-r1.diff.bz2;http://sources.dreamboxupdate.com/download/kernel-patches
 linuxppc-2.6.9-dream-s7.diff.bz2;http://sources.dreamboxupdate.com/download/kernel-patches
-binutils-2.15.91.0.2.tar.gz;ftp://ftp.kernel.org/pub/linux/devel/binutils
+binutils-2.15.91.0.2.tar.gz;http://www.kernel.org/pub/linux/devel/binutils/
 glibc-2.3.2.tar.bz2;ftp://$(gnuserver)/glibc
 glibc-2.3.2-r0.diff.bz2;http://sources.dreamboxupdate.com/download/patches
 nptl-0.60.tar.bz2;ftp://ftp.devil-linux.org/pub/devel/sources/1.2
