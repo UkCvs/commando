@@ -12,7 +12,7 @@
 u-boot-2012.04.tar.bz2;ftp://ftp.denx.de/pub/u-boot
 linux-2.4.37.11.tar.bz2;ftp://ftp.servus.at/linux-kernel;http://www.linuxgrill.com/anonymous/kernel/v2.4
 linux-2.6.26.8.tar.bz2;http://sources.buildroot.net
-cifs-1.20c-2.4.tar.gz;http://us1.samba.org/samba/ftp/cifs-cvs
+cifs-1.20c-2.4.tar.gz;http://download.samba.org/pub/samba/cifs-cvs/
 linux-2.4.34-dbox2-mtd0305.diff.bz2
 autofs4-2.4-module-20050404.tar.gz;http://www.kernel.org/pub/linux/daemons/autofs/v4
 binutils-2.24.51.0.3.tar.gz;http://www.kernel.org/pub/linux/devel/binutils/
