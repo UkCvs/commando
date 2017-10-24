@@ -21,14 +21,14 @@ while ( <RULES> )
     {
       if ( $_ =~ m#^ftp://# )
       {
-        $output .= "wget -c --passive-ftp -P --no-check-certificate \$(archivedir) " . $_ . "/" . $file . " || \\\n\t";
+        $output .= "wget -c --passive-ftp --no-check-certificate -P \$(archivedir) " . $_ . "/" . $file . " || \\\n\t";
       }
       elsif ( $_ =~ m#^(http|https)://# )
       {
-        $output .= "wget -t 2 -T 10 -c -P --no-check-certificate \$(archivedir) " . $_ . "/" . $file . " || \\\n\t";
+        $output .= "wget -t 2 -T 10 -c --no-check-certificate -P \$(archivedir) " . $_ . "/" . $file . " || \\\n\t";
       }
     }
-    $output .= "wget -c -P --no-check-certificate \$(archivedir) http://www.i-have-a-dreambox.com/Archive/" . $file . " )";
+    $output .= "wget -c --no-check-certificate -P \$(archivedir) http://www.i-have-a-dreambox.com/Archive/" . $file . " )";
     $output .= "\n\t\@touch \$\@";
     $output .= "\n\n";
   }
