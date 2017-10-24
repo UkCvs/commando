@@ -216,7 +216,7 @@ $(flashprefix)/boot-cramfs.img: $(KERNEL_BUILD_FILENAME)\
 		$(flashprefix)/boot
 	$(INSTALL) $(KERNEL_BUILD_FILENAME) $(flashprefix)/boot/root/platform/kernel/os
 
-chmod u+x $(hostprefix)/bin/mkcramfs-e
+	chmod u+x $(hostprefix)/bin/mkcramfs-e
 
 if BOXMODEL_DM7000
 	$(hostprefix)/bin/mkcramfs-e -eb $(flashprefix)/boot $(flashprefix)/boot-cramfs.img
