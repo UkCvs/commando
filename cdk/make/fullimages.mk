@@ -216,10 +216,10 @@ $(flashprefix)/boot-cramfs.img: $(KERNEL_BUILD_FILENAME)\
 		$(flashprefix)/boot
 	$(INSTALL) $(KERNEL_BUILD_FILENAME) $(flashprefix)/boot/root/platform/kernel/os
 if BOXMODEL_DM7000
-	$(hostprefix)/bin/mkcramfs-e -eb $(flashprefix)/boot $(flashprefix)/boot-cramfs.img
+	$(hostprefix)/bin/mkcramfs -e -eb $(flashprefix)/boot $(flashprefix)/boot-cramfs.img
 else
 	mv $(flashprefix)/boot/root/platform/kernel/bild .
-	$(hostprefix)/bin/mkcramfs-e -eb $(flashprefix)/boot $(flashprefix)/boot-cramfs.img
+	$(hostprefix)/bin/mkcramfs -e -eb $(flashprefix)/boot $(flashprefix)/boot-cramfs.img
 	mv ./bild $(flashprefix)/boot/root/platform/kernel
 endif
 	@if [ `stat -c %s $(flashprefix)/boot-cramfs.img` -gt 1048576 ]; then \
