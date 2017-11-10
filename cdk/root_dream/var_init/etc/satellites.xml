@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- www.ukcvs.net updated on 08 Nov 2017 - LraiZer and PaphosAL
+<!-- www.ukcvs.net updated on 10 Nov 2017 - LraiZer and PaphosAL
 with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 <satellites>
 	<sat name="Astra 28.2E" flags="0" position="282">
@@ -46,6 +46,7 @@ with thanks to Huevos @ http://satellites-xml.org/ (Developed by Team VIX) -->
 		<transponder frequency="11567500" system="0" symbol_rate="22000000" fec_inner="4" polarization="1" modulation="1"/>
 		<transponder frequency="11597000" system="0" symbol_rate="22000000" fec_inner="4" polarization="1" modulation="1"/>
 		<transponder frequency="11612000" system="0" symbol_rate="23000000" fec_inner="2" polarization="0" modulation="1"/>
+		<transponder frequency="11641500" system="0" symbol_rate="23000000" fec_inner="2" polarization="0" modulation="1"/>
 		<transponder frequency="11656000" system="0" symbol_rate="22000000" fec_inner="4" polarization="1" modulation="1"/>
 		<transponder frequency="11670750" system="0" symbol_rate="22000000" fec_inner="4" polarization="0" modulation="1"/>
 		<transponder frequency="11739000" system="0" symbol_rate="29500000" fec_inner="6" polarization="1" modulation="1"/>
