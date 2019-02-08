@@ -21,7 +21,7 @@ Committed to the C16 GitHub by AL on Wed 18 Jan 2017 with credits :)
 	<transponder frequency="643000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00011" name="00011 Ipswich"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00012" name="00012 Leicester"/>
 	<transponder frequency="299000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00013" name="00013 Reading"/>
-	<transponder frequency="754250" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00014" name="00014 Andover"/>
+	<transponder frequency="642250" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00014" name="00014 Andover"/>
 	<transponder frequency="378250" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00015" name="00015 Lichfield"/>
 	<transponder frequency="387000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00016" name="00016 Warwick"/>
 	<transponder frequency="339000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00017" name="00017 Hemel"/>
