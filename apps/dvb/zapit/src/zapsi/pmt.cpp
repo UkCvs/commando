@@ -52,6 +52,7 @@ extern CEventServer *eventServer;
  * 0x05 ITU-T Rec. H.222.0 | ISO/IEC 13818-1 private_sections, e.g. MHP Application signalling stream
  * 0x06 ITU-T Rec. H.222.0 | ISO/IEC 13818-1 PES packets containing private data, e.g. teletext or ac3
  * 0x0b ISO/IEC 13818-6 type B
+ * 0x1b ITU-T Rec. H.264 | ISO/IEC 14496-10 Video AVC video stream Advanced video coding
  * 0x81 User Private (MTV)
  * 0x90 User Private (Premiere Mail, BD_DVB)
  * 0xc0 User Private (Canal+)
@@ -241,6 +242,7 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 	switch (esInfo->stream_type) {
 	case 0x01:
 	case 0x02:
+	case 0x1B:
 		channel->setVideoPid(esInfo->elementary_PID);
 		descramble = true;
 		break;
