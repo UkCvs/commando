@@ -22,7 +22,7 @@ sed -i 's/Toolbox/Utilities/
 cd $cfg
 rm -fr enigma
 # Disable broken cable scan end script, PaphosAL (RIP) is no longer with us to fix/maintain ;(
-# mv -f scan.end-c scan.end
+mv -f scan.end scan.end-s
 mv -f scan.start-c scan.start
 mv -f shellexec-c.conf shellexec.conf
 rm -f menu_a* menu_b* menu_g* menu_P* menu_S* menu_u*
