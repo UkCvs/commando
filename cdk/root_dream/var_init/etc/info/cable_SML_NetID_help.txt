@@ -21,7 +21,7 @@ mate or neighbour who DOES have a subbed box and ask them to help you?
 
 Now on your dm500c box, using C16 from 08 Jan 2017 or later, go into the SCAN
 menu and manually enter your 5 digit NetID, your 6 digit Frequency, and
-then toggle your Symrate to 6875, , or  (there can only be one!). You
+then toggle your Symrate to 6875, 6887, or 6952 (there can only be one!). You
 do this by highlighting the <Scan-Modes One Transponder> line then click OK
 and then enter YOUR local data in the required fields. Then SAVE settings!
 
