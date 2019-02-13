@@ -54,7 +54,7 @@ Committed to the C16 GitHub by AL on Wed 18 Jan 2017 with credits :)
 	<transponder frequency="619000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40982" name="40982 Dundee (Edinburgh 2 SCOTLAND)"/>
 	<transponder frequency="539000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40983" name="40983 TTA Knowsley DMC (Hayes_RHE)"/>
 	<transponder frequency="619000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40984" name="40984 Uddingston (SCOTLAND)"/>
-	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="40985" name="40985 Haringey"/>
+	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40985" name="40985 Haringey"/>
 	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40986" name="40986 NGRHEE Knowsley"/>
 	<transponder frequency="403000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="40987" name="40987 Exeter"/>
 	<transponder frequency="403000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="40988" name="40988 Plymouth"/>
