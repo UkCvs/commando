@@ -519,12 +519,6 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		serviceName  = CDVBString((const char*)&(buffer[4 + service_provider_name_length + 1]), (2 + buffer[1]) - (4 + service_provider_name_length + 1)).getContent();
 	}
 
-	if (serviceName.length() > 2)
-	{
-		if (serviceName.substr(serviceName.length() - 2) == "HD")
-			return;
-	}
-
 	found_channels++;
 
 	eventServer->sendEvent
@@ -603,7 +597,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		uint8_t bouquetpos = 0;
 		uint16_t channelnumber = channel_number;
 
-		vbouq_t ent, fact, life, music, movie, sport, news, kids, shop, inter, radio, adult, other;
+		vbouq_t ent, fact, life, music, movie, sport, news, kids, shop, inter, radio, adult, extra, other, hidef;
 
 		ent.name   = "Entertainment"; ent.min = 101; ent.max = 244; ent.pos = 0;
 		fact.name  = "Factual"; fact.min = 245; fact.max = 277; fact.pos = 1;
@@ -617,7 +611,28 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		inter.name = "International"; inter.min = 800; inter.max = 849; inter.pos = 9;
 		radio.name = "Radio"; radio.min = 900; radio.max = 968; radio.pos = 10;
 		adult.name = "Adult"; adult.min = 969; adult.max = 981; adult.pos = 11;
-		other.name = "Other"; other.pos = 12;
+		extra.name = "Extra"; extra.pos = 12;
+		other.name = "Other"; other.pos = 13;
+		hidef.name = "HD"; hidef.pos = 14;
+
+		bool is_hidef = false;
+		std::size_t found_hidef = serviceName.find("HD");
+		if (found_hidef != std::string::npos)
+		{
+			is_hidef = true;
+			providerName = hidef.name;
+			bouquetpos = hidef.pos;
+		}
+
+		bool is_extra = false;
+		std::size_t found_exts = serviceName.find("Sport Extra");
+		std::size_t found_extv = serviceName.find("ETV");
+		if ((found_exts != std::string::npos) || (found_extv != std::string::npos))
+		{
+			is_extra = true;
+			providerName = extra.name;
+			bouquetpos = extra.pos;
+		}
 
 		typedef std::map<uint8_t, vbouq_t> virginBouquets;
 		virginBouquets vb;
@@ -641,7 +656,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 
 		virginBouquets::iterator it = vb.find(bouquet_id);
 
-		if (it != vb.end())
+		if ((it != vb.end()) && !is_hidef && !is_extra)
 		{
 			if ((channel_number >= it->second.min) && (channel_number <= it->second.max) && (atoi(serviceName.c_str()) != channel_number))
 			{
