@@ -235,7 +235,7 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 			}
 		}
 	}
-	scan_mode = configfile.getInt32("scan_mode", 1);
+	scan_mode = configfile.getInt32("scan_mode", 0);
 	TP_scan = configfile.getInt32("TP_scan", (delivery_system == DVB_S) ? 2 : 1);
 	TP_fec = configfile.getInt32("TP_fec", 3);
 	TP_pol = configfile.getInt32("TP_pol", 0);
@@ -245,7 +245,7 @@ bool CScanSettings::loadSettings(const char * const fileName, const delivery_sys
 	TP_mod = configfile.getInt32("TP_mod", QAM_AUTO); // default qam auto
 #else
 	// i do not know how to do it correctly for old API -- seife
-	TP_mod = configfile.getInt32("TP_mod", QAM_64); // default qam 64
+	TP_mod = configfile.getInt32("TP_mod", QAM_256); // default qam 256
 #endif
 
 	if(delivery_system == DVB_S) {
