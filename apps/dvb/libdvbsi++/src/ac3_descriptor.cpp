@@ -38,7 +38,7 @@ Ac3Descriptor::Ac3Descriptor(const uint8_t * const buffer) : Descriptor(buffer)
 		bsidFlag = 0;
 		mainidFlag = 0;
 		asvcFlag = 0;
-		eturn;
+		return;
 	}
 
 	ASSERT_MIN_DLEN(headerLength);
