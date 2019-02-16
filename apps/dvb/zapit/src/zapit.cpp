@@ -3311,7 +3311,7 @@ int main(int argc, char **argv)
 	lastChannelTV    = config.getInt32("lastChannelTV", 0);
 	startChannelRadio = config.getInt32("startChannelRadio", 0);
 	startChannelTV    = config.getInt32("startChannelTV", 0);
-	bouquetManager->remainingChannelsBouquet = config.getBool("makeRemainingChannelsBouquet", false);
+	bouquetManager->remainingChannelsBouquet = config.getBool("makeRemainingChannelsBouquet", true);
 	parentalcontrol = config.getBool("parentalcontrol", true);
 
 	if (config.getInt32("lastChannelMode", 0))
