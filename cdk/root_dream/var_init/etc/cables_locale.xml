@@ -11,11 +11,11 @@ Committed to the C16 GitHub by AL on Wed 18 Jan 2017 with credits :)
 	<transponder frequency="643000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00001" name="00001 West Yorkshire"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00002" name="00002 Glasgow"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00003" name="00003 Farnborough"/>
-	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00004" name="00004 Bridgend"/>
+	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00004" name="00004 Cardiff"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00005" name="00005 Luton"/>
 	<transponder frequency="363000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00006" name="00006 Swindon"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00007" name="00007 Port Talbot"/>
-	<transponder frequency="643000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00008" name="00008 Nottingham"/>
+	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00008" name="00008 Nottingham"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00009" name="00009 Cambridge"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00010" name="00010 Teesside"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00011" name="00011 Ipswich"/>
