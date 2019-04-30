@@ -23,14 +23,13 @@ Committed to the C16 GitHub by AL on Wed 18 Jan 2017 with credits :)
 	<transponder frequency="307000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00013" name="00013 Reading"/>
 	<transponder frequency="642250" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00014" name="00014 Andover"/>
 	<transponder frequency="378250" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00015" name="00015 Lichfield"/>
-	<transponder frequency="387000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00016" name="00016 Warwick"/>
-	<transponder frequency="339000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="3" netid="00017" name="00017 Hemel"/>
+	<transponder frequency="379000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00016" name="00016 Warwick"/>
+	<transponder frequency="339000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00017" name="00017 Hemel"/>
 	<transponder frequency="395000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00018" name="00018 Northampton"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00019" name="00019 Coventry"/>
 	<transponder frequency="394250" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00020" name="00020 Oxford"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00021" name="00021 Belfast and Derry (Londonderry)"/>
 	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00022" name="00022 Grimsby"/>
-	<transponder frequency="643000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="00023" name="00023 Derry (Londonderry)"/>
 	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40961" name="40961 Barnsley 600MHz (Barnsley 1)"/>
 	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40962" name="40962 Barnsley 860MHz (Barnsley 2)"/>
 	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="40963" name="40963 Sheffield 600MHz (Barnsley 3)"/>
@@ -72,33 +71,33 @@ Committed to the C16 GitHub by AL on Wed 18 Jan 2017 with credits :)
 	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41018" name="41018 Preston TDN"/>
 	<transponder frequency="619000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41020" name="41020 Crawley"/>
 	<transponder frequency="595000" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41026" name="41026 Southport"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41040" name="41040 VM Hammersmith"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41040" name="41040 VM Hammersmith"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41041" name="41041 Bromley"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41042" name="41042 Portsmouth"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41043" name="41043 Poole"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41044" name="41044 Brighton"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41042" name="41042 Portsmouth"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41043" name="41043 Poole"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41044" name="41044 Brighton"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41045" name="41045 Hersham"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41046" name="41046 Derby"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41046" name="41046 Derby"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41048" name="41048 Manchester 3"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41049" name="41049 Peterborough"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41050" name="41050 Seven Kings"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41050" name="41050 Seven Kings"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41051" name="41051 Watford"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41052" name="41052 Ashford"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41053" name="41053 Leeds"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41054" name="41054 Wearside"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41055" name="41055 Norwich"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41056" name="41056 NGRHEE Bromley"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41059" name="41059 Brighton TRIALS "/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41059" name="41059 Brighton TRIALS "/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41060" name="41060 Manchester 1"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41061" name="41061 Code Download Test (Portsmouth)"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41061" name="41061 Code Download Test (Portsmouth)"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41063" name="41063 Stoke (FF Manchester)"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41064" name="41064 York (FF Leeds)"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41065" name="41065 Portsmouth TRIALS"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41065" name="41065 Portsmouth TRIALS"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41066" name="41066 Manchester 2"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41067" name="41067 TTA Bromley DMC (Bromley RHE)"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41068" name="41068 Wrexham (FF Manchester)"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41069" name="41069 Lewisham"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41071" name="41071 Southampton"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41069" name="41069 Lewisham"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41071" name="41071 Southampton"/>
 	<transponder frequency="291000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="5" netid="43216" name="43216 Cork"/>
 	<transponder frequency="299000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="5" netid="43217" name="43217 Dublin"/>
 	<transponder frequency="291000" inversion="2" symbol_rate="6887" fec_inner="3" modulation="5" netid="43218" name="43218 Galway City"/>	
