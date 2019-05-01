@@ -83,7 +83,7 @@ Committed to the C16 GitHub by AL on Wed 18 Jan 2017 with credits :)
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41050" name="41050 Seven Kings"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41051" name="41051 Watford"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41052" name="41052 Ashford"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41053" name="41053 Leeds"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41053" name="41053 Leeds"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41054" name="41054 Wearside"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41055" name="41055 Norwich"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41056" name="41056 NGRHEE Bromley"/>
@@ -91,7 +91,7 @@ Committed to the C16 GitHub by AL on Wed 18 Jan 2017 with credits :)
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41060" name="41060 Manchester 1"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41061" name="41061 Code Download Test (Portsmouth)"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41063" name="41063 Stoke (FF Manchester)"/>
-	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41064" name="41064 York (FF Leeds)"/>
+	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41064" name="41064 York (FF Leeds)"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41065" name="41065 Portsmouth TRIALS"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="5" netid="41066" name="41066 Manchester 2"/>
 	<transponder frequency="666750" inversion="2" symbol_rate="6952" fec_inner="3" modulation="3" netid="41067" name="41067 TTA Bromley DMC (Bromley RHE)"/>
